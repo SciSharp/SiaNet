@@ -82,6 +82,16 @@
     <Compile Include="Model\DataFrame.cs" />
     <Compile Include="Model\LayerConfig.cs" />
     <Compile Include="Model\Layers\BatchNorm.cs" />
+    <Compile Include="Model\Layers\AvgPool1D.cs" />
+    <Compile Include="Model\Layers\AvgPool2D.cs" />
+    <Compile Include="Model\Layers\AvgPool3D.cs" />
+    <Compile Include="Model\Layers\GlobalAvgPool.cs" />
+    <Compile Include="Model\Layers\GlobalMaxPool.cs" />
+    <Compile Include="Model\Layers\MaxPool3D.cs" />
+    <Compile Include="Model\Layers\MaxPool2D.cs" />
+    <Compile Include="Model\Layers\MaxPool1D.cs" />
+    <Compile Include="Model\Layers\Conv3D.cs" />
+    <Compile Include="Model\Layers\Conv2D.cs" />
     <Compile Include="Model\Layers\Dropout.cs" />
     <Compile Include="Model\Layers\Activation.cs" />
     <Compile Include="Model\Layers\Dense.cs" />
@@ -97,6 +107,7 @@
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Layers\Conv1D.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

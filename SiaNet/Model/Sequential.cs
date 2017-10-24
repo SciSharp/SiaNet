@@ -90,7 +90,7 @@ namespace SiaNet.Model
             
         }
 
-        public static Sequential LoadConfig(string filepath, bool fromXml = false)
+        public static Sequential LoadNetConfig(string filepath)
         {
             string json = File.ReadAllText(filepath);
             var result = JsonConvert.DeserializeObject<Sequential>(json);
@@ -98,10 +98,20 @@ namespace SiaNet.Model
             return result;
         }
 
-        public void SaveConfig(string filepath, bool toXml = false)
+        public void SaveNetConfig(string filepath)
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(filepath, json);
+        }
+
+        public void SaveModel(string filepath)
+        {
+            modelOut.Save(filepath);
+        }
+
+        public void LoadModel(string filepath)
+        {
+            modelOut = Function.Load(filepath, GlobalParameters.Device);
         }
 
         public void Add(LayerConfig config)
@@ -166,7 +176,61 @@ namespace SiaNet.Model
                     break;
                 case OptLayers.BatchNorm:
                     var l4 = (BatchNorm)layer;
-                    modelOut = NN.Basic.BatchNorm(modelOut);
+                    modelOut = NN.Basic.BatchNorm(modelOut, l4.Epsilon, l4.BetaInitializer, l4.GammaInitializer, l4.RunningMeanInitializer, l4.RunningStdInvInitializer, l4.Spatial, l4.NormalizationTimeConstant, l4.BlendTimeConst);
+                    break;
+                case OptLayers.Conv1D:
+                    var l5 = (Conv1D)layer;
+                    modelOut = NN.Convolution.Conv1D(modelOut, l5.Channels, l5.KernalSize, l5.Strides, l5.Padding, l5.Dialation, l5.Act, l5.UseBias, l5.WeightInitializer, l5.BiasInitializer);
+                    break;
+                case OptLayers.Conv2D:
+                    var l6 = (Conv2D)layer;
+                    modelOut = NN.Convolution.Conv2D(modelOut, l6.Channels, l6.KernalSize, l6.Strides, l6.Padding, l6.Dialation, l6.Act, l6.UseBias, l6.WeightInitializer, l6.BiasInitializer);
+                    break;
+                case OptLayers.Conv3D:
+                    var l7 = (Conv3D)layer;
+                    modelOut = NN.Convolution.Conv3D(modelOut, l7.Channels, l7.KernalSize, l7.Strides, l7.Padding, l7.Dialation, l7.Act, l7.UseBias, l7.WeightInitializer, l7.BiasInitializer);
+                    break;
+                case OptLayers.MaxPool1D:
+                    var l8 = (MaxPool1D)layer;
+                    modelOut = NN.Convolution.MaxPool1D(modelOut, l8.PoolSize, l8.Strides, l8.Padding);
+                    break;
+                case OptLayers.MaxPool2D:
+                    var l9 = (MaxPool2D)layer;
+                    modelOut = NN.Convolution.MaxPool2D(modelOut, l9.PoolSize, l9.Strides, l9.Padding);
+                    break;
+                case OptLayers.MaxPool3D:
+                    var l10 = (MaxPool3D)layer;
+                    modelOut = NN.Convolution.MaxPool3D(modelOut, l10.PoolSize, l10.Strides, l10.Padding);
+                    break;
+                case OptLayers.AvgPool1D:
+                    var l11 = (AvgPool1D)layer;
+                    modelOut = NN.Convolution.AvgPool1D(modelOut, l11.PoolSize, l11.Strides, l11.Padding);
+                    break;
+                case OptLayers.AvgPool2D:
+                    var l12 = (AvgPool2D)layer;
+                    modelOut = NN.Convolution.AvgPool2D(modelOut, l12.PoolSize, l12.Strides, l12.Padding);
+                    break;
+                case OptLayers.AvgPool3D:
+                    var l113 = (AvgPool3D)layer;
+                    modelOut = NN.Convolution.AvgPool3D(modelOut, l113.PoolSize, l113.Strides, l113.Padding);
+                    break;
+                case OptLayers.GlobalMaxPool1D:
+                    modelOut = NN.Convolution.GlobalMaxPool1D(modelOut);
+                    break;
+                case OptLayers.GlobalMaxPool2D:
+                    modelOut = NN.Convolution.GlobalMaxPool2D(modelOut);
+                    break;
+                case OptLayers.GlobalMaxPool3D:
+                    modelOut = NN.Convolution.GlobalMaxPool3D(modelOut);
+                    break;
+                case OptLayers.GlobalAvgPool1D:
+                    modelOut = NN.Convolution.GlobalAvgPool1D(modelOut);
+                    break;
+                case OptLayers.GlobalAvgPool2D:
+                    modelOut = NN.Convolution.GlobalAvgPool2D(modelOut);
+                    break;
+                case OptLayers.GlobalAvgPool3D:
+                    modelOut = NN.Convolution.GlobalAvgPool3D(modelOut);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} layer is not implemented."));
@@ -180,11 +244,15 @@ namespace SiaNet.Model
             {
                 case OptLayers.Dense:
                     var l1 = (Dense)layer;
+                    if (!l1.Shape.HasValue)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
                     featureVariable = Variable.InputVariable(new int[] { l1.Shape.Value }, DataType.Float);
                     modelOut = NN.Basic.Dense(featureVariable, l1.Dim, l1.Act, l1.UseBias, l1.WeightInitializer, l1.BiasInitializer);
                     break;
                 case OptLayers.BatchNorm:
                     var l2 = (BatchNorm)layer;
+                    if (!l2.Shape.HasValue)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} cannot be used as first layer."));
@@ -194,19 +262,24 @@ namespace SiaNet.Model
         public void Train(XYFrame train, int batchSize, int epoches, XYFrame test = null)
         {
             OnTrainingStart();
-            metricFunc.Save("metr.txt");
             var trainer = Trainer.CreateTrainer(modelOut, lossFunc, metricFunc, learners);
             int currentEpoch = 1;
+            Dictionary<string, double> metricsList = new Dictionary<string, double>();
             while (currentEpoch <= epoches)
             {
+                metricsList.Clear();
                 OnEpochStart(currentEpoch);
                 int miniBatchCount = 1;
+                List<double> totalBatchLossList = new List<double>();
+                List<double> totalMetricValueList = new List<double>();
                 while (train.NextBatch(miniBatchCount, batchSize))
                 {
                     Value features = GetValueBatch(train.CurrentBatch.XFrame);
                     Value labels = GetValueBatch(train.CurrentBatch.YFrame);
-
+                    
                     trainer.TrainMinibatch(new Dictionary<Variable, Value>() { { featureVariable, features }, { labelVariable, labels } }, GlobalParameters.Device);
+                    totalBatchLossList.Add(trainer.PreviousMinibatchLossAverage());
+                    totalMetricValueList.Add(trainer.PreviousMinibatchEvaluationAverage());
                     miniBatchCount++;
                 }
 
@@ -220,24 +293,56 @@ namespace SiaNet.Model
                     TrainingResult.Add(metricName, new List<double>());
                 }
 
-                double lossValue = trainer.PreviousMinibatchLossAverage();
-                double metricValue = trainer.PreviousMinibatchEvaluationAverage();
+                double lossValue = totalBatchLossList.Average();
+                double metricValue = totalMetricValueList.Average();
                 TrainingResult["loss"].Add(lossValue);
                 TrainingResult[metricName].Add(metricValue);
-
+                metricsList.Add(metricName, metricValue);
                 if (test != null)
                 {
-                    Value actual = EvaluateInternal(test.XFrame);
-                    Value expected = GetValueBatch(test.YFrame);
-                    var inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, actual } };
-                    var outputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected } };
+                    if (!TrainingResult.ContainsKey("val_loss"))
+                    {
+                        TrainingResult.Add("val_loss", new List<double>());
+                    }
 
-                    lossFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-                    IList<IList<float>> resultSet = outputDataMap[labelVariable].GetDenseData<float>(labelVariable);
-                    var result = resultSet.Select(x => x.First()).ToList();
+                    if (!TrainingResult.ContainsKey("val_" + metricName))
+                    {
+                        TrainingResult.Add("val_" + metricName, new List<double>());
+                    }
+
+                    int evalMiniBatchCount = 1;
+                    List<double> totalEvalBatchLossList = new List<double>();
+                    List<double> totalEvalMetricValueList = new List<double>();
+                    while (test.NextBatch(evalMiniBatchCount, batchSize))
+                    {
+                        Variable actualVariable = CNTKLib.InputVariable(labelVariable.Shape, DataType.Float);
+                        var evalLossFunc = Losses.Get(lossName, labelVariable, actualVariable);
+                        var evalMetricFunc = Metrics.Get(metricName, labelVariable, actualVariable);
+                        Value actual = EvaluateInternal(test.XFrame);
+                        Value expected = GetValueBatch(test.YFrame);
+                        var inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected }, { actualVariable, actual } };
+                        var outputDataMap = new Dictionary<Variable, Value>() { { evalLossFunc.Output, null } };
+
+                        evalLossFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
+                        var evalLoss = outputDataMap[evalLossFunc.Output].GetDenseData<float>(evalLossFunc.Output).Select(x => x.First()).ToList();
+                        totalEvalBatchLossList.Add(evalLoss.Average());
+
+                        inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected }, { actualVariable, actual } };
+                        outputDataMap = new Dictionary<Variable, Value>() { { evalMetricFunc.Output, null } };
+                        evalMetricFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
+                        var evalMetric = outputDataMap[evalMetricFunc.Output].GetDenseData<float>(evalMetricFunc.Output).Select(x => x.First()).ToList();
+                        totalEvalMetricValueList.Add(evalMetric.Average());
+
+                        evalMiniBatchCount++;
+                    }
+
+                    TrainingResult["val_loss"].Add(totalEvalBatchLossList.Average());
+                    metricsList.Add("val_loss", totalEvalBatchLossList.Average());
+                    TrainingResult["val_" + metricName].Add(totalEvalMetricValueList.Average());
+                    metricsList.Add("val_" + metricName, totalEvalMetricValueList.Average());
                 }
 
-                OnEpochEnd(currentEpoch, trainer.TotalNumberOfSamplesSeen(), lossValue, new Dictionary<string, double>() { { metricName, metricValue } });
+                OnEpochEnd(currentEpoch, trainer.TotalNumberOfSamplesSeen(), lossValue, metricsList);
                 currentEpoch++;
             }
 

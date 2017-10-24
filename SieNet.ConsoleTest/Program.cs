@@ -26,12 +26,11 @@ namespace SiaNet.Test
             var model = new Sequential();
             model.OnEpochEnd += Model_OnEpochEnd;
             model.OnTrainingEnd += Model_OnTrainingEnd;
-            model.Add(new Dense(12, 12, OptActivations.Sigmoid));
-            model.Add(new Dense(20, OptActivations.ELU));
-            model.Add(new Dense(1, OptActivations.Sigmoid));
-            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSE);
+            model.Add(new Dense(13, OptActivations.Sigmoid));
+            model.Add(new Dense(1, OptActivations.Tanh));
+            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE);
             
-            model.Train(traintest.Train, 64, 200, traintest.Test);
+            model.Train(traintest.Train, 64, 1000, traintest.Test);
             Console.ReadLine();
         }
 
@@ -43,7 +42,7 @@ namespace SiaNet.Test
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            //Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics["mae"]));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics["val_mae"]));
         }
     }
 
