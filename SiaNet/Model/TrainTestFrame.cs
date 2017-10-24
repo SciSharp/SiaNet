@@ -21,7 +21,7 @@ namespace SiaNet.Model
 
         public XYFrame CurrentBatch { get; set; }
 
-        public TrainTestFrame SplitTrainTest(float testSplitSize)
+        public TrainTestFrame SplitTrainTest(double testSplitSize)
         {
             if (testSplitSize < 0.01 && testSplitSize > 0.99)
             {

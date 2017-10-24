@@ -15,14 +15,14 @@ namespace SiaNet.Model.Layers
             base.Params = new ExpandoObject();
         }
 
-        public Dropout(float rate)
+        public Dropout(double rate)
             : this()
         {
             Rate = rate;
         }
 
         [Newtonsoft.Json.JsonIgnore]
-        public float Rate
+        public double Rate
         {
             get
             {

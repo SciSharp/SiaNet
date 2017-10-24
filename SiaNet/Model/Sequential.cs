@@ -13,11 +13,11 @@ namespace SiaNet.Model
 {
     public delegate void On_Training_Start();
 
-    public delegate void On_Training_End();
+    public delegate void On_Training_End(Dictionary<string, List<double>> trainingResult);
 
     public delegate void On_Epoch_Start(int epoch);
 
-    public delegate void On_Epoch_End(int epoch, float loss, Dictionary<string, float> metrics);
+    public delegate void On_Epoch_End(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics);
 
     public class Sequential : ConfigModule
     {
@@ -39,17 +39,23 @@ namespace SiaNet.Model
 
         private List<Learner> learners;
 
-        private string lossFunc;
+        private Function lossFunc;
 
-        private string metricFunc;
+        private Function metricFunc;
 
         private Function modelOut;
 
+        private string metricName;
+
+        private string lossName;
+
         private bool isConvolution;
 
-        private int[] shape;
+        private Variable featureVariable;
 
-        private int outputNums;
+        private Variable labelVariable;
+
+        public Dictionary<string, List<double>> TrainingResult { get; set; }
 
         public List<LayerConfig> Layers { get; set; }
 
@@ -59,11 +65,12 @@ namespace SiaNet.Model
             OnTrainingEnd += Sequential_OnTrainingEnd;
             OnEpochStart += Sequential_OnEpochStart;
             OnEpochEnd += Sequential_OnEpochEnd;
+            TrainingResult = new Dictionary<string, List<double>>();
             Layers = new List<LayerConfig>();
             learners = new List<Learner>();
         }
 
-        private void Sequential_OnEpochEnd(int epoch, float loss, Dictionary<string, float> metrics)
+        private void Sequential_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
             
         }
@@ -73,7 +80,7 @@ namespace SiaNet.Model
             
         }
 
-        private void Sequential_OnTrainingEnd()
+        private void Sequential_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
             
         }
@@ -104,27 +111,25 @@ namespace SiaNet.Model
 
         public void Compile(string optimizer, string loss, string metric)
         {
-            bool first = true;
-            foreach (var item in Layers)
-            {
-                if(first)
-                {
-                    BuildFirstLayer(item);
-                    first = false;
-                    continue;
-                }
-
-                BuildStackedLayer(item);
-            }
-
-            outputNums = modelOut.Output.Shape[0];
-
+            CompileModel();
             learners.Add(Optimizers.Get(optimizer, modelOut));
-            lossFunc = loss;
-            metricFunc = metric;
+            metricName = metric;
+            lossName = loss;
+            lossFunc = Losses.Get(loss, labelVariable, modelOut);
+            metricFunc = Metrics.Get(metric, labelVariable, modelOut);
         }
 
         public void Compile(Learner optimizer, string loss, string metric)
+        {
+            CompileModel();
+            learners.Add(optimizer);
+            metricName = metric;
+            lossName = loss;
+            lossFunc = Losses.Get(loss, labelVariable, modelOut);
+            metricFunc = Metrics.Get(metric, labelVariable, modelOut);
+        }
+
+        private void CompileModel()
         {
             bool first = true;
             foreach (var item in Layers)
@@ -139,11 +144,8 @@ namespace SiaNet.Model
                 BuildStackedLayer(item);
             }
 
-            outputNums = modelOut.Output.Shape[0];
-
-            learners.Add(optimizer);
-            lossFunc = loss;
-            metricFunc = metric;
+            int outputNums = modelOut.Output.Shape[0];
+            labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
         }
 
         private void BuildStackedLayer(LayerConfig layer)
@@ -174,13 +176,12 @@ namespace SiaNet.Model
         private void BuildFirstLayer(LayerConfig layer)
         {
             isConvolution = false;
-
             switch (layer.Name.ToUpper())
             {
                 case OptLayers.Dense:
                     var l1 = (Dense)layer;
-                    modelOut = NN.Basic.Dense(l1.Shape.Value, l1.Dim, l1.Act, l1.UseBias, l1.WeightInitializer, l1.BiasInitializer);
-                    shape = new int[] { l1.Shape.Value };
+                    featureVariable = Variable.InputVariable(new int[] { l1.Shape.Value }, DataType.Float);
+                    modelOut = NN.Basic.Dense(featureVariable, l1.Dim, l1.Act, l1.UseBias, l1.WeightInitializer, l1.BiasInitializer);
                     break;
                 case OptLayers.BatchNorm:
                     var l2 = (BatchNorm)layer;
@@ -193,32 +194,71 @@ namespace SiaNet.Model
         public void Train(XYFrame train, int batchSize, int epoches, XYFrame test = null)
         {
             OnTrainingStart();
-            Variable featureVariable = Variable.InputVariable(shape, DataType.Float);
-            Variable labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
-            Function loss = Losses.Get(lossFunc, new Variable(modelOut), labelVariable);
-            Function metric = Metrics.Get(metricFunc, new Variable(modelOut), labelVariable);
-            var trainer = Trainer.CreateTrainer(modelOut, loss, metric, learners);
+            metricFunc.Save("metr.txt");
+            var trainer = Trainer.CreateTrainer(modelOut, lossFunc, metricFunc, learners);
             int currentEpoch = 1;
             while (currentEpoch <= epoches)
             {
-                OnEpochStart(epoches);
+                OnEpochStart(currentEpoch);
                 int miniBatchCount = 1;
-                while(train.NextBatch(miniBatchCount, batchSize))
+                while (train.NextBatch(miniBatchCount, batchSize))
                 {
-                    Value features = GetValueBatch(train.XFrame);
-                    Value labels = GetValueBatch(train.YFrame);
+                    Value features = GetValueBatch(train.CurrentBatch.XFrame);
+                    Value labels = GetValueBatch(train.CurrentBatch.YFrame);
 
                     trainer.TrainMinibatch(new Dictionary<Variable, Value>() { { featureVariable, features }, { labelVariable, labels } }, GlobalParameters.Device);
                     miniBatchCount++;
                 }
 
-                Function trainedModel = trainer.Model();
+                if (!TrainingResult.ContainsKey("loss"))
+                {
+                    TrainingResult.Add("loss", new List<double>());
+                }
 
-                OnEpochEnd(currentEpoch, 0, null);
+                if (!TrainingResult.ContainsKey(metricName))
+                {
+                    TrainingResult.Add(metricName, new List<double>());
+                }
+
+                double lossValue = trainer.PreviousMinibatchLossAverage();
+                double metricValue = trainer.PreviousMinibatchEvaluationAverage();
+                TrainingResult["loss"].Add(lossValue);
+                TrainingResult[metricName].Add(metricValue);
+
+                if (test != null)
+                {
+                    Value actual = EvaluateInternal(test.XFrame);
+                    Value expected = GetValueBatch(test.YFrame);
+                    var inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, actual } };
+                    var outputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected } };
+
+                    lossFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
+                    IList<IList<float>> resultSet = outputDataMap[labelVariable].GetDenseData<float>(labelVariable);
+                    var result = resultSet.Select(x => x.First()).ToList();
+                }
+
+                OnEpochEnd(currentEpoch, trainer.TotalNumberOfSamplesSeen(), lossValue, new Dictionary<string, double>() { { metricName, metricValue } });
                 currentEpoch++;
             }
 
-            OnTrainingEnd();
+            OnTrainingEnd(TrainingResult);
+        }
+
+        private Value EvaluateInternal(DataFrame data)
+        {
+            Value features = GetValueBatch(data);
+            var inputDataMap = new Dictionary<Variable, Value>() { { featureVariable, features } };
+            var outputDataMap = new Dictionary<Variable, Value>() { { modelOut.Output, null } };
+            modelOut.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
+            return outputDataMap[modelOut.Output];
+        }
+
+        public IList<float> Evaluate(DataFrame data)
+        {
+            var outputValue = EvaluateInternal(data);
+            IList<IList<float>> resultSet = outputValue.GetDenseData<float>(modelOut.Output);
+            var result = resultSet.Select(x => x.First()).ToList();
+            return result;
         }
 
         private Value GetValueBatch(DataFrame frame)
@@ -241,7 +281,7 @@ namespace SiaNet.Model
                 }
             }
 
-            Value result = Value.CreateBatch<float>(new int[] { dim }, batch, GlobalParameters.Device);
+            Value result = Value.CreateBatch(new int[] { dim }, batch, GlobalParameters.Device);
             return result;
         }
     }

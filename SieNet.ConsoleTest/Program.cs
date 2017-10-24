@@ -16,30 +16,36 @@ namespace SiaNet.Test
         static void Main(string[] args)
         {
             GlobalParameters.Device = CNTK.DeviceDescriptor.CPUDevice;
-            //var c1 = SiaNet.NN.Convolution.Conv2D(Tuple.Create<int, int, int>(28, 28, 1), 4, Tuple.Create<int, int>(3, 3), Tuple.Create<int, int>(2, 2), true, null, OptActivations.ReLU, true);
-            //var c2 = SiaNet.NN.Convolution.Conv2D(c1, 3, Tuple.Create<int, int>(2, 2), Tuple.Create<int, int>(1, 1), true);
-            //var l1 = SiaNet.NN.Basic.Dense(c2, 5, OptActivations.ReLU, true, OptInitializers.Xavier, OptInitializers.Ones);
             DataFrame frame = new DataFrame();
-            frame.LoadFromCsv(@"D:\work\SiaCog\Sia.DNN\ConsolApp.Test\Samples\housing\train.csv", dataType: DataType.Float);
+            string trainFile = AppDomain.CurrentDomain.BaseDirectory + "\\samples\\housing\\train.csv";
+            frame.LoadFromCsv(trainFile);
 
             var xy = frame.SplitXY(14, new[] { 1, 13});
-           
+            var traintest = xy.SplitTrainTest(0.25);
 
             var model = new Sequential();
-            
-            model.Add(new Dense(13, 12, OptActivations.ReLU));
-            model.Add(new Dense(13, OptActivations.Tanh));
-            model.Add(new Dropout(0.2f));
-            model.Add(new Dense(1));
-
-            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE);
             model.OnEpochEnd += Model_OnEpochEnd;
-            model.Train(xy, 100, 10);
+            model.OnTrainingEnd += Model_OnTrainingEnd;
+            model.Add(new Dense(12, 12, OptActivations.Sigmoid));
+            model.Add(new Dense(20, OptActivations.ELU));
+            model.Add(new Dense(1, OptActivations.Sigmoid));
+            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSE);
+            
+            model.Train(traintest.Train, 64, 200, traintest.Test);
+            Console.ReadLine();
         }
 
-        private static void Model_OnEpochEnd(int epoch, float loss, Dictionary<string, float> metrics)
+        private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
-            int e = epoch;
+            var mean = trainingResult["mse"].Mean();
+            var std = trainingResult["mse"].Std();
+        }
+
+        private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
+        {
+            //Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics["mae"]));
         }
     }
+
+    
 }

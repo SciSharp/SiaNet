@@ -100,7 +100,6 @@ namespace SiaNet.NN
             
             int[] s = { outputDim, inputDim };
             var weights = new Parameter(s, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
-            var timesFunction = CNTKLib.Times(weights, input);
 
             Parameter bias = null;
             if (useBias)
@@ -114,7 +113,7 @@ namespace SiaNet.NN
                 bias = new Parameter(s2, DataType.Float, 0.0f, GlobalParameters.Device);
             }
             
-            return CNTKLib.Plus(bias, timesFunction);
+            return CNTKLib.Plus(CNTKLib.Times(weights, input), bias);
         }
     }
 }
