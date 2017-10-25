@@ -26,18 +26,20 @@ namespace SiaNet.Test
             var model = new Sequential();
             model.OnEpochEnd += Model_OnEpochEnd;
             model.OnTrainingEnd += Model_OnTrainingEnd;
-            model.Add(new Dense(13, OptActivations.Sigmoid));
-            model.Add(new Dense(1, OptActivations.Tanh));
+            model.Add(new Dense(13, 12, OptActivations.ReLU));
+            model.Add(new Dense(13, OptActivations.ReLU));
+            model.Add(new Dense(1));
             model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE);
             
-            model.Train(traintest.Train, 64, 1000, traintest.Test);
+            model.Train(traintest.Train, 64, 200, traintest.Test);
             Console.ReadLine();
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
-            var mean = trainingResult["mse"].Mean();
-            var std = trainingResult["mse"].Std();
+            var mean = trainingResult[OptMetrics.MAE].Mean();
+            var std = trainingResult[OptMetrics.MAE].Std();
+            Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean, std);
         }
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
