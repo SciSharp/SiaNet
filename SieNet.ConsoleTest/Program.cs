@@ -19,7 +19,7 @@ namespace SiaNet.Test
             DataFrame frame = new DataFrame();
             string trainFile = AppDomain.CurrentDomain.BaseDirectory + "\\samples\\housing\\train.csv";
             frame.LoadFromCsv(trainFile);
-
+            
             var xy = frame.SplitXY(14, new[] { 1, 13});
             var traintest = xy.SplitTrainTest(0.25);
 
@@ -32,6 +32,8 @@ namespace SiaNet.Test
             model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE);
             
             model.Train(traintest.Train, 64, 200, traintest.Test);
+
+            
             Console.ReadLine();
         }
 

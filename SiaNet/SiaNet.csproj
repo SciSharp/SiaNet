@@ -95,8 +95,8 @@
     <Compile Include="Model\Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
     <Compile Include="NN\Basic.cs" />
-    <Compile Include="Net.cs" />
     <Compile Include="NN\Convolution.cs" />
+    <Compile Include="NN\Recurrent.cs" />
     <Compile Include="Optimizers.cs" />
     <Compile Include="Processing\ImageDataGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

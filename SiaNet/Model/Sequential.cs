@@ -253,6 +253,29 @@ namespace SiaNet.Model
                     var l2 = (BatchNorm)layer;
                     if (!l2.Shape.HasValue)
                         throw new ArgumentNullException("Input shape is missing for first layer");
+                    featureVariable = Variable.InputVariable(new int[] { l2.Shape.Value }, DataType.Float);
+                    modelOut = NN.Basic.BatchNorm(featureVariable, l2.Epsilon, l2.BetaInitializer, l2.GammaInitializer, l2.RunningMeanInitializer, l2.RunningStdInvInitializer, l2.Spatial, l2.NormalizationTimeConstant, l2.BlendTimeConst);
+                    break;
+                case OptLayers.Conv1D:
+                    var l3 = (Conv1D)layer;
+                    if (l3.Shape == null)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
+                    featureVariable = Variable.InputVariable(new int[] { l3.Shape.Item1, l3.Shape.Item2 }, DataType.Float);
+                    modelOut = NN.Convolution.Conv1D(featureVariable, l3.Channels, l3.KernalSize, l3.Strides, l3.Padding, l3.Dialation, l3.Act, l3.UseBias, l3.WeightInitializer, l3.BiasInitializer);
+                    break;
+                case OptLayers.Conv2D:
+                    var l4 = (Conv2D)layer;
+                    if (l4.Shape == null)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
+                    featureVariable = Variable.InputVariable(new int[] { l4.Shape.Item1, l4.Shape.Item2, l4.Shape.Item3 }, DataType.Float);
+                    modelOut = NN.Convolution.Conv2D(featureVariable, l4.Channels, l4.KernalSize, l4.Strides, l4.Padding, l4.Dialation, l4.Act, l4.UseBias, l4.WeightInitializer, l4.BiasInitializer);
+                    break;
+                case OptLayers.Conv3D:
+                    var l5 = (Conv3D)layer;
+                    if (l5.Shape == null)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
+                    featureVariable = Variable.InputVariable(new int[] { l5.Shape.Item1, l5.Shape.Item2, l5.Shape.Item3, l5.Shape.Item4 }, DataType.Float);
+                    modelOut = NN.Convolution.Conv3D(featureVariable, l5.Channels, l5.KernalSize, l5.Strides, l5.Padding, l5.Dialation, l5.Act, l5.UseBias, l5.WeightInitializer, l5.BiasInitializer);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} cannot be used as first layer."));

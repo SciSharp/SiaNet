@@ -15,13 +15,13 @@ namespace SiaNet
             switch (initializers.Trim().ToLower())
             {
                 case OptInitializers.Uniform:
-                    result = CNTKLib.UniformInitializer(CNTKLib.DefaultParamInitScale, 1);
+                    result = CNTKLib.UniformInitializer(0.01);
                     break;
                 case OptInitializers.Normal:
-                    result = CNTKLib.NormalInitializer(CNTKLib.DefaultParamInitScale, 1);
+                    result = CNTKLib.NormalInitializer(0.01);
                     break;
                 case OptInitializers.TruncatedNormal:
-                    result = CNTKLib.TruncatedNormalInitializer(CNTKLib.DefaultParamInitScale, 1);
+                    result = CNTKLib.TruncatedNormalInitializer();
                     break;
                 case OptInitializers.Zeros:
                     result = CNTKLib.ConstantInitializer(0);
@@ -33,19 +33,19 @@ namespace SiaNet
                     result = CNTKLib.ConstantInitializer();
                     break;
                 case OptInitializers.Xavier:
-                    result = CNTKLib.XavierInitializer(CNTKLib.DefaultParamInitScale, CNTKLib.SentinelValueForInferParamInitRank, CNTKLib.SentinelValueForInferParamInitRank, 1);
+                    result = CNTKLib.XavierInitializer();
                     break;
                 case OptInitializers.GlorotNormal:
-                    result = CNTKLib.GlorotNormalInitializer(CNTKLib.DefaultParamInitScale, CNTKLib.SentinelValueForInferParamInitRank, CNTKLib.SentinelValueForInferParamInitRank, 1);
+                    result = CNTKLib.GlorotNormalInitializer();
                     break;
                 case OptInitializers.GlorotUniform:
-                    result = CNTKLib.GlorotUniformInitializer(CNTKLib.DefaultParamInitScale, CNTKLib.SentinelValueForInferParamInitRank, CNTKLib.SentinelValueForInferParamInitRank, 1);
+                    result = CNTKLib.GlorotUniformInitializer();
                     break;
                 case OptInitializers.HeNormal:
-                    result = CNTKLib.HeNormalInitializer(CNTKLib.DefaultParamInitScale, CNTKLib.SentinelValueForInferParamInitRank, CNTKLib.SentinelValueForInferParamInitRank, 1);
+                    result = CNTKLib.HeNormalInitializer();
                     break;
                 case OptInitializers.HeUniform:
-                    result = CNTKLib.HeUniformInitializer(CNTKLib.DefaultParamInitScale, CNTKLib.SentinelValueForInferParamInitRank, CNTKLib.SentinelValueForInferParamInitRank, 1);
+                    result = CNTKLib.HeUniformInitializer();
                     break;
                 default:
                     break;
