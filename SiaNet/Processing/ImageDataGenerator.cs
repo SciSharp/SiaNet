@@ -32,6 +32,7 @@ namespace SiaNet.Processing
                     float[] image = LoadBitmap(imageDimension, file).ToArray();
                     dataMap.Add(new Tuple<string, int, float[]>(file, categoryIndex, image));
                 }
+
                 categoryIndex++;
             }
 
