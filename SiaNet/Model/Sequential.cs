@@ -119,7 +119,7 @@ namespace SiaNet.Model
             Layers.Add(config);
         }
 
-        public void Compile(string optimizer, string loss, string metric)
+        public void Compile(string optimizer, string loss, string metric, Regulizers regulizer = null)
         {
             CompileModel();
             learners.Add(Optimizers.Get(optimizer, modelOut));
@@ -129,7 +129,7 @@ namespace SiaNet.Model
             metricFunc = Metrics.Get(metric, labelVariable, modelOut);
         }
 
-        public void Compile(Learner optimizer, string loss, string metric)
+        public void Compile(Learner optimizer, string loss, string metric, Regulizers regulizer = null)
         {
             CompileModel();
             learners.Add(optimizer);

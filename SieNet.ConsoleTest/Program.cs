@@ -30,6 +30,9 @@ namespace SiaNet.Test
                 }
             }
 
+            //Setting global device
+            GlobalParameters.Device = device;
+
             //Housing regression example
             HousingRegression.LoadData();
             HousingRegression.BuildModel();

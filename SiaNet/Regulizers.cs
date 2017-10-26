@@ -9,11 +9,47 @@ namespace SiaNet
 {
     public class Regulizers
     {
-        public static float L1L2(float l1=0.01f, float l2=0.01f)
-        {
-            float regulaizer = 0.0f;
+        public double L1 { get; set; }
 
-            return regulaizer;
+        public double L2 { get; set; }
+
+        public bool IsL1 { get; set; }
+
+        public bool IsL2 { get; set; }
+
+        public static Regulizers L1L2(double l1 =0.01f, double l2 =0.01f)
+        {
+            Regulizers result = new Regulizers()
+            {
+                IsL1 = true,
+                IsL2 = true,
+                L1 = l1,
+                L2 = l2
+            };
+
+            return result;
+        }
+
+        public static Regulizers RegL1(double l1 = 0.01f)
+        {
+            Regulizers result = new Regulizers()
+            {
+                IsL1 = true,
+                L1 = l1,
+            };
+
+            return result;
+        }
+
+        public static Regulizers RegL2(double l2 = 0.01f)
+        {
+            Regulizers result = new Regulizers()
+            {
+                IsL2 = true,
+                L2 = l2,
+            };
+
+            return result;
         }
     }
 }

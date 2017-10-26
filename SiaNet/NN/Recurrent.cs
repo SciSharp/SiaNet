@@ -32,7 +32,7 @@ namespace SiaNet.NN
             }
         }
 
-        private static Function BuildRNN(int inputDim, uint hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier, string rnnName)
+        private static Function BuildRNN(int inputDim, uint hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier, string rnnName = "")
         {
             int[] s = { inputDim };
             var weights = new Parameter(s, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);

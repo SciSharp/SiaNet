@@ -35,7 +35,7 @@ namespace SiaNet.Test
 
         public static void Train()
         {
-            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE);
+            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE, Regulizers.RegL2(0.1));
             model.Train(traintest.Train, 64, 200, traintest.Test);
         }
 
