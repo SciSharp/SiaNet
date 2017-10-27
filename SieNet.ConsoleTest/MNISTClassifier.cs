@@ -49,9 +49,9 @@ namespace SiaNet.Test
 
         private static void BuildConvolutionLayer(int[] imageDim, int numClasses)
         {
-            model.Add(new Conv2D(Tuple.Create(28, 28, 1), 4, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier));
+            model.Add(new Conv2D(Tuple.Create(28, 28, 1), 4, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
-            model.Add(new Conv2D(8, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier));
+            model.Add(new Conv2D(8, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
             model.Add(new Dense(numClasses));
         }
@@ -59,7 +59,7 @@ namespace SiaNet.Test
         public static void Train()
         {
             model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Train(train, 5, 64, null);
+            model.Train(train, 5, 1000, null);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)

@@ -143,6 +143,77 @@ namespace SiaNet.Model
             metricFunc = Metrics.Get(metric, labelVariable, modelOut);
         }
 
+        static Function CreateConvolutionalNeuralNetwork(Variable features, int outDims, DeviceDescriptor device, string classifierName)
+        {
+            // 28x28x1 -> 14x14x4
+            int kernelWidth1 = 3, kernelHeight1 = 3, numInputChannels1 = 1, outFeatureMapCount1 = 4;
+            int hStride1 = 2, vStride1 = 2;
+            int poolingWindowWidth1 = 3, poolingWindowHeight1 = 3;
+
+            Function pooling1 = ConvolutionWithMaxPooling(features, device, kernelWidth1, kernelHeight1,
+                numInputChannels1, outFeatureMapCount1, hStride1, vStride1, poolingWindowWidth1, poolingWindowHeight1);
+
+            // 14x14x4 -> 7x7x8
+            int kernelWidth2 = 3, kernelHeight2 = 3, numInputChannels2 = outFeatureMapCount1, outFeatureMapCount2 = 8;
+            int hStride2 = 2, vStride2 = 2;
+            int poolingWindowWidth2 = 3, poolingWindowHeight2 = 3;
+
+            Function pooling2 = ConvolutionWithMaxPooling(pooling1, device, kernelWidth2, kernelHeight2,
+                numInputChannels2, outFeatureMapCount2, hStride2, vStride2, poolingWindowWidth2, poolingWindowHeight2);
+
+            Function denseLayer = Dense(pooling2, outDims, device, classifierName);
+            return denseLayer;
+        }
+
+        private static Function ConvolutionWithMaxPooling(Variable features, DeviceDescriptor device,
+            int kernelWidth, int kernelHeight, int numInputChannels, int outFeatureMapCount,
+            int hStride, int vStride, int poolingWindowWidth, int poolingWindowHeight)
+        {
+            // parameter initialization hyper parameter
+            double convWScale = 0.26;
+            var convParams = new Parameter(new int[] { kernelWidth, kernelHeight, numInputChannels, outFeatureMapCount }, DataType.Float,
+                CNTKLib.GlorotUniformInitializer(convWScale, -1, 2), device);
+            Function convFunction = CNTKLib.ReLU(CNTKLib.Convolution(convParams, features, new int[] { 1, 1, numInputChannels } /* strides */));
+
+            Function pooling = CNTKLib.Pooling(convFunction, PoolingType.Max,
+                new int[] { poolingWindowWidth, poolingWindowHeight }, new int[] { hStride, vStride }, new bool[] { true });
+            return pooling;
+        }
+
+        public static Function Dense(Variable input, int outputDim, DeviceDescriptor device, string outputName = "")
+        {
+            if (input.Shape.Rank != 1)
+            {
+                // 
+                int newDim = input.Shape.Dimensions.Aggregate((d1, d2) => d1 * d2);
+                input = CNTKLib.Reshape(input, new int[] { newDim });
+            }
+
+            Function fullyConnected = FullyConnectedLinearLayer(input, outputDim, device, outputName);
+            return fullyConnected;
+        }
+
+        public static Function FullyConnectedLinearLayer(Variable input, int outputDim, DeviceDescriptor device,
+            string outputName = "")
+        {
+            System.Diagnostics.Debug.Assert(input.Shape.Rank == 1);
+            int inputDim = input.Shape[0];
+
+            int[] s = { outputDim, inputDim };
+
+            var timesParam = new Parameter((NDShape)s, DataType.Float,
+                CNTKLib.GlorotUniformInitializer(
+                    CNTKLib.DefaultParamInitScale,
+                    CNTKLib.SentinelValueForInferParamInitRank,
+                    CNTKLib.SentinelValueForInferParamInitRank, 1),
+                device, "timesParam");
+            var timesFunction = CNTKLib.Times(timesParam, input, "times");
+
+            int[] s2 = { outputDim };
+            var plusParam = new Parameter(s2, 0.0f, device, "plusParam");
+            return CNTKLib.Plus(plusParam, timesFunction, outputName);
+        }
+
         private void CompileModel()
         {
             bool first = true;
@@ -157,7 +228,8 @@ namespace SiaNet.Model
 
                 BuildStackedLayer(item);
             }
-
+            //featureVariable = Variable.InputVariable(new int[] { 28, 28, 1 }, DataType.Float);
+            //modelOut =  CreateConvolutionalNeuralNetwork(featureVariable, 10, GlobalParameters.Device, "cls1");
             int outputNums = modelOut.Output.Shape[0];
             labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
         }

@@ -62,7 +62,6 @@ namespace SiaNet.Processing
                 while (!train.NextBatch(batchSize))
                 {
                     trainer.TrainMinibatch(new Dictionary<Variable, MinibatchData> { {featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, GlobalParameters.Device);
-
                     totalBatchLossList.Add(trainer.PreviousMinibatchLossAverage());
                     totalMetricValueList.Add(trainer.PreviousMinibatchEvaluationAverage());
                 }
@@ -129,6 +128,13 @@ namespace SiaNet.Processing
 
             return result;
         }
+
+        public static bool MiniBatchDataIsSweepEnd(ICollection<MinibatchData> minibatchValues)
+        {
+            return minibatchValues.Any(a => a.sweepEnd);
+        }
+
+        
 
         private Value EvaluateInternal(Value data)
         {

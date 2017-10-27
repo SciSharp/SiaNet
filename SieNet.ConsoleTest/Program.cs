@@ -42,7 +42,7 @@ namespace SiaNet.Test
 
                 //MNIST Classification example
                 MNISTClassifier.LoadData();
-                MNISTClassifier.BuildModel(false);
+                MNISTClassifier.BuildModel();
                 MNISTClassifier.Train();
 
                 Console.ReadLine();

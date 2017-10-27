@@ -68,7 +68,7 @@ namespace SiaNet.NN
                 dialation = new Tuple<int, int, int>(1, 1, 1);
             }
 
-            var conv = CNTKLib.Convolution(convParams, layer, new int[] { strides.Item1, strides.Item2, strides.Item3 }, BoolVector.Repeat(true, 3), new BoolVector(new bool[] { true }), new int[] { dialation.Item1, dialation.Item2, dialation.Item3 });
+            var conv = CNTKLib.Convolution(convParams, layer, new int[] { strides.Item1, strides.Item2, strides.Item3 }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { true }), new int[] { dialation.Item1, dialation.Item2, dialation.Item3 });
             Parameter bias = null;
             if (useBias)
             {
@@ -97,12 +97,12 @@ namespace SiaNet.NN
 
         public static Function MaxPool3D(Variable layer, Tuple<int, int, int> poolSize, Tuple<int, int, int> strides, bool padding = true)
         {
-            return CNTKLib.Pooling(layer, PoolingType.Max, new int[] { poolSize.Item1, poolSize.Item2, poolSize.Item3 }, new int[] { strides.Item1, strides.Item2, strides.Item3 }, BoolVector.Repeat(padding, 3));
+            return CNTKLib.Pooling(layer, PoolingType.Max, new int[] { poolSize.Item1, poolSize.Item2, poolSize.Item3 }, new int[] { strides.Item1, strides.Item2, strides.Item3 }, new BoolVector(new bool[] { true }));
         }
 
         public static Function AvgPool1D(Variable layer, int poolSize, int strides, bool padding = true)
         {
-            return CNTKLib.Pooling(layer, PoolingType.Average, new int[] { poolSize }, new int[] { strides }, BoolVector.Repeat(padding, 1));
+            return CNTKLib.Pooling(layer, PoolingType.Average, new int[] { poolSize }, new int[] { strides }, new BoolVector(new bool[] { true }));
         }
 
         public static Function AvgPool2D(Variable layer, Tuple<int, int> poolSize, Tuple<int, int> strides, bool padding = true)

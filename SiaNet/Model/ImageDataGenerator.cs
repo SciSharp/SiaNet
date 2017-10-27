@@ -24,7 +24,7 @@ namespace SiaNet.Model
 
         private string labelsStreamName = "labels";
 
-        private MinibatchSource miniBatchSource;
+        public MinibatchSource miniBatchSource;
 
         public ImageGenType GenType { get; set; }
 
@@ -35,9 +35,9 @@ namespace SiaNet.Model
 
         private Variable labelVariable;
 
-        private StreamInformation featureStreamInfo;
+        public StreamInformation featureStreamInfo;
 
-        private StreamInformation labelStreamInfo;
+        public StreamInformation labelStreamInfo;
 
         public ImageDataGenerator()
         {
