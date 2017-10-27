@@ -8,6 +8,8 @@ using System.IO;
 using CNTK;
 using SiaNet.Model.Layers;
 using System.Data;
+using SiaNet.Processing;
+using SiaNet.Interface;
 
 namespace SiaNet.Model
 {
@@ -55,6 +57,8 @@ namespace SiaNet.Model
 
         private Variable labelVariable;
 
+        private ITrainPredict trainPredict;
+
         public Dictionary<string, List<double>> TrainingResult { get; set; }
 
         public List<LayerConfig> Layers { get; set; }
@@ -72,22 +76,22 @@ namespace SiaNet.Model
 
         private void Sequential_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            
+
         }
 
         private void Sequential_OnEpochStart(int epoch)
         {
-            
+
         }
 
         private void Sequential_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
-            
+
         }
 
         private void Sequential_OnTrainingStart()
         {
-            
+
         }
 
         public static Sequential LoadNetConfig(string filepath)
@@ -282,135 +286,25 @@ namespace SiaNet.Model
             }
         }
 
-        public void Train(XYFrame train, int batchSize, int epoches, XYFrame test = null)
+        public void Train(XYFrame train, int epoches, int batchSize, XYFrame validation = null)
         {
             OnTrainingStart();
-            var trainer = Trainer.CreateTrainer(modelOut, lossFunc, metricFunc, learners);
-            int currentEpoch = 1;
-            Dictionary<string, double> metricsList = new Dictionary<string, double>();
-            while (currentEpoch <= epoches)
-            {
-                metricsList.Clear();
-                OnEpochStart(currentEpoch);
-                int miniBatchCount = 1;
-                List<double> totalBatchLossList = new List<double>();
-                List<double> totalMetricValueList = new List<double>();
-                while (train.NextBatch(miniBatchCount, batchSize))
-                {
-                    Value features = GetValueBatch(train.CurrentBatch.XFrame);
-                    Value labels = GetValueBatch(train.CurrentBatch.YFrame);
-                    
-                    trainer.TrainMinibatch(new Dictionary<Variable, Value>() { { featureVariable, features }, { labelVariable, labels } }, GlobalParameters.Device);
-                    totalBatchLossList.Add(trainer.PreviousMinibatchLossAverage());
-                    totalMetricValueList.Add(trainer.PreviousMinibatchEvaluationAverage());
-                    miniBatchCount++;
-                }
-
-                if (!TrainingResult.ContainsKey("loss"))
-                {
-                    TrainingResult.Add("loss", new List<double>());
-                }
-
-                if (!TrainingResult.ContainsKey(metricName))
-                {
-                    TrainingResult.Add(metricName, new List<double>());
-                }
-
-                double lossValue = totalBatchLossList.Average();
-                double metricValue = totalMetricValueList.Average();
-                TrainingResult["loss"].Add(lossValue);
-                TrainingResult[metricName].Add(metricValue);
-                metricsList.Add(metricName, metricValue);
-                if (test != null)
-                {
-                    if (!TrainingResult.ContainsKey("val_loss"))
-                    {
-                        TrainingResult.Add("val_loss", new List<double>());
-                    }
-
-                    if (!TrainingResult.ContainsKey("val_" + metricName))
-                    {
-                        TrainingResult.Add("val_" + metricName, new List<double>());
-                    }
-
-                    int evalMiniBatchCount = 1;
-                    List<double> totalEvalBatchLossList = new List<double>();
-                    List<double> totalEvalMetricValueList = new List<double>();
-                    while (test.NextBatch(evalMiniBatchCount, batchSize))
-                    {
-                        Variable actualVariable = CNTKLib.InputVariable(labelVariable.Shape, DataType.Float);
-                        var evalLossFunc = Losses.Get(lossName, labelVariable, actualVariable);
-                        var evalMetricFunc = Metrics.Get(metricName, labelVariable, actualVariable);
-                        Value actual = EvaluateInternal(test.XFrame);
-                        Value expected = GetValueBatch(test.YFrame);
-                        var inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected }, { actualVariable, actual } };
-                        var outputDataMap = new Dictionary<Variable, Value>() { { evalLossFunc.Output, null } };
-
-                        evalLossFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-                        var evalLoss = outputDataMap[evalLossFunc.Output].GetDenseData<float>(evalLossFunc.Output).Select(x => x.First()).ToList();
-                        totalEvalBatchLossList.Add(evalLoss.Average());
-
-                        inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected }, { actualVariable, actual } };
-                        outputDataMap = new Dictionary<Variable, Value>() { { evalMetricFunc.Output, null } };
-                        evalMetricFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-                        var evalMetric = outputDataMap[evalMetricFunc.Output].GetDenseData<float>(evalMetricFunc.Output).Select(x => x.First()).ToList();
-                        totalEvalMetricValueList.Add(evalMetric.Average());
-
-                        evalMiniBatchCount++;
-                    }
-
-                    TrainingResult["val_loss"].Add(totalEvalBatchLossList.Average());
-                    metricsList.Add("val_loss", totalEvalBatchLossList.Average());
-                    TrainingResult["val_" + metricName].Add(totalEvalMetricValueList.Average());
-                    metricsList.Add("val_" + metricName, totalEvalMetricValueList.Average());
-                }
-
-                OnEpochEnd(currentEpoch, trainer.TotalNumberOfSamplesSeen(), lossValue, metricsList);
-                currentEpoch++;
-            }
-
+            trainPredict = new DataFrameTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
+            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd);
             OnTrainingEnd(TrainingResult);
         }
 
-        private Value EvaluateInternal(DataFrame data)
+        public void Train(ImageDataGenerator train, int epoches, int batchSize, ImageDataGenerator validation = null)
         {
-            Value features = GetValueBatch(data);
-            var inputDataMap = new Dictionary<Variable, Value>() { { featureVariable, features } };
-            var outputDataMap = new Dictionary<Variable, Value>() { { modelOut.Output, null } };
-            modelOut.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-            return outputDataMap[modelOut.Output];
+            OnTrainingStart();
+            trainPredict = new ImgGenTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
+            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd);
+            OnTrainingEnd(TrainingResult);
         }
 
-        public IList<float> Evaluate(DataFrame data)
+        public IList<float> Evaluate(Value data)
         {
-            var outputValue = EvaluateInternal(data);
-            IList<IList<float>> resultSet = outputValue.GetDenseData<float>(modelOut.Output);
-            var result = resultSet.Select(x => x.First()).ToList();
-            return result;
-        }
-
-        private Value GetValueBatch(DataFrame frame)
-        {
-            DataTable dt = frame.Frame.ToTable();
-            int dim = dt.Columns.Count;
-            List<float> batch = new List<float>();
-            foreach (DataRow item in dt.Rows)
-            {
-                foreach (var row in item.ItemArray)
-                {
-                    if (row != null)
-                    {
-                        batch.Add((float)row);
-                    }
-                    else
-                    {
-                        batch.Add(0);
-                    }
-                }
-            }
-
-            Value result = Value.CreateBatch(new int[] { dim }, batch, GlobalParameters.Device);
-            return result;
+            return trainPredict.Evaluate(data);
         }
     }
 }

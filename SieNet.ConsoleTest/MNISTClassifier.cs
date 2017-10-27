@@ -10,17 +10,16 @@ namespace SiaNet.Test
 {
     internal class MNISTClassifier
     {
-        private static TrainTestFrame traintest;
+        private static ImageDataGenerator train;
+
+        private static ImageDataGenerator validation;
 
         private static Sequential model;
 
         public static void LoadData()
         {
-            DataFrame frame = new DataFrame();
-            string trainFile = AppDomain.CurrentDomain.BaseDirectory + "\\samples\\housing\\train.csv";
-            frame.LoadFromCsv(trainFile);
-            var xy = frame.SplitXY(14, new[] { 1, 13 });
-            traintest = xy.SplitTrainTest(0.25);
+            train = ImageDataGenerator.FlowFromText(@"C:\BDK\cntk\Examples\Image\DataSets\MNIST", "train.txt");
+            validation = ImageDataGenerator.FlowFromText(@"C:\BDK\cntk\Examples\Image\DataSets\MNIST", "test.txt");
         }
 
         public static void BuildModel(bool useConvolution = true)
@@ -50,7 +49,7 @@ namespace SiaNet.Test
 
         private static void BuildConvolutionLayer(int[] imageDim, int numClasses)
         {
-            model.Add(new Conv2D(4, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier));
+            model.Add(new Conv2D(Tuple.Create(28, 28, 1), 4, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
             model.Add(new Conv2D(8, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
@@ -60,19 +59,17 @@ namespace SiaNet.Test
         public static void Train()
         {
             model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Train(traintest.Train, 32, 100, traintest.Test);
+            model.Train(train, 5, 64, null);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
-            var mean = trainingResult[OptMetrics.MAE].Mean();
-            var std = trainingResult[OptMetrics.MAE].Std();
-            Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean, std);
+
         }
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics["val_mae"]));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics[OptMetrics.Accuracy]));
         }
     }
 }
