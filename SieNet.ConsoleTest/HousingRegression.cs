@@ -26,11 +26,12 @@ namespace SiaNet.Test
         public static void BuildModel()
         {
             model = new Sequential();
-            model.OnEpochEnd += Model_OnEpochEnd;
-            model.OnTrainingEnd += Model_OnTrainingEnd;
             model.Add(new Dense(13, 12, OptActivations.ReLU));
             model.Add(new Dense(13, OptActivations.ReLU));
             model.Add(new Dense(1));
+
+            model.OnEpochEnd += Model_OnEpochEnd;
+            model.OnTrainingEnd += Model_OnTrainingEnd;
         }
 
         public static void Train()
