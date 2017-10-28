@@ -73,10 +73,12 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="GlobalParameters.cs" />
     <Compile Include="Initializers.cs" />
+    <Compile Include="Interface\ITrainPredict.cs" />
     <Compile Include="Losses.cs" />
     <Compile Include="Metrics.cs" />
     <Compile Include="Model\ConfigModule.cs" />
     <Compile Include="Model\DataFrame.cs" />
+    <Compile Include="Model\ImageDataGenerator.cs" />
     <Compile Include="Model\LayerConfig.cs" />
     <Compile Include="Model\Layers\BatchNorm.cs" />
     <Compile Include="Model\Layers\AvgPool1D.cs" />
@@ -98,7 +100,10 @@
     <Compile Include="NN\Convolution.cs" />
     <Compile Include="NN\Recurrent.cs" />
     <Compile Include="Optimizers.cs" />
-    <Compile Include="Processing\ImageDataGenerator.cs" />
+    <Compile Include="Processing\ImageUtil.cs" />
+    <Compile Include="Processing\ImgGenTrainPredict.cs" />
+    <Compile Include="Processing\DataFrameUtil.cs" />
+    <Compile Include="Processing\DataFrameTrainPredict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regulizers.cs" />
     <Compile Include="Utility.cs" />

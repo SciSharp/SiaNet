@@ -1,61 +1,22 @@
-﻿using System;
+﻿using CNTK;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SiaNet.Processing
 {
-    public class ImageDataGenerator
-    {
-        private static List<Tuple<string, int, float[]>> FlowFromFolder(string folderPath, Tuple<int, int> imageDimension, int batchSize = 0)
-        {
-            // classified images are stored in named folders
-            DirectoryInfo dirInfo = new DirectoryInfo(folderPath);
-            var dirList = dirInfo.GetDirectories();
-            List<string> categories = new List<string>();
-            foreach (var item in dirList)
-            {
-                categories.Add(item.Name);
-            }
-
-            List<Tuple<string, int, float[]>> dataMap = new List<Tuple<string, int, float[]>>();
-            int categoryIndex = 0;
-            foreach (var category in categories)
-            {
-                var fileInfos = Directory.GetFiles(Path.Combine(folderPath, category), "*.jpg");
-                foreach (var file in fileInfos)
-                {
-                    float[] image = LoadBitmap(imageDimension, file).ToArray();
-                    dataMap.Add(new Tuple<string, int, float[]>(file, categoryIndex, image));
-                }
-
-                categoryIndex++;
-            }
-
-            return dataMap;
-        }
-
-        private static List<float> LoadBitmap(Tuple<int, int> image_dims, string filePath)
-        {
-            Bitmap bmp = new Bitmap(Bitmap.FromFile(filePath));
-            var resized = bmp.Resize(image_dims.Item1, image_dims.Item2, true);
-            List<float> resizedCHW = resized.ParallelExtractCHW();
-            return resizedCHW;
-        }
-    }
-
-    static class ImageProcessing
+    public static class ImageUtil
     {
         /// <summary>
         /// Extracts image pixels in CHW using parallelization
         /// </summary>
         /// <param name="image">The bitmap image to extract features from</param>
         /// <returns>A list of pixels in CHW order</returns>
-        public static List<float> ParallelExtractCHW(this Bitmap image)
+        public static Value GetValue(this Bitmap image)
         {
             // We use local variables to avoid contention on the image object through the multiple threads.
             int channelStride = image.Width * image.Height;
@@ -90,7 +51,8 @@ namespace SiaNet.Processing
 
             image.UnlockBits(bitmapData);
 
-            return features.Select(b => (float)b).ToList();
+            float[] batchImageBuf = features.Select(b => (float)b).ToArray();
+            return Value.CreateBatch<float>(new int[] { image.Width, image.Height, 3}, batchImageBuf, GlobalParameters.Device);
         }
 
         /// <summary>
@@ -122,7 +84,7 @@ namespace SiaNet.Processing
         public static Bitmap Resize(this Bitmap image, int width, int height, bool useHighQuality)
         {
             var newImg = new Bitmap(width, height);
-            
+
             newImg.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
             using (var g = Graphics.FromImage(newImg))

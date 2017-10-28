@@ -113,7 +113,7 @@ namespace SiaNet.NN
                 bias = new Parameter(s2, DataType.Float, 0.0f, GlobalParameters.Device);
             }
             
-            return CNTKLib.Plus(CNTKLib.Times(weights, input), bias);
+            return CNTKLib.Plus(bias, CNTKLib.Times(weights, input));
         }
     }
 }
