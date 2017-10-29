@@ -1,12 +1,13 @@
 ﻿using SiaNet.Model;
 using SiaNet.Model.Layers;
+using SieNet.Examples;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiaNet.Test
+namespace SiaNet.Examples
 {
     internal class HousingRegression
     {
@@ -17,7 +18,8 @@ namespace SiaNet.Test
         public static void LoadData()
         {
             DataFrame frame = new DataFrame();
-            string trainFile = AppDomain.CurrentDomain.BaseDirectory + "\\samples\\housing\\train.csv";
+            SampleDownloader.CheckAndDownloadHousingRegression();
+            string trainFile = string.Format("{0}\\SiaNet\\housing\\train.csv", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
             frame.LoadFromCsv(trainFile);
             var xy = frame.SplitXY(14, new[] { 1, 13 });
             traintest = xy.SplitTrainTest(0.25);

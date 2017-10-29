@@ -83,6 +83,9 @@
     <Compile Include="..\SiaNet\Initializers.cs">
       <Link>Initializers.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Interface\ITrainPredict.cs">
+      <Link>Interface\ITrainPredict.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Losses.cs">
       <Link>Losses.cs</Link>
     </Compile>
@@ -94,6 +97,9 @@
     </Compile>
     <Compile Include="..\SiaNet\Model\DataFrame.cs">
       <Link>Model\DataFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\ImageDataGenerator.cs">
+      <Link>Model\ImageDataGenerator.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\LayerConfig.cs">
       <Link>Model\LayerConfig.cs</Link>
@@ -161,8 +167,17 @@
     <Compile Include="..\SiaNet\Optimizers.cs">
       <Link>Optimizers.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Processing\ImageDataGenerator.cs">
-      <Link>Processing\ImageDataGenerator.cs</Link>
+    <Compile Include="..\SiaNet\Processing\DataFrameTrainPredict.cs">
+      <Link>Processing\DataFrameTrainPredict.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Processing\DataFrameUtil.cs">
+      <Link>Processing\DataFrameUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Processing\ImageUtil.cs">
+      <Link>Processing\ImageUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Processing\ImgGenTrainPredict.cs">
+      <Link>Processing\ImgGenTrainPredict.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Regulizers.cs">
       <Link>Regulizers.cs</Link>

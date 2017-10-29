@@ -9,7 +9,7 @@ using SiaNet.Model.Layers;
 using CNTK;
 using SiaNet.Processing;
 
-namespace SiaNet.Test
+namespace SiaNet.Examples
 {
     class Program
     {

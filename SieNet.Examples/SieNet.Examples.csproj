@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{67E77F14-101D-433E-A9A0-38CB8C00406C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SiaNet.Test</RootNamespace>
-    <AssemblyName>SiaNet.Test</AssemblyName>
+    <RootNamespace>SieNet.Examples</RootNamespace>
+    <AssemblyName>SieNet.Examples</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -67,10 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SampleData.cs" />
     <Compile Include="MNISTClassifier.cs" />
     <Compile Include="HousingRegression.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleDownloader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

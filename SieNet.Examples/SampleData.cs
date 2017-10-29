@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiaNet
+namespace SieNet.Examples
 {
-    public enum SampleDataset
+    internal class SampleData
     {
-        HousingRegression,
-        MNIST,
-        Cifar10,
-        Cifar100
     }
 }
