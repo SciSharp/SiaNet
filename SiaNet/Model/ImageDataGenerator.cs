@@ -44,11 +44,10 @@ namespace SiaNet.Model
 
         }
 
-        public static ImageDataGenerator FlowFromText(string imageDataFolder, string fileName)
+        public static ImageDataGenerator FlowFromText(string fileName)
         {
             ImageDataGenerator result = new ImageDataGenerator()
             {
-                ImageDataFolder = imageDataFolder,
                 FileName = fileName,
             };
 

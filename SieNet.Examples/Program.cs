@@ -17,23 +17,12 @@ namespace SiaNet.Examples
         {
             try
             {
-                var device = DeviceDescriptor.CPUDevice;
-                if (args.Length > 0)
-                {
-                    if (args[0].ToUpper() == "GPU")
-                    {
-                        int gpuNum = 0;
-                        if (args.Length == 2)
-                        {
-                            int.TryParse(args[1], out gpuNum);
-                        }
-
-                        device = DeviceDescriptor.GPUDevice(gpuNum);
-                    }
-                }
+                var devices = DeviceDescriptor.AllDevices().Where(x=>(x.Type == DeviceKind.GPU)).ToList();
+                if (devices.Count == 0)
+                    throw new Exception("No GPU Device found. Please run the CPU examples instead!");
 
                 //Setting global device
-                GlobalParameters.Device = device;
+                GlobalParameters.Device = devices[0];
 
                 //Housing regression example
                 HousingRegression.LoadData();
@@ -53,9 +42,5 @@ namespace SiaNet.Examples
                 Console.ReadLine();
             }
         }
-
-       
     }
-
-    
 }

@@ -73,9 +73,6 @@
     <Compile Include="..\SieNet.Examples\MNISTClassifier.cs">
       <Link>MNISTClassifier.cs</Link>
     </Compile>
-    <Compile Include="..\SieNet.Examples\SampleDownloader.cs">
-      <Link>SampleDownloader.cs</Link>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,9 +86,7 @@
       <Name>SiaNet.CPUOnly</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Samples\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\CNTK.CPUOnly.2.2.0\build\net45\CNTK.CPUOnly.targets" Condition="Exists('..\packages\CNTK.CPUOnly.2.2.0\build\net45\CNTK.CPUOnly.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

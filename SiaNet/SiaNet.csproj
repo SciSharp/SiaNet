@@ -60,6 +60,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,7 +107,7 @@
     <Compile Include="Processing\DataFrameTrainPredict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regulizers.cs" />
-    <Compile Include="Datasets\Downloader.cs" />
+    <Compile Include="Downloader.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>

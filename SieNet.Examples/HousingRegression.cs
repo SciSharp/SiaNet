@@ -18,9 +18,9 @@ namespace SiaNet.Examples
         public static void LoadData()
         {
             DataFrame frame = new DataFrame();
-            SampleDownloader.CheckAndDownloadHousingRegression();
-            string trainFile = string.Format("{0}\\SiaNet\\housing\\train.csv", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-            frame.LoadFromCsv(trainFile);
+            Downloader.DownloadSample(SampleDataset.HousingRegression);
+            var samplePath = Downloader.GetSamplePath(SampleDataset.HousingRegression);
+            frame.LoadFromCsv(samplePath.Train);
             var xy = frame.SplitXY(14, new[] { 1, 13 });
             traintest = xy.SplitTrainTest(0.25);
         }

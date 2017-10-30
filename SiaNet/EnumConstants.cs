@@ -98,4 +98,33 @@ namespace SiaNet
         public const string KullbackLeiblerDivergence = "kullback_leibler_divergence";
         public const string Poisson = "poisson";
     }
+
+    public class PreTrainedModels
+    {
+        public class ImageNet
+        {
+            public const string AlexNet = "https://www.cntk.ai/Models/CNTK_Pretrained/AlexNet_ImageNet_CNTK.model";
+            public const string InceptionV3 = "https://www.cntk.ai/Models/CNTK_Pretrained/InceptionV3_ImageNet_CNTK.model";
+            public const string ResNet18 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet18_ImageNet_CNTK.model";
+            public const string ResNet34 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet34_ImageNet_CNTK.model";
+            public const string ResNet50 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet50_ImageNet_CNTK.model";
+            public const string ResNet101 = "https://www.cntk.ai/Models/Caffe_Converted/ResNet101_ImageNet_Caffe.model";
+            public const string ResNet152 = "https://www.cntk.ai/Models/Caffe_Converted/ResNet152_ImageNet_Caffe.model";
+            public const string VGG16 = "https://www.cntk.ai/Models/Caffe_Converted/VGG16_ImageNet_Caffe.model";
+            public const string VGG19 = "https://www.cntk.ai/Models/Caffe_Converted/VGG19_ImageNet_Caffe.model";
+        }
+        
+        public class Cifar10
+        {
+            public const string ResNet20 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet20_CIFAR10_CNTK.model";
+            public const string ResNet110 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet110_CIFAR10_CNTK.model";
+        }
+
+        public class FastRCNN
+        {
+            public const string Grocery100 = "https://www.cntk.ai/Models/FRCN_Grocery/Fast-RCNN_grocery100.model";
+            public const string Pascal = "https://www.cntk.ai/Models/FRCN_Pascal/Fast-RCNN.model";
+        }
+       
+    }
 }

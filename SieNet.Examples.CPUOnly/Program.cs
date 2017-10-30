@@ -15,11 +15,9 @@ namespace SieNet.Examples.CPUOnly
         {
             try
             {
-                var device = DeviceDescriptor.CPUDevice;
-
                 //Setting global device
-                GlobalParameters.Device = device;
-
+                GlobalParameters.Device = DeviceDescriptor.CPUDevice;
+                Downloader.DownloadSample(SampleDataset.Cifar10);
                 //Housing regression example
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();

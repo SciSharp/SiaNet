@@ -1,5 +1,6 @@
 ﻿using SiaNet.Model;
 using SiaNet.Model.Layers;
+using SieNet.Examples;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,11 @@ namespace SiaNet.Examples
 
         public static void LoadData()
         {
-            train = ImageDataGenerator.FlowFromText(@"C:\BDK\cntk\Examples\Image\DataSets\MNIST", "train.txt");
-            validation = ImageDataGenerator.FlowFromText(@"C:\BDK\cntk\Examples\Image\DataSets\MNIST", "test.txt");
+            Downloader.DownloadSample(SampleDataset.MNIST);
+            var samplePath = Downloader.GetSamplePath(SampleDataset.MNIST);
+
+            train = ImageDataGenerator.FlowFromText(samplePath.Train);
+            validation = ImageDataGenerator.FlowFromText(samplePath.Test);
         }
 
         public static void BuildModel(bool useConvolution = true)

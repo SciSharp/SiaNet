@@ -11,6 +11,14 @@ namespace SiaNet
         HousingRegression,
         MNIST,
         Cifar10,
-        Cifar100
+        Cifar100,
+        Flowers,
+        Grocery
+    }
+
+    public enum PrepDataset
+    {
+        Pascal,
+        ImageNet
     }
 }
