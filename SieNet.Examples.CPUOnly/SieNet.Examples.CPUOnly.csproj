@@ -81,6 +81,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SiaNet.Common\SiaNet.Common.csproj">
+      <Project>{32ed27d4-ac7a-4011-b399-d2ea42e282c7}</Project>
+      <Name>SiaNet.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SiaNet.CPUOnly\SiaNet.CPUOnly.csproj">
       <Project>{ecbdde28-2569-4019-b65e-f9541bf46c07}</Project>
       <Name>SiaNet.CPUOnly</Name>

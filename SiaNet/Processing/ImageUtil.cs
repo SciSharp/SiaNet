@@ -11,12 +11,7 @@ namespace SiaNet.Processing
 {
     public static class ImageUtil
     {
-        /// <summary>
-        /// Extracts image pixels in CHW using parallelization
-        /// </summary>
-        /// <param name="image">The bitmap image to extract features from</param>
-        /// <returns>A list of pixels in CHW order</returns>
-        public static Value GetValue(this Bitmap image)
+        public static List<float> ParallelExtractCHW(this Bitmap image)
         {
             // We use local variables to avoid contention on the image object through the multiple threads.
             int channelStride = image.Width * image.Height;
@@ -51,7 +46,17 @@ namespace SiaNet.Processing
 
             image.UnlockBits(bitmapData);
 
-            float[] batchImageBuf = features.Select(b => (float)b).ToArray();
+            return features.Select(b => (float)b).ToList();
+        }
+
+        /// <summary>
+        /// Extracts image pixels in CHW using parallelization
+        /// </summary>
+        /// <param name="image">The bitmap image to extract features from</param>
+        /// <returns>A list of pixels in CHW order</returns>
+        public static Value GetValue(this Bitmap image)
+        {
+            float[] batchImageBuf = ParallelExtractCHW(image).ToArray();
             return Value.CreateBatch<float>(new int[] { image.Width, image.Height, 3}, batchImageBuf, GlobalParameters.Device);
         }
 

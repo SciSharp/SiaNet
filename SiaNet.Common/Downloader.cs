@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SieNet.Examples
+namespace SiaNet.Common
 {
     public class DatasetInfo
     {
@@ -20,8 +20,8 @@ namespace SieNet.Examples
 
     public class Downloader
     {
-        static string serverUrl = "https://sianet.blob.core.windows.net/dataset/{0}.zip";
-
+        static string serverUrl = "https://sianet.blob.core.windows.net/dataset/{0}";
+        static int downloadPercentPrev = 0;
         public static void DownloadSample(SampleDataset datasetName, bool force = false)
         {
             string filename = "";
@@ -104,15 +104,36 @@ namespace SieNet.Examples
 
         public static void DownloadModel(string modelPath)
         {
+            string baseFolder = string.Format("{0}\\SiaNet\\models", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            if (!Directory.Exists(baseFolder))
+            {
+                Directory.CreateDirectory(baseFolder);
+            }
 
+            string filename = Path.GetFileName(modelPath);
+            string fullpath = baseFolder + "\\" + filename;
+
+            if(File.Exists(fullpath))
+            {
+                return;
+            }
+
+            DownloadFile(modelPath, fullpath);
         }
 
         private static void CheckAndDownload(SampleDataset datasetName, string fileName, bool force = false)
         {
             DatasetInfo datasetInfo = GetSamplePath(datasetName);
-            if(force)
+            if (force)
             {
                 Directory.Delete(datasetInfo.BaseFolder);
+            }
+            else
+            {
+                if (Directory.Exists(datasetInfo.BaseFolder))
+                {
+                    return;
+                }
             }
 
             if(!Directory.Exists(datasetInfo.BaseFolder))
@@ -139,8 +160,20 @@ namespace SieNet.Examples
 
         private static void DownloadFile(string serverPath, string localPath)
         {
+            downloadPercentPrev = 0;
             WebClient wb = new WebClient();
-            wb.DownloadFile(serverPath, localPath);
+            wb.DownloadProgressChanged += Wb_DownloadProgressChanged;
+            wb.DownloadFileTaskAsync(new Uri(serverPath), localPath).Wait();
+        }
+
+        private static void Wb_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            if (e.ProgressPercentage == downloadPercentPrev)
+                return;
+
+            downloadPercentPrev = e.ProgressPercentage;
+            if(e.ProgressPercentage % 5 == 0)
+                Logging.WriteTrace(string.Format("Download Progress: {0}%", e.ProgressPercentage));
         }
     }
 }

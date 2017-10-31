@@ -69,17 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SiaNet\Downloader.cs">
-      <Link>Downloader.cs</Link>
+    <Compile Include="..\SiaNet\Application\Cifar10.cs">
+      <Link>Application\Cifar10.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\EnumConstants.cs">
-      <Link>EnumConstants.cs</Link>
+    <Compile Include="..\SiaNet\Application\FastRCNN.cs">
+      <Link>Application\FastRCNN.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Enumerations.cs">
-      <Link>Enumerations.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Extensions.cs">
-      <Link>Extensions.cs</Link>
+    <Compile Include="..\SiaNet\Application\ImageNet.cs">
+      <Link>Application\ImageNet.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\GlobalParameters.cs">
       <Link>GlobalParameters.cs</Link>
@@ -153,6 +150,9 @@
     <Compile Include="..\SiaNet\Model\Layers\MaxPool3D.cs">
       <Link>Model\Layers\MaxPool3D.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\PredResult.cs">
+      <Link>Model\PredResult.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\Sequential.cs">
       <Link>Model\Sequential.cs</Link>
     </Compile>
@@ -193,6 +193,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SiaNet.Common\SiaNet.Common.csproj">
+      <Project>{32ed27d4-ac7a-4011-b399-d2ea42e282c7}</Project>
+      <Name>SiaNet.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\CNTK.CPUOnly.2.2.0\build\net45\CNTK.CPUOnly.targets" Condition="Exists('..\packages\CNTK.CPUOnly.2.2.0\build\net45\CNTK.CPUOnly.targets')" />

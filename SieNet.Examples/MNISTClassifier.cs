@@ -1,6 +1,6 @@
-﻿using SiaNet.Model;
+﻿using SiaNet.Common;
+using SiaNet.Model;
 using SiaNet.Model.Layers;
-using SieNet.Examples;
 using System;
 using System.Collections.Generic;
 using System.Linq;

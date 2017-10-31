@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiaNet
+namespace SiaNet.Common
 {
     public class OptLayers
     {
@@ -99,9 +99,34 @@ namespace SiaNet
         public const string Poisson = "poisson";
     }
 
-    public class PreTrainedModels
+    public enum ImageNetModel
     {
-        public class ImageNet
+        AlexNet,
+        InceptionV3,
+        ResNet18,
+        ResNet34,
+        ResNet50,
+        ResNet101,
+        ResNet152,
+        VGG16,
+        VGG19
+    }
+
+    public enum Cifar10Model
+    {
+        ResNet20,
+        ResNet110
+    }
+
+    public enum FastRCNNModel
+    {
+        Grocery100,
+        Pascal
+    }
+
+    public class PreTrainedModelPath
+    {
+        public class ImageNetPath
         {
             public const string AlexNet = "https://www.cntk.ai/Models/CNTK_Pretrained/AlexNet_ImageNet_CNTK.model";
             public const string InceptionV3 = "https://www.cntk.ai/Models/CNTK_Pretrained/InceptionV3_ImageNet_CNTK.model";
@@ -114,13 +139,13 @@ namespace SiaNet
             public const string VGG19 = "https://www.cntk.ai/Models/Caffe_Converted/VGG19_ImageNet_Caffe.model";
         }
         
-        public class Cifar10
+        public class Cifar10Path
         {
             public const string ResNet20 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet20_CIFAR10_CNTK.model";
             public const string ResNet110 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet110_CIFAR10_CNTK.model";
         }
 
-        public class FastRCNN
+        public class FastRCNNPath
         {
             public const string Grocery100 = "https://www.cntk.ai/Models/FRCN_Grocery/Fast-RCNN_grocery100.model";
             public const string Pascal = "https://www.cntk.ai/Models/FRCN_Pascal/Fast-RCNN.model";

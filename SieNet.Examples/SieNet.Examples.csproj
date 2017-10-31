@@ -79,6 +79,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SiaNet.Common\SiaNet.Common.csproj">
+      <Project>{32ed27d4-ac7a-4011-b399-d2ea42e282c7}</Project>
+      <Name>SiaNet.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SiaNet\SiaNet.csproj">
       <Project>{fe7bc641-ed87-493e-a8fe-89c2069ddf1d}</Project>
       <Name>SiaNet</Name>

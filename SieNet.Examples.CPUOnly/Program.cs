@@ -1,5 +1,7 @@
 ﻿using CNTK;
 using SiaNet;
+using SiaNet.Application;
+using SiaNet.Common;
 using SiaNet.Examples;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,13 @@ namespace SieNet.Examples.CPUOnly
             {
                 //Setting global device
                 GlobalParameters.Device = DeviceDescriptor.CPUDevice;
-                Downloader.DownloadSample(SampleDataset.Cifar10);
+                Logging.OnWriteLog += Logging_OnWriteLog;
+
+                ImageNet app = new ImageNet(ImageNetModel.ResNet50);
+                app.LoadModel();
+                app.Predict(@"\\userAB\B\batt0153\prefs\Desktop\dog_cls-300x160.jpg");
+
+                /*
                 //Housing regression example
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();
@@ -27,7 +35,7 @@ namespace SieNet.Examples.CPUOnly
                 MNISTClassifier.LoadData();
                 MNISTClassifier.BuildModel();
                 MNISTClassifier.Train();
-
+                */
                 Console.ReadLine();
             }
             catch (Exception ex)
@@ -35,6 +43,16 @@ namespace SieNet.Examples.CPUOnly
                 Console.WriteLine(ex.ToString());
                 Console.ReadLine();
             }
+        }
+
+        private void EvalImageNet()
+        {
+
+        }
+
+        private static void Logging_OnWriteLog(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

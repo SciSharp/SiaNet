@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiaNet
+namespace SiaNet.Common
 {
     public static class Extensions
     {
