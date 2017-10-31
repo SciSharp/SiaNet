@@ -21,9 +21,7 @@ namespace SieNet.Examples.CPUOnly
                 GlobalParameters.Device = DeviceDescriptor.CPUDevice;
                 Logging.OnWriteLog += Logging_OnWriteLog;
 
-                ImageNet app = new ImageNet(ImageNetModel.ResNet50);
-                app.LoadModel();
-                app.Predict(@"\\userAB\B\batt0153\prefs\Desktop\dog_cls-300x160.jpg");
+               
 
                 /*
                 //Housing regression example
