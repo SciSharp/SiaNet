@@ -67,13 +67,40 @@ namespace SiaNet.Application
         {
             try
             {
+                Bitmap bmp = new Bitmap(Image.FromFile(imagePath));
+                return Predict(bmp, topK);
+            }
+            catch (Exception ex)
+            {
+                Logging.WriteTrace(ex);
+                throw ex;
+            }
+        }
+
+        public List<PredResult> Predict(byte[] imageBytes, int topK = 3)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(Image.FromStream(new MemoryStream(imageBytes)));
+                return Predict(bmp, topK);
+            }
+            catch (Exception ex)
+            {
+                Logging.WriteTrace(ex);
+                throw ex;
+            }
+        }
+
+        public List<PredResult> Predict(Bitmap bmp, int topK = 3)
+        {
+            try
+            {
                 Variable inputVar = modelFunc.Arguments.Single();
 
                 NDShape inputShape = inputVar.Shape;
                 int imageWidth = inputShape[0];
                 int imageHeight = inputShape[1];
 
-                Bitmap bmp = new Bitmap(Bitmap.FromFile(imagePath));
                 var resized = bmp.Resize(imageWidth, imageHeight, true);
                 List<float> resizedCHW = resized.ParallelExtractCHW();
                 

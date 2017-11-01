@@ -67,18 +67,46 @@ namespace SiaNet.Application
         {
             try
             {
-                Bitmap bmp = new Bitmap(Bitmap.FromFile(imagePath));
-                var resized = bmp.Resize(1000, 1000, true);
-                List<float> resizedCHW = resized.ParallelExtractCHW();
-                List<float> roiList = GenerateROIS(model);
+                Bitmap bmp = new Bitmap(Image.FromFile(imagePath));
+                return Predict(bmp);
+            }
+            catch (Exception ex)
+            {
+                Logging.WriteTrace(ex);
+                throw ex;
+            }
+        }
 
+        public List<PredResult> Predict(byte[] imageBytes)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(Image.FromStream(new MemoryStream(imageBytes)));
+                return Predict(bmp);
+            }
+            catch (Exception ex)
+            {
+                Logging.WriteTrace(ex);
+                throw ex;
+            }
+        }
+
+        public List<PredResult> Predict(Bitmap bmp)
+        {
+            try
+            {
+                var resized = bmp.Resize(1000, 1000, true);
+                List<float> roiList = GenerateROIS(resized, model);
+                /*
+                List<float> resizedCHW = resized.ParallelExtractCHW();
+                
                 // Create input data map
                 var inputDataMap = new Dictionary<Variable, Value>();
                 var inputVal = Value.CreateBatch(modelFunc.Arguments.First().Shape, resizedCHW, GlobalParameters.Device);
                 inputDataMap.Add(modelFunc.Arguments.First(), inputVal);
 
-                inputVal = Value.CreateBatch(modelFunc.Arguments[1].Shape, roiList, GlobalParameters.Device);
-                inputDataMap.Add(modelFunc.Arguments[1], inputVal);
+                //inputVal = Value.CreateBatch(modelFunc.Arguments[1].Shape, new List<float>(), GlobalParameters.Device);
+                //inputDataMap.Add(modelFunc.Arguments[1], null);
 
                 Variable outputVar = GetOutputVar(model);
 
@@ -95,7 +123,7 @@ namespace SiaNet.Application
                 var outputVal = outputDataMap[outputVar];
                 var outputData = outputVal.GetDenseData<float>(outputVar);
                 Dictionary<int, float> outputPred = new Dictionary<int, float>();
-                
+
                 for (int i = 0; i < outputData[0].Count; i++)
                 {
                     outputPred.Add(i, outputData[0][i]);
@@ -104,8 +132,8 @@ namespace SiaNet.Application
                 List<PredResult> result = new List<PredResult>();
 
                 Logging.WriteTrace("Prediction Completed");
-
-                return result;
+                */
+                return null;
             }
             catch (Exception ex)
             {
@@ -114,8 +142,24 @@ namespace SiaNet.Application
             }
         }
 
-        public List<float> GenerateROIS(FastRCNNModel model)
+        public List<float> GenerateROIS(Bitmap bmp, FastRCNNModel model)
         {
+            OpenCvSharp.Mat mat = OpenCvSharp.Extensions.BitmapConverter.ToMat(bmp);
+            OpenCvSharp.Point[][] points = null;
+            OpenCvSharp.Point[] outpoints = null;
+            OpenCvSharp.Rect[] rects = null;
+            OpenCvSharp.DetectionROI[] detections = null;
+            OpenCvSharp.MSER.Create().DetectRegions(OpenCvSharp.InputArray.Create(mat), out points, out rects);
+            //rects = rects.Where(x => (x.Width > 10)).ToArray();
+            foreach (var item in rects)
+            {
+                mat.Rectangle(item, OpenCvSharp.Scalar.Green);
+            }
+
+            //OpenCvSharp.Cv2.ImShow("cv2", mat);
+            mat.SaveImage("test.jpg");
+            /*
+
             string roiCoordinates = "0.219 0.0 0.165 0.29 0.329 0.025 0.07 0.115 0.364 0.0 0.21 0.13 0.484 0.0 0.075 0.06 0.354 0.045 0.055 0.09 0.359 0.075 0.095 0.07 0.434 0.155 0.04 0.085 0.459 0.165 0.145 0.08 0.404 0.12 0.055 0.06 0.714 0.235 0.06 0.12 0.659 0.31 0.065 0.075 0.299 0.16 0.1 0.07 0.449 0.18 0.19 0.15 0.284 0.21 0.135 0.115 0.254 0.205 0.07 0.055 0.234 0.225 0.075 0.095 0.239 0.23 0.07 0.085 0.529 0.235 0.075 0.13 0.229 0.24 0.09 0.085 0.604 0.285 0.12 0.105 0.514 0.335 0.1 0.045 0.519 0.335 0.08 0.045 0.654 0.205 0.08 0.055 0.614 0.215 0.115 0.065 0.609 0.205 0.115 0.075 0.604 0.225 0.115 0.055 0.524 0.23 0.06 0.095 0.219 0.315 0.065 0.075 0.629 0.31 0.095 0.08 0.639 0.325 0.085 0.06 0.219 0.41 0.25 0.11 0.354 0.46 0.185 0.11 0.439 0.515 0.09 0.075 0.359 0.455 0.175 0.125 0.449 0.525 0.08 0.07 0.574 0.46 0.06 0.105 0.579 0.46 0.105 0.1 0.529 0.47 0.15 0.145 0.584 0.475 0.085 0.09 0.354 0.52 0.08 0.06 0.219 0.52 0.115 0.1 0.229 0.53 0.1 0.08 0.229 0.575 0.105 0.045 0.339 0.56 0.085 0.045 0.354 0.535 0.075 0.06 0.299 0.59 0.145 0.05 0.304 0.58 0.12 0.045 0.594 0.555 0.075 0.05 0.534 0.58 0.14 0.06 0.504 0.66 0.07 0.06 0.494 0.73 0.075 0.09 0.504 0.695 0.07 0.095 0.219 0.665 0.075 0.145 0.494 0.755 0.085 0.075 0.704 0.665 0.07 0.21 0.434 0.72 0.055 0.1 0.569 0.695 0.205 0.185 0.219 0.73 0.29 0.13 0.574 0.665 0.08 0.055 0.634 0.665 0.095 0.045 0.499 0.725 0.08 0.135 0.314 0.71 0.155 0.065 0.264 0.72 0.19 0.105 0.264 0.725 0.185 0.095 0.249 0.725 0.12 0.11 0.379 0.77 0.08 0.055 0.509 0.785 0.055 0.06 0.644 0.875 0.13 0.085 0.664 0.875 0.11 0.075 0.329 0.025 0.08 0.115 0.639 0.235 0.135 0.15 0.354 0.46 0.185 0.12 0.354 0.46 0.185 0.135 0.229 0.225 0.08 0.095 0.219 0.72 0.29 0.14 0.569 0.67 0.205 0.21 0.219 0.315 0.1 0.075 0.219 0.23 0.09 0.085 0.219 0.41 0.295 0.11 0.219 0.665 0.27 0.145 0.219 0.225 0.09 0.14 0.294 0.665 0.2 0.05 0.579 0.46 0.105 0.145 0.549 0.46 0.14 0.145 0.219 0.41 0.295 0.125 0.219 0.59 0.11 0.05 0.639 0.235 0.135 0.155 0.629 0.235 0.145 0.155 0.314 0.71 0.155 0.115 0.334 0.56 0.09 0.045 0.264 0.72 0.225 0.1 0.264 0.72 0.225 0.105 0.219 0.71 0.29 0.15 0.249 0.725 0.125 0.11 0.219 0.665 0.27 0.17 0.494 0.73 0.075 0.115 0.494 0.73 0.085 0.115 0.219 0.0 0.14 0.14 0.219 0.07 0.14 0.14 0.219 0.14 0.14 0.14";
             var rois = roiCoordinates.Split(' ').Select(x => float.Parse(x)).ToList();
             List<float> result = new List<float>();
@@ -129,20 +173,17 @@ namespace SiaNet.Application
                 default:
                     break;
             }
-
-            return result;
+            */
+            return null;
         }
 
         public Variable GetOutputVar(FastRCNNModel model)
         {
-            string roiCoordinates = "0.219 0.0 0.165 0.29 0.329 0.025 0.07 0.115 0.364 0.0 0.21 0.13 0.484 0.0 0.075 0.06 0.354 0.045 0.055 0.09 0.359 0.075 0.095 0.07 0.434 0.155 0.04 0.085 0.459 0.165 0.145 0.08 0.404 0.12 0.055 0.06 0.714 0.235 0.06 0.12 0.659 0.31 0.065 0.075 0.299 0.16 0.1 0.07 0.449 0.18 0.19 0.15 0.284 0.21 0.135 0.115 0.254 0.205 0.07 0.055 0.234 0.225 0.075 0.095 0.239 0.23 0.07 0.085 0.529 0.235 0.075 0.13 0.229 0.24 0.09 0.085 0.604 0.285 0.12 0.105 0.514 0.335 0.1 0.045 0.519 0.335 0.08 0.045 0.654 0.205 0.08 0.055 0.614 0.215 0.115 0.065 0.609 0.205 0.115 0.075 0.604 0.225 0.115 0.055 0.524 0.23 0.06 0.095 0.219 0.315 0.065 0.075 0.629 0.31 0.095 0.08 0.639 0.325 0.085 0.06 0.219 0.41 0.25 0.11 0.354 0.46 0.185 0.11 0.439 0.515 0.09 0.075 0.359 0.455 0.175 0.125 0.449 0.525 0.08 0.07 0.574 0.46 0.06 0.105 0.579 0.46 0.105 0.1 0.529 0.47 0.15 0.145 0.584 0.475 0.085 0.09 0.354 0.52 0.08 0.06 0.219 0.52 0.115 0.1 0.229 0.53 0.1 0.08 0.229 0.575 0.105 0.045 0.339 0.56 0.085 0.045 0.354 0.535 0.075 0.06 0.299 0.59 0.145 0.05 0.304 0.58 0.12 0.045 0.594 0.555 0.075 0.05 0.534 0.58 0.14 0.06 0.504 0.66 0.07 0.06 0.494 0.73 0.075 0.09 0.504 0.695 0.07 0.095 0.219 0.665 0.075 0.145 0.494 0.755 0.085 0.075 0.704 0.665 0.07 0.21 0.434 0.72 0.055 0.1 0.569 0.695 0.205 0.185 0.219 0.73 0.29 0.13 0.574 0.665 0.08 0.055 0.634 0.665 0.095 0.045 0.499 0.725 0.08 0.135 0.314 0.71 0.155 0.065 0.264 0.72 0.19 0.105 0.264 0.725 0.185 0.095 0.249 0.725 0.12 0.11 0.379 0.77 0.08 0.055 0.509 0.785 0.055 0.06 0.644 0.875 0.13 0.085 0.664 0.875 0.11 0.075 0.329 0.025 0.08 0.115 0.639 0.235 0.135 0.15 0.354 0.46 0.185 0.12 0.354 0.46 0.185 0.135 0.229 0.225 0.08 0.095 0.219 0.72 0.29 0.14 0.569 0.67 0.205 0.21 0.219 0.315 0.1 0.075 0.219 0.23 0.09 0.085 0.219 0.41 0.295 0.11 0.219 0.665 0.27 0.145 0.219 0.225 0.09 0.14 0.294 0.665 0.2 0.05 0.579 0.46 0.105 0.145 0.549 0.46 0.14 0.145 0.219 0.41 0.295 0.125 0.219 0.59 0.11 0.05 0.639 0.235 0.135 0.155 0.629 0.235 0.145 0.155 0.314 0.71 0.155 0.115 0.334 0.56 0.09 0.045 0.264 0.72 0.225 0.1 0.264 0.72 0.225 0.105 0.219 0.71 0.29 0.15 0.249 0.725 0.125 0.11 0.219 0.665 0.27 0.17 0.494 0.73 0.075 0.115 0.494 0.73 0.085 0.115 0.219 0.0 0.14 0.14 0.219 0.07 0.14 0.14 0.219 0.14 0.14 0.14";
-            var rois = roiCoordinates.Split(' ').Select(x => float.Parse(x)).ToList();
-            List<float> result = new List<float>();
             switch (model)
             {
-                case FastRCNNModel.Grocery100:
-                    return modelFunc.Outputs.Where(x => (x.Shape.TotalSize == 84000)).ToList()[0];
                 case FastRCNNModel.Pascal:
+                    return modelFunc.Outputs.Where(x => (x.Shape.TotalSize == 84000)).ToList()[0];
+                case FastRCNNModel.Grocery100:
                     return modelFunc.Outputs.Where(x => (x.Shape.TotalSize == 1700)).ToList()[0];
                 default:
                     break;

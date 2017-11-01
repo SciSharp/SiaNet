@@ -118,7 +118,9 @@ namespace SiaNet.Common
                 return;
             }
 
+            Logging.WriteTrace("Downloading model: " + modelPath);
             DownloadFile(modelPath, fullpath);
+            Logging.WriteTrace("Download complete");
         }
 
         private static void CheckAndDownload(SampleDataset datasetName, string fileName, bool force = false)
@@ -144,7 +146,9 @@ namespace SiaNet.Common
             string localfile = string.Format("{0}\\data.zip", datasetInfo.BaseFolder);
             if (!File.Exists(localfile))
             {
+                Logging.WriteTrace("Downloading sample data: " + fileName);
                 DownloadFile(string.Format(serverUrl, fileName), localfile);
+                Logging.WriteTrace("Download complete");
             }
 
             UnzipFile(datasetInfo.BaseFolder, "data.zip");
