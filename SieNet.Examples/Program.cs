@@ -44,8 +44,8 @@ namespace SiaNet.Examples
                 */
 
                 //Object Detection
-                //ObjectDetection.PascalDetection();
-                ObjectDetection.GroceryDetection();
+                ObjectDetection.PascalDetection();
+                //ObjectDetection.GroceryDetection();
                 Console.ReadLine();
             }
             catch(Exception ex)

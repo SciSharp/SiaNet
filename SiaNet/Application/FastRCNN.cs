@@ -65,7 +65,7 @@ namespace SiaNet.Application
             }
         }
 
-        public List<PredResult> Predict(string imagePath)
+        public List<PredResult> Predict(string imagePath, double confidence = 0.5)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace SiaNet.Application
             }
         }
 
-        public List<PredResult> Predict(byte[] imageBytes)
+        public List<PredResult> Predict(byte[] imageBytes, double confidence = 0.5)
         {
             try
             {
@@ -93,7 +93,7 @@ namespace SiaNet.Application
             }
         }
 
-        public List<PredResult> Predict(Bitmap bmp)
+        public List<PredResult> Predict(Bitmap bmp, double confidence = 0.5)
         {
             try
             {
@@ -104,11 +104,11 @@ namespace SiaNet.Application
                 
                 // Create input data map
                 var inputDataMap = new Dictionary<Variable, Value>();
-                var inputVal = Value.CreateBatch(modelFunc.Arguments.First().Shape, resizedCHW, GlobalParameters.Device);
-                inputDataMap.Add(modelFunc.Arguments.First(), inputVal);
+                var inputVal1 = Value.CreateBatch(modelFunc.Arguments.First().Shape, resizedCHW, GlobalParameters.Device);
+                inputDataMap.Add(modelFunc.Arguments.First(), inputVal1);
 
-                inputVal = Value.CreateBatch(modelFunc.Arguments[1].Shape, roiList, GlobalParameters.Device);
-                inputDataMap.Add(modelFunc.Arguments[1], null);
+                var inputVal2 = Value.CreateBatch(modelFunc.Arguments[1].Shape, roiList, GlobalParameters.Device);
+                inputDataMap.Add(modelFunc.Arguments[1], inputVal2);
 
                 Variable outputVar = GetOutputVar(model);
 
@@ -116,7 +116,7 @@ namespace SiaNet.Application
                 // Alternatively, create a Value object and add it to the data map.
                 var outputDataMap = new Dictionary<Variable, Value>();
                 outputDataMap.Add(outputVar, null);
-
+                outputDataMap.Add(modelFunc.Outputs[0], null);
 
                 // Start evaluation on the device
                 modelFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
@@ -124,6 +124,8 @@ namespace SiaNet.Application
                 // Get evaluate result as dense output
                 var outputVal = outputDataMap[outputVar];
                 var outputData = outputVal.GetDenseData<float>(outputVar);
+                List<PredResult> result = new List<PredResult>();
+
                 Dictionary<int, float> outputPred = new Dictionary<int, float>();
 
                 for (int i = 0; i < outputData[0].Count; i++)
@@ -131,7 +133,15 @@ namespace SiaNet.Application
                     outputPred.Add(i, outputData[0][i]);
                 }
 
-                List<PredResult> result = new List<PredResult>();
+                Parallel.ForEach(outputData, i =>
+                {
+                    result.Add(new PredResult()
+                    {
+                         
+                    });
+                });
+
+                
 
                 Logging.WriteTrace("Prediction Completed");
                 
@@ -146,11 +156,11 @@ namespace SiaNet.Application
 
         public List<float> GenerateROIS(Bitmap bmp, FastRCNNModel model)
         {
-            int selectRois = 16000;
+            int selectRois = 4000;
             int selectionParam = 250;
             if(model == FastRCNNModel.Grocery100)
             {
-                selectRois = 400;
+                selectRois = 100;
                 selectionParam = 1000;
             }
 
