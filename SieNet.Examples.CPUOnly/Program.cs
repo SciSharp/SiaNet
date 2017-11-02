@@ -1,4 +1,5 @@
 ﻿using CNTK;
+using Emgu.CV.Structure;
 using SiaNet;
 using SiaNet.Application;
 using SiaNet.Common;
@@ -38,7 +39,7 @@ namespace SieNet.Examples.CPUOnly
                  */
 
                 //Object Detection
-                //ObjectDetection.PascalDetection();
+                ObjectDetection.PascalDetection();
                 //ObjectDetection.GroceryDetection();
                 Console.ReadLine();
             }
