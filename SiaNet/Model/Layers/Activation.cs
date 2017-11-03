@@ -7,14 +7,25 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Model.Layers
 {
+    /// <summary>
+    /// The Activation layer
+    /// </summary>
+    /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class Activation : LayerConfig
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Activation"/> class.
+        /// </summary>
         public Activation()
         {
             base.Name = "Activation";
             base.Params = new ExpandoObject();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Activation"/> class.
+        /// </summary>
+        /// <param name="act">The activation function to use.</param>
         public Activation(string act)
             : this()
         {

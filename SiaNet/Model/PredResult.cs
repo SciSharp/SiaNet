@@ -7,24 +7,35 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Model
 {
+    /// <summary>
+    /// Class to hold the prediction result
+    /// </summary>
     public class PredResult
     {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the score.
+        /// </summary>
+        /// <value>
+        /// The score.
+        /// </value>
         public double Score { get; set; }
 
+        /// <summary>
+        /// Gets or sets the detection box.
+        /// </summary>
+        /// <value>
+        /// The b box.
+        /// </value>
         public Rectangle BBox { get; set; }
 
     }
-
-    public class BBox
-    {
-        public int X { get; set; }
-
-        public int Y { get; set; }
-
-        public int W { get; set; }
-
-        public int H { get; set; }
-    }
+    
 }

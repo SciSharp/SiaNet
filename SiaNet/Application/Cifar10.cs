@@ -1,27 +1,41 @@
 ﻿using CNTK;
+using SiaNet.Common;
+using SiaNet.Common.Resources;
+using SiaNet.Model;
+using SiaNet.Processing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using SiaNet.Processing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SiaNet.Model;
-using SiaNet.Common.Resources;
 using System.Dynamic;
-using SiaNet.Common;
+using System.IO;
+using System.Linq;
 
 namespace SiaNet.Application
 {
+    /// <summary>
+    /// Image classification with Cifar 10 models. Refer: https://www.cs.toronto.edu/~kriz/cifar.html
+    /// </summary>
     public class Cifar10
     {
+        /// <summary>
+        /// The cifar 10 model
+        /// </summary>
         Cifar10Model model;
 
+        /// <summary>
+        /// The model function
+        /// </summary>
         Function modelFunc;
 
+        /// <summary>
+        /// The actual values
+        /// </summary>
         Dictionary<int, string> actualValues;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Cifar10"/> class.
+        /// </summary>
+        /// <param name="model">The cifar 10 model to use for this application.</param>
         public Cifar10(Cifar10Model model)
         {
             this.model = model;
@@ -33,6 +47,10 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <exception cref="Exception">Invalid model selected!</exception>
         public void LoadModel()
         {
             try
@@ -63,6 +81,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image.
+        /// </summary>
+        /// <param name="imagePath">The image path.</param>
+        /// <param name="topK">The top k accurate result to return.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(string imagePath, int topK = 3)
         {
             try
@@ -77,6 +101,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image.
+        /// </summary>
+        /// <param name="imageBytes">The image data in byte array.</param>
+        /// <param name="topK">The top k accurate result to return.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(byte[] imageBytes, int topK = 3)
         {
             try
@@ -91,6 +121,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image.
+        /// </summary>
+        /// <param name="bmp">The image in bitmap format.</param>
+        /// <param name="topK">The top k accurate result to return.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(Bitmap bmp, int topK = 3)
         {
             try

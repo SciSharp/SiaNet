@@ -11,22 +11,39 @@ using System.Drawing;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiaNet.Application
 {
+    /// <summary>
+    /// Real time object detection application using Fast RCNN models
+    /// </summary>
     public class FastRCNN
     {
+        /// <summary>
+        /// The model
+        /// </summary>
         FastRCNNModel model;
 
+        /// <summary>
+        /// The model function
+        /// </summary>
         Function modelFunc;
 
+        /// <summary>
+        /// The actual values
+        /// </summary>
         Dictionary<int, string> actualValues;
 
+        /// <summary>
+        /// The proposed regions to be detected
+        /// </summary>
         List<Rectangle> proposedBoxes;
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FastRCNN"/> class.
+        /// </summary>
+        /// <param name="model">The model to use.</param>
         public FastRCNN(FastRCNNModel model)
         {
             this.model = model;
@@ -38,6 +55,10 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <exception cref="Exception">Invalid model selected!</exception>
         public void LoadModel()
         {
             try
@@ -68,6 +89,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image.
+        /// </summary>
+        /// <param name="imagePath">The image path.</param>
+        /// <param name="confidence">The confidence level for the prediction result.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(string imagePath, double confidence = 0.5)
         {
             try
@@ -82,6 +109,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image.
+        /// </summary>
+        /// <param name="imageBytes">The image in byte aray.</param>
+        /// <param name="confidence">The confidence level for the prediction result.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(byte[] imageBytes, double confidence = 0.5)
         {
             try
@@ -96,6 +129,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image.
+        /// </summary>
+        /// <param name="bmp">The image in bitmap format.</param>
+        /// <param name="confidence">The confidence level for the prediction result.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(Bitmap bmp, double confidence = 0.5)
         {
             try
@@ -207,7 +246,12 @@ namespace SiaNet.Application
             }
         }
 
-        public string[] GetLabels(FastRCNNModel model)
+        /// <summary>
+        /// Gets the labels.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        private string[] GetLabels(FastRCNNModel model)
         {
             string[] result = null;
             switch (model)
@@ -225,7 +269,13 @@ namespace SiaNet.Application
             return result;
         }
 
-        public List<float> GenerateROIS(Bitmap bmp, FastRCNNModel model)
+        /// <summary>
+        /// Generates the rois.
+        /// </summary>
+        /// <param name="bmp">The BMP.</param>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        private List<float> GenerateROIS(Bitmap bmp, FastRCNNModel model)
         {
             int selectRois = 4000;
             int selectionParam = 100;
@@ -270,7 +320,12 @@ namespace SiaNet.Application
             return roiList.ToList();
         }
 
-        public Variable GetOutputVar(FastRCNNModel model)
+        /// <summary>
+        /// Gets the output variable.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        private Variable GetOutputVar(FastRCNNModel model)
         {
             switch (model)
             {

@@ -14,14 +14,30 @@ using SiaNet.Common;
 
 namespace SiaNet.Application
 {
+    /// <summary>
+    /// Image classification application using ImageNet 1K model
+    /// </summary>
     public class ImageNet
     {
+        /// <summary>
+        /// The model
+        /// </summary>
         ImageNetModel model;
 
+        /// <summary>
+        /// The model function
+        /// </summary>
         Function modelFunc;
 
+        /// <summary>
+        /// The actual values
+        /// </summary>
         Dictionary<int, string> actualValues;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImageNet"/> class.
+        /// </summary>
+        /// <param name="model">The model to use. <see cref="ImageNetModel"/></param>
         public ImageNet(ImageNetModel model)
         {
             this.model = model;
@@ -33,6 +49,10 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <exception cref="Exception">Invalid model selected!</exception>
         public void LoadModel()
         {
             try
@@ -91,6 +111,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image path.
+        /// </summary>
+        /// <param name="imagePath">The image path.</param>
+        /// <param name="topK">The top k accurate result to return.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(string imagePath, int topK = 3)
         {
             try
@@ -105,6 +131,14 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified image bytes.
+        /// </summary>
+        /// <param name="imageBytes">The image in byte arrary.</param>
+        /// <param name="topK">The top k accurate result to return.</param>
+        /// <returns>
+        /// Prediction result with bounded box
+        /// </returns>
         public List<PredResult> Predict(byte[] imageBytes, int topK = 3)
         {
             try
@@ -119,6 +153,12 @@ namespace SiaNet.Application
             }
         }
 
+        /// <summary>
+        /// Predicts the specified BMP.
+        /// </summary>
+        /// <param name="bmp">The image in bitmap format.</param>
+        /// <param name="topK">The top k accurate result to return.</param>
+        /// <returns></returns>
         public List<PredResult> Predict(Bitmap bmp, int topK = 3)
         {
             try

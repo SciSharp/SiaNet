@@ -99,16 +99,54 @@ namespace SiaNet.Common
         public const string Poisson = "poisson";
     }
 
+    /// <summary>
+    /// Image Net pretrained model list
+    /// </summary>
     public enum ImageNetModel
     {
+        /// <summary>
+        /// The Alexnet model
+        /// </summary>
         AlexNet,
+
+        /// <summary>
+        /// The inception v3 model
+        /// </summary>
         InceptionV3,
+
+        /// <summary>
+        /// The ResNet18 model
+        /// </summary>
         ResNet18,
+
+        /// <summary>
+        /// The ResNet34 model
+        /// </summary>
         ResNet34,
+
+        /// <summary>
+        /// The ResNet50 model
+        /// </summary>
         ResNet50,
+
+        /// <summary>
+        /// The ResNet101 model
+        /// </summary>
         ResNet101,
+
+        /// <summary>
+        /// The ResNet152 model
+        /// </summary>
         ResNet152,
+
+        /// <summary>
+        /// The VGG16 model
+        /// </summary>
         VGG16,
+
+        /// <summary>
+        /// The VGG19
+        /// </summary>
         VGG19
     }
 
