@@ -24,6 +24,9 @@ namespace SiaNet.Application
 
         Dictionary<int, string> actualValues;
 
+        List<Rectangle> proposedBoxes;
+
+
         public FastRCNN(FastRCNNModel model)
         {
             this.model = model;
@@ -97,11 +100,12 @@ namespace SiaNet.Application
         {
             try
             {
+                proposedBoxes = new List<Rectangle>();
                 var resized = bmp.Resize(1000, 1000, true);
                 List<float> roiList = GenerateROIS(resized, model);
-                
+                List<float> inArg3 = new List<float>();
                 List<float> resizedCHW = resized.ParallelExtractCHW();
-                
+
                 // Create input data map
                 var inputDataMap = new Dictionary<Variable, Value>();
                 var inputVal1 = Value.CreateBatch(modelFunc.Arguments.First().Shape, resizedCHW, GlobalParameters.Device);
@@ -116,32 +120,81 @@ namespace SiaNet.Application
                 // Alternatively, create a Value object and add it to the data map.
                 var outputDataMap = new Dictionary<Variable, Value>();
                 outputDataMap.Add(outputVar, null);
-                outputDataMap.Add(modelFunc.Outputs[0], null);
 
                 // Start evaluation on the device
                 modelFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
 
-                // Get evaluate result as dense output
+                // Get evaluate result as dense output                   
                 var outputVal = outputDataMap[outputVar];
                 var outputData = outputVal.GetDenseData<float>(outputVar);
                 List<PredResult> result = new List<PredResult>();
+                
+                var labels = GetLabels(model);
+                int numLabels = labels.Length;
+                int numRois = outputData[0].Count / numLabels;
 
-                Dictionary<int, float> outputPred = new Dictionary<int, float>();
-
-                for (int i = 0; i < outputData[0].Count; i++)
+                int numBackgroundRois = 0;
+                for (int i = 0; i < numRois; i++)
                 {
-                    outputPred.Add(i, outputData[0][i]);
+                    var outputForRoi = outputData[0].Skip(i * numLabels).Take(numLabels).ToList();
+
+                    // Retrieve the predicted label as the argmax over all predictions for the current ROI
+                    var max = outputForRoi.IndexOf(outputForRoi.Max());
+
+                    if (max > 0)
+                    {
+                        result.Add(new PredResult()
+                        {
+                            Name = labels[max],
+                            BBox = proposedBoxes[i],
+                            Score = outputForRoi.Max()
+                        });
+
+                        //Console.WriteLine("Outcome for ROI {0}: {1} \t({2})", i, max, labels[max]);
+                    }
+                    else
+                    {
+                        numBackgroundRois++;
+                    }
                 }
 
-                Parallel.ForEach(outputData, i =>
-                {
-                    result.Add(new PredResult()
-                    {
-                         
-                    });
-                });
-
+                Emgu.CV.Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
                 
+                var groupBoxes = result.GroupBy(x => (x.Name)).ToList();
+                result = new List<PredResult>();
+                foreach (var item in groupBoxes)
+                {
+                    int counter = 0;
+                    Rectangle unionRect = new Rectangle();
+                    
+                    foreach (var rect in item.ToList())
+                    {
+                        if(counter == 0)
+                        {
+                            unionRect = rect.BBox;
+                            continue;
+                        }
+
+                        unionRect = Rectangle.Union(unionRect, rect.BBox);
+                    }
+
+                    //var orderedList = item.ToList().OrderByDescending(x => (x.BBox.Width * x.BBox.Height)).ToList();
+                    foreach (var rect in item.ToList())
+                    {
+                        unionRect = Rectangle.Intersect(unionRect, rect.BBox);
+                    }
+                    
+                    var goodPred = item.ToList().OrderByDescending(x=>(x.Score)).ToList()[0];
+                    goodPred.BBox = unionRect;
+                    result.Add(goodPred);
+                }
+
+                //foreach (var item in result)
+                //{
+                //    img.Draw(item.BBox, new Bgr(0, 255, 0));
+                //}
+
+                //img.Save("objdet_pred.jpg");
 
                 Logging.WriteTrace("Prediction Completed");
                 
@@ -154,39 +207,63 @@ namespace SiaNet.Application
             }
         }
 
+        public string[] GetLabels(FastRCNNModel model)
+        {
+            string[] result = null;
+            switch (model)
+            {
+                case FastRCNNModel.Grocery100:
+                    result =  new[] { "__background__", "avocado", "orange", "butter", "champagne", "egg_Box", "gerkin", "yogurt", "ketchup", "orange_juice", "onion", "pepper", "tomato", "water", "milk", "tabasco", "mustard" };
+                    break;
+                case FastRCNNModel.Pascal:
+                    result =  new[] { "__background__", "aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "dining_table", "dog", "horse", "motor_bike", "person", "potted_plant", "sheep", "sofa", "train", "tv_monitor" };
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+
         public List<float> GenerateROIS(Bitmap bmp, FastRCNNModel model)
         {
             int selectRois = 4000;
-            int selectionParam = 250;
+            int selectionParam = 100;
             if(model == FastRCNNModel.Grocery100)
             {
                 selectRois = 100;
-                selectionParam = 1000;
+                selectionParam = 1500;
             }
 
             float[] roiList = new float[selectRois * 4];
             
             Emgu.CV.Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
             Emgu.CV.XImgproc.SelectiveSearchSegmentation seg = new Emgu.CV.XImgproc.SelectiveSearchSegmentation();
-            var resizedImg = img.Resize(200, 200, Emgu.CV.CvEnum.Inter.Nearest);
+            var resizedImg = img.Resize(250, 250, Emgu.CV.CvEnum.Inter.Nearest);
             seg.SetBaseImage(resizedImg);
             seg.SwitchToSelectiveSearchQuality(selectionParam, selectionParam);
+            
             var rects = seg.Process();
-            rects = rects.OrderBy(x => (x.X)).ToArray();
+            //rects = rects.OrderBy(x => (x.X)).ToArray();
             int counter = 0;
             foreach (var item in rects)
             {
-                roiList[counter] = item.X * 5; counter++;
-                roiList[counter] = item.Y * 5; counter++;
-                roiList[counter] = item.Width * 5; counter++;
-                roiList[counter] = item.Height * 5; counter++;
+                if (counter >= selectRois * 4)
+                    break;
+
+                roiList[counter] = item.X * 4; counter++;
+                roiList[counter] = item.Y * 4; counter++;
+                roiList[counter] = item.Width * 4; counter++;
+                roiList[counter] = item.Height * 4; counter++;
+
+                proposedBoxes.Add(new Rectangle(item.X * 4, item.Y * 4, item.Width * 4, item.Height * 4));
             }
 
             if(counter <= selectRois)
             {
                 for(int i = counter; i< selectRois; i++)
                 {
-                    roiList[i] = 0;
+                    roiList[i] = -1;
                 }
             }
 
