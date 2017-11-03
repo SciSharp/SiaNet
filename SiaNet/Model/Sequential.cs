@@ -14,16 +14,38 @@ using SiaNet.Common;
 
 namespace SiaNet.Model
 {
+    /// <summary>
+    /// Delegate On_Training_Start
+    /// </summary>
     public delegate void On_Training_Start();
 
+    /// <summary>
+    /// Delegate On_Training_End
+    /// </summary>
+    /// <param name="trainingResult">The training result.</param>
     public delegate void On_Training_End(Dictionary<string, List<double>> trainingResult);
 
+    /// <summary>
+    /// Delegate On_Epoch_Start
+    /// </summary>
+    /// <param name="epoch">The epoch.</param>
     public delegate void On_Epoch_Start(int epoch);
 
+    /// <summary>
+    /// Delegate On_Epoch_End
+    /// </summary>
+    /// <param name="epoch">The epoch.</param>
+    /// <param name="samplesSeen">The samples seen.</param>
+    /// <param name="loss">The loss.</param>
+    /// <param name="metrics">The metrics.</param>
     public delegate void On_Epoch_End(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics);
 
+    /// <summary>
+    /// The Sequential model is a linear stack of layers.
+    /// </summary>
+    /// <seealso cref="SiaNet.Model.ConfigModule" />
     public class Sequential : ConfigModule
-    {
+    {        
         public event On_Training_Start OnTrainingStart;
 
         public event On_Training_End OnTrainingEnd;
@@ -32,6 +54,10 @@ namespace SiaNet.Model
 
         public event On_Epoch_End OnEpochEnd;
 
+        /// <summary>
+        /// Gets the module.
+        /// </summary>
+        /// <value>The module.</value>
         public string Module
         {
             get
@@ -60,10 +86,21 @@ namespace SiaNet.Model
 
         private ITrainPredict trainPredict;
 
+        /// <summary>
+        /// Gets or sets the training result.
+        /// </summary>
+        /// <value>The training result.</value>
         public Dictionary<string, List<double>> TrainingResult { get; set; }
 
+        /// <summary>
+        /// Gets or sets the stacked layers cofiguration.
+        /// </summary>
+        /// <value>The layers.</value>
         public List<LayerConfig> Layers { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sequential"/> class.
+        /// </summary>
         public Sequential()
         {
             OnTrainingStart += Sequential_OnTrainingStart;
@@ -75,26 +112,49 @@ namespace SiaNet.Model
             learners = new List<Learner>();
         }
 
+        /// <summary>
+        /// Event triggered on every training epoch end
+        /// </summary>
+        /// <param name="epoch">The epoch.</param>
+        /// <param name="samplesSeen">The no. samples seen.</param>
+        /// <param name="loss">The loss.</param>
+        /// <param name="metrics">The list of metrics.</param>
         private void Sequential_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
 
         }
 
+        /// <summary>
+        /// Event triggered on every training epoch start
+        /// </summary>
+        /// <param name="epoch">The epoch.</param>
         private void Sequential_OnEpochStart(int epoch)
         {
 
         }
 
+        /// <summary>
+        /// Event triggered on the complete training end
+        /// </summary>
+        /// <param name="trainingResult">The training result.</param>
         private void Sequential_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
 
         }
 
+        /// <summary>
+        /// Event triggered on the training start
+        /// </summary>
         private void Sequential_OnTrainingStart()
         {
 
         }
 
+        /// <summary>
+        /// Loads the neural network configuration saved using SaveNetConfig method.
+        /// </summary>
+        /// <param name="filepath">The filepath.</param>
+        /// <returns>Sequential model</returns>
         public static Sequential LoadNetConfig(string filepath)
         {
             string json = File.ReadAllText(filepath);
@@ -103,27 +163,50 @@ namespace SiaNet.Model
             return result;
         }
 
+        /// <summary>
+        /// Saves the neural network configuration as json file.
+        /// </summary>
+        /// <param name="filepath">The filepath.</param>
         public void SaveNetConfig(string filepath)
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
             File.WriteAllText(filepath, json);
         }
 
+        /// <summary>
+        /// Saves the complete model with training.
+        /// </summary>
+        /// <param name="filepath">The filepath.</param>
         public void SaveModel(string filepath)
         {
             modelOut.Save(filepath);
         }
 
+        /// <summary>
+        /// Loads the trained model for further prediction or training.
+        /// </summary>
+        /// <param name="filepath">The filepath.</param>
         public void LoadModel(string filepath)
         {
             modelOut = Function.Load(filepath, GlobalParameters.Device);
         }
 
+        /// <summary>
+        /// Stack the neural layers for building a deep learning model.
+        /// </summary>
+        /// <param name="config">The configuration.</param>
         public void Add(LayerConfig config)
         {
             Layers.Add(config);
         }
 
+        /// <summary>
+        /// Configures the model for training.
+        /// </summary>
+        /// <param name="optimizer">The optimizer function name used for training the model.</param>
+        /// <param name="loss">The function name with which the training loss will be minimized.</param>
+        /// <param name="metric"> The metric name to be evaluated by the model during training and testing.</param>
+        /// <param name="regulizer">The regulizer instance to apply penalty on layers parameters.</param>
         public void Compile(string optimizer, string loss, string metric, Regulizers regulizer = null)
         {
             CompileModel();
@@ -134,6 +217,13 @@ namespace SiaNet.Model
             metricFunc = Metrics.Get(metric, labelVariable, modelOut);
         }
 
+        /// <summary>
+        /// Configures the model for training.
+        /// </summary>
+        /// <param name="optimizer">The optimizer function name used for training the model.</param>
+        /// <param name="loss">The function name with which the training loss will be minimized.</param>
+        /// <param name="metric"> The metric name to be evaluated by the model during training and testing.</param>
+        /// <param name="regulizer">The regulizer instance to apply penalty on layers parameters.</param>
         public void Compile(Learner optimizer, string loss, string metric, Regulizers regulizer = null)
         {
             CompileModel();
@@ -181,7 +271,7 @@ namespace SiaNet.Model
             return pooling;
         }
 
-        public static Function Dense(Variable input, int outputDim, DeviceDescriptor device, string outputName = "")
+        private static Function Dense(Variable input, int outputDim, DeviceDescriptor device, string outputName = "")
         {
             if (input.Shape.Rank != 1)
             {
@@ -194,7 +284,7 @@ namespace SiaNet.Model
             return fullyConnected;
         }
 
-        public static Function FullyConnectedLinearLayer(Variable input, int outputDim, DeviceDescriptor device,
+        private static Function FullyConnectedLinearLayer(Variable input, int outputDim, DeviceDescriptor device,
             string outputName = "")
         {
             System.Diagnostics.Debug.Assert(input.Shape.Rank == 1);
@@ -235,6 +325,11 @@ namespace SiaNet.Model
             labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
         }
 
+        /// <summary>
+        /// Builds the stacked layer.
+        /// </summary>
+        /// <param name="layer">The layer.</param>
+        /// <exception cref="System.InvalidOperationException"></exception>
         private void BuildStackedLayer(LayerConfig layer)
         {
             switch (layer.Name.ToUpper())
@@ -314,6 +409,22 @@ namespace SiaNet.Model
             }
         }
 
+        /// <summary>
+        /// Builds the first layer.
+        /// </summary>
+        /// <param name="layer">The layer.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// Input shape is missing for first layer
+        /// or
+        /// Input shape is missing for first layer
+        /// or
+        /// Input shape is missing for first layer
+        /// or
+        /// Input shape is missing for first layer
+        /// or
+        /// Input shape is missing for first layer
+        /// </exception>
+        /// <exception cref="System.InvalidOperationException"></exception>
         private void BuildFirstLayer(LayerConfig layer)
         {
             isConvolution = false;
@@ -359,6 +470,13 @@ namespace SiaNet.Model
             }
         }
 
+        /// <summary>
+        /// Trains the model for a fixed number of epochs.
+        /// </summary>
+        /// <param name="train">The training dataset.</param>
+        /// <param name="epoches">The no. of trainin epoches.</param>
+        /// <param name="batchSize">Size of the batch for training.</param>
+        /// <param name="validation">The validation dataset.</param>
         public void Train(XYFrame train, int epoches, int batchSize, XYFrame validation = null)
         {
             OnTrainingStart();
@@ -367,6 +485,13 @@ namespace SiaNet.Model
             OnTrainingEnd(TrainingResult);
         }
 
+        /// <summary>
+        /// Trains the model for a fixed number of epochs.
+        /// </summary>
+        /// <param name="train">The train image generator.</param>
+        /// <param name="epoches">The no. of trainin epoches.</param>
+        /// <param name="batchSize">Size of the batch for training.</param>
+        /// <param name="validation">The validation image generator.</param>
         public void Train(ImageDataGenerator train, int epoches, int batchSize, ImageDataGenerator validation = null)
         {
             OnTrainingStart();
@@ -375,6 +500,11 @@ namespace SiaNet.Model
             OnTrainingEnd(TrainingResult);
         }
 
+        /// <summary>
+        /// Evaluates the specified data.
+        /// </summary>
+        /// <param name="data">The data for valuation.</param>
+        /// <returns>List of prediction values</returns>
         public IList<float> Evaluate(Value data)
         {
             return trainPredict.Evaluate(data);

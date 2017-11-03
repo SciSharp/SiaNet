@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Model
 {
+    /// <summary>
+    /// Enum type for image data generator
+    /// </summary>
     public enum ImageGenType
     {
         FromFolder,
         FromTextFile
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class ImageDataGenerator
     {
         public string ImageDataFolder { get; set; }

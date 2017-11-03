@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Model
 {
+    /// <summary>
+    /// Network configuration module.
+    /// </summary>
     public class ConfigModule
     {
         public float Version

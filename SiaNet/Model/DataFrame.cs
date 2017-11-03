@@ -11,8 +11,19 @@ namespace SiaNet.Model
 {
     public class DataFrame
     {
+        /// <summary>
+        /// Gets or sets the frame.
+        /// </summary>
+        /// <value>The frame.</value>
         public DataView Frame { get; set; }
 
+        /// <summary>
+        /// Loads the dataset from CSV file.
+        /// </summary>
+        /// <param name="filePath">The CSV file path.</param>
+        /// <param name="hasHeaders">If the CSV file have headers</param>
+        /// <param name="seperatedByWhitespace">If row data is seperated by whitespace, otherwise comma by default</param>
+        /// <param name="dataType">Data type of the CSV data.</param>
         public void LoadFromCsv(string filePath, bool hasHeaders = true, bool seperatedByWhitespace = false, DataType dataType = DataType.Float)
         {
             var lines = File.ReadAllLines(filePath);
@@ -64,6 +75,11 @@ namespace SiaNet.Model
             Frame = dt.AsDataView();
         }
 
+        /// <summary>
+        /// Gets the type of the datatable d.
+        /// </summary>
+        /// <param name="dtype">The dtype.</param>
+        /// <returns>Type.</returns>
         private Type GetDatatableDType(DataType dtype)
         {
             Type t = typeof(float);
@@ -83,6 +99,12 @@ namespace SiaNet.Model
             return t;
         }
 
+        /// <summary>
+        /// Splits the dataset to X and Y set.
+        /// </summary>
+        /// <param name="yCol">The y columns part of this split.</param>
+        /// <param name="xCols">The x columns part of this split.</param>
+        /// <returns>XY frame set.</returns>
         public XYFrame SplitXY(string yCol, params string[] xCols)
         {
             XYFrame result = new XYFrame();
@@ -92,6 +114,12 @@ namespace SiaNet.Model
             return result;
         }
 
+        /// <summary>
+        /// Splits the dataset to X and Y set.
+        /// </summary>
+        /// <param name="yCol">The y columns number.</param>
+        /// <param name="xCols">The x columns numbers.</param>
+        /// <returns>XY frame set.</returns>
         public XYFrame SplitXY(int yCol, int[] xCols)
         {
             XYFrame result = new XYFrame();
@@ -111,6 +139,9 @@ namespace SiaNet.Model
             return result;
         }
 
+        /// <summary>
+        /// Shuffles this dataset randomly.
+        /// </summary>
         public void Shuffle()
         {
             DataTable table = Frame.ToTable();
