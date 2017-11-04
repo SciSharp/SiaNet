@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace SiaNet
 {
+    /// <summary>
+    /// A loss function (or objective function, or optimization score function) is one of the three parameters required to compile a model.The actual optimized objective is the mean of the output array across all datapoints.
+    /// <see cref="OptLosses"/>
+    /// </summary>
     public class Losses
     {
         public static Function Get(string loss, Variable labels, Variable predictions)
@@ -37,16 +41,34 @@ namespace SiaNet
             }
         }
 
+        /// <summary>
+        /// Means the squared error.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         internal static Function MeanSquaredError(Variable labels, Variable predictions)
         {
             return CNTKLib.ReduceMean(CNTKLib.Square(CNTKLib.Minus(predictions, labels)), new Axis(-1));
         }
 
+        /// <summary>
+        /// Means the abs error.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         internal static Function MeanAbsError(Variable labels, Variable predictions)
         {
             return CNTKLib.ReduceMean(CNTKLib.Abs(CNTKLib.Minus(predictions, labels)), new Axis(-1));
         }
 
+        /// <summary>
+        /// Means the abs percentage error.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         internal static Function MeanAbsPercentageError(Variable labels, Variable predictions)
         {
             var diff = CNTKLib.ElementDivide(CNTKLib.Abs(CNTKLib.Minus(predictions, labels)), CNTKLib.Clip(CNTKLib.Abs(labels), Utility.CreateParamVar(float.Epsilon), Utility.CreateParamVar(float.MaxValue)));
@@ -55,6 +77,12 @@ namespace SiaNet
             return CNTKLib.ElementTimes(Utility.CreateParamVar(100), mean);
         }
 
+        /// <summary>
+        /// Means the squared log error.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         internal static Function MeanSquaredLogError(Variable labels, Variable predictions)
         {
             var predLog = CNTKLib.Log(CNTKLib.Clip(predictions, Utility.CreateParamVar(float.Epsilon), Utility.CreateParamVar(float.MaxValue)));
@@ -62,11 +90,23 @@ namespace SiaNet
             return CNTKLib.ReduceMean(CNTKLib.Square(CNTKLib.Minus(predLog, labelsLog)), new Axis(-1));
         }
 
+        /// <summary>
+        /// Crosses the entropy.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         private static Function CrossEntropy(Variable labels, Variable predictions)
         {
             return CNTKLib.CrossEntropyWithSoftmax(predictions, labels);
         }
 
+        /// <summary>
+        /// Sparses the cross entropy.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         private static Function SparseCrossEntropy(Variable labels, Variable predictions)
         {
             int newDim = labels.Shape.Dimensions.Aggregate((d1, d2) => d1 * d2);
@@ -74,11 +114,23 @@ namespace SiaNet
             return CNTKLib.CrossEntropyWithSoftmax(predictions, labels);
         }
 
+        /// <summary>
+        /// Binaries the cross entropy.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         private static Function BinaryCrossEntropy(Variable labels, Variable predictions)
         {
             return CNTKLib.BinaryCrossEntropy(predictions, labels);
         }
 
+        /// <summary>
+        /// Kullbacks the leibler divergence.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         private static Function KullbackLeiblerDivergence(Variable labels, Variable predictions)
         {
             var label_t = CNTKLib.Clip(labels, Utility.CreateParamVar(float.Epsilon), Utility.CreateParamVar(1));
@@ -86,6 +138,12 @@ namespace SiaNet
             return CNTKLib.ReduceSum(CNTKLib.ElementTimes(label_t, CNTKLib.Log(CNTKLib.ElementDivide(label_t, prediction_t))), new Axis(-1));
         }
 
+        /// <summary>
+        /// Poissons the specified labels.
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns>Function.</returns>
         private static Function Poisson(Variable labels, Variable predictions)
         {
             return CNTKLib.ReduceMean(CNTKLib.Minus(predictions, CNTKLib.ElementTimes(labels, CNTKLib.Log(CNTKLib.Plus(predictions, Utility.CreateParamVar(float.Epsilon))))), new Axis(-1));

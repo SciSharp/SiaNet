@@ -61,7 +61,11 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.AdaDelta.htm">AdaDelta</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Adadelta is an extension of Adagrad that seeks to reduce its aggressive, monotonically decreasing learning rate. Instead of accumulating all past squared gradients, Adadelta restricts the window of accumulated past gradients to some fixed size w.
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;static;declared;notNetfw;">
                       <td>
@@ -71,7 +75,11 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.AdaGrad.htm">AdaGrad</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Adagrad is an algorithm for gradient-based optimization that does just this: It adapts the learning rate to the parameters, performing larger updates for infrequent and smaller updates for frequent parameters
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;static;declared;notNetfw;">
                       <td>
@@ -81,7 +89,11 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.Adam.htm">Adam</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Adaptive Moment Estimation (Adam) is another method that computes adaptive learning rates for each parameter. In addition to storing an exponentially decaying average of past squared gradients vtvt like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients mtmt, similar to momentum.
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;static;declared;notNetfw;">
                       <td>
@@ -91,7 +103,11 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.Adamax.htm">Adamax</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   The Vt factor in the Adam update rule scales the gradient inversely proportionally to the ℓ2 norm of the past gradients (via the vt−1 term) and current gradient.
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;inherited;notNetfw;">
                       <td>
@@ -156,7 +172,11 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.MomentumSGD.htm">MomentumSGD</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Momentum of Stochastic gradient descent optimizer.
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;static;declared;notNetfw;">
                       <td>
@@ -166,7 +186,11 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.RMSprop.htm">RMSprop</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   RMSprop is an unpublished, adaptive learning rate method proposed by Geoff Hinton. This optimizer is usually a good choice for recurrent neural networks.
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;static;declared;notNetfw;">
                       <td>
@@ -176,7 +200,13 @@
                       <td>
                         <a href="M-SiaNet.Optimizers.SGD.htm">SGD</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   SGD is an optimisation technique. It is an alternative to Standard Gradient Descent and other approaches like batch training or BFGS. It still leads to fast convergence, with some advantages:
+   - Doesn't require storing all training data in memory (good for large training sets)
+   - Allows adding new data in an "online" setting
+   </div>
+                      </td>
                     </tr>
                     <tr data="public;inherited;notNetfw;">
                       <td>

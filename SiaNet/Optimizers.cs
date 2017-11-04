@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace SiaNet
 {
+    /// <summary>
+    /// An optimizer is one of the three arguments required for compiling a model. The choice of optimization algorithm for your deep learning model can mean the difference between good results in minutes, hours, and days.
+    /// <see cref="OptOptimizers"/>
+    /// </summary>
     public class Optimizers
     {
         public static Learner Get(string optimizer, Function modelOutput, Regulizers regulizer = null)
@@ -33,12 +37,30 @@ namespace SiaNet
             }
         }
 
+        /// <summary>
+        /// SGD is an optimisation technique. It is an alternative to Standard Gradient Descent and other approaches like batch training or BFGS. It still leads to fast convergence, with some advantages:
+        /// - Doesn't require storing all training data in memory (good for large training sets)
+        /// - Allows adding new data in an "online" setting
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner SGD(Function modelOutput, float learningRate = 0.01f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.SGDLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, GetAdditionalLearningOptions(regulizer));
         }
 
+        /// <summary>
+        /// Momentum of Stochastic gradient descent optimizer.
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="momentum">The momentum.</param>
+        /// <param name="unitGain">if set to <c>true</c> [unit gain].</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner MomentumSGD(Function modelOutput, float learningRate = 0.01f, float momentum = 0, bool unitGain = true, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
@@ -47,18 +69,45 @@ namespace SiaNet
             return CNTKLib.MomentumSGDLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumPerSample, unitGain, GetAdditionalLearningOptions(regulizer));
         }
 
+        /// <summary>
+        /// Adadelta is an extension of Adagrad that seeks to reduce its aggressive, monotonically decreasing learning rate. Instead of accumulating all past squared gradients, Adadelta restricts the window of accumulated past gradients to some fixed size w.
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="rho">The rho.</param>
+        /// <param name="epsilon">The epsilon.</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner AdaDelta(Function modelOutput, float learningRate = 1.0f, double rho = 0.95f, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.AdaDeltaLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, rho, epsilon, GetAdditionalLearningOptions(regulizer));
         }
 
+        /// <summary>
+        /// Adagrad is an algorithm for gradient-based optimization that does just this: It adapts the learning rate to the parameters, performing larger updates for infrequent and smaller updates for frequent parameters
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner AdaGrad(Function modelOutput, float learningRate = 0.01f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.AdaGradLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample,false, GetAdditionalLearningOptions(regulizer));
         }
 
+        /// <summary>
+        /// Adaptive Moment Estimation (Adam) is another method that computes adaptive learning rates for each parameter. In addition to storing an exponentially decaying average of past squared gradients vtvt like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients mtmt, similar to momentum.
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="momentum">The momentum.</param>
+        /// <param name="varianceMomentum">The variance momentum.</param>
+        /// <param name="unitGain">if set to <c>true</c> [unit gain].</param>
+        /// <param name="epsilon">The epsilon.</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner Adam(Function modelOutput, float learningRate = 0.001f, float momentum=0.9f, float varianceMomentum=0.999f, bool unitGain=true, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
@@ -67,6 +116,17 @@ namespace SiaNet
             return CNTKLib.AdamLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumRate, unitGain, varianceMomentumRate, epsilon, false, GetAdditionalLearningOptions(regulizer));
         }
 
+        /// <summary>
+        /// The Vt factor in the Adam update rule scales the gradient inversely proportionally to the ℓ2 norm of the past gradients (via the vt−1 term) and current gradient.
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="momentum">The momentum.</param>
+        /// <param name="varianceMomentum">The variance momentum.</param>
+        /// <param name="unitGain">if set to <c>true</c> [unit gain].</param>
+        /// <param name="epsilon">The epsilon.</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner Adamax(Function modelOutput, float learningRate = 0.002f, float momentum = 0.9f, float varianceMomentum = 0.999f, bool unitGain = true, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
@@ -75,6 +135,18 @@ namespace SiaNet
             return CNTKLib.AdamLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumRate, unitGain, varianceMomentumRate, epsilon, true, GetAdditionalLearningOptions(regulizer));
         }
 
+        /// <summary>
+        /// RMSprop is an unpublished, adaptive learning rate method proposed by Geoff Hinton. This optimizer is usually a good choice for recurrent neural networks.
+        /// </summary>
+        /// <param name="modelOutput">The model output.</param>
+        /// <param name="learningRate">The learning rate.</param>
+        /// <param name="gamma">The gamma.</param>
+        /// <param name="inc">The incremental value</param>
+        /// <param name="dec">The decremental value.</param>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <param name="regulizer">The regulizer.</param>
+        /// <returns>Learner.</returns>
         public static Learner RMSprop(Function modelOutput, float learningRate = 0.001f, float gamma = 0.9f, float inc = 2, float dec = 0.01f, double min = 0.01, double max = 1, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);

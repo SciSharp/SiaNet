@@ -9,15 +9,33 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Common
 {
+    /// <summary>
+    /// Dataset information
+    /// </summary>
     public class DatasetInfo
     {
+        /// <summary>
+        /// Gets or sets the base folder.
+        /// </summary>
+        /// <value>The base folder.</value>
         public string BaseFolder { get; set; }
 
+        /// <summary>
+        /// Gets or sets the train file name.
+        /// </summary>
+        /// <value>The train.</value>
         public string Train { get; set; }
 
+        /// <summary>
+        /// Gets or sets the test file name.
+        /// </summary>
+        /// <value>The test.</value>
         public string Test { get; set; }
     }
 
+    /// <summary>
+    /// Downloader to downloand and extract datasets and models.
+    /// </summary>
     public class Downloader
     {
         static string serverUrl = "https://sianet.blob.core.windows.net/dataset/{0}";
@@ -52,6 +70,11 @@ namespace SiaNet.Common
             CheckAndDownload(datasetName, filename, force);
         }
 
+        /// <summary>
+        /// Gets file path for sample dataset
+        /// </summary>
+        /// <param name="datasetName">Name of the dataset.</param>
+        /// <returns>DatasetInfo.</returns>
         public static DatasetInfo GetSamplePath(SampleDataset datasetName)
         {
             DatasetInfo path = new DatasetInfo();
@@ -102,6 +125,10 @@ namespace SiaNet.Common
             return path;
         }
 
+        /// <summary>
+        /// Downloads the pretrained model.
+        /// </summary>
+        /// <param name="modelPath">The model path.</param>
         public static void DownloadModel(string modelPath)
         {
             string baseFolder = string.Format("{0}\\SiaNet\\models", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
@@ -123,6 +150,12 @@ namespace SiaNet.Common
             Logging.WriteTrace("Download complete");
         }
 
+        /// <summary>
+        /// Checks the and download.
+        /// </summary>
+        /// <param name="datasetName">Name of the dataset.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="force">if set to <c>true</c> [force].</param>
         private static void CheckAndDownload(SampleDataset datasetName, string fileName, bool force = false)
         {
             DatasetInfo datasetInfo = GetSamplePath(datasetName);
@@ -162,6 +195,11 @@ namespace SiaNet.Common
             File.Delete(zipfile);
         }
 
+        /// <summary>
+        /// Downloads the file.
+        /// </summary>
+        /// <param name="serverPath">The server path.</param>
+        /// <param name="localPath">The local path.</param>
         private static void DownloadFile(string serverPath, string localPath)
         {
             downloadPercentPrev = 0;
@@ -170,6 +208,11 @@ namespace SiaNet.Common
             wb.DownloadFileTaskAsync(new Uri(serverPath), localPath).Wait();
         }
 
+        /// <summary>
+        /// Handles the DownloadProgressChanged event of the Wb control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DownloadProgressChangedEventArgs"/> instance containing the event data.</param>
         private static void Wb_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             if (e.ProgressPercentage == downloadPercentPrev)

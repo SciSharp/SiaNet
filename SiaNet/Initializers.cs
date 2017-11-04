@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace SiaNet
 {
+    /// <summary>
+    /// Initializations define the way to set the initial random weights of Keras layers.The following built-in initializers are available as part of the SiaNet.Common.OptInitializers module
+    /// <see cref="OptInitializers"/>
+    /// </summary>
     public class Initializers
     {
+        /// <summary>
+        /// Gets the specified initializers based on function name.
+        /// </summary>
+        /// <param name="initializers">The initializers name.</param>
+        /// <returns>Initializer instance as CNTKDictionary.</returns>
         public static CNTKDictionary Get(string initializers)
         {
             CNTKDictionary result = null;

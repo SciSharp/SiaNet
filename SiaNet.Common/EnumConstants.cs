@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Common
 {
+    /// <summary>
+    /// List of supported layers names
+    /// </summary>
     public class OptLayers
     {
         public const string Dense = "DENSE";
@@ -29,6 +32,9 @@ namespace SiaNet.Common
         public const string GlobalAvgPool3D = "GLOBALAVGPOOL3D";
     }
 
+    /// <summary>
+    /// List of supported activation function names
+    /// </summary>
     public class OptActivations
     {
         public const string None = "none";
@@ -41,6 +47,9 @@ namespace SiaNet.Common
         public const string ELU = "elu";
     }
 
+    /// <summary>
+    /// List of supported initialize function names
+    /// </summary>
     public class OptInitializers
     {
         public const string None = "none";
@@ -57,6 +66,9 @@ namespace SiaNet.Common
         public const string HeUniform = "he_uniform";
     }
 
+    /// <summary>
+    /// List of regulizer function name
+    /// </summary>
     public class OptRegulizers
     {
         public const string None = "none";
@@ -65,6 +77,9 @@ namespace SiaNet.Common
         public const string L1L2 = "l1l2";
     }
 
+    /// <summary>
+    /// List of supported optimizer function name
+    /// </summary>
     public class OptOptimizers
     {
         public const string SGD = "sgd";
@@ -76,6 +91,9 @@ namespace SiaNet.Common
         public const string AdaDelta = "adadelta";
     }
 
+    /// <summary>
+    /// List of supported metric name
+    /// </summary>
     public class OptMetrics
     {
         public const string Accuracy = "acc";
@@ -86,6 +104,9 @@ namespace SiaNet.Common
         public const string MSLE = "msle";
     }
 
+    /// <summary>
+    /// List of supported loss function names
+    /// </summary>
     public class OptLosses
     {
         public const string MeanSquaredError = "mean_squared_error";
@@ -150,20 +171,46 @@ namespace SiaNet.Common
         VGG19
     }
 
+    /// <summary>
+    /// Cifar-10 pretrained model list
+    /// </summary>
     public enum Cifar10Model
     {
+        /// <summary>
+        /// Cifar-10 ResNet20 model
+        /// </summary>
         ResNet20,
+
+        /// <summary>
+        /// Cifar-10 ResNet110 model
+        /// </summary>
         ResNet110
     }
 
+    /// <summary>
+    /// Fast-RCNN pretrained model list
+    /// </summary>
     public enum FastRCNNModel
     {
+        /// <summary>
+        /// Fast-RCNN Grocery100 model
+        /// </summary>
         Grocery100,
+
+        /// <summary>
+        /// Fast-RCNN Pascal model
+        /// </summary>
         Pascal
     }
 
+    /// <summary>
+    /// Pre trained model path to download from hosted sites
+    /// </summary>
     public class PreTrainedModelPath
     {
+        /// <summary>
+        /// Path to ImageNet model files for various models like AlexNet, ResNet, VGG etc..
+        /// </summary>
         public class ImageNetPath
         {
             public const string AlexNet = "https://www.cntk.ai/Models/CNTK_Pretrained/AlexNet_ImageNet_CNTK.model";
@@ -176,13 +223,19 @@ namespace SiaNet.Common
             public const string VGG16 = "https://www.cntk.ai/Models/Caffe_Converted/VGG16_ImageNet_Caffe.model";
             public const string VGG19 = "https://www.cntk.ai/Models/Caffe_Converted/VGG19_ImageNet_Caffe.model";
         }
-        
+
+        /// <summary>
+        ///  Path to Cifar-10 model files
+        /// </summary>
         public class Cifar10Path
         {
             public const string ResNet20 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet20_CIFAR10_CNTK.model";
             public const string ResNet110 = "https://www.cntk.ai/Models/CNTK_Pretrained/ResNet110_CIFAR10_CNTK.model";
         }
 
+        /// <summary>
+        ///  Path to Fast RCNN model files
+        /// </summary>
         public class FastRCNNPath
         {
             public const string Grocery100 = "https://www.cntk.ai/Models/FRCN_Grocery/Fast-RCNN_grocery100.model";
