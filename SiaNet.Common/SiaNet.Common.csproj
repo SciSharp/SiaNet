@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\SiaNet\Sia.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,7 +60,11 @@
       <DependentUpon>PredMap.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="..\SiaNet\Sia.snk">
+      <Link>Sia.snk</Link>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\PredMap.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

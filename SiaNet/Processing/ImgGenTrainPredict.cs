@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Processing
 {
-    public class ImgGenTrainPredict : ITrainPredict
+    internal class ImgGenTrainPredict : ITrainPredict
     {
         public Function Model;
         private Function lossFunc;

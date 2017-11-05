@@ -10,7 +10,7 @@ namespace SiaNet.Interface
     /// <summary>
     /// Interface for Train and Predictions by neural network models
     /// </summary>
-    public interface ITrainPredict
+    internal interface ITrainPredict
     {
         /// <summary>
         /// Trains the model using train data.

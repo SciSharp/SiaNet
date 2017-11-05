@@ -27,11 +27,11 @@ namespace SiaNet.Examples
                 //Setting global device
                 GlobalParameters.Device = devices[0];
 
-                /*
+                
                 //Housing regression example
-                HousingRegression.LoadData();
-                HousingRegression.BuildModel();
-                HousingRegression.Train();
+                //HousingRegression.LoadData();
+                //HousingRegression.BuildModel();
+                //HousingRegression.Train();
 
                 //MNIST Classification example
                 MNISTClassifier.LoadData();
@@ -39,12 +39,12 @@ namespace SiaNet.Examples
                 MNISTClassifier.Train();
                 
                 //Image classification example
-                Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
-                Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
-                */
+                //Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
+                //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
+                
 
                 //Object Detection
-                ObjectDetection.PascalDetection();
+                //ObjectDetection.PascalDetection();
                 //ObjectDetection.GroceryDetection();
                 Console.ReadLine();
             }

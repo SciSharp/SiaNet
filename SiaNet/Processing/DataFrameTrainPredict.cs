@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Processing
 {
-    public class DataFrameTrainPredict : ITrainPredict
+    internal class DataFrameTrainPredict : ITrainPredict
     {
         public Function Model;
         private Function lossFunc;

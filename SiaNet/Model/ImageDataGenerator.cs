@@ -22,8 +22,6 @@ namespace SiaNet.Model
     /// </summary>
     public class ImageDataGenerator
     {
-        public string ImageDataFolder { get; set; }
-
         public string FileName { get; set; }
 
         private string featureStreamName = "features";
@@ -68,7 +66,7 @@ namespace SiaNet.Model
             int numClasses = label.Shape[0];
             IList<StreamConfiguration> streamConfigurations = new StreamConfiguration[] { new StreamConfiguration(featureStreamName, imageSize), new StreamConfiguration(labelsStreamName, numClasses) };
 
-            miniBatchSource = MinibatchSource.TextFormatMinibatchSource(Path.Combine(ImageDataFolder, FileName), streamConfigurations, MinibatchSource.InfinitelyRepeat);
+            miniBatchSource = MinibatchSource.TextFormatMinibatchSource(FileName, streamConfigurations, MinibatchSource.InfinitelyRepeat);
             featureVariable = feature;
             labelVariable = label;
             featureStreamInfo = miniBatchSource.StreamInfo(featureStreamName);

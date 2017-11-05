@@ -48,6 +48,8 @@ namespace SiaNet.Examples
         private static void BuildMLP(int[] imageDim, int numClasses)
         {
             model.Add(new Dense(200, imageDim[0], OptActivations.Sigmoid));
+            model.Add(new Dense(400, OptActivations.Sigmoid));
+            model.Add(new Dropout(0.2));
             model.Add(new Dense(numClasses));
         }
 
@@ -63,7 +65,7 @@ namespace SiaNet.Examples
         public static void Train()
         {
             model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Train(train, 5, 1000, null);
+            model.Train(train, 10, 64, null);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)

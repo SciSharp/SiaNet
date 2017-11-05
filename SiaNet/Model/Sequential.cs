@@ -234,77 +234,6 @@ namespace SiaNet.Model
             metricFunc = Metrics.Get(metric, labelVariable, modelOut);
         }
 
-        static Function CreateConvolutionalNeuralNetwork(Variable features, int outDims, DeviceDescriptor device, string classifierName)
-        {
-            // 28x28x1 -> 14x14x4
-            int kernelWidth1 = 3, kernelHeight1 = 3, numInputChannels1 = 1, outFeatureMapCount1 = 4;
-            int hStride1 = 2, vStride1 = 2;
-            int poolingWindowWidth1 = 3, poolingWindowHeight1 = 3;
-
-            Function pooling1 = ConvolutionWithMaxPooling(features, device, kernelWidth1, kernelHeight1,
-                numInputChannels1, outFeatureMapCount1, hStride1, vStride1, poolingWindowWidth1, poolingWindowHeight1);
-
-            // 14x14x4 -> 7x7x8
-            int kernelWidth2 = 3, kernelHeight2 = 3, numInputChannels2 = outFeatureMapCount1, outFeatureMapCount2 = 8;
-            int hStride2 = 2, vStride2 = 2;
-            int poolingWindowWidth2 = 3, poolingWindowHeight2 = 3;
-
-            Function pooling2 = ConvolutionWithMaxPooling(pooling1, device, kernelWidth2, kernelHeight2,
-                numInputChannels2, outFeatureMapCount2, hStride2, vStride2, poolingWindowWidth2, poolingWindowHeight2);
-
-            Function denseLayer = Dense(pooling2, outDims, device, classifierName);
-            return denseLayer;
-        }
-
-        private static Function ConvolutionWithMaxPooling(Variable features, DeviceDescriptor device,
-            int kernelWidth, int kernelHeight, int numInputChannels, int outFeatureMapCount,
-            int hStride, int vStride, int poolingWindowWidth, int poolingWindowHeight)
-        {
-            // parameter initialization hyper parameter
-            double convWScale = 0.26;
-            var convParams = new Parameter(new int[] { kernelWidth, kernelHeight, numInputChannels, outFeatureMapCount }, DataType.Float,
-                CNTKLib.GlorotUniformInitializer(convWScale, -1, 2), device);
-            Function convFunction = CNTKLib.ReLU(CNTKLib.Convolution(convParams, features, new int[] { 1, 1, numInputChannels } /* strides */));
-
-            Function pooling = CNTKLib.Pooling(convFunction, PoolingType.Max,
-                new int[] { poolingWindowWidth, poolingWindowHeight }, new int[] { hStride, vStride }, new bool[] { true });
-            return pooling;
-        }
-
-        private static Function Dense(Variable input, int outputDim, DeviceDescriptor device, string outputName = "")
-        {
-            if (input.Shape.Rank != 1)
-            {
-                // 
-                int newDim = input.Shape.Dimensions.Aggregate((d1, d2) => d1 * d2);
-                input = CNTKLib.Reshape(input, new int[] { newDim });
-            }
-
-            Function fullyConnected = FullyConnectedLinearLayer(input, outputDim, device, outputName);
-            return fullyConnected;
-        }
-
-        private static Function FullyConnectedLinearLayer(Variable input, int outputDim, DeviceDescriptor device,
-            string outputName = "")
-        {
-            System.Diagnostics.Debug.Assert(input.Shape.Rank == 1);
-            int inputDim = input.Shape[0];
-
-            int[] s = { outputDim, inputDim };
-
-            var timesParam = new Parameter((NDShape)s, DataType.Float,
-                CNTKLib.GlorotUniformInitializer(
-                    CNTKLib.DefaultParamInitScale,
-                    CNTKLib.SentinelValueForInferParamInitRank,
-                    CNTKLib.SentinelValueForInferParamInitRank, 1),
-                device, "timesParam");
-            var timesFunction = CNTKLib.Times(timesParam, input, "times");
-
-            int[] s2 = { outputDim };
-            var plusParam = new Parameter(s2, 0.0f, device, "plusParam");
-            return CNTKLib.Plus(plusParam, timesFunction, outputName);
-        }
-
         private void CompileModel()
         {
             bool first = true;
@@ -445,6 +374,7 @@ namespace SiaNet.Model
                     modelOut = NN.Basic.BatchNorm(featureVariable, l2.Epsilon, l2.BetaInitializer, l2.GammaInitializer, l2.RunningMeanInitializer, l2.RunningStdInvInitializer, l2.Spatial, l2.NormalizationTimeConstant, l2.BlendTimeConst);
                     break;
                 case OptLayers.Conv1D:
+                    isConvolution = true;
                     var l3 = (Conv1D)layer;
                     if (l3.Shape == null)
                         throw new ArgumentNullException("Input shape is missing for first layer");
@@ -452,6 +382,7 @@ namespace SiaNet.Model
                     modelOut = NN.Convolution.Conv1D(featureVariable, l3.Channels, l3.KernalSize, l3.Strides, l3.Padding, l3.Dialation, l3.Act, l3.UseBias, l3.WeightInitializer, l3.BiasInitializer);
                     break;
                 case OptLayers.Conv2D:
+                    isConvolution = true;
                     var l4 = (Conv2D)layer;
                     if (l4.Shape == null)
                         throw new ArgumentNullException("Input shape is missing for first layer");
@@ -459,6 +390,7 @@ namespace SiaNet.Model
                     modelOut = NN.Convolution.Conv2D(featureVariable, l4.Channels, l4.KernalSize, l4.Strides, l4.Padding, l4.Dialation, l4.Act, l4.UseBias, l4.WeightInitializer, l4.BiasInitializer);
                     break;
                 case OptLayers.Conv3D:
+                    isConvolution = true;
                     var l5 = (Conv3D)layer;
                     if (l5.Shape == null)
                         throw new ArgumentNullException("Input shape is missing for first layer");
