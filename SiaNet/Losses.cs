@@ -12,9 +12,9 @@ namespace SiaNet
     /// A loss function (or objective function, or optimization score function) is one of the three parameters required to compile a model.The actual optimized objective is the mean of the output array across all datapoints.
     /// <see cref="OptLosses"/>
     /// </summary>
-    public class Losses
+    internal class Losses
     {
-        public static Function Get(string loss, Variable labels, Variable predictions)
+        internal static Function Get(string loss, Variable labels, Variable predictions)
         {
             switch (loss.Trim().ToLower())
             {

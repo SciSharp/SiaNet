@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet", "SiaNet\SiaNet.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.CPUOnly", "SiaNet.CPUOnly\SiaNet.CPUOnly.csproj", "{ECBDDE28-2569-4019-B65E-F9541BF46C07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SieNet.Examples", "SieNet.Examples\SieNet.Examples.csproj", "{67E77F14-101D-433E-A9A0-38CB8C00406C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.Examples", "SieNet.Examples\SiaNet.Examples.csproj", "{67E77F14-101D-433E-A9A0-38CB8C00406C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SieNet.Examples.CPUOnly", "SieNet.Examples.CPUOnly\SieNet.Examples.CPUOnly.csproj", "{204D9242-D64B-4BDA-A77A-6B8AFD8A550E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.Examples.CPUOnly", "SieNet.Examples.CPUOnly\SiaNet.Examples.CPUOnly.csproj", "{204D9242-D64B-4BDA-A77A-6B8AFD8A550E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.Common", "SiaNet.Common\SiaNet.Common.csproj", "{32ED27D4-AC7A-4011-B399-D2EA42E282C7}"
 EndProject
@@ -55,8 +55,8 @@ Global
 		{204D9242-D64B-4BDA-A77A-6B8AFD8A550E}.Release|x64.Build.0 = Release|Any CPU
 		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Debug|x64.Build.0 = Debug|Any CPU
+		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Debug|x64.ActiveCfg = Debug|x64
+		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Debug|x64.Build.0 = Debug|x64
 		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32ED27D4-AC7A-4011-B399-D2EA42E282C7}.Release|x64.ActiveCfg = Release|Any CPU

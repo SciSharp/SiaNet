@@ -1,20 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet.Model.Layers
+﻿namespace SiaNet.Model.Layers
 {
+    using System;
+    using System.Dynamic;
+
+    /// <summary>
+    /// Max pooling operation for 3D data (spatial or spatio-temporal).
+    /// </summary>
+    /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class MaxPool3D : LayerConfig
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaxPool3D"/> class.
+        /// </summary>
         public MaxPool3D()
         {
             base.Name = "MaxPool3D";
             base.Params = new ExpandoObject();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaxPool3D"/> class.
+        /// </summary>
+        /// <param name="poolSize">Tuple of 3 integers, factors by which to downscale (dim1, dim2, dim3). (2, 2, 2) will halve the size of the 3D input in each dimension.</param>
+        /// <param name="strides">Tuple of 3 integers, or None. Strides values.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
         public MaxPool3D(Tuple<int, int, int> poolSize, Tuple<int, int, int> strides = null, bool padding = true)
             : this()
         {
@@ -23,6 +32,12 @@ namespace SiaNet.Model.Layers
             Padding = padding;
         }
 
+        /// <summary>
+        /// Tuple of 3 integers, factors by which to downscale (dim1, dim2, dim3). (2, 2, 2) will halve the size of the 3D input in each dimension.
+        /// </summary>
+        /// <value>
+        /// The size of the pool.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public Tuple<int, int, int> PoolSize
         {
@@ -37,6 +52,12 @@ namespace SiaNet.Model.Layers
             }
         }
 
+        /// <summary>
+        /// Tuple of 3 integers, or None. Strides values.
+        /// </summary>
+        /// <value>
+        /// The strides.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public Tuple<int, int, int> Strides
         {
@@ -51,6 +72,12 @@ namespace SiaNet.Model.Layers
             }
         }
 
+        /// <summary>
+        /// Boolean, if true results in padding the input such that the output has the same length as the original input.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if padding; otherwise, <c>false</c>.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public bool Padding
         {

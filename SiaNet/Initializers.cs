@@ -19,19 +19,19 @@ namespace SiaNet
         /// </summary>
         /// <param name="initializers">The initializers name.</param>
         /// <returns>Initializer instance as CNTKDictionary.</returns>
-        public static CNTKDictionary Get(string initializers)
+        public static CNTKDictionary Get(string initializers, double scale = 0.1)
         {
             CNTKDictionary result = null;
             switch (initializers.Trim().ToLower())
             {
                 case OptInitializers.Uniform:
-                    result = CNTKLib.UniformInitializer(0.01);
+                    result = CNTKLib.UniformInitializer(scale);
                     break;
                 case OptInitializers.Normal:
-                    result = CNTKLib.NormalInitializer(0.01);
+                    result = CNTKLib.NormalInitializer(scale);
                     break;
                 case OptInitializers.TruncatedNormal:
-                    result = CNTKLib.TruncatedNormalInitializer();
+                    result = CNTKLib.TruncatedNormalInitializer(scale);
                     break;
                 case OptInitializers.Zeros:
                     result = CNTKLib.ConstantInitializer(0);
@@ -40,22 +40,22 @@ namespace SiaNet
                     result = CNTKLib.ConstantInitializer(1);
                     break;
                 case OptInitializers.Constant:
-                    result = CNTKLib.ConstantInitializer();
+                    result = CNTKLib.ConstantInitializer(scale);
                     break;
                 case OptInitializers.Xavier:
-                    result = CNTKLib.XavierInitializer();
+                    result = CNTKLib.XavierInitializer(scale);
                     break;
                 case OptInitializers.GlorotNormal:
-                    result = CNTKLib.GlorotNormalInitializer();
+                    result = CNTKLib.GlorotNormalInitializer(scale);
                     break;
                 case OptInitializers.GlorotUniform:
-                    result = CNTKLib.GlorotUniformInitializer();
+                    result = CNTKLib.GlorotUniformInitializer(scale);
                     break;
                 case OptInitializers.HeNormal:
-                    result = CNTKLib.HeNormalInitializer();
+                    result = CNTKLib.HeNormalInitializer(scale);
                     break;
                 case OptInitializers.HeUniform:
-                    result = CNTKLib.HeUniformInitializer();
+                    result = CNTKLib.HeUniformInitializer(scale);
                     break;
                 default:
                     break;

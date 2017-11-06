@@ -1,20 +1,17 @@
 ﻿using CNTK;
 using SiaNet.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace SiaNet
 {
+    using System.Linq;
+
     /// <summary>
     /// An optimizer is one of the three arguments required for compiling a model. The choice of optimization algorithm for your deep learning model can mean the difference between good results in minutes, hours, and days.
     /// <see cref="OptOptimizers"/>
     /// </summary>
-    public class Optimizers
+    internal class Optimizers
     {
-        public static Learner Get(string optimizer, Function modelOutput, Regulizers regulizer = null)
+        internal static Learner Get(string optimizer, Function modelOutput, Regulizers regulizer = null)
         {
             switch (optimizer.Trim().ToLower())
             {
@@ -46,7 +43,7 @@ namespace SiaNet
         /// <param name="learningRate">The learning rate.</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner SGD(Function modelOutput, float learningRate = 0.01f, Regulizers regulizer = null)
+        private static Learner SGD(Function modelOutput, float learningRate = 0.01f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.SGDLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, GetAdditionalLearningOptions(regulizer));
@@ -61,7 +58,7 @@ namespace SiaNet
         /// <param name="unitGain">if set to <c>true</c> [unit gain].</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner MomentumSGD(Function modelOutput, float learningRate = 0.01f, float momentum = 0, bool unitGain = true, Regulizers regulizer = null)
+        private static Learner MomentumSGD(Function modelOutput, float learningRate = 0.01f, float momentum = 0, bool unitGain = true, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             CNTK.TrainingParameterScheduleDouble momentumPerSample = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
@@ -78,7 +75,7 @@ namespace SiaNet
         /// <param name="epsilon">The epsilon.</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner AdaDelta(Function modelOutput, float learningRate = 1.0f, double rho = 0.95f, double epsilon = 1e-08f, Regulizers regulizer = null)
+        private static Learner AdaDelta(Function modelOutput, float learningRate = 1.0f, double rho = 0.95f, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.AdaDeltaLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, rho, epsilon, GetAdditionalLearningOptions(regulizer));
@@ -91,7 +88,7 @@ namespace SiaNet
         /// <param name="learningRate">The learning rate.</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner AdaGrad(Function modelOutput, float learningRate = 0.01f, Regulizers regulizer = null)
+        private static Learner AdaGrad(Function modelOutput, float learningRate = 0.01f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.AdaGradLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample,false, GetAdditionalLearningOptions(regulizer));
@@ -108,7 +105,7 @@ namespace SiaNet
         /// <param name="epsilon">The epsilon.</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner Adam(Function modelOutput, float learningRate = 0.001f, float momentum=0.9f, float varianceMomentum=0.999f, bool unitGain=true, double epsilon = 1e-08f, Regulizers regulizer = null)
+        private static Learner Adam(Function modelOutput, float learningRate = 0.001f, float momentum=0.9f, float varianceMomentum=0.999f, bool unitGain=true, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             CNTK.TrainingParameterScheduleDouble momentumRate = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
@@ -127,7 +124,7 @@ namespace SiaNet
         /// <param name="epsilon">The epsilon.</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner Adamax(Function modelOutput, float learningRate = 0.002f, float momentum = 0.9f, float varianceMomentum = 0.999f, bool unitGain = true, double epsilon = 1e-08f, Regulizers regulizer = null)
+        private static Learner Adamax(Function modelOutput, float learningRate = 0.002f, float momentum = 0.9f, float varianceMomentum = 0.999f, bool unitGain = true, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             CNTK.TrainingParameterScheduleDouble momentumRate = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
@@ -147,7 +144,7 @@ namespace SiaNet
         /// <param name="max">The maximum.</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        public static Learner RMSprop(Function modelOutput, float learningRate = 0.001f, float gamma = 0.9f, float inc = 2, float dec = 0.01f, double min = 0.01, double max = 1, Regulizers regulizer = null)
+        private static Learner RMSprop(Function modelOutput, float learningRate = 0.001f, float gamma = 0.9f, float inc = 2, float dec = 0.01f, double min = 0.01, double max = 1, Regulizers regulizer = null)
         {
             CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.RMSPropLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, gamma, inc, dec, max, min, false, GetAdditionalLearningOptions(regulizer));

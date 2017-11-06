@@ -45,13 +45,25 @@ namespace SiaNet.Model
     /// </summary>
     /// <seealso cref="SiaNet.Model.ConfigModule" />
     public class Sequential : ConfigModule
-    {        
+    {
+        /// <summary>
+        /// Occurs when [on training start].
+        /// </summary>
         public event On_Training_Start OnTrainingStart;
 
+        /// <summary>
+        /// Occurs when [on training end].
+        /// </summary>
         public event On_Training_End OnTrainingEnd;
 
+        /// <summary>
+        /// Occurs when [on epoch start].
+        /// </summary>
         public event On_Epoch_Start OnEpochStart;
 
+        /// <summary>
+        /// Occurs when [on epoch end].
+        /// </summary>
         public event On_Epoch_End OnEpochEnd;
 
         /// <summary>
@@ -248,8 +260,7 @@ namespace SiaNet.Model
 
                 BuildStackedLayer(item);
             }
-            //featureVariable = Variable.InputVariable(new int[] { 28, 28, 1 }, DataType.Float);
-            //modelOut =  CreateConvolutionalNeuralNetwork(featureVariable, 10, GlobalParameters.Device, "cls1");
+
             int outputNums = modelOut.Output.Shape[0];
             labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
         }

@@ -18,7 +18,7 @@ namespace SiaNet.Model
     }
 
     /// <summary>
-    /// 
+    /// Generate batches of tensor image data with real-time data augmentation. The data will be looped over (in batches) indefinitely.
     /// </summary>
     public class ImageDataGenerator
     {
@@ -28,26 +28,47 @@ namespace SiaNet.Model
 
         private string labelsStreamName = "labels";
 
-        public MinibatchSource miniBatchSource;
-
-        public ImageGenType GenType { get; set; }
-
-        public MinibatchData CurrentBatchX { get; set; }
+        private MinibatchSource miniBatchSource;
+        
         public MinibatchData CurrentBatchY { get; set; }
 
         private Variable featureVariable;
 
         private Variable labelVariable;
 
-        public StreamInformation featureStreamInfo;
+        private StreamInformation featureStreamInfo;
 
-        public StreamInformation labelStreamInfo;
+        private StreamInformation labelStreamInfo;
 
+        /// <summary>
+        /// Gets or sets the type of the image data generator.
+        /// </summary>
+        /// <value>
+        /// The type of the gen.
+        /// </value>
+        public ImageGenType GenType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the current batch X data.
+        /// </summary>
+        /// <value>
+        /// The current batch x.
+        /// </value>
+        public MinibatchData CurrentBatchX { get; set; }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImageDataGenerator"/> class.
+        /// </summary>
         public ImageDataGenerator()
         {
 
         }
 
+        /// <summary>
+        /// Flows image dataset from text file.
+        /// </summary>
+        /// <param name="fileName">Name of the file which stores the image dataset information.</param>
+        /// <returns></returns>
         public static ImageDataGenerator FlowFromText(string fileName)
         {
             ImageDataGenerator result = new ImageDataGenerator()
@@ -73,6 +94,11 @@ namespace SiaNet.Model
             labelStreamInfo = miniBatchSource.StreamInfo(labelsStreamName);
         }
 
+        /// <summary>
+        /// Gets the next the batch to train using the batch size.
+        /// </summary>
+        /// <param name="batchSize">Size of the batch.</param>
+        /// <returns></returns>
         public bool NextBatch(int batchSize)
         {
             var minibatchData = miniBatchSource.GetNextMinibatch((uint)batchSize, GlobalParameters.Device);

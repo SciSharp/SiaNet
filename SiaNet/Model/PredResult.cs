@@ -13,7 +13,7 @@ namespace SiaNet.Model
     public class PredResult
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the name of the result like detected object name, image class name.
         /// </summary>
         /// <value>
         /// The name.
@@ -21,7 +21,7 @@ namespace SiaNet.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the score.
+        /// Gets or sets the score of the accuracy for the detected or classified object
         /// </summary>
         /// <value>
         /// The score.
@@ -29,7 +29,7 @@ namespace SiaNet.Model
         public double Score { get; set; }
 
         /// <summary>
-        /// Gets or sets the detection box.
+        /// Gets or sets the detection window of the detected object in an image
         /// </summary>
         /// <value>
         /// The b box.

@@ -1,17 +1,16 @@
-﻿using CNTK;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet.Processing
+﻿namespace SiaNet.Processing
 {
-    public static class ImageUtil
+    using CNTK;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    internal static class ImageUtil
     {
-        public static List<float> ParallelExtractCHW(this Bitmap image)
+        internal static List<float> ParallelExtractCHW(this Bitmap image)
         {
             // We use local variables to avoid contention on the image object through the multiple threads.
             int channelStride = image.Width * image.Height;
@@ -54,7 +53,7 @@ namespace SiaNet.Processing
         /// </summary>
         /// <param name="image">The bitmap image to extract features from</param>
         /// <returns>A list of pixels in CHW order</returns>
-        public static Value GetValue(this Bitmap image)
+        internal static Value GetValue(this Bitmap image)
         {
             float[] batchImageBuf = ParallelExtractCHW(image).ToArray();
             return Value.CreateBatch<float>(new int[] { image.Width, image.Height, 3}, batchImageBuf, GlobalParameters.Device);
@@ -86,7 +85,7 @@ namespace SiaNet.Processing
         /// <param name="height">New height in pixesl</param>
         /// <param name="useHighQuality">Resize quality</param>
         /// <returns>The resized image</returns>
-        public static Bitmap Resize(this Bitmap image, int width, int height, bool useHighQuality)
+        internal static Bitmap Resize(this Bitmap image, int width, int height, bool useHighQuality)
         {
             var newImg = new Bitmap(width, height);
 

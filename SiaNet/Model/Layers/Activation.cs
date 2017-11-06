@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet.Model.Layers
+﻿namespace SiaNet.Model.Layers
 {
+    using System.Dynamic;
+
     /// <summary>
-    /// The Activation layer
+    /// Applies an activation function to an output.
     /// </summary>
     /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class Activation : LayerConfig
@@ -25,13 +20,19 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Activation"/> class.
         /// </summary>
-        /// <param name="act">The activation function to use.</param>
+        /// <param name="act">The name of activation function to use. <see cref="SiaNet.Common.OptActivations"/></param>
         public Activation(string act)
             : this()
         {
             Act = act;
         }
 
+        /// <summary>
+        /// The name of activation function to use.
+        /// </summary>
+        /// <value>
+        /// The activation function name.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public string Act
         {

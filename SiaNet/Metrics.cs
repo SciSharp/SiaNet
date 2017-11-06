@@ -13,9 +13,9 @@ namespace SiaNet
     /// A metric function is similar to an loss function, except that the results from evaluating a metric are not used when training the model.
     /// <see cref="OptMetrics"/>
     /// </summary>
-    public class Metrics
+    internal class Metrics
     {
-        public static Function Get(string metric, Variable labels, Variable predictions)
+        internal static Function Get(string metric, Variable labels, Variable predictions)
         {
             switch (metric.Trim().ToLower())
             {

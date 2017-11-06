@@ -11,6 +11,12 @@ namespace SiaNet.Model
     /// </summary>
     public class ConfigModule
     {
+        /// <summary>
+        /// Version number of this model
+        /// </summary>
+        /// <value>
+        /// The version.
+        /// </value>
         public float Version
         {
             get

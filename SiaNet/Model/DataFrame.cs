@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Model
 {
+    /// <summary>
+    /// Dataset loader with utilities to split and shuffle
+    /// </summary>
     public class DataFrame
     {
         /// <summary>

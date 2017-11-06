@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Processing
 {
-    public class DataFrameUtil
+    internal class DataFrameUtil
     {
-        public static Value GetValueBatch(DataFrame frame)
+        internal static Value GetValueBatch(DataFrame frame)
         {
             DataTable dt = frame.Frame.ToTable();
             int dim = dt.Columns.Count;

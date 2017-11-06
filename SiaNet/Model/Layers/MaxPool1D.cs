@@ -7,14 +7,27 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Model.Layers
 {
+    /// <summary>
+    /// Max pooling operation for temporal data.
+    /// </summary>
+    /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class MaxPool1D : LayerConfig
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaxPool1D"/> class.
+        /// </summary>
         public MaxPool1D()
         {
             base.Name = "MaxPool1D";
             base.Params = new ExpandoObject();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MaxPool1D"/> class.
+        /// </summary>
+        /// <param name="poolSize">Integer, size of the max pooling windows.</param>
+        /// <param name="strides">Factor by which to downscale. E.g. 2 will halve the input. If None, it will default to pool_size.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
         public MaxPool1D(int poolSize, int strides = 1, bool padding = true)
             : this()
         {
@@ -23,6 +36,12 @@ namespace SiaNet.Model.Layers
             Padding = padding;
         }
 
+        /// <summary>
+        /// Integer, size of the max pooling windows.
+        /// </summary>
+        /// <value>
+        /// The size of the pool.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public int PoolSize
         {
@@ -37,6 +56,12 @@ namespace SiaNet.Model.Layers
             }
         }
 
+        /// <summary>
+        /// Factor by which to downscale. E.g. 2 will halve the input. If None, it will default to pool_size.
+        /// </summary>
+        /// <value>
+        /// The strides.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public int Strides
         {
@@ -51,6 +76,12 @@ namespace SiaNet.Model.Layers
             }
         }
 
+        /// <summary>
+        /// Boolean, if true results in padding the input such that the output has the same length as the original input.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if padding; otherwise, <c>false</c>.
+        /// </value>
         [Newtonsoft.Json.JsonIgnore]
         public bool Padding
         {
