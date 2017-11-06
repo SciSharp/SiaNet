@@ -3,9 +3,9 @@
   <HelpKINode Title="Accuracy field" Url="html/F-SiaNet.Common.OptMetrics.Accuracy.htm" />
   <HelpKINode Title="Act property">
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Act.htm" />
-    <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Act.htm" />
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Act.htm" />
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Dense.Act.htm" />
+    <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Act.htm" />
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Activation.Act.htm" />
   </HelpKINode>
   <HelpKINode Title="Activation class">
@@ -22,13 +22,9 @@
   <HelpKINode Title="Activation.Act property" Url="html/P-SiaNet.Model.Layers.Activation.Act.htm" />
   <HelpKINode Title="Activation.Activation constructor" Url="html/Overload-SiaNet.Model.Layers.Activation.-ctor.htm" />
   <HelpKINode Title="AdaDelta field" Url="html/F-SiaNet.Common.OptOptimizers.AdaDelta.htm" />
-  <HelpKINode Title="AdaDelta method" Url="html/M-SiaNet.Optimizers.AdaDelta.htm" />
   <HelpKINode Title="AdaGrad field" Url="html/F-SiaNet.Common.OptOptimizers.AdaGrad.htm" />
-  <HelpKINode Title="AdaGrad method" Url="html/M-SiaNet.Optimizers.AdaGrad.htm" />
   <HelpKINode Title="Adam field" Url="html/F-SiaNet.Common.OptOptimizers.Adam.htm" />
-  <HelpKINode Title="Adam method" Url="html/M-SiaNet.Optimizers.Adam.htm" />
   <HelpKINode Title="Adamax field" Url="html/F-SiaNet.Common.OptOptimizers.Adamax.htm" />
-  <HelpKINode Title="Adamax method" Url="html/M-SiaNet.Optimizers.Adamax.htm" />
   <HelpKINode Title="Add method" Url="html/M-SiaNet.Model.Sequential.Add.htm" />
   <HelpKINode Title="AlexNet enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="AlexNet field">
@@ -116,16 +112,16 @@
   <HelpKINode Title="BBox property" Url="html/P-SiaNet.Model.PredResult.BBox.htm" />
   <HelpKINode Title="BetaInitializer property" Url="html/P-SiaNet.Model.Layers.BatchNorm.BetaInitializer.htm" />
   <HelpKINode Title="BiasInitializer property">
-    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.BiasInitializer.htm" />
-    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.BiasInitializer.htm" />
-    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.BiasInitializer.htm" />
     <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.BiasInitializer.htm" />
+    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.BiasInitializer.htm" />
+    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.BiasInitializer.htm" />
+    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.BiasInitializer.htm" />
   </HelpKINode>
   <HelpKINode Title="BinaryCrossEntropy field" Url="html/F-SiaNet.Common.OptLosses.BinaryCrossEntropy.htm" />
   <HelpKINode Title="BlendTimeConst property" Url="html/P-SiaNet.Model.Layers.BatchNorm.BlendTimeConst.htm" />
   <HelpKINode Title="Channels property">
-    <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Channels.htm" />
     <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Channels.htm" />
+    <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Channels.htm" />
     <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Channels.htm" />
   </HelpKINode>
   <HelpKINode Title="Cifar10 class">
@@ -266,27 +262,6 @@
   <HelpKINode Title="DataFrame.LoadFromCsv method" Url="html/M-SiaNet.Model.DataFrame.LoadFromCsv.htm" />
   <HelpKINode Title="DataFrame.Shuffle method" Url="html/M-SiaNet.Model.DataFrame.Shuffle.htm" />
   <HelpKINode Title="DataFrame.SplitXY method" Url="html/Overload-SiaNet.Model.DataFrame.SplitXY.htm" />
-  <HelpKINode Title="DataFrameTrainPredict class">
-    <HelpKINode Title="DataFrameTrainPredict Class" Url="html/T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-    <HelpKINode Title="DataFrameTrainPredict Members" Url="html/AllMembers.T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-    <HelpKINode Title="about DataFrameTrainPredict class" Url="html/T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-    <HelpKINode Title="constructor" Url="html/M-SiaNet.Processing.DataFrameTrainPredict.-ctor.htm" />
-    <HelpKINode Title="fields" Url="html/Fields.T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DataFrameTrainPredict.DataFrameTrainPredict constructor" Url="html/M-SiaNet.Processing.DataFrameTrainPredict.-ctor.htm" />
-  <HelpKINode Title="DataFrameTrainPredict.Evaluate method" Url="html/M-SiaNet.Processing.DataFrameTrainPredict.Evaluate.htm" />
-  <HelpKINode Title="DataFrameTrainPredict.Model field" Url="html/F-SiaNet.Processing.DataFrameTrainPredict.Model.htm" />
-  <HelpKINode Title="DataFrameTrainPredict.Train method" Url="html/M-SiaNet.Processing.DataFrameTrainPredict.Train.htm" />
-  <HelpKINode Title="DataFrameUtil class">
-    <HelpKINode Title="DataFrameUtil Class" Url="html/T-SiaNet.Processing.DataFrameUtil.htm" />
-    <HelpKINode Title="DataFrameUtil Members" Url="html/AllMembers.T-SiaNet.Processing.DataFrameUtil.htm" />
-    <HelpKINode Title="about DataFrameUtil class" Url="html/T-SiaNet.Processing.DataFrameUtil.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Processing.DataFrameUtil.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Processing.DataFrameUtil.htm" />
-  </HelpKINode>
-  <HelpKINode Title="DataFrameUtil.GetValueBatch method" Url="html/M-SiaNet.Processing.DataFrameUtil.GetValueBatch.htm" />
   <HelpKINode Title="DatasetInfo class">
     <HelpKINode Title="DatasetInfo Class" Url="html/T-SiaNet.Common.DatasetInfo.htm" />
     <HelpKINode Title="DatasetInfo Members" Url="html/AllMembers.T-SiaNet.Common.DatasetInfo.htm" />
@@ -319,8 +294,8 @@
   <HelpKINode Title="Device property" Url="html/P-SiaNet.GlobalParameters.Device.htm" />
   <HelpKINode Title="Dialation property">
     <HelpKINode Title="Dialation Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Dialation.htm" />
-    <HelpKINode Title="Dialation Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Dialation.htm" />
     <HelpKINode Title="Dialation Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Dialation.htm" />
+    <HelpKINode Title="Dialation Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Dialation.htm" />
   </HelpKINode>
   <HelpKINode Title="Dim property" Url="html/P-SiaNet.Model.Layers.Dense.Dim.htm" />
   <HelpKINode Title="Downloader class">
@@ -350,12 +325,7 @@
   <HelpKINode Title="Dropout.Rate property" Url="html/P-SiaNet.Model.Layers.Dropout.Rate.htm" />
   <HelpKINode Title="ELU field" Url="html/F-SiaNet.Common.OptActivations.ELU.htm" />
   <HelpKINode Title="Epsilon property" Url="html/P-SiaNet.Model.Layers.BatchNorm.Epsilon.htm" />
-  <HelpKINode Title="Evaluate method">
-    <HelpKINode Title="Evaluate Method " Url="html/M-SiaNet.Model.Sequential.Evaluate.htm" />
-    <HelpKINode Title="Evaluate Method " Url="html/M-SiaNet.Processing.ImgGenTrainPredict.Evaluate.htm" />
-    <HelpKINode Title="Evaluate Method " Url="html/M-SiaNet.Processing.DataFrameTrainPredict.Evaluate.htm" />
-    <HelpKINode Title="Evaluate Method " Url="html/M-SiaNet.Interface.ITrainPredict.Evaluate.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Evaluate method" Url="html/M-SiaNet.Model.Sequential.Evaluate.htm" />
   <HelpKINode Title="Extensions class">
     <HelpKINode Title="Extensions Class" Url="html/T-SiaNet.Common.Extensions.htm" />
     <HelpKINode Title="Extensions Members" Url="html/AllMembers.T-SiaNet.Common.Extensions.htm" />
@@ -381,7 +351,6 @@
   <HelpKINode Title="FastRCNNModel.Pascal field" Url="html/F-SiaNet.Common.FastRCNNModel.Pascal.htm" />
   <HelpKINode Title="FastRCNNPath.Grocery100 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Grocery100.htm" />
   <HelpKINode Title="FastRCNNPath.Pascal field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Pascal.htm" />
-  <HelpKINode Title="featureStreamInfo field" Url="html/F-SiaNet.Model.ImageDataGenerator.featureStreamInfo.htm" />
   <HelpKINode Title="FileName property" Url="html/P-SiaNet.Model.ImageDataGenerator.FileName.htm" />
   <HelpKINode Title="Flowers enumeration member" Url="html/T-SiaNet.Common.SampleDataset.htm" />
   <HelpKINode Title="Flowers field" Url="html/F-SiaNet.Common.SampleDataset.Flowers.htm" />
@@ -393,15 +362,8 @@
   <HelpKINode Title="FromTextFile field" Url="html/F-SiaNet.Model.ImageGenType.FromTextFile.htm" />
   <HelpKINode Title="GammaInitializer property" Url="html/P-SiaNet.Model.Layers.BatchNorm.GammaInitializer.htm" />
   <HelpKINode Title="GenType property" Url="html/P-SiaNet.Model.ImageDataGenerator.GenType.htm" />
-  <HelpKINode Title="Get method">
-    <HelpKINode Title="Get Method " Url="html/M-SiaNet.Optimizers.Get.htm" />
-    <HelpKINode Title="Get Method " Url="html/M-SiaNet.Losses.Get.htm" />
-    <HelpKINode Title="Get Method " Url="html/M-SiaNet.Metrics.Get.htm" />
-    <HelpKINode Title="Get Method " Url="html/M-SiaNet.Initializers.Get.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Get method" Url="html/M-SiaNet.Initializers.Get.htm" />
   <HelpKINode Title="GetSamplePath method" Url="html/M-SiaNet.Common.Downloader.GetSamplePath.htm" />
-  <HelpKINode Title="GetValue method" Url="html/M-SiaNet.Processing.ImageUtil.GetValue.htm" />
-  <HelpKINode Title="GetValueBatch method" Url="html/M-SiaNet.Processing.DataFrameUtil.GetValueBatch.htm" />
   <HelpKINode Title="GlobalAvgPool1D class">
     <HelpKINode Title="GlobalAvgPool1D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool1D.htm" />
     <HelpKINode Title="GlobalAvgPool1D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalAvgPool1D.htm" />
@@ -489,35 +451,29 @@
   <HelpKINode Title="Grocery field" Url="html/F-SiaNet.Common.SampleDataset.Grocery.htm" />
   <HelpKINode Title="Grocery100 enumeration member" Url="html/T-SiaNet.Common.FastRCNNModel.htm" />
   <HelpKINode Title="Grocery100 field">
-    <HelpKINode Title="Grocery100 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Grocery100.htm" />
     <HelpKINode Title="Grocery100 Field" Url="html/F-SiaNet.Common.FastRCNNModel.Grocery100.htm" />
+    <HelpKINode Title="Grocery100 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Grocery100.htm" />
   </HelpKINode>
   <HelpKINode Title="GRU method" Url="html/M-SiaNet.NN.Recurrent.GRU.htm" />
   <HelpKINode Title="HeNormal field" Url="html/F-SiaNet.Common.OptInitializers.HeNormal.htm" />
   <HelpKINode Title="HeUniform field" Url="html/F-SiaNet.Common.OptInitializers.HeUniform.htm" />
   <HelpKINode Title="HousingRegression enumeration member" Url="html/T-SiaNet.Common.SampleDataset.htm" />
   <HelpKINode Title="HousingRegression field" Url="html/F-SiaNet.Common.SampleDataset.HousingRegression.htm" />
-  <HelpKINode Title="ImageDataFolder property" Url="html/P-SiaNet.Model.ImageDataGenerator.ImageDataFolder.htm" />
   <HelpKINode Title="ImageDataGenerator class">
     <HelpKINode Title="ImageDataGenerator Class" Url="html/T-SiaNet.Model.ImageDataGenerator.htm" />
     <HelpKINode Title="ImageDataGenerator Members" Url="html/AllMembers.T-SiaNet.Model.ImageDataGenerator.htm" />
     <HelpKINode Title="about ImageDataGenerator class" Url="html/T-SiaNet.Model.ImageDataGenerator.htm" />
     <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Model.ImageDataGenerator.htm" />
     <HelpKINode Title="constructor" Url="html/M-SiaNet.Model.ImageDataGenerator.-ctor.htm" />
-    <HelpKINode Title="fields" Url="html/Fields.T-SiaNet.Model.ImageDataGenerator.htm" />
     <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Model.ImageDataGenerator.htm" />
     <HelpKINode Title="properties" Url="html/Properties.T-SiaNet.Model.ImageDataGenerator.htm" />
   </HelpKINode>
   <HelpKINode Title="ImageDataGenerator.CurrentBatchX property" Url="html/P-SiaNet.Model.ImageDataGenerator.CurrentBatchX.htm" />
   <HelpKINode Title="ImageDataGenerator.CurrentBatchY property" Url="html/P-SiaNet.Model.ImageDataGenerator.CurrentBatchY.htm" />
-  <HelpKINode Title="ImageDataGenerator.featureStreamInfo field" Url="html/F-SiaNet.Model.ImageDataGenerator.featureStreamInfo.htm" />
   <HelpKINode Title="ImageDataGenerator.FileName property" Url="html/P-SiaNet.Model.ImageDataGenerator.FileName.htm" />
   <HelpKINode Title="ImageDataGenerator.FlowFromText method" Url="html/M-SiaNet.Model.ImageDataGenerator.FlowFromText.htm" />
   <HelpKINode Title="ImageDataGenerator.GenType property" Url="html/P-SiaNet.Model.ImageDataGenerator.GenType.htm" />
-  <HelpKINode Title="ImageDataGenerator.ImageDataFolder property" Url="html/P-SiaNet.Model.ImageDataGenerator.ImageDataFolder.htm" />
   <HelpKINode Title="ImageDataGenerator.ImageDataGenerator constructor" Url="html/M-SiaNet.Model.ImageDataGenerator.-ctor.htm" />
-  <HelpKINode Title="ImageDataGenerator.labelStreamInfo field" Url="html/F-SiaNet.Model.ImageDataGenerator.labelStreamInfo.htm" />
-  <HelpKINode Title="ImageDataGenerator.miniBatchSource field" Url="html/F-SiaNet.Model.ImageDataGenerator.miniBatchSource.htm" />
   <HelpKINode Title="ImageDataGenerator.NextBatch method" Url="html/M-SiaNet.Model.ImageDataGenerator.NextBatch.htm" />
   <HelpKINode Title="ImageGenType enumeration" Url="html/T-SiaNet.Model.ImageGenType.htm" />
   <HelpKINode Title="ImageGenType.FromFolder field" Url="html/F-SiaNet.Model.ImageGenType.FromFolder.htm" />
@@ -555,34 +511,10 @@
   <HelpKINode Title="ImageNetPath.ResNet50 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet50.htm" />
   <HelpKINode Title="ImageNetPath.VGG16 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG16.htm" />
   <HelpKINode Title="ImageNetPath.VGG19 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG19.htm" />
-  <HelpKINode Title="ImageUtil class">
-    <HelpKINode Title="ImageUtil Class" Url="html/T-SiaNet.Processing.ImageUtil.htm" />
-    <HelpKINode Title="ImageUtil Members" Url="html/AllMembers.T-SiaNet.Processing.ImageUtil.htm" />
-    <HelpKINode Title="about ImageUtil class" Url="html/T-SiaNet.Processing.ImageUtil.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Processing.ImageUtil.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Processing.ImageUtil.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ImageUtil.GetValue method" Url="html/M-SiaNet.Processing.ImageUtil.GetValue.htm" />
-  <HelpKINode Title="ImageUtil.ParallelExtractCHW method" Url="html/M-SiaNet.Processing.ImageUtil.ParallelExtractCHW.htm" />
-  <HelpKINode Title="ImageUtil.Resize method" Url="html/M-SiaNet.Processing.ImageUtil.Resize.htm" />
-  <HelpKINode Title="ImgGenTrainPredict class">
-    <HelpKINode Title="ImgGenTrainPredict Class" Url="html/T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-    <HelpKINode Title="ImgGenTrainPredict Members" Url="html/AllMembers.T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-    <HelpKINode Title="about ImgGenTrainPredict class" Url="html/T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-    <HelpKINode Title="constructor" Url="html/M-SiaNet.Processing.ImgGenTrainPredict.-ctor.htm" />
-    <HelpKINode Title="fields" Url="html/Fields.T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ImgGenTrainPredict.Evaluate method" Url="html/M-SiaNet.Processing.ImgGenTrainPredict.Evaluate.htm" />
-  <HelpKINode Title="ImgGenTrainPredict.ImgGenTrainPredict constructor" Url="html/M-SiaNet.Processing.ImgGenTrainPredict.-ctor.htm" />
-  <HelpKINode Title="ImgGenTrainPredict.MiniBatchDataIsSweepEnd method" Url="html/M-SiaNet.Processing.ImgGenTrainPredict.MiniBatchDataIsSweepEnd.htm" />
-  <HelpKINode Title="ImgGenTrainPredict.Model field" Url="html/F-SiaNet.Processing.ImgGenTrainPredict.Model.htm" />
-  <HelpKINode Title="ImgGenTrainPredict.Train method" Url="html/M-SiaNet.Processing.ImgGenTrainPredict.Train.htm" />
   <HelpKINode Title="InceptionV3 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="InceptionV3 field">
-    <HelpKINode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.ImageNetModel.InceptionV3.htm" />
     <HelpKINode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.InceptionV3.htm" />
+    <HelpKINode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.ImageNetModel.InceptionV3.htm" />
   </HelpKINode>
   <HelpKINode Title="Initializers class">
     <HelpKINode Title="Initializers Class" Url="html/T-SiaNet.Initializers.htm" />
@@ -594,15 +526,6 @@
   <HelpKINode Title="Initializers.Get method" Url="html/M-SiaNet.Initializers.Get.htm" />
   <HelpKINode Title="IsL1 property" Url="html/P-SiaNet.Regulizers.IsL1.htm" />
   <HelpKINode Title="IsL2 property" Url="html/P-SiaNet.Regulizers.IsL2.htm" />
-  <HelpKINode Title="ITrainPredict interface">
-    <HelpKINode Title="ITrainPredict Interface" Url="html/T-SiaNet.Interface.ITrainPredict.htm" />
-    <HelpKINode Title="ITrainPredict Members" Url="html/AllMembers.T-SiaNet.Interface.ITrainPredict.htm" />
-    <HelpKINode Title="about ITrainPredict interface" Url="html/T-SiaNet.Interface.ITrainPredict.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Interface.ITrainPredict.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Interface.ITrainPredict.htm" />
-  </HelpKINode>
-  <HelpKINode Title="ITrainPredict.Evaluate method" Url="html/M-SiaNet.Interface.ITrainPredict.Evaluate.htm" />
-  <HelpKINode Title="ITrainPredict.Train method" Url="html/M-SiaNet.Interface.ITrainPredict.Train.htm" />
   <HelpKINode Title="KernalSize property">
     <HelpKINode Title="KernalSize Property " Url="html/P-SiaNet.Model.Layers.Conv2D.KernalSize.htm" />
     <HelpKINode Title="KernalSize Property " Url="html/P-SiaNet.Model.Layers.Conv3D.KernalSize.htm" />
@@ -615,7 +538,6 @@
   <HelpKINode Title="L1L2 method" Url="html/M-SiaNet.Regulizers.L1L2.htm" />
   <HelpKINode Title="L2 field" Url="html/F-SiaNet.Common.OptRegulizers.L2.htm" />
   <HelpKINode Title="L2 property" Url="html/P-SiaNet.Regulizers.L2.htm" />
-  <HelpKINode Title="labelStreamInfo field" Url="html/F-SiaNet.Model.ImageDataGenerator.labelStreamInfo.htm" />
   <HelpKINode Title="LayerConfig class">
     <HelpKINode Title="LayerConfig Class" Url="html/T-SiaNet.Model.LayerConfig.htm" />
     <HelpKINode Title="LayerConfig Members" Url="html/AllMembers.T-SiaNet.Model.LayerConfig.htm" />
@@ -630,10 +552,10 @@
   <HelpKINode Title="LeakyReLU field" Url="html/F-SiaNet.Common.OptActivations.LeakyReLU.htm" />
   <HelpKINode Title="LoadFromCsv method" Url="html/M-SiaNet.Model.DataFrame.LoadFromCsv.htm" />
   <HelpKINode Title="LoadModel method">
-    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.FastRCNN.LoadModel.htm" />
-    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Model.Sequential.LoadModel.htm" />
     <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.ImageNet.LoadModel.htm" />
     <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.Cifar10.LoadModel.htm" />
+    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Model.Sequential.LoadModel.htm" />
+    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.FastRCNN.LoadModel.htm" />
   </HelpKINode>
   <HelpKINode Title="LoadNetConfig method" Url="html/M-SiaNet.Model.Sequential.LoadNetConfig.htm" />
   <HelpKINode Title="Logging class">
@@ -646,14 +568,6 @@
   </HelpKINode>
   <HelpKINode Title="Logging.OnWriteLog event" Url="html/E-SiaNet.Common.Logging.OnWriteLog.htm" />
   <HelpKINode Title="Logging.WriteTrace method" Url="html/Overload-SiaNet.Common.Logging.WriteTrace.htm" />
-  <HelpKINode Title="Losses class">
-    <HelpKINode Title="Losses Class" Url="html/T-SiaNet.Losses.htm" />
-    <HelpKINode Title="Losses Members" Url="html/AllMembers.T-SiaNet.Losses.htm" />
-    <HelpKINode Title="about Losses class" Url="html/T-SiaNet.Losses.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Losses.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Losses.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Losses.Get method" Url="html/M-SiaNet.Losses.Get.htm" />
   <HelpKINode Title="LSTM method" Url="html/M-SiaNet.NN.Recurrent.LSTM.htm" />
   <HelpKINode Title="MAE field" Url="html/F-SiaNet.Common.OptMetrics.MAE.htm" />
   <HelpKINode Title="MAPE field" Url="html/F-SiaNet.Common.OptMetrics.MAPE.htm" />
@@ -707,25 +621,10 @@
   <HelpKINode Title="MeanAbsolutePercentageError field" Url="html/F-SiaNet.Common.OptLosses.MeanAbsolutePercentageError.htm" />
   <HelpKINode Title="MeanSquaredError field" Url="html/F-SiaNet.Common.OptLosses.MeanSquaredError.htm" />
   <HelpKINode Title="MeanSquaredLogError field" Url="html/F-SiaNet.Common.OptLosses.MeanSquaredLogError.htm" />
-  <HelpKINode Title="Metrics class">
-    <HelpKINode Title="Metrics Class" Url="html/T-SiaNet.Metrics.htm" />
-    <HelpKINode Title="Metrics Members" Url="html/AllMembers.T-SiaNet.Metrics.htm" />
-    <HelpKINode Title="about Metrics class" Url="html/T-SiaNet.Metrics.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Metrics.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Metrics.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Metrics.Get method" Url="html/M-SiaNet.Metrics.Get.htm" />
-  <HelpKINode Title="MiniBatchDataIsSweepEnd method" Url="html/M-SiaNet.Processing.ImgGenTrainPredict.MiniBatchDataIsSweepEnd.htm" />
-  <HelpKINode Title="miniBatchSource field" Url="html/F-SiaNet.Model.ImageDataGenerator.miniBatchSource.htm" />
   <HelpKINode Title="MNIST enumeration member" Url="html/T-SiaNet.Common.SampleDataset.htm" />
   <HelpKINode Title="MNIST field" Url="html/F-SiaNet.Common.SampleDataset.MNIST.htm" />
-  <HelpKINode Title="Model field">
-    <HelpKINode Title="Model Field" Url="html/F-SiaNet.Processing.DataFrameTrainPredict.Model.htm" />
-    <HelpKINode Title="Model Field" Url="html/F-SiaNet.Processing.ImgGenTrainPredict.Model.htm" />
-  </HelpKINode>
   <HelpKINode Title="Module property" Url="html/P-SiaNet.Model.Sequential.Module.htm" />
   <HelpKINode Title="MomentumSGD field" Url="html/F-SiaNet.Common.OptOptimizers.MomentumSGD.htm" />
-  <HelpKINode Title="MomentumSGD method" Url="html/M-SiaNet.Optimizers.MomentumSGD.htm" />
   <HelpKINode Title="MSE field" Url="html/F-SiaNet.Common.OptMetrics.MSE.htm" />
   <HelpKINode Title="MSLE field" Url="html/F-SiaNet.Common.OptMetrics.MSLE.htm" />
   <HelpKINode Title="Name property">
@@ -737,9 +636,9 @@
     <HelpKINode Title="NextBatch Method " Url="html/M-SiaNet.Model.ImageDataGenerator.NextBatch.htm" />
   </HelpKINode>
   <HelpKINode Title="None field">
+    <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptActivations.None.htm" />
     <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptRegulizers.None.htm" />
     <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptInitializers.None.htm" />
-    <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptActivations.None.htm" />
   </HelpKINode>
   <HelpKINode Title="Normal field" Url="html/F-SiaNet.Common.OptInitializers.Normal.htm" />
   <HelpKINode Title="NormalizationTimeConstant property" Url="html/P-SiaNet.Model.Layers.BatchNorm.NormalizationTimeConstant.htm" />
@@ -769,21 +668,6 @@
   <HelpKINode Title="OptActivations.Softmax field" Url="html/F-SiaNet.Common.OptActivations.Softmax.htm" />
   <HelpKINode Title="OptActivations.Softplus field" Url="html/F-SiaNet.Common.OptActivations.Softplus.htm" />
   <HelpKINode Title="OptActivations.Tanh field" Url="html/F-SiaNet.Common.OptActivations.Tanh.htm" />
-  <HelpKINode Title="Optimizers class">
-    <HelpKINode Title="Optimizers Class" Url="html/T-SiaNet.Optimizers.htm" />
-    <HelpKINode Title="Optimizers Members" Url="html/AllMembers.T-SiaNet.Optimizers.htm" />
-    <HelpKINode Title="about Optimizers class" Url="html/T-SiaNet.Optimizers.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Optimizers.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Optimizers.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Optimizers.AdaDelta method" Url="html/M-SiaNet.Optimizers.AdaDelta.htm" />
-  <HelpKINode Title="Optimizers.AdaGrad method" Url="html/M-SiaNet.Optimizers.AdaGrad.htm" />
-  <HelpKINode Title="Optimizers.Adam method" Url="html/M-SiaNet.Optimizers.Adam.htm" />
-  <HelpKINode Title="Optimizers.Adamax method" Url="html/M-SiaNet.Optimizers.Adamax.htm" />
-  <HelpKINode Title="Optimizers.Get method" Url="html/M-SiaNet.Optimizers.Get.htm" />
-  <HelpKINode Title="Optimizers.MomentumSGD method" Url="html/M-SiaNet.Optimizers.MomentumSGD.htm" />
-  <HelpKINode Title="Optimizers.RMSprop method" Url="html/M-SiaNet.Optimizers.RMSprop.htm" />
-  <HelpKINode Title="Optimizers.SGD method" Url="html/M-SiaNet.Optimizers.SGD.htm" />
   <HelpKINode Title="OptInitializers class">
     <HelpKINode Title="OptInitializers Class" Url="html/T-SiaNet.Common.OptInitializers.htm" />
     <HelpKINode Title="OptInitializers Members" Url="html/AllMembers.T-SiaNet.Common.OptInitializers.htm" />
@@ -890,40 +774,39 @@
   <HelpKINode Title="OptRegulizers.L2 field" Url="html/F-SiaNet.Common.OptRegulizers.L2.htm" />
   <HelpKINode Title="OptRegulizers.None field" Url="html/F-SiaNet.Common.OptRegulizers.None.htm" />
   <HelpKINode Title="Padding property">
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Padding.htm" />
   </HelpKINode>
-  <HelpKINode Title="ParallelExtractCHW method" Url="html/M-SiaNet.Processing.ImageUtil.ParallelExtractCHW.htm" />
   <HelpKINode Title="Params property" Url="html/P-SiaNet.Model.LayerConfig.Params.htm" />
   <HelpKINode Title="Pascal enumeration member">
     <HelpKINode Title="FastRCNNModel Enumeration" Url="html/T-SiaNet.Common.FastRCNNModel.htm" />
     <HelpKINode Title="PrepDataset Enumeration" Url="html/T-SiaNet.Common.PrepDataset.htm" />
   </HelpKINode>
   <HelpKINode Title="Pascal field">
-    <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Pascal.htm" />
-    <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PrepDataset.Pascal.htm" />
     <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.FastRCNNModel.Pascal.htm" />
+    <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PrepDataset.Pascal.htm" />
+    <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Pascal.htm" />
   </HelpKINode>
   <HelpKINode Title="Poisson field" Url="html/F-SiaNet.Common.OptLosses.Poisson.htm" />
   <HelpKINode Title="PoolSize property">
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.PoolSize.htm" />
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.PoolSize.htm" />
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.PoolSize.htm" />
     <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.PoolSize.htm" />
     <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.PoolSize.htm" />
     <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.PoolSize.htm" />
   </HelpKINode>
   <HelpKINode Title="Predict method">
-    <HelpKINode Title="Predict Method " Url="html/Overload-SiaNet.Application.Cifar10.Predict.htm" />
-    <HelpKINode Title="Predict Method " Url="html/Overload-SiaNet.Application.FastRCNN.Predict.htm" />
     <HelpKINode Title="Predict Method " Url="html/Overload-SiaNet.Application.ImageNet.Predict.htm" />
+    <HelpKINode Title="Predict Method " Url="html/Overload-SiaNet.Application.FastRCNN.Predict.htm" />
+    <HelpKINode Title="Predict Method " Url="html/Overload-SiaNet.Application.Cifar10.Predict.htm" />
   </HelpKINode>
   <HelpKINode Title="PredMap class">
     <HelpKINode Title="PredMap Class" Url="html/T-SiaNet.Common.Resources.PredMap.htm" />
@@ -1011,7 +894,6 @@
   <HelpKINode Title="Regulizers.RegL1 method" Url="html/M-SiaNet.Regulizers.RegL1.htm" />
   <HelpKINode Title="Regulizers.RegL2 method" Url="html/M-SiaNet.Regulizers.RegL2.htm" />
   <HelpKINode Title="ReLU field" Url="html/F-SiaNet.Common.OptActivations.ReLU.htm" />
-  <HelpKINode Title="Resize method" Url="html/M-SiaNet.Processing.ImageUtil.Resize.htm" />
   <HelpKINode Title="ResNet101 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="ResNet101 field">
     <HelpKINode Title="ResNet101 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet101.htm" />
@@ -1034,8 +916,8 @@
   </HelpKINode>
   <HelpKINode Title="ResNet20 enumeration member" Url="html/T-SiaNet.Common.Cifar10Model.htm" />
   <HelpKINode Title="ResNet20 field">
-    <HelpKINode Title="ResNet20 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet20.htm" />
     <HelpKINode Title="ResNet20 Field" Url="html/F-SiaNet.Common.Cifar10Model.ResNet20.htm" />
+    <HelpKINode Title="ResNet20 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet20.htm" />
   </HelpKINode>
   <HelpKINode Title="ResNet34 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="ResNet34 field">
@@ -1044,12 +926,11 @@
   </HelpKINode>
   <HelpKINode Title="ResNet50 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="ResNet50 field">
-    <HelpKINode Title="ResNet50 Field" Url="html/F-SiaNet.Common.ImageNetModel.ResNet50.htm" />
     <HelpKINode Title="ResNet50 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet50.htm" />
+    <HelpKINode Title="ResNet50 Field" Url="html/F-SiaNet.Common.ImageNetModel.ResNet50.htm" />
   </HelpKINode>
   <HelpKINode Title="ResourceManager property" Url="html/P-SiaNet.Common.Resources.PredMap.ResourceManager.htm" />
   <HelpKINode Title="RMSProp field" Url="html/F-SiaNet.Common.OptOptimizers.RMSProp.htm" />
-  <HelpKINode Title="RMSprop method" Url="html/M-SiaNet.Optimizers.RMSprop.htm" />
   <HelpKINode Title="RNN method" Url="html/M-SiaNet.NN.Recurrent.RNN.htm" />
   <HelpKINode Title="RunningMeanInitializer property" Url="html/P-SiaNet.Model.Layers.BatchNorm.RunningMeanInitializer.htm" />
   <HelpKINode Title="RunningStdInvInitializer property" Url="html/P-SiaNet.Model.Layers.BatchNorm.RunningStdInvInitializer.htm" />
@@ -1090,13 +971,12 @@
   <HelpKINode Title="Sequential.Train method" Url="html/Overload-SiaNet.Model.Sequential.Train.htm" />
   <HelpKINode Title="Sequential.TrainingResult property" Url="html/P-SiaNet.Model.Sequential.TrainingResult.htm" />
   <HelpKINode Title="SGD field" Url="html/F-SiaNet.Common.OptOptimizers.SGD.htm" />
-  <HelpKINode Title="SGD method" Url="html/M-SiaNet.Optimizers.SGD.htm" />
   <HelpKINode Title="Shape property">
-    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Shape.htm" />
+    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Shape.htm" />
     <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Dense.Shape.htm" />
     <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Shape.htm" />
     <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.Shape.htm" />
-    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Shape.htm" />
+    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Shape.htm" />
   </HelpKINode>
   <HelpKINode Title="Shuffle method" Url="html/M-SiaNet.Model.DataFrame.Shuffle.htm" />
   <HelpKINode Title="SiaNet namespace" Url="html/N-SiaNet.htm" />
@@ -1192,19 +1072,6 @@
   <HelpKINode Title="SiaNet.Initializers class">
     <HelpKINode Title="Initializers Class" Url="html/T-SiaNet.Initializers.htm" />
     <HelpKINode Title="Initializers Members" Url="html/AllMembers.T-SiaNet.Initializers.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Interface namespace" Url="html/N-SiaNet.Interface.htm" />
-  <HelpKINode Title="SiaNet.Interface.ITrainPredict interface">
-    <HelpKINode Title="ITrainPredict Interface" Url="html/T-SiaNet.Interface.ITrainPredict.htm" />
-    <HelpKINode Title="ITrainPredict Members" Url="html/AllMembers.T-SiaNet.Interface.ITrainPredict.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Losses class">
-    <HelpKINode Title="Losses Class" Url="html/T-SiaNet.Losses.htm" />
-    <HelpKINode Title="Losses Members" Url="html/AllMembers.T-SiaNet.Losses.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Metrics class">
-    <HelpKINode Title="Metrics Class" Url="html/T-SiaNet.Metrics.htm" />
-    <HelpKINode Title="Metrics Members" Url="html/AllMembers.T-SiaNet.Metrics.htm" />
   </HelpKINode>
   <HelpKINode Title="SiaNet.Model namespace" Url="html/N-SiaNet.Model.htm" />
   <HelpKINode Title="SiaNet.Model.ConfigModule class">
@@ -1334,27 +1201,6 @@
     <HelpKINode Title="Recurrent Class" Url="html/T-SiaNet.NN.Recurrent.htm" />
     <HelpKINode Title="Recurrent Members" Url="html/AllMembers.T-SiaNet.NN.Recurrent.htm" />
   </HelpKINode>
-  <HelpKINode Title="SiaNet.Optimizers class">
-    <HelpKINode Title="Optimizers Class" Url="html/T-SiaNet.Optimizers.htm" />
-    <HelpKINode Title="Optimizers Members" Url="html/AllMembers.T-SiaNet.Optimizers.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Processing namespace" Url="html/N-SiaNet.Processing.htm" />
-  <HelpKINode Title="SiaNet.Processing.DataFrameTrainPredict class">
-    <HelpKINode Title="DataFrameTrainPredict Class" Url="html/T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-    <HelpKINode Title="DataFrameTrainPredict Members" Url="html/AllMembers.T-SiaNet.Processing.DataFrameTrainPredict.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Processing.DataFrameUtil class">
-    <HelpKINode Title="DataFrameUtil Class" Url="html/T-SiaNet.Processing.DataFrameUtil.htm" />
-    <HelpKINode Title="DataFrameUtil Members" Url="html/AllMembers.T-SiaNet.Processing.DataFrameUtil.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Processing.ImageUtil class">
-    <HelpKINode Title="ImageUtil Class" Url="html/T-SiaNet.Processing.ImageUtil.htm" />
-    <HelpKINode Title="ImageUtil Members" Url="html/AllMembers.T-SiaNet.Processing.ImageUtil.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Processing.ImgGenTrainPredict class">
-    <HelpKINode Title="ImgGenTrainPredict Class" Url="html/T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-    <HelpKINode Title="ImgGenTrainPredict Members" Url="html/AllMembers.T-SiaNet.Processing.ImgGenTrainPredict.htm" />
-  </HelpKINode>
   <HelpKINode Title="SiaNet.Regulizers class">
     <HelpKINode Title="Regulizers Class" Url="html/T-SiaNet.Regulizers.htm" />
     <HelpKINode Title="Regulizers Members" Url="html/AllMembers.T-SiaNet.Regulizers.htm" />
@@ -1372,28 +1218,23 @@
   <HelpKINode Title="SplitXY method" Url="html/Overload-SiaNet.Model.DataFrame.SplitXY.htm" />
   <HelpKINode Title="Std method" Url="html/M-SiaNet.Common.Extensions.Std.htm" />
   <HelpKINode Title="Strides property">
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Strides.htm" />
     <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Strides.htm" />
   </HelpKINode>
   <HelpKINode Title="Tanh field" Url="html/F-SiaNet.Common.OptActivations.Tanh.htm" />
   <HelpKINode Title="Test property">
-    <HelpKINode Title="Test Property " Url="html/P-SiaNet.Common.DatasetInfo.Test.htm" />
     <HelpKINode Title="Test Property " Url="html/P-SiaNet.Model.TrainTestFrame.Test.htm" />
+    <HelpKINode Title="Test Property " Url="html/P-SiaNet.Common.DatasetInfo.Test.htm" />
   </HelpKINode>
   <HelpKINode Title="TopKAccuracy field" Url="html/F-SiaNet.Common.OptMetrics.TopKAccuracy.htm" />
-  <HelpKINode Title="Train method">
-    <HelpKINode Title="Train Method " Url="html/M-SiaNet.Processing.DataFrameTrainPredict.Train.htm" />
-    <HelpKINode Title="Train Method " Url="html/M-SiaNet.Processing.ImgGenTrainPredict.Train.htm" />
-    <HelpKINode Title="Train Method " Url="html/M-SiaNet.Interface.ITrainPredict.Train.htm" />
-    <HelpKINode Title="Train Method " Url="html/Overload-SiaNet.Model.Sequential.Train.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Train method" Url="html/Overload-SiaNet.Model.Sequential.Train.htm" />
   <HelpKINode Title="Train property">
     <HelpKINode Title="Train Property " Url="html/P-SiaNet.Model.TrainTestFrame.Train.htm" />
     <HelpKINode Title="Train Property " Url="html/P-SiaNet.Common.DatasetInfo.Train.htm" />
@@ -1414,10 +1255,10 @@
   <HelpKINode Title="TruncatedNormal field" Url="html/F-SiaNet.Common.OptInitializers.TruncatedNormal.htm" />
   <HelpKINode Title="Uniform field" Url="html/F-SiaNet.Common.OptInitializers.Uniform.htm" />
   <HelpKINode Title="UseBias property">
-    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv2D.UseBias.htm" />
-    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv1D.UseBias.htm" />
-    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Dense.UseBias.htm" />
     <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv3D.UseBias.htm" />
+    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv1D.UseBias.htm" />
+    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv2D.UseBias.htm" />
+    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Dense.UseBias.htm" />
   </HelpKINode>
   <HelpKINode Title="Utility class">
     <HelpKINode Title="Utility Class" Url="html/T-SiaNet.Utility.htm" />
@@ -1430,19 +1271,19 @@
   <HelpKINode Title="Version property" Url="html/P-SiaNet.Model.ConfigModule.Version.htm" />
   <HelpKINode Title="VGG16 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="VGG16 field">
-    <HelpKINode Title="VGG16 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG16.htm" />
     <HelpKINode Title="VGG16 Field" Url="html/F-SiaNet.Common.ImageNetModel.VGG16.htm" />
+    <HelpKINode Title="VGG16 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG16.htm" />
   </HelpKINode>
   <HelpKINode Title="VGG19 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="VGG19 field">
-    <HelpKINode Title="VGG19 Field" Url="html/F-SiaNet.Common.ImageNetModel.VGG19.htm" />
     <HelpKINode Title="VGG19 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG19.htm" />
+    <HelpKINode Title="VGG19 Field" Url="html/F-SiaNet.Common.ImageNetModel.VGG19.htm" />
   </HelpKINode>
   <HelpKINode Title="WeightInitializer property">
-    <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.WeightInitializer.htm" />
     <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.WeightInitializer.htm" />
     <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.WeightInitializer.htm" />
     <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.WeightInitializer.htm" />
+    <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.WeightInitializer.htm" />
   </HelpKINode>
   <HelpKINode Title="WriteLog delegate" Url="html/T-SiaNet.Common.WriteLog.htm" />
   <HelpKINode Title="WriteTrace method" Url="html/Overload-SiaNet.Common.Logging.WriteTrace.htm" />

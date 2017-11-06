@@ -62,7 +62,7 @@
                       </td>
                       <td>
                         <div class="summary">
-   The Activation layer
+   Applies an activation function to an output.
    </div>
                       </td>
                     </tr>
@@ -73,7 +73,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.AvgPool1D.htm">AvgPool1D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Average pooling for temporal data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -82,7 +86,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.AvgPool2D.htm">AvgPool2D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Average pooling operation for spatial data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -91,7 +99,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.AvgPool3D.htm">AvgPool3D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Average pooling operation for 3D data (spatial or spatio-temporal).
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -100,7 +112,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.BatchNorm.htm">BatchNorm</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Batch normalization layer (Ioffe and Szegedy, 2014). Normalize the activations of the previous layer at each batch, i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation close to 1.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -109,7 +125,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.Conv1D.htm">Conv1D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   1D convolution layer (e.g. temporal convolution). This layer creates a convolution kernel that is convolved with the layer input over a single spatial (or temporal) dimension to produce a tensor of outputs. If use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -118,7 +138,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.Conv2D.htm">Conv2D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   2D convolution layer (e.g. spatial convolution over images). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -127,7 +151,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.Conv3D.htm">Conv3D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   3D convolution layer (e.g. spatial convolution over volumes). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -136,7 +164,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.Dense.htm">Dense</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Dense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument, kernel is a weights matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -145,7 +177,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.Dropout.htm">Dropout</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Dropout consists in randomly setting a fraction rate of input units to 0 at each update during training time, which helps prevent overfitting.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -154,7 +190,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.GlobalAvgPool1D.htm">GlobalAvgPool1D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Global average pooling operation for temporal data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -163,7 +203,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.GlobalAvgPool2D.htm">GlobalAvgPool2D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Global average pooling operation for spatial data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -172,7 +216,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.GlobalAvgPool3D.htm">GlobalAvgPool3D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Global average pooling operation for 3D data (spatial or spatio-temporal).
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -181,7 +229,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.GlobalMaxPool1D.htm">GlobalMaxPool1D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Global max pooling operation for temporal data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -190,7 +242,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.GlobalMaxPool2D.htm">GlobalMaxPool2D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Global max pooling operation for spatial data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -199,7 +255,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.GlobalMaxPool3D.htm">GlobalMaxPool3D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Global max pooling 3D data (spatial or spatio-temporal).
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -208,7 +268,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.MaxPool1D.htm">MaxPool1D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Max pooling operation for temporal data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -217,7 +281,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.MaxPool2D.htm">MaxPool2D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Max pooling operation for spatial data.
+   </div>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -226,7 +294,11 @@
                       <td>
                         <a href="T-SiaNet.Model.Layers.MaxPool3D.htm">MaxPool3D</a>
                       </td>
-                      <td />
+                      <td>
+                        <div class="summary">
+   Max pooling operation for 3D data (spatial or spatio-temporal).
+   </div>
+                      </td>
                     </tr>
                   </table>
                 </div>

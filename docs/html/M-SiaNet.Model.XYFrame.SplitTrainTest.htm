@@ -27,6 +27,7 @@
       <MSHelp:Attr Name="Locale" Value="en-us" />
       <MSHelp:Attr Name="TopicType" Value="kbSyntax" />
       <MSHelp:Attr Name="TopicType" Value="apiref" />
+      <MSHelp:Attr Name="Abstract" Value="Splits the current dataset into train and test batch." />
       <MSHelp:Attr Name="AssemblyVersion" Value="" />
     </xml>
   </head>
@@ -39,6 +40,9 @@
             <h1 class="title">XYFrame<span class="languageSpecificText"><span class="cs">.</span><span class="vb">.</span><span class="cpp">::</span><span class="nu">.</span><span class="fs">.</span></span>SplitTrainTest Method </h1>
             <div id="mainSection">
               <div id="mainBody">
+                <div class="summary">
+   Splits the current dataset into train and test batch.
+   </div>
                 <p />
     <b>Namespace:</b> 
    <a href="N-SiaNet.Model.htm">SiaNet.Model</a><br />
@@ -50,7 +54,7 @@
 ) <span class="keyword">As</span> <a href="T-SiaNet.Model.TrainTestFrame.htm">TrainTestFrame</a></pre></div><div class="CodeSnippetContainerCode ManagedCPlusPlusCode"><pre xml:space="preserve" class="libCScode"><span class="keyword">public</span>:
 <a href="T-SiaNet.Model.TrainTestFrame.htm">TrainTestFrame</a>^ <span class="identifier">SplitTrainTest</span>(
 	<a href="http://msdn.microsoft.com/en-us/library/system.double.aspx" target="_blank">double</a>^ <span class="parameter">testSplitSize</span>
-)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="testSplitSize"><dt><span class="parameterItalic">testSplitSize</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.double.aspx" target="_blank">Double</a><br /></dd></dl></div></div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-SiaNet.Model.XYFrame.htm">XYFrame Class</a></div><div class="seeAlsoStyle"><a href="N-SiaNet.Model.htm">SiaNet.Model Namespace</a></div></div></div>
+)</pre></div></div></div><div id="parameters"><h4 class="subHeading">Parameters</h4><dl paramName="testSplitSize"><dt><span class="parameterItalic">testSplitSize</span></dt><dd>Type: <a href="http://msdn.microsoft.com/en-us/library/system.double.aspx" target="_blank">Double</a><br />Size of the test split. (value between 0.01 and 0.99)</dd></dl></div><h4 class="subHeading">Return Value</h4></div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">Exceptions</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="exceptionsSection"><!----></a><div class="tableSection"><table width="100%" cellspacing="0" cellpadding="5" frame="lhs"><tr><th class="exceptionNameColumn">Exception</th><th class="exceptionConditionColumn">Condition</th></tr><tr><td><a href="http://msdn.microsoft.com/en-us/library/system.argumentexception.aspx" target="_blank">ArgumentException</a></td><td>Please use test split range between 0.01 and 0.99</td></tr></table></div></div><div class="LW_CollapsibleArea_Container"><div class="LW_CollapsibleArea_TitleDiv"><h2 class="LW_CollapsibleArea_Title">See Also</h2><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr" /></div></div><a id="seeAlsoSection"><!----></a><div class="seeAlsoStyle"><a href="T-SiaNet.Model.XYFrame.htm">XYFrame Class</a></div><div class="seeAlsoStyle"><a href="N-SiaNet.Model.htm">SiaNet.Model Namespace</a></div></div></div>
             </div>
           </div>
         </div>
