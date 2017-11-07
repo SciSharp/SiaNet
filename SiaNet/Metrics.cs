@@ -1,13 +1,9 @@
-﻿using CNTK;
-using SiaNet.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet
+﻿namespace SiaNet
 {
+    using CNTK;
+    using SiaNet.Common;
+    using System;
+
     /// <summary>
     /// A metric is a function that is used to judge the performance of your model. Metric functions are to be supplied in the  metrics parameter when a model is compiled. 
     /// A metric function is similar to an loss function, except that the results from evaluating a metric are not used when training the model.

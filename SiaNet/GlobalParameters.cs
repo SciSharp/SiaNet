@@ -1,12 +1,7 @@
-﻿using CNTK;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet
+﻿namespace SiaNet
 {
+    using CNTK;
+
     /// <summary>
     /// Placeholder for all global parameters. Need to be defined start of the application
     /// </summary>

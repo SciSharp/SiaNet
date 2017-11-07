@@ -1,13 +1,9 @@
-﻿using CNTK;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet.Model
+﻿namespace SiaNet.Model
 {
+    using CNTK;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Enum type for image data generator
     /// </summary>

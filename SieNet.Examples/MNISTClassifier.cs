@@ -1,15 +1,13 @@
-﻿using SiaNet.Common;
-using SiaNet.Model;
-using SiaNet.Model.Layers;
-using SiaNet.Model.Optimizers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet.Examples
+﻿namespace SiaNet.Examples
 {
+    using SiaNet.Common;
+    using SiaNet.Model;
+    using SiaNet.Model.Layers;
+    using SiaNet.Model.Optimizers;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     internal class MNISTClassifier
     {
         private static ImageDataGenerator train;
@@ -66,7 +64,7 @@ namespace SiaNet.Examples
         public static void Train()
         {
             //model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Compile(new SGD(0.1), OptLosses.CrossEntropy, OptMetrics.Accuracy, Regulizers.RegL2(0.1));
+            model.Compile(new SGD(0.1), OptLosses.CrossEntropy, OptMetrics.Accuracy, Regulizers.L1L2(0.1));
             model.Train(train, 10, 64, null);
         }
 

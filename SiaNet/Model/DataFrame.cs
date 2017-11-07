@@ -1,14 +1,12 @@
-﻿using CNTK;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet.Model
+﻿namespace SiaNet.Model
 {
+    using CNTK;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+
     /// <summary>
     /// Dataset loader with utilities to split and shuffle
     /// </summary>

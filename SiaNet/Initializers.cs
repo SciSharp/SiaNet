@@ -1,13 +1,8 @@
-﻿using CNTK;
-using SiaNet.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet
+﻿namespace SiaNet
 {
+    using CNTK;
+    using SiaNet.Common;
+
     /// <summary>
     /// Initializations define the way to set the initial random weights of Keras layers.The following built-in initializers are available as part of the SiaNet.Common.OptInitializers module
     /// <see cref="OptInitializers"/>

@@ -16,17 +16,17 @@ namespace SiaNet
         /// Gets or sets the l1 weight.
         /// </summary>
         /// <value>The l1.</value>
-        public double L1 { get; set; }
+        internal double L1 { get; set; }
 
         /// <summary>
         /// Gets or sets the l2 weight.
         /// </summary>
         /// <value>The l2.</value>
-        public double L2 { get; set; }
+        internal double L2 { get; set; }
 
-        public bool IsL1 { get; set; }
+        internal bool IsL1 { get; set; }
 
-        public bool IsL2 { get; set; }
+        internal bool IsL2 { get; set; }
 
         /// <summary>
         /// Initialize with l1 and l2 weight

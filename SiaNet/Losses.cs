@@ -1,13 +1,10 @@
-﻿using CNTK;
-using SiaNet.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SiaNet
+﻿namespace SiaNet
 {
+    using CNTK;
+    using SiaNet.Common;
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// A loss function (or objective function, or optimization score function) is one of the three parameters required to compile a model.The actual optimized objective is the mean of the output array across all datapoints.
     /// <see cref="OptLosses"/>
