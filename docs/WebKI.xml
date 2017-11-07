@@ -2,11 +2,11 @@
 <HelpKI>
   <HelpKINode Title="Accuracy field" Url="html/F-SiaNet.Common.OptMetrics.Accuracy.htm" />
   <HelpKINode Title="Act property">
-    <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Act.htm" />
-    <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Act.htm" />
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Dense.Act.htm" />
+    <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Act.htm" />
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Activation.Act.htm" />
     <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Act.htm" />
+    <HelpKINode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Act.htm" />
   </HelpKINode>
   <HelpKINode Title="Activation class">
     <HelpKINode Title="Activation Class" Url="html/T-SiaNet.Model.Layers.Activation.htm" />
@@ -74,7 +74,7 @@
   <HelpKINode Title="Adamax.Momentum property" Url="html/P-SiaNet.Model.Optimizers.Adamax.Momentum.htm" />
   <HelpKINode Title="Adamax.UnitGain property" Url="html/P-SiaNet.Model.Optimizers.Adamax.UnitGain.htm" />
   <HelpKINode Title="Adamax.VarianceMomentum property" Url="html/P-SiaNet.Model.Optimizers.Adamax.VarianceMomentum.htm" />
-  <HelpKINode Title="Add method" Url="html/M-SiaNet.Model.Sequential.Add.htm" />
+  <HelpKINode Title="Add method" Url="html/M-SiaNet.Sequential.Add.htm" />
   <HelpKINode Title="AlexNet enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="AlexNet field">
     <HelpKINode Title="AlexNet Field" Url="html/F-SiaNet.Common.ImageNetModel.AlexNet.htm" />
@@ -170,17 +170,17 @@
   <HelpKINode Title="BBox property" Url="html/P-SiaNet.Model.PredResult.BBox.htm" />
   <HelpKINode Title="BetaInitializer property" Url="html/P-SiaNet.Model.Layers.BatchNorm.BetaInitializer.htm" />
   <HelpKINode Title="BiasInitializer property">
-    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.BiasInitializer.htm" />
     <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.BiasInitializer.htm" />
-    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.BiasInitializer.htm" />
     <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.BiasInitializer.htm" />
+    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.BiasInitializer.htm" />
+    <HelpKINode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.BiasInitializer.htm" />
   </HelpKINode>
   <HelpKINode Title="BinaryCrossEntropy field" Url="html/F-SiaNet.Common.OptLosses.BinaryCrossEntropy.htm" />
   <HelpKINode Title="BlendTimeConst property" Url="html/P-SiaNet.Model.Layers.BatchNorm.BlendTimeConst.htm" />
   <HelpKINode Title="Channels property">
-    <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Channels.htm" />
-    <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Channels.htm" />
     <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Channels.htm" />
+    <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Channels.htm" />
+    <HelpKINode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Channels.htm" />
   </HelpKINode>
   <HelpKINode Title="Cifar10 class">
     <HelpKINode Title="Cifar10 Class" Url="html/T-SiaNet.Application.Cifar10.htm" />
@@ -203,7 +203,7 @@
   <HelpKINode Title="Cifar10Model.ResNet20 field" Url="html/F-SiaNet.Common.Cifar10Model.ResNet20.htm" />
   <HelpKINode Title="Cifar10Path.ResNet110 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet110.htm" />
   <HelpKINode Title="Cifar10Path.ResNet20 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet20.htm" />
-  <HelpKINode Title="Compile method" Url="html/Overload-SiaNet.Model.Sequential.Compile.htm" />
+  <HelpKINode Title="Compile method" Url="html/Overload-SiaNet.Sequential.Compile.htm" />
   <HelpKINode Title="ConfigModule class">
     <HelpKINode Title="ConfigModule Class" Url="html/T-SiaNet.Model.ConfigModule.htm" />
     <HelpKINode Title="ConfigModule Members" Url="html/AllMembers.T-SiaNet.Model.ConfigModule.htm" />
@@ -302,10 +302,8 @@
   <HelpKINode Title="Convolution.MaxPool1D method" Url="html/M-SiaNet.NN.Convolution.MaxPool1D.htm" />
   <HelpKINode Title="Convolution.MaxPool2D method" Url="html/M-SiaNet.NN.Convolution.MaxPool2D.htm" />
   <HelpKINode Title="Convolution.MaxPool3D method" Url="html/M-SiaNet.NN.Convolution.MaxPool3D.htm" />
-  <HelpKINode Title="CreateParamVar method" Url="html/M-SiaNet.Utility.CreateParamVar.htm" />
   <HelpKINode Title="CrossEntropy field" Url="html/F-SiaNet.Common.OptLosses.CrossEntropy.htm" />
   <HelpKINode Title="Culture property" Url="html/P-SiaNet.Common.Resources.PredMap.Culture.htm" />
-  <HelpKINode Title="CurrentBatch property" Url="html/P-SiaNet.Model.XYFrame.CurrentBatch.htm" />
   <HelpKINode Title="CurrentBatchX property" Url="html/P-SiaNet.Model.ImageDataGenerator.CurrentBatchX.htm" />
   <HelpKINode Title="CurrentBatchY property" Url="html/P-SiaNet.Model.ImageDataGenerator.CurrentBatchY.htm" />
   <HelpKINode Title="DataFrame class">
@@ -385,11 +383,11 @@
   <HelpKINode Title="ELU field" Url="html/F-SiaNet.Common.OptActivations.ELU.htm" />
   <HelpKINode Title="Epsilon property">
     <HelpKINode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.AdaDelta.Epsilon.htm" />
-    <HelpKINode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.Adam.Epsilon.htm" />
     <HelpKINode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.Epsilon.htm" />
+    <HelpKINode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.Adam.Epsilon.htm" />
     <HelpKINode Title="Epsilon Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.Epsilon.htm" />
   </HelpKINode>
-  <HelpKINode Title="Evaluate method" Url="html/M-SiaNet.Model.Sequential.Evaluate.htm" />
+  <HelpKINode Title="Evaluate method" Url="html/M-SiaNet.Sequential.Evaluate.htm" />
   <HelpKINode Title="Extensions class">
     <HelpKINode Title="Extensions Class" Url="html/T-SiaNet.Common.Extensions.htm" />
     <HelpKINode Title="Extensions Members" Url="html/AllMembers.T-SiaNet.Common.Extensions.htm" />
@@ -516,8 +514,8 @@
   <HelpKINode Title="Grocery field" Url="html/F-SiaNet.Common.SampleDataset.Grocery.htm" />
   <HelpKINode Title="Grocery100 enumeration member" Url="html/T-SiaNet.Common.FastRCNNModel.htm" />
   <HelpKINode Title="Grocery100 field">
-    <HelpKINode Title="Grocery100 Field" Url="html/F-SiaNet.Common.FastRCNNModel.Grocery100.htm" />
     <HelpKINode Title="Grocery100 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Grocery100.htm" />
+    <HelpKINode Title="Grocery100 Field" Url="html/F-SiaNet.Common.FastRCNNModel.Grocery100.htm" />
   </HelpKINode>
   <HelpKINode Title="GRU method" Url="html/M-SiaNet.NN.Recurrent.GRU.htm" />
   <HelpKINode Title="HeNormal field" Url="html/F-SiaNet.Common.OptInitializers.HeNormal.htm" />
@@ -578,8 +576,8 @@
   <HelpKINode Title="ImageNetPath.VGG19 field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG19.htm" />
   <HelpKINode Title="InceptionV3 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="InceptionV3 field">
-    <HelpKINode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.InceptionV3.htm" />
     <HelpKINode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.ImageNetModel.InceptionV3.htm" />
+    <HelpKINode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.InceptionV3.htm" />
   </HelpKINode>
   <HelpKINode Title="Increment property" Url="html/P-SiaNet.Model.Optimizers.RMSProp.Increment.htm" />
   <HelpKINode Title="Initializers class">
@@ -592,8 +590,8 @@
   <HelpKINode Title="Initializers.Get method" Url="html/M-SiaNet.Initializers.Get.htm" />
   <HelpKINode Title="KernalSize property">
     <HelpKINode Title="KernalSize Property " Url="html/P-SiaNet.Model.Layers.Conv3D.KernalSize.htm" />
-    <HelpKINode Title="KernalSize Property " Url="html/P-SiaNet.Model.Layers.Conv1D.KernalSize.htm" />
     <HelpKINode Title="KernalSize Property " Url="html/P-SiaNet.Model.Layers.Conv2D.KernalSize.htm" />
+    <HelpKINode Title="KernalSize Property " Url="html/P-SiaNet.Model.Layers.Conv1D.KernalSize.htm" />
   </HelpKINode>
   <HelpKINode Title="KullbackLeiblerDivergence field" Url="html/F-SiaNet.Common.OptLosses.KullbackLeiblerDivergence.htm" />
   <HelpKINode Title="L1 field" Url="html/F-SiaNet.Common.OptRegulizers.L1.htm" />
@@ -610,16 +608,16 @@
   </HelpKINode>
   <HelpKINode Title="LayerConfig.Name property" Url="html/P-SiaNet.Model.LayerConfig.Name.htm" />
   <HelpKINode Title="LayerConfig.Params property" Url="html/P-SiaNet.Model.LayerConfig.Params.htm" />
-  <HelpKINode Title="Layers property" Url="html/P-SiaNet.Model.Sequential.Layers.htm" />
+  <HelpKINode Title="Layers property" Url="html/P-SiaNet.Sequential.Layers.htm" />
   <HelpKINode Title="LeakyReLU field" Url="html/F-SiaNet.Common.OptActivations.LeakyReLU.htm" />
   <HelpKINode Title="LoadFromCsv method" Url="html/M-SiaNet.Model.DataFrame.LoadFromCsv.htm" />
   <HelpKINode Title="LoadModel method">
-    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.ImageNet.LoadModel.htm" />
     <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.Cifar10.LoadModel.htm" />
-    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Model.Sequential.LoadModel.htm" />
     <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.FastRCNN.LoadModel.htm" />
+    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Application.ImageNet.LoadModel.htm" />
+    <HelpKINode Title="LoadModel Method " Url="html/M-SiaNet.Sequential.LoadModel.htm" />
   </HelpKINode>
-  <HelpKINode Title="LoadNetConfig method" Url="html/M-SiaNet.Model.Sequential.LoadNetConfig.htm" />
+  <HelpKINode Title="LoadNetConfig method" Url="html/M-SiaNet.Sequential.LoadNetConfig.htm" />
   <HelpKINode Title="Logging class">
     <HelpKINode Title="Logging Class" Url="html/T-SiaNet.Common.Logging.htm" />
     <HelpKINode Title="Logging Members" Url="html/AllMembers.T-SiaNet.Common.Logging.htm" />
@@ -687,11 +685,11 @@
   <HelpKINode Title="Min property" Url="html/P-SiaNet.Model.Optimizers.RMSProp.Min.htm" />
   <HelpKINode Title="MNIST enumeration member" Url="html/T-SiaNet.Common.SampleDataset.htm" />
   <HelpKINode Title="MNIST field" Url="html/F-SiaNet.Common.SampleDataset.MNIST.htm" />
-  <HelpKINode Title="Module property" Url="html/P-SiaNet.Model.Sequential.Module.htm" />
+  <HelpKINode Title="Module property" Url="html/P-SiaNet.Sequential.Module.htm" />
   <HelpKINode Title="Momentum property">
-    <HelpKINode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.Adam.Momentum.htm" />
     <HelpKINode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.MomentumSGD.Momentum.htm" />
     <HelpKINode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.Momentum.htm" />
+    <HelpKINode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.Adam.Momentum.htm" />
   </HelpKINode>
   <HelpKINode Title="MomentumSGD class">
     <HelpKINode Title="MomentumSGD Class" Url="html/T-SiaNet.Model.Optimizers.MomentumSGD.htm" />
@@ -709,30 +707,27 @@
   <HelpKINode Title="MSE field" Url="html/F-SiaNet.Common.OptMetrics.MSE.htm" />
   <HelpKINode Title="MSLE field" Url="html/F-SiaNet.Common.OptMetrics.MSLE.htm" />
   <HelpKINode Title="Name property">
-    <HelpKINode Title="Name Property " Url="html/P-SiaNet.Model.PredResult.Name.htm" />
     <HelpKINode Title="Name Property " Url="html/P-SiaNet.Model.LayerConfig.Name.htm" />
+    <HelpKINode Title="Name Property " Url="html/P-SiaNet.Model.PredResult.Name.htm" />
   </HelpKINode>
-  <HelpKINode Title="NextBatch method">
-    <HelpKINode Title="NextBatch Method " Url="html/M-SiaNet.Model.ImageDataGenerator.NextBatch.htm" />
-    <HelpKINode Title="NextBatch Method " Url="html/M-SiaNet.Model.XYFrame.NextBatch.htm" />
-  </HelpKINode>
+  <HelpKINode Title="NextBatch method" Url="html/M-SiaNet.Model.ImageDataGenerator.NextBatch.htm" />
   <HelpKINode Title="None field">
+    <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptActivations.None.htm" />
     <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptInitializers.None.htm" />
     <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptRegulizers.None.htm" />
-    <HelpKINode Title="None Field" Url="html/F-SiaNet.Common.OptActivations.None.htm" />
   </HelpKINode>
   <HelpKINode Title="Normal field" Url="html/F-SiaNet.Common.OptInitializers.Normal.htm" />
   <HelpKINode Title="NormalizationTimeConstant property" Url="html/P-SiaNet.Model.Layers.BatchNorm.NormalizationTimeConstant.htm" />
-  <HelpKINode Title="OnEpochEnd event" Url="html/E-SiaNet.Model.Sequential.OnEpochEnd.htm" />
-  <HelpKINode Title="OnEpochStart event" Url="html/E-SiaNet.Model.Sequential.OnEpochStart.htm" />
+  <HelpKINode Title="OnEpochEnd event" Url="html/E-SiaNet.Sequential.OnEpochEnd.htm" />
+  <HelpKINode Title="OnEpochStart event" Url="html/E-SiaNet.Sequential.OnEpochStart.htm" />
   <HelpKINode Title="Ones field" Url="html/F-SiaNet.Common.OptInitializers.Ones.htm" />
-  <HelpKINode Title="OnTrainingEnd event" Url="html/E-SiaNet.Model.Sequential.OnTrainingEnd.htm" />
-  <HelpKINode Title="OnTrainingStart event" Url="html/E-SiaNet.Model.Sequential.OnTrainingStart.htm" />
+  <HelpKINode Title="OnTrainingEnd event" Url="html/E-SiaNet.Sequential.OnTrainingEnd.htm" />
+  <HelpKINode Title="OnTrainingStart event" Url="html/E-SiaNet.Sequential.OnTrainingStart.htm" />
   <HelpKINode Title="OnWriteLog event" Url="html/E-SiaNet.Common.Logging.OnWriteLog.htm" />
-  <HelpKINode Title="On_Epoch_End delegate" Url="html/T-SiaNet.Model.On_Epoch_End.htm" />
-  <HelpKINode Title="On_Epoch_Start delegate" Url="html/T-SiaNet.Model.On_Epoch_Start.htm" />
-  <HelpKINode Title="On_Training_End delegate" Url="html/T-SiaNet.Model.On_Training_End.htm" />
-  <HelpKINode Title="On_Training_Start delegate" Url="html/T-SiaNet.Model.On_Training_Start.htm" />
+  <HelpKINode Title="On_Epoch_End delegate" Url="html/T-SiaNet.Events.On_Epoch_End.htm" />
+  <HelpKINode Title="On_Epoch_Start delegate" Url="html/T-SiaNet.Events.On_Epoch_Start.htm" />
+  <HelpKINode Title="On_Training_End delegate" Url="html/T-SiaNet.Events.On_Training_End.htm" />
+  <HelpKINode Title="On_Training_Start delegate" Url="html/T-SiaNet.Events.On_Training_Start.htm" />
   <HelpKINode Title="OptActivations class">
     <HelpKINode Title="OptActivations Class" Url="html/T-SiaNet.Common.OptActivations.htm" />
     <HelpKINode Title="OptActivations Members" Url="html/AllMembers.T-SiaNet.Common.OptActivations.htm" />
@@ -855,15 +850,15 @@
   <HelpKINode Title="OptRegulizers.L2 field" Url="html/F-SiaNet.Common.OptRegulizers.L2.htm" />
   <HelpKINode Title="OptRegulizers.None field" Url="html/F-SiaNet.Common.OptRegulizers.None.htm" />
   <HelpKINode Title="Padding property">
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Padding.htm" />
-    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Padding.htm" />
     <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Padding.htm" />
+    <HelpKINode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Padding.htm" />
   </HelpKINode>
   <HelpKINode Title="Params property" Url="html/P-SiaNet.Model.LayerConfig.Params.htm" />
   <HelpKINode Title="Pascal enumeration member">
@@ -871,18 +866,18 @@
     <HelpKINode Title="PrepDataset Enumeration" Url="html/T-SiaNet.Common.PrepDataset.htm" />
   </HelpKINode>
   <HelpKINode Title="Pascal field">
-    <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PrepDataset.Pascal.htm" />
     <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Pascal.htm" />
     <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.FastRCNNModel.Pascal.htm" />
+    <HelpKINode Title="Pascal Field" Url="html/F-SiaNet.Common.PrepDataset.Pascal.htm" />
   </HelpKINode>
   <HelpKINode Title="Poisson field" Url="html/F-SiaNet.Common.OptLosses.Poisson.htm" />
   <HelpKINode Title="PoolSize property">
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.PoolSize.htm" />
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.PoolSize.htm" />
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.PoolSize.htm" />
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.PoolSize.htm" />
-    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.PoolSize.htm" />
     <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.PoolSize.htm" />
+    <HelpKINode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.PoolSize.htm" />
   </HelpKINode>
   <HelpKINode Title="Predict method">
     <HelpKINode Title="Predict Method " Url="html/Overload-SiaNet.Application.FastRCNN.Predict.htm" />
@@ -972,13 +967,13 @@
   <HelpKINode Title="ReLU field" Url="html/F-SiaNet.Common.OptActivations.ReLU.htm" />
   <HelpKINode Title="ResNet101 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="ResNet101 field">
-    <HelpKINode Title="ResNet101 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet101.htm" />
     <HelpKINode Title="ResNet101 Field" Url="html/F-SiaNet.Common.ImageNetModel.ResNet101.htm" />
+    <HelpKINode Title="ResNet101 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet101.htm" />
   </HelpKINode>
   <HelpKINode Title="ResNet110 enumeration member" Url="html/T-SiaNet.Common.Cifar10Model.htm" />
   <HelpKINode Title="ResNet110 field">
-    <HelpKINode Title="ResNet110 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet110.htm" />
     <HelpKINode Title="ResNet110 Field" Url="html/F-SiaNet.Common.Cifar10Model.ResNet110.htm" />
+    <HelpKINode Title="ResNet110 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet110.htm" />
   </HelpKINode>
   <HelpKINode Title="ResNet152 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="ResNet152 field">
@@ -1002,8 +997,8 @@
   </HelpKINode>
   <HelpKINode Title="ResNet50 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="ResNet50 field">
-    <HelpKINode Title="ResNet50 Field" Url="html/F-SiaNet.Common.ImageNetModel.ResNet50.htm" />
     <HelpKINode Title="ResNet50 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet50.htm" />
+    <HelpKINode Title="ResNet50 Field" Url="html/F-SiaNet.Common.ImageNetModel.ResNet50.htm" />
   </HelpKINode>
   <HelpKINode Title="ResourceManager property" Url="html/P-SiaNet.Common.Resources.PredMap.ResourceManager.htm" />
   <HelpKINode Title="Rho property" Url="html/P-SiaNet.Model.Optimizers.AdaDelta.Rho.htm" />
@@ -1033,35 +1028,35 @@
   <HelpKINode Title="SampleDataset.Grocery field" Url="html/F-SiaNet.Common.SampleDataset.Grocery.htm" />
   <HelpKINode Title="SampleDataset.HousingRegression field" Url="html/F-SiaNet.Common.SampleDataset.HousingRegression.htm" />
   <HelpKINode Title="SampleDataset.MNIST field" Url="html/F-SiaNet.Common.SampleDataset.MNIST.htm" />
-  <HelpKINode Title="SaveModel method" Url="html/M-SiaNet.Model.Sequential.SaveModel.htm" />
-  <HelpKINode Title="SaveNetConfig method" Url="html/M-SiaNet.Model.Sequential.SaveNetConfig.htm" />
+  <HelpKINode Title="SaveModel method" Url="html/M-SiaNet.Sequential.SaveModel.htm" />
+  <HelpKINode Title="SaveNetConfig method" Url="html/M-SiaNet.Sequential.SaveNetConfig.htm" />
   <HelpKINode Title="Score property" Url="html/P-SiaNet.Model.PredResult.Score.htm" />
   <HelpKINode Title="Sequential class">
-    <HelpKINode Title="Sequential Class" Url="html/T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="Sequential Members" Url="html/AllMembers.T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="about Sequential class" Url="html/T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="constructor" Url="html/M-SiaNet.Model.Sequential.-ctor.htm" />
-    <HelpKINode Title="events" Url="html/Events.T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="properties" Url="html/Properties.T-SiaNet.Model.Sequential.htm" />
+    <HelpKINode Title="Sequential Class" Url="html/T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="Sequential Members" Url="html/AllMembers.T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="about Sequential class" Url="html/T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="constructor" Url="html/M-SiaNet.Sequential.-ctor.htm" />
+    <HelpKINode Title="events" Url="html/Events.T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="properties" Url="html/Properties.T-SiaNet.Sequential.htm" />
   </HelpKINode>
-  <HelpKINode Title="Sequential.Add method" Url="html/M-SiaNet.Model.Sequential.Add.htm" />
-  <HelpKINode Title="Sequential.Compile method" Url="html/Overload-SiaNet.Model.Sequential.Compile.htm" />
-  <HelpKINode Title="Sequential.Evaluate method" Url="html/M-SiaNet.Model.Sequential.Evaluate.htm" />
-  <HelpKINode Title="Sequential.Layers property" Url="html/P-SiaNet.Model.Sequential.Layers.htm" />
-  <HelpKINode Title="Sequential.LoadModel method" Url="html/M-SiaNet.Model.Sequential.LoadModel.htm" />
-  <HelpKINode Title="Sequential.LoadNetConfig method" Url="html/M-SiaNet.Model.Sequential.LoadNetConfig.htm" />
-  <HelpKINode Title="Sequential.Module property" Url="html/P-SiaNet.Model.Sequential.Module.htm" />
-  <HelpKINode Title="Sequential.OnEpochEnd event" Url="html/E-SiaNet.Model.Sequential.OnEpochEnd.htm" />
-  <HelpKINode Title="Sequential.OnEpochStart event" Url="html/E-SiaNet.Model.Sequential.OnEpochStart.htm" />
-  <HelpKINode Title="Sequential.OnTrainingEnd event" Url="html/E-SiaNet.Model.Sequential.OnTrainingEnd.htm" />
-  <HelpKINode Title="Sequential.OnTrainingStart event" Url="html/E-SiaNet.Model.Sequential.OnTrainingStart.htm" />
-  <HelpKINode Title="Sequential.SaveModel method" Url="html/M-SiaNet.Model.Sequential.SaveModel.htm" />
-  <HelpKINode Title="Sequential.SaveNetConfig method" Url="html/M-SiaNet.Model.Sequential.SaveNetConfig.htm" />
-  <HelpKINode Title="Sequential.Sequential constructor" Url="html/M-SiaNet.Model.Sequential.-ctor.htm" />
-  <HelpKINode Title="Sequential.Train method" Url="html/Overload-SiaNet.Model.Sequential.Train.htm" />
-  <HelpKINode Title="Sequential.TrainingResult property" Url="html/P-SiaNet.Model.Sequential.TrainingResult.htm" />
+  <HelpKINode Title="Sequential.Add method" Url="html/M-SiaNet.Sequential.Add.htm" />
+  <HelpKINode Title="Sequential.Compile method" Url="html/Overload-SiaNet.Sequential.Compile.htm" />
+  <HelpKINode Title="Sequential.Evaluate method" Url="html/M-SiaNet.Sequential.Evaluate.htm" />
+  <HelpKINode Title="Sequential.Layers property" Url="html/P-SiaNet.Sequential.Layers.htm" />
+  <HelpKINode Title="Sequential.LoadModel method" Url="html/M-SiaNet.Sequential.LoadModel.htm" />
+  <HelpKINode Title="Sequential.LoadNetConfig method" Url="html/M-SiaNet.Sequential.LoadNetConfig.htm" />
+  <HelpKINode Title="Sequential.Module property" Url="html/P-SiaNet.Sequential.Module.htm" />
+  <HelpKINode Title="Sequential.OnEpochEnd event" Url="html/E-SiaNet.Sequential.OnEpochEnd.htm" />
+  <HelpKINode Title="Sequential.OnEpochStart event" Url="html/E-SiaNet.Sequential.OnEpochStart.htm" />
+  <HelpKINode Title="Sequential.OnTrainingEnd event" Url="html/E-SiaNet.Sequential.OnTrainingEnd.htm" />
+  <HelpKINode Title="Sequential.OnTrainingStart event" Url="html/E-SiaNet.Sequential.OnTrainingStart.htm" />
+  <HelpKINode Title="Sequential.SaveModel method" Url="html/M-SiaNet.Sequential.SaveModel.htm" />
+  <HelpKINode Title="Sequential.SaveNetConfig method" Url="html/M-SiaNet.Sequential.SaveNetConfig.htm" />
+  <HelpKINode Title="Sequential.Sequential constructor" Url="html/M-SiaNet.Sequential.-ctor.htm" />
+  <HelpKINode Title="Sequential.Train method" Url="html/Overload-SiaNet.Sequential.Train.htm" />
+  <HelpKINode Title="Sequential.TrainingResult property" Url="html/P-SiaNet.Sequential.TrainingResult.htm" />
   <HelpKINode Title="SGD class">
     <HelpKINode Title="SGD Class" Url="html/T-SiaNet.Model.Optimizers.SGD.htm" />
     <HelpKINode Title="SGD Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.SGD.htm" />
@@ -1074,10 +1069,10 @@
   <HelpKINode Title="SGD.SGD constructor" Url="html/M-SiaNet.Model.Optimizers.SGD.-ctor.htm" />
   <HelpKINode Title="Shape property">
     <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Shape.htm" />
-    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Shape.htm" />
     <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Dense.Shape.htm" />
-    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Shape.htm" />
     <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.Shape.htm" />
+    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Shape.htm" />
+    <HelpKINode Title="Shape Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Shape.htm" />
   </HelpKINode>
   <HelpKINode Title="Shuffle method" Url="html/M-SiaNet.Model.DataFrame.Shuffle.htm" />
   <HelpKINode Title="SiaNet namespace" Url="html/N-SiaNet.htm" />
@@ -1166,6 +1161,11 @@
   </HelpKINode>
   <HelpKINode Title="SiaNet.Common.SampleDataset enumeration" Url="html/T-SiaNet.Common.SampleDataset.htm" />
   <HelpKINode Title="SiaNet.Common.WriteLog delegate" Url="html/T-SiaNet.Common.WriteLog.htm" />
+  <HelpKINode Title="SiaNet.Events namespace" Url="html/N-SiaNet.Events.htm" />
+  <HelpKINode Title="SiaNet.Events.On_Epoch_End delegate" Url="html/T-SiaNet.Events.On_Epoch_End.htm" />
+  <HelpKINode Title="SiaNet.Events.On_Epoch_Start delegate" Url="html/T-SiaNet.Events.On_Epoch_Start.htm" />
+  <HelpKINode Title="SiaNet.Events.On_Training_End delegate" Url="html/T-SiaNet.Events.On_Training_End.htm" />
+  <HelpKINode Title="SiaNet.Events.On_Training_Start delegate" Url="html/T-SiaNet.Events.On_Training_Start.htm" />
   <HelpKINode Title="SiaNet.GlobalParameters class">
     <HelpKINode Title="GlobalParameters Class" Url="html/T-SiaNet.GlobalParameters.htm" />
     <HelpKINode Title="GlobalParameters Members" Url="html/AllMembers.T-SiaNet.GlobalParameters.htm" />
@@ -1269,10 +1269,6 @@
     <HelpKINode Title="MaxPool3D Class" Url="html/T-SiaNet.Model.Layers.MaxPool3D.htm" />
     <HelpKINode Title="MaxPool3D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.MaxPool3D.htm" />
   </HelpKINode>
-  <HelpKINode Title="SiaNet.Model.On_Epoch_End delegate" Url="html/T-SiaNet.Model.On_Epoch_End.htm" />
-  <HelpKINode Title="SiaNet.Model.On_Epoch_Start delegate" Url="html/T-SiaNet.Model.On_Epoch_Start.htm" />
-  <HelpKINode Title="SiaNet.Model.On_Training_End delegate" Url="html/T-SiaNet.Model.On_Training_End.htm" />
-  <HelpKINode Title="SiaNet.Model.On_Training_Start delegate" Url="html/T-SiaNet.Model.On_Training_Start.htm" />
   <HelpKINode Title="SiaNet.Model.Optimizers namespace" Url="html/N-SiaNet.Model.Optimizers.htm" />
   <HelpKINode Title="SiaNet.Model.Optimizers.AdaDelta class">
     <HelpKINode Title="AdaDelta Class" Url="html/T-SiaNet.Model.Optimizers.AdaDelta.htm" />
@@ -1310,18 +1306,6 @@
     <HelpKINode Title="PredResult Class" Url="html/T-SiaNet.Model.PredResult.htm" />
     <HelpKINode Title="PredResult Members" Url="html/AllMembers.T-SiaNet.Model.PredResult.htm" />
   </HelpKINode>
-  <HelpKINode Title="SiaNet.Model.Sequential class">
-    <HelpKINode Title="Sequential Class" Url="html/T-SiaNet.Model.Sequential.htm" />
-    <HelpKINode Title="Sequential Members" Url="html/AllMembers.T-SiaNet.Model.Sequential.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Model.TrainTestFrame class">
-    <HelpKINode Title="TrainTestFrame Class" Url="html/T-SiaNet.Model.TrainTestFrame.htm" />
-    <HelpKINode Title="TrainTestFrame Members" Url="html/AllMembers.T-SiaNet.Model.TrainTestFrame.htm" />
-  </HelpKINode>
-  <HelpKINode Title="SiaNet.Model.XYFrame class">
-    <HelpKINode Title="XYFrame Class" Url="html/T-SiaNet.Model.XYFrame.htm" />
-    <HelpKINode Title="XYFrame Members" Url="html/AllMembers.T-SiaNet.Model.XYFrame.htm" />
-  </HelpKINode>
   <HelpKINode Title="SiaNet.NN namespace" Url="html/N-SiaNet.NN.htm" />
   <HelpKINode Title="SiaNet.NN.Basic class">
     <HelpKINode Title="Basic Class" Url="html/T-SiaNet.NN.Basic.htm" />
@@ -1339,114 +1323,70 @@
     <HelpKINode Title="Regulizers Class" Url="html/T-SiaNet.Regulizers.htm" />
     <HelpKINode Title="Regulizers Members" Url="html/AllMembers.T-SiaNet.Regulizers.htm" />
   </HelpKINode>
-  <HelpKINode Title="SiaNet.Utility class">
-    <HelpKINode Title="Utility Class" Url="html/T-SiaNet.Utility.htm" />
-    <HelpKINode Title="Utility Members" Url="html/AllMembers.T-SiaNet.Utility.htm" />
+  <HelpKINode Title="SiaNet.Sequential class">
+    <HelpKINode Title="Sequential Class" Url="html/T-SiaNet.Sequential.htm" />
+    <HelpKINode Title="Sequential Members" Url="html/AllMembers.T-SiaNet.Sequential.htm" />
   </HelpKINode>
   <HelpKINode Title="Sigmoid field" Url="html/F-SiaNet.Common.OptActivations.Sigmoid.htm" />
   <HelpKINode Title="Softmax field" Url="html/F-SiaNet.Common.OptActivations.Softmax.htm" />
   <HelpKINode Title="Softplus field" Url="html/F-SiaNet.Common.OptActivations.Softplus.htm" />
   <HelpKINode Title="SparseCrossEntropy field" Url="html/F-SiaNet.Common.OptLosses.SparseCrossEntropy.htm" />
   <HelpKINode Title="Spatial property" Url="html/P-SiaNet.Model.Layers.BatchNorm.Spatial.htm" />
-  <HelpKINode Title="SplitTrainTest method" Url="html/M-SiaNet.Model.XYFrame.SplitTrainTest.htm" />
   <HelpKINode Title="SplitXY method" Url="html/Overload-SiaNet.Model.DataFrame.SplitXY.htm" />
   <HelpKINode Title="Std method" Url="html/M-SiaNet.Common.Extensions.Std.htm" />
   <HelpKINode Title="Strides property">
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Strides.htm" />
     <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Strides.htm" />
     <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Strides.htm" />
-    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Strides.htm" />
     <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Strides.htm" />
     <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Strides.htm" />
     <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.Strides.htm" />
+    <HelpKINode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Strides.htm" />
   </HelpKINode>
   <HelpKINode Title="Tanh field" Url="html/F-SiaNet.Common.OptActivations.Tanh.htm" />
-  <HelpKINode Title="Test property">
-    <HelpKINode Title="Test Property " Url="html/P-SiaNet.Model.TrainTestFrame.Test.htm" />
-    <HelpKINode Title="Test Property " Url="html/P-SiaNet.Common.DatasetInfo.Test.htm" />
-  </HelpKINode>
+  <HelpKINode Title="Test property" Url="html/P-SiaNet.Common.DatasetInfo.Test.htm" />
   <HelpKINode Title="TopKAccuracy field" Url="html/F-SiaNet.Common.OptMetrics.TopKAccuracy.htm" />
-  <HelpKINode Title="Train method" Url="html/Overload-SiaNet.Model.Sequential.Train.htm" />
-  <HelpKINode Title="Train property">
-    <HelpKINode Title="Train Property " Url="html/P-SiaNet.Model.TrainTestFrame.Train.htm" />
-    <HelpKINode Title="Train Property " Url="html/P-SiaNet.Common.DatasetInfo.Train.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TrainingResult property" Url="html/P-SiaNet.Model.Sequential.TrainingResult.htm" />
-  <HelpKINode Title="TrainTestFrame class">
-    <HelpKINode Title="TrainTestFrame Class" Url="html/T-SiaNet.Model.TrainTestFrame.htm" />
-    <HelpKINode Title="TrainTestFrame Members" Url="html/AllMembers.T-SiaNet.Model.TrainTestFrame.htm" />
-    <HelpKINode Title="about TrainTestFrame class" Url="html/T-SiaNet.Model.TrainTestFrame.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Model.TrainTestFrame.htm" />
-    <HelpKINode Title="constructor" Url="html/M-SiaNet.Model.TrainTestFrame.-ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Model.TrainTestFrame.htm" />
-    <HelpKINode Title="properties" Url="html/Properties.T-SiaNet.Model.TrainTestFrame.htm" />
-  </HelpKINode>
-  <HelpKINode Title="TrainTestFrame.Test property" Url="html/P-SiaNet.Model.TrainTestFrame.Test.htm" />
-  <HelpKINode Title="TrainTestFrame.Train property" Url="html/P-SiaNet.Model.TrainTestFrame.Train.htm" />
-  <HelpKINode Title="TrainTestFrame.TrainTestFrame constructor" Url="html/M-SiaNet.Model.TrainTestFrame.-ctor.htm" />
+  <HelpKINode Title="Train method" Url="html/Overload-SiaNet.Sequential.Train.htm" />
+  <HelpKINode Title="Train property" Url="html/P-SiaNet.Common.DatasetInfo.Train.htm" />
+  <HelpKINode Title="TrainingResult property" Url="html/P-SiaNet.Sequential.TrainingResult.htm" />
   <HelpKINode Title="TruncatedNormal field" Url="html/F-SiaNet.Common.OptInitializers.TruncatedNormal.htm" />
   <HelpKINode Title="Uniform field" Url="html/F-SiaNet.Common.OptInitializers.Uniform.htm" />
   <HelpKINode Title="UnitGain property">
+    <HelpKINode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.UnitGain.htm" />
     <HelpKINode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.Adam.UnitGain.htm" />
     <HelpKINode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.MomentumSGD.UnitGain.htm" />
-    <HelpKINode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.UnitGain.htm" />
   </HelpKINode>
   <HelpKINode Title="UseBias property">
+    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv1D.UseBias.htm" />
+    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv3D.UseBias.htm" />
     <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Dense.UseBias.htm" />
     <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv2D.UseBias.htm" />
-    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv3D.UseBias.htm" />
-    <HelpKINode Title="UseBias Property " Url="html/P-SiaNet.Model.Layers.Conv1D.UseBias.htm" />
   </HelpKINode>
-  <HelpKINode Title="Utility class">
-    <HelpKINode Title="Utility Class" Url="html/T-SiaNet.Utility.htm" />
-    <HelpKINode Title="Utility Members" Url="html/AllMembers.T-SiaNet.Utility.htm" />
-    <HelpKINode Title="about Utility class" Url="html/T-SiaNet.Utility.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Utility.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Utility.htm" />
-  </HelpKINode>
-  <HelpKINode Title="Utility.CreateParamVar method" Url="html/M-SiaNet.Utility.CreateParamVar.htm" />
   <HelpKINode Title="VarianceMomentum property">
-    <HelpKINode Title="VarianceMomentum Property " Url="html/P-SiaNet.Model.Optimizers.Adam.VarianceMomentum.htm" />
     <HelpKINode Title="VarianceMomentum Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.VarianceMomentum.htm" />
+    <HelpKINode Title="VarianceMomentum Property " Url="html/P-SiaNet.Model.Optimizers.Adam.VarianceMomentum.htm" />
   </HelpKINode>
   <HelpKINode Title="Version property" Url="html/P-SiaNet.Model.ConfigModule.Version.htm" />
   <HelpKINode Title="VGG16 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="VGG16 field">
-    <HelpKINode Title="VGG16 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG16.htm" />
     <HelpKINode Title="VGG16 Field" Url="html/F-SiaNet.Common.ImageNetModel.VGG16.htm" />
+    <HelpKINode Title="VGG16 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG16.htm" />
   </HelpKINode>
   <HelpKINode Title="VGG19 enumeration member" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
   <HelpKINode Title="VGG19 field">
-    <HelpKINode Title="VGG19 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG19.htm" />
     <HelpKINode Title="VGG19 Field" Url="html/F-SiaNet.Common.ImageNetModel.VGG19.htm" />
+    <HelpKINode Title="VGG19 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.VGG19.htm" />
   </HelpKINode>
   <HelpKINode Title="WeightInitializer property">
-    <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.WeightInitializer.htm" />
-    <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.WeightInitializer.htm" />
     <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.WeightInitializer.htm" />
+    <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.WeightInitializer.htm" />
     <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.WeightInitializer.htm" />
+    <HelpKINode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.WeightInitializer.htm" />
   </HelpKINode>
   <HelpKINode Title="WriteLog delegate" Url="html/T-SiaNet.Common.WriteLog.htm" />
   <HelpKINode Title="WriteTrace method" Url="html/Overload-SiaNet.Common.Logging.WriteTrace.htm" />
   <HelpKINode Title="Xavier field" Url="html/F-SiaNet.Common.OptInitializers.Xavier.htm" />
-  <HelpKINode Title="XFrame property" Url="html/P-SiaNet.Model.XYFrame.XFrame.htm" />
-  <HelpKINode Title="XYFrame class">
-    <HelpKINode Title="XYFrame Class" Url="html/T-SiaNet.Model.XYFrame.htm" />
-    <HelpKINode Title="XYFrame Members" Url="html/AllMembers.T-SiaNet.Model.XYFrame.htm" />
-    <HelpKINode Title="about XYFrame class" Url="html/T-SiaNet.Model.XYFrame.htm" />
-    <HelpKINode Title="all members" Url="html/AllMembers.T-SiaNet.Model.XYFrame.htm" />
-    <HelpKINode Title="constructor" Url="html/M-SiaNet.Model.XYFrame.-ctor.htm" />
-    <HelpKINode Title="methods" Url="html/Methods.T-SiaNet.Model.XYFrame.htm" />
-    <HelpKINode Title="properties" Url="html/Properties.T-SiaNet.Model.XYFrame.htm" />
-  </HelpKINode>
-  <HelpKINode Title="XYFrame.CurrentBatch property" Url="html/P-SiaNet.Model.XYFrame.CurrentBatch.htm" />
-  <HelpKINode Title="XYFrame.NextBatch method" Url="html/M-SiaNet.Model.XYFrame.NextBatch.htm" />
-  <HelpKINode Title="XYFrame.SplitTrainTest method" Url="html/M-SiaNet.Model.XYFrame.SplitTrainTest.htm" />
-  <HelpKINode Title="XYFrame.XFrame property" Url="html/P-SiaNet.Model.XYFrame.XFrame.htm" />
-  <HelpKINode Title="XYFrame.XYFrame constructor" Url="html/M-SiaNet.Model.XYFrame.-ctor.htm" />
-  <HelpKINode Title="XYFrame.YFrame property" Url="html/P-SiaNet.Model.XYFrame.YFrame.htm" />
-  <HelpKINode Title="YFrame property" Url="html/P-SiaNet.Model.XYFrame.YFrame.htm" />
   <HelpKINode Title="Zeros field" Url="html/F-SiaNet.Common.OptInitializers.Zeros.htm" />
 </HelpKI>

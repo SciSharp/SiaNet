@@ -2,9 +2,9 @@
 {
     using CNTK;
 
-    public class Utility
+    internal class Utility
     {
-        public static Variable CreateParamVar(float value)
+        internal static Variable CreateParamVar(float value)
         {
             return new Parameter(new int[] { 1 }, DataType.Float, value);
         }

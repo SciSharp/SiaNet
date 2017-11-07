@@ -93,6 +93,9 @@
     <Compile Include="..\SiaNet\Application\ImageNet.cs">
       <Link>Application\ImageNet.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Events\TrainingEvents.cs">
+      <Link>Events\TrainingEvents.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\GlobalParameters.cs">
       <Link>GlobalParameters.cs</Link>
     </Compile>
@@ -192,9 +195,6 @@
     <Compile Include="..\SiaNet\Model\PredResult.cs">
       <Link>Model\PredResult.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\Sequential.cs">
-      <Link>Model\Sequential.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Model\TrainTestFrame.cs">
       <Link>Model\TrainTestFrame.cs</Link>
     </Compile>
@@ -221,6 +221,9 @@
     </Compile>
     <Compile Include="..\SiaNet\Regulizers.cs">
       <Link>Regulizers.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Sequential.cs">
+      <Link>Sequential.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Utility.cs">
       <Link>Utility.cs</Link>

@@ -121,7 +121,7 @@
     <Compile Include="Model\Optimizers\Adam.cs" />
     <Compile Include="Model\Optimizers\SGD.cs" />
     <Compile Include="Model\PredResult.cs" />
-    <Compile Include="Model\Sequential.cs" />
+    <Compile Include="Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
     <Compile Include="NN\Basic.cs" />
     <Compile Include="NN\Convolution.cs" />
@@ -132,6 +132,7 @@
     <Compile Include="Processing\DataFrameTrainPredict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regulizers.cs" />
+    <Compile Include="Events\TrainingEvents.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
