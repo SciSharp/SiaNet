@@ -34,7 +34,7 @@ namespace SiaNet
         /// <param name="l1">The l1 weight value.</param>
         /// <param name="l2">The l2 weight value.</param>
         /// <returns>Regulizers.</returns>
-        public static Regulizers L1L2(double l1 =0.01f, double l2 =0.01f)
+        public static Regulizers L1L2(double l1 =0.01, double l2 =0.01)
         {
             Regulizers result = new Regulizers()
             {
@@ -52,7 +52,7 @@ namespace SiaNet
         /// </summary>
         /// <param name="l1">The l1 weight value.</param>
         /// <returns>Regulizers.</returns>
-        public static Regulizers RegL1(double l1 = 0.01f)
+        public static Regulizers RegL1(double l1 = 0.01)
         {
             Regulizers result = new Regulizers()
             {
@@ -68,7 +68,7 @@ namespace SiaNet
         /// </summary>
         /// <param name="l2">The l2 weight value.</param>
         /// <returns>Regulizers.</returns>
-        public static Regulizers RegL2(double l2 = 0.01f)
+        public static Regulizers RegL2(double l2 = 0.01)
         {
             Regulizers result = new Regulizers()
             {

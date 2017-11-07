@@ -59,9 +59,6 @@
     <AssemblyOriginatorKeyFile>Sia.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
-    </Reference>
     <Reference Include="Cntk.Core.Managed-2.2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a82c1f3f67b62253, processorArchitecture=AMD64">
       <HintPath>..\packages\CNTK.GPU.2.2.0\lib\net45\x64\Cntk.Core.Managed-2.2.dll</HintPath>
     </Reference>
@@ -115,13 +112,20 @@
     <Compile Include="Model\Layers\Dropout.cs" />
     <Compile Include="Model\Layers\Activation.cs" />
     <Compile Include="Model\Layers\Dense.cs" />
+    <Compile Include="Model\Optimizers\AdaGrad.cs" />
+    <Compile Include="Model\Optimizers\AdaDelta.cs" />
+    <Compile Include="Model\Optimizers\Adamax.cs" />
+    <Compile Include="Model\Optimizers\BaseOptimizer.cs" />
+    <Compile Include="Model\Optimizers\MomentumSGD.cs" />
+    <Compile Include="Model\Optimizers\RMSProp.cs" />
+    <Compile Include="Model\Optimizers\Adam.cs" />
+    <Compile Include="Model\Optimizers\SGD.cs" />
     <Compile Include="Model\PredResult.cs" />
     <Compile Include="Model\Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
     <Compile Include="NN\Basic.cs" />
     <Compile Include="NN\Convolution.cs" />
     <Compile Include="NN\Recurrent.cs" />
-    <Compile Include="Optimizers.cs" />
     <Compile Include="Processing\ImageUtil.cs" />
     <Compile Include="Processing\ImgGenTrainPredict.cs" />
     <Compile Include="Processing\DataFrameUtil.cs" />

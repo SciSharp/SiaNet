@@ -57,9 +57,6 @@
     <AssemblyOriginatorKeyFile>..\SiaNet\Sia.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="clipper_library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Clipper.6.4.0\lib\net40\clipper_library.dll</HintPath>
-    </Reference>
     <Reference Include="Cntk.Core.Managed-2.2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21fff2ec8197defe, processorArchitecture=AMD64">
       <HintPath>..\packages\CNTK.CPUOnly.2.2.0\lib\net45\x64\Cntk.Core.Managed-2.2.dll</HintPath>
     </Reference>
@@ -168,6 +165,30 @@
     <Compile Include="..\SiaNet\Model\Layers\MaxPool3D.cs">
       <Link>Model\Layers\MaxPool3D.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\AdaDelta.cs">
+      <Link>Model\Optimizers\AdaDelta.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\AdaGrad.cs">
+      <Link>Model\Optimizers\AdaGrad.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\Adam.cs">
+      <Link>Model\Optimizers\Adam.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\Adamax.cs">
+      <Link>Model\Optimizers\Adamax.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\BaseOptimizer.cs">
+      <Link>Model\Optimizers\BaseOptimizer.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\MomentumSGD.cs">
+      <Link>Model\Optimizers\MomentumSGD.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\RMSProp.cs">
+      <Link>Model\Optimizers\RMSProp.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\SGD.cs">
+      <Link>Model\Optimizers\SGD.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\PredResult.cs">
       <Link>Model\PredResult.cs</Link>
     </Compile>
@@ -185,9 +206,6 @@
     </Compile>
     <Compile Include="..\SiaNet\NN\Recurrent.cs">
       <Link>NN\Recurrent.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Optimizers.cs">
-      <Link>Optimizers.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Processing\DataFrameTrainPredict.cs">
       <Link>Processing\DataFrameTrainPredict.cs</Link>

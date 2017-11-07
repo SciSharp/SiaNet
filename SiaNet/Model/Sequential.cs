@@ -11,6 +11,7 @@ using System.Data;
 using SiaNet.Processing;
 using SiaNet.Interface;
 using SiaNet.Common;
+using SiaNet.Model.Optimizers;
 
 namespace SiaNet.Model
 {
@@ -222,11 +223,21 @@ namespace SiaNet.Model
         public void Compile(string optimizer, string loss, string metric, Regulizers regulizer = null)
         {
             CompileModel();
-            learners.Add(Optimizers.Get(optimizer, modelOut));
-            metricName = metric;
+            Optimizers.BaseOptimizer optimizerInstance = new Optimizers.BaseOptimizer(optimizer);
+            learners.Add(optimizerInstance.GetDefault(modelOut, regulizer));
+            
             lossName = loss;
             lossFunc = Losses.Get(loss, labelVariable, modelOut);
-            metricFunc = Metrics.Get(metric, labelVariable, modelOut);
+            if (!string.IsNullOrWhiteSpace(metric))
+            {
+                metricName = metric;
+                metricFunc = Metrics.Get(metric, labelVariable, modelOut);
+            }
+            else
+            {
+                metricName = loss;
+                metricFunc = lossFunc;
+            }
         }
 
         /// <summary>
@@ -236,14 +247,23 @@ namespace SiaNet.Model
         /// <param name="loss">The function name with which the training loss will be minimized.</param>
         /// <param name="metric"> The metric name to be evaluated by the model during training and testing.</param>
         /// <param name="regulizer">The regulizer instance to apply penalty on layers parameters.</param>
-        public void Compile(Learner optimizer, string loss, string metric, Regulizers regulizer = null)
+        public void Compile(BaseOptimizer optimizer, string loss, string metric = "", Regulizers regulizer = null)
         {
             CompileModel();
-            learners.Add(optimizer);
-            metricName = metric;
+            
+            learners.Add(optimizer.Get(modelOut, regulizer));
             lossName = loss;
             lossFunc = Losses.Get(loss, labelVariable, modelOut);
-            metricFunc = Metrics.Get(metric, labelVariable, modelOut);
+            if (!string.IsNullOrWhiteSpace(metric))
+            {
+                metricName = metric;
+                metricFunc = Metrics.Get(metric, labelVariable, modelOut);
+            }
+            else
+            {
+                metricName = loss;
+                metricFunc = lossFunc;
+            }
         }
 
         private void CompileModel()
