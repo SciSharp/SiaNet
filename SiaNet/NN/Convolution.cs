@@ -73,7 +73,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
+        public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
             int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
             var convParams = new Parameter(new int[] { kernalSize.Item1, kernalSize.Item2, numInputChannels, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
@@ -82,7 +82,13 @@
                 dialation = new Tuple<int, int>(1, 1);
             }
 
-            var conv = CNTKLib.Convolution(convParams, layer, new int[] { strides.Item1, strides.Item2 }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { padding, padding, false }), new int[] { dialation.Item1, dialation.Item2 });
+            int[] stridesParams = null;
+            if(strides!=null)
+            {
+                stridesParams = new int[] { strides.Item1, strides.Item2 };
+            }
+
+            var conv = CNTKLib.Convolution(convParams, layer, stridesParams, new BoolVector(new bool[] { true, true, true }), new BoolVector(new bool[] { padding, padding, false }), new int[] { dialation.Item1, dialation.Item2 });
 
             Parameter bias = null;
             if (useBias)

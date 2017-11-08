@@ -80,7 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cifar10Classification.cs" />
+    <Compile Include="Cifar10.cs" />
     <Compile Include="ObjectDetection.cs" />
     <Compile Include="ImageClassification.cs" />
     <Compile Include="MNISTClassifier.cs" />

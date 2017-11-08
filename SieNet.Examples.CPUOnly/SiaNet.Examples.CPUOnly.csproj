@@ -83,8 +83,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SieNet.Examples\Cifar10Classification.cs">
-      <Link>Cifar10Classification.cs</Link>
+    <Compile Include="..\SieNet.Examples\Cifar10.cs">
+      <Link>Cifar10.cs</Link>
     </Compile>
     <Compile Include="..\SieNet.Examples\HousingRegression.cs">
       <Link>HousingRegression.cs</Link>

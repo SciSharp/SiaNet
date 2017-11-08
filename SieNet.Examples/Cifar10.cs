@@ -55,20 +55,21 @@
 
         private static void BuildSmallConvolutionLayer(int[] imageDim, int numClasses)
         {
-            model.Add(new Conv2D(Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), 32, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier, useBias: true, biasInitializer: OptInitializers.Ones));
-            model.Add(new Dropout(0.2));
-            model.Add(new Conv2D(Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), 32, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier, useBias: true, biasInitializer: OptInitializers.Ones));
+            model.Add(new Conv2D(Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), 32, Tuple.Create(3, 3), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier, padding: true));
+            model.Add(new MaxPool2D(Tuple.Create(2, 2)));
+            model.Add(new Conv2D(32, Tuple.Create(3, 3), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier, padding: true));
+            model.Add(new MaxPool2D(Tuple.Create(2, 2)));
+            model.Add(new Conv2D(32, Tuple.Create(3, 3), activation: OptActivations.ReLU, weightInitializer: OptInitializers.Xavier, padding: true));
             model.Add(new MaxPool2D(Tuple.Create(2, 2)));
             model.Add(new Dense(512, act: OptActivations.ReLU));
-            model.Add(new Dropout(0.5));
             model.Add(new Dense(numClasses, act: OptActivations.Softmax));
         }
 
         public static void Train()
         {
             //model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Compile(new MomentumSGD(0.01, 0.9), OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Train(train, 10, 64, null);
+            model.Compile(new SGD(0.003125), OptLosses.CrossEntropy, OptMetrics.Accuracy);
+            model.Train(train, 50, 128, null);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
@@ -78,13 +79,13 @@
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            //Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics.First().Value));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics.First().Value));
         }
 
         private static void Model_OnBatchEnd(int epoch, int batchNumber, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            if (batchNumber % 20 == 0)
-                Console.WriteLine(string.Format("Epoch: {0}, Batch: {1}, Loss: {2}, Accuracy: {3}", epoch, batchNumber, loss, metrics.First().Value));
+            //if (batchNumber % 20 == 0)
+                //Console.WriteLine(string.Format("Epoch: {0}, Batch: {1}, Loss: {2}, Accuracy: {3}", epoch, batchNumber, loss, metrics.First().Value));
         }
     }
 }
