@@ -18,7 +18,7 @@ namespace SiaNet.Interface
         /// <param name="OnEpochStart">The on epoch start.</param>
         /// <param name="OnEpochEnd">The on epoch end.</param>
         /// <returns></returns>
-        Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd);
+        Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd);
 
         /// <summary>
         /// Evaluates the model test data.

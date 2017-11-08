@@ -40,7 +40,7 @@
         /// <returns>Function.</returns>
         private static Function Accuracy(Variable labels, Variable predictions)
         {
-            return CNTKLib.ClassificationError(predictions, labels);
+            return CNTKLib.Minus(Constant.Scalar<float>(1, GlobalParameters.Device), CNTKLib.ClassificationError(predictions, labels));
         }
 
         /// <summary>
@@ -52,7 +52,7 @@
         /// <returns>Function.</returns>
         private static Function TopKAccuracy(Variable labels, Variable predictions, uint k=5)
         {
-            return CNTKLib.ClassificationError(predictions, labels, k);
+            return CNTKLib.Minus(Constant.Scalar<float>(1, GlobalParameters.Device), CNTKLib.ClassificationError(predictions, labels, k));
         }
 
         /// <summary>

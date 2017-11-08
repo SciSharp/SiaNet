@@ -30,7 +30,7 @@ namespace SiaNet.Processing
             this.lossName = lossName;
         }
 
-        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd)
+        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd)
         {
             ImageDataGenerator train = (ImageDataGenerator)trainData;
             ImageDataGenerator validation = validationData != null ? (ImageDataGenerator)validationData : null;
@@ -56,12 +56,16 @@ namespace SiaNet.Processing
                 totalBatchLossList.Clear();
                 totalMetricValueList.Clear();
                 OnEpochStart(currentEpoch);
-
+                int miniBatchCount = 1;
                 while (!train.NextBatch(batchSize))
                 {
+                    onBatchStart(currentEpoch, miniBatchCount);
                     trainer.TrainMinibatch(new Dictionary<Variable, MinibatchData> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, GlobalParameters.Device);
                     totalBatchLossList.Add(trainer.PreviousMinibatchLossAverage());
                     totalMetricValueList.Add(trainer.PreviousMinibatchEvaluationAverage());
+                    OnBatchEnd(currentEpoch, miniBatchCount, trainer.TotalNumberOfSamplesSeen(), trainer.PreviousMinibatchLossAverage(), new Dictionary<string, double>() { { metricName, trainer.PreviousMinibatchEvaluationAverage() } });
+                    
+                    miniBatchCount++;
                 }
 
                 if (!result.ContainsKey("loss"))

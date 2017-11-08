@@ -40,6 +40,16 @@
         public event On_Epoch_End OnEpochEnd;
 
         /// <summary>
+        /// Occurs when [on batch start].
+        /// </summary>
+        public event On_Batch_Start OnBatchStart;
+
+        /// <summary>
+        /// Occurs when [on batch end].
+        /// </summary>
+        public event On_Batch_End OnBatchEnd;
+
+        /// <summary>
         /// Gets the module.
         /// </summary>
         /// <value>The module.</value>
@@ -92,9 +102,34 @@
             OnTrainingEnd += Sequential_OnTrainingEnd;
             OnEpochStart += Sequential_OnEpochStart;
             OnEpochEnd += Sequential_OnEpochEnd;
+            OnBatchStart += Sequential_OnBatchStart;
+            OnBatchEnd += Sequential_OnBatchEnd;
             TrainingResult = new Dictionary<string, List<double>>();
             Layers = new List<LayerConfig>();
             learners = new List<Learner>();
+        }
+
+        /// <summary>
+        /// Sequentials the on batch end.
+        /// </summary>
+        /// <param name="epoch">The epoch.</param>
+        /// <param name="batchNumber">The batch number.</param>
+        /// <param name="samplesSeen">The samples seen.</param>
+        /// <param name="loss">The loss.</param>
+        /// <param name="metrics">The metrics.</param>
+        private void Sequential_OnBatchEnd(int epoch, int batchNumber, uint samplesSeen, double loss, Dictionary<string, double> metrics)
+        {
+            
+        }
+
+        /// <summary>
+        /// Sequentials the on batch start.
+        /// </summary>
+        /// <param name="epoch">The epoch.</param>
+        /// <param name="batchNumber">The batch number.</param>
+        private void Sequential_OnBatchStart(int epoch, int batchNumber)
+        {
+            
         }
 
         /// <summary>
@@ -416,7 +451,7 @@
         {
             OnTrainingStart();
             trainPredict = new DataFrameTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
-            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd);
+            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
             OnTrainingEnd(TrainingResult);
         }
 
@@ -431,7 +466,7 @@
         {
             OnTrainingStart();
             trainPredict = new ImgGenTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
-            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd);
+            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
             OnTrainingEnd(TrainingResult);
         }
 

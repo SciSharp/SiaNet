@@ -30,7 +30,7 @@ namespace SiaNet.Processing
             this.lossName = lossName;
         }
 
-        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd)
+        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd)
         {
             XYFrame train = (XYFrame)trainData;
             XYFrame validation = validationData != null ? (XYFrame)validationData : null;
@@ -47,12 +47,14 @@ namespace SiaNet.Processing
                 List<double> totalMetricValueList = new List<double>();
                 while (train.NextBatch(miniBatchCount, batchSize))
                 {
+                    onBatchStart(currentEpoch, miniBatchCount);
                     Value features = DataFrameUtil.GetValueBatch(train.CurrentBatch.XFrame);
                     Value labels = DataFrameUtil.GetValueBatch(train.CurrentBatch.YFrame);
 
                     trainer.TrainMinibatch(new Dictionary<Variable, Value>() { { featureVariable, features }, { labelVariable, labels } }, GlobalParameters.Device);
                     totalBatchLossList.Add(trainer.PreviousMinibatchLossAverage());
                     totalMetricValueList.Add(trainer.PreviousMinibatchEvaluationAverage());
+                    OnBatchEnd(currentEpoch, miniBatchCount, trainer.TotalNumberOfSamplesSeen(), trainer.PreviousMinibatchLossAverage(), new Dictionary<string, double>() { { metricName, trainer.PreviousMinibatchEvaluationAverage() } });
                     miniBatchCount++;
                 }
 

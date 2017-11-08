@@ -118,10 +118,10 @@ namespace SiaNet.Model.Optimizers
         /// <param name="unitGain">if set to <c>true</c> [unit gain].</param>
         /// <param name="regulizer">The regulizer.</param>
         /// <returns>Learner.</returns>
-        private Learner MomentumSGD(Function modelOutput, double learningRate = 0.01, double momentum = 0, bool unitGain = true, Regulizers regulizer = null)
+        private Learner MomentumSGD(Function modelOutput, double learningRate = 0.01, double momentum = 0.1, bool unitGain = true, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
-            CNTK.TrainingParameterScheduleDouble momentumPerSample = new CNTK.TrainingParameterScheduleDouble(momentum);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
+            CNTK.TrainingParameterScheduleDouble momentumPerSample = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
 
             return CNTKLib.MomentumSGDLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumPerSample, unitGain, GetAdditionalLearningOptions());
         }

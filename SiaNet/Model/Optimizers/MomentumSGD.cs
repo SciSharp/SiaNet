@@ -50,7 +50,7 @@
         /// <param name="learningRate">The learning rate.</param>
         /// <param name="momentum">The momentum.</param>
         /// <param name="unitGain">if set to <c>true</c> [unit gain].</param>
-        public MomentumSGD(double learningRate = 0.01, double momentum = 0, bool unitGain = true) :
+        public MomentumSGD(double learningRate = 0.01, double momentum = 0.1, bool unitGain = true) :
             base(OptOptimizers.MomentumSGD, learningRate)
         {
             Momentum = momentum;
