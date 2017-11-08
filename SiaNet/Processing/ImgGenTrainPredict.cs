@@ -41,8 +41,6 @@ namespace SiaNet.Processing
             int imageSize = featureVariable.Shape.Rank == 1 ? featureVariable.Shape[0] : featureVariable.Shape[0] * featureVariable.Shape[1] * featureVariable.Shape[2];
             int numClasses = labelVariable.Shape[0];
             IList<StreamConfiguration> streamConfigurations = new StreamConfiguration[] { new StreamConfiguration("features", imageSize), new StreamConfiguration("labels", numClasses) };
-            List<double> totalBatchLossList = new List<double>();
-            List<double> totalMetricValueList = new List<double>();
             if (train.GenType == ImageGenType.FromTextFile)
             {
                 train.LoadTextData(featureVariable, labelVariable);
@@ -53,16 +51,12 @@ namespace SiaNet.Processing
             while (currentEpoch <= epoches)
             {
                 metricsList.Clear();
-                totalBatchLossList.Clear();
-                totalMetricValueList.Clear();
                 OnEpochStart(currentEpoch);
                 int miniBatchCount = 1;
                 while (!train.NextBatch(batchSize))
                 {
                     onBatchStart(currentEpoch, miniBatchCount);
                     trainer.TrainMinibatch(new Dictionary<Variable, MinibatchData> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, GlobalParameters.Device);
-                    totalBatchLossList.Add(trainer.PreviousMinibatchLossAverage());
-                    totalMetricValueList.Add(trainer.PreviousMinibatchEvaluationAverage());
                     OnBatchEnd(currentEpoch, miniBatchCount, trainer.TotalNumberOfSamplesSeen(), trainer.PreviousMinibatchLossAverage(), new Dictionary<string, double>() { { metricName, trainer.PreviousMinibatchEvaluationAverage() } });
                     
                     miniBatchCount++;
@@ -78,8 +72,8 @@ namespace SiaNet.Processing
                     result.Add(metricName, new List<double>());
                 }
 
-                double lossValue = totalBatchLossList.Average();
-                double metricValue = totalMetricValueList.Average();
+                double lossValue = trainer.PreviousMinibatchLossAverage();
+                double metricValue = trainer.PreviousMinibatchEvaluationAverage();
                 result["loss"].Add(lossValue);
                 result[metricName].Add(metricValue);
                 metricsList.Add(metricName, metricValue);

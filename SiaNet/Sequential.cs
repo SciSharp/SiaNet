@@ -382,14 +382,6 @@
         /// <param name="layer">The layer.</param>
         /// <exception cref="System.ArgumentNullException">
         /// Input shape is missing for first layer
-        /// or
-        /// Input shape is missing for first layer
-        /// or
-        /// Input shape is missing for first layer
-        /// or
-        /// Input shape is missing for first layer
-        /// or
-        /// Input shape is missing for first layer
         /// </exception>
         /// <exception cref="System.InvalidOperationException"></exception>
         private void BuildFirstLayer(LayerConfig layer)
