@@ -1,34 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="265b0d1b-9697-4a85-b36b-b2b0a08ca50b" Title="SiaNet Namespace" Url="html/N-SiaNet.htm">
-    <HelpTOCNode Id="58f8e456-d36a-4d54-937a-b4ded0bb74d4" Title="GlobalParameters Class" Url="html/T-SiaNet.GlobalParameters.htm">
+  <HelpTOCNode Id="2539dd6a-6b1c-4453-a57c-a14666a34dfa" Title="SiaNet Namespace" Url="html/N-SiaNet.htm">
+    <HelpTOCNode Id="28e8c460-00e7-4190-b023-18c0bd6f2786" Title="GlobalParameters Class" Url="html/T-SiaNet.GlobalParameters.htm">
       <HelpTOCNode Title="GlobalParameters Members" Url="html/AllMembers.T-SiaNet.GlobalParameters.htm" />
       <HelpTOCNode Title="GlobalParameters Methods" Url="html/Methods.T-SiaNet.GlobalParameters.htm" />
-      <HelpTOCNode Id="7dd5f258-bf14-49f1-8c7b-a86239d42be6" Title="GlobalParameters Properties" Url="html/Properties.T-SiaNet.GlobalParameters.htm">
+      <HelpTOCNode Id="5a5d80d9-f08e-4c86-95c6-bb882a94f350" Title="GlobalParameters Properties" Url="html/Properties.T-SiaNet.GlobalParameters.htm">
         <HelpTOCNode Title="Device Property " Url="html/P-SiaNet.GlobalParameters.Device.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="b4149585-b0fa-48e3-859d-7538b2355c96" Title="Initializers Class" Url="html/T-SiaNet.Initializers.htm">
+    <HelpTOCNode Id="08cacc5c-8d1c-44a4-a073-d53e4b6cc1be" Title="Initializers Class" Url="html/T-SiaNet.Initializers.htm">
       <HelpTOCNode Title="Initializers Members" Url="html/AllMembers.T-SiaNet.Initializers.htm" />
-      <HelpTOCNode Id="2bd750ae-5fba-4abe-9ebf-f1ef318b0993" Title="Initializers Methods" Url="html/Methods.T-SiaNet.Initializers.htm">
+      <HelpTOCNode Id="72695f8b-06d1-4a3c-94db-03ce6cbac343" Title="Initializers Methods" Url="html/Methods.T-SiaNet.Initializers.htm">
         <HelpTOCNode Title="Get Method " Url="html/M-SiaNet.Initializers.Get.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="96ab5dce-5857-4eb7-bbd3-8979c395d718" Title="Regulizers Class" Url="html/T-SiaNet.Regulizers.htm">
+    <HelpTOCNode Id="e818d4d6-d66c-4c2e-84df-6efb7c0d9ece" Title="Regulizers Class" Url="html/T-SiaNet.Regulizers.htm">
       <HelpTOCNode Title="Regulizers Members" Url="html/AllMembers.T-SiaNet.Regulizers.htm" />
-      <HelpTOCNode Id="6674cad1-092b-4ed3-a57d-5b3cd6c6bd1e" Title="Regulizers Methods" Url="html/Methods.T-SiaNet.Regulizers.htm">
+      <HelpTOCNode Id="bcd063bd-9ccf-4d9b-b0c7-87ee7dcda78e" Title="Regulizers Methods" Url="html/Methods.T-SiaNet.Regulizers.htm">
         <HelpTOCNode Title="L1L2 Method " Url="html/M-SiaNet.Regulizers.L1L2.htm" />
         <HelpTOCNode Title="RegL1 Method " Url="html/M-SiaNet.Regulizers.RegL1.htm" />
         <HelpTOCNode Title="RegL2 Method " Url="html/M-SiaNet.Regulizers.RegL2.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d2dbbb0b-fe15-4b7b-90f1-7f19082c3731" Title="Sequential Class" Url="html/T-SiaNet.Sequential.htm">
+    <HelpTOCNode Id="c09cce12-9d18-4961-b216-47dafdaa7838" Title="Sequential Class" Url="html/T-SiaNet.Sequential.htm">
       <HelpTOCNode Title="Sequential Members" Url="html/AllMembers.T-SiaNet.Sequential.htm" />
       <HelpTOCNode Title="Sequential Constructor " Url="html/M-SiaNet.Sequential.-ctor.htm" />
-      <HelpTOCNode Id="a59bbe7c-16cd-468c-aea6-65963291ddd0" Title="Sequential Methods" Url="html/Methods.T-SiaNet.Sequential.htm">
+      <HelpTOCNode Id="61f4ee2c-2a8a-453a-af66-54a560118cad" Title="Sequential Methods" Url="html/Methods.T-SiaNet.Sequential.htm">
         <HelpTOCNode Title="Add Method " Url="html/M-SiaNet.Sequential.Add.htm" />
-        <HelpTOCNode Id="08d670de-f3aa-4b66-9bec-9b4b16c9d27e" Title="Compile Method " Url="html/Overload-SiaNet.Sequential.Compile.htm">
+        <HelpTOCNode Id="2548495c-07d7-4b38-ae8a-fdde0d4212e2" Title="Compile Method " Url="html/Overload-SiaNet.Sequential.Compile.htm">
           <HelpTOCNode Title="Compile Method (String, String, String, Regulizers)" Url="html/M-SiaNet.Sequential.Compile.htm" />
           <HelpTOCNode Title="Compile Method (BaseOptimizer, String, String, Regulizers)" Url="html/M-SiaNet.Sequential.Compile_1.htm" />
         </HelpTOCNode>
@@ -37,17 +37,19 @@
         <HelpTOCNode Title="LoadNetConfig Method " Url="html/M-SiaNet.Sequential.LoadNetConfig.htm" />
         <HelpTOCNode Title="SaveModel Method " Url="html/M-SiaNet.Sequential.SaveModel.htm" />
         <HelpTOCNode Title="SaveNetConfig Method " Url="html/M-SiaNet.Sequential.SaveNetConfig.htm" />
-        <HelpTOCNode Id="85c8e864-a831-4607-b6bc-4dc8f99d2d5e" Title="Train Method " Url="html/Overload-SiaNet.Sequential.Train.htm">
+        <HelpTOCNode Id="8e7ce328-298a-4782-95c1-e917f5d46b39" Title="Train Method " Url="html/Overload-SiaNet.Sequential.Train.htm">
           <HelpTOCNode Title="Train Method (XYFrame, Int32, Int32, XYFrame)" Url="html/M-SiaNet.Sequential.Train.htm" />
           <HelpTOCNode Title="Train Method (ImageDataGenerator, Int32, Int32, ImageDataGenerator)" Url="html/M-SiaNet.Sequential.Train_1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="35db33e4-0de4-4ec7-8867-9d96b60ee3e5" Title="Sequential Properties" Url="html/Properties.T-SiaNet.Sequential.htm">
+      <HelpTOCNode Id="0256a46f-c566-4dfe-9b7c-d1815830237f" Title="Sequential Properties" Url="html/Properties.T-SiaNet.Sequential.htm">
         <HelpTOCNode Title="Layers Property " Url="html/P-SiaNet.Sequential.Layers.htm" />
         <HelpTOCNode Title="Module Property " Url="html/P-SiaNet.Sequential.Module.htm" />
         <HelpTOCNode Title="TrainingResult Property " Url="html/P-SiaNet.Sequential.TrainingResult.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="6bd30159-46de-4852-b92e-f5062ce14f80" Title="Sequential Events" Url="html/Events.T-SiaNet.Sequential.htm">
+      <HelpTOCNode Id="bf51ecc4-23bf-4e30-a2df-169c3039dfc7" Title="Sequential Events" Url="html/Events.T-SiaNet.Sequential.htm">
+        <HelpTOCNode Title="OnBatchEnd Event" Url="html/E-SiaNet.Sequential.OnBatchEnd.htm" />
+        <HelpTOCNode Title="OnBatchStart Event" Url="html/E-SiaNet.Sequential.OnBatchStart.htm" />
         <HelpTOCNode Title="OnEpochEnd Event" Url="html/E-SiaNet.Sequential.OnEpochEnd.htm" />
         <HelpTOCNode Title="OnEpochStart Event" Url="html/E-SiaNet.Sequential.OnEpochStart.htm" />
         <HelpTOCNode Title="OnTrainingEnd Event" Url="html/E-SiaNet.Sequential.OnTrainingEnd.htm" />
@@ -55,37 +57,37 @@
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="cbe69be2-64ff-4c74-bd0a-d541cb8697f8" Title="SiaNet.Application Namespace" Url="html/N-SiaNet.Application.htm">
-    <HelpTOCNode Id="c788bae6-f6e2-4e02-8ce6-b1251637d0ab" Title="Cifar10 Class" Url="html/T-SiaNet.Application.Cifar10.htm">
+  <HelpTOCNode Id="9c1116e5-c1c0-4227-8f3d-2350321f8c85" Title="SiaNet.Application Namespace" Url="html/N-SiaNet.Application.htm">
+    <HelpTOCNode Id="6ce124a0-fa38-4226-aa1e-5e97121ab4aa" Title="Cifar10 Class" Url="html/T-SiaNet.Application.Cifar10.htm">
       <HelpTOCNode Title="Cifar10 Members" Url="html/AllMembers.T-SiaNet.Application.Cifar10.htm" />
       <HelpTOCNode Title="Cifar10 Constructor " Url="html/M-SiaNet.Application.Cifar10.-ctor.htm" />
-      <HelpTOCNode Id="51241aa1-2110-4fbd-b423-df4381308a8e" Title="Cifar10 Methods" Url="html/Methods.T-SiaNet.Application.Cifar10.htm">
+      <HelpTOCNode Id="57fb4d59-0d55-4387-b8b4-d5ca4eb839e8" Title="Cifar10 Methods" Url="html/Methods.T-SiaNet.Application.Cifar10.htm">
         <HelpTOCNode Title="LoadModel Method " Url="html/M-SiaNet.Application.Cifar10.LoadModel.htm" />
-        <HelpTOCNode Id="8c28a040-7cd1-46bf-b002-eef0694b8ad7" Title="Predict Method " Url="html/Overload-SiaNet.Application.Cifar10.Predict.htm">
+        <HelpTOCNode Id="cda27e85-73b0-4424-a8db-5c6065185e93" Title="Predict Method " Url="html/Overload-SiaNet.Application.Cifar10.Predict.htm">
           <HelpTOCNode Title="Predict Method (String, Int32)" Url="html/M-SiaNet.Application.Cifar10.Predict.htm" />
           <HelpTOCNode Title="Predict Method (Byte[], Int32)" Url="html/M-SiaNet.Application.Cifar10.Predict_1.htm" />
           <HelpTOCNode Title="Predict Method (Bitmap, Int32)" Url="html/M-SiaNet.Application.Cifar10.Predict_2.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="07d26f1b-28b8-44e1-9c3b-ad33102c8f04" Title="FastRCNN Class" Url="html/T-SiaNet.Application.FastRCNN.htm">
+    <HelpTOCNode Id="bb85113d-7c01-4455-97c3-500648bdf404" Title="FastRCNN Class" Url="html/T-SiaNet.Application.FastRCNN.htm">
       <HelpTOCNode Title="FastRCNN Members" Url="html/AllMembers.T-SiaNet.Application.FastRCNN.htm" />
       <HelpTOCNode Title="FastRCNN Constructor " Url="html/M-SiaNet.Application.FastRCNN.-ctor.htm" />
-      <HelpTOCNode Id="f523f478-524b-4148-9faa-995f3969eac5" Title="FastRCNN Methods" Url="html/Methods.T-SiaNet.Application.FastRCNN.htm">
+      <HelpTOCNode Id="1cc06579-c261-48f5-83b1-3b7a7954d94d" Title="FastRCNN Methods" Url="html/Methods.T-SiaNet.Application.FastRCNN.htm">
         <HelpTOCNode Title="LoadModel Method " Url="html/M-SiaNet.Application.FastRCNN.LoadModel.htm" />
-        <HelpTOCNode Id="d1bf23b1-f5ed-4a84-a8f1-5e93b6a02be1" Title="Predict Method " Url="html/Overload-SiaNet.Application.FastRCNN.Predict.htm">
+        <HelpTOCNode Id="00eff8d2-5ee6-4789-bf75-0dc209207412" Title="Predict Method " Url="html/Overload-SiaNet.Application.FastRCNN.Predict.htm">
           <HelpTOCNode Title="Predict Method (String, Double)" Url="html/M-SiaNet.Application.FastRCNN.Predict.htm" />
           <HelpTOCNode Title="Predict Method (Byte[], Double)" Url="html/M-SiaNet.Application.FastRCNN.Predict_1.htm" />
           <HelpTOCNode Title="Predict Method (Bitmap, Double)" Url="html/M-SiaNet.Application.FastRCNN.Predict_2.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="a08faec2-e6c6-4b2b-93a2-09778ffe3001" Title="ImageNet Class" Url="html/T-SiaNet.Application.ImageNet.htm">
+    <HelpTOCNode Id="db0b21ca-a16f-4f09-b1aa-d74323c44419" Title="ImageNet Class" Url="html/T-SiaNet.Application.ImageNet.htm">
       <HelpTOCNode Title="ImageNet Members" Url="html/AllMembers.T-SiaNet.Application.ImageNet.htm" />
       <HelpTOCNode Title="ImageNet Constructor " Url="html/M-SiaNet.Application.ImageNet.-ctor.htm" />
-      <HelpTOCNode Id="c34b0fa8-be4f-4031-bcde-38282f78b78a" Title="ImageNet Methods" Url="html/Methods.T-SiaNet.Application.ImageNet.htm">
+      <HelpTOCNode Id="dd88bcf9-d705-46af-9638-fcb1c326bc40" Title="ImageNet Methods" Url="html/Methods.T-SiaNet.Application.ImageNet.htm">
         <HelpTOCNode Title="LoadModel Method " Url="html/M-SiaNet.Application.ImageNet.LoadModel.htm" />
-        <HelpTOCNode Id="67a378ae-c476-49a7-8c15-ec7e985b6056" Title="Predict Method " Url="html/Overload-SiaNet.Application.ImageNet.Predict.htm">
+        <HelpTOCNode Id="191d740d-0645-4972-8067-89a0e6333ea0" Title="Predict Method " Url="html/Overload-SiaNet.Application.ImageNet.Predict.htm">
           <HelpTOCNode Title="Predict Method (String, Int32)" Url="html/M-SiaNet.Application.ImageNet.Predict.htm" />
           <HelpTOCNode Title="Predict Method (Byte[], Int32)" Url="html/M-SiaNet.Application.ImageNet.Predict_1.htm" />
           <HelpTOCNode Title="Predict Method (Bitmap, Int32)" Url="html/M-SiaNet.Application.ImageNet.Predict_2.htm" />
@@ -93,49 +95,49 @@
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="893b142a-f9ca-4ce3-ad4a-8668f3218549" Title="SiaNet.Common Namespace" Url="html/N-SiaNet.Common.htm">
+  <HelpTOCNode Id="8a7e6b76-724b-4f01-a3a5-8f2bb09d9041" Title="SiaNet.Common Namespace" Url="html/N-SiaNet.Common.htm">
     <HelpTOCNode Title="Cifar10Model Enumeration" Url="html/T-SiaNet.Common.Cifar10Model.htm" />
-    <HelpTOCNode Id="6994bb0b-93fb-43f1-be13-395a9ef72791" Title="DatasetInfo Class" Url="html/T-SiaNet.Common.DatasetInfo.htm">
+    <HelpTOCNode Id="6335cb2a-2888-4368-8eec-90d69c30f92b" Title="DatasetInfo Class" Url="html/T-SiaNet.Common.DatasetInfo.htm">
       <HelpTOCNode Title="DatasetInfo Members" Url="html/AllMembers.T-SiaNet.Common.DatasetInfo.htm" />
       <HelpTOCNode Title="DatasetInfo Methods" Url="html/Methods.T-SiaNet.Common.DatasetInfo.htm" />
-      <HelpTOCNode Id="8725a1d4-c514-4262-93b3-606f830488cf" Title="DatasetInfo Properties" Url="html/Properties.T-SiaNet.Common.DatasetInfo.htm">
+      <HelpTOCNode Id="a0cd79c9-b8c3-47bf-b1b5-a8a2b4242b11" Title="DatasetInfo Properties" Url="html/Properties.T-SiaNet.Common.DatasetInfo.htm">
         <HelpTOCNode Title="BaseFolder Property " Url="html/P-SiaNet.Common.DatasetInfo.BaseFolder.htm" />
         <HelpTOCNode Title="Test Property " Url="html/P-SiaNet.Common.DatasetInfo.Test.htm" />
         <HelpTOCNode Title="Train Property " Url="html/P-SiaNet.Common.DatasetInfo.Train.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="1df87a19-84d4-43fb-a34e-59e6be2fedbc" Title="Downloader Class" Url="html/T-SiaNet.Common.Downloader.htm">
+    <HelpTOCNode Id="00c58608-88db-48c3-b0e7-e0d8cce0a540" Title="Downloader Class" Url="html/T-SiaNet.Common.Downloader.htm">
       <HelpTOCNode Title="Downloader Members" Url="html/AllMembers.T-SiaNet.Common.Downloader.htm" />
-      <HelpTOCNode Id="ee15ad44-3cde-48a9-bdb0-e9658b420eed" Title="Downloader Methods" Url="html/Methods.T-SiaNet.Common.Downloader.htm">
+      <HelpTOCNode Id="4cec6758-cba4-48b1-9c1a-e2b2f94da8b0" Title="Downloader Methods" Url="html/Methods.T-SiaNet.Common.Downloader.htm">
         <HelpTOCNode Title="DownloadModel Method " Url="html/M-SiaNet.Common.Downloader.DownloadModel.htm" />
         <HelpTOCNode Title="DownloadSample Method " Url="html/M-SiaNet.Common.Downloader.DownloadSample.htm" />
         <HelpTOCNode Title="GetSamplePath Method " Url="html/M-SiaNet.Common.Downloader.GetSamplePath.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="c912d3a8-65f3-4286-9317-0c89f4a4e2dd" Title="Extensions Class" Url="html/T-SiaNet.Common.Extensions.htm">
+    <HelpTOCNode Id="0f834859-d3de-4003-858a-a04d4a13482a" Title="Extensions Class" Url="html/T-SiaNet.Common.Extensions.htm">
       <HelpTOCNode Title="Extensions Members" Url="html/AllMembers.T-SiaNet.Common.Extensions.htm" />
-      <HelpTOCNode Id="047de78e-e9bf-41a0-8d99-d7cb8b5ff6e9" Title="Extensions Methods" Url="html/Methods.T-SiaNet.Common.Extensions.htm">
+      <HelpTOCNode Id="708539d0-459d-4ce4-a473-6f76b1122b52" Title="Extensions Methods" Url="html/Methods.T-SiaNet.Common.Extensions.htm">
         <HelpTOCNode Title="Mean Method " Url="html/M-SiaNet.Common.Extensions.Mean.htm" />
         <HelpTOCNode Title="Std Method " Url="html/M-SiaNet.Common.Extensions.Std.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="FastRCNNModel Enumeration" Url="html/T-SiaNet.Common.FastRCNNModel.htm" />
     <HelpTOCNode Title="ImageNetModel Enumeration" Url="html/T-SiaNet.Common.ImageNetModel.htm" />
-    <HelpTOCNode Id="f926fda9-2f7f-4c8f-939d-b6519634cb52" Title="Logging Class" Url="html/T-SiaNet.Common.Logging.htm">
+    <HelpTOCNode Id="6b054ede-6395-45cc-bcc3-3bce7879a8f7" Title="Logging Class" Url="html/T-SiaNet.Common.Logging.htm">
       <HelpTOCNode Title="Logging Members" Url="html/AllMembers.T-SiaNet.Common.Logging.htm" />
-      <HelpTOCNode Id="dd8f46d5-b3ec-43c9-865d-1bdabc3862c7" Title="Logging Methods" Url="html/Methods.T-SiaNet.Common.Logging.htm">
-        <HelpTOCNode Id="f15c8aa5-d309-4d50-97fd-d011d92cfb70" Title="WriteTrace Method " Url="html/Overload-SiaNet.Common.Logging.WriteTrace.htm">
+      <HelpTOCNode Id="170a828a-3775-4ae1-98a8-61b4309a3e23" Title="Logging Methods" Url="html/Methods.T-SiaNet.Common.Logging.htm">
+        <HelpTOCNode Id="75e69e8c-3e00-4a07-9289-93567feaef77" Title="WriteTrace Method " Url="html/Overload-SiaNet.Common.Logging.WriteTrace.htm">
           <HelpTOCNode Title="WriteTrace Method (String)" Url="html/M-SiaNet.Common.Logging.WriteTrace.htm" />
           <HelpTOCNode Title="WriteTrace Method (Exception)" Url="html/M-SiaNet.Common.Logging.WriteTrace_1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="6efe0e22-ca2d-4a50-9708-c07ee5299c82" Title="Logging Events" Url="html/Events.T-SiaNet.Common.Logging.htm">
+      <HelpTOCNode Id="4dc672b3-98fa-4227-b2f9-3338af4d9f3f" Title="Logging Events" Url="html/Events.T-SiaNet.Common.Logging.htm">
         <HelpTOCNode Title="OnWriteLog Event" Url="html/E-SiaNet.Common.Logging.OnWriteLog.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="0eb1a649-91fb-401d-8c7a-9b45864debbb" Title="OptActivations Class" Url="html/T-SiaNet.Common.OptActivations.htm">
+    <HelpTOCNode Id="ae5a9a3f-a8c3-476a-813e-0316520bc722" Title="OptActivations Class" Url="html/T-SiaNet.Common.OptActivations.htm">
       <HelpTOCNode Title="OptActivations Members" Url="html/AllMembers.T-SiaNet.Common.OptActivations.htm" />
-      <HelpTOCNode Id="e8beadd0-1e42-4ab9-80eb-54c6189c1674" Title="OptActivations Fields" Url="html/Fields.T-SiaNet.Common.OptActivations.htm">
+      <HelpTOCNode Id="571ab635-16bf-46f1-bbdf-6b11722088c3" Title="OptActivations Fields" Url="html/Fields.T-SiaNet.Common.OptActivations.htm">
         <HelpTOCNode Title="ELU Field" Url="html/F-SiaNet.Common.OptActivations.ELU.htm" />
         <HelpTOCNode Title="LeakyReLU Field" Url="html/F-SiaNet.Common.OptActivations.LeakyReLU.htm" />
         <HelpTOCNode Title="None Field" Url="html/F-SiaNet.Common.OptActivations.None.htm" />
@@ -147,9 +149,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="OptActivations Methods" Url="html/Methods.T-SiaNet.Common.OptActivations.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="d2905056-c54f-4581-9e64-2ecfa0056e7d" Title="OptInitializers Class" Url="html/T-SiaNet.Common.OptInitializers.htm">
+    <HelpTOCNode Id="187173d6-e345-458d-96c1-b373d995dd05" Title="OptInitializers Class" Url="html/T-SiaNet.Common.OptInitializers.htm">
       <HelpTOCNode Title="OptInitializers Members" Url="html/AllMembers.T-SiaNet.Common.OptInitializers.htm" />
-      <HelpTOCNode Id="11480008-9209-418e-89bf-11faaa072d33" Title="OptInitializers Fields" Url="html/Fields.T-SiaNet.Common.OptInitializers.htm">
+      <HelpTOCNode Id="43884665-96cd-4c5d-a608-008773221efb" Title="OptInitializers Fields" Url="html/Fields.T-SiaNet.Common.OptInitializers.htm">
         <HelpTOCNode Title="Constant Field" Url="html/F-SiaNet.Common.OptInitializers.Constant.htm" />
         <HelpTOCNode Title="GlorotNormal Field" Url="html/F-SiaNet.Common.OptInitializers.GlorotNormal.htm" />
         <HelpTOCNode Title="GlorotUniform Field" Url="html/F-SiaNet.Common.OptInitializers.GlorotUniform.htm" />
@@ -165,9 +167,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="OptInitializers Methods" Url="html/Methods.T-SiaNet.Common.OptInitializers.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="775f822a-d355-41d2-9766-647af4107934" Title="OptLayers Class" Url="html/T-SiaNet.Common.OptLayers.htm">
+    <HelpTOCNode Id="19b7a3d0-e2d4-4081-9f2b-9258fac67855" Title="OptLayers Class" Url="html/T-SiaNet.Common.OptLayers.htm">
       <HelpTOCNode Title="OptLayers Members" Url="html/AllMembers.T-SiaNet.Common.OptLayers.htm" />
-      <HelpTOCNode Id="b676fed0-d31c-4907-8f0e-a9818841d0f2" Title="OptLayers Fields" Url="html/Fields.T-SiaNet.Common.OptLayers.htm">
+      <HelpTOCNode Id="befefced-54c2-41e9-93b1-47fa56c3d319" Title="OptLayers Fields" Url="html/Fields.T-SiaNet.Common.OptLayers.htm">
         <HelpTOCNode Title="Activation Field" Url="html/F-SiaNet.Common.OptLayers.Activation.htm" />
         <HelpTOCNode Title="AvgPool1D Field" Url="html/F-SiaNet.Common.OptLayers.AvgPool1D.htm" />
         <HelpTOCNode Title="AvgPool2D Field" Url="html/F-SiaNet.Common.OptLayers.AvgPool2D.htm" />
@@ -190,9 +192,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="OptLayers Methods" Url="html/Methods.T-SiaNet.Common.OptLayers.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="9a4ff7f3-e160-4840-aa5f-6bc468b4fe04" Title="OptLosses Class" Url="html/T-SiaNet.Common.OptLosses.htm">
+    <HelpTOCNode Id="c240fb58-1988-4c92-b27e-af89db91e202" Title="OptLosses Class" Url="html/T-SiaNet.Common.OptLosses.htm">
       <HelpTOCNode Title="OptLosses Members" Url="html/AllMembers.T-SiaNet.Common.OptLosses.htm" />
-      <HelpTOCNode Id="22cf2264-48ce-41be-9550-2697c477f3a0" Title="OptLosses Fields" Url="html/Fields.T-SiaNet.Common.OptLosses.htm">
+      <HelpTOCNode Id="0d46b9b9-7976-47d8-b634-099fdd5f4a74" Title="OptLosses Fields" Url="html/Fields.T-SiaNet.Common.OptLosses.htm">
         <HelpTOCNode Title="BinaryCrossEntropy Field" Url="html/F-SiaNet.Common.OptLosses.BinaryCrossEntropy.htm" />
         <HelpTOCNode Title="CrossEntropy Field" Url="html/F-SiaNet.Common.OptLosses.CrossEntropy.htm" />
         <HelpTOCNode Title="KullbackLeiblerDivergence Field" Url="html/F-SiaNet.Common.OptLosses.KullbackLeiblerDivergence.htm" />
@@ -205,9 +207,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="OptLosses Methods" Url="html/Methods.T-SiaNet.Common.OptLosses.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="4763c74b-2b53-491f-a572-ae61e221e661" Title="OptMetrics Class" Url="html/T-SiaNet.Common.OptMetrics.htm">
+    <HelpTOCNode Id="5d0060f7-43c7-4e76-9748-130bf04ea003" Title="OptMetrics Class" Url="html/T-SiaNet.Common.OptMetrics.htm">
       <HelpTOCNode Title="OptMetrics Members" Url="html/AllMembers.T-SiaNet.Common.OptMetrics.htm" />
-      <HelpTOCNode Id="ee37665e-c1e0-442b-bdaa-a2e4b50fad1b" Title="OptMetrics Fields" Url="html/Fields.T-SiaNet.Common.OptMetrics.htm">
+      <HelpTOCNode Id="fc34c92b-8c62-44d8-98e2-78204277682a" Title="OptMetrics Fields" Url="html/Fields.T-SiaNet.Common.OptMetrics.htm">
         <HelpTOCNode Title="Accuracy Field" Url="html/F-SiaNet.Common.OptMetrics.Accuracy.htm" />
         <HelpTOCNode Title="MAE Field" Url="html/F-SiaNet.Common.OptMetrics.MAE.htm" />
         <HelpTOCNode Title="MAPE Field" Url="html/F-SiaNet.Common.OptMetrics.MAPE.htm" />
@@ -217,9 +219,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="OptMetrics Methods" Url="html/Methods.T-SiaNet.Common.OptMetrics.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="eaa45e93-087c-4afa-8933-4827df43d325" Title="OptOptimizers Class" Url="html/T-SiaNet.Common.OptOptimizers.htm">
+    <HelpTOCNode Id="c4d6c611-83f8-430b-ab46-e393422b98cc" Title="OptOptimizers Class" Url="html/T-SiaNet.Common.OptOptimizers.htm">
       <HelpTOCNode Title="OptOptimizers Members" Url="html/AllMembers.T-SiaNet.Common.OptOptimizers.htm" />
-      <HelpTOCNode Id="ec9a1736-38e6-4f81-91a1-858ce17f385d" Title="OptOptimizers Fields" Url="html/Fields.T-SiaNet.Common.OptOptimizers.htm">
+      <HelpTOCNode Id="f554cbb5-4f6a-41cb-b8ae-b45d6f5c0135" Title="OptOptimizers Fields" Url="html/Fields.T-SiaNet.Common.OptOptimizers.htm">
         <HelpTOCNode Title="AdaDelta Field" Url="html/F-SiaNet.Common.OptOptimizers.AdaDelta.htm" />
         <HelpTOCNode Title="AdaGrad Field" Url="html/F-SiaNet.Common.OptOptimizers.AdaGrad.htm" />
         <HelpTOCNode Title="Adam Field" Url="html/F-SiaNet.Common.OptOptimizers.Adam.htm" />
@@ -230,9 +232,9 @@
       </HelpTOCNode>
       <HelpTOCNode Title="OptOptimizers Methods" Url="html/Methods.T-SiaNet.Common.OptOptimizers.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="fa69da8a-c436-44c5-bf02-2ee3c2f12f53" Title="OptRegulizers Class" Url="html/T-SiaNet.Common.OptRegulizers.htm">
+    <HelpTOCNode Id="e1fe935d-2300-430f-a083-a3d10770d288" Title="OptRegulizers Class" Url="html/T-SiaNet.Common.OptRegulizers.htm">
       <HelpTOCNode Title="OptRegulizers Members" Url="html/AllMembers.T-SiaNet.Common.OptRegulizers.htm" />
-      <HelpTOCNode Id="0a6d32e4-57e3-4c90-b1cf-a9e8c5594f53" Title="OptRegulizers Fields" Url="html/Fields.T-SiaNet.Common.OptRegulizers.htm">
+      <HelpTOCNode Id="c1e0e490-8022-468f-9215-15d0f34ebe76" Title="OptRegulizers Fields" Url="html/Fields.T-SiaNet.Common.OptRegulizers.htm">
         <HelpTOCNode Title="L1 Field" Url="html/F-SiaNet.Common.OptRegulizers.L1.htm" />
         <HelpTOCNode Title="L1L2 Field" Url="html/F-SiaNet.Common.OptRegulizers.L1L2.htm" />
         <HelpTOCNode Title="L2 Field" Url="html/F-SiaNet.Common.OptRegulizers.L2.htm" />
@@ -241,28 +243,28 @@
       <HelpTOCNode Title="OptRegulizers Methods" Url="html/Methods.T-SiaNet.Common.OptRegulizers.htm" />
     </HelpTOCNode>
     <HelpTOCNode Title="PrepDataset Enumeration" Url="html/T-SiaNet.Common.PrepDataset.htm" />
-    <HelpTOCNode Id="6a87f9f2-954f-48f5-b403-fdc16a52f8eb" Title="PreTrainedModelPath Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.htm">
+    <HelpTOCNode Id="1e488ad4-f157-4a83-9413-1b5427bff7ef" Title="PreTrainedModelPath Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.htm">
       <HelpTOCNode Title="PreTrainedModelPath Methods" Url="html/Methods.T-SiaNet.Common.PreTrainedModelPath.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="8a9ea81d-692a-492b-a39e-f405b4f866b8" Title="PreTrainedModelPath.Cifar10Path Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.Cifar10Path.htm">
+    <HelpTOCNode Id="e0ca75cc-24e4-4c92-a312-31e79b85c211" Title="PreTrainedModelPath.Cifar10Path Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.Cifar10Path.htm">
       <HelpTOCNode Title="PreTrainedModelPath.Cifar10Path Members" Url="html/AllMembers.T-SiaNet.Common.PreTrainedModelPath.Cifar10Path.htm" />
-      <HelpTOCNode Id="19e11770-c91c-42e9-b0b6-26e6cdcb16f1" Title="PreTrainedModelPath.Cifar10Path Fields" Url="html/Fields.T-SiaNet.Common.PreTrainedModelPath.Cifar10Path.htm">
+      <HelpTOCNode Id="68b8e00c-ca04-4ebe-837b-831bde883a47" Title="PreTrainedModelPath.Cifar10Path Fields" Url="html/Fields.T-SiaNet.Common.PreTrainedModelPath.Cifar10Path.htm">
         <HelpTOCNode Title="ResNet110 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet110.htm" />
         <HelpTOCNode Title="ResNet20 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.Cifar10Path.ResNet20.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="PreTrainedModelPath.Cifar10Path Methods" Url="html/Methods.T-SiaNet.Common.PreTrainedModelPath.Cifar10Path.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="4c8abda5-9996-4e18-bc03-677c581c5a3e" Title="PreTrainedModelPath.FastRCNNPath Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.htm">
+    <HelpTOCNode Id="2674e0c2-78fc-470c-b2b0-9f67e4820314" Title="PreTrainedModelPath.FastRCNNPath Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.htm">
       <HelpTOCNode Title="PreTrainedModelPath.FastRCNNPath Members" Url="html/AllMembers.T-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.htm" />
-      <HelpTOCNode Id="e6b89781-8b94-4b6f-a24b-3ff24b75d5d1" Title="PreTrainedModelPath.FastRCNNPath Fields" Url="html/Fields.T-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.htm">
+      <HelpTOCNode Id="52116234-9869-47b0-8134-b1bf8da55364" Title="PreTrainedModelPath.FastRCNNPath Fields" Url="html/Fields.T-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.htm">
         <HelpTOCNode Title="Grocery100 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Grocery100.htm" />
         <HelpTOCNode Title="Pascal Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.Pascal.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="PreTrainedModelPath.FastRCNNPath Methods" Url="html/Methods.T-SiaNet.Common.PreTrainedModelPath.FastRCNNPath.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="38d212be-6634-494f-8cb4-918379a3067b" Title="PreTrainedModelPath.ImageNetPath Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.ImageNetPath.htm">
+    <HelpTOCNode Id="3858df6c-f046-496d-82b1-884c0cc9c165" Title="PreTrainedModelPath.ImageNetPath Class" Url="html/T-SiaNet.Common.PreTrainedModelPath.ImageNetPath.htm">
       <HelpTOCNode Title="PreTrainedModelPath.ImageNetPath Members" Url="html/AllMembers.T-SiaNet.Common.PreTrainedModelPath.ImageNetPath.htm" />
-      <HelpTOCNode Id="f790d60c-00fe-436b-a875-ec6f7e765a75" Title="PreTrainedModelPath.ImageNetPath Fields" Url="html/Fields.T-SiaNet.Common.PreTrainedModelPath.ImageNetPath.htm">
+      <HelpTOCNode Id="5d72d116-309a-48ef-bfb9-55f5c812402f" Title="PreTrainedModelPath.ImageNetPath Fields" Url="html/Fields.T-SiaNet.Common.PreTrainedModelPath.ImageNetPath.htm">
         <HelpTOCNode Title="AlexNet Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.AlexNet.htm" />
         <HelpTOCNode Title="InceptionV3 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.InceptionV3.htm" />
         <HelpTOCNode Title="ResNet101 Field" Url="html/F-SiaNet.Common.PreTrainedModelPath.ImageNetPath.ResNet101.htm" />
@@ -278,11 +280,11 @@
     <HelpTOCNode Title="SampleDataset Enumeration" Url="html/T-SiaNet.Common.SampleDataset.htm" />
     <HelpTOCNode Title="WriteLog Delegate" Url="html/T-SiaNet.Common.WriteLog.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="a1108a12-0b0f-413b-990f-4f32cb7fd8d9" Title="SiaNet.Common.Resources Namespace" Url="html/N-SiaNet.Common.Resources.htm">
-    <HelpTOCNode Id="ecc461c6-bed8-4d44-95c6-bc3beee00638" Title="PredMap Class" Url="html/T-SiaNet.Common.Resources.PredMap.htm">
+  <HelpTOCNode Id="4e6b00f6-7b0d-4d63-9d03-5e6aa0e28de0" Title="SiaNet.Common.Resources Namespace" Url="html/N-SiaNet.Common.Resources.htm">
+    <HelpTOCNode Id="9a44648c-faac-4b87-8135-94c004f619fb" Title="PredMap Class" Url="html/T-SiaNet.Common.Resources.PredMap.htm">
       <HelpTOCNode Title="PredMap Members" Url="html/AllMembers.T-SiaNet.Common.Resources.PredMap.htm" />
       <HelpTOCNode Title="PredMap Methods" Url="html/Methods.T-SiaNet.Common.Resources.PredMap.htm" />
-      <HelpTOCNode Id="7c420bf9-dc0e-43bd-82ad-55a747f3010b" Title="PredMap Properties" Url="html/Properties.T-SiaNet.Common.Resources.PredMap.htm">
+      <HelpTOCNode Id="9de82be5-2aa3-4751-9e66-404bdff41ac2" Title="PredMap Properties" Url="html/Properties.T-SiaNet.Common.Resources.PredMap.htm">
         <HelpTOCNode Title="Cifar10 Property " Url="html/P-SiaNet.Common.Resources.PredMap.Cifar10.htm" />
         <HelpTOCNode Title="Culture Property " Url="html/P-SiaNet.Common.Resources.PredMap.Culture.htm" />
         <HelpTOCNode Title="ImageNet1K Property " Url="html/P-SiaNet.Common.Resources.PredMap.ImageNet1K.htm" />
@@ -290,42 +292,44 @@
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="5dec94c3-e0c7-4770-ad08-0cd7298530ca" Title="SiaNet.Events Namespace" Url="html/N-SiaNet.Events.htm">
+  <HelpTOCNode Id="092ba598-82d8-413a-8272-93e278a461a6" Title="SiaNet.Events Namespace" Url="html/N-SiaNet.Events.htm">
+    <HelpTOCNode Title="On_Batch_End Delegate" Url="html/T-SiaNet.Events.On_Batch_End.htm" />
+    <HelpTOCNode Title="On_Batch_Start Delegate" Url="html/T-SiaNet.Events.On_Batch_Start.htm" />
     <HelpTOCNode Title="On_Epoch_End Delegate" Url="html/T-SiaNet.Events.On_Epoch_End.htm" />
     <HelpTOCNode Title="On_Epoch_Start Delegate" Url="html/T-SiaNet.Events.On_Epoch_Start.htm" />
     <HelpTOCNode Title="On_Training_End Delegate" Url="html/T-SiaNet.Events.On_Training_End.htm" />
     <HelpTOCNode Title="On_Training_Start Delegate" Url="html/T-SiaNet.Events.On_Training_Start.htm" />
   </HelpTOCNode>
-  <HelpTOCNode Id="e2fb838f-952b-46fd-8da7-47cf05d86bd7" Title="SiaNet.Model Namespace" Url="html/N-SiaNet.Model.htm">
-    <HelpTOCNode Id="db9643fa-a2d0-4d8a-92ad-7c88894093ca" Title="ConfigModule Class" Url="html/T-SiaNet.Model.ConfigModule.htm">
+  <HelpTOCNode Id="afb19af3-900d-41d0-958d-330b17775e5c" Title="SiaNet.Model Namespace" Url="html/N-SiaNet.Model.htm">
+    <HelpTOCNode Id="b76cae4b-2ba0-4525-8d00-d5cc2106a4e9" Title="ConfigModule Class" Url="html/T-SiaNet.Model.ConfigModule.htm">
       <HelpTOCNode Title="ConfigModule Members" Url="html/AllMembers.T-SiaNet.Model.ConfigModule.htm" />
       <HelpTOCNode Title="ConfigModule Methods" Url="html/Methods.T-SiaNet.Model.ConfigModule.htm" />
-      <HelpTOCNode Id="82a1b6b5-2bc4-4ffc-9ebf-664c426e93b9" Title="ConfigModule Properties" Url="html/Properties.T-SiaNet.Model.ConfigModule.htm">
+      <HelpTOCNode Id="27aa3de0-516d-453a-8b54-10686f1edda3" Title="ConfigModule Properties" Url="html/Properties.T-SiaNet.Model.ConfigModule.htm">
         <HelpTOCNode Title="Version Property " Url="html/P-SiaNet.Model.ConfigModule.Version.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="2c70c7cd-8f04-426d-9fc6-9adc9e889e99" Title="DataFrame Class" Url="html/T-SiaNet.Model.DataFrame.htm">
+    <HelpTOCNode Id="441dd883-848a-44f5-b69a-2f5feccc0b1b" Title="DataFrame Class" Url="html/T-SiaNet.Model.DataFrame.htm">
       <HelpTOCNode Title="DataFrame Members" Url="html/AllMembers.T-SiaNet.Model.DataFrame.htm" />
-      <HelpTOCNode Id="6dd1b106-a597-4454-bbfd-2f66cbaa2055" Title="DataFrame Methods" Url="html/Methods.T-SiaNet.Model.DataFrame.htm">
+      <HelpTOCNode Id="b881ac64-f852-449e-a622-47f185306d31" Title="DataFrame Methods" Url="html/Methods.T-SiaNet.Model.DataFrame.htm">
         <HelpTOCNode Title="LoadFromCsv Method " Url="html/M-SiaNet.Model.DataFrame.LoadFromCsv.htm" />
         <HelpTOCNode Title="Shuffle Method " Url="html/M-SiaNet.Model.DataFrame.Shuffle.htm" />
-        <HelpTOCNode Id="b406f70f-78ab-4c5c-abbd-e8988b326b71" Title="SplitXY Method " Url="html/Overload-SiaNet.Model.DataFrame.SplitXY.htm">
+        <HelpTOCNode Id="038ef378-6857-43d3-9d70-4ad3dab6d4ed" Title="SplitXY Method " Url="html/Overload-SiaNet.Model.DataFrame.SplitXY.htm">
           <HelpTOCNode Title="SplitXY Method (String, String[])" Url="html/M-SiaNet.Model.DataFrame.SplitXY.htm" />
           <HelpTOCNode Title="SplitXY Method (Int32, Int32[])" Url="html/M-SiaNet.Model.DataFrame.SplitXY_1.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="156cef75-44b5-42e3-b7db-3aaa5c8e961f" Title="DataFrame Properties" Url="html/Properties.T-SiaNet.Model.DataFrame.htm">
+      <HelpTOCNode Id="b535eddf-f1a3-4151-bbe5-9584d4528934" Title="DataFrame Properties" Url="html/Properties.T-SiaNet.Model.DataFrame.htm">
         <HelpTOCNode Title="Frame Property " Url="html/P-SiaNet.Model.DataFrame.Frame.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="dabb60b6-0cc3-43cc-bd36-f824bb9f894b" Title="ImageDataGenerator Class" Url="html/T-SiaNet.Model.ImageDataGenerator.htm">
+    <HelpTOCNode Id="ae44487b-5087-4390-bed0-cb494cbf4cb9" Title="ImageDataGenerator Class" Url="html/T-SiaNet.Model.ImageDataGenerator.htm">
       <HelpTOCNode Title="ImageDataGenerator Members" Url="html/AllMembers.T-SiaNet.Model.ImageDataGenerator.htm" />
       <HelpTOCNode Title="ImageDataGenerator Constructor " Url="html/M-SiaNet.Model.ImageDataGenerator.-ctor.htm" />
-      <HelpTOCNode Id="d51eca29-5922-4936-8ee7-99f65ccdb993" Title="ImageDataGenerator Methods" Url="html/Methods.T-SiaNet.Model.ImageDataGenerator.htm">
+      <HelpTOCNode Id="acf4af0b-e6d3-40b1-bc2a-c63fc5e108ca" Title="ImageDataGenerator Methods" Url="html/Methods.T-SiaNet.Model.ImageDataGenerator.htm">
         <HelpTOCNode Title="FlowFromText Method " Url="html/M-SiaNet.Model.ImageDataGenerator.FlowFromText.htm" />
         <HelpTOCNode Title="NextBatch Method " Url="html/M-SiaNet.Model.ImageDataGenerator.NextBatch.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="d17f7ce2-cc7d-403b-bd29-c7c42d392db7" Title="ImageDataGenerator Properties" Url="html/Properties.T-SiaNet.Model.ImageDataGenerator.htm">
+      <HelpTOCNode Id="8813ee19-4b00-4481-878b-81ce9cc1185b" Title="ImageDataGenerator Properties" Url="html/Properties.T-SiaNet.Model.ImageDataGenerator.htm">
         <HelpTOCNode Title="CurrentBatchX Property " Url="html/P-SiaNet.Model.ImageDataGenerator.CurrentBatchX.htm" />
         <HelpTOCNode Title="CurrentBatchY Property " Url="html/P-SiaNet.Model.ImageDataGenerator.CurrentBatchY.htm" />
         <HelpTOCNode Title="FileName Property " Url="html/P-SiaNet.Model.ImageDataGenerator.FileName.htm" />
@@ -333,84 +337,106 @@
       </HelpTOCNode>
     </HelpTOCNode>
     <HelpTOCNode Title="ImageGenType Enumeration" Url="html/T-SiaNet.Model.ImageGenType.htm" />
-    <HelpTOCNode Id="55ea47d4-e49a-4a93-960b-27407ccf3914" Title="LayerConfig Class" Url="html/T-SiaNet.Model.LayerConfig.htm">
+    <HelpTOCNode Id="fa269c0b-0899-41c2-9ded-d3f6e72ecae8" Title="LayerConfig Class" Url="html/T-SiaNet.Model.LayerConfig.htm">
       <HelpTOCNode Title="LayerConfig Members" Url="html/AllMembers.T-SiaNet.Model.LayerConfig.htm" />
       <HelpTOCNode Title="LayerConfig Methods" Url="html/Methods.T-SiaNet.Model.LayerConfig.htm" />
-      <HelpTOCNode Id="aaccf41f-87b0-48f1-b690-a326e661e3ad" Title="LayerConfig Properties" Url="html/Properties.T-SiaNet.Model.LayerConfig.htm">
+      <HelpTOCNode Id="3ae87aa6-07be-48f6-89c0-4f0abc5d3f0c" Title="LayerConfig Properties" Url="html/Properties.T-SiaNet.Model.LayerConfig.htm">
         <HelpTOCNode Title="Name Property " Url="html/P-SiaNet.Model.LayerConfig.Name.htm" />
         <HelpTOCNode Title="Params Property " Url="html/P-SiaNet.Model.LayerConfig.Params.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e4af0f48-14c8-4a60-8e25-4619d13d7047" Title="PredResult Class" Url="html/T-SiaNet.Model.PredResult.htm">
+    <HelpTOCNode Id="c636e3de-21a9-415a-a545-dc708edce950" Title="PredResult Class" Url="html/T-SiaNet.Model.PredResult.htm">
       <HelpTOCNode Title="PredResult Members" Url="html/AllMembers.T-SiaNet.Model.PredResult.htm" />
       <HelpTOCNode Title="PredResult Methods" Url="html/Methods.T-SiaNet.Model.PredResult.htm" />
-      <HelpTOCNode Id="59ed7596-2b77-4e46-bf87-f54ec4a70077" Title="PredResult Properties" Url="html/Properties.T-SiaNet.Model.PredResult.htm">
+      <HelpTOCNode Id="7642bbcd-b96f-4b90-86f7-6e74b8f17303" Title="PredResult Properties" Url="html/Properties.T-SiaNet.Model.PredResult.htm">
         <HelpTOCNode Title="BBox Property " Url="html/P-SiaNet.Model.PredResult.BBox.htm" />
         <HelpTOCNode Title="Name Property " Url="html/P-SiaNet.Model.PredResult.Name.htm" />
         <HelpTOCNode Title="Score Property " Url="html/P-SiaNet.Model.PredResult.Score.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
+    <HelpTOCNode Id="fc604995-0bc3-4d1c-9224-cad12e1812d6" Title="TrainTestFrame Class" Url="html/T-SiaNet.Model.TrainTestFrame.htm">
+      <HelpTOCNode Title="TrainTestFrame Members" Url="html/AllMembers.T-SiaNet.Model.TrainTestFrame.htm" />
+      <HelpTOCNode Title="TrainTestFrame Constructor " Url="html/M-SiaNet.Model.TrainTestFrame.-ctor.htm" />
+      <HelpTOCNode Title="TrainTestFrame Methods" Url="html/Methods.T-SiaNet.Model.TrainTestFrame.htm" />
+      <HelpTOCNode Id="796f4f00-c0dd-409c-b33c-cf3d4f27714e" Title="TrainTestFrame Properties" Url="html/Properties.T-SiaNet.Model.TrainTestFrame.htm">
+        <HelpTOCNode Title="Test Property " Url="html/P-SiaNet.Model.TrainTestFrame.Test.htm" />
+        <HelpTOCNode Title="Train Property " Url="html/P-SiaNet.Model.TrainTestFrame.Train.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="512992c4-0992-4de9-9cf0-de8b47247db2" Title="XYFrame Class" Url="html/T-SiaNet.Model.XYFrame.htm">
+      <HelpTOCNode Title="XYFrame Members" Url="html/AllMembers.T-SiaNet.Model.XYFrame.htm" />
+      <HelpTOCNode Title="XYFrame Constructor " Url="html/M-SiaNet.Model.XYFrame.-ctor.htm" />
+      <HelpTOCNode Id="e682d32b-7504-4b92-a276-4219d9c1859c" Title="XYFrame Methods" Url="html/Methods.T-SiaNet.Model.XYFrame.htm">
+        <HelpTOCNode Title="NextBatch Method " Url="html/M-SiaNet.Model.XYFrame.NextBatch.htm" />
+        <HelpTOCNode Title="SplitTrainTest Method " Url="html/M-SiaNet.Model.XYFrame.SplitTrainTest.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="37a0733e-144c-49c7-8bdd-1579298d526a" Title="XYFrame Properties" Url="html/Properties.T-SiaNet.Model.XYFrame.htm">
+        <HelpTOCNode Title="CurrentBatch Property " Url="html/P-SiaNet.Model.XYFrame.CurrentBatch.htm" />
+        <HelpTOCNode Title="XFrame Property " Url="html/P-SiaNet.Model.XYFrame.XFrame.htm" />
+        <HelpTOCNode Title="YFrame Property " Url="html/P-SiaNet.Model.XYFrame.YFrame.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="50c6cd5f-0aa1-4375-adbe-b99b508e0a70" Title="SiaNet.Model.Layers Namespace" Url="html/N-SiaNet.Model.Layers.htm">
-    <HelpTOCNode Id="c04d6180-c631-48bd-a08d-8f7bbb3f2d45" Title="Activation Class" Url="html/T-SiaNet.Model.Layers.Activation.htm">
+  <HelpTOCNode Id="8364bc7a-9ebb-41aa-8dfe-3a84891d2969" Title="SiaNet.Model.Layers Namespace" Url="html/N-SiaNet.Model.Layers.htm">
+    <HelpTOCNode Id="b525b404-b763-43e3-bdd0-cd710fe4d0de" Title="Activation Class" Url="html/T-SiaNet.Model.Layers.Activation.htm">
       <HelpTOCNode Title="Activation Members" Url="html/AllMembers.T-SiaNet.Model.Layers.Activation.htm" />
-      <HelpTOCNode Id="7ffd18e2-0fc8-4b4a-9a46-3dc04b5e04e2" Title="Activation Constructor " Url="html/Overload-SiaNet.Model.Layers.Activation.-ctor.htm">
+      <HelpTOCNode Id="125afd15-0282-4996-86b1-02349519c92c" Title="Activation Constructor " Url="html/Overload-SiaNet.Model.Layers.Activation.-ctor.htm">
         <HelpTOCNode Title="Activation Constructor " Url="html/M-SiaNet.Model.Layers.Activation.-ctor.htm" />
         <HelpTOCNode Title="Activation Constructor (String)" Url="html/M-SiaNet.Model.Layers.Activation.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Activation Methods" Url="html/Methods.T-SiaNet.Model.Layers.Activation.htm" />
-      <HelpTOCNode Id="6633d616-ad56-41c7-9cad-85053f80723b" Title="Activation Properties" Url="html/Properties.T-SiaNet.Model.Layers.Activation.htm">
+      <HelpTOCNode Id="a5d3b132-aa82-45b2-90eb-9651f7a7586e" Title="Activation Properties" Url="html/Properties.T-SiaNet.Model.Layers.Activation.htm">
         <HelpTOCNode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Activation.Act.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="03c57978-7644-4746-88fc-3640fa5da8dc" Title="AvgPool1D Class" Url="html/T-SiaNet.Model.Layers.AvgPool1D.htm">
+    <HelpTOCNode Id="a3cf76d8-3f00-47d1-a276-bb3a337f9438" Title="AvgPool1D Class" Url="html/T-SiaNet.Model.Layers.AvgPool1D.htm">
       <HelpTOCNode Title="AvgPool1D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.AvgPool1D.htm" />
-      <HelpTOCNode Id="d3b4edab-aa91-431c-b51a-acf843f5d6d7" Title="AvgPool1D Constructor " Url="html/Overload-SiaNet.Model.Layers.AvgPool1D.-ctor.htm">
+      <HelpTOCNode Id="c89c1ebd-831a-4040-bb14-d7a055d3e5a6" Title="AvgPool1D Constructor " Url="html/Overload-SiaNet.Model.Layers.AvgPool1D.-ctor.htm">
         <HelpTOCNode Title="AvgPool1D Constructor " Url="html/M-SiaNet.Model.Layers.AvgPool1D.-ctor.htm" />
         <HelpTOCNode Title="AvgPool1D Constructor (Int32, Int32, Boolean)" Url="html/M-SiaNet.Model.Layers.AvgPool1D.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="AvgPool1D Methods" Url="html/Methods.T-SiaNet.Model.Layers.AvgPool1D.htm" />
-      <HelpTOCNode Id="ce1b36bb-7279-45a5-9c18-a02113828c4a" Title="AvgPool1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.AvgPool1D.htm">
+      <HelpTOCNode Id="8879dc25-0fcf-4012-8ae8-32a80ea725c3" Title="AvgPool1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.AvgPool1D.htm">
         <HelpTOCNode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Padding.htm" />
         <HelpTOCNode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.PoolSize.htm" />
         <HelpTOCNode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool1D.Strides.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="ac8fc504-8842-4b1d-8042-36d9a7d8f533" Title="AvgPool2D Class" Url="html/T-SiaNet.Model.Layers.AvgPool2D.htm">
+    <HelpTOCNode Id="e2ed9404-ea6a-4d29-b5ff-2b0afc369e15" Title="AvgPool2D Class" Url="html/T-SiaNet.Model.Layers.AvgPool2D.htm">
       <HelpTOCNode Title="AvgPool2D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.AvgPool2D.htm" />
-      <HelpTOCNode Id="25a87669-7892-4bab-bb77-b4790ee39deb" Title="AvgPool2D Constructor " Url="html/Overload-SiaNet.Model.Layers.AvgPool2D.-ctor.htm">
+      <HelpTOCNode Id="78ae07db-9681-4c49-8ccd-5b9cb4873f1f" Title="AvgPool2D Constructor " Url="html/Overload-SiaNet.Model.Layers.AvgPool2D.-ctor.htm">
         <HelpTOCNode Title="AvgPool2D Constructor " Url="html/M-SiaNet.Model.Layers.AvgPool2D.-ctor.htm" />
         <HelpTOCNode Title="AvgPool2D Constructor (Tuple(Int32, Int32), Tuple(Int32, Int32), Boolean)" Url="html/M-SiaNet.Model.Layers.AvgPool2D.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="AvgPool2D Methods" Url="html/Methods.T-SiaNet.Model.Layers.AvgPool2D.htm" />
-      <HelpTOCNode Id="9c136289-0382-4142-9b4f-36a74149ee82" Title="AvgPool2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.AvgPool2D.htm">
+      <HelpTOCNode Id="36cb7157-79d1-4d0e-8317-fecd0bf63cd4" Title="AvgPool2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.AvgPool2D.htm">
         <HelpTOCNode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.Padding.htm" />
         <HelpTOCNode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.PoolSize.htm" />
         <HelpTOCNode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool2D.Strides.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e51a4cff-acda-44ba-8a8e-3193073a4de1" Title="AvgPool3D Class" Url="html/T-SiaNet.Model.Layers.AvgPool3D.htm">
+    <HelpTOCNode Id="2c99f61a-3e8c-431a-9f85-662d09c40e65" Title="AvgPool3D Class" Url="html/T-SiaNet.Model.Layers.AvgPool3D.htm">
       <HelpTOCNode Title="AvgPool3D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.AvgPool3D.htm" />
-      <HelpTOCNode Id="36b1e169-2834-45c6-990d-bb7355158806" Title="AvgPool3D Constructor " Url="html/Overload-SiaNet.Model.Layers.AvgPool3D.-ctor.htm">
+      <HelpTOCNode Id="7a6b03f9-814e-423e-b9cd-6356fdfc3be2" Title="AvgPool3D Constructor " Url="html/Overload-SiaNet.Model.Layers.AvgPool3D.-ctor.htm">
         <HelpTOCNode Title="AvgPool3D Constructor " Url="html/M-SiaNet.Model.Layers.AvgPool3D.-ctor.htm" />
         <HelpTOCNode Title="AvgPool3D Constructor (Tuple(Int32, Int32, Int32), Tuple(Int32, Int32, Int32), Boolean)" Url="html/M-SiaNet.Model.Layers.AvgPool3D.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="AvgPool3D Methods" Url="html/Methods.T-SiaNet.Model.Layers.AvgPool3D.htm" />
-      <HelpTOCNode Id="1ca01d66-8357-4017-bba7-c86a54dd2ffc" Title="AvgPool3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.AvgPool3D.htm">
+      <HelpTOCNode Id="55cb8985-da82-4567-b638-4f33dbf5f8f9" Title="AvgPool3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.AvgPool3D.htm">
         <HelpTOCNode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Padding.htm" />
         <HelpTOCNode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.PoolSize.htm" />
         <HelpTOCNode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.AvgPool3D.Strides.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="876e234b-e655-4ab5-af4e-2412b0c1af03" Title="BatchNorm Class" Url="html/T-SiaNet.Model.Layers.BatchNorm.htm">
+    <HelpTOCNode Id="42a8f11a-62ce-40ef-993c-5690b831429a" Title="BatchNorm Class" Url="html/T-SiaNet.Model.Layers.BatchNorm.htm">
       <HelpTOCNode Title="BatchNorm Members" Url="html/AllMembers.T-SiaNet.Model.Layers.BatchNorm.htm" />
-      <HelpTOCNode Id="f9c3c8a0-9d1e-4bd5-9d1f-43bb599d6bf1" Title="BatchNorm Constructor " Url="html/Overload-SiaNet.Model.Layers.BatchNorm.-ctor.htm">
+      <HelpTOCNode Id="ffa880d2-33e6-4b81-bc6a-c8426ee10a2c" Title="BatchNorm Constructor " Url="html/Overload-SiaNet.Model.Layers.BatchNorm.-ctor.htm">
         <HelpTOCNode Title="BatchNorm Constructor " Url="html/M-SiaNet.Model.Layers.BatchNorm.-ctor.htm" />
         <HelpTOCNode Title="BatchNorm Constructor (Single, String, String, String, String, Boolean, Single, Single)" Url="html/M-SiaNet.Model.Layers.BatchNorm.-ctor_1.htm" />
         <HelpTOCNode Title="BatchNorm Constructor (Int32, Single, String, String, String, String, Boolean, Single, Single)" Url="html/M-SiaNet.Model.Layers.BatchNorm.-ctor_2.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="BatchNorm Methods" Url="html/Methods.T-SiaNet.Model.Layers.BatchNorm.htm" />
-      <HelpTOCNode Id="084f0651-bd6d-426a-a793-0b6c6e6556e0" Title="BatchNorm Properties" Url="html/Properties.T-SiaNet.Model.Layers.BatchNorm.htm">
+      <HelpTOCNode Id="6fd64054-0165-4e0a-b697-dbc35cde20d3" Title="BatchNorm Properties" Url="html/Properties.T-SiaNet.Model.Layers.BatchNorm.htm">
         <HelpTOCNode Title="BetaInitializer Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.BetaInitializer.htm" />
         <HelpTOCNode Title="BlendTimeConst Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.BlendTimeConst.htm" />
         <HelpTOCNode Title="Epsilon Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.Epsilon.htm" />
@@ -422,15 +448,15 @@
         <HelpTOCNode Title="Spatial Property " Url="html/P-SiaNet.Model.Layers.BatchNorm.Spatial.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="cc6a93c5-26c0-47fc-84c5-5447150118f7" Title="Conv1D Class" Url="html/T-SiaNet.Model.Layers.Conv1D.htm">
+    <HelpTOCNode Id="e788a59d-0975-416f-9ead-266d670e3133" Title="Conv1D Class" Url="html/T-SiaNet.Model.Layers.Conv1D.htm">
       <HelpTOCNode Title="Conv1D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.Conv1D.htm" />
-      <HelpTOCNode Id="b7618b45-c75f-48e6-a4d1-265c20c9bdc9" Title="Conv1D Constructor " Url="html/Overload-SiaNet.Model.Layers.Conv1D.-ctor.htm">
+      <HelpTOCNode Id="81f29986-b574-4514-9ea0-922e1c8ee18b" Title="Conv1D Constructor " Url="html/Overload-SiaNet.Model.Layers.Conv1D.-ctor.htm">
         <HelpTOCNode Title="Conv1D Constructor " Url="html/M-SiaNet.Model.Layers.Conv1D.-ctor.htm" />
         <HelpTOCNode Title="Conv1D Constructor (Int32, Int32, Int32, Boolean, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Conv1D.-ctor_1.htm" />
         <HelpTOCNode Title="Conv1D Constructor (Tuple(Int32, Int32), Int32, Int32, Int32, Boolean, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Conv1D.-ctor_2.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Conv1D Methods" Url="html/Methods.T-SiaNet.Model.Layers.Conv1D.htm" />
-      <HelpTOCNode Id="76895977-4f43-4fc6-949c-2fda50dac3cc" Title="Conv1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.Conv1D.htm">
+      <HelpTOCNode Id="f34fad59-9b8c-4857-a334-7859d267eecd" Title="Conv1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.Conv1D.htm">
         <HelpTOCNode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Act.htm" />
         <HelpTOCNode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.BiasInitializer.htm" />
         <HelpTOCNode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv1D.Channels.htm" />
@@ -443,15 +469,15 @@
         <HelpTOCNode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv1D.WeightInitializer.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="299bb0d4-d1c5-4ca9-b1d9-f945c26ddffc" Title="Conv2D Class" Url="html/T-SiaNet.Model.Layers.Conv2D.htm">
+    <HelpTOCNode Id="497f3ffc-8ed7-46a3-9ba3-a0a20cc385f1" Title="Conv2D Class" Url="html/T-SiaNet.Model.Layers.Conv2D.htm">
       <HelpTOCNode Title="Conv2D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.Conv2D.htm" />
-      <HelpTOCNode Id="4766de74-3cd9-4401-9beb-428f1a7cdeeb" Title="Conv2D Constructor " Url="html/Overload-SiaNet.Model.Layers.Conv2D.-ctor.htm">
+      <HelpTOCNode Id="838ebbcc-165b-4458-8e47-b9c57293910e" Title="Conv2D Constructor " Url="html/Overload-SiaNet.Model.Layers.Conv2D.-ctor.htm">
         <HelpTOCNode Title="Conv2D Constructor " Url="html/M-SiaNet.Model.Layers.Conv2D.-ctor.htm" />
         <HelpTOCNode Title="Conv2D Constructor (Int32, Tuple(Int32, Int32), Tuple(Int32, Int32), Boolean, Tuple(Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Conv2D.-ctor_1.htm" />
         <HelpTOCNode Title="Conv2D Constructor (Tuple(Int32, Int32, Int32), Int32, Tuple(Int32, Int32), Tuple(Int32, Int32), Boolean, Tuple(Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Conv2D.-ctor_2.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Conv2D Methods" Url="html/Methods.T-SiaNet.Model.Layers.Conv2D.htm" />
-      <HelpTOCNode Id="088505ea-60d8-4364-8b5a-ce9832b227cf" Title="Conv2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.Conv2D.htm">
+      <HelpTOCNode Id="42a2543f-f5ca-412e-bfae-9ceb94f2d871" Title="Conv2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.Conv2D.htm">
         <HelpTOCNode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Act.htm" />
         <HelpTOCNode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.BiasInitializer.htm" />
         <HelpTOCNode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv2D.Channels.htm" />
@@ -464,15 +490,15 @@
         <HelpTOCNode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv2D.WeightInitializer.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="cdd76949-d763-4567-a4a2-f827119dfa54" Title="Conv3D Class" Url="html/T-SiaNet.Model.Layers.Conv3D.htm">
+    <HelpTOCNode Id="472e3ef3-2147-409b-96bb-533f19a0e9b8" Title="Conv3D Class" Url="html/T-SiaNet.Model.Layers.Conv3D.htm">
       <HelpTOCNode Title="Conv3D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.Conv3D.htm" />
-      <HelpTOCNode Id="b3601782-ead2-426e-bab2-79cd7b7c4b6c" Title="Conv3D Constructor " Url="html/Overload-SiaNet.Model.Layers.Conv3D.-ctor.htm">
+      <HelpTOCNode Id="4a0ac60b-7ae1-4b6b-a9e3-3a034cdb1987" Title="Conv3D Constructor " Url="html/Overload-SiaNet.Model.Layers.Conv3D.-ctor.htm">
         <HelpTOCNode Title="Conv3D Constructor " Url="html/M-SiaNet.Model.Layers.Conv3D.-ctor.htm" />
         <HelpTOCNode Title="Conv3D Constructor (Int32, Tuple(Int32, Int32, Int32), Tuple(Int32, Int32, Int32), Boolean, Tuple(Int32, Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Conv3D.-ctor_1.htm" />
         <HelpTOCNode Title="Conv3D Constructor (Tuple(Int32, Int32, Int32, Int32), Int32, Tuple(Int32, Int32, Int32), Tuple(Int32, Int32, Int32), Boolean, Tuple(Int32, Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Conv3D.-ctor_2.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Conv3D Methods" Url="html/Methods.T-SiaNet.Model.Layers.Conv3D.htm" />
-      <HelpTOCNode Id="4b0c10e0-49d2-4ab6-b9e2-fa7b603545c2" Title="Conv3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.Conv3D.htm">
+      <HelpTOCNode Id="e9160ce5-9bcd-48e9-a8ef-b2d07b84356d" Title="Conv3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.Conv3D.htm">
         <HelpTOCNode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Act.htm" />
         <HelpTOCNode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.BiasInitializer.htm" />
         <HelpTOCNode Title="Channels Property " Url="html/P-SiaNet.Model.Layers.Conv3D.Channels.htm" />
@@ -485,15 +511,15 @@
         <HelpTOCNode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Conv3D.WeightInitializer.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="98d2c316-19d8-4b3b-9417-01ddd10b4450" Title="Dense Class" Url="html/T-SiaNet.Model.Layers.Dense.htm">
+    <HelpTOCNode Id="15e26c27-e566-4a7a-963a-f07cd438ea2d" Title="Dense Class" Url="html/T-SiaNet.Model.Layers.Dense.htm">
       <HelpTOCNode Title="Dense Members" Url="html/AllMembers.T-SiaNet.Model.Layers.Dense.htm" />
-      <HelpTOCNode Id="2b64fe61-f9ca-4120-9d03-84b1a755be62" Title="Dense Constructor " Url="html/Overload-SiaNet.Model.Layers.Dense.-ctor.htm">
+      <HelpTOCNode Id="998528a4-1507-4d59-bd45-c3c626ef5684" Title="Dense Constructor " Url="html/Overload-SiaNet.Model.Layers.Dense.-ctor.htm">
         <HelpTOCNode Title="Dense Constructor " Url="html/M-SiaNet.Model.Layers.Dense.-ctor.htm" />
         <HelpTOCNode Title="Dense Constructor (Int32, String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Dense.-ctor_1.htm" />
         <HelpTOCNode Title="Dense Constructor (Int32, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.Model.Layers.Dense.-ctor_2.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Dense Methods" Url="html/Methods.T-SiaNet.Model.Layers.Dense.htm" />
-      <HelpTOCNode Id="1accd53a-5af3-44cf-b998-bf12b7850990" Title="Dense Properties" Url="html/Properties.T-SiaNet.Model.Layers.Dense.htm">
+      <HelpTOCNode Id="42787527-dacf-4c18-8e7a-73c472db0eed" Title="Dense Properties" Url="html/Properties.T-SiaNet.Model.Layers.Dense.htm">
         <HelpTOCNode Title="Act Property " Url="html/P-SiaNet.Model.Layers.Dense.Act.htm" />
         <HelpTOCNode Title="BiasInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.BiasInitializer.htm" />
         <HelpTOCNode Title="Dim Property " Url="html/P-SiaNet.Model.Layers.Dense.Dim.htm" />
@@ -502,152 +528,152 @@
         <HelpTOCNode Title="WeightInitializer Property " Url="html/P-SiaNet.Model.Layers.Dense.WeightInitializer.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="cb6d577f-a4d4-4b8b-ad32-cdda42531edd" Title="Dropout Class" Url="html/T-SiaNet.Model.Layers.Dropout.htm">
+    <HelpTOCNode Id="31769419-a410-4a3e-840b-2950c82d2bf9" Title="Dropout Class" Url="html/T-SiaNet.Model.Layers.Dropout.htm">
       <HelpTOCNode Title="Dropout Members" Url="html/AllMembers.T-SiaNet.Model.Layers.Dropout.htm" />
-      <HelpTOCNode Id="51b2beab-b4af-49b4-9bf1-dc20c1da896d" Title="Dropout Constructor " Url="html/Overload-SiaNet.Model.Layers.Dropout.-ctor.htm">
+      <HelpTOCNode Id="ecef2d91-e69a-492d-a399-1e75f302272a" Title="Dropout Constructor " Url="html/Overload-SiaNet.Model.Layers.Dropout.-ctor.htm">
         <HelpTOCNode Title="Dropout Constructor " Url="html/M-SiaNet.Model.Layers.Dropout.-ctor.htm" />
         <HelpTOCNode Title="Dropout Constructor (Double)" Url="html/M-SiaNet.Model.Layers.Dropout.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="Dropout Methods" Url="html/Methods.T-SiaNet.Model.Layers.Dropout.htm" />
-      <HelpTOCNode Id="d3d17fde-59b7-44d5-960d-1397a35efed9" Title="Dropout Properties" Url="html/Properties.T-SiaNet.Model.Layers.Dropout.htm">
+      <HelpTOCNode Id="b0f8fcbd-02f8-4315-9056-d4d49dda2937" Title="Dropout Properties" Url="html/Properties.T-SiaNet.Model.Layers.Dropout.htm">
         <HelpTOCNode Title="Rate Property " Url="html/P-SiaNet.Model.Layers.Dropout.Rate.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="d1eae01f-bd31-44ab-8418-52c54aeffe4e" Title="GlobalAvgPool1D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool1D.htm">
+    <HelpTOCNode Id="01aa55c6-b6fc-4391-9d9a-b749ea6bf897" Title="GlobalAvgPool1D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool1D.htm">
       <HelpTOCNode Title="GlobalAvgPool1D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalAvgPool1D.htm" />
       <HelpTOCNode Title="GlobalAvgPool1D Constructor " Url="html/M-SiaNet.Model.Layers.GlobalAvgPool1D.-ctor.htm" />
       <HelpTOCNode Title="GlobalAvgPool1D Methods" Url="html/Methods.T-SiaNet.Model.Layers.GlobalAvgPool1D.htm" />
       <HelpTOCNode Title="GlobalAvgPool1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.GlobalAvgPool1D.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="9eb8f8e1-da98-453b-bba7-bb62a9fe28e4" Title="GlobalAvgPool2D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool2D.htm">
+    <HelpTOCNode Id="c6de89ae-28ef-4b8f-8266-f75a1cbf2d6d" Title="GlobalAvgPool2D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool2D.htm">
       <HelpTOCNode Title="GlobalAvgPool2D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalAvgPool2D.htm" />
       <HelpTOCNode Title="GlobalAvgPool2D Constructor " Url="html/M-SiaNet.Model.Layers.GlobalAvgPool2D.-ctor.htm" />
       <HelpTOCNode Title="GlobalAvgPool2D Methods" Url="html/Methods.T-SiaNet.Model.Layers.GlobalAvgPool2D.htm" />
       <HelpTOCNode Title="GlobalAvgPool2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.GlobalAvgPool2D.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="5615bc23-e285-4777-89b3-bad1a869f349" Title="GlobalAvgPool3D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool3D.htm">
+    <HelpTOCNode Id="72a77fb9-248d-42a0-bfdb-f9a93732c3fc" Title="GlobalAvgPool3D Class" Url="html/T-SiaNet.Model.Layers.GlobalAvgPool3D.htm">
       <HelpTOCNode Title="GlobalAvgPool3D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalAvgPool3D.htm" />
       <HelpTOCNode Title="GlobalAvgPool3D Constructor " Url="html/M-SiaNet.Model.Layers.GlobalAvgPool3D.-ctor.htm" />
       <HelpTOCNode Title="GlobalAvgPool3D Methods" Url="html/Methods.T-SiaNet.Model.Layers.GlobalAvgPool3D.htm" />
       <HelpTOCNode Title="GlobalAvgPool3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.GlobalAvgPool3D.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="c2b71f87-22a3-46f3-9079-b1463d7d81fb" Title="GlobalMaxPool1D Class" Url="html/T-SiaNet.Model.Layers.GlobalMaxPool1D.htm">
+    <HelpTOCNode Id="1f35953b-3e2d-4760-8351-fc3a4eadb39e" Title="GlobalMaxPool1D Class" Url="html/T-SiaNet.Model.Layers.GlobalMaxPool1D.htm">
       <HelpTOCNode Title="GlobalMaxPool1D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalMaxPool1D.htm" />
       <HelpTOCNode Title="GlobalMaxPool1D Constructor " Url="html/M-SiaNet.Model.Layers.GlobalMaxPool1D.-ctor.htm" />
       <HelpTOCNode Title="GlobalMaxPool1D Methods" Url="html/Methods.T-SiaNet.Model.Layers.GlobalMaxPool1D.htm" />
       <HelpTOCNode Title="GlobalMaxPool1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.GlobalMaxPool1D.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="2754b54d-2178-45be-985c-00cfdf8de81e" Title="GlobalMaxPool2D Class" Url="html/T-SiaNet.Model.Layers.GlobalMaxPool2D.htm">
+    <HelpTOCNode Id="3c6d72f1-6434-49b9-b64a-e7345e68eea0" Title="GlobalMaxPool2D Class" Url="html/T-SiaNet.Model.Layers.GlobalMaxPool2D.htm">
       <HelpTOCNode Title="GlobalMaxPool2D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalMaxPool2D.htm" />
       <HelpTOCNode Title="GlobalMaxPool2D Constructor " Url="html/M-SiaNet.Model.Layers.GlobalMaxPool2D.-ctor.htm" />
       <HelpTOCNode Title="GlobalMaxPool2D Methods" Url="html/Methods.T-SiaNet.Model.Layers.GlobalMaxPool2D.htm" />
       <HelpTOCNode Title="GlobalMaxPool2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.GlobalMaxPool2D.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="83fde171-5070-4f96-b6bc-690119f7557f" Title="GlobalMaxPool3D Class" Url="html/T-SiaNet.Model.Layers.GlobalMaxPool3D.htm">
+    <HelpTOCNode Id="2f77a702-038e-4186-947a-47f72f8d7920" Title="GlobalMaxPool3D Class" Url="html/T-SiaNet.Model.Layers.GlobalMaxPool3D.htm">
       <HelpTOCNode Title="GlobalMaxPool3D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.GlobalMaxPool3D.htm" />
       <HelpTOCNode Title="GlobalMaxPool3D Constructor " Url="html/M-SiaNet.Model.Layers.GlobalMaxPool3D.-ctor.htm" />
       <HelpTOCNode Title="GlobalMaxPool3D Methods" Url="html/Methods.T-SiaNet.Model.Layers.GlobalMaxPool3D.htm" />
       <HelpTOCNode Title="GlobalMaxPool3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.GlobalMaxPool3D.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="71cc4db3-4077-4310-9ed1-dfd59600ee54" Title="MaxPool1D Class" Url="html/T-SiaNet.Model.Layers.MaxPool1D.htm">
+    <HelpTOCNode Id="639b8475-6285-47ea-a59e-b62b992e60da" Title="MaxPool1D Class" Url="html/T-SiaNet.Model.Layers.MaxPool1D.htm">
       <HelpTOCNode Title="MaxPool1D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.MaxPool1D.htm" />
-      <HelpTOCNode Id="00a883a3-f556-4eed-9731-5dbac56c2a55" Title="MaxPool1D Constructor " Url="html/Overload-SiaNet.Model.Layers.MaxPool1D.-ctor.htm">
+      <HelpTOCNode Id="da54e426-b583-415c-ace7-b37fc20d5e73" Title="MaxPool1D Constructor " Url="html/Overload-SiaNet.Model.Layers.MaxPool1D.-ctor.htm">
         <HelpTOCNode Title="MaxPool1D Constructor " Url="html/M-SiaNet.Model.Layers.MaxPool1D.-ctor.htm" />
         <HelpTOCNode Title="MaxPool1D Constructor (Int32, Int32, Boolean)" Url="html/M-SiaNet.Model.Layers.MaxPool1D.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="MaxPool1D Methods" Url="html/Methods.T-SiaNet.Model.Layers.MaxPool1D.htm" />
-      <HelpTOCNode Id="bd06daf1-b24d-45dc-9c2b-8ee5288acb7f" Title="MaxPool1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.MaxPool1D.htm">
+      <HelpTOCNode Id="70d61fef-4475-4bde-b556-d76c423fe78c" Title="MaxPool1D Properties" Url="html/Properties.T-SiaNet.Model.Layers.MaxPool1D.htm">
         <HelpTOCNode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Padding.htm" />
         <HelpTOCNode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.PoolSize.htm" />
         <HelpTOCNode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool1D.Strides.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="e2667dfb-e73f-4919-9de3-0b1950391320" Title="MaxPool2D Class" Url="html/T-SiaNet.Model.Layers.MaxPool2D.htm">
+    <HelpTOCNode Id="c36a0913-5bb6-436d-85df-3ef59739a594" Title="MaxPool2D Class" Url="html/T-SiaNet.Model.Layers.MaxPool2D.htm">
       <HelpTOCNode Title="MaxPool2D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.MaxPool2D.htm" />
-      <HelpTOCNode Id="3037a115-5130-4f03-9c98-6dd1f3cca47c" Title="MaxPool2D Constructor " Url="html/Overload-SiaNet.Model.Layers.MaxPool2D.-ctor.htm">
+      <HelpTOCNode Id="db7e9d6d-1a6c-4f49-8154-ba42df7364d4" Title="MaxPool2D Constructor " Url="html/Overload-SiaNet.Model.Layers.MaxPool2D.-ctor.htm">
         <HelpTOCNode Title="MaxPool2D Constructor " Url="html/M-SiaNet.Model.Layers.MaxPool2D.-ctor.htm" />
         <HelpTOCNode Title="MaxPool2D Constructor (Tuple(Int32, Int32), Tuple(Int32, Int32), Boolean)" Url="html/M-SiaNet.Model.Layers.MaxPool2D.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="MaxPool2D Methods" Url="html/Methods.T-SiaNet.Model.Layers.MaxPool2D.htm" />
-      <HelpTOCNode Id="e62663f0-d1f0-42de-9d35-58da13e03053" Title="MaxPool2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.MaxPool2D.htm">
+      <HelpTOCNode Id="c6e1795c-9083-43e1-a573-f6048037b41a" Title="MaxPool2D Properties" Url="html/Properties.T-SiaNet.Model.Layers.MaxPool2D.htm">
         <HelpTOCNode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Padding.htm" />
         <HelpTOCNode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.PoolSize.htm" />
         <HelpTOCNode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool2D.Strides.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="24ed1f1d-62ab-4d50-a67c-e51b79778ef2" Title="MaxPool3D Class" Url="html/T-SiaNet.Model.Layers.MaxPool3D.htm">
+    <HelpTOCNode Id="63cfb16c-cc11-422e-bb8e-dfbb35737a33" Title="MaxPool3D Class" Url="html/T-SiaNet.Model.Layers.MaxPool3D.htm">
       <HelpTOCNode Title="MaxPool3D Members" Url="html/AllMembers.T-SiaNet.Model.Layers.MaxPool3D.htm" />
-      <HelpTOCNode Id="ce1f2689-bf66-45a4-b583-ee6bf9d28109" Title="MaxPool3D Constructor " Url="html/Overload-SiaNet.Model.Layers.MaxPool3D.-ctor.htm">
+      <HelpTOCNode Id="a7355c1c-f4f1-4a6d-a991-5701c1c51450" Title="MaxPool3D Constructor " Url="html/Overload-SiaNet.Model.Layers.MaxPool3D.-ctor.htm">
         <HelpTOCNode Title="MaxPool3D Constructor " Url="html/M-SiaNet.Model.Layers.MaxPool3D.-ctor.htm" />
         <HelpTOCNode Title="MaxPool3D Constructor (Tuple(Int32, Int32, Int32), Tuple(Int32, Int32, Int32), Boolean)" Url="html/M-SiaNet.Model.Layers.MaxPool3D.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="MaxPool3D Methods" Url="html/Methods.T-SiaNet.Model.Layers.MaxPool3D.htm" />
-      <HelpTOCNode Id="fdaa13da-8a5d-4145-b48e-afe7b3c0143d" Title="MaxPool3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.MaxPool3D.htm">
+      <HelpTOCNode Id="83d20f6e-7705-4356-a71c-c427eb3d943b" Title="MaxPool3D Properties" Url="html/Properties.T-SiaNet.Model.Layers.MaxPool3D.htm">
         <HelpTOCNode Title="Padding Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Padding.htm" />
         <HelpTOCNode Title="PoolSize Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.PoolSize.htm" />
         <HelpTOCNode Title="Strides Property " Url="html/P-SiaNet.Model.Layers.MaxPool3D.Strides.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="65970fec-a988-4047-aa61-f5fd0f6573be" Title="SiaNet.Model.Optimizers Namespace" Url="html/N-SiaNet.Model.Optimizers.htm">
-    <HelpTOCNode Id="9f189e71-5657-47fa-bc9a-af6d7e80db10" Title="AdaDelta Class" Url="html/T-SiaNet.Model.Optimizers.AdaDelta.htm">
+  <HelpTOCNode Id="15d643a4-03e9-4538-9d70-daeef5094460" Title="SiaNet.Model.Optimizers Namespace" Url="html/N-SiaNet.Model.Optimizers.htm">
+    <HelpTOCNode Id="974162c8-e62c-43dd-b3d8-66e533d69a6a" Title="AdaDelta Class" Url="html/T-SiaNet.Model.Optimizers.AdaDelta.htm">
       <HelpTOCNode Title="AdaDelta Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.AdaDelta.htm" />
       <HelpTOCNode Title="AdaDelta Constructor " Url="html/M-SiaNet.Model.Optimizers.AdaDelta.-ctor.htm" />
       <HelpTOCNode Title="AdaDelta Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.AdaDelta.htm" />
-      <HelpTOCNode Id="8e0fa6fb-ba11-4d09-9575-85eb31820f71" Title="AdaDelta Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.AdaDelta.htm">
+      <HelpTOCNode Id="7a20adfb-1ebd-4b33-b54e-298578d25287" Title="AdaDelta Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.AdaDelta.htm">
         <HelpTOCNode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.AdaDelta.Epsilon.htm" />
         <HelpTOCNode Title="Rho Property " Url="html/P-SiaNet.Model.Optimizers.AdaDelta.Rho.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="a1803d66-7db3-4708-b725-f30a590f23ea" Title="AdaGrad Class" Url="html/T-SiaNet.Model.Optimizers.AdaGrad.htm">
+    <HelpTOCNode Id="4f419809-1510-466b-b28c-7823262c5679" Title="AdaGrad Class" Url="html/T-SiaNet.Model.Optimizers.AdaGrad.htm">
       <HelpTOCNode Title="AdaGrad Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.AdaGrad.htm" />
       <HelpTOCNode Title="AdaGrad Constructor " Url="html/M-SiaNet.Model.Optimizers.AdaGrad.-ctor.htm" />
       <HelpTOCNode Title="AdaGrad Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.AdaGrad.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="77fbfb26-3757-4285-a91f-a6322138bbfe" Title="Adam Class" Url="html/T-SiaNet.Model.Optimizers.Adam.htm">
+    <HelpTOCNode Id="1c8e18e9-f49a-4c89-94ec-5394fe729b18" Title="Adam Class" Url="html/T-SiaNet.Model.Optimizers.Adam.htm">
       <HelpTOCNode Title="Adam Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.Adam.htm" />
       <HelpTOCNode Title="Adam Constructor " Url="html/M-SiaNet.Model.Optimizers.Adam.-ctor.htm" />
       <HelpTOCNode Title="Adam Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.Adam.htm" />
-      <HelpTOCNode Id="59f0638a-177f-4008-a6cf-5b23afe561d0" Title="Adam Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.Adam.htm">
+      <HelpTOCNode Id="b6ed53e7-989f-4f2a-a0e1-1dfb88857eae" Title="Adam Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.Adam.htm">
         <HelpTOCNode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.Adam.Epsilon.htm" />
         <HelpTOCNode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.Adam.Momentum.htm" />
         <HelpTOCNode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.Adam.UnitGain.htm" />
         <HelpTOCNode Title="VarianceMomentum Property " Url="html/P-SiaNet.Model.Optimizers.Adam.VarianceMomentum.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="b9909e0a-a1c2-4a50-b2c0-bd6adeb05a44" Title="Adamax Class" Url="html/T-SiaNet.Model.Optimizers.Adamax.htm">
+    <HelpTOCNode Id="348ad40d-9394-4aff-8005-0415bd9eaf37" Title="Adamax Class" Url="html/T-SiaNet.Model.Optimizers.Adamax.htm">
       <HelpTOCNode Title="Adamax Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.Adamax.htm" />
       <HelpTOCNode Title="Adamax Constructor " Url="html/M-SiaNet.Model.Optimizers.Adamax.-ctor.htm" />
       <HelpTOCNode Title="Adamax Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.Adamax.htm" />
-      <HelpTOCNode Id="25214e0a-d9bf-42c4-85bf-2aa660525447" Title="Adamax Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.Adamax.htm">
+      <HelpTOCNode Id="01eae0c6-8629-4b14-8032-58917f9570c0" Title="Adamax Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.Adamax.htm">
         <HelpTOCNode Title="Epsilon Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.Epsilon.htm" />
         <HelpTOCNode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.Momentum.htm" />
         <HelpTOCNode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.UnitGain.htm" />
         <HelpTOCNode Title="VarianceMomentum Property " Url="html/P-SiaNet.Model.Optimizers.Adamax.VarianceMomentum.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="7f70710a-df39-4d8f-b1f9-2d8b9dabbe40" Title="BaseOptimizer Class" Url="html/T-SiaNet.Model.Optimizers.BaseOptimizer.htm">
+    <HelpTOCNode Id="5f9ff67b-7bf3-4a60-adbd-352cb1c504c5" Title="BaseOptimizer Class" Url="html/T-SiaNet.Model.Optimizers.BaseOptimizer.htm">
       <HelpTOCNode Title="BaseOptimizer Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.BaseOptimizer.htm" />
-      <HelpTOCNode Id="ed2f19c6-e2d5-4f84-b4d7-0b4015618a70" Title="BaseOptimizer Constructor " Url="html/Overload-SiaNet.Model.Optimizers.BaseOptimizer.-ctor.htm">
+      <HelpTOCNode Id="965a8c59-efdf-4d58-8352-3e4f2f871e96" Title="BaseOptimizer Constructor " Url="html/Overload-SiaNet.Model.Optimizers.BaseOptimizer.-ctor.htm">
         <HelpTOCNode Title="BaseOptimizer Constructor (String)" Url="html/M-SiaNet.Model.Optimizers.BaseOptimizer.-ctor.htm" />
         <HelpTOCNode Title="BaseOptimizer Constructor (String, Double)" Url="html/M-SiaNet.Model.Optimizers.BaseOptimizer.-ctor_1.htm" />
       </HelpTOCNode>
       <HelpTOCNode Title="BaseOptimizer Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.BaseOptimizer.htm" />
     </HelpTOCNode>
-    <HelpTOCNode Id="1f4240bd-fb52-4679-a7dd-4f0edec87c98" Title="MomentumSGD Class" Url="html/T-SiaNet.Model.Optimizers.MomentumSGD.htm">
+    <HelpTOCNode Id="1fd2fdc9-ed24-450c-8c86-f24ca36cfb41" Title="MomentumSGD Class" Url="html/T-SiaNet.Model.Optimizers.MomentumSGD.htm">
       <HelpTOCNode Title="MomentumSGD Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.MomentumSGD.htm" />
       <HelpTOCNode Title="MomentumSGD Constructor " Url="html/M-SiaNet.Model.Optimizers.MomentumSGD.-ctor.htm" />
       <HelpTOCNode Title="MomentumSGD Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.MomentumSGD.htm" />
-      <HelpTOCNode Id="b35452c7-be0d-49fb-805b-ae0cb771e1e0" Title="MomentumSGD Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.MomentumSGD.htm">
+      <HelpTOCNode Id="1b376716-1705-433b-bd73-cc21d7554a58" Title="MomentumSGD Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.MomentumSGD.htm">
         <HelpTOCNode Title="Momentum Property " Url="html/P-SiaNet.Model.Optimizers.MomentumSGD.Momentum.htm" />
         <HelpTOCNode Title="UnitGain Property " Url="html/P-SiaNet.Model.Optimizers.MomentumSGD.UnitGain.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="281ed738-7dd2-4317-a0e7-c6d3130c1e04" Title="RMSProp Class" Url="html/T-SiaNet.Model.Optimizers.RMSProp.htm">
+    <HelpTOCNode Id="9971e8aa-79a9-4c5c-af9a-5ed8f5db557a" Title="RMSProp Class" Url="html/T-SiaNet.Model.Optimizers.RMSProp.htm">
       <HelpTOCNode Title="RMSProp Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.RMSProp.htm" />
       <HelpTOCNode Title="RMSProp Constructor " Url="html/M-SiaNet.Model.Optimizers.RMSProp.-ctor.htm" />
       <HelpTOCNode Title="RMSProp Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.RMSProp.htm" />
-      <HelpTOCNode Id="1fbb16b7-3829-422c-bdd5-2ccdbcc52b1d" Title="RMSProp Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.RMSProp.htm">
+      <HelpTOCNode Id="fc5922af-5dcf-4c9c-9643-78585024714b" Title="RMSProp Properties" Url="html/Properties.T-SiaNet.Model.Optimizers.RMSProp.htm">
         <HelpTOCNode Title="Decrement Property " Url="html/P-SiaNet.Model.Optimizers.RMSProp.Decrement.htm" />
         <HelpTOCNode Title="Gamma Property " Url="html/P-SiaNet.Model.Optimizers.RMSProp.Gamma.htm" />
         <HelpTOCNode Title="Increment Property " Url="html/P-SiaNet.Model.Optimizers.RMSProp.Increment.htm" />
@@ -655,43 +681,43 @@
         <HelpTOCNode Title="Min Property " Url="html/P-SiaNet.Model.Optimizers.RMSProp.Min.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="9714ee8e-4b8f-4a00-8c75-00b1cb15ac46" Title="SGD Class" Url="html/T-SiaNet.Model.Optimizers.SGD.htm">
+    <HelpTOCNode Id="9c0cbc18-2cf6-4b63-a845-2dc97b3bde82" Title="SGD Class" Url="html/T-SiaNet.Model.Optimizers.SGD.htm">
       <HelpTOCNode Title="SGD Members" Url="html/AllMembers.T-SiaNet.Model.Optimizers.SGD.htm" />
       <HelpTOCNode Title="SGD Constructor " Url="html/M-SiaNet.Model.Optimizers.SGD.-ctor.htm" />
       <HelpTOCNode Title="SGD Methods" Url="html/Methods.T-SiaNet.Model.Optimizers.SGD.htm" />
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Id="e931b51a-dc91-43ed-9b14-8e503330a82d" Title="SiaNet.NN Namespace" Url="html/N-SiaNet.NN.htm">
-    <HelpTOCNode Id="5e355596-2e83-4aa4-a9f1-b15eca639652" Title="Basic Class" Url="html/T-SiaNet.NN.Basic.htm">
+  <HelpTOCNode Id="5311a9df-58a3-4d22-92e0-2028162c9dcb" Title="SiaNet.NN Namespace" Url="html/N-SiaNet.NN.htm">
+    <HelpTOCNode Id="80341980-9c95-41a0-b3c5-bcb136535a41" Title="Basic Class" Url="html/T-SiaNet.NN.Basic.htm">
       <HelpTOCNode Title="Basic Members" Url="html/AllMembers.T-SiaNet.NN.Basic.htm" />
-      <HelpTOCNode Id="e80b24ac-b6bf-460f-81b4-9bd42196e06b" Title="Basic Methods" Url="html/Methods.T-SiaNet.NN.Basic.htm">
+      <HelpTOCNode Id="05098c22-a0e0-459b-b9bb-1115ea16e15f" Title="Basic Methods" Url="html/Methods.T-SiaNet.NN.Basic.htm">
         <HelpTOCNode Title="Activation Method " Url="html/M-SiaNet.NN.Basic.Activation.htm" />
-        <HelpTOCNode Id="ee0804d8-2ea0-45e7-a6cb-481502cb3ca4" Title="BatchNorm Method " Url="html/Overload-SiaNet.NN.Basic.BatchNorm.htm">
+        <HelpTOCNode Id="36512ec9-0043-4f50-9235-145d71ed9e31" Title="BatchNorm Method " Url="html/Overload-SiaNet.NN.Basic.BatchNorm.htm">
           <HelpTOCNode Title="BatchNorm Method (Variable, Single, String, String, String, String, Boolean, Single, Single)" Url="html/M-SiaNet.NN.Basic.BatchNorm.htm" />
           <HelpTOCNode Title="BatchNorm Method (Int32, Single, String, String, String, String, Boolean, Single, Single)" Url="html/M-SiaNet.NN.Basic.BatchNorm_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="706cde85-48cc-4d19-8cbe-8b244770f880" Title="Dense Method " Url="html/Overload-SiaNet.NN.Basic.Dense.htm">
+        <HelpTOCNode Id="fd9a5f0b-6232-4c6d-a830-3d7cc737a682" Title="Dense Method " Url="html/Overload-SiaNet.NN.Basic.Dense.htm">
           <HelpTOCNode Title="Dense Method (Int32, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.NN.Basic.Dense.htm" />
           <HelpTOCNode Title="Dense Method (Variable, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.NN.Basic.Dense_1.htm" />
         </HelpTOCNode>
         <HelpTOCNode Title="Dropout Method " Url="html/M-SiaNet.NN.Basic.Dropout.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="f17c4432-f63b-4ac2-ab9a-da0acea5dcb6" Title="Convolution Class" Url="html/T-SiaNet.NN.Convolution.htm">
+    <HelpTOCNode Id="39d5d1ae-f81f-4cd8-8bee-aeb1fe39e268" Title="Convolution Class" Url="html/T-SiaNet.NN.Convolution.htm">
       <HelpTOCNode Title="Convolution Members" Url="html/AllMembers.T-SiaNet.NN.Convolution.htm" />
-      <HelpTOCNode Id="97cc549c-d1ff-4a48-9533-81644408237d" Title="Convolution Methods" Url="html/Methods.T-SiaNet.NN.Convolution.htm">
+      <HelpTOCNode Id="11475b63-ed43-48ae-ab95-31aac2cadc1f" Title="Convolution Methods" Url="html/Methods.T-SiaNet.NN.Convolution.htm">
         <HelpTOCNode Title="AvgPool1D Method " Url="html/M-SiaNet.NN.Convolution.AvgPool1D.htm" />
         <HelpTOCNode Title="AvgPool2D Method " Url="html/M-SiaNet.NN.Convolution.AvgPool2D.htm" />
         <HelpTOCNode Title="AvgPool3D Method " Url="html/M-SiaNet.NN.Convolution.AvgPool3D.htm" />
-        <HelpTOCNode Id="2794008e-4088-42c5-a211-8f15afc72be2" Title="Conv1D Method " Url="html/Overload-SiaNet.NN.Convolution.Conv1D.htm">
+        <HelpTOCNode Id="089de74e-b3be-4a27-9bc1-dbeb11a0863d" Title="Conv1D Method " Url="html/Overload-SiaNet.NN.Convolution.Conv1D.htm">
           <HelpTOCNode Title="Conv1D Method (Variable, Int32, Int32, Int32, Boolean, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.NN.Convolution.Conv1D.htm" />
           <HelpTOCNode Title="Conv1D Method (Tuple(Int32, Int32), Int32, Int32, Int32, Boolean, Int32, String, Boolean, String, String)" Url="html/M-SiaNet.NN.Convolution.Conv1D_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="930fa2de-f7e4-4921-8260-766150c055b5" Title="Conv2D Method " Url="html/Overload-SiaNet.NN.Convolution.Conv2D.htm">
+        <HelpTOCNode Id="5fa189be-c7fb-4b0a-a517-1ab302531d85" Title="Conv2D Method " Url="html/Overload-SiaNet.NN.Convolution.Conv2D.htm">
           <HelpTOCNode Title="Conv2D Method (Variable, Int32, Tuple(Int32, Int32), Tuple(Int32, Int32), Boolean, Tuple(Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.NN.Convolution.Conv2D.htm" />
           <HelpTOCNode Title="Conv2D Method (Tuple(Int32, Int32, Int32), Int32, Tuple(Int32, Int32), Tuple(Int32, Int32), Boolean, Tuple(Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.NN.Convolution.Conv2D_1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="30be3514-cf86-49b4-a040-2d7e4df16be0" Title="Conv3D Method " Url="html/Overload-SiaNet.NN.Convolution.Conv3D.htm">
+        <HelpTOCNode Id="201bfa55-ce00-4304-bcfe-3f384364966d" Title="Conv3D Method " Url="html/Overload-SiaNet.NN.Convolution.Conv3D.htm">
           <HelpTOCNode Title="Conv3D Method (Variable, Int32, Tuple(Int32, Int32, Int32), Tuple(Int32, Int32, Int32), Boolean, Tuple(Int32, Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.NN.Convolution.Conv3D.htm" />
           <HelpTOCNode Title="Conv3D Method (Tuple(Int32, Int32, Int32, Int32), Int32, Tuple(Int32, Int32, Int32), Tuple(Int32, Int32, Int32), Boolean, Tuple(Int32, Int32, Int32), String, Boolean, String, String)" Url="html/M-SiaNet.NN.Convolution.Conv3D_1.htm" />
         </HelpTOCNode>
@@ -706,9 +732,9 @@
         <HelpTOCNode Title="MaxPool3D Method " Url="html/M-SiaNet.NN.Convolution.MaxPool3D.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="6e5a0c53-8bed-4747-b0c0-8246d7e2a427" Title="Recurrent Class" Url="html/T-SiaNet.NN.Recurrent.htm">
+    <HelpTOCNode Id="e435ffb9-94e9-48f7-9818-41e6a621f24b" Title="Recurrent Class" Url="html/T-SiaNet.NN.Recurrent.htm">
       <HelpTOCNode Title="Recurrent Members" Url="html/AllMembers.T-SiaNet.NN.Recurrent.htm" />
-      <HelpTOCNode Id="2f25368d-2241-48ba-9b1e-d70af6d0f04a" Title="Recurrent Methods" Url="html/Methods.T-SiaNet.NN.Recurrent.htm">
+      <HelpTOCNode Id="783c0fab-ea5c-412e-b29c-34f5a592eb3d" Title="Recurrent Methods" Url="html/Methods.T-SiaNet.NN.Recurrent.htm">
         <HelpTOCNode Title="GRU Method " Url="html/M-SiaNet.NN.Recurrent.GRU.htm" />
         <HelpTOCNode Title="LSTM Method " Url="html/M-SiaNet.NN.Recurrent.LSTM.htm" />
         <HelpTOCNode Title="RNN Method " Url="html/M-SiaNet.NN.Recurrent.RNN.htm" />
