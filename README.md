@@ -24,18 +24,13 @@ Developing a C# wrapper to help developer easily create and train deep neural ne
 ```validation = ImageDataGenerator.FlowFromText(samplePath.Test);```
 
 ## Build Model
-```
-model = new Sequential();
-```
-```
-model.Add(new Dense(13, 12, OptActivations.ReLU));
-```
-```
-model.Add(new Dense(13, OptActivations.ReLU));
-```
-```
-model.Add(new Dense(1));
-```
+```model = new Sequential();```
+
+```model.Add(new Dense(13, 12, OptActivations.ReLU));```
+
+```model.Add(new Dense(13, OptActivations.ReLU));```
+
+```model.Add(new Dense(1));```
 
 ## Build Convolution Layers
 ```model.Add(new Conv2D(Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), 4, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier, useBias: true, biasInitializer: OptInitializers.Ones));```
