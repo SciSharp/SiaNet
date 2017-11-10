@@ -103,7 +103,7 @@ namespace SiaNet.Model
                     }
                 }
             }
-
+             
             CurrentX = Value.CreateBatch(features, byteData.Select(b => (float)b).ToList(), GlobalParameters.Device);
             CurrentY = Value.CreateBatch(features, labelData.Select(b => (float)b).ToList(), GlobalParameters.Device);
 

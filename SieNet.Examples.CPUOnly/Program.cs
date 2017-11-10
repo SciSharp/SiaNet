@@ -23,23 +23,23 @@ namespace SieNet.Examples.CPUOnly
                 Logging.OnWriteLog += Logging_OnWriteLog;
 
                 //Housing regression example
-                //HousingRegression.LoadData();
-                //HousingRegression.BuildModel();
-                //HousingRegression.Train();
+                HousingRegression.LoadData();
+                HousingRegression.BuildModel();
+                HousingRegression.Train();
 
                 //MNIST Classification example
-                //MNISTClassifier.LoadData();
-                //MNISTClassifier.BuildModel();
-                //MNISTClassifier.Train();
+                MNISTClassifier.LoadData();
+                MNISTClassifier.BuildModel();
+                MNISTClassifier.Train();
 
                 //Cifar - 10 Classification example
-                Cifar10Classification.LoadData();
-                Cifar10Classification.BuildModel();
-                Cifar10Classification.Train();
+                //Cifar10Classification.LoadData();
+                //Cifar10Classification.BuildModel();
+                //Cifar10Classification.Train();
 
                 //Image classification example
-                //Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(SiaNet.Common.ImageNetModel.ResNet50)[0].Name);
-                //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(SiaNet.Common.Cifar10Model.ResNet110)[0].Name);
+                Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(SiaNet.Common.ImageNetModel.ResNet50)[0].Name);
+                Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(SiaNet.Common.Cifar10Model.ResNet110)[0].Name);
 
                 //Object Detection
                 //ObjectDetection.PascalDetection();
