@@ -96,6 +96,7 @@
     <Compile Include="Metrics.cs" />
     <Compile Include="Model\ConfigModule.cs" />
     <Compile Include="Model\DataFrame.cs" />
+    <Compile Include="Model\ImageDataFrame.cs" />
     <Compile Include="Model\ImageDataGenerator.cs" />
     <Compile Include="Model\LayerConfig.cs" />
     <Compile Include="Model\Layers\BatchNorm.cs" />
@@ -156,6 +157,5 @@
     <Error Condition="!Exists('..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets'))" />
     <Error Condition="!Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets'))" />
   </Target>
-  <Import Project="..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets" Condition="Exists('..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets')" />
   <Import Project="..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets" Condition="Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" />
 </Project>

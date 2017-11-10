@@ -44,7 +44,7 @@ namespace SiaNet.Processing
             if (train.GenType == ImageGenType.FromTextFile)
             {
                 train.LoadTextData(featureVariable, labelVariable);
-                if(validation != null)
+                if (validation != null)
                     validation.LoadTextData(featureVariable, labelVariable);
             }
 
@@ -56,7 +56,7 @@ namespace SiaNet.Processing
                 while (!train.NextBatch(batchSize))
                 {
                     onBatchStart(currentEpoch, miniBatchCount);
-                    trainer.TrainMinibatch(new Dictionary<Variable, MinibatchData> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, GlobalParameters.Device);
+                    trainer.TrainMinibatch(new Dictionary<Variable, Value> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, GlobalParameters.Device);
                     OnBatchEnd(currentEpoch, miniBatchCount, trainer.TotalNumberOfSamplesSeen(), trainer.PreviousMinibatchLossAverage(), new Dictionary<string, double>() { { metricName, trainer.PreviousMinibatchEvaluationAverage() } });
                     
                     miniBatchCount++;
@@ -96,8 +96,8 @@ namespace SiaNet.Processing
                         Variable actualVariable = CNTKLib.InputVariable(labelVariable.Shape, DataType.Float);
                         var evalLossFunc = Losses.Get(lossName, labelVariable, actualVariable);
                         var evalMetricFunc = Metrics.Get(metricName, labelVariable, actualVariable);
-                        Value actual = EvaluateInternal(validation.CurrentBatchX.data);
-                        Value expected = validation.CurrentBatchY.data;
+                        Value actual = EvaluateInternal(validation.CurrentBatchX);
+                        Value expected = validation.CurrentBatchY;
                         var inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected }, { actualVariable, actual } };
                         var outputDataMap = new Dictionary<Variable, Value>() { { evalLossFunc.Output, null } };
 

@@ -162,5 +162,10 @@
 
             Frame = clone.AsDataView();
         }
+
+        public void Normalize(double value)
+        {
+            DataTable dt = Frame.ToTable();
+        }
     }
 }

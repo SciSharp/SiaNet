@@ -1,6 +1,7 @@
 ﻿namespace SiaNet.Model
 {
     using CNTK;
+    using SiaNet.Common;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -26,7 +27,7 @@
 
         private MinibatchSource miniBatchSource;
         
-        public MinibatchData CurrentBatchY { get; set; }
+        public Value CurrentBatchY { get; set; }
 
         private Variable featureVariable;
 
@@ -36,6 +37,7 @@
 
         private StreamInformation labelStreamInfo;
 
+        
         /// <summary>
         /// Gets or sets the type of the image data generator.
         /// </summary>
@@ -50,7 +52,7 @@
         /// <value>
         /// The current batch x.
         /// </value>
-        public MinibatchData CurrentBatchX { get; set; }
+        public Value CurrentBatchX { get; set; }
         
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageDataGenerator"/> class.
@@ -90,6 +92,19 @@
             labelStreamInfo = miniBatchSource.StreamInfo(labelsStreamName);
         }
 
+        public void LoadSample(SampleDataset sample, Variable feature, Variable label)
+        {
+            int imageSize = feature.Shape.Rank == 1 ? feature.Shape[0] : feature.Shape[0] * feature.Shape[1] * feature.Shape[2];
+            int numClasses = label.Shape[0];
+            IList<StreamConfiguration> streamConfigurations = new StreamConfiguration[] { new StreamConfiguration(featureStreamName, imageSize), new StreamConfiguration(labelsStreamName, numClasses) };
+
+            miniBatchSource = MinibatchSource.TextFormatMinibatchSource(FileName, streamConfigurations, MinibatchSource.InfinitelyRepeat);
+            featureVariable = feature;
+            labelVariable = label;
+            featureStreamInfo = miniBatchSource.StreamInfo(featureStreamName);
+            labelStreamInfo = miniBatchSource.StreamInfo(labelsStreamName);
+        }
+
         /// <summary>
         /// Gets the next the batch to train using the batch size.
         /// </summary>
@@ -102,8 +117,8 @@
             if (result == true)
                 return result;
 
-            CurrentBatchX = minibatchData[featureStreamInfo];
-            CurrentBatchY = minibatchData[labelStreamInfo];
+            CurrentBatchX = minibatchData[featureStreamInfo].data;
+            CurrentBatchY = minibatchData[labelStreamInfo].data;
             
             return result;
         }

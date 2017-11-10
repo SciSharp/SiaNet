@@ -22,7 +22,6 @@ namespace SieNet.Examples.CPUOnly
                 GlobalParameters.Device = DeviceDescriptor.CPUDevice;
                 Logging.OnWriteLog += Logging_OnWriteLog;
 
-
                 //Housing regression example
                 //HousingRegression.LoadData();
                 //HousingRegression.BuildModel();
@@ -33,7 +32,7 @@ namespace SieNet.Examples.CPUOnly
                 //MNISTClassifier.BuildModel();
                 //MNISTClassifier.Train();
 
-                //Cifar-10 Classification example
+                //Cifar - 10 Classification example
                 Cifar10Classification.LoadData();
                 Cifar10Classification.BuildModel();
                 Cifar10Classification.Train();
