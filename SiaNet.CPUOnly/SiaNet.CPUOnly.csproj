@@ -228,6 +228,9 @@
     <Compile Include="..\SiaNet\Utility.cs">
       <Link>Utility.cs</Link>
     </Compile>
+    <Compile Include="..\SolutionAssemblyVersionInfo.cs">
+      <Link>SolutionAssemblyVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Model\Layers\ImageDataFrame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

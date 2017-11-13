@@ -22,30 +22,30 @@ namespace SiaNet.Examples
                 if (devices.Count == 0)
                     throw new Exception("No GPU Device found. Please run the CPU examples instead!");
 
-                Logging.OnWriteLog += Logging_OnWriteLog;
+                //Logging.OnWriteLog += Logging_OnWriteLog;
 
                 //Setting global device
                 GlobalParameters.Device = devices[0];
 
 
                 //Housing regression example
-                //HousingRegression.LoadData();
-                //HousingRegression.BuildModel();
-                //HousingRegression.Train();
+                HousingRegression.LoadData();
+                HousingRegression.BuildModel();
+                HousingRegression.Train();
 
                 //MNIST Classification example
-                //MNISTClassifier.LoadData();
-                //MNISTClassifier.BuildModel();
-                //MNISTClassifier.Train();
+                MNISTClassifier.LoadData();
+                MNISTClassifier.BuildModel();
+                MNISTClassifier.Train();
 
                 //Cifar-10 Classification example
-                Cifar10Classification.LoadData();
-                Cifar10Classification.BuildModel();
-                Cifar10Classification.Train();
+                //Cifar10Classification.LoadData();
+                //Cifar10Classification.BuildModel();
+                //Cifar10Classification.Train();
 
                 //Image classification example
-                //Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
-                //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
+                Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
+                Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
 
 
                 //Object Detection

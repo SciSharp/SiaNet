@@ -67,6 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionAssemblyVersionInfo.cs">
+      <Link>SolutionAssemblyVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Downloader.cs" />
     <Compile Include="EnumConstants.cs" />
     <Compile Include="Enumerations.cs" />

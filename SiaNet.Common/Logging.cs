@@ -25,7 +25,7 @@ namespace SiaNet.Common
         /// <param name="message">The message.</param>
         public static void WriteTrace(string message)
         {
-            OnWriteLog(message);
+            OnWriteLog?.Invoke(message);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace SiaNet.Common
         /// <param name="ex">The ex.</param>
         public static void WriteTrace(Exception ex)
         {
-            OnWriteLog("Exception: " + ex.Message);
+            OnWriteLog?.Invoke("Exception: " + ex.Message);
         }
     }
 }

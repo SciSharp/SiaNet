@@ -1,9 +1,15 @@
 ![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
 [![Join the chat at https://gitter.im/sia-cog/SiaNet](https://badges.gitter.im/sia-cog/SiaNet.svg)](https://gitter.im/sia-cog/SiaNet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-# A CSharp deep learning wrapper with CNTK backend
+# A C# deep learning wrapper with CNTK backend
 
 Developing a C# wrapper to help developer easily create and train deep neural network models. I am working on enhancing the interface to load data, build model, train and predict.
+
+## Install using NuGet
+GPU and CPU Version: [https://www.nuget.org/packages/SiaNet](https://www.nuget.org/packages/SiaNet)
+
+For better performance on CPU please use CPU only version.
+CPU Only Version: [https://www.nuget.org/packages/SiaNet.CPUOnly/](https://www.nuget.org/packages/SiaNet.CPUOnly/)
 
 ## Load dataset (Housing regression example)
 ```DataFrame frame = new DataFrame();```
@@ -56,4 +62,10 @@ Developing a C# wrapper to help developer easily create and train deep neural ne
 
 API Documentation: https://deepakkumar1984.github.io/SiaNet/
 
+## Examples Docs (More to add)
+
+- Housing Regression: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Housing-Regression-Problem](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Housing-Regression-Problem)
+- MNIST Training: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training](https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training)
+- Image Classification: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Image-Classification](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Image-Classification)
+- Object Detection: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Object-Detection](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Object-Detection)
 
