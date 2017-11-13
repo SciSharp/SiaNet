@@ -19,8 +19,8 @@ namespace SieNet.Examples.CPUOnly
             try
             {
                 //Setting global device
-                GlobalParameters.Device = DeviceDescriptor.CPUDevice;
                 Logging.OnWriteLog += Logging_OnWriteLog;
+                GlobalParameters.Device = DeviceDescriptor.CPUDevice;
 
                 //Housing regression example
                 //HousingRegression.LoadData();

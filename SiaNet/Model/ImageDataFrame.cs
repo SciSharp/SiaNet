@@ -170,7 +170,6 @@ namespace SiaNet.Model
             folderMapData = clone;
         }
 
-
         private void ExtractCifar10()
         {
             string filepath = @"C:\Users\batt0153\AppData\Local\Downloads\cifar-10-binary\cifar-10-batches-bin\data_batch_1.bin";
