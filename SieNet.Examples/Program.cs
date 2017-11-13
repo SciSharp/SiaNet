@@ -22,7 +22,7 @@ namespace SiaNet.Examples
                 if (devices.Count == 0)
                     throw new Exception("No GPU Device found. Please run the CPU examples instead!");
 
-                Logging.OnWriteLog += Logging_OnWriteLog;
+                //Logging.OnWriteLog += Logging_OnWriteLog;
 
                 //Setting global device
                 GlobalParameters.Device = devices[0];

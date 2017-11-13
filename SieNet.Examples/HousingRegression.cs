@@ -51,7 +51,7 @@ namespace SiaNet.Examples
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics["val_mae"]));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Metrics: {2}", epoch, loss, metrics.First().Value));
         }
     }
 }

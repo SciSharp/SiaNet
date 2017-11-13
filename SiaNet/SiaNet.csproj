@@ -86,6 +86,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SolutionAssemblyVersionInfo.cs">
+      <Link>SolutionAssemblyVersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Application\Cifar10.cs" />
     <Compile Include="Application\FastRCNN.cs" />
     <Compile Include="Application\ImageNet.cs" />
