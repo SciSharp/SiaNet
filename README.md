@@ -62,7 +62,10 @@ CPU Only Version: [https://www.nuget.org/packages/SiaNet.CPUOnly/](https://www.n
 
 API Documentation: https://deepakkumar1984.github.io/SiaNet/
 
-Examples Docs (More to add)
+## Examples Docs (More to add)
 
-MNIST Training: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training](https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training)
+- Housing Regression: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Housing-Regression-Problem](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Housing-Regression-Problem)
+- MNIST Training: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training](https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training)
+- Image Classification: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Image-Classification](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Image-Classification)
+- Object Detection: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Object-Detection](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Object-Detection)
 
