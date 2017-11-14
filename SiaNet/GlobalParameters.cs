@@ -21,9 +21,9 @@
             {
                 if (device == null)
                 {
-                    var gpiList = DeviceDescriptor.AllDevices().Where(x => (x.Type == DeviceKind.GPU)).ToList();
-                    if (gpiList.Count > 0)
-                        device = gpiList[0];
+                    var gpuList = DeviceDescriptor.AllDevices().Where(x => (x.Type == DeviceKind.GPU)).ToList();
+                    if (gpuList.Count > 0)
+                        device = gpuList[0];
                     else
                         device = DeviceDescriptor.CPUDevice;
                 }

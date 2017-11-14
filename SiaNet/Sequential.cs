@@ -81,6 +81,8 @@
 
         private ITrainPredict trainPredict;
 
+        private bool customBuilt = false;
+
         /// <summary>
         /// Gets or sets the training result.
         /// </summary>
@@ -110,11 +112,26 @@
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Sequential"/> class.
+        /// </summary>
+        /// <param name="model">Model build outside and pass to this instance for training</param>
+        /// <param name="feature">Feature variable</param>
+        /// <param name="label">Label variable</param>
+        public Sequential(Function model, Variable feature, Variable label)
+            : this()
+        {
+            modelOut = model;
+            featureVariable = feature;
+            labelVariable = label;
+            customBuilt = true;
+        }
+
+        /// <summary>
         /// Sequentials the on batch end.
         /// </summary>
         /// <param name="epoch">The epoch.</param>
         /// <param name="batchNumber">The batch number.</param>
-        /// <param name="samplesSeen">The samples seen.</param>
+        /// <param name="samplesSeen">The no. of samples seen.</param>
         /// <param name="loss">The loss.</param>
         /// <param name="metrics">The metrics.</param>
         private void Sequential_OnBatchEnd(int epoch, int batchNumber, uint samplesSeen, double loss, Dictionary<string, double> metrics)
@@ -217,6 +234,9 @@
         /// <param name="config">The configuration.</param>
         public void Add(LayerConfig config)
         {
+            if (customBuilt)
+                throw new Exception("Cannot add layers to this sequential instance.");
+
             Layers.Add(config);
         }
 
@@ -275,6 +295,9 @@
 
         private void CompileModel()
         {
+            if (customBuilt)
+                return;
+
             bool first = true;
             foreach (var item in Layers)
             {

@@ -237,7 +237,7 @@ namespace SiaNet.Application
 
                 Logging.WriteTrace("Prediction Completed");
                 
-                return null;
+                return result;
             }
             catch (Exception ex)
             {
