@@ -13,7 +13,7 @@ namespace SiaNet.Examples
     {
         public static List<PredResult> PascalDetection()
         {
-            string imagePath = string.Format("{0}\\images\\objdet.jpg", AppDomain.CurrentDomain.BaseDirectory);
+            string imagePath = string.Format("{0}images\\objdet.jpg", AppDomain.CurrentDomain.BaseDirectory);
             FastRCNN app = new FastRCNN(FastRCNNModel.Pascal);
             app.LoadModel();
             return app.Predict(imagePath);
@@ -21,7 +21,7 @@ namespace SiaNet.Examples
 
         public static List<PredResult> GroceryDetection()
         {
-            string imagePath = string.Format("{0}\\images\\grocery.jpg", AppDomain.CurrentDomain.BaseDirectory);
+            string imagePath = string.Format("{0}images\\grocery.jpg", AppDomain.CurrentDomain.BaseDirectory);
             FastRCNN app = new FastRCNN(FastRCNNModel.Grocery100);
             app.LoadModel();
             return app.Predict(imagePath);
