@@ -15,6 +15,7 @@ namespace SiaNet.Common
         public const string Activation = "ACTIVATION";
         public const string Dropout = "DROPOUT";
         public const string BatchNorm = "BATCHNORM";
+        public const string Embedding = "EMBEDDING";
         public const string Conv1D = "CONV1D";
         public const string Conv2D = "CONV2D";
         public const string Conv3D = "CONV3D";

@@ -43,7 +43,7 @@ namespace SiaNet.Model.Layers
         /// The shape.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public double Shape
+        public int Shape
         {
             get
             {
@@ -63,7 +63,7 @@ namespace SiaNet.Model.Layers
         /// The embedding dim.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public double EmbeddingDim
+        public int EmbeddingDim
         {
             get
             {
@@ -83,7 +83,7 @@ namespace SiaNet.Model.Layers
         /// The initializers.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public double Initializers
+        public string Initializers
         {
             get
             {

@@ -450,6 +450,11 @@
                     featureVariable = Variable.InputVariable(new int[] { l5.Shape.Item1, l5.Shape.Item2, l5.Shape.Item3, l5.Shape.Item4 }, DataType.Float);
                     modelOut = NN.Convolution.Conv3D(featureVariable, l5.Channels, l5.KernalSize, l5.Strides, l5.Padding, l5.Dialation, l5.Act, l5.UseBias, l5.WeightInitializer, l5.BiasInitializer);
                     break;
+                case OptLayers.Embedding:
+                    var l6 = (Embedding)layer;
+                    featureVariable = Variable.InputVariable(new int[] { l6.Shape }, DataType.Float);
+                    modelOut = NN.Basic.Embedding(featureVariable, l6.EmbeddingDim, l6.Initializers);
+                    break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} cannot be used as first layer."));
             }
