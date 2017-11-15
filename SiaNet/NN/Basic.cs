@@ -153,6 +153,19 @@
         }
 
         /// <summary>
+        /// Embeddings layer
+        /// </summary>
+        /// <param name="shape">The shape.</param>
+        /// <param name="embeddingDim">The dim.</param>
+        /// <returns></returns>
+        public static Function Embedding(int shape, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
+        {
+            var input = CNTKLib.InputVariable(new int[] { shape }, true, DataType.Float);
+            var embeddingParameters = new Parameter(new int[] { embeddingDim, shape }, DataType.Float, Initializers.Get(initializers), GlobalParameters.Device);
+            return CNTKLib.Times(embeddingParameters, input);
+        }
+
+        /// <summary>
         /// Fully connected layer.
         /// </summary>
         /// <param name="input">The input.</param>

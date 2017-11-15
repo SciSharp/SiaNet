@@ -21,7 +21,7 @@ namespace SiaNet.Model
         internal int Resize = 0;
     }
 
-    public class ImageDataFrame
+    public class ImageDataFrame : XYFrame
     {
         private int[] features;
         private int labels;
@@ -33,7 +33,8 @@ namespace SiaNet.Model
         {
             features = feature.Shape.Dimensions.ToArray();
             labels = label.Shape.Dimensions[0];
-            Frame = new List<ImageData>();
+            //DataFrame = new List<ImageData>();
+            
             counter = 0;
         }
 
@@ -78,7 +79,7 @@ namespace SiaNet.Model
 
         private int counter;
 
-        public List<ImageData> Frame { get; set; }
+        //public List<ImageData> DataFrame { get; set; }
 
         internal Value CurrentX { get; set; }
 
@@ -101,35 +102,36 @@ namespace SiaNet.Model
 
         private bool GetNextFromFrame(int batchSize)
         {
-            var batchData = Frame.Skip(counter * batchSize).Take(batchSize).ToList();
+            var batchData = XFrame.Data.Skip(counter * batchSize).Take(batchSize).ToList();
+            
             if (batchData.Count == 0)
                 return false;
 
             List<byte> byteData = new List<byte>();
             List<byte> labelData = new List<byte>();
 
-            foreach (var cur in batchData)
-            {
-                foreach (var item in cur.Pixels)
-                {
-                    foreach (var i in item)
-                    {
-                        byteData.AddRange(i);
-                    }
-                }
+            //foreach (var cur in batchData)
+            //{
+            //    foreach (var item in cur.Pixels)
+            //    {
+            //        foreach (var i in item)
+            //        {
+            //            byteData.AddRange(i);
+            //        }
+            //    }
 
-                for (int i = 1; i <= labels; i++)
-                {
-                    if (cur.label == i)
-                    {
-                        labelData.Add(1);
-                    }
-                    else
-                    {
-                        labelData.Add(0);
-                    }
-                }
-            }
+            //    for (int i = 1; i <= labels; i++)
+            //    {
+            //        if (cur.label == i)
+            //        {
+            //            labelData.Add(1);
+            //        }
+            //        else
+            //        {
+            //            labelData.Add(0);
+            //        }
+            //    }
+            //}
              
             CurrentX = Value.CreateBatch(features, byteData.Select(b => (float)b).ToList(), GlobalParameters.Device);
             CurrentY = Value.CreateBatch(features, labelData.Select(b => (float)b).ToList(), GlobalParameters.Device);
@@ -245,7 +247,7 @@ namespace SiaNet.Model
                     pixels[2][i] = br.ReadBytes(pixelSize);
 
                 ImageData dImage = new ImageData(pixels, lbl);
-                Frame.Add(dImage);
+                //DataFrame.Add(dImage);
                 //Console.WriteLine(dImage.ToString());
                 //Console.ReadLine();
             }
@@ -289,7 +291,7 @@ namespace SiaNet.Model
                 byte lbl = brlbl.ReadByte();
 
                 ImageData dImage = new ImageData(new byte[][][] { pixels }, lbl);
-                Frame.Add(dImage);
+                //DataFrame.Add(dImage);
                 //Console.WriteLine(dImage.ToString());
                 //Console.ReadLine();
             } // each image

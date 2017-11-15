@@ -13,25 +13,13 @@ namespace SiaNet.Processing
     {
         internal static Value GetValueBatch(DataFrame frame)
         {
-            DataTable dt = frame.Frame.ToTable();
-            int dim = dt.Columns.Count;
             List<float> batch = new List<float>();
-            foreach (DataRow item in dt.Rows)
+            Parallel.ForEach(frame.Data, (record) =>
             {
-                foreach (var row in item.ItemArray)
-                {
-                    if (row != null)
-                    {
-                        batch.Add((float)row);
-                    }
-                    else
-                    {
-                        batch.Add(0);
-                    }
-                }
-            }
+                batch.AddRange(record);
+            });
 
-            Value result = Value.CreateBatch(new int[] { dim }, batch, GlobalParameters.Device);
+            Value result = Value.CreateBatch(new int[] { frame.Columns.Count }, batch, GlobalParameters.Device);
             return result;
         }
     }

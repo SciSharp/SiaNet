@@ -59,17 +59,21 @@ namespace SiaNet.Model
             }
 
             TrainTestFrame result = new TrainTestFrame();
-            DataTable dt_x = XFrame.Frame.ToTable();
-            DataTable dt_y = YFrame.Frame.ToTable();
-            int totalRows = dt_x.Rows.Count;
+            int totalRows = XFrame.Data.Count;
             int testRows = (int)(totalRows * testSplitSize);
             int trainRows = totalRows - testRows;
-            
-            result.Train.XFrame.Frame = dt_x.Select().Take(trainRows).CopyToDataTable().AsDataView();
-            result.Test.XFrame.Frame = dt_x.Select().Skip(trainRows).Take(testRows).CopyToDataTable().AsDataView();
-            
-            result.Train.YFrame.Frame = dt_y.Select().Take(trainRows).CopyToDataTable().AsDataView();
-            result.Test.YFrame.Frame = dt_y.Select().Skip(trainRows).Take(testRows).CopyToDataTable().AsDataView();
+
+            result.Train.XFrame.Data = XFrame.Data.Take(trainRows).ToList();
+            result.Train.XFrame.Columns = XFrame.Columns;
+
+            result.Test.XFrame.Data = XFrame.Data.Skip(trainRows).Take(testRows).ToList();
+            result.Test.XFrame.Columns = XFrame.Columns;
+
+            result.Train.YFrame.Data = YFrame.Data.Take(trainRows).ToList();
+            result.Train.YFrame.Columns = YFrame.Columns;
+
+            result.Test.YFrame.Data = YFrame.Data.Skip(trainRows).Take(testRows).ToList();
+            result.Test.YFrame.Columns = YFrame.Columns;
 
             return result;
         }
@@ -83,16 +87,17 @@ namespace SiaNet.Model
         public bool NextBatch(int current, int batchSize)
         {
             bool next = true;
-            DataTable dt_x = XFrame.Frame.ToTable();
-            DataTable dt_y = YFrame.Frame.ToTable();
-            int totalRows = dt_x.Rows.Count;
+            int totalRows = XFrame.Data.Count;
             int skipRows = (current - 1) * batchSize;
 
             if (skipRows < totalRows)
             {
                 CurrentBatch = new XYFrame();
-                CurrentBatch.XFrame.Frame = dt_x.Select().Skip(skipRows).Take(batchSize).CopyToDataTable().AsDataView();
-                CurrentBatch.YFrame.Frame = dt_y.Select().Skip(skipRows).Take(batchSize).CopyToDataTable().AsDataView();
+                CurrentBatch.XFrame.Data = XFrame.Data.Skip(skipRows).Take(batchSize).ToList();
+                CurrentBatch.XFrame.Columns = XFrame.Columns;
+
+                CurrentBatch.YFrame.Data = YFrame.Data.Skip(skipRows).Take(batchSize).ToList();
+                CurrentBatch.YFrame.Columns = YFrame.Columns;
             }
             else
             {
