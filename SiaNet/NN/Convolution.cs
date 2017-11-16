@@ -25,9 +25,19 @@
         /// <returns></returns>
         public static Function Conv1D(Variable layer, int channels, int kernalSize, int strides=1, bool padding=true, int dialation=1, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
-            var convParams = new Parameter(new int[] { kernalSize, numInputChannels, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
-            var conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true, false, false }), new BoolVector(new bool[] { padding, false, false }), new int[] { dialation });
+            Parameter convParams = null;
+            Function conv = null;
+            if (layer.Shape.Rank > 1)
+            {
+                int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
+                convParams = new Parameter(new int[] { kernalSize, numInputChannels, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
+                conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true, true }), new BoolVector(new bool[] { padding, false, false }), new int[] { dialation });
+            }
+            else
+            {
+                convParams = new Parameter(new int[] { kernalSize, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
+                conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { padding }), new int[] { dialation });
+            }
 
             Parameter bias = null;
             if (useBias)
@@ -144,7 +154,7 @@
                 dialation = new Tuple<int, int, int>(1, 1, 1);
             }
 
-            var conv = CNTKLib.Convolution(convParams, layer, new int[] { strides.Item1, strides.Item2, strides.Item3 }, new BoolVector(new bool[] { true, true, true }), new BoolVector(new bool[] { padding, padding, padding }), new int[] { dialation.Item1, dialation.Item2, dialation.Item3 });
+            var conv = CNTKLib.Convolution(convParams, layer, new int[] { strides.Item1, strides.Item2, strides.Item3 }, new BoolVector(new bool[] { true, true, true, true }), new BoolVector(new bool[] { padding, padding, padding, padding }), new int[] { dialation.Item1, dialation.Item2, dialation.Item3 });
             Parameter bias = null;
             if (useBias)
             {
