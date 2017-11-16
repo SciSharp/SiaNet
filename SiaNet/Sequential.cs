@@ -471,7 +471,7 @@
         {
             OnTrainingStart();
             trainPredict = new DataFrameTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
-            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
+            TrainingResult = trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
             OnTrainingEnd(TrainingResult);
         }
 
@@ -486,7 +486,7 @@
         {
             OnTrainingStart();
             trainPredict = new ImgGenTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
-            trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
+            TrainingResult = trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
             OnTrainingEnd(TrainingResult);
         }
 

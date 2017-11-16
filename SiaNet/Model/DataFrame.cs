@@ -8,6 +8,7 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Microsoft.VisualBasic.FileIO;
 
     /// <summary>
     /// Dataset loader with utilities to split and shuffle.
@@ -41,56 +42,54 @@
         /// <param name="hasHeaders">If the CSV file have headers</param>
         /// <param name="seperatedByWhitespace">If row data is seperated by whitespace, otherwise comma by default</param>
         /// <param name="dataType">Data type of the CSV data.</param>
-        public void LoadFromCsv(string filePath, bool hasHeaders = true, bool seperatedByWhitespace = false, Encoding encoding = null)
+        public void LoadFromCsv(string filePath, bool hasHeaders = true, bool tabSeperator = false, Encoding encoding = null)
         {
             var lines = File.ReadAllLines(filePath);
-            string seperator = seperatedByWhitespace ? " " : ",";
+            string seperator = tabSeperator ? "\t" : ",";
             int counter = 0;
             if (encoding == null)
                 encoding = Encoding.Default;
 
-            CsvHelper.CsvReader reader = new CsvHelper.CsvReader(new StreamReader(filePath), new CsvHelper.Configuration.Configuration() { HasHeaderRecord = hasHeaders, Delimiter = seperator, Encoding = encoding });
+            using (TextFieldParser parser = new TextFieldParser(filePath))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(seperator);
+                parser.HasFieldsEnclosedInQuotes = true;
+                if (parser.EndOfData)
+                    throw new Exception("File is empty or not loaded properly.");
 
-            ////if (hasHeaders)
-            ////{
-            ////    reader.ReadHeader();
-            ////    foreach (var item in columns)
-            ////    {
-            ////        Columns.Add(item);
-            ////    }
-            ////}
-            ////else
-            ////{
-            ////    int columnCount = csvData.First().Count;
-            ////    for (int i = 0; i < columnCount; i++)
-            ////    {
-            ////        Columns.Add(string.Format("Column_{0}", i));
-            ////    }
-            ////}
+                if (hasHeaders)
+                {
+                    string[] fields = parser.ReadFields();
+                    foreach (string field in fields)
+                    {
+                        Columns.Add(field);
+                    }
+                }
 
-            ////foreach (var item in csvData)
-            ////{
-            ////    if (hasHeaders && counter == 0)
-            ////    {
-            ////        counter++;
-            ////        continue;
-            ////    }
+                List<float> record = new List<float>();
+                float fieldValue = 0;
+                while (!parser.EndOfData)
+                {
+                    string[] fields = parser.ReadFields();
+                    record = new List<float>();
+                    foreach (string field in fields)
+                    {
+                        float.TryParse(field, out fieldValue);
+                        record.Add(fieldValue);
+                    }
 
-            ////    try
-            ////    {
-            ////        var list = item.ToList<object>();
-                    
-            ////        row.ItemArray = item.ToArray<object>();
-            ////        dt.Rows.Add(row);
-            ////    }
-            ////    catch
-            ////    {
-            ////    }
+                    Data.Add(record);
+                }
 
-            ////    counter++;
-            ////}
-
-            ////Data = dt.AsDataView();
+                if(Columns.Count == 0)
+                {
+                    for (int i = 0; i < Data[0].Count; i++)
+                    {
+                        Columns.Add(i.ToString());
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -106,7 +105,7 @@
             result.YFrame = new DataFrame();
             List<float> xFrameRow = new List<float>();
             List<float> yFrameRow = new List<float>();
-            Parallel.ForEach(Data, (record) =>
+            Data.ForEach((record) =>
             {
                 xFrameRow.Clear();
                 foreach (var col in Columns)
@@ -114,7 +113,6 @@
                     if (xCols.Contains(col))
                     {
                         xFrameRow.Add(record[Columns.IndexOf(col)]);
-                        result.XFrame.Columns.Add(col);
                     }
                 }
 
@@ -122,9 +120,17 @@
 
                 result.XFrame.Add(xFrameRow);
                 result.YFrame.Add(yFrameRow);
-                result.YFrame.Columns.Add(yCol);
             });
+
+            foreach (var col in Columns)
+            {
+                if (xCols.Contains(col))
+                {
+                    result.XFrame.Columns.Add(col);
+                }
+            }
             
+            result.YFrame.Columns.Add(yCol);
 
             return result;
         }
@@ -149,21 +155,27 @@
             if (xCols[0] > xCols[1])
                 throw new Exception("xCols range must have first value lower than second value.");
 
-            Parallel.ForEach(Data, (record) =>
+            Data.ForEach((record) =>
             {
-                xFrameRow.Clear();
+                xFrameRow = new List<float>();
+                yFrameRow = new List<float>();
                 for (int i = xCols[0]; i <= xCols[1]; i++)
                 {
                     xFrameRow.Add(record[i]);
-                    result.XFrame.Columns.Add(Columns[i]);
                 }
-
+                
                 yFrameRow.Add(record[yCol]);
 
                 result.XFrame.Add(xFrameRow);
                 result.YFrame.Add(yFrameRow);
-                result.YFrame.Columns.Add(Columns[yCol]);
             });
+
+            for (int i = xCols[0]; i <= xCols[1]; i++)
+            {
+                result.XFrame.Columns.Add(Columns[i]);
+            }
+            
+            result.YFrame.Columns.Add(Columns[yCol]);
 
             return result;
         }
@@ -194,7 +206,7 @@
         {
             List<List<float>> result = new List<List<float>>();
 
-            Parallel.ForEach(Data, (record) =>
+            Data.ForEach((record) =>
             {
                 List<float> r = new List<float>();
                 foreach (var item in record)

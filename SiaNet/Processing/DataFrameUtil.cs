@@ -14,7 +14,7 @@ namespace SiaNet.Processing
         internal static Value GetValueBatch(DataFrame frame)
         {
             List<float> batch = new List<float>();
-            Parallel.ForEach(frame.Data, (record) =>
+            frame.Data.ForEach((record) =>
             {
                 batch.AddRange(record);
             });

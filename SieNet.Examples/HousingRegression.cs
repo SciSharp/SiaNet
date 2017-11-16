@@ -28,9 +28,10 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new Dense(13, 12, OptActivations.ReLU));
-            model.Add(new Dense(13, OptActivations.ReLU));
-            model.Add(new Dense(1));
+            model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.LeakyReLU));
+            model.Add(new Dense(dim: 13, act: OptActivations.LeakyReLU));
+            model.Add(new Dropout(rate: 0.2));
+            model.Add(new Dense(dim: 1, act: OptActivations.LeakyReLU));
 
             model.OnEpochEnd += Model_OnEpochEnd;
             model.OnTrainingEnd += Model_OnTrainingEnd;
@@ -38,20 +39,20 @@ namespace SiaNet.Examples
 
         public static void Train()
         {
-            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MAE, Regulizers.RegL2(0.01));
+            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSLE);
             model.Train(traintest.Train, 500, 32, traintest.Test);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
-            var mean = trainingResult[OptMetrics.MAE].Mean();
-            var std = trainingResult[OptMetrics.MAE].Std();
+            var mean = trainingResult[OptMetrics.MSLE].Mean();
+            var std = trainingResult[OptMetrics.MSLE].Std();
             Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean, std);
         }
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Metrics: {2}", epoch, loss, metrics.First().Value));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, MSLE: {2}", epoch, loss, metrics.First().Value));
         }
     }
 }

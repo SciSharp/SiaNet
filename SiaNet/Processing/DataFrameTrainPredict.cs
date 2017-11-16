@@ -40,7 +40,7 @@ namespace SiaNet.Processing
             Dictionary<string, double> metricsList = new Dictionary<string, double>();
             while (currentEpoch <= epoches)
             {
-                metricsList.Clear();
+                metricsList = new Dictionary<string, double>();
                 OnEpochStart(currentEpoch);
                 int miniBatchCount = 1;
                 while (train.NextBatch(miniBatchCount, batchSize))

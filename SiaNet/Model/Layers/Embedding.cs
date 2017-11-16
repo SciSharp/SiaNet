@@ -34,6 +34,7 @@ namespace SiaNet.Model.Layers
         {
             Shape = shape;
             EmbeddingDim = embeddingDim;
+            Initializers = initializers;
         }
 
         /// <summary>
