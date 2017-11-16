@@ -47,6 +47,7 @@ namespace SiaNet.Model.Layers
             UseBias = useBias;
             WeightInitializer = weightInitializer;
             BiasInitializer = biasInitializer;
+            Strides = strides;
         }
 
         /// <summary>
