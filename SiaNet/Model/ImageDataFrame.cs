@@ -33,12 +33,12 @@ namespace SiaNet.Model
         {
             features = feature.Shape.Dimensions.ToArray();
             labels = label.Shape.Dimensions[0];
-            //DataFrame = new List<ImageData>();
             
             counter = 0;
         }
 
-        public ImageDataFrame(string folder, int resize = 0, int numberOfRandomRotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+        public ImageDataFrame(Variable feature, Variable label, string folder, int resize = 0, int numberOfRandomRotation = 0, bool horizontalFlip = false, bool verticalFlip = false)
+            : this(feature, label)
         {
             this.folder = folder;
             fromFolder = true;
@@ -78,8 +78,6 @@ namespace SiaNet.Model
         }
 
         private int counter;
-
-        //public List<ImageData> DataFrame { get; set; }
 
         internal Value CurrentX { get; set; }
 
@@ -220,43 +218,29 @@ namespace SiaNet.Model
             folderMapData = clone;
         }
 
-        private void ExtractCifar10()
+        public void ExtractCifar10()
         {
             string filepath = @"C:\Users\batt0153\AppData\Local\Downloads\cifar-10-binary\cifar-10-batches-bin\data_batch_1.bin";
             FileStream imageStream = new FileStream(filepath, FileMode.Open);
             BinaryReader br = new BinaryReader(imageStream);
-            int pixelSize = 32;
-
-            byte[][][] pixels = new byte[3][][];
-            pixels[0] = new byte[pixelSize][];
-            pixels[1] = new byte[pixelSize][];
-            pixels[2] = new byte[pixelSize][];
-
-            // each test image
+            int pixelSize = 32 * 32 * 3;
+            
+            List<byte> imageRec = null;
+            
             for (int di = 0; di < 10000; ++di)
             {
-                byte lbl = br.ReadByte();
+                imageRec = new List<byte>();
+                float lbl = br.ReadByte();
 
-                for (int i = 0; i < pixelSize; ++i)
-                    pixels[0][i] = br.ReadBytes(pixelSize);
-
-                for (int i = 0; i < pixelSize; ++i)
-                    pixels[1][i] = br.ReadBytes(pixelSize);
-
-                for (int i = 0; i < pixelSize; ++i)
-                    pixels[2][i] = br.ReadBytes(pixelSize);
-
-                ImageData dImage = new ImageData(pixels, lbl);
-                //DataFrame.Add(dImage);
-                //Console.WriteLine(dImage.ToString());
-                //Console.ReadLine();
+                imageRec.AddRange(br.ReadBytes(pixelSize));
+                XFrame.Data.Add(imageRec.Select(x => ((float)x)).ToList());
+                YFrame.Data.Add(new List<float>() { lbl });
             }
-            // each image
 
             imageStream.Close();
         }
 
-        private void ExtractMNIST()
+        public void ExtractMNIST()
         {
             string trainImages = @"C:\BDK\CNTK\Examples\Image\DataSets\MNIST\train-images-idx3-ubyte.gz";
             string trainLabels = @"C:\BDK\CNTK\Examples\Image\DataSets\MNIST\train-labels-idx1-ubyte.gz";
@@ -271,48 +255,22 @@ namespace SiaNet.Model
 
             int magic2 = brlbl.ReadInt32();
             int numLabels = brlbl.ReadInt32();
-
-            byte[][] pixels = new byte[28][];
-            for (int i = 0; i < pixels.Length; ++i)
-                pixels[i] = new byte[28];
-
-            // each test image
+            int pixelSize = 28 * 28 * 1;
+            List<byte> imageData = null;
+            
             for (int di = 0; di < 60000; ++di)
             {
-                for (int i = 0; i < 28; ++i)
-                {
-                    for (int j = 0; j < 28; ++j)
-                    {
-                        byte b = brimg.ReadByte();
-                        pixels[i][j] = b;
-                    }
-                }
+                imageData = new List<byte>();
+                imageData.AddRange(brimg.ReadBytes(pixelSize));
 
-                byte lbl = brlbl.ReadByte();
+                float lbl = brlbl.ReadByte();
 
-                ImageData dImage = new ImageData(new byte[][][] { pixels }, lbl);
-                //DataFrame.Add(dImage);
-                //Console.WriteLine(dImage.ToString());
-                //Console.ReadLine();
-            } // each image
+                XFrame.Data.Add(imageData.Select(x => ((float)x)).ToList());
+                YFrame.Data.Add(new List<float>() { lbl });
+            }
 
             imageStream.Close();
             labelStream.Close();
-
-            Console.ReadLine();
-        }
-    }
-
-    public class ImageData
-    {
-        public byte[][][] Pixels;
-
-        public byte label;
-
-        public ImageData(byte[][][] pixels, byte label)
-        {
-            this.Pixels = pixels;
-            this.label = label;
         }
     }
 }

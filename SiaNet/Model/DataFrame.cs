@@ -9,10 +9,14 @@
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.VisualBasic.FileIO;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using System.IO.Compression;
 
     /// <summary>
     /// Dataset loader with utilities to split and shuffle.
     /// </summary>
+    [Serializable]
     public class DataFrame
     {
         public DataFrame()
@@ -220,6 +224,45 @@
         public void Add(List<float> data)
         {
             Data.Add(data);
+        }
+
+        /// <summary>
+        /// Saves the data frame to a compressed stream.
+        /// </summary>
+        /// <param name="filepath">The filepath of the stream to save.</param>
+        public void SaveStream(string filepath)
+        {
+            IFormatter formatter = new BinaryFormatter();
+            using (var stream = new FileStream(filepath, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                using (var gZipStream = new GZipStream(stream, CompressionMode.Compress))
+                {
+                    formatter.Serialize(gZipStream, this);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Loads the stream.
+        /// </summary>
+        /// <param name="filepath">The stream filepath to load the dataframe from.</param>
+        /// <returns></returns>
+        public static DataFrame LoadStream(string filepath)
+        {
+            if (!File.Exists(filepath))
+                return null;
+
+            IFormatter formatter = new BinaryFormatter();
+            DataFrame frame = null;
+            using (Stream stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                using (var gZipStream = new GZipStream(stream, CompressionMode.Decompress))
+                {
+                    frame = (DataFrame)formatter.Deserialize(gZipStream);
+                }
+            }
+
+            return frame;
         }
     }
 }

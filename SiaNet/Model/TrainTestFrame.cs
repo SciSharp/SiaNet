@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -106,6 +110,45 @@ namespace SiaNet.Model
             }
 
             return next;
+        }
+
+        /// <summary>
+        /// Saves train and test data to the specified folder as compressed binary stream.
+        /// </summary>
+        /// <param name="folder">The folder.</param>
+        public void Save(string folder)
+        {
+            try
+            {
+                if(!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                XFrame.SaveStream(string.Format("{0}\\train.sia", folder));
+                YFrame.SaveStream(string.Format("{0}\\test.sia", folder));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// Loads the train and test data from folder.
+        /// </summary>
+        /// <param name="folder">The folder.</param>
+        public void Load(string folder)
+        {
+            try
+            {
+                XFrame = DataFrame.LoadStream(string.Format("{0}\\train.sia", folder));
+                YFrame = DataFrame.LoadStream(string.Format("{0}\\test.sia", folder));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 

@@ -3,6 +3,7 @@ using Emgu.CV.Structure;
 using SiaNet;
 using SiaNet.Application;
 using SiaNet.Common;
+using SiaNet.Model;
 using SiaNet.Examples;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,9 @@ namespace SieNet.Examples.CPUOnly
             {
                 //Setting global device
                 Logging.OnWriteLog += Logging_OnWriteLog;
-                
+                ImageDataFrame frame = new ImageDataFrame(Variable.InputVariable(new int[] { 28, 28, 1 }, DataType.Float), Variable.InputVariable(new int[] { 10 }, DataType.Float));
+                //frame.ExtractCifar10();
+                frame.Load(@"C:\BDK\Dataset\Cifar10");
                 //Housing regression example
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();

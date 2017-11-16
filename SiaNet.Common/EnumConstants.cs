@@ -244,4 +244,10 @@ namespace SiaNet.Common
         }
        
     }
+
+    public class DefaultPath
+    {
+        public static string Datasets = string.Format("{0}\\SiaNet\\dataset\\", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+        public static string Models = string.Format("{0}\\SiaNet\\models\\", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+    }
 }

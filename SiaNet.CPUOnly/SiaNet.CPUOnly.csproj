@@ -121,6 +121,9 @@
     <Compile Include="..\SiaNet\Model\DataFrame.cs">
       <Link>Model\DataFrame.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\ImageDataFrame.cs">
+      <Link>Model\ImageDataFrame.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\ImageDataGenerator.cs">
       <Link>Model\ImageDataGenerator.cs</Link>
     </Compile>
@@ -238,7 +241,6 @@
     <Compile Include="..\SolutionAssemblyVersionInfo.cs">
       <Link>SolutionAssemblyVersionInfo.cs</Link>
     </Compile>
-    <Compile Include="Model\Layers\ImageDataFrame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
