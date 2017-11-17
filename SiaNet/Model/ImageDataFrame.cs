@@ -239,38 +239,5 @@ namespace SiaNet.Model
 
             imageStream.Close();
         }
-
-        public void ExtractMNIST()
-        {
-            string trainImages = @"C:\BDK\CNTK\Examples\Image\DataSets\MNIST\train-images-idx3-ubyte.gz";
-            string trainLabels = @"C:\BDK\CNTK\Examples\Image\DataSets\MNIST\train-labels-idx1-ubyte.gz";
-            GZipStream imageStream = new GZipStream(new FileStream(trainImages, FileMode.Open), CompressionMode.Decompress);
-            GZipStream labelStream = new GZipStream(new FileStream(trainLabels, FileMode.Open), CompressionMode.Decompress);
-            BinaryReader brimg = new BinaryReader(imageStream);
-            BinaryReader brlbl = new BinaryReader(labelStream);
-            int magic1 = brimg.ReadInt32(); // discard
-            int numImages = brimg.ReadInt32();
-            int numRows = brimg.ReadInt32();
-            int numCols = brimg.ReadInt32();
-
-            int magic2 = brlbl.ReadInt32();
-            int numLabels = brlbl.ReadInt32();
-            int pixelSize = 28 * 28 * 1;
-            List<byte> imageData = null;
-            
-            for (int di = 0; di < 60000; ++di)
-            {
-                imageData = new List<byte>();
-                imageData.AddRange(brimg.ReadBytes(pixelSize));
-
-                float lbl = brlbl.ReadByte();
-
-                XFrame.Data.Add(imageData.Select(x => ((float)x)).ToList());
-                YFrame.Data.Add(new List<float>() { lbl });
-            }
-
-            imageStream.Close();
-            labelStream.Close();
-        }
     }
 }

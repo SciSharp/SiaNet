@@ -117,6 +117,7 @@ namespace SiaNet.Common
         public const string CrossEntropy = "cross_entropy";
         public const string SparseCrossEntropy = "sparse_cross_entropy";
         public const string BinaryCrossEntropy = "binary_cross_entropy";
+        public const string CTC = "ctc";
         public const string KullbackLeiblerDivergence = "kullback_leibler_divergence";
         public const string Poisson = "poisson";
     }

@@ -33,6 +33,8 @@
                     return Poisson(labels, predictions);
                 case OptLosses.SparseCrossEntropy:
                     return SparseCrossEntropy(labels, predictions);
+                case OptLosses.CTC:
+                    return CTC(labels, predictions);
                 default:
                     throw new NotImplementedException(string.Format("{0} is not implemented", loss));
             }
@@ -96,6 +98,17 @@
         private static Function CrossEntropy(Variable labels, Variable predictions)
         {
             return CNTKLib.CrossEntropyWithSoftmax(predictions, labels);
+        }
+
+        /// <summary>
+        /// Connectionist Temporal Classification is a loss function useful for performing supervised learning on sequence data, without needing an alignment between input data and labels. For example, CTC can be used to train end-to-end systems for speech recognition
+        /// </summary>
+        /// <param name="labels">The labels.</param>
+        /// <param name="predictions">The predictions.</param>
+        /// <returns></returns>
+        private static Function CTC(Variable labels, Variable predictions)
+        {
+            return CNTKLib.EditDistanceError(predictions, labels, 0, 1, 1, true, new SizeTVector(1) { (uint)labels.Shape.TotalSize });
         }
 
         /// <summary>

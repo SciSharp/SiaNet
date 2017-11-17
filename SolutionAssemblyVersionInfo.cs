@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyDescription("A C# deep learning wrapper on top of CNTK.")]
+[assembly: AssemblyDescription("A C# deep learning wrapper with CNTK backend.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("siadroid.com")]
 [assembly: AssemblyProduct("SiaNet")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.2.2.2")]
-[assembly: AssemblyFileVersion("0.2.2.2")]
+[assembly: AssemblyVersion("0.3.0.0")]
+[assembly: AssemblyFileVersion("0.3.0.0")]

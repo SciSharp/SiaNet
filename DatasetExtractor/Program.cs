@@ -13,6 +13,14 @@ namespace DatasetExtractor
             IExtractor extractor = new MNISTExtractor();
             extractor.Download();
             extractor.Extract();
+
+            extractor = new Cifar10Extractor();
+            extractor.Download();
+            extractor.Extract();
+
+            extractor = new Cifar100Extractor();
+            extractor.Download();
+            extractor.Extract();
         }
     }
 }
