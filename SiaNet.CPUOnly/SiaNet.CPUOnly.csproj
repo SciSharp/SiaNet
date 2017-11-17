@@ -205,6 +205,9 @@
     <Compile Include="..\SiaNet\Model\PredResult.cs">
       <Link>Model\PredResult.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\TextDataFrame.cs">
+      <Link>Model\TextDataFrame.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\TrainTestFrame.cs">
       <Link>Model\TrainTestFrame.cs</Link>
     </Compile>

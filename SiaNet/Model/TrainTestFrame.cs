@@ -14,6 +14,7 @@ namespace SiaNet.Model
     /// <summary>
     /// The placeholder for split dataset in X and Y
     /// </summary>
+    [Serializable]
     public class XYFrame
     {
         /// <summary>
@@ -113,42 +114,42 @@ namespace SiaNet.Model
         }
 
         /// <summary>
-        /// Saves train and test data to the specified folder as compressed binary stream.
+        /// Saves the data frame to a compressed stream.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        public void Save(string folder)
+        /// <param name="filepath">The filepath of the stream to save.</param>
+        public void SaveStream(string filepath)
         {
-            try
+            IFormatter formatter = new BinaryFormatter();
+            using (var stream = new FileStream(filepath, FileMode.Create, FileAccess.Write, FileShare.None))
             {
-                if(!Directory.Exists(folder))
+                using (var gZipStream = new GZipStream(stream, CompressionMode.Compress))
                 {
-                    Directory.CreateDirectory(folder);
+                    formatter.Serialize(gZipStream, this);
                 }
-
-                XFrame.SaveStream(string.Format("{0}\\train.sia", folder));
-                YFrame.SaveStream(string.Format("{0}\\test.sia", folder));
-            }
-            catch (Exception e)
-            {
-                throw e;
             }
         }
 
         /// <summary>
-        /// Loads the train and test data from folder.
+        /// Loads the stream.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        public void Load(string folder)
+        /// <param name="filepath">The stream filepath to load the dataframe from.</param>
+        /// <returns></returns>
+        public static XYFrame LoadStream(string filepath)
         {
-            try
+            if (!File.Exists(filepath))
+                return null;
+
+            IFormatter formatter = new BinaryFormatter();
+            XYFrame frame = null;
+            using (Stream stream = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                XFrame = DataFrame.LoadStream(string.Format("{0}\\train.sia", folder));
-                YFrame = DataFrame.LoadStream(string.Format("{0}\\test.sia", folder));
+                using (var gZipStream = new GZipStream(stream, CompressionMode.Decompress))
+                {
+                    frame = (XYFrame)formatter.Deserialize(gZipStream);
+                }
             }
-            catch (Exception e)
-            {
-                throw e;
-            }
+
+            return frame;
         }
     }
 

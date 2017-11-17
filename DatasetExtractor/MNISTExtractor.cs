@@ -56,8 +56,8 @@ namespace DatasetExtractor
             ExtractTrain(tempFolder);
             ExtractTest(tempFolder);
 
-            TrainFrame.Save(folder + "\\train");
-            TestFrame.Save(folder + "\\test");
+            TrainFrame.SaveStream(folder + "\\train.sia");
+            TestFrame.SaveStream(folder + "\\test.sia");
 
             Directory.Delete(tempFolder, true);
         }
