@@ -98,6 +98,9 @@
     <Compile Include="..\SieNet.Examples\ObjectDetection.cs">
       <Link>ObjectDetection.cs</Link>
     </Compile>
+    <Compile Include="..\SieNet.Examples\XORExample.cs">
+      <Link>XORExample.cs</Link>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

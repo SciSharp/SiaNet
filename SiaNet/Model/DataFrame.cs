@@ -23,6 +23,7 @@
         {
             Data = new List<List<float>>();
             Columns = new List<string>();
+            HotCode = new Dictionary<float, float>();
         }
 
         /// <summary>
@@ -30,6 +31,8 @@
         /// </summary>
         /// <value>The frame.</value>
         public List<List<float>> Data { get; set; }
+
+        private Dictionary<float, float> HotCode { get; set; }
 
         /// <summary>
         /// Gets or sets the columns.
@@ -280,6 +283,43 @@
             }
 
             return frame;
+        }
+
+        /// <summary>
+        /// Called when [hot encode].
+        /// </summary>
+        public void OneHotEncode()
+        {
+            List<List<float>> encoded = new List<List<float>>();
+            var group = Data.GroupBy(x => (x[0])).OrderBy(x=>(x.Key)).Select(x=>(x.Key)).ToList();
+            HotCode = new Dictionary<float, float>();
+            int counter = 0;
+            Columns.Clear();
+            foreach (var item in group)
+            {
+                HotCode.Add(counter, item);
+                Columns.Add(counter.ToString());
+                counter++;
+            }
+
+            foreach (var item in Data)
+            {
+                List<float> ylist = new List<float>();
+                foreach (var h in HotCode)
+                {
+                    if(h.Value == item[0])
+                    {
+                        ylist.Add(1);
+                        continue;
+                    }
+
+                    ylist.Add(0);
+                }
+
+                encoded.Add(ylist);
+            }
+
+            Data = encoded;
         }
     }
 }

@@ -27,6 +27,10 @@ namespace SiaNet.Examples
                 //Setting global device
                 GlobalParameters.Device = devices[0];
 
+                //XOR Example
+                XORExample.LoadData();
+                XORExample.BuildModel();
+                XORExample.Train();
 
                 //Housing regression example
                 HousingRegression.LoadData();
