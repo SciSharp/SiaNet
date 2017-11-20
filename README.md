@@ -64,6 +64,7 @@ API Documentation: https://deepakkumar1984.github.io/SiaNet/
 
 ## Examples Docs (More to add)
 
+- XOR Example (Build dataset): [https://github.com/deepakkumar1984/SiaNet/wiki/Example-Build-Dataset---XOR-Gate](https://github.com/deepakkumar1984/SiaNet/wiki/Example-Build-Dataset---XOR-Gate)
 - Housing Regression: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Housing-Regression-Problem](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Housing-Regression-Problem)
 - MNIST Training: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training](https://github.com/deepakkumar1984/SiaNet/wiki/Example---MNIST-Training)
 - Image Classification: [https://github.com/deepakkumar1984/SiaNet/wiki/Example---Image-Classification](https://github.com/deepakkumar1984/SiaNet/wiki/Example---Image-Classification)
