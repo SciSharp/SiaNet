@@ -114,6 +114,17 @@ namespace SiaNet.Model
         }
 
         /// <summary>
+        /// Adds the specified x.
+        /// </summary>
+        /// <param name="X">The x.</param>
+        /// <param name="Y">The y.</param>
+        public void Add(List<float> X, float Y)
+        {
+            XFrame.Add(X);
+            YFrame.Add(new List<float> { Y });
+        }
+
+        /// <summary>
         /// Saves the data frame to a compressed stream.
         /// </summary>
         /// <param name="filepath">The filepath of the stream to save.</param>

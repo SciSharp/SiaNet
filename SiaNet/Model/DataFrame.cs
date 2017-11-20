@@ -206,6 +206,10 @@
             Data = clone;
         }
 
+        /// <summary>
+        /// Normalizes the dataframe with specified value.
+        /// </summary>
+        /// <param name="value">The value to normalize with.</param>
         public void Normalize(float value)
         {
             List<List<float>> result = new List<List<float>>();
@@ -223,7 +227,20 @@
 
         public void Add(List<float> data)
         {
-            Data.Add(data);
+            Add(data.ToArray());
+        }
+
+        public void Add(params float[] data)
+        {
+            if(Columns.Count == 0)
+            {
+                for(int i=0;i<data.Length;i++)
+                {
+                    Columns.Add(i.ToString());
+                }
+            }
+
+            Data.Add(data.ToList());
         }
 
         /// <summary>
