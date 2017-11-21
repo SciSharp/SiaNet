@@ -165,6 +165,13 @@
             return CNTKLib.Times(embeddingParameters, input);
         }
 
+        /// <summary>
+        /// Embeddings the specified layer.
+        /// </summary>
+        /// <param name="layer">The layer.</param>
+        /// <param name="embeddingDim">The embedding dim.</param>
+        /// <param name="initializers">The initializers.</param>
+        /// <returns></returns>
         public static Function Embedding(Variable layer, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
         {
             var embeddingParameters = new Parameter(new int[] { embeddingDim, layer.Shape[0] }, DataType.Float, Initializers.Get(initializers), GlobalParameters.Device);

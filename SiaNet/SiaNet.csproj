@@ -110,6 +110,7 @@
     <Compile Include="Model\Layers\AvgPool1D.cs" />
     <Compile Include="Model\Layers\AvgPool2D.cs" />
     <Compile Include="Model\Layers\AvgPool3D.cs" />
+    <Compile Include="Model\Layers\LSTM.cs" />
     <Compile Include="Model\Layers\Embedding.cs" />
     <Compile Include="Model\Layers\GlobalAvgPool.cs" />
     <Compile Include="Model\Layers\GlobalMaxPool.cs" />
@@ -131,11 +132,12 @@
     <Compile Include="Model\Optimizers\SGD.cs" />
     <Compile Include="Model\PredResult.cs" />
     <Compile Include="Model\TextDataFrame.cs" />
+    <Compile Include="NN\Recurrent.cs" />
     <Compile Include="Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
     <Compile Include="NN\Basic.cs" />
     <Compile Include="NN\Convolution.cs" />
-    <Compile Include="NN\Recurrent.cs" />
+    <Compile Include="NN\OptimizedRecurrent.cs" />
     <Compile Include="Processing\ImageUtil.cs" />
     <Compile Include="Processing\ImgGenTrainPredict.cs" />
     <Compile Include="Processing\DataFrameUtil.cs" />
