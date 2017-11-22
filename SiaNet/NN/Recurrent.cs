@@ -12,8 +12,8 @@ namespace SiaNet.NN
     {
         public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
         {
-            Variable prevOutput = Variable.InputVariable(new int[] { dim }, DataType.Float, dynamicAxes: layer.DynamicAxes);
-            Variable prevCellState = cellDim.HasValue ? Variable.InputVariable(new int[] { cellDim.Value }, DataType.Float, dynamicAxes: layer.DynamicAxes) : null;
+            Variable prevOutput = Variable.PlaceholderVariable(new int[] { dim }, layer.DynamicAxes);
+            Variable prevCellState = cellDim.HasValue ? Variable.PlaceholderVariable(new int[] { cellDim.Value }, layer.DynamicAxes) : null;
 
             Func<int, Parameter> createBiasParam = (d) => new Parameter(new int[] { d }, DataType.Float, Initializers.Get(biasInitializer), GlobalParameters.Device);
             
@@ -87,7 +87,6 @@ namespace SiaNet.NN
             Func<Variable, Function> recurrenceHookH = (x) => CNTKLib.PastValue(x);
             Func<Variable, Function> recurrenceHookC = (x) => CNTKLib.PastValue(x);
 
-            Tuple<Function, Function> LSTMCell = new Tuple<Function, Function>(h, c);
             var actualDh = recurrenceHookH(h);
             var actualDc = recurrenceHookC(c);
 

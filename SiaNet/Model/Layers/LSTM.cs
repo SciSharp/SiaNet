@@ -36,8 +36,13 @@ namespace SiaNet.Model.Layers
         {
             Shape = null;
             Dim = dim;
-            UseBias = useBias;
+            CellDim = cellDim;
+            Activation = activation;
+            RecurrentActivation = recurrentActivation;
             WeightInitializer = weightInitializer;
+            RecurrentInitializer = recurrentInitializer;
+            UseBias = useBias;
+            BiasInitializer = biasInitializer;
         }
 
         /// <summary>
