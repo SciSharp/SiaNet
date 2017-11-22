@@ -394,6 +394,10 @@
                 case OptLayers.GlobalAvgPool3D:
                     modelOut = NN.Convolution.GlobalAvgPool3D(modelOut);
                     break;
+                case OptLayers.LSTM:
+                    var l14 = (LSTM)layer;
+                    modelOut = NN.Recurrent.LSTM(modelOut, l14.Dim, l14.CellDim, l14.Activation, l14.RecurrentActivation, l14.WeightInitializer, l14.RecurrentInitializer, l14.UseBias, l14.BiasInitializer);
+                    break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} layer is not implemented."));
             }
@@ -454,6 +458,11 @@
                     var l6 = (Embedding)layer;
                     featureVariable = Variable.InputVariable(new int[] { l6.Shape }, DataType.Float);
                     modelOut = NN.Basic.Embedding(featureVariable, l6.EmbeddingDim, l6.Initializers);
+                    break;
+                case OptLayers.LSTM:
+                    var l7 = (LSTM)layer;
+                    featureVariable = Variable.InputVariable(new int[] { l7.Shape.Value }, DataType.Float);
+                    modelOut = NN.Recurrent.LSTM(featureVariable, l7.Dim, l7.CellDim, l7.Activation, l7.RecurrentActivation, l7.WeightInitializer, l7.RecurrentInitializer, l7.UseBias, l7.BiasInitializer);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} cannot be used as first layer."));

@@ -169,6 +169,9 @@
     <Compile Include="..\SiaNet\Model\Layers\GlobalMaxPool.cs">
       <Link>Model\Layers\GlobalMaxPool.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\LSTM.cs">
+      <Link>Model\Layers\LSTM.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\Layers\MaxPool1D.cs">
       <Link>Model\Layers\MaxPool1D.cs</Link>
     </Compile>
@@ -216,6 +219,9 @@
     </Compile>
     <Compile Include="..\SiaNet\NN\Convolution.cs">
       <Link>NN\Convolution.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\NN\OptimizedRecurrent.cs">
+      <Link>NN\OptimizedRecurrent.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\NN\Recurrent.cs">
       <Link>NN\Recurrent.cs</Link>

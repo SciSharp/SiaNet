@@ -177,12 +177,16 @@
                 result.YFrame.Add(yFrameRow);
             });
 
-            for (int i = xCols[0]; i <= xCols[1]; i++)
+            if (result.XFrame.Columns.Count == 0)
             {
-                result.XFrame.Columns.Add(Columns[i]);
+                for (int i = xCols[0]; i <= xCols[1]; i++)
+                {
+                    result.XFrame.Columns.Add(Columns[i]);
+                }
             }
             
-            result.YFrame.Columns.Add(Columns[yCol]);
+            if(result.YFrame.Columns.Count == 0)
+                result.YFrame.Columns.Add(Columns[yCol]);
 
             return result;
         }

@@ -31,6 +31,9 @@ namespace SiaNet.Common
         public const string GlobalAvgPool1D = "GLOBALAVGPOOL1D";
         public const string GlobalAvgPool2D = "GLOBALAVGPOOL2D";
         public const string GlobalAvgPool3D = "GLOBALAVGPOOL3D";
+        public const string LSTM = "LSTM";
+        public const string GRU = "GRU";
+        public const string RNNCell = "RNNCell";
     }
 
     /// <summary>

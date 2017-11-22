@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cifar10.cs" />
+    <Compile Include="SequenceClassification.cs" />
+    <Compile Include="TimeSeriesPrediction.cs" />
     <Compile Include="XORExample.cs" />
     <Compile Include="ObjectDetection.cs" />
     <Compile Include="ImageClassification.cs" />
