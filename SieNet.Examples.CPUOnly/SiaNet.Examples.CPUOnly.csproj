@@ -107,6 +107,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="samples\int_airline_pass.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Sia.snk" />
   </ItemGroup>
   <ItemGroup>

@@ -117,6 +117,9 @@
     <Content Include="images\objdet.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="samples\int_airline_pass.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets" Condition="Exists('..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets')" />
