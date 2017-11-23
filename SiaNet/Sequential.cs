@@ -311,8 +311,7 @@
                 BuildStackedLayer(item);
             }
 
-            int outputNums = modelOut.Output.Shape[0];
-            labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
+            labelVariable = modelOut.Output;
         }
 
         /// <summary>
@@ -461,7 +460,7 @@
                     break;
                 case OptLayers.LSTM:
                     var l7 = (LSTM)layer;
-                    featureVariable = Variable.InputVariable(new int[] { l7.Shape.Value }, DataType.Float, isSparse: true);
+                    featureVariable = Variable.InputVariable(new int[] { l7.Shape.Value, 1 }, DataType.Float);
                     modelOut = NN.Recurrent.LSTM(featureVariable, l7.Dim, l7.CellDim, l7.Activation, l7.RecurrentActivation, l7.WeightInitializer, l7.RecurrentInitializer, l7.UseBias, l7.BiasInitializer);
                     break;
                 default:

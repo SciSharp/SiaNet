@@ -26,6 +26,17 @@
             HotCode = new Dictionary<float, float>();
         }
 
+        public int[] Shape
+        {
+            get
+            {
+                int[] result = new int[2];
+                result[0] = Data.Count;
+                result[1] = Data[0].Count;
+                return result;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the frame.
         /// </summary>
@@ -217,19 +228,77 @@
         /// Normalizes the dataframe with specified value.
         /// </summary>
         /// <param name="value">The value to normalize with.</param>
-        public void Normalize(float value)
+        public void Normalize(float? value = null)
         {
             List<List<float>> result = new List<List<float>>();
+
+            if (value.HasValue)
+            {
+                Data.ForEach((record) =>
+                {
+                    List<float> r = new List<float>();
+                    foreach (var item in record)
+                    {
+                        float recValue = item / value.Value;
+                        r.Add(recValue);
+                    }
+                });
+            }
+            else
+            {
+                List<Tuple<float, float>> minmaxValues = new List<Tuple<float, float>>();
+                for (int i = 0; i < Data[0].Count; i++)
+                {
+                    minmaxValues.Add(new Tuple<float, float>(Data.Min(x => (x[i])), Data.Max(x => (x[i]))));
+                }
+
+                Data.ForEach((record) =>
+                {
+                    List<float> r = new List<float>();
+                    for (int i = 0; i < record.Count; i++)
+                    {
+                        var range = (minmaxValues[i].Item2 - minmaxValues[i].Item1);
+                        if (range == 0)
+                            range = float.Epsilon;
+
+                        float normVal = (record[i] - minmaxValues[i].Item1) / range;
+                        r.Add(normVal);
+                    }
+
+                    result.Add(r);
+                });
+            }
+
+            Data = result;
+        }
+
+        public void MinMax(float min = 0, float max = 1)
+        {
+            if (min >= max)
+                throw new ArgumentException("min value must is less than max");
+
+            List<List<float>> result = new List<List<float>>();
+            List<Tuple<float, float>> minmaxValues = new List<Tuple<float, float>>();
+            for (int i = 0; i < Data[0].Count; i++)
+            {
+                minmaxValues.Add(new Tuple<float, float>(Data.Min(x => (x[i])), Data.Max(x => (x[i]))));
+            }
 
             Data.ForEach((record) =>
             {
                 List<float> r = new List<float>();
-                foreach (var item in record)
+                for (int i = 0; i < record.Count; i++)
                 {
-                    float recValue = item / value;
-                    r.Add(recValue);
+                    float scale = (float)(max - min) / (float)(minmaxValues[i].Item2 - minmaxValues[i].Item1);
+                    float offset = minmaxValues[i].Item1 * scale - min;
+                    float normVal = (record[i] * scale - offset);
+                    r.Add(normVal);
                 }
+
+                result.Add(r);
             });
+
+            Data = result;
         }
 
         public void Add(List<float> data)
@@ -324,6 +393,109 @@
             }
 
             Data = encoded;
+        }
+
+        /// <summary>
+        /// Get the dataframe for the columns specified
+        /// </summary>
+        /// <param name="columnNames">The column names.</param>
+        /// <returns></returns>
+        public DataFrame Part(params string[] columnNames)
+        {
+            DataFrame result = new DataFrame();
+            List<float> xFrameRow = new List<float>();
+            Data.ForEach((record) =>
+            {
+                xFrameRow = new List<float>();
+                foreach (var col in Columns)
+                {
+                    if (columnNames.Contains(col))
+                    {
+                        xFrameRow.Add(record[Columns.IndexOf(col)]);
+                        result.Columns.Add(col);
+                    }
+                }
+
+                result.Add(xFrameRow);
+            });
+
+            return result;
+        }
+
+        /// <summary>
+        /// Get the dataframe for the columns specified
+        /// </summary>
+        /// <param name="columnNumbers">The column numbers.</param>
+        /// <returns></returns>
+        public DataFrame Part(params int[] columnNumbers)
+        {
+            DataFrame result = new DataFrame();
+            List<float> xFrameRow = new List<float>();
+            Data.ForEach((record) =>
+            {
+                xFrameRow = new List<float>();
+                for (int i = 0; i < Columns.Count; i++)
+                {
+                    if(columnNumbers.Contains(i))
+                    {
+                        xFrameRow.Add(record[i]);
+                    }
+                }
+
+                result.Add(xFrameRow);
+            });
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts the dataframe to time serires <see cref="XYFrame"/> dataframe.
+        /// </summary>
+        /// <param name="lookback">The lookback count.</param>
+        /// <param name="useColumn">The column number to use for creating time series data.</param>
+        /// <returns></returns>
+        public XYFrame ConvertTimeSeries(int lookback = 1, int useColumn = 0)
+        {
+            XYFrame result = new XYFrame();
+            List<float> data = Data.Select(x => (x[useColumn])).ToList();
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (i + lookback > data.Count - 1)
+                    continue;
+
+                List<float> values = new List<float>();
+                int counter = i;
+                while (counter < i + lookback)
+                {
+                    values.Add(data[counter]);
+                    counter++;
+                }
+
+                result.XFrame.Add(values);
+                result.YFrame.Add(new List<float>() { data[i + lookback] });
+            }
+
+            return result;
+        }
+
+        public void Reshape(params int[] shape)
+        {
+            Variable features = Variable.InputVariable(Shape, DataType.Float);
+            Variable outfeatures = Variable.InputVariable(shape, DataType.Float);
+            Function reshapeFunc = CNTKLib.Reshape(features, shape);
+            List<float> vectorData = new List<float>();
+            foreach (var item in Data)
+            {
+                vectorData.AddRange(item);
+            }
+
+            Value v = Value.CreateBatch<float>(Shape, vectorData, GlobalParameters.Device);
+            var res = v.GetDenseData<float>(outfeatures);
+            Data = new List<List<float>>();
+            foreach (var item in res)
+            {
+                Data.Add(item.ToList());
+            }
         }
     }
 }

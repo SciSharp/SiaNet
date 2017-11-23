@@ -11,27 +11,29 @@ namespace SiaNet.Examples
 {
     internal class TimeSeriesPrediction
     {
-        private static TrainTestFrame traintest;
+        private static XYFrame train;
 
         private static Sequential model;
+
+        private static string filepath = string.Format("{0}\\samples\\int_airline_pass.csv", AppDomain.CurrentDomain.BaseDirectory);
+
+        private static int lookback = 2;
 
         public static void LoadData()
         {
             DataFrame frame = new DataFrame();
-            Downloader.DownloadSample(SampleDataset.HousingRegression);
-            var samplePath = Downloader.GetSamplePath(SampleDataset.HousingRegression);
-            frame.LoadFromCsv(samplePath.Train);
-            var xy = frame.SplitXY(14, new[] { 1, 13 });
-            traintest = xy.SplitTrainTest(0.25);
+            frame.LoadFromCsv(filepath);
+            frame = frame.Part(1);
+            //frame.MinMax();
+            train = frame.ConvertTimeSeries(lookback);
+            train.XFrame.Reshape(train.XFrame.Shape[0], 1, train.XFrame.Shape[1]);
         }
 
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.LeakyReLU));
-            model.Add(new Dense(dim: 13, act: OptActivations.LeakyReLU));
-            model.Add(new Dropout(rate: 0.2));
-            model.Add(new Dense(dim: 1, act: OptActivations.LeakyReLU));
+            model.Add(new LSTM(dim: 4, shape: lookback, cellDim:2, activation: OptActivations.ReLU));
+            model.Add(new Dense(dim: 1));
 
             model.OnEpochEnd += Model_OnEpochEnd;
             model.OnTrainingEnd += Model_OnTrainingEnd;
@@ -40,7 +42,7 @@ namespace SiaNet.Examples
         public static void Train()
         {
             model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSLE);
-            model.Train(traintest.Train, 500, 32, traintest.Test);
+            model.Train(train, 100, 1);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)

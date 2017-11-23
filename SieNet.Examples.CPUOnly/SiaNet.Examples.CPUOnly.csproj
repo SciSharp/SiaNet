@@ -98,6 +98,12 @@
     <Compile Include="..\SieNet.Examples\ObjectDetection.cs">
       <Link>ObjectDetection.cs</Link>
     </Compile>
+    <Compile Include="..\SieNet.Examples\SequenceClassification.cs">
+      <Link>SequenceClassification.cs</Link>
+    </Compile>
+    <Compile Include="..\SieNet.Examples\TimeSeriesPrediction.cs">
+      <Link>TimeSeriesPrediction.cs</Link>
+    </Compile>
     <Compile Include="..\SieNet.Examples\XORExample.cs">
       <Link>XORExample.cs</Link>
     </Compile>

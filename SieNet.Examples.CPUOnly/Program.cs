@@ -22,6 +22,11 @@ namespace SieNet.Examples.CPUOnly
                 //Setting global device
                 Logging.OnWriteLog += Logging_OnWriteLog;
 
+                //In-progress
+                //TimeSeriesPrediction.LoadData();
+                //TimeSeriesPrediction.BuildModel();
+                //TimeSeriesPrediction.Train();
+
                 //XOR Example
                 XORExample.LoadData();
                 XORExample.BuildModel();
