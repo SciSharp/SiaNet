@@ -311,7 +311,8 @@
                 BuildStackedLayer(item);
             }
 
-            labelVariable = modelOut.Output;
+            int outputNums = modelOut.Output.Shape[0];
+            labelVariable = Variable.InputVariable(new int[] { outputNums }, DataType.Float);
         }
 
         /// <summary>
