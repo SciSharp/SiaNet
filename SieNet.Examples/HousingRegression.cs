@@ -29,7 +29,6 @@ namespace SiaNet.Examples
         {
             model = new Sequential();
             model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.LeakyReLU));
-            model.Add(new LSTM(20, cellDim: 5));
             model.Add(new Dense(dim: 13, act: OptActivations.LeakyReLU));
             model.Add(new Dropout(rate: 0.2));
             model.Add(new Dense(dim: 1, act: OptActivations.LeakyReLU));
