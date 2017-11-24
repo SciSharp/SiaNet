@@ -31,7 +31,7 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new LSTM(dim: 4, shape: new int[] { lookback }, cellDim: 2));
+            model.Add(new LSTM(dim: 4, shape: new int[] { lookback }));
             model.Add(new Dense(dim: 1));
 
             model.OnEpochEnd += Model_OnEpochEnd;
@@ -40,15 +40,15 @@ namespace SiaNet.Examples
 
         public static void Train()
         {
-            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSLE);
+            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSE);
             model.Train(train, 100, 6);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
         {
-            var mean = trainingResult[OptMetrics.MSLE].Mean();
-            var std = trainingResult[OptMetrics.MSLE].Std();
-            Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean, std);
+            var mean = trainingResult[OptMetrics.MSE].Mean();
+            var std = trainingResult[OptMetrics.MSE].Std();
+            Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean * 100, std * 100);
         }
 
         private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
