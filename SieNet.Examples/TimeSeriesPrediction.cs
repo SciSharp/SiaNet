@@ -23,7 +23,7 @@ namespace SiaNet.Examples
         {
             DataFrame frame = new DataFrame();
             frame.LoadFromCsv(filepath);
-            frame = frame.Part(1);
+            frame = frame.Partition(1);
             frame.Normalize();
             train = frame.ConvertTimeSeries(lookback);
         }
