@@ -17,22 +17,21 @@ namespace SiaNet.Examples
 
         private static string filepath = string.Format("{0}\\samples\\int_airline_pass.csv", AppDomain.CurrentDomain.BaseDirectory);
 
-        private static int lookback = 2;
+        private static int lookback = 1;
 
         public static void LoadData()
         {
             DataFrame frame = new DataFrame();
             frame.LoadFromCsv(filepath);
             frame = frame.Part(1);
-            //frame.MinMax();
+            frame.Normalize();
             train = frame.ConvertTimeSeries(lookback);
-            train.XFrame.Reshape(train.XFrame.Shape[0], 1, train.XFrame.Shape[1]);
         }
 
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new LSTM(dim: 4, shape: lookback, cellDim:2, activation: OptActivations.ReLU));
+            model.Add(new LSTM(dim: 4, shape: new int[] { lookback }, cellDim: 2));
             model.Add(new Dense(dim: 1));
 
             model.OnEpochEnd += Model_OnEpochEnd;
@@ -42,7 +41,7 @@ namespace SiaNet.Examples
         public static void Train()
         {
             model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSLE);
-            model.Train(train, 100, 1);
+            model.Train(train, 100, 6);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)

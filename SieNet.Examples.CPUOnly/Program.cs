@@ -21,12 +21,7 @@ namespace SieNet.Examples.CPUOnly
             {
                 //Setting global device
                 Logging.OnWriteLog += Logging_OnWriteLog;
-
-                //In-progress
-                //TimeSeriesPrediction.LoadData();
-                //TimeSeriesPrediction.BuildModel();
-                //TimeSeriesPrediction.Train();
-
+                
                 //XOR Example
                 XORExample.LoadData();
                 XORExample.BuildModel();
@@ -41,7 +36,12 @@ namespace SieNet.Examples.CPUOnly
                 MNISTClassifier.LoadData();
                 MNISTClassifier.BuildModel();
                 MNISTClassifier.Train();
-
+                
+                //In-progress
+                TimeSeriesPrediction.LoadData();
+                TimeSeriesPrediction.BuildModel();
+                TimeSeriesPrediction.Train();
+                
                 //Cifar - 10 Classification example
                 //Cifar10Classification.LoadData();
                 //Cifar10Classification.BuildModel();

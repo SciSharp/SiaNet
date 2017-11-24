@@ -461,7 +461,7 @@
                     break;
                 case OptLayers.LSTM:
                     var l7 = (LSTM)layer;
-                    featureVariable = Variable.InputVariable(new int[] { l7.Shape.Value, 1 }, DataType.Float);
+                    featureVariable = Variable.InputVariable(l7.Shape, DataType.Float);
                     modelOut = NN.Recurrent.LSTM(featureVariable, l7.Dim, l7.CellDim, l7.Activation, l7.RecurrentActivation, l7.WeightInitializer, l7.RecurrentInitializer, l7.UseBias, l7.BiasInitializer);
                     break;
                 default:

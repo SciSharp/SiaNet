@@ -42,6 +42,11 @@ namespace SiaNet.Examples
                 MNISTClassifier.BuildModel();
                 MNISTClassifier.Train();
 
+                //In-progress
+                TimeSeriesPrediction.LoadData();
+                TimeSeriesPrediction.BuildModel();
+                TimeSeriesPrediction.Train();
+
                 //Cifar-10 Classification example
                 //Cifar10Classification.LoadData();
                 //Cifar10Classification.BuildModel();

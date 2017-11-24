@@ -54,7 +54,7 @@ namespace SiaNet.Model.Layers
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, int shape, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
+        public LSTM(int dim, int[] shape = null, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
             : this(dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer)
         {
             Shape = shape;
@@ -67,7 +67,7 @@ namespace SiaNet.Model.Layers
         /// The shape.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public int? Shape
+        public int[] Shape
         {
             get
             {
