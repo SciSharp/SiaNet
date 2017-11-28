@@ -38,9 +38,19 @@
         {
             get
             {
-                int[] result = new int[2];
-                result[0] = Data.Count;
-                result[1] = Data[0].Count;
+                int[] result = null;
+                if (FrameType == FrameType.CSV)
+                {
+                    result = new int[2];
+                    result[0] = Data.Count;
+                    result[1] = Data[0].Count;
+                    return result;
+                }
+                else if (FrameType == FrameType.IMG)
+                {
+                    result = imageDimension;
+                }
+
                 return result;
             }
         }
@@ -63,7 +73,7 @@
 
         internal FrameType FrameType = FrameType.CSV;
 
-        internal Tuple<int, int, int> imageDimension;
+        private int[] imageDimension;
 
         /// <summary>
         /// Loads the dataset from CSV file.
@@ -151,7 +161,7 @@
 
             Data.Add(bmpData);
             FrameType = FrameType.IMG;
-            imageDimension = Tuple.Create(bmp.Width, bmp.Height, channel);
+            imageDimension = new int[] { bmp.Width, bmp.Height, channel };
         }
 
         /// <summary>

@@ -23,11 +23,11 @@ namespace SiaNet.Processing
 
             if (frame.FrameType == FrameType.IMG)
             {
-                result = Value.CreateBatch(new int[] { frame.imageDimension.Item1, frame.imageDimension.Item2, frame.imageDimension.Item3 }, batch, GlobalParameters.Device);
+                result = Value.CreateBatch(frame.Shape, batch, GlobalParameters.Device);
             }
             else if (frame.FrameType == FrameType.CSV)
             {
-                result = Value.CreateBatch(new int[] { frame.Columns.Count }, batch, GlobalParameters.Device);
+                result = Value.CreateBatch(new int[] { frame.Shape[1] }, batch, GlobalParameters.Device);
             }
 
             return result;
