@@ -17,7 +17,7 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Dense"/> class.
         /// </summary>
-        public Dense()
+        internal Dense()
         {
             base.Name = "Dense";
             base.Params = new ExpandoObject();

@@ -12,6 +12,7 @@ namespace SiaNet.NN
     {
         public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
         {
+            cellDim = cellDim.HasValue ? cellDim : dim;
             Variable prevOutput = Variable.PlaceholderVariable(new int[] { dim }, layer.DynamicAxes);
             Variable prevCellState = cellDim.HasValue ? Variable.PlaceholderVariable(new int[] { cellDim.Value }, layer.DynamicAxes) : null;
 
@@ -41,7 +42,7 @@ namespace SiaNet.NN
             }
             else
             {
-                it = Basic.Activation((Variable)(projectInput() + stabilizedPrevOutput), recurrentActivation);
+                it = Basic.Activation((Variable)(projectInput()), recurrentActivation);
             }
 
             Function bit = null;
@@ -51,7 +52,7 @@ namespace SiaNet.NN
             }
             else
             {
-                bit = CNTKLib.ElementTimes(it, Basic.Activation(projectInput() + stabilizedPrevOutput, activation));
+                bit = CNTKLib.ElementTimes(it, Basic.Activation(projectInput(), activation));
             }
 
             // Forget-me-not gate
@@ -62,7 +63,7 @@ namespace SiaNet.NN
             }
             else
             {
-                ft = Basic.Activation(projectInput() + stabilizedPrevOutput, recurrentActivation);
+                ft = Basic.Activation(projectInput(), recurrentActivation);
             }
 
             Function bft = prevCellState !=null ? CNTKLib.ElementTimes(ft, prevCellState) : ft;
@@ -77,7 +78,7 @@ namespace SiaNet.NN
             }
             else
             {
-                ot = Basic.Activation((Variable)(projectInput() + stabilizedPrevOutput) + Stabilize<float>(ct, GlobalParameters.Device), recurrentActivation);
+                ot = Basic.Activation((Variable)(projectInput()) + Stabilize<float>(ct, GlobalParameters.Device), recurrentActivation);
             }
 
             Function ht = CNTKLib.ElementTimes(ot, CNTKLib.Tanh(ct));

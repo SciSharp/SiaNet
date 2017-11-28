@@ -12,7 +12,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchNorm"/> class.
         /// </summary>
-        public BatchNorm()
+        internal BatchNorm()
         {
             base.Name = "BatchNorm";
             base.Params = new ExpandoObject();

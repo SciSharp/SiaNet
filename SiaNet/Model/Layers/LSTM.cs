@@ -17,7 +17,7 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="LSTM"/> class.
         /// </summary>
-        public LSTM()
+        internal LSTM()
         {
             base.Name = "LSTM";
             base.Params = new ExpandoObject();
@@ -37,6 +37,28 @@ namespace SiaNet.Model.Layers
             Shape = null;
             Dim = dim;
             CellDim = cellDim;
+            Activation = activation;
+            RecurrentActivation = recurrentActivation;
+            WeightInitializer = weightInitializer;
+            RecurrentInitializer = recurrentInitializer;
+            UseBias = useBias;
+            BiasInitializer = biasInitializer;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dense"/> class.
+        /// </summary>
+        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
+        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        public LSTM(int dim, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
+            : this()
+        {
+            Shape = null;
+            Dim = dim;
+            CellDim = null;
             Activation = activation;
             RecurrentActivation = recurrentActivation;
             WeightInitializer = weightInitializer;

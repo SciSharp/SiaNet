@@ -17,7 +17,7 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Conv2D"/> class.
         /// </summary>
-        public Conv2D()
+        internal Conv2D()
         {
             base.Name = "Conv2D";
             base.Params = new ExpandoObject();

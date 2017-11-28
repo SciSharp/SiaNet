@@ -17,7 +17,7 @@ namespace SiaNet.Examples
 
         private static string filepath = string.Format("{0}\\samples\\int_airline_pass.csv", AppDomain.CurrentDomain.BaseDirectory);
 
-        private static int lookback = 1;
+        private static int lookback = 3;
 
         public static void LoadData()
         {
@@ -31,7 +31,7 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new LSTM(dim: 4, shape: new int[] { lookback }));
+            model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback)));
             model.Add(new Dense(dim: 1));
 
             model.OnEpochEnd += Model_OnEpochEnd;

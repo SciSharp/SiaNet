@@ -17,7 +17,7 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Embedding"/> class.
         /// </summary>
-        public Embedding()
+        internal Embedding()
         {
             base.Name = "Embedding";
             base.Params = new ExpandoObject();

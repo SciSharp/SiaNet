@@ -504,7 +504,7 @@
         /// </summary>
         /// <param name="data">The data for valuation.</param>
         /// <returns>List of prediction values</returns>
-        public IList<float> Evaluate(Value data)
+        public IList<float> Evaluate(DataFrame data)
         {
             return trainPredict.Evaluate(data);
         }

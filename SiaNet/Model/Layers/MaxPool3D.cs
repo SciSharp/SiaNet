@@ -12,7 +12,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MaxPool3D"/> class.
         /// </summary>
-        public MaxPool3D()
+        internal MaxPool3D()
         {
             base.Name = "MaxPool3D";
             base.Params = new ExpandoObject();

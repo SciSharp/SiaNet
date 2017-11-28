@@ -12,7 +12,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="AvgPool3D"/> class.
         /// </summary>
-        public AvgPool3D()
+        internal AvgPool3D()
         {
             base.Name = "AvgPool3D";
             base.Params = new ExpandoObject();

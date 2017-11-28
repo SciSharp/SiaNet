@@ -16,7 +16,7 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="MaxPool1D"/> class.
         /// </summary>
-        public MaxPool1D()
+        internal MaxPool1D()
         {
             base.Name = "MaxPool1D";
             base.Params = new ExpandoObject();

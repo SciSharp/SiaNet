@@ -16,7 +16,7 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Dropout"/> class.
         /// </summary>
-        public Dropout()
+        internal Dropout()
         {
             base.Name = "Dropout";
             base.Params = new ExpandoObject();

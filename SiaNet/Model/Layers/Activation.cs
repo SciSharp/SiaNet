@@ -11,7 +11,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Activation"/> class.
         /// </summary>
-        public Activation()
+        internal Activation()
         {
             base.Name = "Activation";
             base.Params = new ExpandoObject();
