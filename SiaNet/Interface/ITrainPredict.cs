@@ -1,4 +1,5 @@
 ﻿using SiaNet.Events;
+using SiaNet.Model;
 using System.Collections.Generic;
 
 namespace SiaNet.Interface
@@ -23,8 +24,8 @@ namespace SiaNet.Interface
         /// <summary>
         /// Evaluates the model test data.
         /// </summary>
-        /// <param name="testData">The test data.</param>
+        /// <param name="data">The test data.</param>
         /// <returns></returns>
-        IList<float> Evaluate(object testData);
+        IList<float> Evaluate(DataFrame data);
     }
 }

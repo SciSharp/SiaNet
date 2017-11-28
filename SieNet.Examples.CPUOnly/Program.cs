@@ -30,7 +30,7 @@ namespace SieNet.Examples.CPUOnly
                 //Housing regression example
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();
-                //HousingRegression.Train();
+                HousingRegression.Train();
 
                 //MNIST Classification example
                 MNISTClassifier.LoadData();

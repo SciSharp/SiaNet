@@ -10,7 +10,7 @@ namespace SiaNet.NN
 {
     public class Recurrent
     {
-        public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
+        public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
         {
             cellDim = cellDim.HasValue ? cellDim : dim;
             Variable prevOutput = Variable.PlaceholderVariable(new int[] { dim }, layer.DynamicAxes);
@@ -96,6 +96,9 @@ namespace SiaNet.NN
             else
                 h.ReplacePlaceholders(new Dictionary<Variable, Variable> { { prevOutput, actualDh } });
 
+            if (returnSequence)
+                return h;
+            
             return CNTKLib.SequenceLast(h);
         }
 

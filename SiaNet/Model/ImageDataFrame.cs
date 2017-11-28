@@ -107,29 +107,6 @@ namespace SiaNet.Model
 
             List<byte> byteData = new List<byte>();
             List<byte> labelData = new List<byte>();
-
-            //foreach (var cur in batchData)
-            //{
-            //    foreach (var item in cur.Pixels)
-            //    {
-            //        foreach (var i in item)
-            //        {
-            //            byteData.AddRange(i);
-            //        }
-            //    }
-
-            //    for (int i = 1; i <= labels; i++)
-            //    {
-            //        if (cur.label == i)
-            //        {
-            //            labelData.Add(1);
-            //        }
-            //        else
-            //        {
-            //            labelData.Add(0);
-            //        }
-            //    }
-            //}
              
             CurrentX = Value.CreateBatch(features, byteData.Select(b => (float)b).ToList(), GlobalParameters.Device);
             CurrentY = Value.CreateBatch(features, labelData.Select(b => (float)b).ToList(), GlobalParameters.Device);

@@ -19,7 +19,17 @@ namespace SiaNet.Processing
                 batch.AddRange(record);
             });
 
-            Value result = Value.CreateBatch(new int[] { frame.Columns.Count }, batch, GlobalParameters.Device);
+            Value result = null;
+
+            if (frame.FrameType == FrameType.IMG)
+            {
+                result = Value.CreateBatch(new int[] { frame.imageDimension.Item1, frame.imageDimension.Item2, frame.imageDimension.Item3 }, batch, GlobalParameters.Device);
+            }
+            else if (frame.FrameType == FrameType.CSV)
+            {
+                result = Value.CreateBatch(new int[] { frame.Columns.Count }, batch, GlobalParameters.Device);
+            }
+
             return result;
         }
     }

@@ -186,7 +186,6 @@ namespace SiaNet.Application
                 var outputDataMap = new Dictionary<Variable, Value>();
                 outputDataMap.Add(outputVar, null);
 
-
                 // Start evaluation on the device
                 modelFunc.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
 

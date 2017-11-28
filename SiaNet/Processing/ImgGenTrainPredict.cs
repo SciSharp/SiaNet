@@ -130,8 +130,6 @@ namespace SiaNet.Processing
             return minibatchValues.Any(a => a.sweepEnd);
         }
 
-        
-
         private Value EvaluateInternal(Value data)
         {
             var outputDataMap = new Dictionary<Variable, Value>() { { Model.Output, null } };
@@ -139,11 +137,11 @@ namespace SiaNet.Processing
             return outputDataMap[Model.Output];
         }
 
-        public IList<float> Evaluate(object testData)
+        public IList<float> Evaluate(DataFrame data)
         {
-            Value data = (Value)testData;
-            var outputValue = EvaluateInternal(data);
-            IList<IList<float>> resultSet = outputValue.GetDenseData<float>(Model.Output);
+            Value features = DataFrameUtil.GetValueBatch(data);
+            var outputVal = EvaluateInternal(features);
+            IList<IList<float>> resultSet = outputVal.GetDenseData<float>(Model.Output);
             var result = resultSet.Select(x => x.First()).ToList();
             return result;
         }

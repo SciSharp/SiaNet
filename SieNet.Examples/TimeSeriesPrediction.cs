@@ -31,6 +31,7 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
+            model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback), returnSequence: true));
             model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback)));
             model.Add(new Dense(dim: 1));
 

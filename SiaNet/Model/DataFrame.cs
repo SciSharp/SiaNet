@@ -7,11 +7,19 @@
     using System.IO;
     using System.Linq;
     using System.Text;
+    using SiaNet.Processing;
     using System.Threading.Tasks;
     using Microsoft.VisualBasic.FileIO;
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
     using System.IO.Compression;
+    using System.Drawing;
+
+    internal enum FrameType
+    {
+        CSV,
+        IMG
+    }
 
     /// <summary>
     /// Dataset loader with utilities to split and shuffle.
@@ -52,6 +60,10 @@
         /// The columns.
         /// </value>
         public List<string> Columns { get; set; }
+
+        internal FrameType FrameType = FrameType.CSV;
+
+        internal Tuple<int, int, int> imageDimension;
 
         /// <summary>
         /// Loads the dataset from CSV file.
@@ -108,6 +120,38 @@
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Loads the image to a dataframe.
+        /// </summary>
+        /// <param name="imagePath">The image path.</param>
+        /// <param name="resize">The resize value width X height. If pass null the image will be left it original size. Eg. Tuple.Create(32, 32)</param>
+        /// <param name="grayScale">if set to <c>true</c> [gray scale].</param>
+        public void LoadImage(string imagePath, Tuple<int, int> resize = null, bool grayScale = false)
+        {
+            Bitmap bmp = new Bitmap(Image.FromFile(imagePath));
+            int channel = 3;
+            List<float> bmpData = null;
+            if (resize != null)
+            {
+                bmp = bmp.Resize(resize.Item1, resize.Item2, true);
+            }
+
+            if (grayScale)
+            {
+                bmp = bmp.ConvertGrayScale();
+                bmpData = bmp.ParallelExtractGrayScale();
+                channel = 1;
+            }
+            else
+            {
+                bmpData = bmp.ParallelExtractCHW();
+            }
+
+            Data.Add(bmpData);
+            FrameType = FrameType.IMG;
+            imageDimension = Tuple.Create(bmp.Width, bmp.Height, channel);
         }
 
         /// <summary>

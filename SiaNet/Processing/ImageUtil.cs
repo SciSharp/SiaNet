@@ -47,6 +47,40 @@
 
             return features.Select(b => (float)b).ToList();
         }
+        internal static List<float> ParallelExtractGrayScale(this Bitmap image)
+        {
+            // We use local variables to avoid contention on the image object through the multiple threads.
+            int channelStride = image.Width * image.Height;
+            int imageWidth = image.Width;
+            int imageHeight = image.Height;
+
+            var features = new byte[imageWidth * imageHeight * 1];
+            var bitmapData = image.LockBits(new System.Drawing.Rectangle(0, 0, imageWidth, imageHeight), ImageLockMode.ReadOnly, image.PixelFormat);
+            IntPtr ptr = bitmapData.Scan0;
+            int bytes = Math.Abs(bitmapData.Stride) * bitmapData.Height;
+            byte[] rgbValues = new byte[bytes];
+
+            int stride = bitmapData.Stride;
+
+            // Copy the RGB values into the array.
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
+
+            // The mapping depends on the pixel format
+            // The mapPixel lambda will return the right color channel for the desired pixel
+            Func<int, int, int, int> mapPixel = GetPixelMapper(image.PixelFormat, stride);
+
+            Parallel.For(0, imageHeight, (int h) =>
+            {
+                Parallel.For(0, imageWidth, (int w) =>
+                {
+                    features[channelStride + imageWidth * h + w] = rgbValues[mapPixel(h, w, 1)];
+                });
+            });
+
+            image.UnlockBits(bitmapData);
+
+            return features.Select(b => (float)b).ToList();
+        }
 
         /// <summary>
         /// Extracts image pixels in CHW using parallelization
@@ -115,6 +149,25 @@
             }
 
             return newImg;
+        }
+
+        internal static Bitmap ConvertGrayScale(this Bitmap image)
+        {
+            for (int y = 0; y < image.Height; y++)
+            {
+                for (int x = 0; x < image.Width; x++)
+                {
+                    Color c = image.GetPixel(x, y);
+
+                    int r = c.R;
+                    int g = c.G;
+                    int b = c.B;
+                    int avg = (r + g + b) / 3;
+                    image.SetPixel(x, y, Color.FromArgb(avg, avg, avg));
+                }
+            }
+
+            return image;
         }
     }
 }

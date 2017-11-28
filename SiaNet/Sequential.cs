@@ -396,7 +396,7 @@
                     break;
                 case OptLayers.LSTM:
                     var l14 = (LSTM)layer;
-                    modelOut = NN.Recurrent.LSTM(modelOut, l14.Dim, l14.CellDim, l14.Activation, l14.RecurrentActivation, l14.WeightInitializer, l14.RecurrentInitializer, l14.UseBias, l14.BiasInitializer);
+                    modelOut = NN.Recurrent.LSTM(modelOut, l14.Dim, l14.CellDim, l14.Activation, l14.RecurrentActivation, l14.WeightInitializer, l14.RecurrentInitializer, l14.UseBias, l14.BiasInitializer, l14.ReturnSequence);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} layer is not implemented."));
@@ -462,7 +462,7 @@
                 case OptLayers.LSTM:
                     var l7 = (LSTM)layer;
                     featureVariable = Variable.InputVariable(l7.Shape, DataType.Float);
-                    modelOut = NN.Recurrent.LSTM(featureVariable, l7.Dim, l7.CellDim, l7.Activation, l7.RecurrentActivation, l7.WeightInitializer, l7.RecurrentInitializer, l7.UseBias, l7.BiasInitializer);
+                    modelOut = NN.Recurrent.LSTM(featureVariable, l7.Dim, l7.CellDim, l7.Activation, l7.RecurrentActivation, l7.WeightInitializer, l7.RecurrentInitializer, l7.UseBias, l7.BiasInitializer, l7.ReturnSequence);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} cannot be used as first layer."));

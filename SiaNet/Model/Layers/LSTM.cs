@@ -31,7 +31,7 @@ namespace SiaNet.Model.Layers
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
+        public LSTM(int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
             : this()
         {
             Shape = null;
@@ -43,6 +43,7 @@ namespace SiaNet.Model.Layers
             RecurrentInitializer = recurrentInitializer;
             UseBias = useBias;
             BiasInitializer = biasInitializer;
+            ReturnSequence = returnSequence;
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace SiaNet.Model.Layers
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
+        public LSTM(int dim, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
             : this()
         {
             Shape = null;
@@ -65,6 +66,7 @@ namespace SiaNet.Model.Layers
             RecurrentInitializer = recurrentInitializer;
             UseBias = useBias;
             BiasInitializer = biasInitializer;
+            ReturnSequence = returnSequence;
         }
 
         /// <summary>
@@ -76,8 +78,8 @@ namespace SiaNet.Model.Layers
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, int[] shape = null, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
-            : this(dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer)
+        public LSTM(int dim, int[] shape = null, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
+            : this(dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer, returnSequence)
         {
             Shape = shape;
         }
@@ -239,6 +241,25 @@ namespace SiaNet.Model.Layers
             set
             {
                 base.Params.BiasInitializer = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [return sequence].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [return sequence]; otherwise, <c>false</c>.
+        /// </value>
+        public bool ReturnSequence
+        {
+            get
+            {
+                return base.Params.ReturnSequence;
+            }
+
+            set
+            {
+                base.Params.ReturnSequence = value;
             }
         }
     }
