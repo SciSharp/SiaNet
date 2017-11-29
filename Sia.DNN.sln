@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.Common", "SiaNet.Com
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{91DC2A71-69FB-4C64-ABF6-2EFC2390CF4E}"
 	ProjectSection(SolutionItems) = preProject
+		icon_32.PNG = icon_32.PNG
+		icon_64.PNG = icon_64.PNG
 		SolutionAssemblyVersionInfo.cs = SolutionAssemblyVersionInfo.cs
 	EndProjectSection
 EndProject
