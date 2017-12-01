@@ -398,6 +398,10 @@
                     var l14 = (LSTM)layer;
                     modelOut = NN.Recurrent.LSTM(modelOut, l14.Dim, l14.CellDim, l14.Activation, l14.RecurrentActivation, l14.WeightInitializer, l14.RecurrentInitializer, l14.UseBias, l14.BiasInitializer, l14.ReturnSequence);
                     break;
+                case OptLayers.Reshape:
+                    var l15 = (Reshape)layer;
+                    modelOut = NN.Basic.Reshape(modelOut, l15.TargetShape);
+                    break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} layer is not implemented."));
             }
@@ -423,6 +427,7 @@
                     featureVariable = Variable.InputVariable(new int[] { l1.Shape.Value }, DataType.Float);
                     modelOut = NN.Basic.Dense(featureVariable, l1.Dim, l1.Act, l1.UseBias, l1.WeightInitializer, l1.BiasInitializer);
                     break;
+                
                 case OptLayers.BatchNorm:
                     var l2 = (BatchNorm)layer;
                     if (!l2.Shape.HasValue)
@@ -461,8 +466,17 @@
                     break;
                 case OptLayers.LSTM:
                     var l7 = (LSTM)layer;
+                    if (l7.Shape == null)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
                     featureVariable = Variable.InputVariable(l7.Shape, DataType.Float);
                     modelOut = NN.Recurrent.LSTM(featureVariable, l7.Dim, l7.CellDim, l7.Activation, l7.RecurrentActivation, l7.WeightInitializer, l7.RecurrentInitializer, l7.UseBias, l7.BiasInitializer, l7.ReturnSequence);
+                    break;
+                case OptLayers.Reshape:
+                    var l8 = (Reshape)layer;
+                    if (l8.Shape == null)
+                        throw new ArgumentNullException("Input shape is missing for first layer");
+                    featureVariable = Variable.InputVariable(l8.Shape, DataType.Float);
+                    modelOut = NN.Basic.Reshape(featureVariable, l8.TargetShape);
                     break;
                 default:
                     throw new InvalidOperationException(string.Format("{0} cannot be used as first layer."));

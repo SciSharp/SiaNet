@@ -534,9 +534,14 @@
 
         public void Reshape(params int[] shape)
         {
-            Variable features = Variable.InputVariable(Shape, DataType.Float);
+            Variable features = Variable.InputVariable(new int[] { Shape[1], Shape[0] }, DataType.Float);
+
+            //shape.ToList().Insert(0, Data.Count);
             Variable outfeatures = Variable.InputVariable(shape, DataType.Float);
+           
+            //Variable outfeatures = new Variable(shape, VariableKind.Output, DataType.Float, null, false, new AxisVector(), false, "", "");
             Function reshapeFunc = CNTKLib.Reshape(features, shape);
+            
             List<float> vectorData = new List<float>();
             foreach (var item in Data)
             {
@@ -544,7 +549,10 @@
             }
 
             Value v = Value.CreateBatch<float>(Shape, vectorData, GlobalParameters.Device);
-            var res = v.GetDenseData<float>(outfeatures);
+            Dictionary<Variable, Value> inputs = new Dictionary<Variable, Value>() { { features, v} };
+            Dictionary<Variable, Value> outputs = new Dictionary<Variable, Value>() { { outfeatures, null } };
+            reshapeFunc.Evaluate(inputs, outputs, GlobalParameters.Device);
+            var res = outputs[outfeatures].GetDenseData<float>(outfeatures);
             Data = new List<List<float>>();
             foreach (var item in res)
             {

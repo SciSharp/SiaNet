@@ -122,6 +122,7 @@
     <Compile Include="Model\Layers\Dropout.cs" />
     <Compile Include="Model\Layers\Activation.cs" />
     <Compile Include="Model\Layers\Dense.cs" />
+    <Compile Include="Model\Layers\Reshape.cs" />
     <Compile Include="Model\Optimizers\AdaGrad.cs" />
     <Compile Include="Model\Optimizers\AdaDelta.cs" />
     <Compile Include="Model\Optimizers\Adamax.cs" />

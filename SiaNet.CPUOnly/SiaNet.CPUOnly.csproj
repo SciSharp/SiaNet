@@ -181,6 +181,9 @@
     <Compile Include="..\SiaNet\Model\Layers\MaxPool3D.cs">
       <Link>Model\Layers\MaxPool3D.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Reshape.cs">
+      <Link>Model\Layers\Reshape.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\Optimizers\AdaDelta.cs">
       <Link>Model\Optimizers\AdaDelta.cs</Link>
     </Compile>

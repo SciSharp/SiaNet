@@ -34,6 +34,7 @@ namespace SiaNet.Common
         public const string LSTM = "LSTM";
         public const string GRU = "GRU";
         public const string RNNCell = "RNNCell";
+        public const string Reshape = "RESHAPE";
     }
 
     /// <summary>

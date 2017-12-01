@@ -179,6 +179,28 @@
         }
 
         /// <summary>
+        /// Reshapes an output to a certain shape.
+        /// </summary>
+        /// <param name="layer">The input layer to be reshaped.</param>
+        /// <param name="targetShape">List of integers. Does not include the batch axis.</param>
+        /// <returns></returns>
+        public static Function Reshape(Variable layer, int[] targetShape)
+        {
+            return CNTKLib.Reshape(layer, targetShape);
+        }
+
+        /// <summary>
+        /// Reshapes an output to a certain shape.
+        /// </summary>
+        /// <param name="shape">The input shape of the data.</param>
+        /// <param name="targetShape">List of integers. Does not include the batch axis.</param>
+        /// <returns></returns>
+        public static Function Reshape(int[] shape, int[] targetShape)
+        {
+            return CNTKLib.Reshape(Variable.InputVariable(shape, DataType.Float), targetShape);
+        }
+
+        /// <summary>
         /// Fully connected layer.
         /// </summary>
         /// <param name="input">The input.</param>
