@@ -33,7 +33,7 @@
         /// <param name="targetshape">The target shape of the output.</param>
         /// <param name="shape">The shape of the input data.</param>
         public Reshape(int[] targetshape, int[] shape)
-            : this()
+            : this(targetshape)
         {
             Shape = shape;
         }

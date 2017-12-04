@@ -535,7 +535,9 @@
         public void Reshape(params int[] shape)
         {
             Variable features = Variable.InputVariable(new int[] { Shape[1], Shape[0] }, DataType.Float);
-
+            int total = Shape.Aggregate((d1, d2) => d1 * d2);
+            if (shape.Aggregate((d1, d2) => d1 * d2) != total)
+                throw new ArgumentException(string.Format("Cannot reshape array of size {0} into shape {1}", total, string.Concat(shape)));
             //shape.ToList().Insert(0, Data.Count);
             Variable outfeatures = Variable.InputVariable(shape, DataType.Float);
            

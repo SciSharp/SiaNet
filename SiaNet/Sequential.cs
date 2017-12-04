@@ -49,6 +49,8 @@
         /// </summary>
         public event On_Batch_End OnBatchEnd;
 
+        int layerCounter = 1;
+
         /// <summary>
         /// Gets the module.
         /// </summary>

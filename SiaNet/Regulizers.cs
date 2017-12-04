@@ -28,20 +28,26 @@ namespace SiaNet
 
         internal bool IsL2 { get; set; }
 
+        internal bool GradientClippingWithTruncation { get; set; }
+
+        internal double? GradientClippingThresholdPerSample { get; set; }
+
         /// <summary>
         /// Initialize with l1 and l2 weight
         /// </summary>
         /// <param name="l1">The l1 weight value.</param>
         /// <param name="l2">The l2 weight value.</param>
         /// <returns>Regulizers.</returns>
-        public static Regulizers L1L2(double l1 =0.01, double l2 =0.01)
+        public static Regulizers L1L2(double l1 =0.01, double l2 =0.01, bool gradientClippingWithTruncation = false, double? gradientClippingThresholdPerSample = null)
         {
             Regulizers result = new Regulizers()
             {
                 IsL1 = true,
                 IsL2 = true,
                 L1 = l1,
-                L2 = l2
+                L2 = l2,
+                GradientClippingWithTruncation = gradientClippingWithTruncation,
+                GradientClippingThresholdPerSample = gradientClippingThresholdPerSample
             };
 
             return result;
@@ -51,29 +57,41 @@ namespace SiaNet
         /// nitialize with l1 weight
         /// </summary>
         /// <param name="l1">The l1 weight value.</param>
-        /// <returns>Regulizers.</returns>
-        public static Regulizers RegL1(double l1 = 0.01)
+        /// <param name="gradientClippingWithTruncation">if set to <c>true</c> [gradient clipping with truncation].</param>
+        /// <param name="gradientClippingThresholdPerSample">The gradient clipping threshold per sample.</param>
+        /// <returns>
+        /// Regulizers.
+        /// </returns>
+        public static Regulizers RegL1(double l1 = 0.01, bool gradientClippingWithTruncation = false, double? gradientClippingThresholdPerSample = null)
         {
             Regulizers result = new Regulizers()
             {
                 IsL1 = true,
                 L1 = l1,
+                GradientClippingWithTruncation = gradientClippingWithTruncation,
+                GradientClippingThresholdPerSample = gradientClippingThresholdPerSample
             };
 
             return result;
         }
 
         /// <summary>
-        /// nitialize with l2 weight
+        /// Initialize with l2 weight
         /// </summary>
         /// <param name="l2">The l2 weight value.</param>
-        /// <returns>Regulizers.</returns>
-        public static Regulizers RegL2(double l2 = 0.01)
+        /// <param name="gradientClippingWithTruncation">if set to <c>true</c> [gradient clipping with truncation].</param>
+        /// <param name="gradientClippingThresholdPerSample">The gradient clipping threshold per sample.</param>
+        /// <returns>
+        /// Regulizers.
+        /// </returns>
+        public static Regulizers RegL2(double l2 = 0.01, bool gradientClippingWithTruncation = false, double? gradientClippingThresholdPerSample = null)
         {
             Regulizers result = new Regulizers()
             {
                 IsL2 = true,
                 L2 = l2,
+                GradientClippingWithTruncation = gradientClippingWithTruncation,
+                GradientClippingThresholdPerSample = gradientClippingThresholdPerSample
             };
 
             return result;

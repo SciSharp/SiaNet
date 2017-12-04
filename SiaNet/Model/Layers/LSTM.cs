@@ -83,6 +83,7 @@ namespace SiaNet.Model.Layers
         {
             Shape = shape;
         }
+        
 
         /// <summary>
         /// The input shape for this layer

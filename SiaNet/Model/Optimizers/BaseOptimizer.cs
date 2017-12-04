@@ -72,7 +72,7 @@ namespace SiaNet.Model.Optimizers
                 case OptOptimizers.MomentumSGD:
                     return MomentumSGD(model, LearningRate, (double)AdditionalParams["Momentum"], (bool)AdditionalParams["UnitGain"], regulizer: Regulizer);
                 case OptOptimizers.RMSProp:
-                    return RMSprop(model, LearningRate, (double)AdditionalParams["Gamma"], (double)AdditionalParams["Increment"], (double)AdditionalParams["Decrement"], (double)AdditionalParams["Min"], (double)AdditionalParams["Max"], Regulizer);
+                    return RMSprop(model, LearningRate,(double)AdditionalParams["Gamma"], (double)AdditionalParams["Increment"], (double)AdditionalParams["Decrement"], (double)AdditionalParams["Min"], (double)AdditionalParams["Max"], Regulizer);
                 case OptOptimizers.SGD:
                     return SGD(model, LearningRate, regulizer: Regulizer);
                 default:
@@ -83,12 +83,17 @@ namespace SiaNet.Model.Optimizers
         private AdditionalLearningOptions GetAdditionalLearningOptions()
         {
             AdditionalLearningOptions options = new AdditionalLearningOptions();
+            
             if (Regulizer != null)
             {
                 if (Regulizer.IsL1)
                     options.l1RegularizationWeight = Regulizer.L1;
                 if (Regulizer.IsL2)
                     options.l1RegularizationWeight = Regulizer.L2;
+
+                options.gradientClippingWithTruncation = Regulizer.GradientClippingWithTruncation;
+                if (Regulizer.GradientClippingThresholdPerSample.HasValue)
+                    options.gradientClippingThresholdPerSample = Regulizer.GradientClippingThresholdPerSample.Value;
             }
 
             return options;
