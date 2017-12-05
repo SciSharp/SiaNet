@@ -261,10 +261,9 @@
         /// </summary>
         public void Shuffle()
         {
-            List<List<float>> clone = Data;
+            List<List<float>> clone = new List<List<float>>();
             if (Data.Count > 0)
             {
-                clone.Clear();
                 Random random = new Random();
 
                 while (Data.Count > 0)
@@ -532,6 +531,11 @@
             return result;
         }
 
+        /// <summary>
+        /// Reshapes the dataset to new specified shape.
+        /// </summary>
+        /// <param name="shape">The new shape on the dataset.</param>
+        /// <exception cref="System.ArgumentException"></exception>
         public void Reshape(params int[] shape)
         {
             Variable features = Variable.InputVariable(new int[] { Shape[1], Shape[0] }, DataType.Float);

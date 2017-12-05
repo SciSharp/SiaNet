@@ -21,6 +21,7 @@ namespace SiaNet.Examples
             Downloader.DownloadSample(SampleDataset.HousingRegression);
             var samplePath = Downloader.GetSamplePath(SampleDataset.HousingRegression);
             frame.LoadFromCsv(samplePath.Train);
+            frame.Shuffle();
             var xy = frame.SplitXY(14, new[] { 1, 13 });
             traintest = xy.SplitTrainTest(0.25);
         }
