@@ -503,21 +503,6 @@
         /// <summary>
         /// Trains the model for a fixed number of epochs.
         /// </summary>
-        /// <param name="train">The training dataset.</param>
-        /// <param name="epoches">The no. of trainin epoches.</param>
-        /// <param name="batchSize">Size of the batch for training.</param>
-        /// <param name="validation">The validation dataset.</param>
-        public void Train(ImageDataFrame train, int epoches, int batchSize, ImageDataFrame validation = null)
-        {
-            OnTrainingStart();
-            trainPredict = new DataFrameTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
-            TrainingResult = trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
-            OnTrainingEnd(TrainingResult);
-        }
-
-        /// <summary>
-        /// Trains the model for a fixed number of epochs.
-        /// </summary>
         /// <param name="train">The train image generator.</param>
         /// <param name="epoches">The no. of trainin epoches.</param>
         /// <param name="batchSize">Size of the batch for training.</param>
@@ -535,7 +520,7 @@
         /// </summary>
         /// <param name="data">The data for valuation.</param>
         /// <returns>List of prediction values</returns>
-        public IList<IList<float>> Evaluate(DataFrame data)
+        public IList<float> Evaluate(DataFrame data)
         {
             return trainPredict.Evaluate(data);
         }

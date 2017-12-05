@@ -26,6 +26,6 @@ namespace SiaNet.Interface
         /// </summary>
         /// <param name="data">The test data.</param>
         /// <returns></returns>
-        IList<IList<float>> Evaluate(DataFrame data);
+        IList<float> Evaluate(DataFrame data);
     }
 }

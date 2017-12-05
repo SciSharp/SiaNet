@@ -129,11 +129,12 @@ namespace SiaNet.Processing
             return outputDataMap[Model.Output];
         }
 
-        public IList<IList<float>> Evaluate(DataFrame data)
+        public IList<float> Evaluate(DataFrame data)
         {
             var outputValue = EvaluateInternal(data);
             IList<IList<float>> resultSet = outputValue.GetDenseData<float>(Model.Output);
-            return resultSet;
+            var result = resultSet.Select(x => x.First()).ToList();
+            return result;
         }
     }
 }
