@@ -29,7 +29,7 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.LeakyReLU));
+            model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.LeakyReLU) { WeightInitializer = new Model.Initializers.Xavier(0.5, 1) });
             model.Add(new Dense(dim: 13, act: OptActivations.LeakyReLU));
             model.Add(new Dropout(rate: 0.2));
             model.Add(new Dense(dim: 1, act: OptActivations.LeakyReLU));

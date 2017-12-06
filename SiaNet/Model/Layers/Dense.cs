@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SiaNet.Common;
+using SiaNet.Model.Initializers;
 
 namespace SiaNet.Model.Layers
 {
@@ -21,6 +22,11 @@ namespace SiaNet.Model.Layers
         {
             base.Name = "Dense";
             base.Params = new ExpandoObject();
+            Shape = null;
+            Act = OptActivations.None;
+            UseBias = false;
+            WeightInitializer = new Xavier();
+            BiasInitializer = new Zeros();
         }
 
         /// <summary>
@@ -38,8 +44,8 @@ namespace SiaNet.Model.Layers
             Dim = dim;
             Act = act;
             UseBias = useBias;
-            WeightInitializer = weightInitializer;
-            BiasInitializer = biasInitializer;
+            WeightInitializer = new BaseInitializer(weightInitializer);
+            BiasInitializer = new BaseInitializer(biasInitializer);
         }
 
         /// <summary>
@@ -144,7 +150,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string WeightInitializer
+        public BaseInitializer WeightInitializer
         {
             get
             {
@@ -164,7 +170,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string BiasInitializer
+        public BaseInitializer BiasInitializer
         {
             get
             {

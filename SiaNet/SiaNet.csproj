@@ -97,7 +97,6 @@
     <Compile Include="Application\FastRCNN.cs" />
     <Compile Include="Application\ImageNet.cs" />
     <Compile Include="GlobalParameters.cs" />
-    <Compile Include="Initializers.cs" />
     <Compile Include="Interface\ITrainPredict.cs" />
     <Compile Include="Losses.cs" />
     <Compile Include="Metrics.cs" />
@@ -105,6 +104,7 @@
     <Compile Include="Model\DataFrame.cs" />
     <Compile Include="Model\ImageDataFrame.cs" />
     <Compile Include="Model\ImageDataGenerator.cs" />
+    <Compile Include="Model\Initializers.cs" />
     <Compile Include="Model\LayerConfig.cs" />
     <Compile Include="Model\Layers\BatchNorm.cs" />
     <Compile Include="Model\Layers\AvgPool1D.cs" />

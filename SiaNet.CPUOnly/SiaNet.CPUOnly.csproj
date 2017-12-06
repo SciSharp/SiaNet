@@ -103,9 +103,6 @@
     <Compile Include="..\SiaNet\GlobalParameters.cs">
       <Link>GlobalParameters.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Initializers.cs">
-      <Link>Initializers.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Interface\ITrainPredict.cs">
       <Link>Interface\ITrainPredict.cs</Link>
     </Compile>
@@ -126,6 +123,9 @@
     </Compile>
     <Compile Include="..\SiaNet\Model\ImageDataGenerator.cs">
       <Link>Model\ImageDataGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers.cs">
+      <Link>Model\Initializers.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\LayerConfig.cs">
       <Link>Model\LayerConfig.cs</Link>

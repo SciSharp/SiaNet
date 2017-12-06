@@ -3,6 +3,7 @@
     using CNTK;
     using System;
     using SiaNet.Common;
+    using SiaNet.Model.Initializers;
 
     /// <summary>
     /// Convolutional Neural Networks are very similar to ordinary Neural Networks. They are made up of neurons that have learnable weights and biases. Each neuron receives some inputs, performs a dot product and optionally follows it with a non-linearity. The whole network still expresses a single differentiable score function: from the raw image pixels on one end to class scores at the other. And they still have a loss function (e.g. SVM/Softmax) on the last (fully-connected) layer and all the tips/tricks we developed for learning regular Neural Networks still apply.
@@ -25,28 +26,7 @@
         /// <returns></returns>
         public static Function Conv1D(Variable layer, int channels, int kernalSize, int strides=1, bool padding=true, int dialation=1, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            Parameter convParams = null;
-            Function conv = null;
-            if (layer.Shape.Rank > 1)
-            {
-                int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
-                convParams = new Parameter(new int[] { kernalSize, numInputChannels, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
-                conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { padding, false, false }), new int[] { dialation });
-            }
-            else
-            {
-                convParams = new Parameter(new int[] { kernalSize, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
-                conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { padding }), new int[] { dialation });
-            }
-
-            Parameter bias = null;
-            if (useBias)
-            {
-                bias = new Parameter(conv.Output.Shape, DataType.Float, Initializers.Get(biasInitializer), GlobalParameters.Device);
-                conv = CNTKLib.Plus(bias, conv);
-            }
-            
-            return Basic.Activation(conv, activation);
+            return Conv1D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
         }
 
         /// <summary>
@@ -70,6 +50,70 @@
         }
 
         /// <summary>
+        /// 1D convolution layer (e.g. temporal convolution). This layer creates a convolution kernel that is convolved with the layer input over a single spatial (or temporal) dimension to produce a tensor of outputs. If use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+        /// </summary>
+        /// <param name="shape">The 1D input shape.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space</param>
+        /// <param name="kernalSize">An integer specifying the length of the 1D convolution window.</param>
+        /// <param name="strides">An integer specifying the stride length of the convolution.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">An integer specifying the dilation rate to use for dilated convolution. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any strides value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Conv1D(Tuple<int, int> shape, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        {
+            Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2 }, DataType.Float);
+            return Conv1D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);
+        }
+
+
+        /// <summary>
+        /// 1D convolution layer (e.g. temporal convolution). This layer creates a convolution kernel that is convolved with the layer input over a single spatial (or temporal) dimension to produce a tensor of outputs. If use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+        /// </summary>
+        /// <param name="layer">The output of the last layer.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space</param>
+        /// <param name="kernalSize">An integer specifying the length of the 1D convolution window.</param>
+        /// <param name="strides">An integer specifying the stride length of the convolution.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">An integer specifying the dilation rate to use for dilated convolution. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any strides value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Conv1D(Variable layer, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        {
+            weightInitializer = weightInitializer ?? new Xavier();
+            biasInitializer = biasInitializer ?? new Zeros();
+
+            Parameter convParams = null;
+            Function conv = null;
+            if (layer.Shape.Rank > 1)
+            {
+                int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
+                convParams = new Parameter(new int[] { kernalSize, numInputChannels, channels }, DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
+                conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { padding, false, false }), new int[] { dialation });
+            }
+            else
+            {
+                convParams = new Parameter(new int[] { kernalSize, channels }, DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
+                conv = CNTKLib.Convolution(convParams, layer, new int[] { strides }, new BoolVector(new bool[] { true }), new BoolVector(new bool[] { padding }), new int[] { dialation });
+            }
+
+            Parameter bias = null;
+            if (useBias)
+            {
+                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.Get(), GlobalParameters.Device);
+                conv = CNTKLib.Plus(bias, conv);
+            }
+
+            return Basic.Activation(conv, activation);
+        }
+
+        /// <summary>
         /// 2D convolution layer (e.g. spatial convolution over images). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
         /// </summary>
         /// <param name="layer">The output of the last layer.</param>
@@ -85,29 +129,7 @@
         /// <returns></returns>
         public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
-            var convParams = new Parameter(new int[] { kernalSize.Item1, kernalSize.Item2, numInputChannels, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
-            if (dialation == null)
-            {
-                dialation = new Tuple<int, int>(1, 1);
-            }
-
-            int[] stridesParams = null;
-            if(strides!=null)
-            {
-                stridesParams = new int[] { strides.Item1, strides.Item2 };
-            }
-
-            var conv = CNTKLib.Convolution(convParams, layer, stridesParams, new BoolVector(new bool[] { true, true }), new BoolVector(new bool[] { padding, padding, false }), new int[] { dialation.Item1, dialation.Item2 });
-
-            Parameter bias = null;
-            if (useBias)
-            {
-                bias = new Parameter(conv.Output.Shape, DataType.Float, Initializers.Get(biasInitializer), GlobalParameters.Device);
-                conv = CNTKLib.Plus(bias, conv);
-            }
-
-            return Basic.Activation(conv, activation);
+            return Conv2D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
         }
 
         /// <summary>
@@ -131,6 +153,70 @@
         }
 
         /// <summary>
+        /// 2D convolution layer (e.g. spatial convolution over images). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+        /// </summary>
+        /// <param name="layer">The output of the last layer.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space.</param>
+        /// <param name="kernalSize">A tuple of 2 integers, specifying the width and height of the 2D convolution window. Can be a single integer to specify the same value for all spatial dimensions.</param>
+        /// <param name="strides">A tuple of 2 integers, specifying the strides of the convolution along the width and height. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">A tuple of 2 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        {
+            weightInitializer = weightInitializer ?? new Xavier();
+            biasInitializer = biasInitializer ?? new Zeros();
+
+            int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
+            var convParams = new Parameter(new int[] { kernalSize.Item1, kernalSize.Item2, numInputChannels, channels }, DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
+            if (dialation == null)
+            {
+                dialation = new Tuple<int, int>(1, 1);
+            }
+
+            int[] stridesParams = null;
+            if (strides != null)
+            {
+                stridesParams = new int[] { strides.Item1, strides.Item2 };
+            }
+
+            var conv = CNTKLib.Convolution(convParams, layer, stridesParams, new BoolVector(new bool[] { true, true }), new BoolVector(new bool[] { padding, padding, false }), new int[] { dialation.Item1, dialation.Item2 });
+
+            Parameter bias = null;
+            if (useBias)
+            {
+                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.Get(), GlobalParameters.Device);
+                conv = CNTKLib.Plus(bias, conv);
+            }
+
+            return Basic.Activation(conv, activation);
+        }
+
+        /// <summary>
+        /// Conv2s the d.2D convolution layer (e.g. spatial convolution over images). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+        /// </summary>
+        /// <param name="shape">The 2D input shape.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space.</param>
+        /// <param name="kernalSize">A tuple of 2 integers, specifying the width and height of the 2D convolution window. Can be a single integer to specify the same value for all spatial dimensions.</param>
+        /// <param name="strides">A tuple of 2 integers, specifying the strides of the convolution along the width and height. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">A tuple of 2 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Conv2D(Tuple<int, int, int> shape, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        {
+            Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2, shape.Item3 }, DataType.Float);
+            return Conv2D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);
+        }
+
+        /// <summary>
         /// 3D convolution layer (e.g. spatial convolution over volumes). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
         /// </summary>
         /// <param name="layer">The output of the last layer.</param>
@@ -146,10 +232,51 @@
         /// <returns></returns>
         public static Function Conv3D(Variable layer, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
-            var convParams = new Parameter(new int[] { kernalSize.Item1, kernalSize.Item2, kernalSize.Item3, numInputChannels, channels }, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
+            return Conv3D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+        }
 
-            if(dialation==null)
+        /// <summary>
+        /// 3D convolution layer (e.g. spatial convolution over volumes). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+        /// </summary>
+        /// <param name="shape">The 3D input shape.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space.</param>
+        /// <param name="kernalSize">A tuple of 3 integers, specifying the depth, height and width of the 3D convolution window. Can be a single integer to specify the same value for all spatial dimensions.</param>
+        /// <param name="strides">A tuple of 3 integers, specifying the strides of the convolution along each spatial dimension. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">A tuple of 3 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Conv3D(Tuple<int, int, int, int> shape, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
+        {
+            Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2, shape.Item3 }, DataType.Float);
+            return Conv3D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);
+        }
+
+        /// <summary>
+        /// 3D convolution layer (e.g. spatial convolution over volumes). This layer creates a convolution kernel that is convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
+        /// </summary>
+        /// <param name="layer">The output of the last layer.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space.</param>
+        /// <param name="kernalSize">A tuple of 3 integers, specifying the depth, height and width of the 3D convolution window. Can be a single integer to specify the same value for all spatial dimensions.</param>
+        /// <param name="strides">A tuple of 3 integers, specifying the strides of the convolution along each spatial dimension. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">A tuple of 3 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Conv3D(Variable layer, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        {
+            weightInitializer = weightInitializer ?? new Xavier();
+            biasInitializer = biasInitializer ?? new Zeros();
+            int numInputChannels = layer.Shape[layer.Shape.Rank - 1];
+            var convParams = new Parameter(new int[] { kernalSize.Item1, kernalSize.Item2, kernalSize.Item3, numInputChannels, channels }, DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
+
+            if (dialation == null)
             {
                 dialation = new Tuple<int, int, int>(1, 1, 1);
             }
@@ -158,7 +285,7 @@
             Parameter bias = null;
             if (useBias)
             {
-                bias = new Parameter(conv.Output.Shape, DataType.Float, Initializers.Get(biasInitializer), GlobalParameters.Device);
+                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.Get(), GlobalParameters.Device);
                 conv = CNTKLib.Plus(bias, conv);
             }
 
@@ -179,7 +306,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv3D(Tuple<int, int, int, int> shape, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
+        public static Function Conv3D(Tuple<int, int, int, int> shape, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
         {
             Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2, shape.Item3 }, DataType.Float);
             return Conv3D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);

@@ -1,4 +1,5 @@
 ﻿using SiaNet.Common;
+using SiaNet.Model.Initializers;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -46,8 +47,8 @@ namespace SiaNet.Model.Layers
             Dialation = dialation == null ? Tuple.Create<int, int>(1, 1) : dialation;
             Act = activation;
             UseBias = useBias;
-            WeightInitializer = weightInitializer;
-            BiasInitializer = biasInitializer;
+            WeightInitializer = new BaseInitializer(weightInitializer);
+            BiasInitializer = new BaseInitializer(biasInitializer);
         }
 
         /// <summary>
@@ -64,6 +65,52 @@ namespace SiaNet.Model.Layers
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         public Conv2D(Tuple<int, int, int> shape, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
+            : this(channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer)
+        {
+            Shape = shape;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Conv2D"/> class.
+        /// </summary>
+        /// <param name="channels">Integer, the dimensionality of the output space</param>
+        /// <param name="kernalSize">A tuple of 2 integers, specifying the width and height of the 2D convolution window. Can be a single integer to specify the same value for all spatial dimensions.</param>
+        /// <param name="strides">A  tuple of 2 integers, specifying the strides of the convolution along the width and height. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1..</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">A tuple of 2 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1..</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        public Conv2D(int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+            : this()
+        {
+            Shape = null;
+            Channels = channels;
+            KernalSize = kernalSize;
+            Strides = strides == null ? Tuple.Create<int, int>(1, 1) : strides;
+            Padding = padding;
+            Dialation = dialation == null ? Tuple.Create<int, int>(1, 1) : dialation;
+            Act = activation;
+            UseBias = useBias;
+            WeightInitializer = weightInitializer ?? new Xavier();
+            BiasInitializer = biasInitializer ?? new Zeros();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Conv2D"/> class.
+        /// </summary>
+        /// <param name="shape">The 2D input shape.</param>
+        /// <param name="channels">Integer, the dimensionality of the output space.</param>
+        /// <param name="kernalSize">A tuple of 2 integers, specifying the width and height of the 2D convolution window. Can be a single integer to specify the same value for all spatial dimensions.</param>
+        /// <param name="strides">A tuple of 2 integers, specifying the strides of the convolution along the width and height. Can be a single integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with specifying any dilation_rate value != 1.</param>
+        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="dialation">A tuple of 2 integers, specifying the dilation rate to use for dilated convolution. Can be a single integer to specify the same value for all spatial dimensions. Currently, specifying any dilation_rate value != 1 is incompatible with specifying any stride value != 1.</param>
+        /// <param name="activation">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        public Conv2D(Tuple<int, int, int> shape, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
             : this(channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer)
         {
             Shape = shape;
@@ -236,7 +283,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string WeightInitializer
+        public BaseInitializer WeightInitializer
         {
             get
             {
@@ -256,7 +303,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string BiasInitializer
+        public BaseInitializer BiasInitializer
         {
             get
             {

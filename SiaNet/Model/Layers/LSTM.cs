@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SiaNet.Common;
+using SiaNet.Model.Initializers;
 
 namespace SiaNet.Model.Layers
 {
@@ -39,10 +40,10 @@ namespace SiaNet.Model.Layers
             CellDim = cellDim;
             Activation = activation;
             RecurrentActivation = recurrentActivation;
-            WeightInitializer = weightInitializer;
-            RecurrentInitializer = recurrentInitializer;
+            WeightInitializer = new BaseInitializer(weightInitializer);
+            RecurrentInitializer = new BaseInitializer(recurrentInitializer);
             UseBias = useBias;
-            BiasInitializer = biasInitializer;
+            BiasInitializer = new BaseInitializer(biasInitializer);
             ReturnSequence = returnSequence;
         }
 
@@ -62,10 +63,10 @@ namespace SiaNet.Model.Layers
             CellDim = null;
             Activation = activation;
             RecurrentActivation = recurrentActivation;
-            WeightInitializer = weightInitializer;
-            RecurrentInitializer = recurrentInitializer;
+            WeightInitializer = new BaseInitializer(weightInitializer);
+            RecurrentInitializer = new BaseInitializer(recurrentInitializer);
             UseBias = useBias;
-            BiasInitializer = biasInitializer;
+            BiasInitializer = new BaseInitializer(biasInitializer);
             ReturnSequence = returnSequence;
         }
 
@@ -83,7 +84,6 @@ namespace SiaNet.Model.Layers
         {
             Shape = shape;
         }
-        
 
         /// <summary>
         /// The input shape for this layer
@@ -199,7 +199,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string WeightInitializer
+        public BaseInitializer WeightInitializer
         {
             get
             {
@@ -212,7 +212,7 @@ namespace SiaNet.Model.Layers
             }
         }
 
-        public string RecurrentInitializer
+        public BaseInitializer RecurrentInitializer
         {
             get
             {
@@ -232,7 +232,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string BiasInitializer
+        public BaseInitializer BiasInitializer
         {
             get
             {
