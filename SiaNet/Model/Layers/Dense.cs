@@ -64,6 +64,42 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Dense"/> class.
+        /// </summary>
+        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
+        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        public Dense(int dim, string act = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+            : this()
+        {
+            weightInitializer = weightInitializer ?? new Xavier();
+            biasInitializer = biasInitializer ?? new Zeros();
+            Shape = null;
+            Dim = dim;
+            Act = act;
+            UseBias = useBias;
+            WeightInitializer = weightInitializer;
+            BiasInitializer = biasInitializer;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dense"/> class.
+        /// </summary>
+        /// <param name="dim">Positive integer, dimensionality of the output space..</param>
+        /// <param name="shape">The input shape.</param>
+        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        public Dense(int dim, int shape, string act = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+            : this(dim, act, useBias, weightInitializer, biasInitializer)
+        {
+            Shape = shape;
+        }
+
+        /// <summary>
         /// The input shape for this layer
         /// </summary>
         /// <value>
