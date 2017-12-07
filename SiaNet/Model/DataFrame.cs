@@ -453,7 +453,7 @@
         /// </summary>
         /// <param name="columnNames">The column names.</param>
         /// <returns></returns>
-        public DataFrame Partition(params string[] columnNames)
+        public DataFrame GetFrame(params string[] columnNames)
         {
             DataFrame result = new DataFrame();
             List<float> xFrameRow = new List<float>();
@@ -480,7 +480,7 @@
         /// </summary>
         /// <param name="columnNumbers">The column numbers.</param>
         /// <returns></returns>
-        public DataFrame Partition(params int[] columnNumbers)
+        public DataFrame GetFrame(params int[] columnNumbers)
         {
             DataFrame result = new DataFrame();
             List<float> xFrameRow = new List<float>();
@@ -563,6 +563,19 @@
             foreach (var item in res)
             {
                 Data.Add(item.ToList());
+            }
+        }
+
+        public virtual void Display(int top = 5)
+        {
+            foreach (var item in Columns)
+            {
+                Console.Write(item + "\t");
+            }
+
+            foreach (var item in Data)
+            {
+
             }
         }
     }

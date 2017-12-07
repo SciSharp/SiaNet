@@ -21,7 +21,7 @@ namespace SieNet.Examples.CPUOnly
             {
                 //Setting global device
                 Logging.OnWriteLog += Logging_OnWriteLog;
-
+                
                 //XOR Example
                 XORExample.LoadData();
                 XORExample.BuildModel();
@@ -41,7 +41,12 @@ namespace SieNet.Examples.CPUOnly
                 TimeSeriesPrediction.LoadData();
                 TimeSeriesPrediction.BuildModel();
                 TimeSeriesPrediction.Train();
-                
+
+                //Multi variate time series prediction
+                MiltiVariateTimeSeriesPrediction.LoadData();
+                MiltiVariateTimeSeriesPrediction.BuildModel();
+                MiltiVariateTimeSeriesPrediction.Train();
+
                 //Cifar - 10 Classification example
                 //Cifar10Classification.LoadData();
                 //Cifar10Classification.BuildModel();
@@ -52,7 +57,7 @@ namespace SieNet.Examples.CPUOnly
                 //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(SiaNet.Common.Cifar10Model.ResNet110)[0].Name);
 
                 //Object Detection
-                //ObjectDetection.PascalDetection();
+                ObjectDetection.PascalDetection();
                 //ObjectDetection.GroceryDetection();
                 Console.ReadLine();
             }

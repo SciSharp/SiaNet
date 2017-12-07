@@ -26,7 +26,7 @@ namespace SiaNet.Examples
 
                 //Setting global device
                 GlobalParameters.Device = devices[0];
-
+                
                 //XOR Example
                 XORExample.LoadData();
                 XORExample.BuildModel();
@@ -42,10 +42,16 @@ namespace SiaNet.Examples
                 MNISTClassifier.BuildModel();
                 MNISTClassifier.Train();
 
-                //In-progress
+                //Time series prediction
                 TimeSeriesPrediction.LoadData();
                 TimeSeriesPrediction.BuildModel();
                 TimeSeriesPrediction.Train();
+                
+
+                //Multi variate time series prediction
+                MiltiVariateTimeSeriesPrediction.LoadData();
+                MiltiVariateTimeSeriesPrediction.BuildModel();
+                MiltiVariateTimeSeriesPrediction.Train();
 
                 //Cifar-10 Classification example
                 //Cifar10Classification.LoadData();

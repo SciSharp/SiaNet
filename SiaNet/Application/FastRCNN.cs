@@ -140,11 +140,11 @@ namespace SiaNet.Application
             try
             {
                 proposedBoxes = new List<Rectangle>();
-                var resized = bmp.Resize(1000, 1000, true);
-                List<float> roiList = GenerateROIS(resized, model);
+                var resized = bmp.Resize(250, 250, true);
+                List<float> roiList = new List<float>();// GenerateROIS(resized, model);
                 List<float> inArg3 = new List<float>();
                 List<float> resizedCHW = resized.ParallelExtractCHW();
-
+                CalculateROI(resizedCHW);
                 // Create input data map
                 var inputDataMap = new Dictionary<Variable, Value>();
                 var inputVal1 = Value.CreateBatch(modelFunc.Arguments.First().Shape, resizedCHW, GlobalParameters.Device);
@@ -245,6 +245,19 @@ namespace SiaNet.Application
                 throw ex;
             }
         }
+
+        private void CalculateROI(List<float> resizedCHW)
+        {
+            Variable inputVar = Variable.InputVariable(new int[] { 250, 250, 3 }, DataType.Double);
+            
+            Function roifunc = CNTKLib.ROIPooling(inputVar, Variable.InputVariable(new int[] { 4, 4 }, DataType.Double, "outputroi"), PoolingType.Average, new int[] { 4 }, 1, "roi_pooling_1");
+            Value input = Value.CreateBatch<float>(new int[] { 250, 250, 3 }, resizedCHW, GlobalParameters.Device);
+            Dictionary<Variable, Value> inputDict = new Dictionary<Variable, Value>() { { inputVar, input } };
+            Dictionary<Variable, Value> outputDict = new Dictionary<Variable, Value>() { { roifunc.Output, null } };
+
+            roifunc.Evaluate(inputDict, outputDict, GlobalParameters.Device);
+        }
+
 
         /// <summary>
         /// Gets the labels.
