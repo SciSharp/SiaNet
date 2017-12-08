@@ -31,10 +31,9 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.LeakyReLU) { WeightInitializer = new Model.Initializers.Xavier(0.5, 1) });
-            model.Add(new Dense(dim: 13, act: OptActivations.LeakyReLU));
-            model.Add(new Dropout(rate: 0.2));
-            model.Add(new Dense(dim: 1, act: OptActivations.LeakyReLU));
+            model.Add(new Dense(dim: 20, shape: 13, act: OptActivations.ReLU));
+            model.Add(new Dense(dim: 20, act: OptActivations.ReLU));
+            model.Add(new Dense(dim: 1));
 
             model.OnEpochEnd += Model_OnEpochEnd;
             model.OnTrainingEnd += Model_OnTrainingEnd;
@@ -43,7 +42,7 @@ namespace SiaNet.Examples
         public static void Train()
         {
             model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSLE);
-            model.Train(traintest.Train, 500, 32, traintest.Test);
+            model.Train(traintest.Train, 500, 32, traintest.Test, shuffle: true);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)

@@ -30,7 +30,7 @@ namespace SiaNet.Processing
             this.lossName = lossName;
         }
 
-        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd)
+        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd, bool shuffle = false)
         {
             XYFrame train = (XYFrame)trainData;
             XYFrame validation = validationData != null ? (XYFrame)validationData : null;
@@ -40,6 +40,9 @@ namespace SiaNet.Processing
             Dictionary<string, double> metricsList = new Dictionary<string, double>();
             while (currentEpoch <= epoches)
             {
+                if (shuffle)
+                    train.Shuffle();
+
                 metricsList = new Dictionary<string, double>();
                 OnEpochStart(currentEpoch);
                 int miniBatchCount = 1;

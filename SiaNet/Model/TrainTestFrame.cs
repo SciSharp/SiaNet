@@ -162,6 +162,32 @@ namespace SiaNet.Model
 
             return frame;
         }
+
+        /// <summary>
+        /// Shuffles this dataset.
+        /// </summary>
+        public void Shuffle()
+        {
+            List<List<float>> cloneX = new List<List<float>>();
+            List<List<float>> cloneY = new List<List<float>>();
+
+            if (XFrame.Data.Count > 0)
+            {
+                Random random = new Random();
+
+                while (XFrame.Data.Count > 0)
+                {
+                    int row = random.Next(0, XFrame.Data.Count);
+                    cloneX.Add(XFrame.Data[row]);
+                    cloneY.Add(YFrame.Data[row]);
+                    XFrame.Data.RemoveAt(row);
+                    YFrame.Data.RemoveAt(row);
+                }
+            }
+
+            XFrame.Data = cloneX;
+            YFrame.Data = cloneY;
+        }
     }
 
     /// <summary>
