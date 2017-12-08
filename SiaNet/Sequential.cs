@@ -492,11 +492,12 @@
         /// <param name="epoches">The no. of trainin epoches.</param>
         /// <param name="batchSize">Size of the batch for training.</param>
         /// <param name="validation">The validation dataset.</param>
-        public void Train(XYFrame train, int epoches, int batchSize, XYFrame validation = null)
+        /// <param name="shuffle">Shuffle the dataset while training</param>
+        public void Train(XYFrame train, int epoches, int batchSize, XYFrame validation = null, bool shuffle = false)
         {
             OnTrainingStart();
             trainPredict = new DataFrameTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners, featureVariable, labelVariable);
-            TrainingResult = trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd);
+            TrainingResult = trainPredict.Train(train, validation, epoches, batchSize, OnEpochStart, OnEpochEnd, OnBatchStart, OnBatchEnd, shuffle);
             OnTrainingEnd(TrainingResult);
         }
 

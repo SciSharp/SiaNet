@@ -261,10 +261,9 @@
         /// </summary>
         public void Shuffle()
         {
-            List<List<float>> clone = Data;
+            List<List<float>> clone = new List<List<float>>();
             if (Data.Count > 0)
             {
-                clone.Clear();
                 Random random = new Random();
 
                 while (Data.Count > 0)

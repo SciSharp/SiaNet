@@ -30,7 +30,7 @@ namespace SiaNet.Processing
             this.lossName = lossName;
         }
 
-        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd)
+        public Dictionary<string, List<double>> Train(object trainData, object validationData, int epoches, int batchSize, On_Epoch_Start OnEpochStart, On_Epoch_End OnEpochEnd, On_Batch_Start onBatchStart, On_Batch_End OnBatchEnd, bool shuffle = false)
         {
             ImageDataGenerator train = (ImageDataGenerator)trainData;
             ImageDataGenerator validation = validationData != null ? (ImageDataGenerator)validationData : null;
