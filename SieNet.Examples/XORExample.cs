@@ -39,7 +39,7 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new Dense(dim: 2, shape: 2, act: OptActivations.Sigmoid));
+            model.Add(new Dense(dim: 2, shape: 2, act: OptActivations.Sigmoid, weightInitializer: new Model.Initializers.Xavier()));
             model.Add(new Dense(dim: 2));
 
             model.OnEpochEnd += Model_OnEpochEnd;

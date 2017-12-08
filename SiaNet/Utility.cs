@@ -23,7 +23,7 @@
                     {
                         result = new Initializer(input.ToString());
                     }
-                    else if(input.GetType().BaseType.Name == "INITIALIZER")
+                    else if(input.GetType().BaseType.Name.ToUpper() == "INITIALIZER")
                     {
                         result = (Initializer)input;
                     }
