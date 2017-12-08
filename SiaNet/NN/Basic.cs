@@ -22,7 +22,7 @@
         /// <returns></returns>
         public static Function Dense(int shape, int dim, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            return Dense(shape, dim, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+            return Dense(shape, dim, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -37,7 +37,7 @@
         /// <returns></returns>
         public static Function Dense(Variable layer, int dim, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            return Dense(layer, dim, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+            return Dense(layer, dim, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -50,7 +50,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Dense(int shape, int dim, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Dense(int shape, int dim, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             var input = CNTKLib.InputVariable(new int[] { shape }, DataType.Float);
             return Dense(input, dim, activation, useBias, weightInitializer, biasInitializer);
@@ -66,7 +66,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Dense(Variable layer, int dim, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Dense(Variable layer, int dim, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             weightInitializer = weightInitializer ?? new Xavier();
             biasInitializer = biasInitializer ?? new Zeros();
@@ -139,7 +139,7 @@
                                         string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial=true, 
                                         float normalizationTimeConstant=4096f, float blendTimeConst=0.0f)
         {
-            return BatchNorm(layer, epsilon, new BaseInitializer(betaInitializer), new BaseInitializer(gammaInitializers), new BaseInitializer(runningMeanInitializer), new BaseInitializer(runningStdInvInitializer),
+            return BatchNorm(layer, epsilon, new Initializer(betaInitializer), new Initializer(gammaInitializers), new Initializer(runningMeanInitializer), new Initializer(runningStdInvInitializer),
                             spatial, normalizationTimeConstant, blendTimeConst);
         }
 
@@ -160,7 +160,7 @@
                                        string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial = true,
                                        float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
         {
-            return BatchNorm(shape, epsilon, new BaseInitializer(betaInitializer), new BaseInitializer(gammaInitializers), new BaseInitializer(runningMeanInitializer), new BaseInitializer(runningStdInvInitializer),
+            return BatchNorm(shape, epsilon, new Initializer(betaInitializer), new Initializer(gammaInitializers), new Initializer(runningMeanInitializer), new Initializer(runningStdInvInitializer),
                             spatial, normalizationTimeConstant, blendTimeConst);
         }
 
@@ -177,8 +177,8 @@
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
         /// <returns></returns>
-        public static Function BatchNorm(Variable layer, float epsilon = 0.001f, BaseInitializer betaInitializer = null, BaseInitializer gammaInitializers = null,
-                                        BaseInitializer runningMeanInitializer = null, BaseInitializer runningStdInvInitializer = null, bool spatial = true,
+        public static Function BatchNorm(Variable layer, float epsilon = 0.001f, Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                        Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
                                         float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
         {
             betaInitializer = betaInitializer ?? new Zeros();
@@ -213,8 +213,8 @@
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
         /// <returns></returns>
-        public static Function BatchNorm(int shape, float epsilon = 0.001f, BaseInitializer betaInitializer = null, BaseInitializer gammaInitializers = null,
-                                       BaseInitializer runningMeanInitializer = null, BaseInitializer runningStdInvInitializer = null, bool spatial = true,
+        public static Function BatchNorm(int shape, float epsilon = 0.001f, Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                       Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
                                        float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
         {
             betaInitializer = betaInitializer ?? new Zeros();
@@ -245,7 +245,7 @@
         /// <returns></returns>
         public static Function Embedding(int shape, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
         {
-            return Embedding(shape, embeddingDim, new BaseInitializer(initializers));
+            return Embedding(shape, embeddingDim, new Initializer(initializers));
         }
 
         /// <summary>
@@ -257,7 +257,7 @@
         /// <returns></returns>
         public static Function Embedding(Variable layer, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
         {
-            return Embedding(layer, embeddingDim, new BaseInitializer(initializers));
+            return Embedding(layer, embeddingDim, new Initializer(initializers));
         }
 
         /// <summary>
@@ -267,7 +267,7 @@
         /// <param name="embeddingDim">The dim of the output space.</param>
         /// <param name="initializers">The weight initializers for this layer.</param>
         /// <returns></returns>
-        public static Function Embedding(int shape, int embeddingDim, BaseInitializer initializers = null)
+        public static Function Embedding(int shape, int embeddingDim, Initializer initializers = null)
         {
             if (initializers == null)
                 initializers = new GlorotUniform();
@@ -284,7 +284,7 @@
         /// <param name="embeddingDim">The dim of the output space.</param>
         /// <param name="initializers">The weight initializers for this layer.</param>
         /// <returns></returns>
-        public static Function Embedding(Variable layer, int embeddingDim, BaseInitializer initializers = null)
+        public static Function Embedding(Variable layer, int embeddingDim, Initializer initializers = null)
         {
             if (initializers == null)
                 initializers = new GlorotUniform();
@@ -326,7 +326,7 @@
         /// <returns></returns>
         private static Function FullyConnected(Variable input, int outputDim, bool useBias, string weightInitializer, string biasInitializer)
         {
-            return FullyConnected(input, outputDim, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+            return FullyConnected(input, outputDim, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -338,7 +338,7 @@
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <param name="biasInitializer">The bias initializer.</param>
         /// <returns></returns>
-        private static Function FullyConnected(Variable input, int outputDim, bool useBias, BaseInitializer weightInitializer, BaseInitializer biasInitializer)
+        private static Function FullyConnected(Variable input, int outputDim, bool useBias, Initializer weightInitializer, Initializer biasInitializer)
         {
             int inputDim = input.Shape[0];
 

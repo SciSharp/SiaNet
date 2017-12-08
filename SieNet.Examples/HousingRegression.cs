@@ -1,5 +1,6 @@
 ﻿using SiaNet.Common;
 using SiaNet.Model;
+using SiaNet.Model.Initializers;
 using SiaNet.Model.Layers;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Examples
 {
+  
     internal class HousingRegression
     {
         private static TrainTestFrame traintest;

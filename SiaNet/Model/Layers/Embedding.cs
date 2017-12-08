@@ -35,7 +35,7 @@ namespace SiaNet.Model.Layers
         {
             Shape = shape;
             EmbeddingDim = embeddingDim;
-            Initializers = new BaseInitializer(initializers);
+            Initializers = new Initializer(initializers);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace SiaNet.Model.Layers
         /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
         /// <param name="initializers">Initializer for the embeddings matrix.</param>
-        public Embedding(int shape, int embeddingDim, BaseInitializer initializers = null)
+        public Embedding(int shape, int embeddingDim, Initializer initializers = null)
             : this()
         {
             Shape = shape;
@@ -99,7 +99,7 @@ namespace SiaNet.Model.Layers
         /// The initializers.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer Initializers
+        public Initializer Initializers
         {
             get
             {

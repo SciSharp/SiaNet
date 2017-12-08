@@ -11,7 +11,7 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Base for the initializer
     /// </summary>
-    public class BaseInitializer
+    public class Initializer
     {
         internal string Name { get; set; }
 
@@ -23,25 +23,25 @@ namespace SiaNet.Model.Initializers
 
         internal int? FilterRank { get; set; }
 
-        internal BaseInitializer(string name)
+        internal Initializer(string name)
         {
             Name = name;
             Scale = 0.01;
         }
 
-        internal BaseInitializer(string name, double scale)
+        internal Initializer(string name, double scale)
             : this(name)
         {
             Scale = scale;
         }
 
-        internal BaseInitializer(string name, double scale, int seed)
+        internal Initializer(string name, double scale, int seed)
             : this(name, scale)
         {
             Seed = (uint)seed;
         }
 
-        internal BaseInitializer(string name, double scale, int outputRank, int filterRank, int seed)
+        internal Initializer(string name, double scale, int outputRank, int filterRank, int seed)
             : this(name, scale, seed)
         {
             OutputRank = outputRank;
@@ -109,8 +109,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class Uniform : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class Uniform : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Uniform"/> class.
@@ -143,8 +143,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class Normal : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class Normal : Initializer
     {
         public Normal()
             : base(OptInitializers.Normal)
@@ -165,8 +165,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Initializer that generates a truncated normal distribution.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class TruncatedNormal : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class TruncatedNormal : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TruncatedNormal"/> class.
@@ -199,8 +199,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Initializer that generates tensors initialized to a constant value.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class Constant : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class Constant : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Constant"/> class.
@@ -215,8 +215,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Initializer that generates tensors initialized to 0.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class Zeros : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class Zeros : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Zeros"/> class.
@@ -230,8 +230,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Initializer that generates tensors initialized to 1.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class Ones : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class Ones : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Ones"/> class.
@@ -245,8 +245,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// This initializer is designed to keep the scale of gradients roughly the same in all layers.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class Xavier : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class Xavier : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Xavier"/> class.
@@ -281,8 +281,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Glorot normal initializer, also called Xavier normal initializer. It draws samples from a truncated normal distribution centered on 0 with stddev = sqrt(2 / (fan_in + fan_out)) where fan_in is the number of input units in the weight tensor and  fan_out is the number of output units in the weight tensor.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class GlorotNormal : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class GlorotNormal : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GlorotNormal"/> class.
@@ -317,8 +317,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// Glorot uniform initializer, also called Xavier uniform initializer. It draws samples from a uniform distribution within[-limit, limit] where limit is sqrt(6 / (fan_in + fan_out)) where fan_in is the number of input units in the weight tensor and fan_out is the number of output units in the weight tensor.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class GlorotUniform : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class GlorotUniform : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GlorotUniform"/> class.
@@ -353,8 +353,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// He normal initializer. It draws samples from a truncated normal distribution centered on 0 with stddev = sqrt(2 / fan_in) where fan_in is the number of input units in the weight tensor.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class HeNormal : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class HeNormal : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HeNormal"/> class.
@@ -389,8 +389,8 @@ namespace SiaNet.Model.Initializers
     /// <summary>
     /// He uniform variance scaling initializer. It draws samples from a uniform distribution within[-limit, limit] where limit is sqrt(6 / fan_in) where fan_in is the number of input units in the weight tensor.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.Initializers.BaseInitializer" />
-    public class HeUniform : BaseInitializer
+    /// <seealso cref="SiaNet.Model.Initializers.Initializer" />
+    public class HeUniform : Initializer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HeUniform"/> class.

@@ -23,7 +23,7 @@
         /// <returns></returns>
         public static Function LSTM(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
         {
-            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "lstm");
+            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "lstm");
         }
 
         /// <summary>
@@ -35,7 +35,7 @@
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
-        public static Function LSTM(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, BaseInitializer weightInitializer = null)
+        public static Function LSTM(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null)
         {
             return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "lstm");
         }
@@ -51,7 +51,7 @@
         /// <returns></returns>
         public static Function LSTM(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
         {
-            return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "lstm");
+            return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "lstm");
         }
 
         /// <summary>
@@ -63,7 +63,7 @@
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
-        public static Function LSTM(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, BaseInitializer weightInitializer = null)
+        public static Function LSTM(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null)
         {
             return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "lstm");
         }
@@ -79,7 +79,7 @@
         /// <returns></returns>
         public static Function GRU(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
         {
-            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "gru");
+            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "gru");
         }
 
         /// <summary>
@@ -91,7 +91,7 @@
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
-        public static Function GRU(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, BaseInitializer weightInitializer = null)
+        public static Function GRU(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null)
         {
             return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "gru");
         }
@@ -112,9 +112,9 @@
             switch (activation)
             {
                 case OptActivations.ReLU:
-                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "rnnReLU");
+                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnReLU");
                 case OptActivations.Tanh:
-                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "rnnTanh");
+                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnTanh");
                 default:
                     throw new Exception("Supported activation for RNN is ReLU and Tanh");
             }
@@ -131,7 +131,7 @@
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
         /// <exception cref="Exception">Supported activation for RNN is ReLU and Tanh</exception>
-        public static Function RNN(int[] shape, int dim, int hiddenSize, uint numLayers, string activation, bool bidirectional = false, BaseInitializer weightInitializer = null)
+        public static Function RNN(int[] shape, int dim, int hiddenSize, uint numLayers, string activation, bool bidirectional = false, Initializer weightInitializer = null)
         {
             switch (activation)
             {
@@ -160,9 +160,9 @@
             switch (activation)
             {
                 case OptActivations.ReLU:
-                    return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "rnnReLU");
+                    return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnReLU");
                 case OptActivations.Tanh:
-                    return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new BaseInitializer(weightInitializer), "rnnTanh");
+                    return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnTanh");
                 default:
                     throw new Exception("Supported activation for RNN is ReLU and Tanh");
             }
@@ -178,7 +178,7 @@
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <param name="rnnName">Name of the RNN.</param>
         /// <returns></returns>
-        private static Function BuildRNN(int[] shape, int dim, uint hiddenSize, uint numLayers, bool bidirectional = false, BaseInitializer weightInitializer = null, string rnnName = "")
+        private static Function BuildRNN(int[] shape, int dim, uint hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null, string rnnName = "")
         {
             weightInitializer = weightInitializer ?? new Xavier();
             List<int> s = new List<int>();
@@ -200,7 +200,7 @@
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <param name="rnnName">Name of the RNN.</param>
         /// <returns></returns>
-        private static Function BuildRNN(Variable input, int dim, uint hiddenSize, uint numLayers, bool bidirectional = false, BaseInitializer weightInitializer = null, string rnnName = "")
+        private static Function BuildRNN(Variable input, int dim, uint hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null, string rnnName = "")
         {
             weightInitializer = weightInitializer ?? new Xavier();
             int[] s = input.Shape.Dimensions.ToArray();

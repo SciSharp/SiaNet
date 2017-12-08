@@ -26,7 +26,7 @@
         /// <returns></returns>
         public static Function Conv1D(Variable layer, int channels, int kernalSize, int strides=1, bool padding=true, int dialation=1, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            return Conv1D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+            return Conv1D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -63,7 +63,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv1D(Tuple<int, int> shape, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Conv1D(Tuple<int, int> shape, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2 }, DataType.Float);
             return Conv1D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);
@@ -84,7 +84,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv1D(Variable layer, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Conv1D(Variable layer, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             weightInitializer = weightInitializer ?? new Xavier();
             biasInitializer = biasInitializer ?? new Zeros();
@@ -129,7 +129,7 @@
         /// <returns></returns>
         public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            return Conv2D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+            return Conv2D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -166,7 +166,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Conv2D(Variable layer, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides = null, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             weightInitializer = weightInitializer ?? new Xavier();
             biasInitializer = biasInitializer ?? new Zeros();
@@ -210,7 +210,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv2D(Tuple<int, int, int> shape, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Conv2D(Tuple<int, int, int> shape, int channels, Tuple<int, int> kernalSize, Tuple<int, int> strides, bool padding = true, Tuple<int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2, shape.Item3 }, DataType.Float);
             return Conv2D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);
@@ -232,7 +232,7 @@
         /// <returns></returns>
         public static Function Conv3D(Variable layer, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            return Conv3D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new BaseInitializer(weightInitializer), new BaseInitializer(biasInitializer));
+            return Conv3D(layer, channels, kernalSize, strides, padding, dialation, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -269,7 +269,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv3D(Variable layer, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Conv3D(Variable layer, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             weightInitializer = weightInitializer ?? new Xavier();
             biasInitializer = biasInitializer ?? new Zeros();
@@ -306,7 +306,7 @@
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <returns></returns>
-        public static Function Conv3D(Tuple<int, int, int, int> shape, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public static Function Conv3D(Tuple<int, int, int, int> shape, int channels, Tuple<int, int, int> kernalSize, Tuple<int, int, int> strides, bool padding = true, Tuple<int, int, int> dialation = null, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
         {
             Variable input = CNTKLib.InputVariable(new int[] { shape.Item1, shape.Item2, shape.Item3 }, DataType.Float);
             return Conv3D(input, channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer);

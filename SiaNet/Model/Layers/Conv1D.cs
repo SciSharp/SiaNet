@@ -46,8 +46,8 @@ namespace SiaNet.Model.Layers
             Dialation = dialation;
             Act = activation;
             UseBias = useBias;
-            WeightInitializer = new BaseInitializer(weightInitializer);
-            BiasInitializer = new BaseInitializer(biasInitializer);
+            WeightInitializer = new Initializer(weightInitializer);
+            BiasInitializer = new Initializer(biasInitializer);
             Strides = strides;
         }
 
@@ -82,7 +82,7 @@ namespace SiaNet.Model.Layers
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public Conv1D(int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public Conv1D(int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
             : this()
         {
             Shape = null;
@@ -110,7 +110,7 @@ namespace SiaNet.Model.Layers
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public Conv1D(Tuple<int, int> shape, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, BaseInitializer weightInitializer = null, BaseInitializer biasInitializer = null)
+        public Conv1D(Tuple<int, int> shape, int channels, int kernalSize, int strides = 1, bool padding = true, int dialation = 1, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
             : this(channels, kernalSize, strides, padding, dialation, activation, useBias, weightInitializer, biasInitializer)
         {
             Shape = Tuple.Create<int, int>(shape.Item1, shape.Item2);
@@ -283,7 +283,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer WeightInitializer
+        public Initializer WeightInitializer
         {
             get
             {
@@ -303,7 +303,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer BiasInitializer
+        public Initializer BiasInitializer
         {
             get
             {

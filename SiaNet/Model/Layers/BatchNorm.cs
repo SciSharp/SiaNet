@@ -56,10 +56,10 @@
         {
             Shape = null;
             Epsilon = epsilon;
-            BetaInitializer = new BaseInitializer(betaInitializer);
-            GammaInitializer = new BaseInitializer(gammaInitializers);
-            RunningMeanInitializer = new BaseInitializer(runningMeanInitializer);
-            RunningStdInvInitializer = new BaseInitializer(runningStdInvInitializer);
+            BetaInitializer = new Initializer(betaInitializer);
+            GammaInitializer = new Initializer(gammaInitializers);
+            RunningMeanInitializer = new Initializer(runningMeanInitializer);
+            RunningStdInvInitializer = new Initializer(runningStdInvInitializer);
             Spatial = spatial;
             NormalizationTimeConstant = normalizationTimeConstant;
             BlendTimeConst = blendTimeConst;
@@ -96,8 +96,8 @@
         /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(BaseInitializer betaInitializer = null, BaseInitializer gammaInitializers = null,
-                                       BaseInitializer runningMeanInitializer = null, BaseInitializer runningStdInvInitializer = null, bool spatial = true,
+        public BatchNorm(Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                       Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
                                        float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f, float epsilon = 0.001f)
             : this()
         {
@@ -124,8 +124,8 @@
         /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(int shape, BaseInitializer betaInitializer = null, BaseInitializer gammaInitializers = null,
-                                       BaseInitializer runningMeanInitializer = null, BaseInitializer runningStdInvInitializer = null, bool spatial = true,
+        public BatchNorm(int shape, Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                       Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
                                        float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f, float epsilon = 0.001f)
             : this(betaInitializer, gammaInitializers, runningMeanInitializer, runningStdInvInitializer, spatial, normalizationTimeConstant, blendTimeConst, epsilon)
         {
@@ -179,7 +179,7 @@
         /// The beta initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer BetaInitializer
+        public Initializer BetaInitializer
         {
             get
             {
@@ -199,7 +199,7 @@
         /// The gamma initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer GammaInitializer
+        public Initializer GammaInitializer
         {
             get
             {
@@ -219,7 +219,7 @@
         /// The running mean initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer RunningMeanInitializer
+        public Initializer RunningMeanInitializer
         {
             get
             {
@@ -239,7 +239,7 @@
         /// The running standard inv initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer RunningStdInvInitializer
+        public Initializer RunningStdInvInitializer
         {
             get
             {

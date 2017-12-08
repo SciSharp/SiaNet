@@ -48,7 +48,7 @@
         private static void BuildMLP(int[] imageDim, int numClasses)
         {
             model.Add(new Dense(200, imageDim[0], OptActivations.ReLU));
-            model.Add(new Dense(400, OptActivations.ReLU));
+            model.Add(new Dense(400, act: OptActivations.ReLU));
             model.Add(new Dropout(0.2));
             model.Add(new Dense(numClasses));
         }

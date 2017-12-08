@@ -40,10 +40,10 @@ namespace SiaNet.Model.Layers
             CellDim = cellDim;
             Activation = activation;
             RecurrentActivation = recurrentActivation;
-            WeightInitializer = new BaseInitializer(weightInitializer);
-            RecurrentInitializer = new BaseInitializer(recurrentInitializer);
+            WeightInitializer = new Initializer(weightInitializer);
+            RecurrentInitializer = new Initializer(recurrentInitializer);
             UseBias = useBias;
-            BiasInitializer = new BaseInitializer(biasInitializer);
+            BiasInitializer = new Initializer(biasInitializer);
             ReturnSequence = returnSequence;
         }
 
@@ -63,10 +63,10 @@ namespace SiaNet.Model.Layers
             CellDim = null;
             Activation = activation;
             RecurrentActivation = recurrentActivation;
-            WeightInitializer = new BaseInitializer(weightInitializer);
-            RecurrentInitializer = new BaseInitializer(recurrentInitializer);
+            WeightInitializer = new Initializer(weightInitializer);
+            RecurrentInitializer = new Initializer(recurrentInitializer);
             UseBias = useBias;
-            BiasInitializer = new BaseInitializer(biasInitializer);
+            BiasInitializer = new Initializer(biasInitializer);
             ReturnSequence = returnSequence;
         }
 
@@ -199,7 +199,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer WeightInitializer
+        public Initializer WeightInitializer
         {
             get
             {
@@ -212,7 +212,7 @@ namespace SiaNet.Model.Layers
             }
         }
 
-        public BaseInitializer RecurrentInitializer
+        public Initializer RecurrentInitializer
         {
             get
             {
@@ -232,7 +232,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public BaseInitializer BiasInitializer
+        public Initializer BiasInitializer
         {
             get
             {

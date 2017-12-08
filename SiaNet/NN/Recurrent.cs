@@ -11,7 +11,7 @@ namespace SiaNet.NN
 {
     public class Recurrent
     {
-        public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, BaseInitializer weightInitializer = null, BaseInitializer recurrentInitializer = null, bool useBias = true, BaseInitializer biasInitializer = null, bool returnSequence = false)
+        public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, Initializer weightInitializer = null, Initializer recurrentInitializer = null, bool useBias = true, Initializer biasInitializer = null, bool returnSequence = false)
         {
             weightInitializer = weightInitializer ?? new GlorotUniform();
             recurrentInitializer = recurrentInitializer ?? new GlorotUniform();
@@ -109,7 +109,7 @@ namespace SiaNet.NN
 
         public static Function LSTM(Variable layer, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
         {
-            return LSTM(layer, dim, cellDim, activation, recurrentActivation, new BaseInitializer(weightInitializer), new BaseInitializer(recurrentInitializer), useBias, new BaseInitializer(biasInitializer), returnSequence);
+            return LSTM(layer, dim, cellDim, activation, recurrentActivation, new Initializer(weightInitializer), new Initializer(recurrentInitializer), useBias, new Initializer(biasInitializer), returnSequence);
         }
 
         public static Function LSTM(int shape, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
@@ -117,7 +117,7 @@ namespace SiaNet.NN
             return LSTM(Variable.InputVariable(new int[] { shape }, DataType.Float, isSparse: true), dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer);
         }
 
-        public static Function LSTM(int shape, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, BaseInitializer weightInitializer = null, BaseInitializer recurrentInitializer = null, bool useBias = true, BaseInitializer biasInitializer = null)
+        public static Function LSTM(int shape, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, Initializer weightInitializer = null, Initializer recurrentInitializer = null, bool useBias = true, Initializer biasInitializer = null)
         {
             return LSTM(Variable.InputVariable(new int[] { shape }, DataType.Float, isSparse: true), dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer);
         }
