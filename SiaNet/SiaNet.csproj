@@ -59,11 +59,14 @@
     <AssemblyOriginatorKeyFile>Sia.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cntk.Core.Managed-2.2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a82c1f3f67b62253, processorArchitecture=AMD64">
-      <HintPath>..\packages\CNTK.GPU.2.2.0\lib\net45\x64\Cntk.Core.Managed-2.2.dll</HintPath>
+    <Reference Include="Cntk.Core.Managed-2.3.1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a82c1f3f67b62253, processorArchitecture=AMD64">
+      <HintPath>..\packages\CNTK.GPU.2.3.1\lib\net45\x64\Cntk.Core.Managed-2.3.1.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper, Version=6.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.6.0.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Deedle, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Deedle.1.2.5\lib\net40\Deedle.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.UI, Version=3.3.0.2824, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EMGU.CV.3.3.0.2824\lib\net35\Emgu.CV.UI.dll</HintPath>
@@ -97,7 +100,6 @@
     <Compile Include="Application\FastRCNN.cs" />
     <Compile Include="Application\ImageNet.cs" />
     <Compile Include="GlobalParameters.cs" />
-    <Compile Include="Initializers.cs" />
     <Compile Include="Interface\ITrainPredict.cs" />
     <Compile Include="Losses.cs" />
     <Compile Include="Metrics.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Model\DataFrame.cs" />
     <Compile Include="Model\ImageDataFrame.cs" />
     <Compile Include="Model\ImageDataGenerator.cs" />
+    <Compile Include="Model\Initializers.cs" />
     <Compile Include="Model\LayerConfig.cs" />
     <Compile Include="Model\Layers\BatchNorm.cs" />
     <Compile Include="Model\Layers\AvgPool1D.cs" />
@@ -161,13 +164,13 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets" Condition="Exists('..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.GPU.2.2.0\build\net45\CNTK.GPU.targets'))" />
     <Error Condition="!Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.GPU.2.3.1\build\net45\CNTK.GPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.GPU.2.3.1\build\net45\CNTK.GPU.targets'))" />
   </Target>
   <Import Project="..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets" Condition="Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" />
+  <Import Project="..\packages\CNTK.GPU.2.3.1\build\net45\CNTK.GPU.targets" Condition="Exists('..\packages\CNTK.GPU.2.3.1\build\net45\CNTK.GPU.targets')" />
 </Project>

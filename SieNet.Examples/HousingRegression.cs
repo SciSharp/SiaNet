@@ -1,5 +1,6 @@
 ﻿using SiaNet.Common;
 using SiaNet.Model;
+using SiaNet.Model.Initializers;
 using SiaNet.Model.Layers;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Examples
 {
+  
     internal class HousingRegression
     {
         private static TrainTestFrame traintest;
@@ -21,6 +23,7 @@ namespace SiaNet.Examples
             Downloader.DownloadSample(SampleDataset.HousingRegression);
             var samplePath = Downloader.GetSamplePath(SampleDataset.HousingRegression);
             frame.LoadFromCsv(samplePath.Train);
+            frame.Shuffle();
             var xy = frame.SplitXY(14, new[] { 1, 13 });
             traintest = xy.SplitTrainTest(0.25);
         }

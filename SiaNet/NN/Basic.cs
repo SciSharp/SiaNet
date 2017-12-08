@@ -2,6 +2,7 @@
 {
     using CNTK;
     using SiaNet.Common;
+    using SiaNet.Model.Initializers;
     using System.Linq;
 
     /// <summary>
@@ -21,9 +22,7 @@
         /// <returns></returns>
         public static Function Dense(int shape, int dim, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
-            var input = CNTKLib.InputVariable(new int[] { shape }, DataType.Float);
-            Function fullyConnected = FullyConnected(input, dim, useBias, weightInitializer, biasInitializer);
-            return Activation(fullyConnected, activation);
+            return Dense(shape, dim, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
         }
 
         /// <summary>
@@ -38,6 +37,40 @@
         /// <returns></returns>
         public static Function Dense(Variable layer, int dim, string activation = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
         {
+            return Dense(layer, dim, activation, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
+        }
+
+        /// <summary>
+        /// Dense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument, kernel is a weights matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).
+        /// </summary>
+        /// <param name="shape">The input shape.</param>
+        /// <param name="dim">Positive integer, dimensionality of the output space..</param>
+        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Dense(int shape, int dim, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
+        {
+            var input = CNTKLib.InputVariable(new int[] { shape }, DataType.Float);
+            return Dense(input, dim, activation, useBias, weightInitializer, biasInitializer);
+        }
+
+        /// <summary>
+        /// Denses the specified layer.
+        /// </summary>
+        /// <param name="layer">The output of the last layer.</param>
+        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
+        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
+        /// <returns></returns>
+        public static Function Dense(Variable layer, int dim, string activation = OptActivations.None, bool useBias = false, Initializer weightInitializer = null, Initializer biasInitializer = null)
+        {
+            weightInitializer = weightInitializer ?? new Xavier();
+            biasInitializer = biasInitializer ?? new Zeros();
+
             if (layer.Shape.Rank != 1)
             {
                 int newDim = layer.Shape.Dimensions.Aggregate((d1, d2) => d1 * d2);
@@ -106,13 +139,60 @@
                                         string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial=true, 
                                         float normalizationTimeConstant=4096f, float blendTimeConst=0.0f)
         {
-            var biasParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, Initializers.Get(betaInitializer), GlobalParameters.Device, "");
-            var scaleParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, Initializers.Get(gammaInitializers), GlobalParameters.Device, "");
-            var runningMean = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, Initializers.Get(runningMeanInitializer), GlobalParameters.Device, "");
-            var runningInvStd = new Constant(new int[] { NDShape.InferredDimension }, 0.0f, GlobalParameters.Device);
-            var runningCount = Constant.Scalar(0.0f, GlobalParameters.Device);
+            return BatchNorm(layer, epsilon, new Initializer(betaInitializer), new Initializer(gammaInitializers), new Initializer(runningMeanInitializer), new Initializer(runningStdInvInitializer),
+                            spatial, normalizationTimeConstant, blendTimeConst);
+        }
+
+        /// <summary>
+        /// Batches the norm.
+        /// </summary>
+        /// <param name="shape">The input shape for batch norm layer.</param>
+        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
+        /// <param name="betaInitializer">Initializer for the beta weight.</param>
+        /// <param name="gammaInitializers">Initializer for the gamma weight.</param>
+        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
+        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
+        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
+        /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
+        /// <param name="blendTimeConst">The blend time constant in samples.</param>
+        /// <returns></returns>
+        public static Function BatchNorm(int shape, float epsilon = 0.001f, string betaInitializer = OptInitializers.Zeros, string gammaInitializers = OptInitializers.Ones,
+                                       string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial = true,
+                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
+        {
+            return BatchNorm(shape, epsilon, new Initializer(betaInitializer), new Initializer(gammaInitializers), new Initializer(runningMeanInitializer), new Initializer(runningStdInvInitializer),
+                            spatial, normalizationTimeConstant, blendTimeConst);
+        }
+
+        /// <summary>
+        /// Batch normalization layer (Ioffe and Szegedy, 2014). Normalize the activations of the previous layer at each batch, i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation close to 1.
+        /// </summary>
+        /// <param name="layer">The output of the last layer.</param>
+        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
+        /// <param name="betaInitializer">Initializer for the beta weight.</param>
+        /// <param name="gammaInitializers">Initializer for the gamma weight.</param>
+        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
+        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
+        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
+        /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
+        /// <param name="blendTimeConst">The blend time constant in samples.</param>
+        /// <returns></returns>
+        public static Function BatchNorm(Variable layer, float epsilon = 0.001f, Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                        Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
+                                        float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
+        {
+            betaInitializer = betaInitializer ?? new Zeros();
+            gammaInitializers = gammaInitializers ?? new Zeros();
+            runningMeanInitializer = runningMeanInitializer ?? new Zeros();
+            runningStdInvInitializer = runningStdInvInitializer ?? new Zeros();
+
+            var biasParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, betaInitializer.Get(), GlobalParameters.Device, "");
+            var scaleParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, gammaInitializers.Get(), GlobalParameters.Device, "");
+            var runningMean = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, runningMeanInitializer.Get(), GlobalParameters.Device, "");
+            var runningInvStd = new CNTK.Constant(new int[] { NDShape.InferredDimension }, 0.0f, GlobalParameters.Device);
+            var runningCount = CNTK.Constant.Scalar(0.0f, GlobalParameters.Device);
             bool useCudnn = false;
-            if(GlobalParameters.Device.Type == DeviceKind.GPU)
+            if (GlobalParameters.Device.Type == DeviceKind.GPU)
             {
                 useCudnn = true;
             }
@@ -133,16 +213,21 @@
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
         /// <returns></returns>
-        public static Function BatchNorm(int shape, float epsilon = 0.001f, string betaInitializer = OptInitializers.Zeros, string gammaInitializers = OptInitializers.Ones,
-                                       string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial = true,
+        public static Function BatchNorm(int shape, float epsilon = 0.001f, Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                       Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
                                        float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
         {
+            betaInitializer = betaInitializer ?? new Zeros();
+            gammaInitializers = gammaInitializers ?? new Zeros();
+            runningMeanInitializer = runningMeanInitializer ?? new Zeros();
+            runningStdInvInitializer = runningStdInvInitializer ?? new Zeros();
+
             var input = CNTKLib.InputVariable(new int[] { shape }, DataType.Float);
-            var biasParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, Initializers.Get(betaInitializer), GlobalParameters.Device, "");
-            var scaleParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, Initializers.Get(gammaInitializers), GlobalParameters.Device, "");
-            var runningMean = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, Initializers.Get(runningMeanInitializer), GlobalParameters.Device, "");
-            var runningInvStd = new Constant(new int[] { NDShape.InferredDimension }, 0.0f, GlobalParameters.Device);
-            var runningCount = Constant.Scalar(0.0f, GlobalParameters.Device);
+            var biasParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, betaInitializer.Get(), GlobalParameters.Device, "");
+            var scaleParams = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, gammaInitializers.Get(), GlobalParameters.Device, "");
+            var runningMean = new Parameter(new int[] { NDShape.InferredDimension }, DataType.Float, runningMeanInitializer.Get(), GlobalParameters.Device, "");
+            var runningInvStd = new CNTK.Constant(new int[] { NDShape.InferredDimension }, 0.0f, GlobalParameters.Device);
+            var runningCount = CNTK.Constant.Scalar(0.0f, GlobalParameters.Device);
             bool useCudnn = false;
             if (GlobalParameters.Device.Type == DeviceKind.GPU)
             {
@@ -160,21 +245,51 @@
         /// <returns></returns>
         public static Function Embedding(int shape, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
         {
+            return Embedding(shape, embeddingDim, new Initializer(initializers));
+        }
+
+        /// <summary>
+        /// Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -> [[0.25, 0.1], [0.6, -0.2]]. This layer can only be used as the first layer in a model.
+        /// </summary>
+        /// <param name="shape">The shape of the input.</param>
+        /// <param name="embeddingDim">The dim of the output space.</param>
+        /// <param name="initializers">The weight initializers for this layer.</param>
+        /// <returns></returns>
+        public static Function Embedding(Variable layer, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
+        {
+            return Embedding(layer, embeddingDim, new Initializer(initializers));
+        }
+
+        /// <summary>
+        /// Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -> [[0.25, 0.1], [0.6, -0.2]]. This layer can only be used as the first layer in a model.
+        /// </summary>
+        /// <param name="shape">The shape of the input.</param>
+        /// <param name="embeddingDim">The dim of the output space.</param>
+        /// <param name="initializers">The weight initializers for this layer.</param>
+        /// <returns></returns>
+        public static Function Embedding(int shape, int embeddingDim, Initializer initializers = null)
+        {
+            if (initializers == null)
+                initializers = new GlorotUniform();
+
             var input = CNTKLib.InputVariable(new int[] { shape }, true, DataType.Float);
-            var embeddingParameters = new Parameter(new int[] { embeddingDim, shape }, DataType.Float, Initializers.Get(initializers), GlobalParameters.Device);
+            var embeddingParameters = new Parameter(new int[] { embeddingDim, shape }, DataType.Float, initializers.Get(), GlobalParameters.Device);
             return CNTKLib.Times(embeddingParameters, input);
         }
 
         /// <summary>
-        /// Embeddings the specified layer.
+        /// Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -&gt; [[0.25, 0.1], [0.6, -0.2]]. This layer can only be used as the first layer in a model.
         /// </summary>
-        /// <param name="layer">The layer.</param>
-        /// <param name="embeddingDim">The embedding dim.</param>
-        /// <param name="initializers">The initializers.</param>
+        /// <param name="shape">The shape of the input.</param>
+        /// <param name="embeddingDim">The dim of the output space.</param>
+        /// <param name="initializers">The weight initializers for this layer.</param>
         /// <returns></returns>
-        public static Function Embedding(Variable layer, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
+        public static Function Embedding(Variable layer, int embeddingDim, Initializer initializers = null)
         {
-            var embeddingParameters = new Parameter(new int[] { embeddingDim, layer.Shape[0] }, DataType.Float, Initializers.Get(initializers), GlobalParameters.Device);
+            if (initializers == null)
+                initializers = new GlorotUniform();
+
+            var embeddingParameters = new Parameter(new int[] { embeddingDim, layer.Shape[0] }, DataType.Float, initializers.Get(), GlobalParameters.Device);
             return CNTKLib.Times(embeddingParameters, layer);
         }
 
@@ -211,23 +326,37 @@
         /// <returns></returns>
         private static Function FullyConnected(Variable input, int outputDim, bool useBias, string weightInitializer, string biasInitializer)
         {
+            return FullyConnected(input, outputDim, useBias, new Initializer(weightInitializer), new Initializer(biasInitializer));
+        }
+
+        /// <summary>
+        /// Fullies the connected.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="outputDim">The output dim.</param>
+        /// <param name="useBias">if set to <c>true</c> [use bias].</param>
+        /// <param name="weightInitializer">The weight initializer.</param>
+        /// <param name="biasInitializer">The bias initializer.</param>
+        /// <returns></returns>
+        private static Function FullyConnected(Variable input, int outputDim, bool useBias, Initializer weightInitializer, Initializer biasInitializer)
+        {
             int inputDim = input.Shape[0];
-            
+
             int[] s = { outputDim, inputDim };
-            var weights = new Parameter(s, DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
+            var weights = new Parameter(s, DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
 
             Parameter bias = null;
             if (useBias)
             {
                 int[] s2 = { outputDim };
-                bias = new Parameter(s2, DataType.Float, Initializers.Get(biasInitializer), GlobalParameters.Device);
+                bias = new Parameter(s2, DataType.Float, biasInitializer.Get(), GlobalParameters.Device);
             }
             else
             {
                 int[] s2 = { outputDim };
                 bias = new Parameter(s2, DataType.Float, 0.0f, GlobalParameters.Device);
             }
-            
+
             return CNTKLib.Plus(bias, CNTKLib.Times(weights, input));
         }
     }

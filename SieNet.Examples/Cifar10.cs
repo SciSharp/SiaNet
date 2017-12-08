@@ -47,10 +47,10 @@
 
         private static void BuildMLP(int[] imageDim, int numClasses)
         {
-            model.Add(new Dense(3072, imageDim[0], OptActivations.ReLU));
-            model.Add(new Dense(2000, OptActivations.ReLU));
+            model.Add(new Dense(dim: 3072, shape: imageDim[0], act: OptActivations.ReLU));
+            model.Add(new Dense(dim: 2000, act: OptActivations.ReLU));
             model.Add(new Dropout(0.2));
-            model.Add(new Dense(numClasses));
+            model.Add(new Dense(dim: numClasses));
         }
 
         private static void BuildSmallConvolutionLayer(int[] imageDim, int numClasses)

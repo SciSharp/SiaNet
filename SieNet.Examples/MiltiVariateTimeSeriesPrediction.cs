@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace SiaNet.Examples
 {
-    internal class TimeSeriesPrediction
+    internal class MiltiVariateTimeSeriesPrediction
     {
         private static XYFrame train;
 
         private static Sequential model;
 
-        private static string filepath = string.Format("{0}\\samples\\int_airline_pass.csv", AppDomain.CurrentDomain.BaseDirectory);
+        private static string filepath = string.Format("{0}\\samples\\PRSA_data_multivariate.csv", AppDomain.CurrentDomain.BaseDirectory);
 
-        private static int lookback = 3;
+        private static int lookback = 5;
 
         public static void LoadData()
         {
             DataFrame frame = new DataFrame();
             frame.LoadFromCsv(filepath);
-            frame = frame.GetFrame(1);
+            frame = frame.GetFrame(5);
             frame.Normalize();
             train = frame.ConvertTimeSeries(lookback);
         }
@@ -31,8 +31,8 @@ namespace SiaNet.Examples
         public static void BuildModel()
         {
             model = new Sequential();
-            model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback), returnSequence: true));
-            model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback)));
+            model.Add(new Reshape(targetshape: Shape.Create(1, train.XFrame.Shape[1]), shape: Shape.Create(lookback)));
+            model.Add(new LSTM(dim: 5, shape: Shape.Create(1, train.XFrame.Shape[1])));
             model.Add(new Dense(dim: 1));
 
             model.OnEpochEnd += Model_OnEpochEnd;
@@ -42,7 +42,7 @@ namespace SiaNet.Examples
         public static void Train()
         {
             model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSE);
-            model.Train(train, 100, 6);
+            model.Train(train, 10, 64);
         }
 
         private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)

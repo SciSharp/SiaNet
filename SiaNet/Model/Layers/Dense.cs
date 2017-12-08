@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SiaNet.Common;
+using SiaNet.Model.Initializers;
 
 namespace SiaNet.Model.Layers
 {
@@ -26,35 +27,21 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Dense"/> class.
         /// </summary>
-        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
-        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
-        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
-        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
-        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public Dense(int dim, string act = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
-            : this()
-        {
-            Shape = null;
-            Dim = dim;
-            Act = act;
-            UseBias = useBias;
-            WeightInitializer = weightInitializer;
-            BiasInitializer = biasInitializer;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dense"/> class.
-        /// </summary>
         /// <param name="dim">Positive integer, dimensionality of the output space..</param>
         /// <param name="shape">The input shape.</param>
         /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
-        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
-        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public Dense(int dim, int shape, string act = OptActivations.None, bool useBias = false, string weightInitializer = OptInitializers.Xavier, string biasInitializer = OptInitializers.Zeros)
-            : this(dim, act, useBias, weightInitializer, biasInitializer)
+        /// <param name="weightInitializer">Initializer for the kernel weights matrix. </param>
+        /// <param name="biasInitializer">Initializer for the bias vector. </param>
+        public Dense(int dim, int? shape = null, string act = OptActivations.None, bool useBias = false, object weightInitializer = null, object biasInitializer = null)
+            : this()
         {
             Shape = shape;
+            Dim = dim;
+            Act = act;
+            UseBias = useBias;
+            WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new Xavier());
+            BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
         }
 
         /// <summary>
@@ -144,7 +131,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string WeightInitializer
+        public Initializer WeightInitializer
         {
             get
             {
@@ -164,7 +151,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string BiasInitializer
+        public Initializer BiasInitializer
         {
             get
             {

@@ -1,4 +1,5 @@
 ﻿using SiaNet.Common;
+using SiaNet.Model.Initializers;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -30,6 +31,20 @@ namespace SiaNet.Model.Layers
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
         /// <param name="initializers">Initializer for the embeddings matrix.</param>
         public Embedding(int shape, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
+            : this()
+        {
+            Shape = shape;
+            EmbeddingDim = embeddingDim;
+            Initializers = new Initializer(initializers);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Embedding" /> class.
+        /// </summary>
+        /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
+        /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
+        /// <param name="initializers">Initializer for the embeddings matrix.</param>
+        public Embedding(int shape, int embeddingDim, Initializer initializers = null)
             : this()
         {
             Shape = shape;
@@ -84,7 +99,7 @@ namespace SiaNet.Model.Layers
         /// The initializers.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string Initializers
+        public Initializer Initializers
         {
             get
             {

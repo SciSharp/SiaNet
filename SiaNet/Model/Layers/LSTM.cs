@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SiaNet.Common;
+using SiaNet.Model.Initializers;
 
 namespace SiaNet.Model.Layers
 {
@@ -26,64 +27,27 @@ namespace SiaNet.Model.Layers
         /// <summary>
         /// Initializes a new instance of the <see cref="Dense"/> class.
         /// </summary>
-        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
-        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
-        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
-        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
-        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
-            : this()
-        {
-            Shape = null;
-            Dim = dim;
-            CellDim = cellDim;
-            Activation = activation;
-            RecurrentActivation = recurrentActivation;
-            WeightInitializer = weightInitializer;
-            RecurrentInitializer = recurrentInitializer;
-            UseBias = useBias;
-            BiasInitializer = biasInitializer;
-            ReturnSequence = returnSequence;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dense"/> class.
-        /// </summary>
-        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
-        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
-        /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
-        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
-        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
-            : this()
-        {
-            Shape = null;
-            Dim = dim;
-            CellDim = null;
-            Activation = activation;
-            RecurrentActivation = recurrentActivation;
-            WeightInitializer = weightInitializer;
-            RecurrentInitializer = recurrentInitializer;
-            UseBias = useBias;
-            BiasInitializer = biasInitializer;
-            ReturnSequence = returnSequence;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dense"/> class.
-        /// </summary>
         /// <param name="dim">Positive integer, dimensionality of the output space..</param>
         /// <param name="shape">The input shape.</param>
         /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, int[] shape = null, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
-            : this(dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer, returnSequence)
+        public LSTM(int dim, int[] shape = null, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, 
+            object weightInitializer = null, object recurrentInitializer = null, bool useBias = true, object biasInitializer = null, bool returnSequence = false)
+            : this()
         {
             Shape = shape;
+            Dim = dim;
+            CellDim = cellDim;
+            Activation = activation;
+            RecurrentActivation = recurrentActivation;
+            UseBias = useBias;
+            ReturnSequence = returnSequence;
+            WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new GlorotUniform());
+            RecurrentInitializer = Utility.GetInitializerFromObject(recurrentInitializer, new GlorotUniform());
+            BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
         }
-        
 
         /// <summary>
         /// The input shape for this layer
@@ -199,7 +163,7 @@ namespace SiaNet.Model.Layers
         /// The weight initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string WeightInitializer
+        public Initializer WeightInitializer
         {
             get
             {
@@ -212,7 +176,7 @@ namespace SiaNet.Model.Layers
             }
         }
 
-        public string RecurrentInitializer
+        public Initializer RecurrentInitializer
         {
             get
             {
@@ -232,7 +196,7 @@ namespace SiaNet.Model.Layers
         /// The bias initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string BiasInitializer
+        public Initializer BiasInitializer
         {
             get
             {

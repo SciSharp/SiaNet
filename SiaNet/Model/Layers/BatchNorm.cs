@@ -1,6 +1,7 @@
 ﻿namespace SiaNet.Model.Layers
 {
     using SiaNet.Common;
+    using SiaNet.Model.Initializers;
     using System.Dynamic;
 
     /// <summary>
@@ -16,6 +17,25 @@
         {
             base.Name = "BatchNorm";
             base.Params = new ExpandoObject();
+            Shape = null;
+            BetaInitializer = new Zeros();
+            GammaInitializer = new Ones();
+            RunningMeanInitializer = new Zeros();
+            RunningStdInvInitializer = new Ones();
+            Spatial = true;
+            NormalizationTimeConstant = 4096f;
+            BlendTimeConst = 0;
+            Epsilon = 0.001f;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BatchNorm"/> class.
+        /// </summary>
+        /// <param name="shape">The input shape for batch norm layer.</param>
+        public BatchNorm(int shape)
+            : this()
+        {
+            Shape = shape;
         }
 
         /// <summary>
@@ -29,17 +49,17 @@
         /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(float epsilon = 0.001f, string betaInitializer = OptInitializers.Zeros, string gammaInitializers = OptInitializers.Ones,
+        public BatchNorm(string betaInitializer = OptInitializers.Zeros, string gammaInitializers = OptInitializers.Ones,
                                        string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial = true,
-                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
+                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f, float epsilon = 0.001f)
             : this()
         {
             Shape = null;
             Epsilon = epsilon;
-            BetaInitializer = betaInitializer;
-            GammaInitializer = gammaInitializers;
-            RunningMeanInitializer = runningMeanInitializer;
-            RunningStdInvInitializer = runningStdInvInitializer;
+            BetaInitializer = new Initializer(betaInitializer);
+            GammaInitializer = new Initializer(gammaInitializers);
+            RunningMeanInitializer = new Initializer(runningMeanInitializer);
+            RunningStdInvInitializer = new Initializer(runningStdInvInitializer);
             Spatial = spatial;
             NormalizationTimeConstant = normalizationTimeConstant;
             BlendTimeConst = blendTimeConst;
@@ -57,10 +77,57 @@
         /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
         /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(int shape, float epsilon = 0.001f, string betaInitializer = OptInitializers.Zeros, string gammaInitializers = OptInitializers.Ones,
+        public BatchNorm(int shape, string betaInitializer = OptInitializers.Zeros, string gammaInitializers = OptInitializers.Ones,
                                        string runningMeanInitializer = OptInitializers.Zeros, string runningStdInvInitializer = OptInitializers.Ones, bool spatial = true,
-                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f)
-            : this(epsilon, betaInitializer, gammaInitializers, runningMeanInitializer, runningStdInvInitializer, spatial, normalizationTimeConstant, blendTimeConst)
+                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f, float epsilon = 0.001f)
+            : this(betaInitializer, gammaInitializers, runningMeanInitializer, runningStdInvInitializer, spatial, normalizationTimeConstant, blendTimeConst, epsilon)
+        {
+            Shape = shape;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BatchNorm"/> class.
+        /// </summary>
+        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
+        /// <param name="betaInitializer">Initializer for the beta weight.</param>
+        /// <param name="gammaInitializers">Initializer for the gamma weight.</param>
+        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
+        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
+        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
+        /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
+        /// <param name="blendTimeConst">The blend time constant in samples.</param>
+        public BatchNorm(Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                       Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
+                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f, float epsilon = 0.001f)
+            : this()
+        {
+            Shape = null;
+            Epsilon = epsilon;
+            BetaInitializer = betaInitializer ?? new Zeros();
+            GammaInitializer = gammaInitializers ?? new Ones();
+            RunningMeanInitializer = runningMeanInitializer ?? new Zeros();
+            RunningStdInvInitializer = runningStdInvInitializer ?? new Ones();
+            Spatial = spatial;
+            NormalizationTimeConstant = normalizationTimeConstant;
+            BlendTimeConst = blendTimeConst;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BatchNorm"/> class.
+        /// </summary>
+        /// <param name="shape">The input shape for batch norm layer.</param>
+        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
+        /// <param name="betaInitializer">Initializer for the beta weight.</param>
+        /// <param name="gammaInitializers">Initializer for the gamma weight.</param>
+        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
+        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
+        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
+        /// <param name="normalizationTimeConstant">The time constant in samples of the first-order low-pass filter that is used to compute mean/variance statistics for use in inference</param>
+        /// <param name="blendTimeConst">The blend time constant in samples.</param>
+        public BatchNorm(int shape, Initializer betaInitializer = null, Initializer gammaInitializers = null,
+                                       Initializer runningMeanInitializer = null, Initializer runningStdInvInitializer = null, bool spatial = true,
+                                       float normalizationTimeConstant = 4096f, float blendTimeConst = 0.0f, float epsilon = 0.001f)
+            : this(betaInitializer, gammaInitializers, runningMeanInitializer, runningStdInvInitializer, spatial, normalizationTimeConstant, blendTimeConst, epsilon)
         {
             Shape = shape;
         }
@@ -112,7 +179,7 @@
         /// The beta initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string BetaInitializer
+        public Initializer BetaInitializer
         {
             get
             {
@@ -132,7 +199,7 @@
         /// The gamma initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string GammaInitializer
+        public Initializer GammaInitializer
         {
             get
             {
@@ -152,7 +219,7 @@
         /// The running mean initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string RunningMeanInitializer
+        public Initializer RunningMeanInitializer
         {
             get
             {
@@ -172,7 +239,7 @@
         /// The running standard inv initializer.
         /// </value>
         [Newtonsoft.Json.JsonIgnore]
-        public string RunningStdInvInitializer
+        public Initializer RunningStdInvInitializer
         {
             get
             {

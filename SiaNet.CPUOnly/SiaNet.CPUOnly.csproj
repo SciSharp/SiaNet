@@ -57,11 +57,14 @@
     <AssemblyOriginatorKeyFile>..\SiaNet\Sia.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cntk.Core.Managed-2.3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21fff2ec8197defe, processorArchitecture=AMD64">
-      <HintPath>..\packages\CNTK.CPUOnly.2.3.0\lib\net45\x64\Cntk.Core.Managed-2.3.dll</HintPath>
+    <Reference Include="Cntk.Core.Managed-2.3.1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21fff2ec8197defe, processorArchitecture=AMD64">
+      <HintPath>..\packages\CNTK.CPUOnly.2.3.1\lib\net45\x64\Cntk.Core.Managed-2.3.1.dll</HintPath>
     </Reference>
     <Reference Include="CsvHelper, Version=6.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.6.0.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Deedle, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Deedle.1.2.5\lib\net40\Deedle.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.UI, Version=3.3.0.2824, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EMGU.CV.3.3.0.2824\lib\net35\Emgu.CV.UI.dll</HintPath>
@@ -103,9 +106,6 @@
     <Compile Include="..\SiaNet\GlobalParameters.cs">
       <Link>GlobalParameters.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Initializers.cs">
-      <Link>Initializers.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Interface\ITrainPredict.cs">
       <Link>Interface\ITrainPredict.cs</Link>
     </Compile>
@@ -126,6 +126,9 @@
     </Compile>
     <Compile Include="..\SiaNet\Model\ImageDataGenerator.cs">
       <Link>Model\ImageDataGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers.cs">
+      <Link>Model\Initializers.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\LayerConfig.cs">
       <Link>Model\LayerConfig.cs</Link>
@@ -274,8 +277,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets'))" />
-    <Error Condition="!Exists('..\packages\CNTK.CPUOnly.2.3.0\build\net45\CNTK.CPUOnly.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.CPUOnly.2.3.0\build\net45\CNTK.CPUOnly.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.CPUOnly.2.3.1\build\net45\CNTK.CPUOnly.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.CPUOnly.2.3.1\build\net45\CNTK.CPUOnly.targets'))" />
   </Target>
   <Import Project="..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets" Condition="Exists('..\packages\EMGU.CV.3.3.0.2824\build\Emgu.CV.targets')" />
-  <Import Project="..\packages\CNTK.CPUOnly.2.3.0\build\net45\CNTK.CPUOnly.targets" Condition="Exists('..\packages\CNTK.CPUOnly.2.3.0\build\net45\CNTK.CPUOnly.targets')" />
+  <Import Project="..\packages\CNTK.CPUOnly.2.3.1\build\net45\CNTK.CPUOnly.targets" Condition="Exists('..\packages\CNTK.CPUOnly.2.3.1\build\net45\CNTK.CPUOnly.targets')" />
 </Project>

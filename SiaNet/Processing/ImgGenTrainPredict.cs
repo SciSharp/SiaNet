@@ -142,7 +142,7 @@ namespace SiaNet.Processing
             Value features = DataFrameUtil.GetValueBatch(data);
             var outputVal = EvaluateInternal(features);
             IList<IList<float>> resultSet = outputVal.GetDenseData<float>(Model.Output);
-            var result = resultSet.Select(x => x.First()).ToList();
+            var result = resultSet[0];
             return result;
         }
     }

@@ -48,16 +48,16 @@
         private static void BuildMLP(int[] imageDim, int numClasses)
         {
             model.Add(new Dense(200, imageDim[0], OptActivations.ReLU));
-            model.Add(new Dense(400, OptActivations.ReLU));
+            model.Add(new Dense(400, act: OptActivations.ReLU));
             model.Add(new Dropout(0.2));
             model.Add(new Dense(numClasses));
         }
 
         private static void BuildConvolutionLayer(int[] imageDim, int numClasses)
         {
-            model.Add(new Conv2D(Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), 4, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier, useBias: true, biasInitializer: OptInitializers.Ones));
+            model.Add(new Conv2D(shape: Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), channels: 4, kernalSize: Tuple.Create(3, 3), strides: Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier, useBias: true, biasInitializer: OptInitializers.Ones));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
-            model.Add(new Conv2D(8, Tuple.Create(3, 3), Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier));
+            model.Add(new Conv2D(channels: 8, kernalSize: Tuple.Create(3, 3), strides: Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
             model.Add(new Dense(numClasses));
         }

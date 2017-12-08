@@ -136,7 +136,7 @@ namespace SiaNet.Processing
         {
             var outputValue = EvaluateInternal(data);
             IList<IList<float>> resultSet = outputValue.GetDenseData<float>(Model.Output);
-            var result = resultSet.Select(x => x.First()).ToList();
+            var result = resultSet[0];
             return result;
         }
     }

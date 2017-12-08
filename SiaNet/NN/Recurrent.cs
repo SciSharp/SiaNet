@@ -1,5 +1,6 @@
 ﻿using CNTK;
 using SiaNet.Common;
+using SiaNet.Model.Initializers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,19 +11,23 @@ namespace SiaNet.NN
 {
     public class Recurrent
     {
-        public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
+        public static Function LSTM(Variable layer, int dim, int? cellDim=null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, Initializer weightInitializer = null, Initializer recurrentInitializer = null, bool useBias = true, Initializer biasInitializer = null, bool returnSequence = false)
         {
+            weightInitializer = weightInitializer ?? new GlorotUniform();
+            recurrentInitializer = recurrentInitializer ?? new GlorotUniform();
+            biasInitializer = biasInitializer ?? new GlorotUniform();
+
             cellDim = cellDim.HasValue ? cellDim : dim;
             Variable prevOutput = Variable.PlaceholderVariable(new int[] { dim }, layer.DynamicAxes);
             Variable prevCellState = cellDim.HasValue ? Variable.PlaceholderVariable(new int[] { cellDim.Value }, layer.DynamicAxes) : null;
 
-            Func<int, Parameter> createBiasParam = (d) => new Parameter(new int[] { d }, DataType.Float, Initializers.Get(biasInitializer), GlobalParameters.Device);
+            Func<int, Parameter> createBiasParam = (d) => new Parameter(new int[] { d }, DataType.Float, biasInitializer.Get(), GlobalParameters.Device);
             
             Func<int, Parameter> createProjectionParam = (oDim) => new Parameter(new int[] { oDim, NDShape.InferredDimension },
-                    DataType.Float, Initializers.Get(weightInitializer), GlobalParameters.Device);
+                    DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
 
             Func<int, Parameter> createDiagWeightParam = (d) =>
-                new Parameter(new int[] { d }, DataType.Float, Initializers.Get(recurrentInitializer), GlobalParameters.Device);
+                new Parameter(new int[] { d }, DataType.Float, recurrentInitializer.Get(), GlobalParameters.Device);
 
             Function stabilizedPrevOutput = Stabilize<float>(prevOutput, GlobalParameters.Device);
             Function stabilizedPrevCellState = prevCellState !=null ? Stabilize<float>(prevCellState, GlobalParameters.Device) : null;
@@ -102,7 +107,17 @@ namespace SiaNet.NN
             return CNTKLib.SequenceLast(h);
         }
 
+        public static Function LSTM(Variable layer, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros, bool returnSequence = false)
+        {
+            return LSTM(layer, dim, cellDim, activation, recurrentActivation, new Initializer(weightInitializer), new Initializer(recurrentInitializer), useBias, new Initializer(biasInitializer), returnSequence);
+        }
+
         public static Function LSTM(int shape, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, string weightInitializer = OptInitializers.GlorotUniform, string recurrentInitializer = OptInitializers.GlorotUniform, bool useBias = true, string biasInitializer = OptInitializers.Zeros)
+        {
+            return LSTM(Variable.InputVariable(new int[] { shape }, DataType.Float, isSparse: true), dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer);
+        }
+
+        public static Function LSTM(int shape, int dim, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, Initializer weightInitializer = null, Initializer recurrentInitializer = null, bool useBias = true, Initializer biasInitializer = null)
         {
             return LSTM(Variable.InputVariable(new int[] { shape }, DataType.Float, isSparse: true), dim, cellDim, activation, recurrentActivation, weightInitializer, recurrentInitializer, useBias, biasInitializer);
         }
@@ -110,22 +125,22 @@ namespace SiaNet.NN
         private static Function Stabilize<ElementType>(Variable x, DeviceDescriptor device)
         {
             bool isFloatType = typeof(ElementType).Equals(typeof(float));
-            Constant f, fInv;
+            CNTK.Constant f, fInv;
             if (isFloatType)
             {
-                f = Constant.Scalar(4.0f, device);
-                fInv = Constant.Scalar(f.DataType, 1.0 / 4.0f);
+                f = CNTK.Constant.Scalar(4.0f, device);
+                fInv = CNTK.Constant.Scalar(f.DataType, 1.0 / 4.0f);
             }
             else
             {
-                f = Constant.Scalar(4.0, device);
-                fInv = Constant.Scalar(f.DataType, 1.0 / 4.0f);
+                f = CNTK.Constant.Scalar(4.0, device);
+                fInv = CNTK.Constant.Scalar(f.DataType, 1.0 / 4.0f);
             }
 
             var beta = CNTKLib.ElementTimes(
                 fInv,
                 CNTKLib.Log(
-                    Constant.Scalar(f.DataType, 1.0) +
+                    CNTK.Constant.Scalar(f.DataType, 1.0) +
                     CNTKLib.Exp(CNTKLib.ElementTimes(f, new Parameter(new NDShape(), f.DataType, 0.99537863 /* 1/f*ln (e^f-1) */, device)))));
             return CNTKLib.ElementTimes(beta, x);
         }
