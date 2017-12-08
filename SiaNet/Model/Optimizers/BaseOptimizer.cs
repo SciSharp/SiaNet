@@ -110,7 +110,7 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner SGD(Function modelOutput, double learningRate = 0.01, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.SGDLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, GetAdditionalLearningOptions());
         }
 
@@ -125,8 +125,8 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner MomentumSGD(Function modelOutput, double learningRate = 0.01, double momentum = 0.1, bool unitGain = true, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
-            CNTK.TrainingParameterScheduleDouble momentumPerSample = new CNTK.TrainingParameterScheduleDouble(momentum);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
+            CNTK.TrainingParameterScheduleDouble momentumPerSample = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
 
             return CNTKLib.MomentumSGDLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumPerSample, unitGain, GetAdditionalLearningOptions());
         }
@@ -142,7 +142,7 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner AdaDelta(Function modelOutput, double learningRate = 1.0, double rho = 0.95, double epsilon = 1e-08, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.AdaDeltaLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, rho, epsilon, GetAdditionalLearningOptions());
         }
 
@@ -155,7 +155,7 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner AdaGrad(Function modelOutput, double learningRate = 0.01, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.AdaGradLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, false, GetAdditionalLearningOptions());
         }
 
@@ -172,9 +172,9 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner Adam(Function modelOutput, double learningRate = 0.001, double momentum = 0.9, double varianceMomentum = 0.999, bool unitGain = true, double epsilon = 1e-08f, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
-            CNTK.TrainingParameterScheduleDouble momentumRate = new CNTK.TrainingParameterScheduleDouble(momentum);
-            CNTK.TrainingParameterScheduleDouble varianceMomentumRate = new CNTK.TrainingParameterScheduleDouble(varianceMomentum);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
+            CNTK.TrainingParameterScheduleDouble momentumRate = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
+            CNTK.TrainingParameterScheduleDouble varianceMomentumRate = new CNTK.TrainingParameterScheduleDouble(varianceMomentum, 1);
             return CNTKLib.AdamLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumRate, unitGain, varianceMomentumRate, epsilon, false, GetAdditionalLearningOptions());
         }
 
@@ -191,9 +191,9 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner Adamax(Function modelOutput, double learningRate = 0.002, double momentum = 0.9, double varianceMomentum = 0.999, bool unitGain = true, double epsilon = 1e-08, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
-            CNTK.TrainingParameterScheduleDouble momentumRate = new CNTK.TrainingParameterScheduleDouble(momentum);
-            CNTK.TrainingParameterScheduleDouble varianceMomentumRate = new CNTK.TrainingParameterScheduleDouble(varianceMomentum);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
+            CNTK.TrainingParameterScheduleDouble momentumRate = new CNTK.TrainingParameterScheduleDouble(momentum, 1);
+            CNTK.TrainingParameterScheduleDouble varianceMomentumRate = new CNTK.TrainingParameterScheduleDouble(varianceMomentum, 1);
             return CNTKLib.AdamLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, momentumRate, unitGain, varianceMomentumRate, epsilon, true, GetAdditionalLearningOptions());
         }
 
@@ -211,7 +211,7 @@ namespace SiaNet.Model.Optimizers
         /// <returns>Learner.</returns>
         private Learner RMSprop(Function modelOutput, double learningRate = 0.001, double gamma = 0.9, double inc = 2, double dec = 0.01, double min = 0.01, double max = 1, Regulizers regulizer = null)
         {
-            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate);
+            CNTK.TrainingParameterScheduleDouble learningRatePerSample = new CNTK.TrainingParameterScheduleDouble(learningRate, 1);
             return CNTKLib.RMSPropLearner(new ParameterVector(modelOutput.Parameters().ToList()), learningRatePerSample, gamma, inc, dec, max, min, false, GetAdditionalLearningOptions());
         }
     }
