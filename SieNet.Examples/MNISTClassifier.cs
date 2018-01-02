@@ -65,7 +65,7 @@
         public static void Train()
         {
             //model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Compile(new SGD(0.003125), OptLosses.CrossEntropy, OptMetrics.Accuracy);
+            model.Compile(new SGD(0.01), OptLosses.CrossEntropy, OptMetrics.Accuracy);
             model.Train(train, 10, 64, null);
         }
 
@@ -81,7 +81,7 @@
 
         private static void Model_OnBatchEnd(int epoch, int batchNumber, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            if (batchNumber % 20 == 0)
+            if (batchNumber % 100 == 0)
                 Console.WriteLine(string.Format("Epoch: {0}, Batch: {1}, Loss: {2}, Accuracy: {3}", epoch, batchNumber, loss, metrics.First().Value));
         }
     }

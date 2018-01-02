@@ -56,7 +56,7 @@ namespace SiaNet.Processing
                 while (!train.NextBatch(batchSize))
                 {
                     onBatchStart(currentEpoch, miniBatchCount);
-                    trainer.TrainMinibatch(new Dictionary<Variable, Value> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, GlobalParameters.Device);
+                    trainer.TrainMinibatch(new Dictionary<Variable, Value> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, true, GlobalParameters.Device);
                     OnBatchEnd(currentEpoch, miniBatchCount, trainer.TotalNumberOfSamplesSeen(), trainer.PreviousMinibatchLossAverage(), new Dictionary<string, double>() { { metricName, trainer.PreviousMinibatchEvaluationAverage() } });
                     
                     miniBatchCount++;
