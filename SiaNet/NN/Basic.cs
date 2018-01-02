@@ -108,6 +108,8 @@
                     return CNTKLib.Softplus(layer);
                 case OptActivations.ELU:
                     return CNTKLib.ELU(layer);
+                case OptActivations.SELU:
+                    return CNTKLib.SELU(layer);
             }
         }
 

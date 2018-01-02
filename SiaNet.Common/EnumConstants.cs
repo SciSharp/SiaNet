@@ -50,6 +50,7 @@ namespace SiaNet.Common
         public const string Softmax = "softmax";
         public const string Softplus = "softplus";
         public const string ELU = "elu";
+        public const string SELU = "selu";
     }
 
     /// <summary>
