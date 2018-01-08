@@ -51,6 +51,8 @@
 
         int layerCounter = 1;
 
+        public bool StopTraining = false;
+
         /// <summary>
         /// Gets the module.
         /// </summary>
@@ -138,7 +140,10 @@
         /// <param name="metrics">The metrics.</param>
         private void Sequential_OnBatchEnd(int epoch, int batchNumber, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-            
+            if(StopTraining)
+            {
+                Environment.Exit(-1);
+            }
         }
 
         /// <summary>
@@ -160,7 +165,10 @@
         /// <param name="metrics">The list of metrics.</param>
         private void Sequential_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
         {
-
+            if (StopTraining)
+            {
+                Environment.Exit(-1);
+            }
         }
 
         /// <summary>
