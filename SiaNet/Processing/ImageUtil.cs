@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.Drawing.Imaging;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -47,6 +48,7 @@
 
             return features.Select(b => (float)b).ToList();
         }
+
         internal static List<float> ParallelExtractGrayScale(this Bitmap image)
         {
             // We use local variables to avoid contention on the image object through the multiple threads.
@@ -80,6 +82,28 @@
             image.UnlockBits(bitmapData);
 
             return features.Select(b => (float)b).ToList();
+        }
+
+        internal static byte[] ToByteArray(this Bitmap image)
+        {
+            int channelStride = image.Width * image.Height;
+            int imageWidth = image.Width;
+            int imageHeight = image.Height;
+
+            var features = new byte[imageWidth * imageHeight * 3];
+            var bitmapData = image.LockBits(new System.Drawing.Rectangle(0, 0, imageWidth, imageHeight), ImageLockMode.ReadOnly, image.PixelFormat);
+            IntPtr ptr = bitmapData.Scan0;
+            int bytes = Math.Abs(bitmapData.Stride) * bitmapData.Height;
+            byte[] rgbValues = new byte[bytes];
+
+            int stride = bitmapData.Stride;
+
+            // Copy the RGB values into the array.
+            System.Runtime.InteropServices.Marshal.Copy(ptr, rgbValues, 0, bytes);
+            
+            image.UnlockBits(bitmapData);
+
+            return rgbValues;
         }
 
         /// <summary>

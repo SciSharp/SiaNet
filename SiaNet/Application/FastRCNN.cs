@@ -1,6 +1,4 @@
 ﻿using CNTK;
-using Emgu.CV;
-using Emgu.CV.Structure;
 using SiaNet.Common;
 using SiaNet.Common.Resources;
 using SiaNet.Model;
@@ -140,11 +138,12 @@ namespace SiaNet.Application
             try
             {
                 proposedBoxes = new List<Rectangle>();
-                var resized = bmp.Resize(250, 250, true);
-                List<float> roiList = new List<float>();// GenerateROIS(resized, model);
-                List<float> inArg3 = new List<float>();
+                
+                var resized = bmp.Resize(1000, 1000, true);
+                List<float> roiList = GenerateROIS(resized, model);
                 List<float> resizedCHW = resized.ParallelExtractCHW();
-                CalculateROI(resizedCHW);
+
+                //CalculateROI(resizedCHW);
                 // Create input data map
                 var inputDataMap = new Dictionary<Variable, Value>();
                 var inputVal1 = Value.CreateBatch(modelFunc.Arguments.First().Shape, resizedCHW, GlobalParameters.Device);
@@ -197,8 +196,6 @@ namespace SiaNet.Application
                     }
                 }
 
-                Emgu.CV.Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
-                
                 var groupBoxes = result.GroupBy(x => (x.Name)).ToList();
                 result = new List<PredResult>();
                 foreach (var item in groupBoxes)
@@ -246,18 +243,6 @@ namespace SiaNet.Application
             }
         }
 
-        private void CalculateROI(List<float> resizedCHW)
-        {
-            Variable inputVar = Variable.InputVariable(new int[] { 250, 250, 3 }, DataType.Double);
-            
-            Function roifunc = CNTKLib.ROIPooling(inputVar, Variable.InputVariable(new int[] { 4, 4 }, DataType.Double, "outputroi"), PoolingType.Average, new int[] { 4 }, 1, "roi_pooling_1");
-            Value input = Value.CreateBatch<float>(new int[] { 250, 250, 3 }, resizedCHW, GlobalParameters.Device);
-            Dictionary<Variable, Value> inputDict = new Dictionary<Variable, Value>() { { inputVar, input } };
-            Dictionary<Variable, Value> outputDict = new Dictionary<Variable, Value>() { { roifunc.Output, null } };
-
-            roifunc.Evaluate(inputDict, outputDict, GlobalParameters.Device);
-        }
-
 
         /// <summary>
         /// Gets the labels.
@@ -299,27 +284,28 @@ namespace SiaNet.Application
             }
 
             float[] roiList = new float[selectRois * 4];
-            
-            Emgu.CV.Image<Bgr, byte> img = new Image<Bgr, byte>(bmp);
-            Emgu.CV.XImgproc.SelectiveSearchSegmentation seg = new Emgu.CV.XImgproc.SelectiveSearchSegmentation();
-            var resizedImg = img.Resize(250, 250, Emgu.CV.CvEnum.Inter.Nearest);
-            seg.SetBaseImage(resizedImg);
-            seg.SwitchToSelectiveSearchQuality(selectionParam, selectionParam);
-            
-            var rects = seg.Process();
-            //rects = rects.OrderBy(x => (x.X)).ToArray();
+
+            List<float> inArg3 = new List<float>();
+            var imgArray = bmp.ToByteArray();
+            var img = DlibDotNet.Dlib.LoadImageData<DlibDotNet.RgbAlphaPixel>(imgArray, 1000, 1000, 1);
+            var rects = DlibDotNet.Dlib.FindCandidateObjectLocations(img);
+            if (!img.IsDisposed)
+            {
+                img.Dispose();
+            }
+
             int counter = 0;
             foreach (var item in rects)
             {
                 if (counter >= selectRois * 4)
                     break;
 
-                roiList[counter] = item.X * 4; counter++;
-                roiList[counter] = item.Y * 4; counter++;
+                roiList[counter] = item.Top * 4; counter++;
+                roiList[counter] = item.Left * 4; counter++;
                 roiList[counter] = item.Width * 4; counter++;
                 roiList[counter] = item.Height * 4; counter++;
 
-                proposedBoxes.Add(new Rectangle(item.X * 4, item.Y * 4, item.Width * 4, item.Height * 4));
+                proposedBoxes.Add(new Rectangle(item.Left * 4, item.Top * 4, (int)item.Width * 4, (int)item.Height * 4));
             }
 
             if(counter <= selectRois)

@@ -1,5 +1,4 @@
 ﻿using CNTK;
-using Emgu.CV.Structure;
 using SiaNet.Processing;
 using System;
 using System.Collections.Generic;
@@ -17,7 +16,6 @@ namespace SiaNet.Model
         internal string Filepath;
         internal int Label;
         internal int RotationAngle;
-        internal Emgu.CV.CvEnum.FlipType Flip = Emgu.CV.CvEnum.FlipType.None;
         internal int Resize = 0;
     }
 
@@ -60,15 +58,15 @@ namespace SiaNet.Model
                         }
                     }
 
-                    if (horizontalFlip)
-                    {
-                        folderMapData.Add(new ImageMapInfo() { Filepath = file, Label = counter, RotationAngle = 0, Flip = Emgu.CV.CvEnum.FlipType.Horizontal, Resize = resize });
-                    }
+                    //if (horizontalFlip)
+                    //{
+                    //    folderMapData.Add(new ImageMapInfo() { Filepath = file, Label = counter, RotationAngle = 0, Flip = Emgu.CV.CvEnum.FlipType.Horizontal, Resize = resize });
+                    //}
 
-                    if (verticalFlip)
-                    {
-                        folderMapData.Add(new ImageMapInfo() { Filepath = file, Label = counter, RotationAngle = 0, Flip = Emgu.CV.CvEnum.FlipType.Vertical, Resize = resize });
-                    }
+                    //if (verticalFlip)
+                    //{
+                    //    folderMapData.Add(new ImageMapInfo() { Filepath = file, Label = counter, RotationAngle = 0, Flip = Emgu.CV.CvEnum.FlipType.Vertical, Resize = resize });
+                    //}
                 }
 
                 counter++;
@@ -149,23 +147,23 @@ namespace SiaNet.Model
         private List<float> processImageFile(ImageMapInfo mapInfo)
         {
             Bitmap bmp = new Bitmap(mapInfo.Filepath);
-            Emgu.CV.Image<Bgr, byte> img = new Emgu.CV.Image<Bgr, byte>(bmp);
-            if (mapInfo.Resize > 0)
-            {
-                img = img.Resize(mapInfo.Resize, mapInfo.Resize, Emgu.CV.CvEnum.Inter.Nearest);
-            }
+            //Emgu.CV.Image<Bgr, byte> img = new Emgu.CV.Image<Bgr, byte>(bmp);
+            //if (mapInfo.Resize > 0)
+            //{
+            //    img = img.Resize(mapInfo.Resize, mapInfo.Resize, Emgu.CV.CvEnum.Inter.Nearest);
+            //}
 
-            if (mapInfo.Flip != Emgu.CV.CvEnum.FlipType.None)
-            {
-                img = img.Flip(mapInfo.Flip);
-            }
+            //if (mapInfo.Flip != Emgu.CV.CvEnum.FlipType.None)
+            //{
+            //    img = img.Flip(mapInfo.Flip);
+            //}
 
-            if (mapInfo.RotationAngle > 0)
-            {
-                img.Rotate(mapInfo.RotationAngle, new Bgr(Color.White));
-            }
+            //if (mapInfo.RotationAngle > 0)
+            //{
+            //    img.Rotate(mapInfo.RotationAngle, new Bgr(Color.White));
+            //}
 
-            return img.Bitmap.ParallelExtractCHW();
+            return bmp.ParallelExtractCHW();
         }
 
         internal void Reset()

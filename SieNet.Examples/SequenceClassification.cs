@@ -32,7 +32,6 @@ namespace SiaNet.Examples
             model.Add(new Dense(dim: 13, act: OptActivations.LeakyReLU));
             model.Add(new Dropout(rate: 0.2));
             model.Add(new Dense(dim: 1, act: OptActivations.LeakyReLU));
-
             model.OnEpochEnd += Model_OnEpochEnd;
             model.OnTrainingEnd += Model_OnTrainingEnd;
         }

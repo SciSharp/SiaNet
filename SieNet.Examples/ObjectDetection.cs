@@ -15,7 +15,7 @@ namespace SiaNet.Examples
         {
             string imagePath = string.Format("{0}images\\objdet.jpg", AppDomain.CurrentDomain.BaseDirectory);
             FastRCNN app = new FastRCNN(FastRCNNModel.Pascal);
-            //app.LoadModel();
+            app.LoadModel();
             
             return app.Predict(imagePath);
         }

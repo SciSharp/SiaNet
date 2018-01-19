@@ -1,5 +1,4 @@
 ﻿using CNTK;
-using Emgu.CV.Structure;
 using SiaNet;
 using SiaNet.Application;
 using SiaNet.Common;
@@ -31,7 +30,7 @@ namespace SieNet.Examples.CPUOnly
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();
                 HousingRegression.Train();
-                */
+                
                 //MNIST Classification example
                 MNISTClassifier.LoadData();
                 MNISTClassifier.BuildModel();
@@ -55,7 +54,7 @@ namespace SieNet.Examples.CPUOnly
                 //Image classification example
                 //Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(SiaNet.Common.ImageNetModel.ResNet50)[0].Name);
                 //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(SiaNet.Common.Cifar10Model.ResNet110)[0].Name);
-
+                */
                 //Object Detection
                 ObjectDetection.PascalDetection();
                 //ObjectDetection.GroceryDetection();
