@@ -20,7 +20,7 @@ namespace SieNet.Examples.CPUOnly
             {
                 //Setting global device
                 Logging.OnWriteLog += Logging_OnWriteLog;
-                /*
+                
                 //XOR Example
                 XORExample.LoadData();
                 XORExample.BuildModel();
