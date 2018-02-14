@@ -97,7 +97,7 @@
                 case OptActivations.ReLU:
                     return CNTKLib.ReLU(layer);
                 case OptActivations.LeakyReLU:
-                    return CNTKLib.LeakyReLU(layer);
+                    return CNTKLib.LeakyReLU(layer, 0.1f);
                 case OptActivations.Sigmoid:
                     return CNTKLib.Sigmoid(layer);
                 case OptActivations.Tanh:
