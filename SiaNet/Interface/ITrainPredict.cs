@@ -1,4 +1,5 @@
-﻿using SiaNet.Events;
+﻿using System;
+using SiaNet.Events;
 using SiaNet.Model;
 using System.Collections.Generic;
 
@@ -7,7 +8,7 @@ namespace SiaNet.Interface
     /// <summary>
     /// Interface for Train and Predictions by neural network models
     /// </summary>
-    internal interface ITrainPredict
+    internal interface ITrainPredict : IDisposable
     {
         /// <summary>
         /// Trains the model using train data.

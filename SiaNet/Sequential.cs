@@ -17,7 +17,7 @@
     /// The Sequential model is a linear stack of layers.
     /// </summary>
     /// <seealso cref="SiaNet.Model.ConfigModule" />
-    public class Sequential : ConfigModule
+    public class Sequential : ConfigModule, IDisposable
     {
         /// <summary>
         /// Occurs when [on training start].
@@ -532,6 +532,16 @@
         public IList<float> Evaluate(DataFrame data)
         {
             return trainPredict.Evaluate(data);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            lossFunc?.Dispose();
+            metricFunc?.Dispose();
+            modelOut?.Dispose();
+            featureVariable?.Dispose();
+            labelVariable?.Dispose();
         }
     }
 }

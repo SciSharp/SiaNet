@@ -139,5 +139,15 @@ namespace SiaNet.Processing
             var result = resultSet[0];
             return result;
         }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            Model?.Dispose();
+            lossFunc?.Dispose();
+            metricFunc?.Dispose();
+            featureVariable?.Dispose();
+            labelVariable?.Dispose();
+        }
     }
 }
