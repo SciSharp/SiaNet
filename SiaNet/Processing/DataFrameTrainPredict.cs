@@ -92,8 +92,8 @@ namespace SiaNet.Processing
                         Variable actualVariable = CNTKLib.InputVariable(labelVariable.Shape, DataType.Float);
                         var evalLossFunc = Losses.Get(lossName, labelVariable, actualVariable);
                         var evalMetricFunc = Metrics.Get(metricName, labelVariable, actualVariable);
-                        Value actual = EvaluateInternal(validation.XFrame);
-                        Value expected = DataFrameUtil.GetValueBatch(validation.YFrame);
+                        Value actual = EvaluateInternal(validation.CurrentBatch.XFrame);
+                        Value expected = DataFrameUtil.GetValueBatch(validation.CurrentBatch.YFrame);
                         var inputDataMap = new Dictionary<Variable, Value>() { { labelVariable, expected }, { actualVariable, actual } };
                         var outputDataMap = new Dictionary<Variable, Value>() { { evalLossFunc.Output, null } };
 
