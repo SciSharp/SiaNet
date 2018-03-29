@@ -205,7 +205,10 @@
         public static Sequential LoadNetConfig(string filepath)
         {
             string json = File.ReadAllText(filepath);
-            var result = JsonConvert.DeserializeObject<Sequential>(json);
+            var result = JsonConvert.DeserializeObject<Sequential>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            });
 
             return result;
         }
@@ -216,7 +219,11 @@
         /// <param name="filepath">The filepath.</param>
         public void SaveNetConfig(string filepath)
         {
-            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple
+            });
             File.WriteAllText(filepath, json);
         }
 

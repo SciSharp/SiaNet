@@ -1,31 +1,18 @@
-﻿using SiaNet.Common;
+﻿using Newtonsoft.Json;
+using SiaNet.Common;
 using SiaNet.Model.Initializers;
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
-    /// Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -> [[0.25, 0.1], [0.6, -0.2]]. This layer can only be used as the first layer in a model.
+    ///     Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -> [[0.25, 0.1], [0.6, -0.2]].
+    ///     This layer can only be used as the first layer in a model.
     /// </summary>
     /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class Embedding : LayerConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Embedding"/> class.
-        /// </summary>
-        internal Embedding()
-        {
-            base.Name = "Embedding";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Embedding" /> class.
+        ///     Initializes a new instance of the <see cref="Embedding" /> class.
         /// </summary>
         /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
@@ -39,7 +26,7 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Embedding" /> class.
+        ///     Initializes a new instance of the <see cref="Embedding" /> class.
         /// </summary>
         /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
@@ -53,63 +40,53 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        /// Integer >0. Size of the vocabulary, i.e. maximum integer index + 1.
+        ///     Initializes a new instance of the <see cref="Embedding" /> class.
         /// </summary>
-        /// <value>
-        /// The shape.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int Shape
+        internal Embedding()
         {
-            get
-            {
-                return base.Params.Shape;
-            }
-
-            set
-            {
-                base.Params.Shape = value;
-            }
+            Name = "Embedding";
         }
 
         /// <summary>
-        /// Integer >= 0. Dimension of the dense embedding.
+        ///     Integer >= 0. Dimension of the dense embedding.
         /// </summary>
         /// <value>
-        /// The embedding dim.
+        ///     The embedding dim.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public int EmbeddingDim
         {
-            get
-            {
-                return base.Params.EmbeddingDim;
-            }
+            get => GetParam<int>("EmbeddingDim");
 
-            set
-            {
-                base.Params.EmbeddingDim = value;
-            }
+            set => SetParam("EmbeddingDim", value);
         }
 
         /// <summary>
-        /// Initializer for the embeddings matrix
+        ///     Initializer for the embeddings matrix
         /// </summary>
         /// <value>
-        /// The initializers.
+        ///     The initializers.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public Initializer Initializers
         {
-            get
-            {
-                return base.Params.Initializers;
-            }
+            get => GetParam<Initializer>("Initializers");
 
-            set
-            {
-                base.Params.Initializers = value;
-            }
+            set => SetParam("Initializers", value);
+        }
+
+        /// <summary>
+        ///     Integer >0. Size of the vocabulary, i.e. maximum integer index + 1.
+        /// </summary>
+        /// <value>
+        ///     The shape.
+        /// </value>
+        [JsonIgnore]
+        public int Shape
+        {
+            get => GetParam<int>("Shape");
+
+            set => SetParam("Shape", value);
         }
     }
 }

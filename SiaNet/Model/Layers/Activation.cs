@@ -1,26 +1,17 @@
-﻿namespace SiaNet.Model.Layers
-{
-    using System.Dynamic;
+﻿using Newtonsoft.Json;
 
+namespace SiaNet.Model.Layers
+{
     /// <summary>
-    /// Applies an activation function to an output.
+    ///     Applies an activation function to an output.
     /// </summary>
     /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class Activation : LayerConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Activation"/> class.
+        ///     Initializes a new instance of the <see cref="Activation" /> class.
         /// </summary>
-        internal Activation()
-        {
-            base.Name = "Activation";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Activation"/> class.
-        /// </summary>
-        /// <param name="act">The name of activation function to use. <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="act">The name of activation function to use. <see cref="SiaNet.Common.OptActivations" /></param>
         public Activation(string act)
             : this()
         {
@@ -28,23 +19,25 @@
         }
 
         /// <summary>
-        /// The name of activation function to use.
+        ///     Initializes a new instance of the <see cref="Activation" /> class.
+        /// </summary>
+        internal Activation()
+        {
+            Name = "Activation";
+        }
+
+        /// <summary>
+        ///     The name of activation function to use.
         /// </summary>
         /// <value>
-        /// The activation function name.
+        ///     The activation function name.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public string Act
         {
-            get
-            {
-                return base.Params.Act;
-            }
+            get => GetParam<string>("Act");
 
-            set
-            {
-                base.Params.Act = value;
-            }
+            set => SetParam("Act", value);
         }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SiaNet.Model
 {
@@ -27,6 +22,25 @@ namespace SiaNet.Model
         /// <value>
         /// The parameters of the layer.
         /// </value>
-        public dynamic Params { get; set; }
+        public Dictionary<string, object> Params { get; set; } = new Dictionary<string, object>();
+
+        protected T GetParam<T>(string name)
+        {
+            object o;
+            if (Params.TryGetValue(name, out o) && o != null)
+            {
+                if (typeof(T).IsValueType)
+                {
+                    o = Convert.ChangeType(o, typeof(T));
+                }
+                return (T)o;
+            }
+            return default(T);
+        }
+
+        protected void SetParam<T>(string name, T value)
+        {
+            Params[name] = value;
+        }
     }
 }

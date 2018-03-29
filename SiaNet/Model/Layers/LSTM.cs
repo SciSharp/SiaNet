@@ -1,40 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
-    /// Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary intervals
+    ///     Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary
+    ///     intervals
     /// </summary>
     /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class LSTM : LayerConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LSTM"/> class.
+        ///     Initializes a new instance of the <see cref="LSTM" /> class.
         /// </summary>
-        internal LSTM()
-        {
-            base.Name = "LSTM";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dense"/> class.
-        /// </summary>
-        /// <param name="dim">Positive integer, dimensionality of the output space..</param>
+        /// <param name="dim">Positive integer, dimensionality of the output space.</param>
         /// <param name="shape">The input shape.</param>
-        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="activation">
+        ///     Activation function to use. If you don't specify anything, no activation is applied (ie.
+        ///     "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations" />
+        /// </param>
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
-        /// <param name="weightInitializer">Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers"/></param>
-        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers"/></param>
-        public LSTM(int dim, int[] shape = null, int? cellDim = null, string activation = OptActivations.Tanh, string recurrentActivation = OptActivations.Sigmoid, 
-            object weightInitializer = null, object recurrentInitializer = null, bool useBias = true, object biasInitializer = null, bool returnSequence = false)
+        /// <param name="weightInitializer">
+        ///     Initializer for the kernel weights matrix. <see cref="SiaNet.Common.OptInitializers" />
+        /// </param>
+        /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers" /></param>
+        public LSTM(
+            int dim,
+            int[] shape = null,
+            int? cellDim = null,
+            string activation = OptActivations.Tanh,
+            string recurrentActivation = OptActivations.Sigmoid,
+            object weightInitializer = null,
+            object recurrentInitializer = null,
+            bool useBias = true,
+            object biasInitializer = null,
+            bool returnSequence = false)
             : this()
         {
             Shape = shape;
@@ -50,182 +51,131 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        /// The input shape for this layer
+        ///     Initializes a new instance of the <see cref="LSTM" /> class.
         /// </summary>
-        /// <value>
-        /// The shape.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int[] Shape
+        internal LSTM()
         {
-            get
-            {
-                return base.Params.Shape;
-            }
-
-            set
-            {
-                base.Params.Shape = value;
-            }
+            Name = "LSTM";
         }
 
         /// <summary>
-        /// Positive integer, dimensionality of the output space.
+        ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x)
+        ///     = x)
         /// </summary>
         /// <value>
-        /// The output dimension.
+        ///     The activation function.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int Dim
+        [JsonIgnore]
+        public string Activation
         {
-            get
-            {
-                return base.Params.Dim;
-            }
+            get => GetParam<string>("Activation");
 
-            set
-            {
-                base.Params.Dim = value;
-            }
+            set => SetParam("Activation", value);
+        }
+
+        /// <summary>
+        ///     Initializer for the bias vector.
+        /// </summary>
+        /// <value>
+        ///     The bias initializer.
+        /// </value>
+        [JsonIgnore]
+        public Initializer BiasInitializer
+        {
+            get => GetParam<Initializer>("BiasInitializer");
+
+            set => SetParam("BiasInitializer", value);
         }
 
         public int? CellDim
         {
-            get
-            {
-                return base.Params.CellDim;
-            }
+            get => GetParam<int?>("CellDim");
 
-            set
-            {
-                base.Params.CellDim = value;
-            }
+            set => SetParam("CellDim", value);
         }
 
         /// <summary>
-        /// Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x)
+        ///     Positive integer, dimensionality of the output space.
         /// </summary>
         /// <value>
-        /// The activation function.
+        ///     The output dimension.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public string Activation
+        [JsonIgnore]
+        public int Dim
         {
-            get
-            {
-                return base.Params.Activation;
-            }
+            get => GetParam<int>("Dim");
 
-            set
-            {
-                base.Params.Activation = value;
-            }
+            set => SetParam("Dim", value);
         }
 
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public string RecurrentActivation
         {
-            get
-            {
-                return base.Params.RecurrentActivation;
-            }
+            get => GetParam<string>("RecurrentActivation");
 
-            set
-            {
-                base.Params.RecurrentActivation = value;
-            }
-        }
-
-        /// <summary>
-        /// Boolean, whether the layer uses a bias vector.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [use bias]; otherwise, <c>false</c>.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public bool UseBias
-        {
-            get
-            {
-                return base.Params.UseBias;
-            }
-
-            set
-            {
-                base.Params.UseBias = value;
-            }
-        }
-
-        /// <summary>
-        /// Initializer for the kernel weights matrix .
-        /// </summary>
-        /// <value>
-        /// The weight initializer.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Initializer WeightInitializer
-        {
-            get
-            {
-                return base.Params.WeightInitializer;
-            }
-
-            set
-            {
-                base.Params.WeightInitializer = value;
-            }
+            set => SetParam("RecurrentActivation", value);
         }
 
         public Initializer RecurrentInitializer
         {
-            get
-            {
-                return base.Params.RecurrentInitializer;
-            }
+            get => GetParam<Initializer>("RecurrentInitializer");
 
-            set
-            {
-                base.Params.RecurrentInitializer = value;
-            }
+            set => SetParam("RecurrentInitializer", value);
         }
 
         /// <summary>
-        /// Initializer for the bias vector.
+        ///     Gets or sets a value indicating whether [return sequence].
         /// </summary>
         /// <value>
-        /// The bias initializer.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Initializer BiasInitializer
-        {
-            get
-            {
-                return base.Params.BiasInitializer;
-            }
-
-            set
-            {
-                base.Params.BiasInitializer = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether [return sequence].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [return sequence]; otherwise, <c>false</c>.
+        ///     <c>true</c> if [return sequence]; otherwise, <c>false</c>.
         /// </value>
         public bool ReturnSequence
         {
-            get
-            {
-                return base.Params.ReturnSequence;
-            }
+            get => GetParam<bool>("ReturnSequence");
 
-            set
-            {
-                base.Params.ReturnSequence = value;
-            }
+            set => SetParam("ReturnSequence", value);
+        }
+
+        /// <summary>
+        ///     The input shape for this layer
+        /// </summary>
+        /// <value>
+        ///     The shape.
+        /// </value>
+        [JsonIgnore]
+        public int[] Shape
+        {
+            get => GetParam<int[]>("Shape");
+
+            set => SetParam("Shape", value);
+        }
+
+        /// <summary>
+        ///     Boolean, whether the layer uses a bias vector.
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if [use bias]; otherwise, <c>false</c>.
+        /// </value>
+        [JsonIgnore]
+        public bool UseBias
+        {
+            get => GetParam<bool>("UseBias");
+
+            set => SetParam("UseBias", value);
+        }
+
+        /// <summary>
+        ///     Initializer for the kernel weights matrix .
+        /// </summary>
+        /// <value>
+        ///     The weight initializer.
+        /// </value>
+        [JsonIgnore]
+        public Initializer WeightInitializer
+        {
+            get => GetParam<Initializer>("WeightInitializer");
+
+            set => SetParam("WeightInitializer", value);
         }
     }
 }

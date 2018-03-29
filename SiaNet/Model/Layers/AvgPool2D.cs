@@ -1,95 +1,85 @@
-﻿namespace SiaNet.Model.Layers
-{
-    using System;
-    using System.Dynamic;
+﻿using System;
+using Newtonsoft.Json;
 
+namespace SiaNet.Model.Layers
+{
     /// <summary>
-    /// Average pooling operation for spatial data.
+    ///     Average pooling operation for spatial data.
     /// </summary>
     /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class AvgPool2D : LayerConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvgPool2D"/> class.
+        ///     Initializes a new instance of the <see cref="AvgPool2D" /> class.
         /// </summary>
-        internal AvgPool2D()
-        {
-            base.Name = "AvgPool2D";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AvgPool2D"/> class.
-        /// </summary>
-        /// <param name="poolSize">A tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve the input in both spatial dimension. If only one integer is specified, the same window length will be used for both dimensions.</param>
+        /// <param name="poolSize">
+        ///     A tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve
+        ///     the input in both spatial dimension. If only one integer is specified, the same window length will be used for both
+        ///     dimensions.
+        /// </param>
         /// <param name="strides">Integer, tuple of 2 integers, or None. Strides values. If None, it will default to pool_size.</param>
-        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="padding">
+        ///     Boolean, if true results in padding the input such that the output has the same length as the
+        ///     original input.
+        /// </param>
         public AvgPool2D(Tuple<int, int> poolSize, Tuple<int, int> strides = null, bool padding = true)
             : this()
         {
             PoolSize = poolSize;
-            Strides = strides == null ? Tuple.Create(1, 1) : strides;
+            Strides = strides ?? Tuple.Create(1, 1);
             Padding = padding;
         }
 
         /// <summary>
-        ///  integer or tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve the input in both spatial dimension. If only one integer is specified, the same window length will be used for both dimensions.
+        ///     Initializes a new instance of the <see cref="AvgPool2D" /> class.
         /// </summary>
-        /// <value>
-        /// The size of the pool.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Tuple<int, int> PoolSize
+        internal AvgPool2D()
         {
-            get
-            {
-                return base.Params.PoolSize;
-            }
-
-            set
-            {
-                base.Params.PoolSize = value;
-            }
+            Name = "AvgPool2D";
         }
 
         /// <summary>
-        /// Integer, tuple of 2 integers, or None. Strides values. If None, it will default to pool_size.
+        ///     Boolean, if true results in padding the input such that the output has the same length as the original input.
         /// </summary>
         /// <value>
-        /// The strides.
+        ///     <c>true</c> if padding; otherwise, <c>false</c>.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Tuple<int, int> Strides
-        {
-            get
-            {
-                return base.Params.Strides;
-            }
-
-            set
-            {
-                base.Params.Strides = value;
-            }
-        }
-
-        /// <summary>
-        /// Boolean, if true results in padding the input such that the output has the same length as the original input.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if padding; otherwise, <c>false</c>.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public bool Padding
         {
-            get
-            {
-                return base.Params.Padding;
-            }
+            get => GetParam<bool>("Padding");
 
-            set
-            {
-                base.Params.Padding = value;
-            }
+            set => SetParam("Padding", value);
+        }
+
+        /// <summary>
+        ///     integer or tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve the input
+        ///     in both spatial dimension. If only one integer is specified, the same window length will be used for both
+        ///     dimensions.
+        /// </summary>
+        /// <value>
+        ///     The size of the pool.
+        /// </value>
+        [JsonIgnore]
+        public Tuple<int, int> PoolSize
+        {
+            get => GetParam<Tuple<int, int>>("PoolSize");
+
+            set => SetParam("PoolSize", value);
+        }
+
+        /// <summary>
+        ///     Integer, tuple of 2 integers, or None. Strides values. If None, it will default to pool_size.
+        /// </summary>
+        /// <value>
+        ///     The strides.
+        /// </value>
+        [JsonIgnore]
+        public Tuple<int, int> Strides
+        {
+            get => GetParam<Tuple<int, int>>("Strides");
+
+            set => SetParam("Strides", value);
         }
     }
 }

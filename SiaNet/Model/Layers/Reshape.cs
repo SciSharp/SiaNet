@@ -1,23 +1,14 @@
-﻿namespace SiaNet.Model.Layers
-{
-    using System.Dynamic;
+﻿using Newtonsoft.Json;
 
+namespace SiaNet.Model.Layers
+{
     /// <summary>
-    /// Reshapes an output to a certain shape.
+    ///     Reshapes an output to a certain shape.
     /// </summary>
     public class Reshape : LayerConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Reshape"/> class.
-        /// </summary>
-        internal Reshape()
-        {
-            base.Name = "Reshape";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Reshape"/> class.
+        ///     Initializes a new instance of the <see cref="Reshape" /> class.
         /// </summary>
         /// <param name="targetshape">The target shape of the output.</param>
         public Reshape(int[] targetshape)
@@ -28,7 +19,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Reshape"/> class.
+        ///     Initializes a new instance of the <see cref="Reshape" /> class.
         /// </summary>
         /// <param name="targetshape">The target shape of the output.</param>
         /// <param name="shape">The shape of the input data.</param>
@@ -39,43 +30,39 @@
         }
 
         /// <summary>
-        /// List of integers. Does not include the batch axis.
+        ///     Initializes a new instance of the <see cref="Reshape" /> class.
         /// </summary>
-        /// <value>
-        /// The target shape.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int[] TargetShape
+        internal Reshape()
         {
-            get
-            {
-                return base.Params.TargetShape;
-            }
-
-            set
-            {
-                base.Params.TargetShape = value;
-            }
+            Name = "Reshape";
         }
 
         /// <summary>
-        /// Gets or sets the input shape of the data. Used when the this layer is the first in the stack.
+        ///     Gets or sets the input shape of the data. Used when the this layer is the first in the stack.
         /// </summary>
         /// <value>
-        /// The shape.
+        ///     The shape.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public int[] Shape
         {
-            get
-            {
-                return base.Params.Shape;
-            }
+            get => GetParam<int[]>("Shape");
 
-            set
-            {
-                base.Params.Shape = value;
-            }
+            set => SetParam("Shape", value);
+        }
+
+        /// <summary>
+        ///     List of integers. Does not include the batch axis.
+        /// </summary>
+        /// <value>
+        ///     The target shape.
+        /// </value>
+        [JsonIgnore]
+        public int[] TargetShape
+        {
+            get => GetParam<int[]>("TargetShape");
+
+            set => SetParam("TargetShape", value);
         }
     }
 }

@@ -1,28 +1,22 @@
-﻿namespace SiaNet.Model.Layers
-{
-    using System.Dynamic;
+﻿using Newtonsoft.Json;
 
+namespace SiaNet.Model.Layers
+{
     /// <summary>
-    /// Average pooling for temporal data.
+    ///     Average pooling for temporal data.
     /// </summary>
     /// <seealso cref="SiaNet.Model.LayerConfig" />
     public class AvgPool1D : LayerConfig
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvgPool1D"/> class.
-        /// </summary>
-        internal AvgPool1D()
-        {
-            base.Name = "AvgPool1D";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AvgPool1D"/> class.
+        ///     Initializes a new instance of the <see cref="AvgPool1D" /> class.
         /// </summary>
         /// <param name="poolSize">Integer, size of the max pooling windows.</param>
         /// <param name="strides">Factor by which to downscale. E.g. 2 will halve the input. If None, it will default to pool_size.</param>
-        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="padding">
+        ///     Boolean, if true results in padding the input such that the output has the same length as the
+        ///     original input.
+        /// </param>
         public AvgPool1D(int poolSize, int strides = 1, bool padding = true)
             : this()
         {
@@ -32,63 +26,53 @@
         }
 
         /// <summary>
-        /// Integer, size of the max pooling windows.
+        ///     Initializes a new instance of the <see cref="AvgPool1D" /> class.
         /// </summary>
-        /// <value>
-        /// The size of the pool.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int PoolSize
+        internal AvgPool1D()
         {
-            get
-            {
-                return base.Params.PoolSize;
-            }
-
-            set
-            {
-                base.Params.PoolSize = value;
-            }
+            Name = "AvgPool1D";
         }
 
         /// <summary>
-        /// Factor by which to downscale. E.g. 2 will halve the input. If None, it will default to pool_size.
+        ///     Boolean, if true results in padding the input such that the output has the same length as the original input.
         /// </summary>
         /// <value>
-        /// The strides.
+        ///     <c>true</c> if padding; otherwise, <c>false</c>.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int Strides
-        {
-            get
-            {
-                return base.Params.Strides;
-            }
-
-            set
-            {
-                base.Params.Strides = value;
-            }
-        }
-
-        /// <summary>
-        /// Boolean, if true results in padding the input such that the output has the same length as the original input.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if padding; otherwise, <c>false</c>.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public bool Padding
         {
-            get
-            {
-                return base.Params.Padding;
-            }
+            get => GetParam<bool>("Padding");
 
-            set
-            {
-                base.Params.Padding = value;
-            }
+            set => SetParam("Padding", value);
+        }
+
+        /// <summary>
+        ///     Integer, size of the max pooling windows.
+        /// </summary>
+        /// <value>
+        ///     The size of the pool.
+        /// </value>
+        [JsonIgnore]
+        public int PoolSize
+        {
+            get => GetParam<int>("PoolSize");
+
+            set => SetParam("PoolSize", value);
+        }
+
+        /// <summary>
+        ///     Factor by which to downscale. E.g. 2 will halve the input. If None, it will default to pool_size.
+        /// </summary>
+        /// <value>
+        ///     The strides.
+        /// </value>
+        [JsonIgnore]
+        public int Strides
+        {
+            get => GetParam<int>("Strides");
+
+            set => SetParam("Strides", value);
         }
     }
 }
