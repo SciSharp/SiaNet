@@ -538,7 +538,10 @@
         /// <returns>List of prediction values</returns>
         public IList<float> Evaluate(DataFrame data)
         {
-            return trainPredict.Evaluate(data);
+            var predict = trainPredict as DataFrameTrainPredict ??
+                          new DataFrameTrainPredict(modelOut, lossFunc, lossName, metricFunc, metricName, learners,
+                              featureVariable, labelVariable);
+            return predict.Evaluate(data);
         }
 
         /// <inheritdoc />
