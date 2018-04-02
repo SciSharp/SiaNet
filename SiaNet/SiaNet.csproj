@@ -113,6 +113,7 @@
     <Compile Include="Model\Metrics\KullbackLeiblerDivergence.cs" />
     <Compile Include="Model\Metrics\SparseCrossEntropy.cs" />
     <Compile Include="Model\Metrics\Poisson.cs" />
+    <Compile Include="Model\Optimizers\OptimizerBase.cs" />
     <Compile Include="Model\Parameter.cs" />
     <Compile Include="Model\DataFrame.cs" />
     <Compile Include="Model\Constant.cs" />
@@ -153,7 +154,6 @@
     <Compile Include="Model\Optimizers\AdaGrad.cs" />
     <Compile Include="Model\Optimizers\AdaDelta.cs" />
     <Compile Include="Model\Optimizers\Adamax.cs" />
-    <Compile Include="Model\Optimizers\BaseOptimizer.cs" />
     <Compile Include="Model\Optimizers\MomentumSGD.cs" />
     <Compile Include="Model\Optimizers\RMSProp.cs" />
     <Compile Include="Model\Optimizers\Adam.cs" />

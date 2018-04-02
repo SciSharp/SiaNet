@@ -82,21 +82,7 @@ namespace SiaNet.Common
         public const string L2 = "l2";
         public const string L1L2 = "l1l2";
     }
-
-    /// <summary>
-    /// List of supported optimizer function name
-    /// </summary>
-    public class OptOptimizers
-    {
-        public const string SGD = "sgd";
-        public const string MomentumSGD = "momentum_sgd";
-        public const string RMSProp = "rmsprop";
-        public const string Adam = "adam";
-        public const string Adamax = "adamax";
-        public const string AdaGrad = "adagrad";
-        public const string AdaDelta = "adadelta";
-    }
-
+    
     /// <summary>
     /// Image Net pretrained model list
     /// </summary>

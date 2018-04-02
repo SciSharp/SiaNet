@@ -117,6 +117,7 @@ namespace SiaNet
             {
                 var metricFunction = evaluationMetric?.ToFunction(LabelVariable, actualVariable);
                 var currentBatch = 1u;
+
                 while (validationData.ToBatch(currentBatch, batchSize))
                 {
                     using (var actual = Evaluate(validationData.CurrentBatch.XFrame))
@@ -127,7 +128,8 @@ namespace SiaNet
                         var outputDataMap = new Dictionary<Variable, Value> {{lossFunction.Output, null}};
 
                         lossFunction.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-                        var batchLoss = outputDataMap[lossFunction.Output].GetDenseData<float>(lossFunction.Output).Select(x => x.First()).Average();
+                        var batchLoss = outputDataMap[lossFunction.Output].GetDenseData<float>(lossFunction.Output)
+                            .Select(x => x.First()).Average();
                         losses.Add(batchLoss);
 
                         if (metricFunction != null)
@@ -135,17 +137,21 @@ namespace SiaNet
                             outputDataMap = new Dictionary<Variable, Value> {{metricFunction.Output, null}};
 
                             metricFunction.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-                            var batchMetric = outputDataMap[metricFunction.Output].GetDenseData<float>(metricFunction.Output).Select(x => x.First()).Average();
+                            var batchMetric = outputDataMap[metricFunction.Output]
+                                .GetDenseData<float>(metricFunction.Output).Select(x => x.First()).Average();
                             metrics.Add(batchMetric);
                         }
                     }
+
                     currentBatch++;
                 }
+
                 metricFunction?.Dispose();
             }
 
             var loss = losses.Average();
             evaluationResult = metrics.Any() ? metrics.Average() : loss;
+
             return loss;
         }
 
@@ -161,27 +167,26 @@ namespace SiaNet
             XYFrame trainData,
             uint epoches,
             uint batchSize,
-            string optimizerName,
+            OptimizerBase optimizer,
             MetricFunction lossMetric,
             MetricFunction evaluationMetric = null,
-            Regulizers regulizer = null,
             XYFrame validation = null,
             bool shuffle = false)
         {
-            var learners = new List<Learner>();
-            var optimizerInstance = new BaseOptimizer(optimizerName);
-            learners.Add(optimizerInstance.GetDefault(Model, regulizer));
-
             var lastEpochLoss = 0d;
             var lastEpochMetric = 0d;
             var lastEvaluationLoss = 0d;
             var lastEvaluationMetric = 0d;
-            using (var lossFunction = lossMetric.ToFunction(LabelVariable, (Model.Function)Model))
-            using (var evaluationFunction = (evaluationMetric ?? lossMetric).ToFunction(LabelVariable, (Model.Function)Model))
-            using (var trainer = Trainer.CreateTrainer(Model, lossFunction, evaluationFunction, learners))
+
+            using (var lossFunction = lossMetric.ToFunction(LabelVariable, (Model.Function) Model))
+            using (var evaluationFunction =
+                (evaluationMetric ?? lossMetric).ToFunction(LabelVariable, (Model.Function) Model))
+            using (var learner = optimizer.ToLearner(Model))
+            using (var trainer = Trainer.CreateTrainer(Model, lossFunction, evaluationFunction, new[] {learner}))
             {
                 OnTrainingStart();
                 var currentEpoch = 1u;
+
                 while (currentEpoch <= epoches)
                 {
                     if (shuffle)
@@ -193,6 +198,7 @@ namespace SiaNet
                     var currentBatch = 1u;
                     var epochLosses = new List<double>();
                     var epochMetrics = new List<double>();
+
                     while (trainData.ToBatch(currentBatch, batchSize))
                     {
                         OnBatchStart(currentEpoch, currentBatch);
@@ -234,12 +240,7 @@ namespace SiaNet
                 }
             }
 
-            foreach (var learner in learners)
-            {
-                learner.Dispose();
-            }
             GC.Collect();
-
             OnTrainingEnd(lastEpochLoss, lastEvaluationLoss, lastEpochMetric, lastEvaluationMetric);
         }
 
@@ -275,6 +276,7 @@ namespace SiaNet
                 var inputDataMap = new Dictionary<Variable, Value> {{FeatureVariable, features}};
                 var outputDataMap = new Dictionary<Variable, Value> {{Model.Output, null}};
                 Model.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
+
                 return outputDataMap[Model.Output];
             }
         }
