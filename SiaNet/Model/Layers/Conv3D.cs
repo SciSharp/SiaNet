@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
@@ -51,7 +51,7 @@ namespace SiaNet.Model.Layers
             Tuple<int, int, int> strides = null,
             bool padding = true,
             Tuple<int, int, int> dialation = null,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -62,7 +62,7 @@ namespace SiaNet.Model.Layers
             Strides = strides ?? Tuple.Create(1, 1, 1);
             Padding = padding;
             Dialation = dialation ?? Tuple.Create(1, 1, 1);
-            Act = activation;
+            Activation = activation;
             UseBias = useBias;
             WeightInitializer = weightInitializer ?? new Xavier();
             BiasInitializer = biasInitializer ?? new Zeros();
@@ -83,11 +83,11 @@ namespace SiaNet.Model.Layers
         ///     The activation function name.
         /// </value>
         [JsonIgnore]
-        public string Act
+        public ActivationBase Activation
         {
-            get => GetParam<string>("Act");
+            get => GetParam<ActivationBase>("Activation");
 
-            set => SetParam("Act", value);
+            set => SetParam("Activation", value);
         }
 
         /// <summary>
@@ -215,7 +215,8 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Convolution.Conv3D(inputFunction, Channels, KernalSize, Strides, Padding, Dialation, Act, UseBias,
+            return Convolution.Conv3D(inputFunction, Channels, KernalSize, Strides, Padding, Dialation, Activation,
+                UseBias,
                 WeightInitializer, BiasInitializer);
         }
     }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using CNTK;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 
 namespace SiaNet.NN
 {
@@ -99,24 +99,23 @@ namespace SiaNet.NN
             int dim,
             int hiddenSize,
             uint numLayers,
-            string activation,
+            ActivationBase activation,
             bool bidirectional = false,
             InitializerBase weightInitializer = null)
         {
-            switch (activation)
+            if (activation is ReLU)
             {
-                case OptActivations.ReLU:
-
-                    return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
-                        "rnnReLU");
-                case OptActivations.Tanh:
-
-                    return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
-                        "rnnTanh");
-                default:
-
-                    throw new Exception("Supported activation for RNN is ReLU and Tanh");
+                return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                    "rnnReLU");
             }
+
+            if (activation is Tanh)
+            {
+                return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                    "rnnTanh");
+            }
+
+            throw new Exception("Supported activation for RNN is ReLU and Tanh");
         }
 
         /// <summary>
@@ -138,24 +137,23 @@ namespace SiaNet.NN
             int dim,
             int hiddenSize,
             uint numLayers,
-            string activation,
+            ActivationBase activation,
             bool bidirectional = false,
             InitializerBase weightInitializer = null)
         {
-            switch (activation)
+            if (activation is ReLU)
             {
-                case OptActivations.ReLU:
-
-                    return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
-                        "rnnReLU");
-                case OptActivations.Tanh:
-
-                    return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
-                        "rnnTanh");
-                default:
-
-                    throw new Exception("Supported activation for RNN is ReLU and Tanh");
+                return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                    "rnnReLU");
             }
+
+            if (activation is Tanh)
+            {
+                return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                    "rnnTanh");
+            }
+
+            throw new Exception("Supported activation for RNN is ReLU and Tanh");
         }
 
         /// <summary>
@@ -182,7 +180,8 @@ namespace SiaNet.NN
             s.AddRange(shape);
             s.Add(dim);
 
-            var weights = new Parameter(s.ToArray(), DataType.Float, weightInitializer.ToDictionary(), GlobalParameters.Device);
+            var weights = new Parameter(s.ToArray(), DataType.Float, weightInitializer.ToDictionary(),
+                GlobalParameters.Device);
 
             return CNTKLib.OptimizedRNNStack(Variable.InputVariable(s.ToArray(), DataType.Float), weights, hiddenSize,
                 numLayers, bidirectional, rnnName);

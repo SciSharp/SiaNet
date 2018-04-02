@@ -36,22 +36,6 @@ namespace SiaNet.Common
         public const string RNNCell = "RNNCell";
         public const string Reshape = "RESHAPE";
     }
-
-    /// <summary>
-    /// List of supported activation function names
-    /// </summary>
-    public class OptActivations
-    {
-        public const string None = "none";
-        public const string ReLU = "relu";
-        public const string LeakyReLU = "leakyrelu";
-        public const string Sigmoid = "sigmoid";
-        public const string Tanh = "tanh";
-        public const string Softmax = "softmax";
-        public const string Softplus = "softplus";
-        public const string ELU = "elu";
-        public const string SELU = "selu";
-    }
     
     
     /// <summary>

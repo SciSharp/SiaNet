@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CNTK;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 using Constant = CNTK.Constant;
 
 namespace SiaNet.NN
@@ -13,50 +13,6 @@ namespace SiaNet.NN
     /// </summary>
     public class Basic
     {
-        /// <summary>
-        ///     Applies an activation function to an output.
-        /// </summary>
-        /// <param name="layer">The output of the last layer.</param>
-        /// <param name="activation">
-        ///     Activation function to use. If you don't specify anything, no activation is applied (ie.
-        ///     "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations" />
-        /// </param>
-        /// <returns></returns>
-        public static Function Activation(Variable layer, string activation = OptActivations.ReLU)
-        {
-            switch (activation.ToLower())
-            {
-                default:
-                case OptActivations.None:
-
-                    return layer;
-                case OptActivations.ReLU:
-
-                    return CNTKLib.ReLU(layer);
-                case OptActivations.LeakyReLU:
-
-                    return CNTKLib.LeakyReLU(layer, 0.1f);
-                case OptActivations.Sigmoid:
-
-                    return CNTKLib.Sigmoid(layer);
-                case OptActivations.Tanh:
-
-                    return CNTKLib.Tanh(layer);
-                case OptActivations.Softmax:
-
-                    return CNTKLib.Softmax(layer);
-                case OptActivations.Softplus:
-
-                    return CNTKLib.Softplus(layer);
-                case OptActivations.ELU:
-
-                    return CNTKLib.ELU(layer);
-                case OptActivations.SELU:
-
-                    return CNTKLib.SELU(layer);
-            }
-        }
-
         /// <summary>
         ///     Batch normalization layer (Ioffe and Szegedy, 2014). Normalize the activations of the previous layer at each batch,
         ///     i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation
@@ -91,9 +47,11 @@ namespace SiaNet.NN
             runningMeanInitializer = runningMeanInitializer ?? new Zeros();
             runningStdInvInitializer = runningStdInvInitializer ?? new Zeros();
 
-            var biasParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float, betaInitializer.ToDictionary(),
+            var biasParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                betaInitializer.ToDictionary(),
                 GlobalParameters.Device, "");
-            var scaleParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float, gammaInitializers.ToDictionary(),
+            var scaleParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                gammaInitializers.ToDictionary(),
                 GlobalParameters.Device, "");
             var runningMean = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
                 runningMeanInitializer.ToDictionary(), GlobalParameters.Device, "");
@@ -143,9 +101,11 @@ namespace SiaNet.NN
             runningStdInvInitializer = runningStdInvInitializer ?? new Zeros();
 
             var input = CNTKLib.InputVariable(new[] {shape}, DataType.Float);
-            var biasParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float, betaInitializer.ToDictionary(),
+            var biasParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                betaInitializer.ToDictionary(),
                 GlobalParameters.Device, "");
-            var scaleParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float, gammaInitializers.ToDictionary(),
+            var scaleParams = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                gammaInitializers.ToDictionary(),
                 GlobalParameters.Device, "");
             var runningMean = new Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
                 runningMeanInitializer.ToDictionary(), GlobalParameters.Device, "");
@@ -175,7 +135,7 @@ namespace SiaNet.NN
         public static Function Dense(
             Variable layer,
             int dim,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -191,7 +151,9 @@ namespace SiaNet.NN
 
             var fullyConnected = FullyConnected(layer, dim, useBias, weightInitializer, biasInitializer);
 
-            return Activation(fullyConnected, activation);
+            return activation != null
+                ? activation.ToFunction((Model.Function) fullyConnected)
+                : (Model.Function) fullyConnected;
         }
 
         /// <summary>
@@ -219,7 +181,8 @@ namespace SiaNet.NN
             initializers = initializers ?? new GlorotUniform();
 
             var input = CNTKLib.InputVariable(new[] {shape}, true, DataType.Float);
-            var embeddingParameters = new Parameter(new[] {embeddingDim, shape}, DataType.Float, initializers.ToDictionary(),
+            var embeddingParameters = new Parameter(new[] {embeddingDim, shape}, DataType.Float,
+                initializers.ToDictionary(),
                 GlobalParameters.Device);
 
             return CNTKLib.Times(embeddingParameters, input);

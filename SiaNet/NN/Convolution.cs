@@ -1,7 +1,7 @@
 ﻿using System;
 using CNTK;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 
 namespace SiaNet.NN
 {
@@ -119,7 +119,7 @@ namespace SiaNet.NN
             int strides = 1,
             bool padding = true,
             int dialation = 1,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -166,7 +166,7 @@ namespace SiaNet.NN
             int strides = 1,
             bool padding = true,
             int dialation = 1,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -187,7 +187,8 @@ namespace SiaNet.NN
             }
             else
             {
-                convParams = new Parameter(new[] {kernalSize, channels}, DataType.Float, weightInitializer.ToDictionary(),
+                convParams = new Parameter(new[] {kernalSize, channels}, DataType.Float,
+                    weightInitializer.ToDictionary(),
                     GlobalParameters.Device);
                 conv = CNTKLib.Convolution(convParams, layer, new[] {strides}, new BoolVector(new[] {true}),
                     new BoolVector(new[] {padding}), new[] {dialation});
@@ -197,11 +198,12 @@ namespace SiaNet.NN
 
             if (useBias)
             {
-                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.ToDictionary(), GlobalParameters.Device);
+                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.ToDictionary(),
+                    GlobalParameters.Device);
                 conv = CNTKLib.Plus(bias, conv);
             }
 
-            return Basic.Activation(conv, activation);
+            return activation != null ? activation.ToFunction((Model.Function) conv) : (Model.Function) conv;
         }
 
         /// <summary>
@@ -246,7 +248,7 @@ namespace SiaNet.NN
             Tuple<int, int> strides = null,
             bool padding = true,
             Tuple<int, int> dialation = null,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -277,11 +279,12 @@ namespace SiaNet.NN
 
             if (useBias)
             {
-                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.ToDictionary(), GlobalParameters.Device);
+                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.ToDictionary(),
+                    GlobalParameters.Device);
                 conv = CNTKLib.Plus(bias, conv);
             }
 
-            return Basic.Activation(conv, activation);
+            return activation != null ? activation.ToFunction((Model.Function) conv) : (Model.Function) conv;
         }
 
         /// <summary>
@@ -326,7 +329,7 @@ namespace SiaNet.NN
             Tuple<int, int> strides,
             bool padding = true,
             Tuple<int, int> dialation = null,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -379,7 +382,7 @@ namespace SiaNet.NN
             Tuple<int, int, int> strides,
             bool padding = true,
             Tuple<int, int, int> dialation = null,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
@@ -403,11 +406,12 @@ namespace SiaNet.NN
 
             if (useBias)
             {
-                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.ToDictionary(), GlobalParameters.Device);
+                bias = new Parameter(conv.Output.Shape, DataType.Float, biasInitializer.ToDictionary(),
+                    GlobalParameters.Device);
                 conv = CNTKLib.Plus(bias, conv);
             }
 
-            return Basic.Activation(conv, activation);
+            return activation != null ? activation.ToFunction((Model.Function) conv) : (Model.Function) conv;
         }
 
         /// <summary>
@@ -452,7 +456,7 @@ namespace SiaNet.NN
             Tuple<int, int, int> strides,
             bool padding = true,
             Tuple<int, int, int> dialation = null,
-            string activation = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)

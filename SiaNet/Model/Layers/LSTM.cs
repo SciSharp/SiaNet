@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
@@ -29,8 +29,8 @@ namespace SiaNet.Model.Layers
         public LSTM(
             int dim,
             int? cellDim = null,
-            string activation = OptActivations.Tanh,
-            string recurrentActivation = OptActivations.Sigmoid,
+            ActivationBase activation = null,
+            ActivationBase recurrentActivation = null,
             InitializerBase weightInitializer = null,
             InitializerBase recurrentInitializer = null,
             bool useBias = true,
@@ -39,8 +39,8 @@ namespace SiaNet.Model.Layers
         {
             Dim = dim;
             CellDim = cellDim;
-            Activation = activation;
-            RecurrentActivation = recurrentActivation;
+            Activation = activation ?? new Tanh();
+            RecurrentActivation = recurrentActivation ?? new Sigmoid();
             UseBias = useBias;
             ReturnSequence = returnSequence;
             WeightInitializer = weightInitializer ?? new GlorotUniform();
@@ -57,9 +57,9 @@ namespace SiaNet.Model.Layers
         ///     The activation function.
         /// </value>
         [JsonIgnore]
-        public string Activation
+        public ActivationBase Activation
         {
-            get => GetParam<string>("Activation");
+            get => GetParam<ActivationBase>("Activation");
 
             set => SetParam("Activation", value);
         }
@@ -100,9 +100,9 @@ namespace SiaNet.Model.Layers
         }
 
         [JsonIgnore]
-        public string RecurrentActivation
+        public ActivationBase RecurrentActivation
         {
-            get => GetParam<string>("RecurrentActivation");
+            get => GetParam<ActivationBase>("RecurrentActivation");
 
             set => SetParam("RecurrentActivation", value);
         }

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
@@ -17,7 +17,7 @@ namespace SiaNet.Model.Layers
         ///     Initializes a new instance of the <see cref="Dense" /> class.
         /// </summary>
         /// <param name="dim">Positive integer, dimensionality of the output space..</param>
-        /// <param name="act">
+        /// <param name="activation">
         ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear"
         ///     activation: a(x) = x). <see cref="SiaNet.Common.OptActivations" />
         /// </param>
@@ -26,13 +26,13 @@ namespace SiaNet.Model.Layers
         /// <param name="biasInitializer">Initializer for the bias vector. </param>
         public Dense(
             int dim,
-            string act = OptActivations.None,
+            ActivationBase activation = null,
             bool useBias = false,
             InitializerBase weightInitializer = null,
             InitializerBase biasInitializer = null)
         {
             Dim = dim;
-            Act = act;
+            Activation = activation;
             UseBias = useBias;
             WeightInitializer = weightInitializer ?? new Xavier();
             BiasInitializer = biasInitializer ?? new Zeros();
@@ -47,11 +47,11 @@ namespace SiaNet.Model.Layers
         ///     The activation function.
         /// </value>
         [JsonIgnore]
-        public string Act
+        public ActivationBase Activation
         {
-            get => GetParam<string>("Act");
+            get => GetParam<ActivationBase>("Activation");
 
-            set => SetParam("Act", value);
+            set => SetParam("Activation", value);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Basic.Dense(inputFunction, Dim, Act, UseBias, WeightInitializer, BiasInitializer);
+            return Basic.Dense(inputFunction, Dim, Activation, UseBias, WeightInitializer, BiasInitializer);
         }
     }
 }

@@ -106,6 +106,15 @@
     <Compile Include="EventArgs\EpochStartEventArgs.cs" />
     <Compile Include="EventArgs\TrainingEndEventArgs.cs" />
     <Compile Include="GlobalParameters.cs" />
+    <Compile Include="Model\Layers\Activations\ActivationBase.cs" />
+    <Compile Include="Model\Layers\Activations\SELU.cs" />
+    <Compile Include="Model\Layers\Activations\Sigmoid.cs" />
+    <Compile Include="Model\Layers\Activations\ELU.cs" />
+    <Compile Include="Model\Layers\Activations\Softplus.cs" />
+    <Compile Include="Model\Layers\Activations\Softmax.cs" />
+    <Compile Include="Model\Layers\Activations\Tanh.cs" />
+    <Compile Include="Model\Layers\Activations\LeakyReLU.cs" />
+    <Compile Include="Model\Layers\Activations\ReLU.cs" />
     <Compile Include="Model\ConfigModule.cs" />
     <Compile Include="Model\Initializers\Constant.cs" />
     <Compile Include="Model\Initializers\GlorotNormal.cs" />
@@ -151,7 +160,6 @@
     <Compile Include="Model\Layers\Conv3D.cs" />
     <Compile Include="Model\Layers\Conv2D.cs" />
     <Compile Include="Model\Layers\Dropout.cs" />
-    <Compile Include="Model\Layers\Activation.cs" />
     <Compile Include="Model\Layers\Dense.cs" />
     <Compile Include="Model\Metrics\Accuracy.cs" />
     <Compile Include="Model\Metrics\MeanSquaredLogError.cs" />

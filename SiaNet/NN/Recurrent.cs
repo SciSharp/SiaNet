@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CNTK;
-using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 using Constant = CNTK.Constant;
 
 namespace SiaNet.NN
@@ -13,8 +13,8 @@ namespace SiaNet.NN
             Variable layer,
             int dim,
             int? cellDim = null,
-            string activation = OptActivations.Tanh,
-            string recurrentActivation = OptActivations.Sigmoid,
+            ActivationBase activation = null,
+            ActivationBase recurrentActivation = null,
             InitializerBase weightInitializer = null,
             InitializerBase recurrentInitializer = null,
             bool useBias = true,
@@ -24,6 +24,8 @@ namespace SiaNet.NN
             weightInitializer = weightInitializer ?? new GlorotUniform();
             recurrentInitializer = recurrentInitializer ?? new GlorotUniform();
             biasInitializer = biasInitializer ?? new GlorotUniform();
+            activation = activation ?? new Tanh();
+            recurrentActivation = recurrentActivation ?? new Sigmoid();
 
             cellDim = cellDim.HasValue ? cellDim : dim;
             var prevOutput = Variable.PlaceholderVariable(new[] {dim}, layer.DynamicAxes);
@@ -60,14 +62,15 @@ namespace SiaNet.NN
 
             if (cellDim.HasValue)
             {
-                it = Basic.Activation(
-                    (Variable) (projectInput() + createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
-                    CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value), stabilizedPrevCellState),
-                    recurrentActivation);
+                it = recurrentActivation.ToFunction(
+                    (Model.Function) ((Variable) (projectInput() +
+                                                  createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
+                                      CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value),
+                                          stabilizedPrevCellState)));
             }
             else
             {
-                it = Basic.Activation(projectInput(), recurrentActivation);
+                it = recurrentActivation.ToFunction(projectInput());
             }
 
             Function bit = null;
@@ -75,12 +78,13 @@ namespace SiaNet.NN
             if (cellDim.HasValue)
             {
                 bit = CNTKLib.ElementTimes(it,
-                    Basic.Activation(projectInput() + createProjectionParam(cellDim.Value) * stabilizedPrevOutput,
-                        activation));
+                    activation.ToFunction(
+                        (Model.Function) (projectInput() +
+                                          createProjectionParam(cellDim.Value) * stabilizedPrevOutput)));
             }
             else
             {
-                bit = CNTKLib.ElementTimes(it, Basic.Activation(projectInput(), activation));
+                bit = CNTKLib.ElementTimes(it, activation.ToFunction(projectInput()));
             }
 
             // Forget-me-not gate
@@ -88,14 +92,13 @@ namespace SiaNet.NN
 
             if (cellDim.HasValue)
             {
-                ft = Basic.Activation(
+                ft = recurrentActivation.ToFunction((Model.Function) (
                     (Variable) (projectInput() + createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
-                    CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value), stabilizedPrevCellState),
-                    recurrentActivation);
+                    CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value), stabilizedPrevCellState)));
             }
             else
             {
-                ft = Basic.Activation(projectInput(), recurrentActivation);
+                ft = recurrentActivation.ToFunction(projectInput());
             }
 
             var bft = prevCellState != null ? CNTKLib.ElementTimes(ft, prevCellState) : ft;
@@ -107,15 +110,15 @@ namespace SiaNet.NN
 
             if (cellDim.HasValue)
             {
-                ot = Basic.Activation(
+                ot = recurrentActivation.ToFunction((Model.Function) (
                     (Variable) (projectInput() + createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
                     CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value),
-                        Stabilize<float>(ct, GlobalParameters.Device)), recurrentActivation);
+                        Stabilize<float>(ct, GlobalParameters.Device))));
             }
             else
             {
-                ot = Basic.Activation(projectInput() + Stabilize<float>(ct, GlobalParameters.Device),
-                    recurrentActivation);
+                ot = recurrentActivation.ToFunction(
+                    (Model.Function) (projectInput() + Stabilize<float>(ct, GlobalParameters.Device)));
             }
 
             var ht = CNTKLib.ElementTimes(ot, CNTKLib.Tanh(ct));
@@ -150,8 +153,8 @@ namespace SiaNet.NN
             int shape,
             int dim,
             int? cellDim = null,
-            string activation = OptActivations.Tanh,
-            string recurrentActivation = OptActivations.Sigmoid,
+            ActivationBase activation = null,
+            ActivationBase recurrentActivation = null,
             InitializerBase weightInitializer = null,
             InitializerBase recurrentInitializer = null,
             bool useBias = true,
