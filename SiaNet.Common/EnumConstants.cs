@@ -98,36 +98,6 @@ namespace SiaNet.Common
     }
 
     /// <summary>
-    /// List of supported metric name
-    /// </summary>
-    public class OptMetrics
-    {
-        public const string Accuracy = "acc";
-        public const string TopKAccuracy = "top_k_acc";
-        public const string MSE = "mse";
-        public const string MAE = "mae";
-        public const string MAPE = "mape";
-        public const string MSLE = "msle";
-    }
-
-    /// <summary>
-    /// List of supported loss function names
-    /// </summary>
-    public class OptLosses
-    {
-        public const string MeanSquaredError = "mean_squared_error";
-        public const string MeanAbsoluteError = "mean_absolute_error";
-        public const string MeanAbsolutePercentageError = "mean_absolute_percentage_error";
-        public const string MeanSquaredLogError = "mean_squared_logarithmic_error";
-        public const string CrossEntropy = "cross_entropy";
-        public const string SparseCrossEntropy = "sparse_cross_entropy";
-        public const string BinaryCrossEntropy = "binary_cross_entropy";
-        public const string CTC = "ctc";
-        public const string KullbackLeiblerDivergence = "kullback_leibler_divergence";
-        public const string Poisson = "poisson";
-    }
-
-    /// <summary>
     /// Image Net pretrained model list
     /// </summary>
     public enum ImageNetModel

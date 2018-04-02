@@ -5,8 +5,11 @@ using System.Linq;
 using CNTK;
 using SiaNet.EventArgs;
 using SiaNet.Model;
+using SiaNet.Model.Metrics;
 using SiaNet.Model.Optimizers;
 using SiaNet.Processing;
+using Function = CNTK.Function;
+using Variable = CNTK.Variable;
 
 namespace SiaNet
 {
@@ -55,12 +58,12 @@ namespace SiaNet
 
         public Shape InputShape
         {
-            get => Shape.FromNDShape(FeatureVariable.Shape);
+            get => FeatureVariable.Shape;
         }
 
         public Shape OutputShape
         {
-            get => Shape.FromNDShape(LabelVariable.Shape);
+            get => LabelVariable.Shape;
         }
 
         /// <inheritdoc />
@@ -92,35 +95,32 @@ namespace SiaNet
         }
 
         public double Evaluate(
-            XYFrame validation,
+            XYFrame validationData,
             uint batchSize,
-            string lossFunctionName,
-            string metricFunctionName = null)
+            MetricFunction lossMetric)
         {
-            return Evaluate(validation, batchSize, lossFunctionName, out _, metricFunctionName);
+            return Evaluate(validationData, batchSize, lossMetric, null, out _);
         }
 
         public double Evaluate(
-            XYFrame validation,
+            XYFrame validationData,
             uint batchSize,
-            string lossFunctionName,
-            out double metric,
-            string metricFunctionName = null)
+            MetricFunction lossMetric,
+            MetricFunction evaluationMetric,
+            out double evaluationResult)
         {
             var losses = new List<double>();
             var metrics = new List<double>();
 
             using (var actualVariable = CNTKLib.InputVariable(LabelVariable.Shape, DataType.Float))
-            using (var lossFunction = Losses.Get(lossFunctionName, LabelVariable, actualVariable))
+            using (var lossFunction = lossMetric.ToFunction(LabelVariable, actualVariable))
             {
-                var metricFunction = !string.IsNullOrEmpty(metricFunctionName)
-                    ? Metrics.Get(metricFunctionName, LabelVariable, actualVariable)
-                    : null;
+                var metricFunction = evaluationMetric?.ToFunction(LabelVariable, actualVariable);
                 var currentBatch = 1u;
-                while (validation.ToBatch(currentBatch, batchSize))
+                while (validationData.ToBatch(currentBatch, batchSize))
                 {
-                    using (var actual = Evaluate(validation.CurrentBatch.XFrame))
-                    using (var expected = DataFrameUtil.GetValueBatch(validation.CurrentBatch.YFrame))
+                    using (var actual = Evaluate(validationData.CurrentBatch.XFrame))
+                    using (var expected = DataFrameUtil.GetValueBatch(validationData.CurrentBatch.YFrame))
                     {
                         var inputDataMap =
                             new Dictionary<Variable, Value> {{LabelVariable, expected}, {actualVariable, actual}};
@@ -145,25 +145,25 @@ namespace SiaNet
             }
 
             var loss = losses.Average();
-            metric = metrics.Any() ? metrics.Average() : loss;
+            evaluationResult = metrics.Any() ? metrics.Average() : loss;
             return loss;
         }
 
         /// <summary>
         ///     Fits the model for a fixed number of epochs.
         /// </summary>
-        /// <param name="train">The training dataset.</param>
+        /// <param name="trainData">The training dataset.</param>
         /// <param name="epoches">The no. of trainin epoches.</param>
         /// <param name="batchSize">Size of the batch for training.</param>
         /// <param name="validation">The validation dataset.</param>
         /// <param name="shuffle">Shuffle the dataset while training</param>
         public void Fit(
-            XYFrame train,
+            XYFrame trainData,
             uint epoches,
             uint batchSize,
             string optimizerName,
-            string lossFunctionName,
-            string metricFunctionName = null,
+            MetricFunction lossMetric,
+            MetricFunction evaluationMetric = null,
             Regulizers regulizer = null,
             XYFrame validation = null,
             bool shuffle = false)
@@ -176,9 +176,9 @@ namespace SiaNet
             var lastEpochMetric = 0d;
             var lastEvaluationLoss = 0d;
             var lastEvaluationMetric = 0d;
-            using (var lossFunction = Losses.Get(lossFunctionName, LabelVariable, Model))
-            using (var metricFunction = Metrics.Get(!string.IsNullOrWhiteSpace(metricFunctionName) ? metricFunctionName : lossFunctionName, LabelVariable, Model))
-            using (var trainer = Trainer.CreateTrainer(Model, lossFunction, metricFunction, learners))
+            using (var lossFunction = lossMetric.ToFunction(LabelVariable, (Model.Function)Model))
+            using (var evaluationFunction = (evaluationMetric ?? lossMetric).ToFunction(LabelVariable, (Model.Function)Model))
+            using (var trainer = Trainer.CreateTrainer(Model, lossFunction, evaluationFunction, learners))
             {
                 OnTrainingStart();
                 var currentEpoch = 1u;
@@ -186,19 +186,19 @@ namespace SiaNet
                 {
                     if (shuffle)
                     {
-                        train.Shuffle();
+                        trainData.Shuffle();
                     }
 
                     OnEpochStart(currentEpoch);
                     var currentBatch = 1u;
                     var epochLosses = new List<double>();
                     var epochMetrics = new List<double>();
-                    while (train.ToBatch(currentBatch, batchSize))
+                    while (trainData.ToBatch(currentBatch, batchSize))
                     {
                         OnBatchStart(currentEpoch, currentBatch);
 
-                        using (var features = DataFrameUtil.GetValueBatch(train.CurrentBatch.XFrame))
-                        using (var labels = DataFrameUtil.GetValueBatch(train.CurrentBatch.YFrame))
+                        using (var features = DataFrameUtil.GetValueBatch(trainData.CurrentBatch.XFrame))
+                        using (var labels = DataFrameUtil.GetValueBatch(trainData.CurrentBatch.YFrame))
                         {
                             trainer.TrainMinibatch(
                                 new Dictionary<Variable, Value>
@@ -224,8 +224,8 @@ namespace SiaNet
 
                     if (validation != null)
                     {
-                        lastEvaluationLoss = Evaluate(validation, batchSize, lossFunctionName, out lastEvaluationMetric,
-                            metricFunctionName);
+                        lastEvaluationLoss = Evaluate(validation, batchSize, lossMetric, evaluationMetric,
+                            out lastEvaluationMetric);
                     }
 
                     OnEpochEnd(currentEpoch, trainer.TotalNumberOfSamplesSeen(), lastEpochLoss, lastEvaluationLoss,

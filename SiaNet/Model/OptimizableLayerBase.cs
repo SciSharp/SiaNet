@@ -4,9 +4,9 @@ namespace SiaNet.Model
 {
     public abstract class OptimizableLayerBase : LayerBase
     {
-        internal Function ToFunction(Shape shape)
+        internal CNTK.Function ToFunction(Shape shape)
         {
-            return ToFunction(Variable.InputVariable(shape.ToNDShape(), DataType.Float));
+            return ToFunction(CNTK.Variable.InputVariable(shape, DataType.Float));
         }
     }
 }

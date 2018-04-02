@@ -64,7 +64,7 @@ namespace SiaNet
         /// </summary>
         public CompiledModel Compile()
         {
-            Function compiledModel = null;
+            CNTK.Function compiledModel = null;
             foreach (var layer in _layers)
             {
                 if (compiledModel == null)
@@ -80,7 +80,7 @@ namespace SiaNet
                 }
                 else
                 {
-                    compiledModel = layer.ToFunction(compiledModel);
+                    compiledModel = layer.ToFunction((Model.Function)compiledModel);
                 }
             }
 

@@ -538,15 +538,15 @@
         /// <exception cref="System.ArgumentException"></exception>
         public void Reshape(params int[] shape)
         {
-            Variable features = Variable.InputVariable(new int[] { Shape[1], Shape[0] }, DataType.Float);
+            CNTK.Variable features = CNTK.Variable.InputVariable(new int[] { Shape[1], Shape[0] }, DataType.Float);
             int total = Shape.Aggregate((d1, d2) => d1 * d2);
             if (shape.Aggregate((d1, d2) => d1 * d2) != total)
                 throw new ArgumentException(string.Format("Cannot reshape array of size {0} into shape {1}", total, string.Concat(shape)));
             //shape.ToList().Insert(0, Data.Count);
-            Variable outfeatures = Variable.InputVariable(shape, DataType.Float);
-           
+            CNTK.Variable outfeatures = CNTK.Variable.InputVariable(shape, DataType.Float);
+
             //Variable outfeatures = new Variable(shape, VariableKind.Output, DataType.Float, null, false, new AxisVector(), false, "", "");
-            Function reshapeFunc = CNTKLib.Reshape(features, shape);
+            CNTK.Function reshapeFunc = CNTKLib.Reshape(features, shape);
             
             List<float> vectorData = new List<float>();
             foreach (var item in Data)
@@ -555,8 +555,8 @@
             }
 
             Value v = Value.CreateBatch<float>(Shape, vectorData, GlobalParameters.Device);
-            Dictionary<Variable, Value> inputs = new Dictionary<Variable, Value>() { { features, v} };
-            Dictionary<Variable, Value> outputs = new Dictionary<Variable, Value>() { { outfeatures, null } };
+            Dictionary<CNTK.Variable, Value> inputs = new Dictionary<CNTK.Variable, Value>() { { features, v} };
+            Dictionary<CNTK.Variable, Value> outputs = new Dictionary<CNTK.Variable, Value>() { { outfeatures, null } };
             reshapeFunc.Evaluate(inputs, outputs, GlobalParameters.Device);
             var res = outputs[outfeatures].GetDenseData<float>(outfeatures);
             Data = new List<List<float>>();
