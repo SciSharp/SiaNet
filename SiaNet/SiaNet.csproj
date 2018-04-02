@@ -98,6 +98,12 @@
     <Compile Include="Application\Cifar10.cs" />
     <Compile Include="Application\FastRCNN.cs" />
     <Compile Include="Application\ImageNet.cs" />
+    <Compile Include="CompiledModel.cs" />
+    <Compile Include="EventArgs\BatchEndEventArgs.cs" />
+    <Compile Include="EventArgs\BatchStartEventArgs.cs" />
+    <Compile Include="EventArgs\EpochEndEventArgs.cs" />
+    <Compile Include="EventArgs\EpochStartEventArgs.cs" />
+    <Compile Include="EventArgs\TrainingEndEventArgs.cs" />
     <Compile Include="GlobalParameters.cs" />
     <Compile Include="Interface\ITrainPredict.cs" />
     <Compile Include="Losses.cs" />
