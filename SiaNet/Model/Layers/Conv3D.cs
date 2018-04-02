@@ -1,7 +1,9 @@
 ﻿using System;
+using CNTK;
 using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -10,13 +12,12 @@ namespace SiaNet.Model.Layers
     ///     convolved with the layer input to produce a tensor of outputs. If  use_bias is True, a bias vector is created and
     ///     added to the outputs. Finally, if activation is not None, it is applied to the outputs as well.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Conv3D : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class Conv3D : OptimizableLayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Conv3D" /> class.
         /// </summary>
-        /// <param name="shape">The 3D input shape.</param>
         /// <param name="channels">Integer, the dimensionality of the output space.</param>
         /// <param name="kernalSize">
         ///     A tuple of 3 integers, specifying the depth, height and width of the 3D convolution window.
@@ -48,7 +49,6 @@ namespace SiaNet.Model.Layers
         public Conv3D(
             int channels,
             Tuple<int, int, int> kernalSize,
-            Tuple<int, int, int, int> shape = null,
             Tuple<int, int, int> strides = null,
             bool padding = true,
             Tuple<int, int, int> dialation = null,
@@ -58,7 +58,6 @@ namespace SiaNet.Model.Layers
             object biasInitializer = null)
             : this()
         {
-            Shape = shape;
             Channels = channels;
             KernalSize = kernalSize;
             Strides = strides == null ? Tuple.Create(1, 1, 1) : strides;
@@ -75,7 +74,6 @@ namespace SiaNet.Model.Layers
         /// </summary>
         internal Conv3D()
         {
-            Name = "Conv3D";
         }
 
         /// <summary>
@@ -167,20 +165,6 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        ///     The 3D input shape.
-        /// </summary>
-        /// <value>
-        ///     The shape.
-        /// </value>
-        [JsonIgnore]
-        public Tuple<int, int, int, int> Shape
-        {
-            get => GetParam<Tuple<int, int, int, int>>("Shape");
-
-            set => SetParam("Shape", value);
-        }
-
-        /// <summary>
         ///     A tuple of 3 integers, specifying the strides of the convolution along each spatial dimension. Can be a single
         ///     integer to specify the same value for all spatial dimensions. Specifying any stride value != 1 is incompatible with
         ///     specifying any dilation_rate value != 1.
@@ -222,6 +206,18 @@ namespace SiaNet.Model.Layers
             get => GetParam<Initializer>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            //if (inputFunction.Shape.Rank != 4)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
+
+            return Convolution.Conv3D(inputFunction, Channels, KernalSize, Strides, Padding, Dialation, Act, UseBias,
+                WeightInitializer, BiasInitializer);
         }
     }
 }

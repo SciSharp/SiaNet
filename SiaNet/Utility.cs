@@ -37,12 +37,4 @@
             return result;
         }
     }
-
-    public class Shape
-    {
-        public static int[] Create(params int[] values)
-        {
-            return values;
-        }
-    }
 }

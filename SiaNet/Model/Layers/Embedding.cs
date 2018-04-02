@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -8,19 +11,16 @@ namespace SiaNet.Model.Layers
     ///     Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -> [[0.25, 0.1], [0.6, -0.2]].
     ///     This layer can only be used as the first layer in a model.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Embedding : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class Embedding : OptimizableLayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Embedding" /> class.
         /// </summary>
-        /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
         /// <param name="initializers">Initializer for the embeddings matrix.</param>
-        public Embedding(int shape, int embeddingDim, string initializers = OptInitializers.GlorotUniform)
-            : this()
+        public Embedding(int embeddingDim, string initializers = OptInitializers.GlorotUniform)
         {
-            Shape = shape;
             EmbeddingDim = embeddingDim;
             Initializers = new Initializer(initializers);
         }
@@ -31,20 +31,10 @@ namespace SiaNet.Model.Layers
         /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
         /// <param name="initializers">Initializer for the embeddings matrix.</param>
-        public Embedding(int shape, int embeddingDim, Initializer initializers = null)
-            : this()
+        public Embedding(int embeddingDim, Initializer initializers = null)
         {
-            Shape = shape;
             EmbeddingDim = embeddingDim;
             Initializers = initializers;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Embedding" /> class.
-        /// </summary>
-        internal Embedding()
-        {
-            Name = "Embedding";
         }
 
         /// <summary>
@@ -75,18 +65,15 @@ namespace SiaNet.Model.Layers
             set => SetParam("Initializers", value);
         }
 
-        /// <summary>
-        ///     Integer >0. Size of the vocabulary, i.e. maximum integer index + 1.
-        /// </summary>
-        /// <value>
-        ///     The shape.
-        /// </value>
-        [JsonIgnore]
-        public int Shape
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
         {
-            get => GetParam<int>("Shape");
+            //if (inputFunction.Shape.Rank != 1)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
 
-            set => SetParam("Shape", value);
+            return Basic.Embedding(inputFunction, EmbeddingDim, Initializers);
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using CNTK;
 using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -11,8 +13,8 @@ namespace SiaNet.Model.Layers
     ///     a bias vector is created and added to the outputs. Finally, if activation is not None, it is applied to the outputs
     ///     as well.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Conv1D : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class Conv1D : OptimizableLayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Conv1D" /> class.
@@ -39,7 +41,6 @@ namespace SiaNet.Model.Layers
         /// </param>
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers" /></param>
         public Conv1D(
-            Tuple<int, int> shape,
             int channels,
             int kernalSize,
             int strides = 1,
@@ -49,11 +50,9 @@ namespace SiaNet.Model.Layers
             bool useBias = false,
             object weightInitializer = null,
             object biasInitializer = null)
-            : this()
         {
             WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new Xavier());
             BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
-            Shape = Tuple.Create(shape.Item1, shape.Item2);
             Channels = channels;
             KernalSize = kernalSize;
             Padding = padding;
@@ -61,14 +60,6 @@ namespace SiaNet.Model.Layers
             Act = activation;
             UseBias = useBias;
             Strides = strides;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Conv1D" /> class.
-        /// </summary>
-        internal Conv1D()
-        {
-            Name = "Conv1D";
         }
 
         /// <summary>
@@ -158,20 +149,6 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        ///     The 1D input shape
-        /// </summary>
-        /// <value>
-        ///     The shape.
-        /// </value>
-        [JsonIgnore]
-        public Tuple<int, int> Shape
-        {
-            get => GetParam<Tuple<int, int>>("Shape");
-
-            set => SetParam("Shape", value);
-        }
-
-        /// <summary>
         ///     An integer specifying the stride length of the convolution.
         /// </summary>
         /// <value>
@@ -211,6 +188,18 @@ namespace SiaNet.Model.Layers
             get => GetParam<Initializer>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            //if (inputFunction.Shape.Rank != 2)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
+
+            return Convolution.Conv1D(inputFunction, Channels, KernalSize, Strides, Padding, Dialation, Act, UseBias,
+                WeightInitializer, BiasInitializer);
         }
     }
 }

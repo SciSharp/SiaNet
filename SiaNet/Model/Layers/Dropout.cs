@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -6,8 +8,8 @@ namespace SiaNet.Model.Layers
     ///     Dropout consists in randomly setting a fraction rate of input units to 0 at each update during training time, which
     ///     helps prevent overfitting.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Dropout : LayerConfig
+    /// <seealso cref="LayerBase" />
+    public class Dropout : LayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Dropout" /> class.
@@ -24,7 +26,6 @@ namespace SiaNet.Model.Layers
         /// </summary>
         internal Dropout()
         {
-            Name = "Dropout";
         }
 
         /// <summary>
@@ -39,6 +40,12 @@ namespace SiaNet.Model.Layers
             get => GetParam<double>("Rate");
 
             set => SetParam("Rate", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            return Basic.Dropout(inputFunction, Rate);
         }
     }
 }

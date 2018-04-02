@@ -1,6 +1,5 @@
 ﻿using CNTK;
 using SiaNet.Common;
-using SiaNet.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

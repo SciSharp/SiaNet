@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using CNTK;
 
 namespace SiaNet.Model
 {
     /// <summary>
-    /// Base class for the network layer
+    ///     Base class for the network layer
     /// </summary>
-    public class LayerConfig
+    public abstract class LayerBase
     {
         /// <summary>
-        /// Gets or sets the name of the network layer
+        ///     Gets or sets the parameters.
         /// </summary>
         /// <value>
-        /// The name.
-        /// </value>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the parameters.
-        /// </summary>
-        /// <value>
-        /// The parameters of the layer.
+        ///     The parameters of the layer.
         /// </value>
         public Dictionary<string, object> Params { get; set; } = new Dictionary<string, object>();
 
@@ -33,8 +26,10 @@ namespace SiaNet.Model
                 {
                     o = Convert.ChangeType(o, typeof(T));
                 }
-                return (T)o;
+
+                return (T) o;
             }
+
             return default(T);
         }
 
@@ -42,5 +37,7 @@ namespace SiaNet.Model
         {
             Params[name] = value;
         }
+
+        internal abstract Function ToFunction(Variable inputFunction);
     }
 }

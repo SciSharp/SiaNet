@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -9,19 +12,9 @@ namespace SiaNet.Model.Layers
     ///     i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation
     ///     close to 1.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class BatchNorm : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class BatchNorm : OptimizableLayerBase
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BatchNorm" /> class.
-        /// </summary>
-        /// <param name="shape">The input shape for batch norm layer.</param>
-        public BatchNorm(int shape)
-            : this()
-        {
-            Shape = shape;
-        }
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="T:SiaNet.Model.Layers.BatchNorm" /> class.
         /// </summary>
@@ -47,7 +40,6 @@ namespace SiaNet.Model.Layers
             float epsilon = 0.001f)
             : this()
         {
-            Shape = null;
             Epsilon = epsilon;
             BetaInitializer = new Initializer(betaInitializer);
             GammaInitializer = new Initializer(gammaInitializer);
@@ -56,37 +48,6 @@ namespace SiaNet.Model.Layers
             Spatial = spatial;
             NormalizationTimeConstant = normalizationTimeConstant;
             BlendTimeConst = blendTimeConst;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BatchNorm" /> class.
-        /// </summary>
-        /// <param name="shape">The input shape for batch norm layer.</param>
-        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
-        /// <param name="betaInitializer">Initializer for the beta weight.</param>
-        /// <param name="gammaInitializer">Initializer for the gamma weight.</param>
-        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
-        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
-        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
-        /// <param name="normalizationTimeConstant">
-        ///     The time constant in samples of the first-order low-pass filter that is used to
-        ///     compute mean/variance statistics for use in inference
-        /// </param>
-        /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(
-            int shape,
-            string betaInitializer = OptInitializers.Zeros,
-            string gammaInitializer = OptInitializers.Ones,
-            string runningMeanInitializer = OptInitializers.Zeros,
-            string runningStdInvInitializer = OptInitializers.Ones,
-            bool spatial = true,
-            float normalizationTimeConstant = 4096f,
-            float blendTimeConst = 0.0f,
-            float epsilon = 0.001f)
-            : this(betaInitializer, gammaInitializer, runningMeanInitializer, runningStdInvInitializer, spatial,
-                normalizationTimeConstant, blendTimeConst, epsilon)
-        {
-            Shape = shape;
         }
 
         /// <summary>
@@ -114,7 +75,6 @@ namespace SiaNet.Model.Layers
             float epsilon = 0.001f)
             : this()
         {
-            Shape = null;
             Epsilon = epsilon;
             BetaInitializer = betaInitializer ?? new Zeros();
             GammaInitializer = gammaInitializer ?? new Ones();
@@ -125,44 +85,12 @@ namespace SiaNet.Model.Layers
             BlendTimeConst = blendTimeConst;
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BatchNorm" /> class.
-        /// </summary>
-        /// <param name="shape">The input shape for batch norm layer.</param>
-        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
-        /// <param name="betaInitializer">Initializer for the beta weight.</param>
-        /// <param name="gammaInitializer">Initializer for the gamma weight.</param>
-        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
-        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
-        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
-        /// <param name="normalizationTimeConstant">
-        ///     The time constant in samples of the first-order low-pass filter that is used to
-        ///     compute mean/variance statistics for use in inference
-        /// </param>
-        /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(
-            int shape,
-            Initializer betaInitializer = null,
-            Initializer gammaInitializer = null,
-            Initializer runningMeanInitializer = null,
-            Initializer runningStdInvInitializer = null,
-            bool spatial = true,
-            float normalizationTimeConstant = 4096f,
-            float blendTimeConst = 0.0f,
-            float epsilon = 0.001f)
-            : this(betaInitializer, gammaInitializer, runningMeanInitializer, runningStdInvInitializer, spatial,
-                normalizationTimeConstant, blendTimeConst, epsilon)
-        {
-            Shape = shape;
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BatchNorm" /> class.
         /// </summary>
         internal BatchNorm()
         {
-            Name = "BatchNorm";
-            Shape = null;
             BetaInitializer = new Zeros();
             GammaInitializer = new Ones();
             RunningMeanInitializer = new Zeros();
@@ -273,20 +201,6 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        ///     The input shape for batch norm layer
-        /// </summary>
-        /// <value>
-        ///     The shape.
-        /// </value>
-        [JsonIgnore]
-        public int? Shape
-        {
-            get => GetParam<int?>("Shape");
-
-            set => SetParam("Shape", value);
-        }
-
-        /// <summary>
         ///     Boolean, if yes the input data is spatial (2D). If not, then sets to 1D
         /// </summary>
         /// <value>
@@ -298,6 +212,18 @@ namespace SiaNet.Model.Layers
             get => GetParam<bool>("Spatial");
 
             set => SetParam("Spatial", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            //if (inputFunction.Shape.Rank != 1)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
+
+            return Basic.BatchNorm(inputFunction, Epsilon, BetaInitializer, GammaInitializer, RunningMeanInitializer,
+                RunningStdInvInitializer, Spatial, NormalizationTimeConstant, BlendTimeConst);
         }
     }
 }

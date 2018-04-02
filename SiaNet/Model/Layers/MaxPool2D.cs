@@ -1,13 +1,15 @@
 ﻿using System;
+using CNTK;
 using Newtonsoft.Json;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
     ///     Max pooling operation for spatial data.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class MaxPool2D : LayerConfig
+    /// <seealso cref="LayerBase" />
+    public class MaxPool2D : LayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MaxPool2D" /> class.
@@ -23,19 +25,10 @@ namespace SiaNet.Model.Layers
         ///     original input.
         /// </param>
         public MaxPool2D(Tuple<int, int> poolSize, Tuple<int, int> strides = null, bool padding = true)
-            : this()
         {
             PoolSize = poolSize;
-            Strides = strides == null ? Tuple.Create(1, 1) : strides;
+            Strides = strides ?? Tuple.Create(1, 1);
             Padding = padding;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MaxPool2D" /> class.
-        /// </summary>
-        internal MaxPool2D()
-        {
-            Name = "MaxPool2D";
         }
 
         /// <summary>
@@ -80,6 +73,12 @@ namespace SiaNet.Model.Layers
             get => GetParam<Tuple<int, int>>("Strides");
 
             set => SetParam("Strides", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            return Convolution.MaxPool2D(inputFunction, PoolSize, Strides, Padding);
         }
     }
 }

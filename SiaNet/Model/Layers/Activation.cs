@@ -1,12 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
     ///     Applies an activation function to an output.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Activation : LayerConfig
+    /// <seealso cref="LayerBase" />
+    public class Activation : LayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Activation" /> class.
@@ -23,7 +25,6 @@ namespace SiaNet.Model.Layers
         /// </summary>
         internal Activation()
         {
-            Name = "Activation";
         }
 
         /// <summary>
@@ -38,6 +39,12 @@ namespace SiaNet.Model.Layers
             get => GetParam<string>("Act");
 
             set => SetParam("Act", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            return Basic.Activation(inputFunction, Act);
         }
     }
 }

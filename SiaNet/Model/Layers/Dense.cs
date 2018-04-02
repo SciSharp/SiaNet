@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -9,14 +12,13 @@ namespace SiaNet.Model.Layers
     ///     activation function passed as the activation argument, kernel is a weights matrix created by the layer, and bias is
     ///     a bias vector created by the layer (only applicable if use_bias is True).
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Dense : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class Dense : OptimizableLayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Dense" /> class.
         /// </summary>
         /// <param name="dim">Positive integer, dimensionality of the output space..</param>
-        /// <param name="shape">The input shape.</param>
         /// <param name="act">
         ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear"
         ///     activation: a(x) = x). <see cref="SiaNet.Common.OptActivations" />
@@ -26,14 +28,11 @@ namespace SiaNet.Model.Layers
         /// <param name="biasInitializer">Initializer for the bias vector. </param>
         public Dense(
             int dim,
-            int? shape = null,
             string act = OptActivations.None,
             bool useBias = false,
             object weightInitializer = null,
             object biasInitializer = null)
-            : this()
         {
-            Shape = shape;
             Dim = dim;
             Act = act;
             UseBias = useBias;
@@ -41,13 +40,6 @@ namespace SiaNet.Model.Layers
             BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Dense" /> class.
-        /// </summary>
-        internal Dense()
-        {
-            Name = "Dense";
-        }
 
         /// <summary>
         ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x)
@@ -93,20 +85,6 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        ///     The input shape for this layer
-        /// </summary>
-        /// <value>
-        ///     The shape.
-        /// </value>
-        [JsonIgnore]
-        public int? Shape
-        {
-            get => GetParam<int?>("Shape");
-
-            set => SetParam("Shape", value);
-        }
-
-        /// <summary>
         ///     Boolean, whether the layer uses a bias vector.
         /// </summary>
         /// <value>
@@ -132,6 +110,17 @@ namespace SiaNet.Model.Layers
             get => GetParam<Initializer>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            //if (inputFunction.Shape.Rank != 1)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
+
+            return Basic.Dense(inputFunction, Dim, Act, UseBias, WeightInitializer, BiasInitializer);
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -8,8 +11,8 @@ namespace SiaNet.Model.Layers
     ///     Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary
     ///     intervals
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class LSTM : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class LSTM : OptimizableLayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="LSTM" /> class.
@@ -27,7 +30,6 @@ namespace SiaNet.Model.Layers
         /// <param name="biasInitializer">Initializer for the bias vector. <see cref="SiaNet.Common.OptInitializers" /></param>
         public LSTM(
             int dim,
-            int[] shape = null,
             int? cellDim = null,
             string activation = OptActivations.Tanh,
             string recurrentActivation = OptActivations.Sigmoid,
@@ -36,9 +38,7 @@ namespace SiaNet.Model.Layers
             bool useBias = true,
             object biasInitializer = null,
             bool returnSequence = false)
-            : this()
         {
-            Shape = shape;
             Dim = dim;
             CellDim = cellDim;
             Activation = activation;
@@ -50,13 +50,6 @@ namespace SiaNet.Model.Layers
             BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="LSTM" /> class.
-        /// </summary>
-        internal LSTM()
-        {
-            Name = "LSTM";
-        }
 
         /// <summary>
         ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x)
@@ -137,20 +130,6 @@ namespace SiaNet.Model.Layers
         }
 
         /// <summary>
-        ///     The input shape for this layer
-        /// </summary>
-        /// <value>
-        ///     The shape.
-        /// </value>
-        [JsonIgnore]
-        public int[] Shape
-        {
-            get => GetParam<int[]>("Shape");
-
-            set => SetParam("Shape", value);
-        }
-
-        /// <summary>
         ///     Boolean, whether the layer uses a bias vector.
         /// </summary>
         /// <value>
@@ -176,6 +155,18 @@ namespace SiaNet.Model.Layers
             get => GetParam<Initializer>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            //if (inputFunction.Shape.Rank < 3)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
+
+            return Recurrent.LSTM(inputFunction, Dim, CellDim, Activation, RecurrentActivation, WeightInitializer,
+                RecurrentInitializer, UseBias, BiasInitializer, ReturnSequence);
         }
     }
 }

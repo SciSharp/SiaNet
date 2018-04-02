@@ -1,12 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
     ///     Max pooling operation for temporal data.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class MaxPool1D : LayerConfig
+    /// <seealso cref="LayerBase" />
+    public class MaxPool1D : LayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="MaxPool1D" /> class.
@@ -30,7 +32,6 @@ namespace SiaNet.Model.Layers
         /// </summary>
         internal MaxPool1D()
         {
-            Name = "MaxPool1D";
         }
 
         /// <summary>
@@ -73,6 +74,12 @@ namespace SiaNet.Model.Layers
             get => GetParam<int>("Strides");
 
             set => SetParam("Strides", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            return Convolution.MaxPool1D(inputFunction, PoolSize, Strides, Padding);
         }
     }
 }

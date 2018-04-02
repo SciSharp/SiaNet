@@ -1,12 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
+using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
     ///     Average pooling for temporal data.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class AvgPool1D : LayerConfig
+    /// <seealso cref="LayerBase" />
+    public class AvgPool1D : LayerBase
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="AvgPool1D" /> class.
@@ -30,7 +32,6 @@ namespace SiaNet.Model.Layers
         /// </summary>
         internal AvgPool1D()
         {
-            Name = "AvgPool1D";
         }
 
         /// <summary>
@@ -73,6 +74,12 @@ namespace SiaNet.Model.Layers
             get => GetParam<int>("Strides");
 
             set => SetParam("Strides", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            return Convolution.AvgPool1D(inputFunction, PoolSize, Strides, Padding);
         }
     }
 }

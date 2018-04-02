@@ -43,6 +43,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>
     </DocumentationFile>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -105,7 +106,6 @@
     <Compile Include="EventArgs\EpochStartEventArgs.cs" />
     <Compile Include="EventArgs\TrainingEndEventArgs.cs" />
     <Compile Include="GlobalParameters.cs" />
-    <Compile Include="Interface\ITrainPredict.cs" />
     <Compile Include="Losses.cs" />
     <Compile Include="Metrics.cs" />
     <Compile Include="Model\ConfigModule.cs" />
@@ -113,15 +113,19 @@
     <Compile Include="Model\ImageDataFrame.cs" />
     <Compile Include="Model\ImageDataGenerator.cs" />
     <Compile Include="Model\Initializers.cs" />
-    <Compile Include="Model\LayerConfig.cs" />
+    <Compile Include="Model\LayerBase.cs" />
     <Compile Include="Model\Layers\BatchNorm.cs" />
     <Compile Include="Model\Layers\AvgPool1D.cs" />
     <Compile Include="Model\Layers\AvgPool2D.cs" />
     <Compile Include="Model\Layers\AvgPool3D.cs" />
+    <Compile Include="Model\Layers\GlobalAvgPool2D.cs" />
+    <Compile Include="Model\Layers\GlobalAvgPool3D.cs" />
+    <Compile Include="Model\Layers\GlobalMaxPool2D.cs" />
+    <Compile Include="Model\Layers\GlobalMaxPool3D.cs" />
     <Compile Include="Model\Layers\LSTM.cs" />
     <Compile Include="Model\Layers\Embedding.cs" />
-    <Compile Include="Model\Layers\GlobalAvgPool.cs" />
-    <Compile Include="Model\Layers\GlobalMaxPool.cs" />
+    <Compile Include="Model\Layers\GlobalAvgPool1D.cs" />
+    <Compile Include="Model\Layers\GlobalMaxPool1D.cs" />
     <Compile Include="Model\Layers\MaxPool3D.cs" />
     <Compile Include="Model\Layers\MaxPool2D.cs" />
     <Compile Include="Model\Layers\MaxPool1D.cs" />
@@ -130,6 +134,7 @@
     <Compile Include="Model\Layers\Dropout.cs" />
     <Compile Include="Model\Layers\Activation.cs" />
     <Compile Include="Model\Layers\Dense.cs" />
+    <Compile Include="Model\OptimizableLayerBase.cs" />
     <Compile Include="Model\Layers\Reshape.cs" />
     <Compile Include="Model\Optimizers\AdaGrad.cs" />
     <Compile Include="Model\Optimizers\AdaDelta.cs" />
@@ -148,12 +153,10 @@
     <Compile Include="NN\Convolution.cs" />
     <Compile Include="NN\OptimizedRecurrent.cs" />
     <Compile Include="Processing\ImageUtil.cs" />
-    <Compile Include="Processing\ImgGenTrainPredict.cs" />
     <Compile Include="Processing\DataFrameUtil.cs" />
-    <Compile Include="Processing\DataFrameTrainPredict.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regulizers.cs" />
-    <Compile Include="Events\TrainingEvents.cs" />
+    <Compile Include="Shape.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +183,9 @@
       <Name>SiaNet.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interface\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="External\DlibDotNet\DlibDotNet.dll" />
     <Content Include="External\DlibDotNet\DlibDotNet.Native.dll">
