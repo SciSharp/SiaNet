@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CNTK;
+using SiaNet.Model.Regularizers;
 
 namespace SiaNet.Model.Optimizers
 {
@@ -16,8 +17,8 @@ namespace SiaNet.Model.Optimizers
         ///     Initializes a new instance of the <see cref="SGD" /> class.
         /// </summary>
         /// <param name="learningRate">The learning rate.</param>
-        public SGD(double learningRate = 0.01, Regulizers regulizers = null) :
-            base(learningRate, regulizers)
+        public SGD(double learningRate = 0.01, RegularizerBase regularizer = null) :
+            base(learningRate, regularizer)
         {
         }
 

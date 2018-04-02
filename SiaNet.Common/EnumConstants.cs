@@ -71,17 +71,6 @@ namespace SiaNet.Common
         public const string HeNormal = "he_normal";
         public const string HeUniform = "he_uniform";
     }
-
-    /// <summary>
-    /// List of regulizer function name
-    /// </summary>
-    public class OptRegulizers
-    {
-        public const string None = "none";
-        public const string L1 = "l1";
-        public const string L2 = "l2";
-        public const string L1L2 = "l1l2";
-    }
     
     /// <summary>
     /// Image Net pretrained model list

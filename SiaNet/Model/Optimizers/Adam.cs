@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CNTK;
+using SiaNet.Model.Regularizers;
 
 namespace SiaNet.Model.Optimizers
 {
@@ -25,8 +26,8 @@ namespace SiaNet.Model.Optimizers
             double varianceMomentum = 0.999,
             bool unitGain = true,
             double epsilon = 1e-08f,
-            Regulizers regulizers = null) :
-            base(learningRate, regulizers)
+            RegularizerBase regularizer = null) :
+            base(learningRate, regularizer)
         {
             Momentum = momentum;
             VarianceMomentum = varianceMomentum;

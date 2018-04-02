@@ -1,35 +1,22 @@
 ﻿using CNTK;
+using SiaNet.Model.Regularizers;
 
 namespace SiaNet.Model.Optimizers
 {
     public abstract class OptimizerBase
     {
-        public double LearningRate { get; protected set; }
-        public Regulizers Regulizer { get; protected set; }
-
-        protected OptimizerBase(double learningRate, Regulizers regulizer)
+        protected OptimizerBase(double learningRate, RegularizerBase regularizer)
         {
             LearningRate = learningRate;
-            Regulizer = regulizer;
+            Regularizer = regularizer;
         }
+
+        public double LearningRate { get; protected set; }
+        public RegularizerBase Regularizer { get; protected set; }
 
         protected AdditionalLearningOptions GetAdditionalLearningOptions()
         {
-            AdditionalLearningOptions options = new AdditionalLearningOptions();
-
-            if (Regulizer != null)
-            {
-                if (Regulizer.IsL1)
-                    options.l1RegularizationWeight = Regulizer.L1;
-                if (Regulizer.IsL2)
-                    options.l1RegularizationWeight = Regulizer.L2;
-
-                options.gradientClippingWithTruncation = Regulizer.GradientClippingWithTruncation;
-                if (Regulizer.GradientClippingThresholdPerSample.HasValue)
-                    options.gradientClippingThresholdPerSample = Regulizer.GradientClippingThresholdPerSample.Value;
-            }
-
-            return options;
+            return Regularizer?.GetAdditionalLearningOptions() ?? new AdditionalLearningOptions();
         }
 
         internal abstract Learner ToLearner(Function model);

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CNTK;
+using SiaNet.Model.Regularizers;
 
 namespace SiaNet.Model.Optimizers
 {
@@ -26,8 +27,8 @@ namespace SiaNet.Model.Optimizers
             double dec = 0.01,
             double min = 0.01,
             double max = 1,
-            Regulizers regulizers = null) :
-            base(learningRate, regulizers)
+            RegularizerBase regularizer = null) :
+            base(learningRate, regularizer)
         {
             Gamma = gamma;
             Increment = inc;

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CNTK;
+using SiaNet.Model.Regularizers;
 
 namespace SiaNet.Model.Optimizers
 {
@@ -17,9 +18,9 @@ namespace SiaNet.Model.Optimizers
         /// <param name="learningRate">The learning rate.</param>
         /// <param name="rho">The rho.</param>
         /// <param name="epsilon">The epsilon.</param>
-        /// <param name="regulizer">The regulizer.</param>
-        public AdaDelta(double learningRate = 1.0, double rho = 0.95, double epsilon = 1e-08, Regulizers regulizer = null) :
-            base(learningRate, regulizer)
+        /// <param name="regularizer">The regularizer.</param>
+        public AdaDelta(double learningRate = 1.0, double rho = 0.95, double epsilon = 1e-08, RegularizerBase regularizer = null) :
+            base(learningRate, regularizer)
         {
             Rho = rho;
             Epsilon = epsilon;
