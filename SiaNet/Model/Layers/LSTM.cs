@@ -1,6 +1,4 @@
-﻿using System;
-using CNTK;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
 using SiaNet.NN;
@@ -33,10 +31,10 @@ namespace SiaNet.Model.Layers
             int? cellDim = null,
             string activation = OptActivations.Tanh,
             string recurrentActivation = OptActivations.Sigmoid,
-            object weightInitializer = null,
-            object recurrentInitializer = null,
+            InitializerBase weightInitializer = null,
+            InitializerBase recurrentInitializer = null,
             bool useBias = true,
-            object biasInitializer = null,
+            InitializerBase biasInitializer = null,
             bool returnSequence = false)
         {
             Dim = dim;
@@ -45,9 +43,9 @@ namespace SiaNet.Model.Layers
             RecurrentActivation = recurrentActivation;
             UseBias = useBias;
             ReturnSequence = returnSequence;
-            WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new GlorotUniform());
-            RecurrentInitializer = Utility.GetInitializerFromObject(recurrentInitializer, new GlorotUniform());
-            BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
+            WeightInitializer = weightInitializer ?? new GlorotUniform();
+            RecurrentInitializer = recurrentInitializer ?? new GlorotUniform();
+            BiasInitializer = biasInitializer ?? new Zeros();
         }
 
 
@@ -73,9 +71,9 @@ namespace SiaNet.Model.Layers
         ///     The bias initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer BiasInitializer
+        public InitializerBase BiasInitializer
         {
-            get => GetParam<Initializer>("BiasInitializer");
+            get => GetParam<InitializerBase>("BiasInitializer");
 
             set => SetParam("BiasInitializer", value);
         }
@@ -109,9 +107,9 @@ namespace SiaNet.Model.Layers
             set => SetParam("RecurrentActivation", value);
         }
 
-        public Initializer RecurrentInitializer
+        public InitializerBase RecurrentInitializer
         {
-            get => GetParam<Initializer>("RecurrentInitializer");
+            get => GetParam<InitializerBase>("RecurrentInitializer");
 
             set => SetParam("RecurrentInitializer", value);
         }
@@ -150,9 +148,9 @@ namespace SiaNet.Model.Layers
         ///     The weight initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer WeightInitializer
+        public InitializerBase WeightInitializer
         {
-            get => GetParam<Initializer>("WeightInitializer");
+            get => GetParam<InitializerBase>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
         }

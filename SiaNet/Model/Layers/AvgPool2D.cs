@@ -1,5 +1,4 @@
 ﻿using System;
-using CNTK;
 using Newtonsoft.Json;
 using SiaNet.NN;
 

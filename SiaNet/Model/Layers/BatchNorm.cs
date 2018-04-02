@@ -1,7 +1,4 @@
-﻿using System;
-using CNTK;
-using Newtonsoft.Json;
-using SiaNet.Common;
+﻿using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
 using SiaNet.NN;
 
@@ -15,41 +12,6 @@ namespace SiaNet.Model.Layers
     /// <seealso cref="OptimizableLayerBase" />
     public class BatchNorm : OptimizableLayerBase
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="T:SiaNet.Model.Layers.BatchNorm" /> class.
-        /// </summary>
-        /// <param name="epsilon">Small float added to variance to avoid dividing by zero.</param>
-        /// <param name="betaInitializer">Initializer for the beta weight.</param>
-        /// <param name="gammaInitializer">Initializer for the gamma weight.</param>
-        /// <param name="runningMeanInitializer">Initializer for the running mean weight.</param>
-        /// <param name="runningStdInvInitializer">Initializer for the running standard inv weight.</param>
-        /// <param name="spatial">Boolean, if yes the input data is spatial (2D). If not, then sets to 1D</param>
-        /// <param name="normalizationTimeConstant">
-        ///     The time constant in samples of the first-order low-pass filter that is used to
-        ///     compute mean/variance statistics for use in inference
-        /// </param>
-        /// <param name="blendTimeConst">The blend time constant in samples.</param>
-        public BatchNorm(
-            string betaInitializer = OptInitializers.Zeros,
-            string gammaInitializer = OptInitializers.Ones,
-            string runningMeanInitializer = OptInitializers.Zeros,
-            string runningStdInvInitializer = OptInitializers.Ones,
-            bool spatial = true,
-            float normalizationTimeConstant = 4096f,
-            float blendTimeConst = 0.0f,
-            float epsilon = 0.001f)
-            : this()
-        {
-            Epsilon = epsilon;
-            BetaInitializer = new Initializer(betaInitializer);
-            GammaInitializer = new Initializer(gammaInitializer);
-            RunningMeanInitializer = new Initializer(runningMeanInitializer);
-            RunningStdInvInitializer = new Initializer(runningStdInvInitializer);
-            Spatial = spatial;
-            NormalizationTimeConstant = normalizationTimeConstant;
-            BlendTimeConst = blendTimeConst;
-        }
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="BatchNorm" /> class.
         /// </summary>
@@ -65,10 +27,10 @@ namespace SiaNet.Model.Layers
         /// </param>
         /// <param name="blendTimeConst">The blend time constant in samples.</param>
         public BatchNorm(
-            Initializer betaInitializer = null,
-            Initializer gammaInitializer = null,
-            Initializer runningMeanInitializer = null,
-            Initializer runningStdInvInitializer = null,
+            InitializerBase betaInitializer = null,
+            InitializerBase gammaInitializer = null,
+            InitializerBase runningMeanInitializer = null,
+            InitializerBase runningStdInvInitializer = null,
             bool spatial = true,
             float normalizationTimeConstant = 4096f,
             float blendTimeConst = 0.0f,
@@ -108,9 +70,9 @@ namespace SiaNet.Model.Layers
         ///     The beta initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer BetaInitializer
+        public InitializerBase BetaInitializer
         {
-            get => GetParam<Initializer>("BetaInitializer");
+            get => GetParam<InitializerBase>("BetaInitializer");
 
             set => SetParam("BetaInitializer", value);
         }
@@ -150,9 +112,9 @@ namespace SiaNet.Model.Layers
         ///     The gamma initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer GammaInitializer
+        public InitializerBase GammaInitializer
         {
-            get => GetParam<Initializer>("GammaInitializer");
+            get => GetParam<InitializerBase>("GammaInitializer");
 
             set => SetParam("GammaInitializer", value);
         }
@@ -179,9 +141,9 @@ namespace SiaNet.Model.Layers
         ///     The running mean initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer RunningMeanInitializer
+        public InitializerBase RunningMeanInitializer
         {
-            get => GetParam<Initializer>("RunningMeanInitializer");
+            get => GetParam<InitializerBase>("RunningMeanInitializer");
 
             set => SetParam("RunningMeanInitializer", value);
         }
@@ -193,9 +155,9 @@ namespace SiaNet.Model.Layers
         ///     The running standard inv initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer RunningStdInvInitializer
+        public InitializerBase RunningStdInvInitializer
         {
-            get => GetParam<Initializer>("RunningStdInvInitializer");
+            get => GetParam<InitializerBase>("RunningStdInvInitializer");
 
             set => SetParam("RunningStdInvInitializer", value);
         }

@@ -1,5 +1,4 @@
-﻿using CNTK;
-using SiaNet.NN;
+﻿using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {

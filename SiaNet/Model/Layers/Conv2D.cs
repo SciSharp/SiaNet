@@ -1,5 +1,4 @@
 ﻿using System;
-using CNTK;
 using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
@@ -54,18 +53,18 @@ namespace SiaNet.Model.Layers
             Tuple<int, int> dialation = null,
             string activation = OptActivations.None,
             bool useBias = false,
-            object weightInitializer = null,
-            object biasInitializer = null)
+            InitializerBase weightInitializer = null,
+            InitializerBase biasInitializer = null)
         {
             Channels = channels;
             KernalSize = kernalSize;
-            Strides = strides == null ? Tuple.Create(1, 1) : strides;
+            Strides = strides ?? Tuple.Create(1, 1);
             Padding = padding;
-            Dialation = dialation == null ? Tuple.Create(1, 1) : dialation;
+            Dialation = dialation ?? Tuple.Create(1, 1);
             Act = activation;
             UseBias = useBias;
-            WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new Xavier());
-            BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
+            WeightInitializer = weightInitializer ?? new Xavier();
+            BiasInitializer = biasInitializer ?? new Zeros();
         }
 
         /// <summary>
@@ -90,9 +89,9 @@ namespace SiaNet.Model.Layers
         ///     The bias initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer BiasInitializer
+        public InitializerBase BiasInitializer
         {
-            get => GetParam<Initializer>("BiasInitializer");
+            get => GetParam<InitializerBase>("BiasInitializer");
 
             set => SetParam("BiasInitializer", value);
         }
@@ -193,9 +192,9 @@ namespace SiaNet.Model.Layers
         ///     The weight initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer WeightInitializer
+        public InitializerBase WeightInitializer
         {
-            get => GetParam<Initializer>("WeightInitializer");
+            get => GetParam<InitializerBase>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
         }

@@ -1,6 +1,4 @@
-﻿using System;
-using CNTK;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SiaNet.Common;
 using SiaNet.Model.Initializers;
 using SiaNet.NN;
@@ -30,14 +28,14 @@ namespace SiaNet.Model.Layers
             int dim,
             string act = OptActivations.None,
             bool useBias = false,
-            object weightInitializer = null,
-            object biasInitializer = null)
+            InitializerBase weightInitializer = null,
+            InitializerBase biasInitializer = null)
         {
             Dim = dim;
             Act = act;
             UseBias = useBias;
-            WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new Xavier());
-            BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
+            WeightInitializer = weightInitializer ?? new Xavier();
+            BiasInitializer = biasInitializer ?? new Zeros();
         }
 
 
@@ -63,9 +61,9 @@ namespace SiaNet.Model.Layers
         ///     The bias initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer BiasInitializer
+        public InitializerBase BiasInitializer
         {
-            get => GetParam<Initializer>("BiasInitializer");
+            get => GetParam<InitializerBase>("BiasInitializer");
 
             set => SetParam("BiasInitializer", value);
         }
@@ -105,9 +103,9 @@ namespace SiaNet.Model.Layers
         ///     The weight initializer.
         /// </value>
         [JsonIgnore]
-        public Initializer WeightInitializer
+        public InitializerBase WeightInitializer
         {
-            get => GetParam<Initializer>("WeightInitializer");
+            get => GetParam<InitializerBase>("WeightInitializer");
 
             set => SetParam("WeightInitializer", value);
         }

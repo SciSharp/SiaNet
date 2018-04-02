@@ -1,5 +1,4 @@
-﻿using CNTK;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SiaNet.NN;
 
 namespace SiaNet.Model.Layers

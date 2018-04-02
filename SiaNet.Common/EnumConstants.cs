@@ -52,25 +52,7 @@ namespace SiaNet.Common
         public const string ELU = "elu";
         public const string SELU = "selu";
     }
-
-    /// <summary>
-    /// List of supported initialize function names
-    /// </summary>
-    public class OptInitializers
-    {
-        public const string None = "none";
-        public const string Uniform = "uniform";
-        public const string Normal = "normal";
-        public const string TruncatedNormal = "truncated_normal";
-        public const string Zeros = "zeros";
-        public const string Ones = "ones";
-        public const string Constant = "constant";
-        public const string Xavier = "xavier";
-        public const string GlorotNormal = "glorot_normal";
-        public const string GlorotUniform = "glorot_uniform";
-        public const string HeNormal = "he_normal";
-        public const string HeUniform = "he_uniform";
-    }
+    
     
     /// <summary>
     /// Image Net pretrained model list

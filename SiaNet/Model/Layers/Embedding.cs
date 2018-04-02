@@ -1,7 +1,4 @@
-﻿using System;
-using CNTK;
-using Newtonsoft.Json;
-using SiaNet.Common;
+﻿using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
 using SiaNet.NN;
 
@@ -17,24 +14,13 @@ namespace SiaNet.Model.Layers
         /// <summary>
         ///     Initializes a new instance of the <see cref="Embedding" /> class.
         /// </summary>
-        /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
-        /// <param name="initializers">Initializer for the embeddings matrix.</param>
-        public Embedding(int embeddingDim, string initializers = OptInitializers.GlorotUniform)
-        {
-            EmbeddingDim = embeddingDim;
-            Initializers = new Initializer(initializers);
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Embedding" /> class.
-        /// </summary>
         /// <param name="shape">Integer &gt;0. Size of the vocabulary, i.e. maximum integer index + 1.</param>
         /// <param name="embeddingDim">Integer &gt;= 0. Dimension of the dense embedding.</param>
         /// <param name="initializers">Initializer for the embeddings matrix.</param>
-        public Embedding(int embeddingDim, Initializer initializers = null)
+        public Embedding(int embeddingDim, InitializerBase initializers = null)
         {
             EmbeddingDim = embeddingDim;
-            Initializers = initializers;
+            Initializers = initializers ?? new GlorotUniform();
         }
 
         /// <summary>
@@ -58,9 +44,9 @@ namespace SiaNet.Model.Layers
         ///     The initializers.
         /// </value>
         [JsonIgnore]
-        public Initializer Initializers
+        public InitializerBase Initializers
         {
-            get => GetParam<Initializer>("Initializers");
+            get => GetParam<InitializerBase>("Initializers");
 
             set => SetParam("Initializers", value);
         }

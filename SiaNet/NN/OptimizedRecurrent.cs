@@ -1,47 +1,23 @@
-﻿namespace SiaNet.NN
-{
-    using CNTK;
-    using SiaNet.Common;
-    using SiaNet.Model.Initializers;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using CNTK;
+using SiaNet.Common;
+using SiaNet.Model.Initializers;
 
+namespace SiaNet.NN
+{
     /// <summary>
-    /// A recurrent neural network (RNN) is a class of artificial neural network where connections between units form a directed cycle. This allows it to exhibit dynamic temporal behavior. Unlike feedforward neural networks, RNNs can use their internal memory to process arbitrary sequences of inputs.
+    ///     A recurrent neural network (RNN) is a class of artificial neural network where connections between units form a
+    ///     directed cycle. This allows it to exhibit dynamic temporal behavior. Unlike feedforward neural networks, RNNs can
+    ///     use their internal memory to process arbitrary sequences of inputs.
     /// </summary>
     public class OptimizedRecurrent
     {
         /// <summary>
-        /// Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary intervals
-        /// </summary>
-        /// <param name="inputDim">The input dimension.</param>
-        /// <param name="hiddenSize">Size of the hidden layer.</param>
-        /// <param name="numLayers">The number layers.</param>
-        /// <param name="bidirectional">If bidirectional RNN</param>
-        /// <param name="weightInitializer">The weight initializer.</param>
-        /// <returns></returns>
-        public static Function LSTM(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
-        {
-            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "lstm");
-        }
-
-        /// <summary>
-        /// Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary intervals
-        /// </summary>
-        /// <param name="inputDim">The input dimension.</param>
-        /// <param name="hiddenSize">Size of the hidden layer.</param>
-        /// <param name="numLayers">The number layers.</param>
-        /// <param name="bidirectional">If bidirectional RNN</param>
-        /// <param name="weightInitializer">The weight initializer.</param>
-        /// <returns></returns>
-        public static Function LSTM(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null)
-        {
-            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "lstm");
-        }
-
-        /// <summary>
-        /// Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary intervals
+        ///     Grus the specified layer.Gated recurrent units (GRUs) are a gating mechanism in recurrent neural networks,
+        ///     introduced in 2014. Their performance on polyphonic music modeling and speech signal modeling was found to be
+        ///     similar to that of long short-term memory.[1] They have fewer parameters than LSTM, as they lack an output gate
         /// </summary>
         /// <param name="layer">The input layer.</param>
         /// <param name="hiddenSize">Size of the hidden layer.</param>
@@ -49,27 +25,20 @@
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
-        public static Function LSTM(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
+        public static Function GRU(
+            Variable layer,
+            int dim,
+            int hiddenSize,
+            uint numLayers,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null)
         {
-            return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "lstm");
+            return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer, "gru");
         }
 
         /// <summary>
-        /// Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary intervals
-        /// </summary>
-        /// <param name="layer">The input layer.</param>
-        /// <param name="hiddenSize">Size of the hidden layer.</param>
-        /// <param name="numLayers">The number layers.</param>
-        /// <param name="bidirectional">If bidirectional RNN</param>
-        /// <param name="weightInitializer">The weight initializer.</param>
-        /// <returns></returns>
-        public static Function LSTM(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null)
-        {
-            return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "lstm");
-        }
-
-        /// <summary>
-        /// Gated recurrent units (GRUs) are a gating mechanism in recurrent neural networks, introduced in 2014. Their performance on polyphonic music modeling and speech signal modeling was found to be similar to that of long short-term memory.[1] They have fewer parameters than LSTM, as they lack an output gate
+        ///     Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary
+        ///     intervals
         /// </summary>
         /// <param name="inputDim">The input dimension.</param>
         /// <param name="hiddenSize">Size of the hidden layer.</param>
@@ -77,13 +46,21 @@
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
-        public static Function GRU(int[] shape, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
+        public static Function LSTM(
+            int[] shape,
+            int dim,
+            int hiddenSize,
+            uint numLayers,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null)
         {
-            return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "gru");
+            return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer, "lstm");
         }
 
+
         /// <summary>
-        /// Grus the specified layer.Gated recurrent units (GRUs) are a gating mechanism in recurrent neural networks, introduced in 2014. Their performance on polyphonic music modeling and speech signal modeling was found to be similar to that of long short-term memory.[1] They have fewer parameters than LSTM, as they lack an output gate
+        ///     Long short-term memory (LSTM) is a recurrent neural network (RNN) architecture that remembers values over arbitrary
+        ///     intervals
         /// </summary>
         /// <param name="layer">The input layer.</param>
         /// <param name="hiddenSize">Size of the hidden layer.</param>
@@ -91,85 +68,98 @@
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
-        public static Function GRU(Variable layer, int dim, int hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null)
+        public static Function LSTM(
+            Variable layer,
+            int dim,
+            int hiddenSize,
+            uint numLayers,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null)
         {
-            return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "gru");
+            return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer, "lstm");
         }
 
+
         /// <summary>
-        /// Recurrent neural network defined with activation function.
+        ///     Recurrent neural network defined with activation function.
         /// </summary>
         /// <param name="inputDim">The input dim.</param>
         /// <param name="hiddenSize">Size of the hidden.</param>
         /// <param name="numLayers">The number layers.</param>
-        /// <param name="activation">Activation function to use. Supported are ReLU and TanH <see cref="SiaNet.Common.OptActivations"/>.</param>
+        /// <param name="activation">
+        ///     Activation function to use. Supported are ReLU and TanH
+        ///     <see cref="SiaNet.Common.OptActivations" />.
+        /// </param>
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
         /// <exception cref="Exception">Supported activation for RNN is ReLU and Tanh</exception>
-        public static Function RNN(int[] shape, int dim, int hiddenSize, uint numLayers, string activation, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
+        public static Function RNN(
+            int[] shape,
+            int dim,
+            int hiddenSize,
+            uint numLayers,
+            string activation,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null)
         {
             switch (activation)
             {
                 case OptActivations.ReLU:
-                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnReLU");
+
+                    return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                        "rnnReLU");
                 case OptActivations.Tanh:
-                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnTanh");
+
+                    return BuildRNN(shape, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                        "rnnTanh");
                 default:
+
                     throw new Exception("Supported activation for RNN is ReLU and Tanh");
             }
         }
 
         /// <summary>
-        /// Recurrent neural network defined with activation function.
-        /// </summary>
-        /// <param name="inputDim">The input dim.</param>
-        /// <param name="hiddenSize">Size of the hidden.</param>
-        /// <param name="numLayers">The number layers.</param>
-        /// <param name="activation">Activation function to use. Supported are ReLU and TanH <see cref="SiaNet.Common.OptActivations"/>.</param>
-        /// <param name="bidirectional">If bidirectional RNN</param>
-        /// <param name="weightInitializer">The weight initializer.</param>
-        /// <returns></returns>
-        /// <exception cref="Exception">Supported activation for RNN is ReLU and Tanh</exception>
-        public static Function RNN(int[] shape, int dim, int hiddenSize, uint numLayers, string activation, bool bidirectional = false, Initializer weightInitializer = null)
-        {
-            switch (activation)
-            {
-                case OptActivations.ReLU:
-                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "rnnReLU");
-                case OptActivations.Tanh:
-                    return BuildRNN(shape, dim, (uint)hiddenSize, numLayers, bidirectional, weightInitializer, "rnnTanh");
-                default:
-                    throw new Exception("Supported activation for RNN is ReLU and Tanh");
-            }
-        }
-
-        /// <summary>
-        /// Recurrent neural network defined with activation function.
+        ///     Recurrent neural network defined with activation function.
         /// </summary>
         /// <param name="layer">The linput ayer.</param>
         /// <param name="hiddenSize">Size of the hidden.</param>
         /// <param name="numLayers">The number layers.</param>
-        /// <param name="activation">Activation function to use. Supported are ReLU and TanH <see cref="SiaNet.Common.OptActivations"/>.</param>
+        /// <param name="activation">
+        ///     Activation function to use. Supported are ReLU and TanH
+        ///     <see cref="SiaNet.Common.OptActivations" />.
+        /// </param>
         /// <param name="bidirectional">If bidirectional RNN</param>
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <returns></returns>
         /// <exception cref="Exception">Supported activation for RNN is ReLU and Tanh</exception>
-        public static Function RNN(Variable layer, int dim, int hiddenSize, uint numLayers, string activation, bool bidirectional = false, string weightInitializer = OptInitializers.Xavier)
+        public static Function RNN(
+            Variable layer,
+            int dim,
+            int hiddenSize,
+            uint numLayers,
+            string activation,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null)
         {
             switch (activation)
             {
                 case OptActivations.ReLU:
-                    return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnReLU");
+
+                    return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                        "rnnReLU");
                 case OptActivations.Tanh:
-                    return BuildRNN(layer, dim, (uint)hiddenSize, numLayers, bidirectional, new Initializer(weightInitializer), "rnnTanh");
+
+                    return BuildRNN(layer, dim, (uint) hiddenSize, numLayers, bidirectional, weightInitializer,
+                        "rnnTanh");
                 default:
+
                     throw new Exception("Supported activation for RNN is ReLU and Tanh");
             }
         }
 
         /// <summary>
-        /// Builds the RNN.
+        ///     Builds the RNN.
         /// </summary>
         /// <param name="inputDim">The input dim.</param>
         /// <param name="hiddenSize">Size of the hidden.</param>
@@ -178,20 +168,28 @@
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <param name="rnnName">Name of the RNN.</param>
         /// <returns></returns>
-        private static Function BuildRNN(int[] shape, int dim, uint hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null, string rnnName = "")
+        private static Function BuildRNN(
+            int[] shape,
+            int dim,
+            uint hiddenSize,
+            uint numLayers,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null,
+            string rnnName = "")
         {
             weightInitializer = weightInitializer ?? new Xavier();
-            List<int> s = new List<int>();
+            var s = new List<int>();
             s.AddRange(shape);
             s.Add(dim);
 
-            var weights = new Parameter(s.ToArray(), DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
-            
-            return CNTKLib.OptimizedRNNStack(Variable.InputVariable(s.ToArray(), DataType.Float), weights, hiddenSize, numLayers, bidirectional, rnnName);
+            var weights = new Parameter(s.ToArray(), DataType.Float, weightInitializer.ToDictionary(), GlobalParameters.Device);
+
+            return CNTKLib.OptimizedRNNStack(Variable.InputVariable(s.ToArray(), DataType.Float), weights, hiddenSize,
+                numLayers, bidirectional, rnnName);
         }
 
         /// <summary>
-        /// Builds the RNN.
+        ///     Builds the RNN.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <param name="hiddenSize">Size of the hidden.</param>
@@ -200,13 +198,21 @@
         /// <param name="weightInitializer">The weight initializer.</param>
         /// <param name="rnnName">Name of the RNN.</param>
         /// <returns></returns>
-        private static Function BuildRNN(Variable input, int dim, uint hiddenSize, uint numLayers, bool bidirectional = false, Initializer weightInitializer = null, string rnnName = "")
+        private static Function BuildRNN(
+            Variable input,
+            int dim,
+            uint hiddenSize,
+            uint numLayers,
+            bool bidirectional = false,
+            InitializerBase weightInitializer = null,
+            string rnnName = "")
         {
             weightInitializer = weightInitializer ?? new Xavier();
-            int[] s = input.Shape.Dimensions.ToArray();
-            var weights = new Parameter(s, DataType.Float, weightInitializer.Get(), GlobalParameters.Device);
+            var s = input.Shape.Dimensions.ToArray();
+            var weights = new Parameter(s, DataType.Float, weightInitializer.ToDictionary(), GlobalParameters.Device);
 
-            return CNTKLib.OptimizedRNNStack(Variable.InputVariable(s, DataType.Float), weights, hiddenSize, numLayers, bidirectional, rnnName);
+            return CNTKLib.OptimizedRNNStack(Variable.InputVariable(s, DataType.Float), weights, hiddenSize, numLayers,
+                bidirectional, rnnName);
         }
     }
 }
