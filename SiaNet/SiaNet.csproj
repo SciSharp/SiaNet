@@ -127,6 +127,9 @@
     <Compile Include="Model\Initializers\Uniform.cs" />
     <Compile Include="Model\Initializers\Xavier.cs" />
     <Compile Include="Model\Initializers\Zeros.cs" />
+    <Compile Include="Model\Layers\CudaLSTM.cs" />
+    <Compile Include="Model\Layers\CudaRNN.cs" />
+    <Compile Include="Model\Layers\CudaGRU.cs" />
     <Compile Include="Model\Metrics\BinaryCrossEntropy.cs" />
     <Compile Include="Model\Metrics\ConnectionistTemporalClassification.cs" />
     <Compile Include="Model\Metrics\CrossEntropy.cs" />
@@ -186,7 +189,6 @@
     <Compile Include="Model\Variable.cs" />
     <Compile Include="Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
-    <Compile Include="NN\OptimizedRecurrent.cs" />
     <Compile Include="Processing\ImageUtil.cs" />
     <Compile Include="Processing\DataFrameUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,9 +218,7 @@
       <Name>SiaNet.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="External\DlibDotNet\DlibDotNet.dll" />
     <Content Include="External\DlibDotNet\DlibDotNet.Native.dll">
