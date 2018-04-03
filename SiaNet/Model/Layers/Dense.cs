@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System.Linq;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
 using SiaNet.Model.Layers.Activations;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -118,7 +119,26 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Basic.Dense(inputFunction, Dim, Activation, UseBias, WeightInitializer, BiasInitializer);
+            if (inputFunction.Shape.Rank != 1)
+            {
+                var newDim = inputFunction.Shape.Dimensions.Aggregate((d1, d2) => d1 * d2);
+                inputFunction = (Function) CNTKLib.Reshape(inputFunction, new[] {newDim});
+            }
+
+            var inputDim = inputFunction.Shape[0];
+
+            int[] s = {Dim, inputDim};
+            var weights = new CNTK.Parameter(s, DataType.Float, WeightInitializer.ToDictionary(),
+                GlobalParameters.Device);
+
+            var bias = UseBias
+                ? new CNTK.Parameter(new Shape(Dim), DataType.Float, BiasInitializer.ToDictionary(),
+                    GlobalParameters.Device)
+                : new CNTK.Parameter(new Shape(Dim), DataType.Float, 0.0f, GlobalParameters.Device);
+
+            var fullyConnected = CNTKLib.Plus(bias, CNTKLib.Times(weights, inputFunction));
+
+            return Activation != null ? Activation.ToFunction((Function) fullyConnected) : (Function) fullyConnected;
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -35,7 +35,6 @@ namespace SiaNet.Model.Layers
             float normalizationTimeConstant = 4096f,
             float blendTimeConst = 0.0f,
             float epsilon = 0.001f)
-            : this()
         {
             Epsilon = epsilon;
             BetaInitializer = betaInitializer ?? new Zeros();
@@ -47,21 +46,6 @@ namespace SiaNet.Model.Layers
             BlendTimeConst = blendTimeConst;
         }
 
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="BatchNorm" /> class.
-        /// </summary>
-        internal BatchNorm()
-        {
-            BetaInitializer = new Zeros();
-            GammaInitializer = new Ones();
-            RunningMeanInitializer = new Zeros();
-            RunningStdInvInitializer = new Ones();
-            Spatial = true;
-            NormalizationTimeConstant = 4096f;
-            BlendTimeConst = 0;
-            Epsilon = 0.001f;
-        }
 
         /// <summary>
         ///     Initializer for the beta weight.
@@ -184,8 +168,21 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Basic.BatchNorm(inputFunction, Epsilon, BetaInitializer, GammaInitializer, RunningMeanInitializer,
-                RunningStdInvInitializer, Spatial, NormalizationTimeConstant, BlendTimeConst);
+            var biasParams = new CNTK.Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                BetaInitializer.ToDictionary(),
+                GlobalParameters.Device, "");
+            var scaleParams = new CNTK.Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                GammaInitializer.ToDictionary(),
+                GlobalParameters.Device, "");
+            var runningMean = new CNTK.Parameter(new[] {NDShape.InferredDimension}, DataType.Float,
+                RunningMeanInitializer.ToDictionary(), GlobalParameters.Device, "");
+            var runningInvStd = new CNTK.Constant(new[] {NDShape.InferredDimension}, 0.0f, GlobalParameters.Device);
+            var runningCount = CNTK.Constant.Scalar(0.0f, GlobalParameters.Device);
+            var useCuda = GlobalParameters.Device.Type == DeviceKind.GPU;
+
+            return CNTKLib.BatchNormalization(inputFunction, scaleParams, biasParams, runningMean, runningInvStd,
+                runningCount,
+                Spatial, NormalizationTimeConstant, BlendTimeConst, Epsilon, useCuda);
         }
     }
 }

@@ -184,11 +184,8 @@
     <Compile Include="Model\Regularizers\RegularizerL1.cs" />
     <Compile Include="Model\TextDataFrame.cs" />
     <Compile Include="Model\Variable.cs" />
-    <Compile Include="NN\Recurrent.cs" />
     <Compile Include="Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
-    <Compile Include="NN\Basic.cs" />
-    <Compile Include="NN\Convolution.cs" />
     <Compile Include="NN\OptimizedRecurrent.cs" />
     <Compile Include="Processing\ImageUtil.cs" />
     <Compile Include="Processing\DataFrameUtil.cs" />

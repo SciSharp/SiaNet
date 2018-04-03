@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -59,7 +59,11 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Basic.Embedding(inputFunction, EmbeddingDim, Initializers);
+            var embeddingParameters = new CNTK.Parameter(new Shape(EmbeddingDim, inputFunction.Shape[0]),
+                DataType.Float,
+                Initializers.ToDictionary(), GlobalParameters.Device);
+
+            return CNTKLib.Times(embeddingParameters, inputFunction);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using SiaNet.NN;
+﻿using CNTK;
+using Newtonsoft.Json;
 
 namespace SiaNet.Model.Layers
 {
@@ -44,7 +44,7 @@ namespace SiaNet.Model.Layers
         /// <inheritdoc />
         internal override Function ToFunction(Variable inputFunction)
         {
-            return Basic.Dropout(inputFunction, Rate);
+            return CNTKLib.Dropout(inputFunction, Rate);
         }
     }
 }

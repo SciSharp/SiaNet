@@ -1,6 +1,6 @@
 ﻿using System;
+using CNTK;
 using Newtonsoft.Json;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -77,7 +77,14 @@ namespace SiaNet.Model.Layers
         /// <inheritdoc />
         internal override Function ToFunction(Variable inputFunction)
         {
-            return Convolution.MaxPool2D(inputFunction, PoolSize, Strides, Padding);
+            if (inputFunction.Shape.Rank > 1)
+            {
+                return CNTKLib.Pooling(inputFunction, PoolingType.Max, new[] {PoolSize.Item1, PoolSize.Item2},
+                    new[] {Strides.Item1, Strides.Item2}, new BoolVector(new[] {Padding, Padding, false}));
+            }
+
+            return CNTKLib.Pooling(inputFunction, PoolingType.Max, new[] {PoolSize.Item1, PoolSize.Item2},
+                new[] {Strides.Item1, Strides.Item2}, new BoolVector(new[] {Padding}));
         }
     }
 }

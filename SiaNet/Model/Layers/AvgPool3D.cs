@@ -1,6 +1,6 @@
 ﻿using System;
+using CNTK;
 using Newtonsoft.Json;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -83,7 +83,9 @@ namespace SiaNet.Model.Layers
         /// <inheritdoc />
         internal override Function ToFunction(Variable inputFunction)
         {
-            return Convolution.AvgPool3D(inputFunction, PoolSize, Strides, Padding);
+            return CNTKLib.Pooling(inputFunction, PoolingType.Average,
+                new[] {PoolSize.Item1, PoolSize.Item2, PoolSize.Item3},
+                new[] {Strides.Item1, Strides.Item2, Strides.Item3}, new BoolVector(new[] {Padding, Padding, Padding}));
         }
     }
 }

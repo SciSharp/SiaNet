@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using SiaNet.NN;
+﻿using CNTK;
+using Newtonsoft.Json;
 
 namespace SiaNet.Model.Layers
 {
@@ -78,7 +78,8 @@ namespace SiaNet.Model.Layers
         /// <inheritdoc />
         internal override Function ToFunction(Variable inputFunction)
         {
-            return Convolution.AvgPool1D(inputFunction, PoolSize, Strides, Padding);
+            return CNTKLib.Pooling(inputFunction, PoolingType.Average, new[] {PoolSize}, new[] {Strides},
+                new BoolVector(new[] {Padding, false, false}));
         }
     }
 }

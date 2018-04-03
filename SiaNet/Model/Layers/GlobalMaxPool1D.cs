@@ -1,4 +1,4 @@
-﻿using SiaNet.NN;
+﻿using CNTK;
 
 namespace SiaNet.Model.Layers
 {
@@ -11,7 +11,7 @@ namespace SiaNet.Model.Layers
         /// <inheritdoc />
         internal override Function ToFunction(Variable inputFunction)
         {
-            return Convolution.GlobalMaxPool1D(inputFunction);
+            return CNTKLib.Pooling(inputFunction, PoolingType.Max, new[] {inputFunction.Shape[0]});
         }
     }
 }

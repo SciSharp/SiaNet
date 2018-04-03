@@ -28,6 +28,11 @@ namespace SiaNet
             get { return Dimensions.Aggregate(1, (current, dimension) => current * dimension); }
         }
 
+        public int this[int index]
+        {
+            get => Dimensions[index];
+        }
+
         public static implicit operator NDShape(Shape s)
         {
             return NDShape.CreateNDShape(s.Dimensions);

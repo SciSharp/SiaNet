@@ -1,8 +1,8 @@
 ﻿using System;
+using CNTK;
 using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
 using SiaNet.Model.Layers.Activations;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -207,9 +207,30 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Convolution.Conv2D(inputFunction, Channels, KernalSize, Strides, Padding, Dialation, Activation,
-                UseBias,
-                WeightInitializer, BiasInitializer);
+            var numInputChannels = inputFunction.Shape[inputFunction.Shape.Rank - 1];
+            var convParams = new CNTK.Parameter(new[] {KernalSize.Item1, KernalSize.Item2, numInputChannels, Channels},
+                DataType.Float, WeightInitializer.ToDictionary(), GlobalParameters.Device);
+
+            int[] stridesParams = null;
+
+            if (Strides != null)
+            {
+                stridesParams = new[] {Strides.Item1, Strides.Item2};
+            }
+
+            var conv = CNTKLib.Convolution(convParams, inputFunction, stridesParams, new BoolVector(new[] {true, true}),
+                new BoolVector(new[] {Padding, Padding, false}), new[] {Dialation.Item1, Dialation.Item2});
+
+            CNTK.Parameter bias;
+
+            if (UseBias)
+            {
+                bias = new CNTK.Parameter(conv.Output.Shape, DataType.Float, BiasInitializer.ToDictionary(),
+                    GlobalParameters.Device);
+                conv = CNTKLib.Plus(bias, conv);
+            }
+
+            return Activation != null ? Activation.ToFunction((Function) conv) : (Function) conv;
         }
     }
 }

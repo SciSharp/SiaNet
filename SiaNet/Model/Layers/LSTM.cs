@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
 using SiaNet.Model.Layers.Activations;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -107,6 +109,7 @@ namespace SiaNet.Model.Layers
             set => SetParam("RecurrentActivation", value);
         }
 
+        [JsonIgnore]
         public InitializerBase RecurrentInitializer
         {
             get => GetParam<InitializerBase>("RecurrentInitializer");
@@ -120,6 +123,7 @@ namespace SiaNet.Model.Layers
         /// <value>
         ///     <c>true</c> if [return sequence]; otherwise, <c>false</c>.
         /// </value>
+        [JsonIgnore]
         public bool ReturnSequence
         {
             get => GetParam<bool>("ReturnSequence");
@@ -163,8 +167,157 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Recurrent.LSTM(inputFunction, Dim, CellDim, Activation, RecurrentActivation, WeightInitializer,
-                RecurrentInitializer, UseBias, BiasInitializer, ReturnSequence);
+            var cellDim = CellDim.HasValue ? CellDim : Dim;
+            var prevOutput =
+                CNTK.Variable.PlaceholderVariable(new[] {Dim}, ((CNTK.Variable) inputFunction).DynamicAxes);
+            var prevCellState = cellDim.HasValue
+                ? CNTK.Variable.PlaceholderVariable(new[] {cellDim.Value}, ((CNTK.Variable) inputFunction).DynamicAxes)
+                : null;
+
+            Func<int, CNTK.Parameter> createBiasParam = d =>
+                new CNTK.Parameter(new[] {d}, DataType.Float, BiasInitializer.ToDictionary(), GlobalParameters.Device);
+
+            Func<int, CNTK.Parameter> createProjectionParam = oDim => new CNTK.Parameter(
+                new[] {oDim, NDShape.InferredDimension},
+                DataType.Float, WeightInitializer.ToDictionary(), GlobalParameters.Device);
+
+            Func<int, CNTK.Parameter> createDiagWeightParam = d =>
+                new CNTK.Parameter(new[] {d}, DataType.Float, RecurrentInitializer.ToDictionary(),
+                    GlobalParameters.Device);
+
+            var stabilizedPrevOutput = Stabilize<float>(prevOutput, GlobalParameters.Device);
+            var stabilizedPrevCellState =
+                prevCellState != null ? Stabilize<float>(prevCellState, GlobalParameters.Device) : null;
+
+            Func<CNTK.Variable> projectInput = null;
+
+            if (cellDim.HasValue)
+            {
+                projectInput = () => createBiasParam(cellDim.Value) +
+                                     createProjectionParam(cellDim.Value) * (CNTK.Variable) inputFunction;
+            }
+            else
+            {
+                projectInput = () => inputFunction;
+            }
+
+            //Input gate
+            CNTK.Function it = null;
+
+            if (cellDim.HasValue)
+            {
+                it = RecurrentActivation.ToFunction(
+                    (Function) ((CNTK.Variable) (projectInput() +
+                                                 createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
+                                CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value),
+                                    stabilizedPrevCellState)));
+            }
+            else
+            {
+                it = RecurrentActivation.ToFunction(projectInput());
+            }
+
+            CNTK.Function bit = null;
+
+            if (cellDim.HasValue)
+            {
+                bit = CNTKLib.ElementTimes(it,
+                    Activation.ToFunction(
+                        (Function) (projectInput() +
+                                    createProjectionParam(cellDim.Value) * stabilizedPrevOutput)));
+            }
+            else
+            {
+                bit = CNTKLib.ElementTimes(it, Activation.ToFunction(projectInput()));
+            }
+
+            // Forget-me-not gate
+            CNTK.Function ft = null;
+
+            if (cellDim.HasValue)
+            {
+                ft = RecurrentActivation.ToFunction((Function) (
+                    (CNTK.Variable) (projectInput() + createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
+                    CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value), stabilizedPrevCellState)));
+            }
+            else
+            {
+                ft = RecurrentActivation.ToFunction(projectInput());
+            }
+
+            var bft = prevCellState != null ? CNTKLib.ElementTimes(ft, prevCellState) : ft;
+
+            var ct = (CNTK.Variable) bft + bit;
+
+            //Output gate
+            CNTK.Function ot = null;
+
+            if (cellDim.HasValue)
+            {
+                ot = RecurrentActivation.ToFunction((Function) (
+                    (CNTK.Variable) (projectInput() + createProjectionParam(cellDim.Value) * stabilizedPrevOutput) +
+                    CNTKLib.ElementTimes(createDiagWeightParam(cellDim.Value),
+                        Stabilize<float>(ct, GlobalParameters.Device))));
+            }
+            else
+            {
+                ot = RecurrentActivation.ToFunction(
+                    (Function) (projectInput() + Stabilize<float>(ct, GlobalParameters.Device)));
+            }
+
+            var ht = CNTKLib.ElementTimes(ot, CNTKLib.Tanh(ct));
+            var c = ct;
+            var h = Dim != cellDim ? createProjectionParam(Dim) * Stabilize<float>(ht, GlobalParameters.Device) : ht;
+
+            Func<CNTK.Variable, CNTK.Function> recurrenceHookH = x => CNTKLib.PastValue(x);
+            Func<CNTK.Variable, CNTK.Function> recurrenceHookC = x => CNTKLib.PastValue(x);
+
+            var actualDh = recurrenceHookH(h);
+            var actualDc = recurrenceHookC(c);
+
+            if (prevCellState != null)
+            {
+                h.ReplacePlaceholders(
+                    new Dictionary<CNTK.Variable, CNTK.Variable> {{prevOutput, actualDh}, {prevCellState, actualDc}});
+            }
+            else
+            {
+                h.ReplacePlaceholders(new Dictionary<CNTK.Variable, CNTK.Variable> {{prevOutput, actualDh}});
+            }
+
+            if (ReturnSequence)
+            {
+                return h;
+            }
+
+            return CNTKLib.SequenceLast(h);
+        }
+
+
+        private CNTK.Function Stabilize<ElementType>(CNTK.Variable x, DeviceDescriptor device)
+        {
+            var isFloatType = typeof(ElementType) == typeof(float);
+            CNTK.Constant f, fInv;
+
+            if (isFloatType)
+            {
+                f = CNTK.Constant.Scalar(4.0f, device);
+                fInv = CNTK.Constant.Scalar(f.DataType, 1.0 / 4.0f);
+            }
+            else
+            {
+                f = CNTK.Constant.Scalar(4.0, device);
+                fInv = CNTK.Constant.Scalar(f.DataType, 1.0 / 4.0f);
+            }
+
+            var beta = CNTKLib.ElementTimes(
+                fInv,
+                CNTKLib.Log(
+                    CNTK.Constant.Scalar(f.DataType, 1.0) +
+                    CNTKLib.Exp(CNTKLib.ElementTimes(f,
+                        new CNTK.Parameter(new NDShape(), f.DataType, 0.99537863 /* 1/f*ln (e^f-1) */, device)))));
+
+            return CNTKLib.ElementTimes(beta, x);
         }
     }
 }

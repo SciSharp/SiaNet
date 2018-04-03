@@ -1,4 +1,4 @@
-﻿using SiaNet.NN;
+﻿using CNTK;
 
 namespace SiaNet.Model.Layers
 {
@@ -11,7 +11,8 @@ namespace SiaNet.Model.Layers
         /// <inheritdoc />
         internal override Function ToFunction(Variable inputFunction)
         {
-            return Convolution.GlobalAvgPool3D(inputFunction);
+            return CNTKLib.Pooling(inputFunction, PoolingType.Average,
+                new[] {inputFunction.Shape[0], inputFunction.Shape[1], inputFunction.Shape[2]});
         }
     }
 }

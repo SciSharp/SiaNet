@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
 using SiaNet.Model.Layers.Activations;
-using SiaNet.NN;
 
 namespace SiaNet.Model.Layers
 {
@@ -196,9 +196,36 @@ namespace SiaNet.Model.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            return Convolution.Conv1D(inputFunction, Channels, KernalSize, Strides, Padding, Dialation, Activation,
-                UseBias,
-                WeightInitializer, BiasInitializer);
+            CNTK.Parameter convParams;
+            CNTK.Function conv;
+
+            if (inputFunction.Shape.Rank > 1)
+            {
+                var numInputChannels = inputFunction.Shape[inputFunction.Shape.Rank - 1];
+                convParams = new CNTK.Parameter(new[] {KernalSize, numInputChannels, Channels}, DataType.Float,
+                    WeightInitializer.ToDictionary(), GlobalParameters.Device);
+                conv = CNTKLib.Convolution(convParams, inputFunction, new[] {Strides}, new BoolVector(new[] {true}),
+                    new BoolVector(new[] {Padding, false, false}), new[] {Dialation});
+            }
+            else
+            {
+                convParams = new CNTK.Parameter(new[] {KernalSize, Channels}, DataType.Float,
+                    WeightInitializer.ToDictionary(),
+                    GlobalParameters.Device);
+                conv = CNTKLib.Convolution(convParams, inputFunction, new[] {Strides}, new BoolVector(new[] {true}),
+                    new BoolVector(new[] {Padding}), new[] {Dialation});
+            }
+
+            CNTK.Parameter bias;
+
+            if (UseBias)
+            {
+                bias = new CNTK.Parameter(conv.Output.Shape, DataType.Float, BiasInitializer.ToDictionary(),
+                    GlobalParameters.Device);
+                conv = CNTKLib.Plus(bias, conv);
+            }
+
+            return Activation != null ? Activation.ToFunction((Function) conv) : (Function) conv;
         }
     }
 }
