@@ -106,6 +106,10 @@
     <Compile Include="EventArgs\EpochStartEventArgs.cs" />
     <Compile Include="EventArgs\TrainingEndEventArgs.cs" />
     <Compile Include="GlobalParameters.cs" />
+    <Compile Include="Model\Data\DataFrame.cs" />
+    <Compile Include="Model\Data\DataFrameList.cs" />
+    <Compile Include="Model\Data\IDataFrame.cs" />
+    <Compile Include="Model\Data\IDataFrameList.cs" />
     <Compile Include="Model\Layers\Activations\ActivationBase.cs" />
     <Compile Include="Model\Layers\Activations\SELU.cs" />
     <Compile Include="Model\Layers\Activations\Sigmoid.cs" />
