@@ -113,6 +113,7 @@
     <Compile Include="Model\Data\FixedTimeList.cs" />
     <Compile Include="Model\Data\IDataFrame.cs" />
     <Compile Include="Model\Data\IDataFrameList.cs" />
+    <Compile Include="Model\Data\ImageData.cs" />
     <Compile Include="Model\Data\SumTreeList.cs" />
     <Compile Include="Model\Layers\Activations\ActivationBase.cs" />
     <Compile Include="Model\Layers\Activations\SELU.cs" />
