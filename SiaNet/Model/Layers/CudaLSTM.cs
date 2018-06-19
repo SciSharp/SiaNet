@@ -22,7 +22,7 @@ namespace SiaNet.Model.Layers
         /// <param name="weightInitializer">The weight initializer.</param>
         public CudaLSTM(
             uint hiddenSize,
-            uint numLayers,
+            uint numLayers = 1,
             bool bidirectional = false,
             InitializerBase weightInitializer = null)
         {
@@ -97,12 +97,10 @@ namespace SiaNet.Model.Layers
             {
                 throw new NotSupportedException();
             }
-
-            var s = inputFunction.Shape.Dimensions.ToArray();
-            var weights = new CNTK.Parameter(s, DataType.Float, WeightInitializer.ToDictionary(),
+            var weights = new CNTK.Parameter(inputFunction.Shape, DataType.Float, WeightInitializer.ToDictionary(),
                 GlobalParameters.Device);
-
-            return CNTKLib.OptimizedRNNStack(CNTK.Variable.InputVariable(s, DataType.Float), weights, LayerSize, Layers,
+            
+            return CNTKLib.OptimizedRNNStack(CNTK.Variable.InputVariable(inputFunction.Shape, DataType.Float), weights, LayerSize, Layers,
                 BiDirectional, "lstm");
         }
     }
