@@ -1,20 +1,37 @@
-﻿using CNTK;
+﻿using System;
+using CNTK;
 
 namespace SiaNet.Model
 {
-    public class Variable
+    public class Variable : IEquatable<Variable>
     {
-        protected CNTK.Variable UnderlyingVariable;
+        protected readonly CNTK.Variable UnderlyingVariable;
 
         internal Variable(CNTK.Variable variable)
         {
             UnderlyingVariable = variable;
         }
-        
+
 
         public Shape Shape
         {
             get => UnderlyingVariable.Shape;
+        }
+
+        /// <inheritdoc />
+        public bool Equals(Variable other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return UnderlyingVariable.Equals(other.UnderlyingVariable);
         }
 
         public static Function operator +(Variable left, Variable right)
@@ -66,7 +83,7 @@ namespace SiaNet.Model
         {
             return new Variable(v);
         }
-        
+
         public static Function operator !=(Variable left, Variable right)
         {
             return CNTKLib.NotEqual(left, right);
@@ -97,6 +114,33 @@ namespace SiaNet.Model
             return CNTKLib.Minus(left, right);
         }
 
+        /// <inheritdoc />
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(null, obj as Variable))
+            {
+                return false;
+            }
+
+            return Equals((Variable) obj);
+        }
+
+        /// <inheritdoc />
+        public override int GetHashCode()
+        {
+            return UnderlyingVariable != null ? UnderlyingVariable.GetHashCode() : 0;
+        }
+
         public Function Abs()
         {
             return CNTKLib.Abs(this);
@@ -110,29 +154,6 @@ namespace SiaNet.Model
         public Function Asin()
         {
             return CNTKLib.Asin(this);
-        }
-        
-        public Function ReduceMeanByAxes(int staticAxes)
-        {
-            return CNTKLib.ReduceMean(this, new Axis(staticAxes));
-        }
-
-        public Function ReduceSumByAxes(int staticAxes)
-        {
-            return CNTKLib.ReduceSum(this, new Axis(staticAxes));
-        }
-
-        public Function Square()
-        {
-            return CNTKLib.Square(this);
-        }
-        public Function Sqrt()
-        {
-            return CNTKLib.Sqrt(this);
-        }
-        public Function Clip(Variable min, Variable max)
-        {
-            return CNTKLib.Clip(this, min, max);
         }
 
         public Function Asinh()
@@ -149,6 +170,11 @@ namespace SiaNet.Model
         public Function Ceil()
         {
             return CNTKLib.Ceil(this);
+        }
+
+        public Function Clip(Variable min, Variable max)
+        {
+            return CNTKLib.Clip(this, min, max);
         }
 
         public Function Flatten()
@@ -174,6 +200,26 @@ namespace SiaNet.Model
         public Function Min(Variable variable, string variableName)
         {
             return CNTKLib.ElementMin(this, variable, variableName);
+        }
+
+        public Function ReduceMeanByAxes(int staticAxes)
+        {
+            return CNTKLib.ReduceMean(this, new Axis(staticAxes));
+        }
+
+        public Function ReduceSumByAxes(int staticAxes)
+        {
+            return CNTKLib.ReduceSum(this, new Axis(staticAxes));
+        }
+
+        public Function Sqrt()
+        {
+            return CNTKLib.Sqrt(this);
+        }
+
+        public Function Square()
+        {
+            return CNTKLib.Square(this);
         }
 
         public Function Times(Variable variable, uint outputRank, int inferInputRankToMap)
