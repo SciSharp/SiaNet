@@ -4,10 +4,11 @@
     {
         protected CNTK.Function UnderlyingFunction;
 
-        internal Function(CNTK.Function function) : base(function)
+        protected Function(CNTK.Function function) : base(function)
         {
             UnderlyingFunction = function;
         }
+
         public static implicit operator CNTK.Function(Function v)
         {
             return v.UnderlyingFunction;
