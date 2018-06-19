@@ -143,6 +143,7 @@
     <Compile Include="Model\Metrics\ConnectionistTemporalClassification.cs" />
     <Compile Include="Model\Metrics\CrossEntropy.cs" />
     <Compile Include="Model\Metrics\KullbackLeiblerDivergence.cs" />
+    <Compile Include="Model\Metrics\Huber.cs" />
     <Compile Include="Model\Metrics\SparseCrossEntropy.cs" />
     <Compile Include="Model\Metrics\Poisson.cs" />
     <Compile Include="Model\Optimizers\OptimizerBase.cs" />
