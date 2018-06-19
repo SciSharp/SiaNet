@@ -8,10 +8,10 @@ namespace SiaNet
     {
         public Shape(params int[] values)
         {
-            if (values.Any(i => i <= 0))
-            {
-                throw new ArgumentOutOfRangeException(nameof(values));
-            }
+            //if (values.Any(i => i <= 0))
+            //{
+            //    throw new ArgumentOutOfRangeException(nameof(values));
+            //}
 
             Dimensions = values;
         }
