@@ -110,8 +110,10 @@
     <Compile Include="Model\Data\CsvDataFrameList.cs" />
     <Compile Include="Model\Data\DataFrame.cs" />
     <Compile Include="Model\Data\DataFrameList.cs" />
+    <Compile Include="Model\Data\FixedTimeList.cs" />
     <Compile Include="Model\Data\IDataFrame.cs" />
     <Compile Include="Model\Data\IDataFrameList.cs" />
+    <Compile Include="Model\Data\SumTreeList.cs" />
     <Compile Include="Model\Layers\Activations\ActivationBase.cs" />
     <Compile Include="Model\Layers\Activations\SELU.cs" />
     <Compile Include="Model\Layers\Activations\Sigmoid.cs" />
@@ -192,6 +194,7 @@
     <Compile Include="Model\Regularizers\RegularizerL2.cs" />
     <Compile Include="Model\Regularizers\RegularizerL1.cs" />
     <Compile Include="Model\TextDataFrame.cs" />
+    <Compile Include="Model\Data\FixedSizeList.cs" />
     <Compile Include="Model\Variable.cs" />
     <Compile Include="Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
