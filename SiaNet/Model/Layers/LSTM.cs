@@ -293,13 +293,12 @@ namespace SiaNet.Model.Layers
             return CNTKLib.SequenceLast(h);
         }
 
-
-        private CNTK.Function Stabilize<ElementType>(CNTK.Variable x, DeviceDescriptor device)
+        
+        private CNTK.Function Stabilize<TElementType>(CNTK.Variable x, DeviceDescriptor device)
         {
-            var isFloatType = typeof(ElementType) == typeof(float);
             CNTK.Constant f, fInv;
 
-            if (isFloatType)
+            if (typeof(TElementType) == typeof(float))
             {
                 f = CNTK.Constant.Scalar(4.0f, device);
                 fInv = CNTK.Constant.Scalar(f.DataType, 1.0 / 4.0f);
