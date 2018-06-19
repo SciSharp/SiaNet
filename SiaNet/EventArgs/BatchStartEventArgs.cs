@@ -2,13 +2,13 @@
 {
     public class BatchStartEventArgs : System.EventArgs
     {
-        public BatchStartEventArgs(uint epoch, ulong batch)
+        public BatchStartEventArgs(uint epoch, long batch)
         {
             Epoch = epoch;
             Batch = batch;
         }
 
-        public ulong Batch { get; }
+        public long Batch { get; }
 
         public uint Epoch { get; }
     }

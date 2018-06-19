@@ -4,10 +4,9 @@ using System.IO;
 using System.Linq;
 using CNTK;
 using SiaNet.EventArgs;
-using SiaNet.Model;
+using SiaNet.Model.Data;
 using SiaNet.Model.Metrics;
 using SiaNet.Model.Optimizers;
-using SiaNet.Processing;
 using Function = CNTK.Function;
 using Variable = CNTK.Variable;
 
@@ -49,11 +48,36 @@ namespace SiaNet
         protected readonly Variable LabelVariable;
         protected readonly Function Model;
 
-        internal CompiledModel(Function model)
+        public CompiledModel(Function model)
         {
             Model = model;
             LabelVariable = Variable.InputVariable(new[] {Model.Output.Shape[0]}, DataType.Float);
             FeatureVariable = Model.Inputs.FirstOrDefault(variable => variable.IsInput);
+        }
+
+        public CompiledModel Clone()
+        {
+            return new CompiledModel(this.Model.Clone(ParameterCloningMethod.Clone));
+        }
+
+        public NDArrayView[] GetParameters()
+        {
+            return Model.Parameters().Select(parameter => parameter.GetValue()).ToArray();
+        }
+
+        public void SetParameters(NDArrayView[] values)
+        {
+            var parameters = Model.Parameters();
+
+            if (parameters.Count != values.Length)
+            {
+                throw new ArgumentException();
+            }
+
+            for (int i = 0; i < parameters.Count; i++)
+            {
+                parameters[i].SetValue(values[i]);
+            }
         }
 
         public Shape InputShape
@@ -95,16 +119,16 @@ namespace SiaNet
         }
 
         public double Evaluate(
-            XYFrame validationData,
-            uint batchSize,
+            IDataFrameList validationData,
+            int batchSize,
             MetricFunction lossMetric)
         {
             return Evaluate(validationData, batchSize, lossMetric, null, out _);
         }
 
         public double Evaluate(
-            XYFrame validationData,
-            uint batchSize,
+            IDataFrameList validationData,
+            int batchSize,
             MetricFunction lossMetric,
             MetricFunction evaluationMetric,
             out double evaluationResult)
@@ -116,12 +140,12 @@ namespace SiaNet
             using (var lossFunction = lossMetric.ToFunction(LabelVariable, actualVariable))
             {
                 var metricFunction = evaluationMetric?.ToFunction(LabelVariable, actualVariable);
-                var currentBatch = 1u;
-
-                while (validationData.ToBatch(currentBatch, batchSize))
+                var batchId = 1;
+                IDataFrameList currentBatch;
+                while ((currentBatch = validationData.ToBatch(batchId, batchSize)) != null)
                 {
-                    using (var actual = Evaluate(validationData.CurrentBatch.XFrame))
-                    using (var expected = DataFrameUtil.GetValueBatch(validationData.CurrentBatch.YFrame))
+                    using (var actual = Evaluate(currentBatch.Features.ToValue()))
+                    using (var expected = currentBatch.Labels.ToValue())
                     {
                         var inputDataMap =
                             new Dictionary<Variable, Value> {{LabelVariable, expected}, {actualVariable, actual}};
@@ -143,7 +167,7 @@ namespace SiaNet
                         }
                     }
 
-                    currentBatch++;
+                    batchId++;
                 }
 
                 metricFunction?.Dispose();
@@ -154,7 +178,7 @@ namespace SiaNet
 
             return loss;
         }
-
+        
         /// <summary>
         ///     Fits the model for a fixed number of epochs.
         /// </summary>
@@ -164,13 +188,13 @@ namespace SiaNet
         /// <param name="validation">The validation dataset.</param>
         /// <param name="shuffle">Shuffle the dataset while training</param>
         public void Fit(
-            XYFrame trainData,
+            IDataFrameList trainData,
             uint epoches,
-            uint batchSize,
+            int batchSize,
             OptimizerBase optimizer,
             MetricFunction lossMetric,
             MetricFunction evaluationMetric = null,
-            XYFrame validation = null,
+            IDataFrameList validation = null,
             bool shuffle = false)
         {
             var lastEpochLoss = 0d;
@@ -195,16 +219,16 @@ namespace SiaNet
                     }
 
                     OnEpochStart(currentEpoch);
-                    var currentBatch = 1u;
+                    var batchId = 1;
                     var epochLosses = new List<double>();
                     var epochMetrics = new List<double>();
-
-                    while (trainData.ToBatch(currentBatch, batchSize))
+                    IDataFrameList currentBatch;
+                    while ((currentBatch = trainData.ToBatch(batchId - 1, batchSize)) != null)
                     {
-                        OnBatchStart(currentEpoch, currentBatch);
+                        OnBatchStart(currentEpoch, batchId);
 
-                        using (var features = DataFrameUtil.GetValueBatch(trainData.CurrentBatch.XFrame))
-                        using (var labels = DataFrameUtil.GetValueBatch(trainData.CurrentBatch.YFrame))
+                        using (var features = currentBatch.Features.ToValue())
+                        using (var labels = currentBatch.Labels.ToValue())
                         {
                             trainer.TrainMinibatch(
                                 new Dictionary<Variable, Value>
@@ -220,9 +244,9 @@ namespace SiaNet
                         epochLosses.Add(batchLoss);
                         epochMetrics.Add(batchMetric);
 
-                        OnBatchEnd(currentEpoch, currentBatch, trainer.TotalNumberOfSamplesSeen(), batchLoss,
+                        OnBatchEnd(currentEpoch, batchId, trainer.TotalNumberOfSamplesSeen(), batchLoss,
                             batchMetric);
-                        currentBatch++;
+                        batchId++;
                     }
 
                     lastEpochLoss = epochLosses.Average();
@@ -249,13 +273,38 @@ namespace SiaNet
         /// </summary>
         /// <param name="data">The data for prediction.</param>
         /// <returns>List of prediction values</returns>
-        public float[] Predict(DataFrame data)
+        public DataFrame Predict(IDataFrame data, int batchSize = 64)
         {
-            var outputValue = Evaluate(data);
-            var resultSet = outputValue.GetDenseData<float>(Model.Output);
-            var result = resultSet[0];
+            var temporaryDataFrameList = new DataFrameList(data.DataShape, 1);
 
-            return result.ToArray();
+            for (int i = 0; i < data.Length; i++)
+            {
+                temporaryDataFrameList.AddFrame(data[i], 0f);
+            }
+
+            var batchId = 0;
+            IDataFrameList currentBatch;
+            var df = new DataFrame(OutputShape);
+            while ((currentBatch = temporaryDataFrameList.ToBatch(batchId, batchSize)) != null)
+            {
+                var outputValue = Evaluate(currentBatch.Features.ToValue());
+                var resultSet = outputValue.GetDenseData<float>(Model.Output);
+
+                foreach (var result in resultSet)
+                {
+                    df.Add(result.ToArray());
+                }
+                batchId++;
+            }
+            
+            return df;
+        }
+
+        public float[] Predict(float[] data)
+        {
+            var dataFrame = new DataFrame(data.Length);
+            dataFrame.Add(data);
+            return Predict(dataFrame)[0];
         }
 
         public void Save(string modelFilename)
@@ -269,24 +318,23 @@ namespace SiaNet
             modelStream.Write(modelBytes, 0, modelBytes.Length);
         }
 
-        protected Value Evaluate(DataFrame data)
+        protected Value Evaluate(Value data)
         {
-            using (var features = DataFrameUtil.GetValueBatch(data))
+            using (var features = data)
             {
                 var inputDataMap = new Dictionary<Variable, Value> {{FeatureVariable, features}};
                 var outputDataMap = new Dictionary<Variable, Value> {{Model.Output, null}};
                 Model.Evaluate(inputDataMap, outputDataMap, GlobalParameters.Device);
-
                 return outputDataMap[Model.Output];
             }
         }
 
-        protected void OnBatchEnd(uint epoch, uint batch, ulong samplesSeen, double loss, double metric)
+        protected void OnBatchEnd(uint epoch, int batch, ulong samplesSeen, double loss, double metric)
         {
             BatchEnd?.Invoke(this, new BatchEndEventArgs(epoch, batch, samplesSeen, loss, metric));
         }
 
-        protected void OnBatchStart(uint epoch, uint batch)
+        protected void OnBatchStart(uint epoch, int batch)
         {
             BatchStart?.Invoke(this, new BatchStartEventArgs(epoch, batch));
         }

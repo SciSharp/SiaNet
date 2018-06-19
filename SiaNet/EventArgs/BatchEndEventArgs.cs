@@ -4,7 +4,7 @@
     {
         public BatchEndEventArgs(
             uint epoch,
-            ulong batch,
+            long batch,
             ulong samplesSeen,
             double loss,
             double metric)
@@ -16,7 +16,7 @@
             Metric = metric;
         }
 
-        public ulong Batch { get; }
+        public long Batch { get; }
 
         public uint Epoch { get; }
         public double Loss { get; }
