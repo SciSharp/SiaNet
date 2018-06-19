@@ -120,6 +120,8 @@
     <Compile Include="Model\Layers\CudaLSTM.cs" />
     <Compile Include="Model\Layers\CudaRNN.cs" />
     <Compile Include="Model\Layers\CudaGRU.cs" />
+    <Compile Include="Model\Layers\LSTM2.cs" />
+    <Compile Include="Model\Layers\Flatten.cs" />
     <Compile Include="Model\Metrics\BinaryCrossEntropy.cs" />
     <Compile Include="Model\Metrics\ConnectionistTemporalClassification.cs" />
     <Compile Include="Model\Metrics\CrossEntropy.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="Model\Optimizers\Adam.cs" />
     <Compile Include="Model\Optimizers\SGD.cs" />
     <Compile Include="Model\PredResult.cs" />
+    <Compile Include="Model\RandomGenerator.cs" />
     <Compile Include="Model\Regularizers\RegularizerBase.cs" />
     <Compile Include="Model\Regularizers\RegularizerL1L2.cs" />
     <Compile Include="Model\Regularizers\RegularizerL2.cs" />
