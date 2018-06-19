@@ -196,6 +196,11 @@
     <Compile Include="Model\Regularizers\RegularizerL1.cs" />
     <Compile Include="Model\TextDataFrame.cs" />
     <Compile Include="Model\Data\FixedSizeList.cs" />
+    <Compile Include="Model\Trainer\DDQNTrainer.cs" />
+    <Compile Include="Model\Trainer\DQNTrainerPR.cs" />
+    <Compile Include="Model\Trainer\DQN\EnvironmentState.cs" />
+    <Compile Include="Model\Trainer\DQN\IEnvironment.cs" />
+    <Compile Include="Model\Trainer\DQNTrainer.cs" />
     <Compile Include="Model\Variable.cs" />
     <Compile Include="Sequential.cs" />
     <Compile Include="Model\TrainTestFrame.cs" />
