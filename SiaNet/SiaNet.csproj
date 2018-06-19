@@ -106,6 +106,8 @@
     <Compile Include="EventArgs\EpochStartEventArgs.cs" />
     <Compile Include="EventArgs\TrainingEndEventArgs.cs" />
     <Compile Include="GlobalParameters.cs" />
+    <Compile Include="Model\Data\CsvDataFrameColumnSetting.cs" />
+    <Compile Include="Model\Data\CsvDataFrameList.cs" />
     <Compile Include="Model\Data\DataFrame.cs" />
     <Compile Include="Model\Data\DataFrameList.cs" />
     <Compile Include="Model\Data\IDataFrame.cs" />
