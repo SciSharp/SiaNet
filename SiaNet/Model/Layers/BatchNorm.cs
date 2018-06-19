@@ -84,9 +84,9 @@ namespace SiaNet.Model.Layers
         [JsonIgnore]
         public float Epsilon
         {
-            get => GetParam<float>("Epsilon");
+            get => GetParam<float>("LearningRate");
 
-            set => SetParam("Epsilon", value);
+            set => SetParam("LearningRate", value);
         }
 
         /// <summary>
