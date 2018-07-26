@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using Function = CNTK.Function;
+using Variable = CNTK.Variable;
 
 namespace SiaNet.Application
 {

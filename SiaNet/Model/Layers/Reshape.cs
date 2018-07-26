@@ -1,81 +1,48 @@
-﻿namespace SiaNet.Model.Layers
-{
-    using System.Dynamic;
+﻿using CNTK;
+using Newtonsoft.Json;
 
+namespace SiaNet.Model.Layers
+{
     /// <summary>
-    /// Reshapes an output to a certain shape.
+    ///     Reshapes an output to a certain shape.
     /// </summary>
-    public class Reshape : LayerConfig
+    public class Reshape : OptimizableLayerBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Reshape"/> class.
-        /// </summary>
-        internal Reshape()
-        {
-            base.Name = "Reshape";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Reshape"/> class.
+        ///     Initializes a new instance of the <see cref="Reshape" /> class.
         /// </summary>
         /// <param name="targetshape">The target shape of the output.</param>
         public Reshape(int[] targetshape)
             : this()
         {
             TargetShape = targetshape;
-            Shape = null;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Reshape"/> class.
+        ///     Initializes a new instance of the <see cref="Reshape" /> class.
         /// </summary>
-        /// <param name="targetshape">The target shape of the output.</param>
-        /// <param name="shape">The shape of the input data.</param>
-        public Reshape(int[] targetshape, int[] shape)
-            : this(targetshape)
+        internal Reshape()
         {
-            Shape = shape;
         }
 
         /// <summary>
-        /// List of integers. Does not include the batch axis.
+        ///     List of integers. Does not include the batch axis.
         /// </summary>
         /// <value>
-        /// The target shape.
+        ///     The target shape.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public int[] TargetShape
         {
-            get
-            {
-                return base.Params.TargetShape;
-            }
+            get => GetParam<int[]>("TargetShape");
 
-            set
-            {
-                base.Params.TargetShape = value;
-            }
+            set => SetParam("TargetShape", value);
         }
 
-        /// <summary>
-        /// Gets or sets the input shape of the data. Used when the this layer is the first in the stack.
-        /// </summary>
-        /// <value>
-        /// The shape.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int[] Shape
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
         {
-            get
-            {
-                return base.Params.Shape;
-            }
-
-            set
-            {
-                base.Params.Shape = value;
-            }
+            return CNTKLib.Reshape(inputFunction, TargetShape);
         }
     }
 }

@@ -89,20 +89,28 @@ namespace SiaNet.Model
         /// <param name="current">The current batch number.</param>
         /// <param name="batchSize">Size of the batch.</param>
         /// <returns></returns>
-        public bool NextBatch(int current, int batchSize)
+        public bool ToBatch(uint current, uint batchSize)
         {
             bool next = true;
             int totalRows = XFrame.Data.Count;
-            int skipRows = (current - 1) * batchSize;
+            uint skipRows = (current - 1) * batchSize;
 
             if (skipRows < totalRows)
             {
-                CurrentBatch = new XYFrame();
-                CurrentBatch.XFrame.Data = XFrame.Data.Skip(skipRows).Take(batchSize).ToList();
-                CurrentBatch.XFrame.Columns = XFrame.Columns;
+                CurrentBatch = new XYFrame
+                {
+                    XFrame =
+                    {
+                        Data = XFrame.Data.Skip((int)skipRows).Take((int)batchSize).ToList(),
+                        Columns = XFrame.Columns
+                    },
+                    YFrame =
+                    {
+                        Data = YFrame.Data.Skip((int)skipRows).Take((int)batchSize).ToList(),
+                        Columns = YFrame.Columns
+                    }
+                };
 
-                CurrentBatch.YFrame.Data = YFrame.Data.Skip(skipRows).Take(batchSize).ToList();
-                CurrentBatch.YFrame.Columns = YFrame.Columns;
             }
             else
             {

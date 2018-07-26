@@ -79,7 +79,7 @@
             return result;
         }
 
-        internal void LoadTextData(Variable feature, Variable label)
+        internal void LoadTextData(CNTK.Variable feature, CNTK.Variable label)
         {
             int imageSize = feature.Shape.Rank == 1 ? feature.Shape[0] : feature.Shape[0] * feature.Shape[1] * feature.Shape[2];
             int numClasses = label.Shape[0];
@@ -92,7 +92,7 @@
             labelStreamInfo = miniBatchSource.StreamInfo(labelsStreamName);
         }
 
-        public void LoadSample(SampleDataset sample, Variable feature, Variable label)
+        public void LoadSample(SampleDataset sample, CNTK.Variable feature, CNTK.Variable label)
         {
             int imageSize = feature.Shape.Rank == 1 ? feature.Shape[0] : feature.Shape[0] * feature.Shape[1] * feature.Shape[2];
             int numClasses = label.Shape[0];

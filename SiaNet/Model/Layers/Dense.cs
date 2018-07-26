@@ -1,167 +1,144 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SiaNet.Common;
+﻿using System.Linq;
+using CNTK;
+using Newtonsoft.Json;
 using SiaNet.Model.Initializers;
+using SiaNet.Model.Layers.Activations;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
-    /// Dense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument, kernel is a weights matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).
+    ///     Dense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise
+    ///     activation function passed as the activation argument, kernel is a weights matrix created by the layer, and bias is
+    ///     a bias vector created by the layer (only applicable if use_bias is True).
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class Dense : LayerConfig
+    /// <seealso cref="OptimizableLayerBase" />
+    public class Dense : OptimizableLayerBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Dense"/> class.
-        /// </summary>
-        internal Dense()
-        {
-            base.Name = "Dense";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Dense"/> class.
+        ///     Initializes a new instance of the <see cref="Dense" /> class.
         /// </summary>
         /// <param name="dim">Positive integer, dimensionality of the output space..</param>
-        /// <param name="shape">The input shape.</param>
-        /// <param name="act">Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x). <see cref="SiaNet.Common.OptActivations"/></param>
+        /// <param name="activation">
+        ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear"
+        ///     activation: a(x) = x). <see cref="SiaNet.Common.OptActivations" />
+        /// </param>
         /// <param name="useBias">Boolean, whether the layer uses a bias vector.</param>
         /// <param name="weightInitializer">Initializer for the kernel weights matrix. </param>
         /// <param name="biasInitializer">Initializer for the bias vector. </param>
-        public Dense(int dim, int? shape = null, string act = OptActivations.None, bool useBias = false, object weightInitializer = null, object biasInitializer = null)
-            : this()
+        public Dense(
+            int dim,
+            ActivationBase activation = null,
+            bool useBias = false,
+            InitializerBase weightInitializer = null,
+            InitializerBase biasInitializer = null)
         {
-            Shape = shape;
             Dim = dim;
-            Act = act;
+            Activation = activation;
             UseBias = useBias;
-            WeightInitializer = Utility.GetInitializerFromObject(weightInitializer, new Xavier());
-            BiasInitializer = Utility.GetInitializerFromObject(biasInitializer, new Zeros());
+            WeightInitializer = weightInitializer ?? new Xavier();
+            BiasInitializer = biasInitializer ?? new Zeros();
         }
 
+
         /// <summary>
-        /// The input shape for this layer
+        ///     Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x)
+        ///     = x)
         /// </summary>
         /// <value>
-        /// The shape.
+        ///     The activation function.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public int? Shape
+        [JsonIgnore]
+        public ActivationBase Activation
         {
-            get
-            {
-                return base.Params.Shape;
-            }
+            get => GetParam<ActivationBase>("Activation");
 
-            set
-            {
-                base.Params.Shape = value;
-            }
+            set => SetParam("Activation", value);
         }
 
         /// <summary>
-        /// Positive integer, dimensionality of the output space.
+        ///     Initializer for the bias vector.
         /// </summary>
         /// <value>
-        /// The output dimension.
+        ///     The bias initializer.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
+        public InitializerBase BiasInitializer
+        {
+            get => GetParam<InitializerBase>("BiasInitializer");
+
+            set => SetParam("BiasInitializer", value);
+        }
+
+        /// <summary>
+        ///     Positive integer, dimensionality of the output space.
+        /// </summary>
+        /// <value>
+        ///     The output dimension.
+        /// </value>
+        [JsonIgnore]
         public int Dim
         {
-            get
-            {
-                return base.Params.Dim;
-            }
+            get => GetParam<int>("Dim");
 
-            set
-            {
-                base.Params.Dim = value;
-            }
+            set => SetParam("Dim", value);
         }
 
         /// <summary>
-        /// Activation function to use. If you don't specify anything, no activation is applied (ie. "linear" activation: a(x) = x)
+        ///     Boolean, whether the layer uses a bias vector.
         /// </summary>
         /// <value>
-        /// The activation function.
+        ///     <c>true</c> if [use bias]; otherwise, <c>false</c>.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public string Act
-        {
-            get
-            {
-                return base.Params.Act;
-            }
-
-            set
-            {
-                base.Params.Act = value;
-            }
-        }
-
-        /// <summary>
-        /// Boolean, whether the layer uses a bias vector.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [use bias]; otherwise, <c>false</c>.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public bool UseBias
         {
-            get
-            {
-                return base.Params.UseBias;
-            }
+            get => GetParam<bool>("UseBias");
 
-            set
-            {
-                base.Params.UseBias = value;
-            }
+            set => SetParam("UseBias", value);
         }
 
         /// <summary>
-        /// Initializer for the kernel weights matrix .
+        ///     Initializer for the kernel weights matrix .
         /// </summary>
         /// <value>
-        /// The weight initializer.
+        ///     The weight initializer.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Initializer WeightInitializer
+        [JsonIgnore]
+        public InitializerBase WeightInitializer
         {
-            get
-            {
-                return base.Params.WeightInitializer;
-            }
+            get => GetParam<InitializerBase>("WeightInitializer");
 
-            set
-            {
-                base.Params.WeightInitializer = value;
-            }
+            set => SetParam("WeightInitializer", value);
         }
 
-        /// <summary>
-        /// Initializer for the bias vector.
-        /// </summary>
-        /// <value>
-        /// The bias initializer.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Initializer BiasInitializer
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
         {
-            get
+            //if (inputFunction.Shape.Rank != 1)
+            //{
+            //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
+            //}
+
+            if (inputFunction.Shape.Rank != 1)
             {
-                return base.Params.BiasInitializer;
+                var newDim = inputFunction.Shape.Dimensions.Aggregate((d1, d2) => d1 * d2);
+                inputFunction = (Function) CNTKLib.Reshape(inputFunction, new[] {newDim});
             }
 
-            set
-            {
-                base.Params.BiasInitializer = value;
-            }
+            var inputDim = inputFunction.Shape[0];
+
+            int[] s = {Dim, inputDim};
+            var weights = new CNTK.Parameter(s, DataType.Float, WeightInitializer.ToDictionary(),
+                GlobalParameters.Device);
+
+            var bias = UseBias
+                ? new CNTK.Parameter(new Shape(Dim), DataType.Float, BiasInitializer.ToDictionary(),
+                    GlobalParameters.Device)
+                : new CNTK.Parameter(new Shape(Dim), DataType.Float, 0.0f, GlobalParameters.Device);
+
+            var fullyConnected = CNTKLib.Plus(bias, CNTKLib.Times(weights, inputFunction));
+
+            return Activation != null ? Activation.ToFunction((Function) fullyConnected) : (Function) fullyConnected;
         }
     }
 }

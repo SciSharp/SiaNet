@@ -11,6 +11,8 @@ using SiaNet.Model;
 using SiaNet.Common.Resources;
 using System.Dynamic;
 using SiaNet.Common;
+using Function = CNTK.Function;
+using Variable = CNTK.Variable;
 
 namespace SiaNet.Application
 {
