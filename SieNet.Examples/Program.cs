@@ -38,9 +38,9 @@ namespace SiaNet.Examples
                 HousingRegression.Train();
 
                 //MNIST Classification example
-                MNISTClassifier.LoadData();
-                MNISTClassifier.BuildModel();
-                MNISTClassifier.Train();
+                //MNISTClassifier.LoadData();
+                //MNISTClassifier.BuildModel();
+                //MNISTClassifier.Train();
 
                 //Time series prediction
                 TimeSeriesPrediction.LoadData();
@@ -54,9 +54,9 @@ namespace SiaNet.Examples
                 MiltiVariateTimeSeriesPrediction.Train();
 
                 //Cifar-10 Classification example
-                //Cifar10Classification.LoadData();
-                //Cifar10Classification.BuildModel();
-                //Cifar10Classification.Train();
+                Cifar10Classification.LoadData();
+                Cifar10Classification.BuildModel();
+                Cifar10Classification.Train();
 
                 //Image classification example
                 Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);

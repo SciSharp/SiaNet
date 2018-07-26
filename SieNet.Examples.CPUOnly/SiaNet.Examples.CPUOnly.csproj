@@ -61,8 +61,12 @@
     <AssemblyOriginatorKeyFile>Sia.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cntk.Core.Managed-2.4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21fff2ec8197defe, processorArchitecture=AMD64">
-      <HintPath>..\packages\CNTK.CPUOnly.2.4.0\lib\net45\x64\Cntk.Core.Managed-2.4.dll</HintPath>
+    <Reference Include="Cntk.Core.Managed-2.5.1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21fff2ec8197defe, processorArchitecture=AMD64">
+      <HintPath>..\packages\CNTK.CPUOnly.2.5.1\lib\net45\x64\Cntk.Core.Managed-2.5.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DlibDotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\DlibDotNet\DlibDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -141,15 +145,15 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\CNTK.Deps.MKL.2.4.0\build\net45\CNTK.Deps.MKL.targets" Condition="Exists('..\packages\CNTK.Deps.MKL.2.4.0\build\net45\CNTK.Deps.MKL.targets')" />
+  <Import Project="..\packages\CNTK.Deps.MKL.2.5.1\build\net45\CNTK.Deps.MKL.targets" Condition="Exists('..\packages\CNTK.Deps.MKL.2.5.1\build\net45\CNTK.Deps.MKL.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\CNTK.Deps.MKL.2.4.0\build\net45\CNTK.Deps.MKL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.MKL.2.4.0\build\net45\CNTK.Deps.MKL.targets'))" />
-    <Error Condition="!Exists('..\packages\CNTK.Deps.OpenCV.Zip.2.4.0\build\net45\CNTK.Deps.OpenCV.Zip.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.OpenCV.Zip.2.4.0\build\net45\CNTK.Deps.OpenCV.Zip.targets'))" />
-    <Error Condition="!Exists('..\packages\CNTK.CPUOnly.2.4.0\build\net45\CNTK.CPUOnly.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.CPUOnly.2.4.0\build\net45\CNTK.CPUOnly.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.Deps.MKL.2.5.1\build\net45\CNTK.Deps.MKL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.MKL.2.5.1\build\net45\CNTK.Deps.MKL.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.Deps.OpenCV.Zip.2.5.1\build\net45\CNTK.Deps.OpenCV.Zip.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.OpenCV.Zip.2.5.1\build\net45\CNTK.Deps.OpenCV.Zip.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.CPUOnly.2.5.1\build\net45\CNTK.CPUOnly.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.CPUOnly.2.5.1\build\net45\CNTK.CPUOnly.targets'))" />
   </Target>
-  <Import Project="..\packages\CNTK.Deps.OpenCV.Zip.2.4.0\build\net45\CNTK.Deps.OpenCV.Zip.targets" Condition="Exists('..\packages\CNTK.Deps.OpenCV.Zip.2.4.0\build\net45\CNTK.Deps.OpenCV.Zip.targets')" />
-  <Import Project="..\packages\CNTK.CPUOnly.2.4.0\build\net45\CNTK.CPUOnly.targets" Condition="Exists('..\packages\CNTK.CPUOnly.2.4.0\build\net45\CNTK.CPUOnly.targets')" />
+  <Import Project="..\packages\CNTK.Deps.OpenCV.Zip.2.5.1\build\net45\CNTK.Deps.OpenCV.Zip.targets" Condition="Exists('..\packages\CNTK.Deps.OpenCV.Zip.2.5.1\build\net45\CNTK.Deps.OpenCV.Zip.targets')" />
+  <Import Project="..\packages\CNTK.CPUOnly.2.5.1\build\net45\CNTK.CPUOnly.targets" Condition="Exists('..\packages\CNTK.CPUOnly.2.5.1\build\net45\CNTK.CPUOnly.targets')" />
 </Project>

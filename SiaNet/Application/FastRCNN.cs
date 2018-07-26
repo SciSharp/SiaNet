@@ -142,7 +142,7 @@ namespace SiaNet.Application
                 var resized = bmp.Resize(1000, 1000, true);
                 List<float> roiList = GenerateROIS(resized, model);
                 List<float> resizedCHW = resized.ParallelExtractCHW();
-
+                
                 //CalculateROI(resizedCHW);
                 // Create input data map
                 var inputDataMap = new Dictionary<Variable, Value>();
@@ -287,8 +287,9 @@ namespace SiaNet.Application
 
             List<float> inArg3 = new List<float>();
             var imgArray = bmp.ToByteArray();
-            var img = DlibDotNet.Dlib.LoadImageData<DlibDotNet.RgbAlphaPixel>(imgArray, 1000, 1000, 1);
+            var img = DlibDotNet.Dlib.LoadImageData<DlibDotNet.RgbAlphaPixel>(imgArray, Convert.ToUInt32(1000), Convert.ToUInt32(1000), 1);
             var rects = DlibDotNet.Dlib.FindCandidateObjectLocations(img);
+            
             if (!img.IsDisposed)
             {
                 img.Dispose();

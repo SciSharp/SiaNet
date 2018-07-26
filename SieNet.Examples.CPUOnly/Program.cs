@@ -35,7 +35,7 @@ namespace SieNet.Examples.CPUOnly
                 
                 //MNIST Classification example
                 MNISTClassifier.LoadData();
-                MNISTClassifier.BuildModel();
+                MNISTClassifier.BuildModel(true);
                 MNISTClassifier.Train();
                 
                 //LSTM Time series example
@@ -58,7 +58,7 @@ namespace SieNet.Examples.CPUOnly
                 //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(SiaNet.Common.Cifar10Model.ResNet110)[0].Name);
                 
                 //Object Detection
-                ObjectDetection.PascalDetection();
+                //ObjectDetection.PascalDetection();
                 //ObjectDetection.GroceryDetection();
                 Console.ReadLine();
                 

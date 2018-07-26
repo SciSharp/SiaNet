@@ -53,12 +53,13 @@ namespace SiaNet.Processing
                 metricsList.Clear();
                 OnEpochStart(currentEpoch);
                 int miniBatchCount = 1;
+                List<double> miniBatchLosses = new List<double>();
                 while (!train.NextBatch(batchSize))
                 {
                     onBatchStart(currentEpoch, miniBatchCount);
                     trainer.TrainMinibatch(new Dictionary<Variable, Value> { { featureVariable, train.CurrentBatchX }, { labelVariable, train.CurrentBatchY } }, true, GlobalParameters.Device);
                     OnBatchEnd(currentEpoch, miniBatchCount, trainer.TotalNumberOfSamplesSeen(), trainer.PreviousMinibatchLossAverage(), new Dictionary<string, double>() { { metricName, trainer.PreviousMinibatchEvaluationAverage() } });
-                    
+                    miniBatchLosses.Add(trainer.PreviousMinibatchLossAverage());
                     miniBatchCount++;
                 }
 
@@ -72,7 +73,7 @@ namespace SiaNet.Processing
                     result.Add(metricName, new List<double>());
                 }
 
-                double lossValue = trainer.PreviousMinibatchLossAverage();
+                double lossValue = miniBatchLosses.Average();
                 double metricValue = trainer.PreviousMinibatchEvaluationAverage();
                 result["loss"].Add(lossValue);
                 result[metricName].Add(metricValue);
