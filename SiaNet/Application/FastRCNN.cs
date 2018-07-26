@@ -2,13 +2,13 @@
 using SiaNet.Common;
 using SiaNet.Common.Resources;
 using SiaNet.Model;
-using SiaNet.Processing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using SiaNet.Processing;
 using Function = CNTK.Function;
 using Variable = CNTK.Variable;
 

@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -98,26 +99,68 @@
     <Compile Include="..\SiaNet\Application\ImageNet.cs">
       <Link>Application\ImageNet.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Events\TrainingEvents.cs">
-      <Link>Events\TrainingEvents.cs</Link>
+    <Compile Include="..\SiaNet\CompiledModel.cs">
+      <Link>CompiledModel.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\EventArgs\BatchEndEventArgs.cs">
+      <Link>Events\BatchEndEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\EventArgs\BatchStartEventArgs.cs">
+      <Link>Events\BatchStartEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\EventArgs\EpochEndEventArgs.cs">
+      <Link>Events\EpochEndEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\EventArgs\EpochStartEventArgs.cs">
+      <Link>Events\EpochStartEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\EventArgs\TrainingEndEventArgs.cs">
+      <Link>Events\TrainingEndEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\GlobalParameters.cs">
       <Link>GlobalParameters.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Interface\ITrainPredict.cs">
-      <Link>Interface\ITrainPredict.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Losses.cs">
-      <Link>Losses.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Metrics.cs">
-      <Link>Metrics.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Model\ConfigModule.cs">
       <Link>Model\ConfigModule.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Constant.cs">
+      <Link>Model\Constant.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\DataFrame.cs">
       <Link>Model\DataFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\CsvDataFrameColumnSetting.cs">
+      <Link>Model\Data\CsvDataFrameColumnSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\CsvDataFrameList.cs">
+      <Link>Model\Data\CsvDataFrameList.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\DataFrame.cs">
+      <Link>Model\Data\DataFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\DataFrameList.cs">
+      <Link>Model\Data\DataFrameList.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\FixedSizeList.cs">
+      <Link>Model\Data\FixedSizeList.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\FixedTimeList.cs">
+      <Link>Model\Data\FixedTimeList.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\IDataFrame.cs">
+      <Link>Model\Data\IDataFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\IDataFrameList.cs">
+      <Link>Model\Data\IDataFrameList.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\ImageData.cs">
+      <Link>Model\Data\ImageData.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Data\SumTreeList.cs">
+      <Link>Model\Data\SumTreeList.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Function.cs">
+      <Link>Model\Function.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\ImageDataFrame.cs">
       <Link>Model\ImageDataFrame.cs</Link>
@@ -125,14 +168,71 @@
     <Compile Include="..\SiaNet\Model\ImageDataGenerator.cs">
       <Link>Model\ImageDataGenerator.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\Initializers.cs">
-      <Link>Model\Initializers.cs</Link>
+    <Compile Include="..\SiaNet\Model\Initializers\Constant.cs">
+      <Link>Model\Initializers\Constant.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\LayerConfig.cs">
-      <Link>Model\LayerConfig.cs</Link>
+    <Compile Include="..\SiaNet\Model\Initializers\GlorotNormal.cs">
+      <Link>Model\Initializers\GlorotNormal.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\Layers\Activation.cs">
-      <Link>Model\Layers\Activation.cs</Link>
+    <Compile Include="..\SiaNet\Model\Initializers\GlorotUniform.cs">
+      <Link>Model\Initializers\GlorotUniform.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\HeNormal.cs">
+      <Link>Model\Initializers\HeNormal.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\HeUniform.cs">
+      <Link>Model\Initializers\HeUniform.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\InitializerBase.cs">
+      <Link>Model\Initializers\InitializerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\Normal.cs">
+      <Link>Model\Initializers\Normal.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\Ones.cs">
+      <Link>Model\Initializers\Ones.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\TruncatedNormal.cs">
+      <Link>Model\Initializers\TruncatedNormal.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\Uniform.cs">
+      <Link>Model\Initializers\Uniform.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\Xavier.cs">
+      <Link>Model\Initializers\Xavier.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Initializers\Zeros.cs">
+      <Link>Model\Initializers\Zeros.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\LayerBase.cs">
+      <Link>Model\LayerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\ActivationBase.cs">
+      <Link>Model\Layers\Activations\ActivationBase.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\ELU.cs">
+      <Link>Model\Layers\Activations\ELU.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\LeakyReLU.cs">
+      <Link>Model\Layers\Activations\LeakyReLU.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\ReLU.cs">
+      <Link>Model\Layers\Activations\ReLU.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\SELU.cs">
+      <Link>Model\Layers\Activations\SELU.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\Sigmoid.cs">
+      <Link>Model\Layers\Activations\Sigmoid.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\Softmax.cs">
+      <Link>Model\Layers\Activations\Softmax.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\Softplus.cs">
+      <Link>Model\Layers\Activations\Softplus.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\Activations\Tanh.cs">
+      <Link>Model\Layers\Activations\Tanh.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\Layers\AvgPool1D.cs">
       <Link>Model\Layers\AvgPool1D.cs</Link>
@@ -155,6 +255,15 @@
     <Compile Include="..\SiaNet\Model\Layers\Conv3D.cs">
       <Link>Model\Layers\Conv3D.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\CudaGRU.cs">
+      <Link>Model\Layers\CudaGRU.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\CudaLSTM.cs">
+      <Link>Model\Layers\CudaLSTM.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\CudaRNN.cs">
+      <Link>Model\Layers\CudaRNN.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\Layers\Dense.cs">
       <Link>Model\Layers\Dense.cs</Link>
     </Compile>
@@ -164,14 +273,32 @@
     <Compile Include="..\SiaNet\Model\Layers\Embedding.cs">
       <Link>Model\Layers\Embedding.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\Layers\GlobalAvgPool.cs">
-      <Link>Model\Layers\GlobalAvgPool.cs</Link>
+    <Compile Include="..\SiaNet\Model\Layers\Flatten.cs">
+      <Link>Model\Layers\Flatten.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\Layers\GlobalMaxPool.cs">
-      <Link>Model\Layers\GlobalMaxPool.cs</Link>
+    <Compile Include="..\SiaNet\Model\Layers\GlobalAvgPool1D.cs">
+      <Link>Model\Layers\GlobalAvgPool1D.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\GlobalAvgPool2D.cs">
+      <Link>Model\Layers\GlobalAvgPool2D.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\GlobalAvgPool3D.cs">
+      <Link>Model\Layers\GlobalAvgPool3D.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\GlobalMaxPool1D.cs">
+      <Link>Model\Layers\GlobalMaxPool1D.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\GlobalMaxPool2D.cs">
+      <Link>Model\Layers\GlobalMaxPool2D.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\GlobalMaxPool3D.cs">
+      <Link>Model\Layers\GlobalMaxPool3D.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\Layers\LSTM.cs">
       <Link>Model\Layers\LSTM.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Layers\LSTM2.cs">
+      <Link>Model\Layers\LSTM2.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\Layers\MaxPool1D.cs">
       <Link>Model\Layers\MaxPool1D.cs</Link>
@@ -185,6 +312,51 @@
     <Compile Include="..\SiaNet\Model\Layers\Reshape.cs">
       <Link>Model\Layers\Reshape.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\Accuracy.cs">
+      <Link>Model\Metrics\Accuracy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\BinaryCrossEntropy.cs">
+      <Link>Model\Metrics\BinaryCrossEntropy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\ConnectionistTemporalClassification.cs">
+      <Link>Model\Metrics\ConnectionistTemporalClassification.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\CrossEntropy.cs">
+      <Link>Model\Metrics\CrossEntropy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\Huber.cs">
+      <Link>Model\Metrics\Huber.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\KullbackLeiblerDivergence.cs">
+      <Link>Model\Metrics\KullbackLeiblerDivergence.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\MeanAbsoluteError.cs">
+      <Link>Model\Metrics\MeanAbsoluteError.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\MeanAbsolutePercentageError.cs">
+      <Link>Model\Metrics\MeanAbsolutePercentageError.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\MeanSquaredError.cs">
+      <Link>Model\Metrics\MeanSquaredError.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\MeanSquaredLogError.cs">
+      <Link>Model\Metrics\MeanSquaredLogError.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\MetricFunction.cs">
+      <Link>Model\Metrics\MetricFunction.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\Poisson.cs">
+      <Link>Model\Metrics\Poisson.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\SparseCrossEntropy.cs">
+      <Link>Model\Metrics\SparseCrossEntropy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Metrics\TopKAccuracy.cs">
+      <Link>Model\Metrics\TopKAccuracy.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\OptimizableLayerBase.cs">
+      <Link>Model\OptimizableLayerBase.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\Optimizers\AdaDelta.cs">
       <Link>Model\Optimizers\AdaDelta.cs</Link>
     </Compile>
@@ -197,11 +369,11 @@
     <Compile Include="..\SiaNet\Model\Optimizers\Adamax.cs">
       <Link>Model\Optimizers\Adamax.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\Optimizers\BaseOptimizer.cs">
-      <Link>Model\Optimizers\BaseOptimizer.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Model\Optimizers\MomentumSGD.cs">
       <Link>Model\Optimizers\MomentumSGD.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Optimizers\OptimizerBase.cs">
+      <Link>Model\Optimizers\OptimizerBase.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\Optimizers\RMSProp.cs">
       <Link>Model\Optimizers\RMSProp.cs</Link>
@@ -209,47 +381,59 @@
     <Compile Include="..\SiaNet\Model\Optimizers\SGD.cs">
       <Link>Model\Optimizers\SGD.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Parameter.cs">
+      <Link>Model\Parameter.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\PredResult.cs">
       <Link>Model\PredResult.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\RandomGenerator.cs">
+      <Link>Model\RandomGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Regularizers\RegularizerBase.cs">
+      <Link>Model\Regularizers\RegularizerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Regularizers\RegularizerL1.cs">
+      <Link>Model\Regularizers\RegularizerL1.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Regularizers\RegularizerL1L2.cs">
+      <Link>Model\Regularizers\RegularizerL1L2.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Regularizers\RegularizerL2.cs">
+      <Link>Model\Regularizers\RegularizerL2.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\TextDataFrame.cs">
       <Link>Model\TextDataFrame.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Trainer\DDQNTrainer.cs">
+      <Link>Model\Trainer\DDQNTrainer.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Trainer\DQNTrainer.cs">
+      <Link>Model\Trainer\DQNTrainer.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Trainer\DQNTrainerPR.cs">
+      <Link>Model\Trainer\DQNTrainerPR.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Trainer\DQN\EnvironmentState.cs">
+      <Link>Model\Trainer\DQN\EnvironmentState.cs</Link>
+    </Compile>
+    <Compile Include="..\SiaNet\Model\Trainer\DQN\IEnvironment.cs">
+      <Link>Model\Trainer\DQN\IEnvironment.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\TrainTestFrame.cs">
       <Link>Model\TrainTestFrame.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\NN\Basic.cs">
-      <Link>NN\Basic.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\NN\Convolution.cs">
-      <Link>NN\Convolution.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\NN\OptimizedRecurrent.cs">
-      <Link>NN\OptimizedRecurrent.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\NN\Recurrent.cs">
-      <Link>NN\Recurrent.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Processing\DataFrameTrainPredict.cs">
-      <Link>Processing\DataFrameTrainPredict.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Processing\DataFrameUtil.cs">
-      <Link>Processing\DataFrameUtil.cs</Link>
+    <Compile Include="..\SiaNet\Model\Variable.cs">
+      <Link>Model\Variable.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Processing\ImageUtil.cs">
       <Link>Processing\ImageUtil.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Processing\ImgGenTrainPredict.cs">
-      <Link>Processing\ImgGenTrainPredict.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Regulizers.cs">
-      <Link>Regulizers.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Sequential.cs">
       <Link>Sequential.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Utility.cs">
-      <Link>Utility.cs</Link>
+    <Compile Include="..\SiaNet\Shape.cs">
+      <Link>Shape.cs</Link>
     </Compile>
     <Compile Include="..\SolutionAssemblyVersionInfo.cs">
       <Link>SolutionAssemblyVersionInfo.cs</Link>
