@@ -1,99 +1,90 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CNTK;
+using Newtonsoft.Json;
 
 namespace SiaNet.Model.Layers
 {
     /// <summary>
-    /// Max pooling operation for spatial data.
+    ///     Max pooling operation for spatial data.
     /// </summary>
-    /// <seealso cref="SiaNet.Model.LayerConfig" />
-    public class MaxPool2D : LayerConfig
+    /// <seealso cref="LayerBase" />
+    public class MaxPool2D : LayerBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaxPool2D"/> class.
+        ///     Initializes a new instance of the <see cref="MaxPool2D" /> class.
         /// </summary>
-        internal MaxPool2D()
-        {
-            base.Name = "MaxPool2D";
-            base.Params = new ExpandoObject();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MaxPool2D"/> class.
-        /// </summary>
-        /// <param name="poolSize">A tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve the input in both spatial dimension. If only one integer is specified, the same window length will be used for both dimensions.</param>
+        /// <param name="poolSize">
+        ///     A tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve
+        ///     the input in both spatial dimension. If only one integer is specified, the same window length will be used for both
+        ///     dimensions.
+        /// </param>
         /// <param name="strides">Integer, tuple of 2 integers, or None. Strides values. If None, it will default to pool_size.</param>
-        /// <param name="padding">Boolean, if true results in padding the input such that the output has the same length as the original input.</param>
+        /// <param name="padding">
+        ///     Boolean, if true results in padding the input such that the output has the same length as the
+        ///     original input.
+        /// </param>
         public MaxPool2D(Tuple<int, int> poolSize, Tuple<int, int> strides = null, bool padding = true)
-            : this()
         {
             PoolSize = poolSize;
-            Strides = strides == null ? Tuple.Create(1, 1) : strides;
+            Strides = strides ?? Tuple.Create(1, 1);
             Padding = padding;
         }
 
         /// <summary>
-        ///  integer or tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve the input in both spatial dimension. If only one integer is specified, the same window length will be used for both dimensions.
+        ///     Boolean, if true results in padding the input such that the output has the same length as the original input.
         /// </summary>
         /// <value>
-        /// The size of the pool.
+        ///     <c>true</c> if padding; otherwise, <c>false</c>.
         /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Tuple<int, int> PoolSize
-        {
-            get
-            {
-                return base.Params.PoolSize;
-            }
-
-            set
-            {
-                base.Params.PoolSize = value;
-            }
-        }
-
-        /// <summary>
-        /// Integer, tuple of 2 integers, or None. Strides values. If None, it will default to pool_size.
-        /// </summary>
-        /// <value>
-        /// The strides.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
-        public Tuple<int, int> Strides
-        {
-            get
-            {
-                return base.Params.Strides;
-            }
-
-            set
-            {
-                base.Params.Strides = value;
-            }
-        }
-
-        /// <summary>
-        /// Boolean, if true results in padding the input such that the output has the same length as the original input.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if padding; otherwise, <c>false</c>.
-        /// </value>
-        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public bool Padding
         {
-            get
+            get => GetParam<bool>("Padding");
+
+            set => SetParam("Padding", value);
+        }
+
+        /// <summary>
+        ///     integer or tuple of 2 integers, factors by which to downscale (vertical, horizontal). (2, 2) will halve the input
+        ///     in both spatial dimension. If only one integer is specified, the same window length will be used for both
+        ///     dimensions.
+        /// </summary>
+        /// <value>
+        ///     The size of the pool.
+        /// </value>
+        [JsonIgnore]
+        public Tuple<int, int> PoolSize
+        {
+            get => GetParam<Tuple<int, int>>("PoolSize");
+
+            set => SetParam("PoolSize", value);
+        }
+
+        /// <summary>
+        ///     Integer, tuple of 2 integers, or None. Strides values. If None, it will default to pool_size.
+        /// </summary>
+        /// <value>
+        ///     The strides.
+        /// </value>
+        [JsonIgnore]
+        public Tuple<int, int> Strides
+        {
+            get => GetParam<Tuple<int, int>>("Strides");
+
+            set => SetParam("Strides", value);
+        }
+
+        /// <inheritdoc />
+        internal override Function ToFunction(Variable inputFunction)
+        {
+            if (inputFunction.Shape.Rank > 1)
             {
-                return base.Params.Padding;
+                return CNTKLib.Pooling(inputFunction, PoolingType.Max, new[] {PoolSize.Item1, PoolSize.Item2},
+                    new[] {Strides.Item1, Strides.Item2}, new BoolVector(new[] {Padding, Padding, false}));
             }
 
-            set
-            {
-                base.Params.Padding = value;
-            }
+            return CNTKLib.Pooling(inputFunction, PoolingType.Max, new[] {PoolSize.Item1, PoolSize.Item2},
+                new[] {Strides.Item1, Strides.Item2}, new BoolVector(new[] {Padding}));
         }
     }
 }
