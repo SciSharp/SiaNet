@@ -30,18 +30,19 @@ namespace SiaNet.Examples
 
         public static void BuildModel()
         {
-            model = new Sequential();
-            model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback), returnSequence: true));
-            model.Add(new LSTM(dim: 4, shape: Shape.Create(lookback)));
+            model = new Sequential(new Shape(lookback));
+            model.Add(new LSTM(dim: 4, returnSequence: true));
+            model.Add(new LSTM(dim: 4));
             model.Add(new Dense(dim: 1));
 
-            model.OnEpochEnd += Model_OnEpochEnd;
-            model.OnTrainingEnd += Model_OnTrainingEnd;
+            //model.OnEpochEnd += Model_OnEpochEnd;
+            //model.OnTrainingEnd += Model_OnTrainingEnd;
         }
 
         public static void Train()
         {
-            model.Compile(OptOptimizers.Adam, OptLosses.MeanSquaredError, OptMetrics.MSE);
+            var compiledModel = model.Compile();
+            compiledModel.Fit(train, 100, 5, new Model.Optimizers.Adam(), new Model.Metrics.MeanSquaredError());
             model.Train(train, 100, 6);
         }
 

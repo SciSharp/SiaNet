@@ -31,7 +31,7 @@ namespace SiaNet.Examples
                 XORExample.LoadData();
                 XORExample.BuildModel();
                 XORExample.Train();
-
+                /*
                 //Housing regression example
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();
@@ -61,7 +61,7 @@ namespace SiaNet.Examples
                 //Image classification example
                 Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(Common.ImageNetModel.ResNet50)[0].Name);
                 Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(Common.Cifar10Model.ResNet110)[0].Name);
-
+                */
 
                 //Object Detection
                 //ObjectDetection.PascalDetection();

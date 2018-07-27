@@ -76,7 +76,7 @@ namespace SiaNet.Model.Data
             }
         }
 
-        public void Add(float[] data)
+        public void Add(params float[] data)
         {
             if (data.Length != DataShape.TotalSize)
             {

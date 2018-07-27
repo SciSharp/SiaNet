@@ -24,6 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>7.2</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +44,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -126,9 +130,6 @@
     <Compile Include="..\SiaNet\Model\Constant.cs">
       <Link>Model\Constant.cs</Link>
     </Compile>
-    <Compile Include="..\SiaNet\Model\DataFrame.cs">
-      <Link>Model\DataFrame.cs</Link>
-    </Compile>
     <Compile Include="..\SiaNet\Model\Data\CsvDataFrameColumnSetting.cs">
       <Link>Model\Data\CsvDataFrameColumnSetting.cs</Link>
     </Compile>
@@ -161,12 +162,6 @@
     </Compile>
     <Compile Include="..\SiaNet\Model\Function.cs">
       <Link>Model\Function.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\ImageDataFrame.cs">
-      <Link>Model\ImageDataFrame.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\ImageDataGenerator.cs">
-      <Link>Model\ImageDataGenerator.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\Initializers\Constant.cs">
       <Link>Model\Initializers\Constant.cs</Link>
@@ -401,27 +396,6 @@
     </Compile>
     <Compile Include="..\SiaNet\Model\Regularizers\RegularizerL2.cs">
       <Link>Model\Regularizers\RegularizerL2.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\TextDataFrame.cs">
-      <Link>Model\TextDataFrame.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\Trainer\DDQNTrainer.cs">
-      <Link>Model\Trainer\DDQNTrainer.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\Trainer\DQNTrainer.cs">
-      <Link>Model\Trainer\DQNTrainer.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\Trainer\DQNTrainerPR.cs">
-      <Link>Model\Trainer\DQNTrainerPR.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\Trainer\DQN\EnvironmentState.cs">
-      <Link>Model\Trainer\DQN\EnvironmentState.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\Trainer\DQN\IEnvironment.cs">
-      <Link>Model\Trainer\DQN\IEnvironment.cs</Link>
-    </Compile>
-    <Compile Include="..\SiaNet\Model\TrainTestFrame.cs">
-      <Link>Model\TrainTestFrame.cs</Link>
     </Compile>
     <Compile Include="..\SiaNet\Model\Variable.cs">
       <Link>Model\Variable.cs</Link>
