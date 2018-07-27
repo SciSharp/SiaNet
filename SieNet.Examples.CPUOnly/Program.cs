@@ -24,9 +24,14 @@ namespace SieNet.Examples.CPUOnly
 
                 
                 //XOR Example
+                /*
                 XORExample.LoadData();
                 XORExample.BuildModel();
                 XORExample.Train();
+                */
+                TimeSeriesPrediction.LoadData();
+                TimeSeriesPrediction.BuildModel();
+                TimeSeriesPrediction.Train();
 
                 /*
                 //Housing regression example
@@ -57,7 +62,7 @@ namespace SieNet.Examples.CPUOnly
                 //Image classification example
                 //Console.WriteLine("ResNet50 Prediction: " + ImageClassification.ImagenetTest(SiaNet.Common.ImageNetModel.ResNet50)[0].Name);
                 //Console.WriteLine("Cifar 10 Prediction: " + ImageClassification.Cifar10Test(SiaNet.Common.Cifar10Model.ResNet110)[0].Name);
-                
+
                 //Object Detection
                 //ObjectDetection.PascalDetection();
                 //ObjectDetection.GroceryDetection();

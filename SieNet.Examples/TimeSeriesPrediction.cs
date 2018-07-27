@@ -1,5 +1,6 @@
 ﻿using SiaNet.Common;
 using SiaNet.Model;
+using SiaNet.Model.Data;
 using SiaNet.Model.Layers;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace SiaNet.Examples
 {
     internal class TimeSeriesPrediction
     {
-        private static XYFrame train;
+        private static DataFrameList train;
 
         private static Sequential model;
 
@@ -21,11 +22,10 @@ namespace SiaNet.Examples
 
         public static void LoadData()
         {
-            DataFrame frame = new DataFrame();
-            frame.LoadFromCsv(filepath);
-            frame = frame.GetFrame(1);
-            frame.Normalize();
-            train = frame.ConvertTimeSeries(lookback);
+            var frame = Deedle.Frame.ReadCsv(filepath, hasHeaders: true);
+            var X = frame["International airline passengers"];
+
+            //train = frame.ConvertTimeSeries(lookback);
         }
 
         public static void BuildModel()
@@ -34,28 +34,24 @@ namespace SiaNet.Examples
             model.Add(new LSTM(dim: 4, returnSequence: true));
             model.Add(new LSTM(dim: 4));
             model.Add(new Dense(dim: 1));
-
-            //model.OnEpochEnd += Model_OnEpochEnd;
-            //model.OnTrainingEnd += Model_OnTrainingEnd;
         }
 
         public static void Train()
         {
             var compiledModel = model.Compile();
+            compiledModel.EpochEnd += CompiledModel_EpochEnd;
+            compiledModel.TrainingEnd += CompiledModel_TrainingEnd;
             compiledModel.Fit(train, 100, 5, new Model.Optimizers.Adam(), new Model.Metrics.MeanSquaredError());
-            model.Train(train, 100, 6);
         }
 
-        private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
+        private static void CompiledModel_TrainingEnd(object sender, EventArgs.TrainingEndEventArgs e)
         {
-            var mean = trainingResult[OptMetrics.MSE].Mean();
-            var std = trainingResult[OptMetrics.MSE].Std();
-            Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean * 100, std * 100);
+            //Console.WriteLine("Training completed. Mean: {0}, Std: {1}", mean * 100, std * 100);
         }
 
-        private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
+        private static void CompiledModel_EpochEnd(object sender, EventArgs.EpochEndEventArgs e)
         {
-            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, MSLE: {2}", epoch, loss, metrics.First().Value));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, MSLE: {2}", e.Epoch, e.Loss, e.Metric));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace SiaNet.Model.Data
         protected readonly List<Tuple<long, long>> LineTable = new List<Tuple<long, long>>();
         protected readonly bool ShouldTrim;
         protected readonly string ValueDelimiter;
-        protected Encoding Encoding;
+        protected Encoding FileEncoding;
 
         public CsvDataFrameList(
             string fileName,
@@ -26,7 +26,7 @@ namespace SiaNet.Model.Data
             bool hasHeader = false)
         {
             FileName = fileName;
-            Encoding = encoding;
+            FileEncoding = encoding == null ? Encoding.UTF8 : encoding;
             LineSeparator = lineSeparator;
             ValueDelimiter = valueDelimiter;
             ShouldTrim = shouldTrim;
@@ -43,7 +43,7 @@ namespace SiaNet.Model.Data
             CsvDataFrameColumnSetting[] columnSettings)
         {
             FileName = fileName;
-            Encoding = encoding;
+            FileEncoding = encoding == null ? Encoding.UTF8 : encoding;
             ValueDelimiter = valueDelimiter;
             ShouldTrim = shouldTrim;
             LineTable.AddRange(lineTable);
@@ -63,7 +63,7 @@ namespace SiaNet.Model.Data
         /// <inheritdoc />
         public IDataFrameList Extract(int start, int count)
         {
-            return new CsvDataFrameList(FileName, Encoding, ValueDelimiter, ShouldTrim,
+            return new CsvDataFrameList(FileName, FileEncoding, ValueDelimiter, ShouldTrim,
                 LineTable.Skip(start).Take(count).ToArray(), Columns.Select(setting => setting.Clone()).ToArray());
         }
 
@@ -128,53 +128,53 @@ namespace SiaNet.Model.Data
             ColumnSettings.Clear();
             LineTable.Clear();
             var separatorIndex = 0;
-            var lineSeparatorSize = Encoding.GetByteCount(LineSeparator);
+            var lineSeparatorSize = FileEncoding.GetByteCount(LineSeparator);
             var lastLineStart = 0L;
 
             using (var file = new FileStream(FileName, FileMode.Open, FileAccess.Read))
             {
                 // read BOM
-                if (Encoding == null)
+                if (FileEncoding == null)
                 {
                     var bom = new byte[4];
                     file.Read(bom, 0, 4);
 
                     if (bom[0] == 0x2b && bom[1] == 0x2f && bom[2] == 0x76)
                     {
-                        Encoding = Encoding.UTF7;
+                        FileEncoding = Encoding.UTF7;
                     }
                     else if (bom[0] == 0xef && bom[1] == 0xbb && bom[2] == 0xbf)
                     {
-                        Encoding = Encoding.UTF8;
+                        FileEncoding = Encoding.UTF8;
                     }
                     else if (bom[0] == 0xff && bom[1] == 0xfe) //UTF-16LE
                     {
-                        Encoding = Encoding.Unicode;
+                        FileEncoding = Encoding.Unicode;
                     }
                     else if (bom[0] == 0xfe && bom[1] == 0xff) //UTF-16BE
                     {
-                        Encoding = Encoding.BigEndianUnicode;
+                        FileEncoding = Encoding.BigEndianUnicode;
                     }
                     else if (bom[0] == 0 && bom[1] == 0 && bom[2] == 0xfe && bom[3] == 0xff)
                     {
-                        Encoding = Encoding.UTF32;
+                        FileEncoding = Encoding.UTF32;
                     }
                     else
                     {
-                        Encoding = Encoding.ASCII;
+                        FileEncoding = Encoding.ASCII;
                     }
                 }
 
                 // Skip BOM
-                if (Encoding.Equals(Encoding.UTF7) || Encoding.Equals(Encoding.UTF8))
+                if (FileEncoding.Equals(Encoding.UTF7) || FileEncoding.Equals(Encoding.UTF8))
                 {
                     file.Seek(3, SeekOrigin.Begin);
                 }
-                else if (Encoding.Equals(Encoding.Unicode) || Encoding.Equals(Encoding.BigEndianUnicode))
+                else if (FileEncoding.Equals(Encoding.Unicode) || FileEncoding.Equals(Encoding.BigEndianUnicode))
                 {
                     file.Seek(2, SeekOrigin.Begin);
                 }
-                else if (Encoding.Equals(Encoding.UTF32))
+                else if (FileEncoding.Equals(Encoding.UTF32))
                 {
                     file.Seek(4, SeekOrigin.Begin);
                 }
@@ -184,13 +184,13 @@ namespace SiaNet.Model.Data
                 }
 
                 // Creating a line table
-                var byteArray = new byte[Encoding.IsSingleByte ? 1 : 4];
+                var byteArray = new byte[FileEncoding.IsSingleByte ? 1 : 4];
                 int read;
 
                 while ((read = file.Read(byteArray, 0, byteArray.Length)) > 0)
                 {
-                    var charArray = Encoding.GetChars(byteArray, 0, read);
-                    var charSize = Encoding.GetByteCount(new[] {charArray[0]});
+                    var charArray = FileEncoding.GetChars(byteArray, 0, read);
+                    var charSize = FileEncoding.GetByteCount(new[] {charArray[0]});
 
                     if (byteArray.Length > charSize)
                     {
@@ -265,7 +265,7 @@ namespace SiaNet.Model.Data
                     }
 
                     var read = file.Read(byteArray, 0, byteArray.Length);
-                    var line = Encoding.GetString(byteArray, 0, read);
+                    var line = FileEncoding.GetString(byteArray, 0, read);
 
                     if (ShouldTrim)
                     {

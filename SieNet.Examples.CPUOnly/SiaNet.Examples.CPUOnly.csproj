@@ -72,6 +72,9 @@
     <Reference Include="Cntk.Core.Managed-2.5.1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21fff2ec8197defe, processorArchitecture=AMD64">
       <HintPath>..\packages\CNTK.CPUOnly.2.5.1\lib\net45\x64\Cntk.Core.Managed-2.5.1.dll</HintPath>
     </Reference>
+    <Reference Include="Deedle, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Deedle.1.2.5\lib\net40\Deedle.dll</HintPath>
+    </Reference>
     <Reference Include="DlibDotNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\DlibDotNet\DlibDotNet.dll</HintPath>
@@ -90,6 +93,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SieNet.Examples\TimeSeriesPrediction.cs">
+      <Link>TimeSeriesPrediction.cs</Link>
+    </Compile>
     <Compile Include="..\SieNet.Examples\XORExample.cs">
       <Link>XORExample.cs</Link>
     </Compile>
