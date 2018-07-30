@@ -22,23 +22,23 @@ namespace SieNet.Examples.CPUOnly
                 //Setting global device
                 Logging.OnWriteLog += Logging_OnWriteLog;
 
-                
+
                 //XOR Example
                 /*
                 XORExample.LoadData();
                 XORExample.BuildModel();
                 XORExample.Train();
-                */
+               
                 TimeSeriesPrediction.LoadData();
                 TimeSeriesPrediction.BuildModel();
                 TimeSeriesPrediction.Train();
+                 */
 
-                /*
                 //Housing regression example
                 HousingRegression.LoadData();
                 HousingRegression.BuildModel();
                 HousingRegression.Train();
-                
+                /*
                 //MNIST Classification example
                 MNISTClassifier.LoadData();
                 MNISTClassifier.BuildModel(true);

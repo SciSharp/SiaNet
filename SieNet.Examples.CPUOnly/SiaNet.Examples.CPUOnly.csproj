@@ -111,6 +111,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SieNet.Examples\HousingRegression.cs">
+      <Link>HousingRegression.cs</Link>
+    </Compile>
     <Compile Include="..\SieNet.Examples\TimeSeriesPrediction.cs">
       <Link>TimeSeriesPrediction.cs</Link>
     </Compile>

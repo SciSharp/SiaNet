@@ -150,6 +150,9 @@
     <Compile Include="..\SiaNet\Model\Constant.cs">
       <Link>Model\Constant.cs</Link>
     </Compile>
+    <Compile Include="..\SiaNet\Model\Data\CsvDataFrame.cs">
+      <Link>Model\Data\CsvDataFrame.cs</Link>
+    </Compile>
     <Compile Include="..\SiaNet\Model\Data\CsvDataFrameColumnSetting.cs">
       <Link>Model\Data\CsvDataFrameColumnSetting.cs</Link>
     </Compile>

@@ -12,6 +12,11 @@
     {
         protected readonly List<float> DataList = new List<float>();
 
+        protected DataFrame()
+        {
+
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DataFrame"/> class.
         /// </summary>
