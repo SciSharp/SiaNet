@@ -22,10 +22,6 @@ namespace DatasetExtractor
             "http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz"
         };
 
-        public XYFrame TrainFrame { get; set; }
-
-        public XYFrame TestFrame { get; set; }
-
         public void Download()
         {
             string tempFolder = folder + "\\tmp";
@@ -50,84 +46,84 @@ namespace DatasetExtractor
 
         public void Extract()
         {
-            string tempFolder = folder + "\\tmp";
-            TrainFrame = new XYFrame();
-            TestFrame = new XYFrame();
-            ExtractTrain(tempFolder);
-            ExtractTest(tempFolder);
+            //string tempFolder = folder + "\\tmp";
+            //TrainFrame = new XYFrame();
+            //TestFrame = new XYFrame();
+            //ExtractTrain(tempFolder);
+            //ExtractTest(tempFolder);
 
-            TrainFrame.SaveStream(folder + "\\train.sia");
-            TestFrame.SaveStream(folder + "\\test.sia");
+            //TrainFrame.SaveStream(folder + "\\train.sia");
+            //TestFrame.SaveStream(folder + "\\test.sia");
 
-            Directory.Delete(tempFolder, true);
+            //Directory.Delete(tempFolder, true);
         }
 
         private void ExtractTrain(string tmpfolder)
         {
-            string trainImages = tmpfolder + "\\train-images-idx3-ubyte.gz";
-            string trainLabels = tmpfolder + "\\train-labels-idx1-ubyte.gz";
+            //string trainImages = tmpfolder + "\\train-images-idx3-ubyte.gz";
+            //string trainLabels = tmpfolder + "\\train-labels-idx1-ubyte.gz";
 
-            GZipStream imageStream = new GZipStream(new FileStream(trainImages, FileMode.Open), CompressionMode.Decompress);
-            GZipStream labelStream = new GZipStream(new FileStream(trainLabels, FileMode.Open), CompressionMode.Decompress);
-            BinaryReader brimg = new BinaryReader(imageStream);
-            BinaryReader brlbl = new BinaryReader(labelStream);
-            int magic1 = brimg.ReadInt32(); // discard
-            int numImages = brimg.ReadInt32();
-            int numRows = brimg.ReadInt32();
-            int numCols = brimg.ReadInt32();
+            //GZipStream imageStream = new GZipStream(new FileStream(trainImages, FileMode.Open), CompressionMode.Decompress);
+            //GZipStream labelStream = new GZipStream(new FileStream(trainLabels, FileMode.Open), CompressionMode.Decompress);
+            //BinaryReader brimg = new BinaryReader(imageStream);
+            //BinaryReader brlbl = new BinaryReader(labelStream);
+            //int magic1 = brimg.ReadInt32(); // discard
+            //int numImages = brimg.ReadInt32();
+            //int numRows = brimg.ReadInt32();
+            //int numCols = brimg.ReadInt32();
 
-            int magic2 = brlbl.ReadInt32();
-            int numLabels = brlbl.ReadInt32();
-            int pixelSize = 28 * 28 * 1;
-            List<byte> imageData = null;
+            //int magic2 = brlbl.ReadInt32();
+            //int numLabels = brlbl.ReadInt32();
+            //int pixelSize = 28 * 28 * 1;
+            //List<byte> imageData = null;
 
-            for (int di = 0; di < 60000; ++di)
-            {
-                imageData = new List<byte>();
-                imageData.AddRange(brimg.ReadBytes(pixelSize));
+            //for (int di = 0; di < 60000; ++di)
+            //{
+            //    imageData = new List<byte>();
+            //    imageData.AddRange(brimg.ReadBytes(pixelSize));
 
-                float lbl = brlbl.ReadByte();
+            //    float lbl = brlbl.ReadByte();
 
-                TrainFrame.XFrame.Data.Add(imageData.Select(x => ((float)x)).ToList());
-                TrainFrame.YFrame.Data.Add(new List<float>() { lbl });
-            }
+            //    TrainFrame.XFrame.Data.Add(imageData.Select(x => ((float)x)).ToList());
+            //    TrainFrame.YFrame.Data.Add(new List<float>() { lbl });
+            //}
 
-            imageStream.Close();
-            labelStream.Close();
+            //imageStream.Close();
+            //labelStream.Close();
         }
 
         private void ExtractTest(string tmpfolder)
         {
-            string trainImages = tmpfolder + "\\t10k-images-idx3-ubyte.gz";
-            string trainLabels = tmpfolder + "\\t10k-labels-idx1-ubyte.gz";
+            //string trainImages = tmpfolder + "\\t10k-images-idx3-ubyte.gz";
+            //string trainLabels = tmpfolder + "\\t10k-labels-idx1-ubyte.gz";
 
-            GZipStream imageStream = new GZipStream(new FileStream(trainImages, FileMode.Open), CompressionMode.Decompress);
-            GZipStream labelStream = new GZipStream(new FileStream(trainLabels, FileMode.Open), CompressionMode.Decompress);
-            BinaryReader brimg = new BinaryReader(imageStream);
-            BinaryReader brlbl = new BinaryReader(labelStream);
-            int magic1 = brimg.ReadInt32(); // discard
-            int numImages = brimg.ReadInt32();
-            int numRows = brimg.ReadInt32();
-            int numCols = brimg.ReadInt32();
+            //GZipStream imageStream = new GZipStream(new FileStream(trainImages, FileMode.Open), CompressionMode.Decompress);
+            //GZipStream labelStream = new GZipStream(new FileStream(trainLabels, FileMode.Open), CompressionMode.Decompress);
+            //BinaryReader brimg = new BinaryReader(imageStream);
+            //BinaryReader brlbl = new BinaryReader(labelStream);
+            //int magic1 = brimg.ReadInt32(); // discard
+            //int numImages = brimg.ReadInt32();
+            //int numRows = brimg.ReadInt32();
+            //int numCols = brimg.ReadInt32();
 
-            int magic2 = brlbl.ReadInt32();
-            int numLabels = brlbl.ReadInt32();
-            int pixelSize = 28 * 28 * 1;
-            List<byte> imageData = null;
+            //int magic2 = brlbl.ReadInt32();
+            //int numLabels = brlbl.ReadInt32();
+            //int pixelSize = 28 * 28 * 1;
+            //List<byte> imageData = null;
 
-            for (int di = 0; di < 10000; ++di)
-            {
-                imageData = new List<byte>();
-                imageData.AddRange(brimg.ReadBytes(pixelSize));
+            //for (int di = 0; di < 10000; ++di)
+            //{
+            //    imageData = new List<byte>();
+            //    imageData.AddRange(brimg.ReadBytes(pixelSize));
 
-                float lbl = brlbl.ReadByte();
+            //    float lbl = brlbl.ReadByte();
 
-                TestFrame.XFrame.Data.Add(imageData.Select(x => ((float)x)).ToList());
-                TestFrame.YFrame.Data.Add(new List<float>() { lbl });
-            }
+            //    TestFrame.XFrame.Data.Add(imageData.Select(x => ((float)x)).ToList());
+            //    TestFrame.YFrame.Data.Add(new List<float>() { lbl });
+            //}
 
-            imageStream.Close();
-            labelStream.Close();
+            //imageStream.Close();
+            //labelStream.Close();
         }
     }
 }

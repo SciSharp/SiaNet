@@ -19,10 +19,6 @@ namespace DatasetExtractor
             "https://www.cs.toronto.edu/~kriz/cifar-100-binary.tar.gz"
         };
 
-        public XYFrame TrainFrame { get; set; }
-
-        public XYFrame TestFrame { get; set; }
-
         public void Download()
         {
             string tempFolder = folder + "\\tmp";
@@ -47,40 +43,40 @@ namespace DatasetExtractor
 
         public void Extract()
         {
-            ExplodeZip();
-            string tempFolder = folder + "\\tmp";
-            TrainFrame = new XYFrame();
-            TestFrame = new XYFrame();
-            ExtractTrain(tempFolder);
-            ExtractTest(tempFolder);
+            //ExplodeZip();
+            //string tempFolder = folder + "\\tmp";
+            //TrainFrame = new XYFrame();
+            //TestFrame = new XYFrame();
+            //ExtractTrain(tempFolder);
+            //ExtractTest(tempFolder);
 
-            TrainFrame.SaveStream(folder + "\\train.sia");
-            TestFrame.SaveStream(folder + "\\test.sia");
+            //TrainFrame.SaveStream(folder + "\\train.sia");
+            //TestFrame.SaveStream(folder + "\\test.sia");
 
-            Directory.Delete(tempFolder, true);
+            //Directory.Delete(tempFolder, true);
         }
 
         private void ExtractTrain(string tmpfolder)
         {
-            string filepath = string.Format("{0}\\cifar-100-binary\\train.bin", tmpfolder);
-            FileStream imageStream = new FileStream(filepath, FileMode.Open);
-            BinaryReader br = new BinaryReader(imageStream);
-            int pixelSize = 32 * 32 * 3;
+            //string filepath = string.Format("{0}\\cifar-100-binary\\train.bin", tmpfolder);
+            //FileStream imageStream = new FileStream(filepath, FileMode.Open);
+            //BinaryReader br = new BinaryReader(imageStream);
+            //int pixelSize = 32 * 32 * 3;
 
-            List<byte> imageRec = null;
+            //List<byte> imageRec = null;
 
-            for (int di = 0; di < 50000; ++di)
-            {
-                imageRec = new List<byte>();
-                float lbl = br.ReadByte();
-                lbl = br.ReadByte();
+            //for (int di = 0; di < 50000; ++di)
+            //{
+            //    imageRec = new List<byte>();
+            //    float lbl = br.ReadByte();
+            //    lbl = br.ReadByte();
 
-                imageRec.AddRange(br.ReadBytes(pixelSize));
-                TrainFrame.XFrame.Data.Add(imageRec.Select(x => ((float)x)).ToList());
-                TrainFrame.YFrame.Data.Add(new List<float>() { lbl });
-            }
+            //    imageRec.AddRange(br.ReadBytes(pixelSize));
+            //    TrainFrame.XFrame.Data.Add(imageRec.Select(x => ((float)x)).ToList());
+            //    TrainFrame.YFrame.Data.Add(new List<float>() { lbl });
+            //}
 
-            imageStream.Close();
+            //imageStream.Close();
         }
 
         private void ExplodeZip()
@@ -112,25 +108,25 @@ namespace DatasetExtractor
 
         private void ExtractTest(string tmpfolder)
         {
-            string filepath = string.Format("{0}\\cifar-100-binary\\test.bin", tmpfolder);
-            FileStream imageStream = new FileStream(filepath, FileMode.Open);
-            BinaryReader br = new BinaryReader(imageStream);
-            int pixelSize = 32 * 32 * 3;
+            //string filepath = string.Format("{0}\\cifar-100-binary\\test.bin", tmpfolder);
+            //FileStream imageStream = new FileStream(filepath, FileMode.Open);
+            //BinaryReader br = new BinaryReader(imageStream);
+            //int pixelSize = 32 * 32 * 3;
 
-            List<byte> imageRec = null;
+            //List<byte> imageRec = null;
 
-            for (int di = 0; di < 10000; ++di)
-            {
-                imageRec = new List<byte>();
-                float lbl = br.ReadByte();
-                lbl = br.ReadByte();
+            //for (int di = 0; di < 10000; ++di)
+            //{
+            //    imageRec = new List<byte>();
+            //    float lbl = br.ReadByte();
+            //    lbl = br.ReadByte();
 
-                imageRec.AddRange(br.ReadBytes(pixelSize));
-                TestFrame.XFrame.Data.Add(imageRec.Select(x => ((float)x)).ToList());
-                TestFrame.YFrame.Data.Add(new List<float>() { lbl });
-            }
+            //    imageRec.AddRange(br.ReadBytes(pixelSize));
+            //    TestFrame.XFrame.Data.Add(imageRec.Select(x => ((float)x)).ToList());
+            //    TestFrame.YFrame.Data.Add(new List<float>() { lbl });
+            //}
 
-            imageStream.Close();
+            //imageStream.Close();
         }
     }
 }

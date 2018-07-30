@@ -9,9 +9,6 @@ namespace DatasetExtractor
 {
     internal interface IExtractor
     {
-        XYFrame TrainFrame { get; set; }
-
-        XYFrame TestFrame { get; set; }
 
         void Download();
 
