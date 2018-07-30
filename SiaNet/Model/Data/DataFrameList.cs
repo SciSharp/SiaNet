@@ -170,36 +170,8 @@ namespace SiaNet.Model.Data
         public virtual void AddFrame(float[] features, float label)
         {
             _features.Add(features);
-            _labels.Add(new[] {label});
+            _labels.Add(new[] { label });
         }
-
-        /// <summary>
-        /// Add features and label to the this frame.
-        /// </summary>
-        /// <param name="features">The features in Deedle data frame format.</param>
-        /// <param name="labels">The labels in Deedle data frame format.</param>
-        public virtual void AddFrame(Frame<int, string> features, Frame<int, string> labels)
-        {
-            foreach (var element in features.Rows.GetAllValues())
-            {
-                _features.Add(element.Value.GetAllValues().Select(x => (x.Value)).ToList().ConvertAll<float>((x) =>
-                {
-                    float result = 0;
-                    float.TryParse(x.ToString(), out result);
-                    return result;
-                }).ToArray());
-            }
-
-            foreach (var element in labels.Rows.GetAllValues())
-            {
-                _labels.Add(element.Value.GetAllValues().Select(x => (x.Value)).ToList().ConvertAll<float>((x) =>
-                {
-                    float result = 0;
-                    float.TryParse(x.ToString(), out result);
-                    return result;
-                }).ToArray());
-            }
-        }
-       
+        
     }
 }
