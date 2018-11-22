@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>SiaNet</AssemblyName>
+    <RootNamespace>SiaNet</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Processing\**" />
+    <EmbeddedResource Remove="Processing\**" />
+    <None Remove="Processing\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataFrame.cs" />
+    <Compile Remove="ImageDataFrame.cs" />
+    <Compile Remove="ImageDataGenerator.cs" />
+    <Compile Remove="TextDataFrame.cs" />
+    <Compile Remove="TrainTestFrame.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Accord" Version="3.8.0" />
+    <PackageReference Include="Accord.IO" Version="3.8.0" />
+    <PackageReference Include="CNTK.GPU" Version="2.6.0" />
+    <PackageReference Include="CsvHelper" Version="9.2.3" />
+    <PackageReference Include="DlibDotNet" Version="19.15.0.20181008" />
+    <PackageReference Include="DotNetLib" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SiaNet.Core.Common\SiaNet.Core.Common.csproj" />
+  </ItemGroup>
+
+</Project>

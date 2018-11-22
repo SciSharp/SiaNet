@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cifar10.cs" />
+    <Compile Remove="HousingRegression.cs" />
+    <Compile Remove="ImageClassification.cs" />
+    <Compile Remove="MiltiVariateTimeSeriesPrediction.cs" />
+    <Compile Remove="MNISTClassifier.cs" />
+    <Compile Remove="ObjectDetection.cs" />
+    <Compile Remove="SequenceClassification.cs" />
+    <Compile Remove="TimeSeriesPrediction.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SiaNet.Core\SiaNet.Core.csproj" />
+  </ItemGroup>
+
+</Project>
