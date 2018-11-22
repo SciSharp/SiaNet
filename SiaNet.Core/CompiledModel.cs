@@ -241,16 +241,16 @@ namespace SiaNet
 
                         var batchLoss = trainer.PreviousMinibatchLossAverage();
                         var batchMetric = trainer.PreviousMinibatchEvaluationAverage();
-                        epochLosses.Add(batchLoss);
-                        epochMetrics.Add(batchMetric);
+                        //epochLosses.Add(batchLoss);
+                        //epochMetrics.Add(batchMetric);
 
                         OnBatchEnd(currentEpoch, batchId, trainer.TotalNumberOfSamplesSeen(), batchLoss,
                             batchMetric);
                         batchId++;
                     }
 
-                    lastEpochLoss = epochLosses.Average();
-                    lastEpochMetric = epochMetrics.Average();
+                    lastEpochLoss = trainer.PreviousMinibatchLossAverage();
+                    lastEpochMetric = trainer.PreviousMinibatchEvaluationAverage();
 
                     if (validation != null)
                     {

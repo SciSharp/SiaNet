@@ -23,19 +23,19 @@ namespace Samples.CPUOnly
                 GlobalParameters.Device = DeviceDescriptor.CPUDevice;
 
                 //XOR Example
-                XORExample.LoadData();
-                XORExample.BuildModel();
-                XORExample.Train();
+                //XORExample.LoadData();
+                //XORExample.BuildModel();
+                //XORExample.Train();
 
                 //Housing regression example
-                HousingRegression.LoadData();
-                HousingRegression.BuildModel();
-                HousingRegression.Train();
+                //HousingRegression.LoadData();
+                //HousingRegression.BuildModel();
+                //HousingRegression.Train();
 
                 //MNIST Classification example
-                //MNISTClassifier.LoadData();
-                //MNISTClassifier.BuildModel();
-                //MNISTClassifier.Train();
+                MNISTClassifier.LoadData();
+                MNISTClassifier.BuildModel();
+                MNISTClassifier.Train();
 
                 //Time series prediction
                 //TimeSeriesPrediction.LoadData();

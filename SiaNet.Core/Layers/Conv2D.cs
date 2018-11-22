@@ -207,8 +207,8 @@ namespace SiaNet.Layers
             //    throw new ArgumentException("Variable has an invalid shape.", nameof(inputFunction));
             //}
 
-            var numInputChannels = inputFunction.Shape[inputFunction.Shape.Rank - 1];
-            var convParams = new CNTK.Parameter(new[] {KernalSize.Item1, KernalSize.Item2, numInputChannels, Channels},
+            var num_output_channels = inputFunction.Shape[inputFunction.Shape.Rank - 1];
+            var convParams = new CNTK.Parameter(new[] {KernalSize.Item1, KernalSize.Item2, num_output_channels, Channels},
                 DataType.Float, WeightInitializer.ToDictionary(), GlobalParameters.Device);
 
             int[] stridesParams = null;
@@ -227,7 +227,7 @@ namespace SiaNet.Layers
             {
                 bias = new CNTK.Parameter(conv.Output.Shape, DataType.Float, BiasInitializer.ToDictionary(),
                     GlobalParameters.Device);
-                conv = CNTKLib.Plus(bias, conv);
+                conv = CNTKLib.Plus(conv, bias);
             }
 
             return Activation != null ? Activation.ToFunction((Function) conv) : (Function) conv;

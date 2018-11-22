@@ -1,88 +1,75 @@
-﻿namespace Samples.GPU
+﻿namespace Samples.Common
 {
     using SiaNet.Common;
-    using SiaNet.Model;
-    using SiaNet.Model.Layers;
-    using SiaNet.Model.Optimizers;
+    using SiaNet;
+    using SiaNet.Data;
+    using SiaNet.Layers;
+    using SiaNet.Optimizers;
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
     internal class MNISTClassifier
     {
-        private static ImageDataGenerator train;
-
-        private static ImageDataGenerator validation;
+        private static DataFrameList<float> train;
+        private static DataFrameList<float> test;
 
         private static Sequential model;
-
+        static int imgDim = 28 * 28;
+        static int labelDim = 10;
         public static void LoadData()
         {
             Downloader.DownloadSample(SampleDataset.MNIST);
             var samplePath = Downloader.GetSamplePath(SampleDataset.MNIST);
 
-            train = ImageDataGenerator.FlowFromText(samplePath.Train);
-            validation = ImageDataGenerator.FlowFromText(samplePath.Test);
+            train = new DataFrameList<float>(DataFrame<float>.LoadBinary(samplePath.TrainX, 60000, imgDim), DataFrame<float>.LoadBinary(samplePath.TrainY, 60000, labelDim));
+            test = new DataFrameList<float>(DataFrame<float>.LoadBinary(samplePath.TestX, 10000, imgDim), DataFrame<float>.LoadBinary(samplePath.TestY, 10000, labelDim));
         }
 
         public static void BuildModel(bool useConvolution = true)
         {
-            model = new Sequential();
-            model.OnEpochEnd += Model_OnEpochEnd;
-            model.OnTrainingEnd += Model_OnTrainingEnd;
-            model.OnBatchEnd += Model_OnBatchEnd;
-
-            int[] imageDim = useConvolution ? new int[] { 28, 28, 1 } : new int[] { 784 };
-            int numClasses = 10;
-
             if (useConvolution)
             {
-                BuildConvolutionLayer(imageDim, numClasses);
+                BuildConvolutionLayer();
             }
             else
             {
-                BuildMLP(imageDim, numClasses);
+                BuildMLP();
             }
         }
 
-        private static void BuildMLP(int[] imageDim, int numClasses)
+        private static void BuildMLP()
         {
-            model.Add(new Dense(200, imageDim[0], OptActivations.ReLU));
-            model.Add(new Dense(400, act: OptActivations.ReLU));
+            model = new Sequential(new Shape(imgDim));
+            model.Add(new Dense(dim: 200, activation: new SiaNet.Layers.Activations.ReLU()));
+            model.Add(new Dense(dim: 400, activation: new SiaNet.Layers.Activations.ReLU()));
             model.Add(new Dropout(0.2));
-            model.Add(new Dense(numClasses));
+            model.Add(new Dense(dim: labelDim));
         }
 
-        private static void BuildConvolutionLayer(int[] imageDim, int numClasses)
+        private static void BuildConvolutionLayer()
         {
-            model.Add(new Conv2D(shape: Tuple.Create(imageDim[0], imageDim[1], imageDim[2]), channels: 4, kernalSize: Tuple.Create(3, 3), strides: Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier, useBias: true, biasInitializer: OptInitializers.Ones));
+            train.Features.Reshape(new Shape(28, 28,1 ));
+            
+            model = new Sequential(new Shape(28, 28, 1));
+           
+            model.Add(new Conv2D(channels: 4, kernalSize: Tuple.Create(3, 3), strides: Tuple.Create(2, 2), activation: new SiaNet.Layers.Activations.ReLU(), weightInitializer: new SiaNet.Initializers.Xavier(), useBias: true, biasInitializer: new SiaNet.Initializers.Ones()));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
-            model.Add(new Conv2D(channels: 8, kernalSize: Tuple.Create(3, 3), strides: Tuple.Create(2, 2), activation: OptActivations.None, weightInitializer: OptInitializers.Xavier));
+            model.Add(new Conv2D(channels: 8, kernalSize: Tuple.Create(3, 3), strides: Tuple.Create(2, 2), activation: new SiaNet.Layers.Activations.ReLU(), weightInitializer: new SiaNet.Initializers.Xavier()));
             model.Add(new MaxPool2D(Tuple.Create(3, 3)));
-            model.Add(new Dense(numClasses));
+            model.Add(new Dense(labelDim));
         }
 
         public static void Train()
         {
-            //model.Compile(OptOptimizers.SGD, OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Compile(new SGD(0.003125), OptLosses.CrossEntropy, OptMetrics.Accuracy);
-            model.Train(train, 5, 32, null);
+            var compiledModel = model.Compile();
+            compiledModel.EpochEnd += CompiledModel_EpochEnd;
+            compiledModel.Fit(train, 10, 32, optimizer: new SiaNet.Optimizers.SGD(learningRate: 0.01), lossMetric: new SiaNet.Metrics.CrossEntropy(), evaluationMetric: new SiaNet.Metrics.Accuracy(), shuffle: false);
         }
 
-        private static void Model_OnTrainingEnd(Dictionary<string, List<double>> trainingResult)
+        private static void CompiledModel_EpochEnd(object sender, SiaNet.EventArgs.EpochEndEventArgs e)
         {
-
-        }
-
-        private static void Model_OnEpochEnd(int epoch, uint samplesSeen, double loss, Dictionary<string, double> metrics)
-        {
-            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Accuracy: {2}", epoch, loss, metrics.First().Value));
-        }
-
-        private static void Model_OnBatchEnd(int epoch, int batchNumber, uint samplesSeen, double loss, Dictionary<string, double> metrics)
-        {
-            //if (batchNumber % 100 == 0)
-                //Console.WriteLine(string.Format("Epoch: {0}, Batch: {1}, Loss: {2}, Accuracy: {3}", epoch, batchNumber, loss, metrics.First().Value));
+            Console.WriteLine(string.Format("Epoch: {0}, Loss: {1}, Acc: {2}", e.Epoch, e.Loss, e.Metric));
         }
     }
 }

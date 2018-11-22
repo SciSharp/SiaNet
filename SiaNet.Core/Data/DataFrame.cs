@@ -80,7 +80,7 @@
                     nameof(newShape));
             }
 
-            DataShape = new Shape();
+            DataShape = newShape;
         }
 
         /// <summary>
@@ -136,6 +136,28 @@
             }
 
             DataList.AddRange(data);
+        }
+
+        public static DataFrame<T> LoadBinary(string path, int rows, int columns)
+        {
+            DataFrame<T> dataFrame = new DataFrame<T>(new Shape(columns));
+
+            //var buffer = new byte[System.Runtime.InteropServices.Marshal.SizeOf<T>() * rows * columns];
+            byte[] buffer;
+            using (var reader = new System.IO.BinaryReader(System.IO.File.OpenRead(path)))
+            {
+                //reader.Read(buffer, 0, buffer.Length);
+                buffer = reader.ReadBytes(rows * columns);
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                var dst = new T[columns];
+                System.Buffer.BlockCopy(buffer, i * columns, dst, 0, columns);
+                dataFrame.DataList.AddRange(dst);
+            }
+
+            return dataFrame;
         }
     }
 }
