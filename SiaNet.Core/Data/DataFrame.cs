@@ -8,9 +8,9 @@
     /// Generic Dataframe class to build your own custom data.
     /// </summary>
     /// <seealso cref="SiaNet.Model.Data.IDataFrame" />
-    public class DataFrame : IDataFrame
+    public class DataFrame<T> : IDataFrame<T>
     {
-        protected readonly List<float> DataList = new List<float>();
+        protected readonly List<T> DataList = new List<T>();
 
         protected DataFrame()
         {
@@ -32,13 +32,13 @@
         /// <value>
         /// The data.
         /// </value>
-        public IEnumerable<float[]> Data
+        public IEnumerable<T[]> Data
         {
             get
             {
                 for (var i = 0; i < DataList.Count; i += DataShape.TotalSize)
                 {
-                    var data = new float[DataShape.TotalSize];
+                    var data = new T[DataShape.TotalSize];
                     DataList.CopyTo(i, data, 0, data.Length);
 
                     yield return data;
@@ -102,12 +102,12 @@
         /// <param name="index">The index.</param>
         /// <returns></returns>
         /// <inheritdoc />
-        public float[] this[int index]
+        public T[] this[int index]
         {
             get
             {
                 index = index * DataShape.TotalSize;
-                var data = new float[DataShape.TotalSize];
+                var data = new T[DataShape.TotalSize];
                 DataList.CopyTo(index, data, 0, data.Length);
 
                 return data;
@@ -127,7 +127,7 @@
         /// </summary>
         /// <param name="data">The data.</param>
         /// <exception cref="System.ArgumentException">The size of the data must be identical to the size of data shape. - data</exception>
-        public void Add(params float[] data)
+        public void Add(params T[] data)
         {
             if (data.Length != DataShape.TotalSize)
             {

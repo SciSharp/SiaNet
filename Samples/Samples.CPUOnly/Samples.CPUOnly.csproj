@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MNISTClassifier.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Samples.GPU\HousingRegression.cs" Link="HousingRegression.cs" />
     <Compile Include="..\Samples.GPU\XORExample.cs" Link="XORExample.cs" />
   </ItemGroup>
 

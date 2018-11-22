@@ -118,16 +118,16 @@ namespace SiaNet
             }
         }
 
-        public double Evaluate(
-            IDataFrameList validationData,
+        public double Evaluate<T>(
+            IDataFrameList<T> validationData,
             int batchSize,
             MetricFunction lossMetric)
         {
             return Evaluate(validationData, batchSize, lossMetric, null, out _);
         }
 
-        public double Evaluate(
-            IDataFrameList validationData,
+        public double Evaluate<T>(
+            IDataFrameList<T> validationData,
             int batchSize,
             MetricFunction lossMetric,
             MetricFunction evaluationMetric,
@@ -141,7 +141,7 @@ namespace SiaNet
             {
                 var metricFunction = evaluationMetric?.ToFunction(LabelVariable, actualVariable);
                 var batchId = 1;
-                IDataFrameList currentBatch;
+                IDataFrameList<T> currentBatch;
                 while ((currentBatch = validationData.ToBatch(batchId, batchSize)) != null)
                 {
                     using (var actual = Evaluate(currentBatch.Features.ToValue()))
@@ -187,14 +187,14 @@ namespace SiaNet
         /// <param name="batchSize">Size of the batch for training.</param>
         /// <param name="validation">The validation dataset.</param>
         /// <param name="shuffle">Shuffle the dataset while training</param>
-        public void Fit(
-            IDataFrameList trainData,
+        public void Fit<T>(
+            IDataFrameList<T> trainData,
             uint epoches,
             int batchSize,
             OptimizerBase optimizer,
             MetricFunction lossMetric,
             MetricFunction evaluationMetric = null,
-            IDataFrameList validation = null,
+            IDataFrameList<T> validation = null,
             bool shuffle = false)
         {
             var lastEpochLoss = 0d;
@@ -222,7 +222,7 @@ namespace SiaNet
                     var batchId = 1;
                     var epochLosses = new List<double>();
                     var epochMetrics = new List<double>();
-                    IDataFrameList currentBatch;
+                    IDataFrameList<T> currentBatch;
                     while ((currentBatch = trainData.ToBatch(batchId - 1, batchSize)) != null)
                     {
                         OnBatchStart(currentEpoch, batchId);
@@ -273,36 +273,37 @@ namespace SiaNet
         /// </summary>
         /// <param name="data">The data for prediction.</param>
         /// <returns>List of prediction values</returns>
-        public DataFrame Predict(IDataFrame data, int batchSize = 64)
+        public DataFrame<T> Predict<T>(IDataFrame<T> data, int batchSize = 64)
         {
-            var temporaryDataFrameList = new DataFrameList(data.DataShape, 1);
+            var temporaryDataFrameList = new DataFrameList<T>(data.DataShape, 1);
 
             for (int i = 0; i < data.Length; i++)
             {
-                temporaryDataFrameList.AddFrame(data[i], 0f);
+                temporaryDataFrameList.AddFrame(data[i], default(T));
             }
 
             var batchId = 0;
-            IDataFrameList currentBatch;
-            var df = new DataFrame(OutputShape);
+            IDataFrameList<T> currentBatch;
+            var df = new DataFrame<T>(OutputShape);
             while ((currentBatch = temporaryDataFrameList.ToBatch(batchId, batchSize)) != null)
             {
                 var outputValue = Evaluate(currentBatch.Features.ToValue());
-                var resultSet = outputValue.GetDenseData<float>(Model.Output);
+                var resultSet = outputValue.GetDenseData<T>(Model.Output);
 
                 foreach (var result in resultSet)
                 {
                     df.Add(result.ToArray());
                 }
+
                 batchId++;
             }
             
             return df;
         }
 
-        public float[] Predict(float[] data)
+        public T[] Predict<T>(T[] data)
         {
-            var dataFrame = new DataFrame(data.Length);
+            var dataFrame = new DataFrame<T>(data.Length);
             dataFrame.Add(data);
             return Predict(dataFrame)[0];
         }

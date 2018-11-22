@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Compile Remove="Cifar10.cs" />
-    <Compile Remove="HousingRegression.cs" />
     <Compile Remove="ImageClassification.cs" />
     <Compile Remove="MiltiVariateTimeSeriesPrediction.cs" />
     <Compile Remove="MNISTClassifier.cs" />

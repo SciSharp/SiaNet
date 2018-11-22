@@ -12,7 +12,7 @@ namespace Samples.Common
 {
     internal class XORExample
     {
-        private static DataFrameList trainData;
+        private static DataFrameList<float> trainData;
 
         private static Sequential model;
 
@@ -23,8 +23,8 @@ namespace Samples.Common
         {
             featureShape = new Shape(2);
             labelShape = new Shape(1);
-            DataFrame frameX = new DataFrame(featureShape);
-            DataFrame frameY = new DataFrame(labelShape);
+            DataFrame<float> frameX = new DataFrame<float>(featureShape);
+            DataFrame<float> frameY = new DataFrame<float>(labelShape);
             /*
             //One approach of building dataset
             trainData.Add(new List<float>() { 0, 0 }, 0);
@@ -40,7 +40,7 @@ namespace Samples.Common
             frameX.Add(1, 0); frameY.Add(1);
             frameX.Add(1, 1); frameY.Add(0);
 
-            trainData = new DataFrameList(frameX, frameY);
+            trainData = new DataFrameList<float>(frameX, frameY);
         }
 
         public static void BuildModel()

@@ -240,10 +240,10 @@ namespace SiaNet.Trainer
                              (InitialDiscountFactor - FinalDiscountFactor) * Math.Exp(-DiscountFactorGrow * Steps);
         }
 
-        protected Tuple<DataFrameList, float[]> AgentGetTargets(Tuple<float[], int, float, float[]>[] samples)
+        protected Tuple<DataFrameList<float>, float[]> AgentGetTargets(Tuple<float[], int, float, float[]>[] samples)
         {
-            var states = new DataFrame(StateShape);
-            var statesTarget = new DataFrame(StateShape);
+            var states = new DataFrame<float>(StateShape);
+            var statesTarget = new DataFrame<float>(StateShape);
 
             foreach (var sample in samples)
             {
@@ -255,7 +255,7 @@ namespace SiaNet.Trainer
             var predictionOfTargetStates = Model.Predict(statesTarget);
             var predictionTarget = TargetModel.Predict(statesTarget);
 
-            var data = new DataFrameList(StateShape, ActionShape);
+            var data = new DataFrameList<float>(StateShape, ActionShape);
             var errors = new float[samples.Length];
 
             for (var i = 0; i < samples.Length; i++)
@@ -287,7 +287,7 @@ namespace SiaNet.Trainer
                 errors[i] = oldVal;
             }
 
-            return new Tuple<DataFrameList, float[]>(data, errors);
+            return new Tuple<DataFrameList<float>, float[]>(data, errors);
         }
 
         private void AgentReplay(int batchSize, OptimizerBase optimizer, MetricFunction lossMetric)

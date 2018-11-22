@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SiaNet.Data
 {
-    public class CsvDataFrameList : IDataFrameList
+    public class CsvDataFrameList<T> : IDataFrameList<T>
     {
         protected readonly List<CsvDataFrameColumnSetting> ColumnSettings = new List<CsvDataFrameColumnSetting>();
         protected readonly string FileName;
@@ -61,14 +61,14 @@ namespace SiaNet.Data
         }
 
         /// <inheritdoc />
-        public IDataFrameList Extract(int start, int count)
+        public IDataFrameList<T> Extract(int start, int count)
         {
-            return new CsvDataFrameList(FileName, FileEncoding, ValueDelimiter, ShouldTrim,
+            return new CsvDataFrameList<T>(FileName, FileEncoding, ValueDelimiter, ShouldTrim,
                 LineTable.Skip(start).Take(count).ToArray(), Columns.Select(setting => setting.Clone()).ToArray());
         }
 
         /// <inheritdoc />
-        public virtual IDataFrame Features
+        public virtual IDataFrame<T> Features
         {
             get => ToBatch(0, LineTable.Count).Features;
         }
@@ -80,7 +80,7 @@ namespace SiaNet.Data
         }
 
         /// <inheritdoc />
-        public virtual IDataFrame Labels
+        public virtual IDataFrame<T> Labels
         {
             get => ToBatch(0, LineTable.Count).Labels;
         }
@@ -106,14 +106,14 @@ namespace SiaNet.Data
         }
 
         /// <inheritdoc />
-        public virtual IDataFrameList ToBatch(int batchId, int batchSize)
+        public virtual IDataFrameList<T> ToBatch(int batchId, int batchSize)
         {
             var featureColumns = Columns.Where(setting => !setting.Ignore && !setting.IsLabel).DefaultIfEmpty()
                 .Sum(setting => setting.Length);
             var labelColumns = Columns.Where(setting => !setting.Ignore && setting.IsLabel).DefaultIfEmpty()
                 .Sum(setting => setting.Length);
             var lineIndex = batchId * batchSize;
-            var newDataFrame = new DataFrameList(featureColumns, labelColumns);
+            var newDataFrame = new DataFrameList<T>(featureColumns, labelColumns);
 
             foreach (var record in ReadRecords(lineIndex, batchSize))
             {
@@ -278,12 +278,12 @@ namespace SiaNet.Data
             }
         }
 
-        protected virtual Tuple<float[], float[]> ReadRecord(int lineIndex)
+        protected virtual Tuple<T[], T[]> ReadRecord(int lineIndex)
         {
             return ReadRecords(lineIndex, 1).FirstOrDefault();
         }
 
-        protected virtual IEnumerable<Tuple<float[], float[]>> ReadRecords(int lineIndex, int count)
+        protected virtual IEnumerable<Tuple<T[], T[]>> ReadRecords(int lineIndex, int count)
         {
             foreach (var column in Columns)
             {
@@ -314,8 +314,8 @@ namespace SiaNet.Data
 
             foreach (var recordInString in ReadLines(lineIndex, count))
             {
-                var features = new List<float>();
-                var labels = new List<float>();
+                var features = new List<T>();
+                var labels = new List<T>();
 
                 for (var i = 0; i < featureColumns.Length; i++)
                 {

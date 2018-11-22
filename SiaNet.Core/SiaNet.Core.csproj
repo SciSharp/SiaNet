@@ -23,6 +23,8 @@
 
   <ItemGroup>
     <Compile Remove="DataFrame.cs" />
+    <Compile Remove="Data\CsvDataFrameColumnSetting.cs" />
+    <Compile Remove="Data\CsvDataFrameList.cs" />
     <Compile Remove="ImageDataFrame.cs" />
     <Compile Remove="ImageDataGenerator.cs" />
     <Compile Remove="TextDataFrame.cs" />

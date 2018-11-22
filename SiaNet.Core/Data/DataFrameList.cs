@@ -7,10 +7,10 @@ namespace SiaNet.Data
     /// Data Frame List class which will hold the feature and label data used for training and validation
     /// </summary>
     /// <seealso cref="SiaNet.Model.Data.IDataFrameList" />
-    public class DataFrameList : IDataFrameList
+    public class DataFrameList<T> : IDataFrameList<T>
     {
-        private readonly DataFrame _features;
-        private readonly DataFrame _labels;
+        private readonly DataFrame<T> _features;
+        private readonly DataFrame<T> _labels;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataFrameList"/> class.
@@ -18,7 +18,7 @@ namespace SiaNet.Data
         /// <param name="featuresShape">The features shape.</param>
         /// <param name="labelsShape">The labels shape.</param>
         public DataFrameList(Shape featuresShape, Shape labelsShape) :
-            this(new DataFrame(featuresShape), new DataFrame(labelsShape))
+            this(new DataFrame<T>(featuresShape), new DataFrame<T>(labelsShape))
         {
         }
 
@@ -27,7 +27,7 @@ namespace SiaNet.Data
         /// </summary>
         /// <param name="features">The features.</param>
         /// <param name="labels">The labels.</param>
-        public DataFrameList(DataFrame features, DataFrame labels)
+        public DataFrameList(DataFrame<T> features, DataFrame<T> labels)
         {
             _features = features;
             _labels = labels;
@@ -40,9 +40,9 @@ namespace SiaNet.Data
         /// <param name="count">The count.</param>
         /// <returns></returns>
         /// <inheritdoc />
-        public IDataFrameList Extract(int start, int count)
+        public IDataFrameList<T> Extract(int start, int count)
         {
-            var newList = new DataFrameList(Features.DataShape, Labels.DataShape);
+            var newList = new DataFrameList<T>(Features.DataShape, Labels.DataShape);
 
             for (var i = 0; i < count; i++)
             {
@@ -61,7 +61,7 @@ namespace SiaNet.Data
         /// The features.
         /// </value>
         /// <inheritdoc />
-        public virtual IDataFrame Features
+        public virtual IDataFrame<T> Features
         {
             get => _features;
         }
@@ -75,9 +75,9 @@ namespace SiaNet.Data
         /// <param name="index">The index.</param>
         /// <returns></returns>
         /// <inheritdoc />
-        public virtual Tuple<float[], float[]> this[int index]
+        public virtual Tuple<T[], T[]> this[int index]
         {
-            get => new Tuple<float[], float[]>(Features[index], Labels[index]);
+            get => new Tuple<T[], T[]>(Features[index], Labels[index]);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace SiaNet.Data
         /// The labels.
         /// </value>
         /// <inheritdoc />
-        public virtual IDataFrame Labels
+        public virtual IDataFrame<T> Labels
         {
             get => _labels;
         }
@@ -129,7 +129,7 @@ namespace SiaNet.Data
         /// <param name="batchSize">Size of the batch.</param>
         /// <returns></returns>
         /// <inheritdoc />
-        public virtual IDataFrameList ToBatch(int batchId, int batchSize)
+        public virtual IDataFrameList<T> ToBatch(int batchId, int batchSize)
         {
             var batchStart = batchId * batchSize;
             batchSize = Math.Min(batchSize, Length - batchStart);
@@ -139,7 +139,7 @@ namespace SiaNet.Data
                 return null;
             }
 
-            var newList = new DataFrameList(Features.DataShape, Labels.DataShape);
+            var newList = new DataFrameList<T>(Features.DataShape, Labels.DataShape);
 
             for (var i = 0; i < batchSize; i++)
             {
@@ -155,7 +155,7 @@ namespace SiaNet.Data
         /// </summary>
         /// <param name="features">The features.</param>
         /// <param name="labels">The labels.</param>
-        public virtual void AddFrame(float[] features, float[] labels)
+        public virtual void AddFrame(T[] features, T[] labels)
         {
             _features.Add(features);
             _labels.Add(labels);
@@ -166,7 +166,7 @@ namespace SiaNet.Data
         /// </summary>
         /// <param name="features">The features.</param>
         /// <param name="label">The label.</param>
-        public virtual void AddFrame(float[] features, float label)
+        public virtual void AddFrame(T[] features, T label)
         {
             _features.Add(features);
             _labels.Add(new[] { label });

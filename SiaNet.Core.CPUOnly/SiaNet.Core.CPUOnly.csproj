@@ -13,8 +13,6 @@
     <Compile Include="..\SiaNet.Core\ConfigModule.cs" Link="ConfigModule.cs" />
     <Compile Include="..\SiaNet.Core\Data\Constant.cs" Link="Data\Constant.cs" />
     <Compile Include="..\SiaNet.Core\Data\CsvDataFrame.cs" Link="Data\CsvDataFrame.cs" />
-    <Compile Include="..\SiaNet.Core\Data\CsvDataFrameColumnSetting.cs" Link="Data\CsvDataFrameColumnSetting.cs" />
-    <Compile Include="..\SiaNet.Core\Data\CsvDataFrameList.cs" Link="Data\CsvDataFrameList.cs" />
     <Compile Include="..\SiaNet.Core\Data\DataFrame.cs" Link="Data\DataFrame.cs" />
     <Compile Include="..\SiaNet.Core\Data\DataFrameList.cs" Link="Data\DataFrameList.cs" />
     <Compile Include="..\SiaNet.Core\Data\FixedSizeList.cs" Link="Data\FixedSizeList.cs" />

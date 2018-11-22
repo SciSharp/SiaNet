@@ -245,8 +245,8 @@ namespace SiaNet.Trainer
         {
             var batch = shuffle ? ReplayMemory.ToShuffledBatch(batchSize) : ReplayMemory.ToRandomBatch(batchSize);
 
-            var states = new DataFrame(StateShape);
-            var statesTarget = new DataFrame(StateShape);
+            var states = new DataFrame<float>(StateShape);
+            var statesTarget = new DataFrame<float>(StateShape);
 
             foreach (var sample in batch)
             {
@@ -257,7 +257,7 @@ namespace SiaNet.Trainer
             var prediction = Model.Predict(states);
             var predictionTarget = TargetModel.Predict(statesTarget);
 
-            var data = new DataFrameList(StateShape, ActionShape);
+            var data = new DataFrameList<float>(StateShape, ActionShape);
 
             for (var i = 0; i < batch.Length; i++)
             {

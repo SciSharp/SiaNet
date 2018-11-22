@@ -3,14 +3,14 @@ using CNTK;
 
 namespace SiaNet.Data
 {
-    public interface IDataFrame
+    public interface IDataFrame<T>
     {
-        IEnumerable<float[]> Data { get; }
+        IEnumerable<T[]> Data { get; }
         int Length { get; }
         Shape DataShape { get; }
         void Reshape(Shape newShape);
         Value ToValue();
-        float[] this[int index]
+        T[] this[int index]
         {
             get;
             set;
