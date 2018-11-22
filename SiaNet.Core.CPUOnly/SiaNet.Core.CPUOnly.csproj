@@ -5,6 +5,10 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\SiaNet.Core\Application\Cifar10.cs" Link="Application\Cifar10.cs" />
     <Compile Include="..\SiaNet.Core\Application\FastRCNN.cs" Link="Application\FastRCNN.cs" />
