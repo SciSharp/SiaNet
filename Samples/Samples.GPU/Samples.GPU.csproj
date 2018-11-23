@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SiaNet.Core\SiaNet.Core.csproj" />
+    <ProjectReference Include="..\..\SiaNet.Common\SiaNet.Common.csproj" />
+    <ProjectReference Include="..\..\SiaNet\SiaNet.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="MNISTClassifier.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Include="..\Samples.GPU\HousingRegression.cs" Link="HousingRegression.cs" />
     <Compile Include="..\Samples.GPU\MNISTClassifier.cs" Link="MNISTClassifier.cs" />
     <Compile Include="..\Samples.GPU\XORExample.cs" Link="XORExample.cs" />
@@ -21,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SiaNet.Core.CPUOnly\SiaNet.Core.CPUOnly.csproj" />
+    <ProjectReference Include="..\..\SiaNet.Common\SiaNet.Common.csproj" />
+    <ProjectReference Include="..\..\SiaNet.CPUOnly\SiaNet.CPUOnly.csproj" />
   </ItemGroup>
 
 </Project>

@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SiaNet.Core.Common\SiaNet.Core.Common.csproj" />
+    <ProjectReference Include="..\SiaNet.Common\SiaNet.Common.csproj" />
   </ItemGroup>
 
 </Project>
