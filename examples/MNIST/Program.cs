@@ -22,15 +22,23 @@ namespace MNIST
             string valImagePath = "./mnist_data/t10k-images-idx3-ubyte";
             string valLabelPath = "./mnist_data/t10k-labels-idx1-ubyte";
 
-            var (train, val) = DataSetParser.MNIST(trainImagePath, trainLabelPath, valImagePath, valLabelPath);
+            var (train, val) = DataSetParser.MNIST(trainImagePath, trainLabelPath, valImagePath, valLabelPath, batchSize);
 
-            var model = new Sequential((uint)inputDim);
-            model.Add(new Dense(inputDim, ActivationType.ReLU, new GlorotUniform()));
-            model.Add(new Dense(128, ActivationType.ReLU, new GlorotUniform()));
-            //model.Add(new Dense(64, ActivationType.ReLU, new GlorotUniform()));
-            model.Add(new Dense(labelCount));
+            var model = new Sequential(1, 28, 28);
+            //model.Add(new Dense(inputDim, ActivationType.ReLU, new GlorotUniform()));
+            //model.Add(new Dense(128, ActivationType.ReLU, new GlorotUniform()));
+            //model.Add(new Dense(labelCount));
 
-            model.Compile(Optimizers.SGD(0.01f), LossType.CategorialCrossEntropy, MetricType.Accuracy);
+            model.Add(new Conv2D(32, Tuple.Create<uint, uint>(5, 5), activation: ActivationType.Tanh));
+            model.Add(new MaxPooling2D(Tuple.Create<uint, uint>(2, 2), Tuple.Create<uint, uint>(2, 2)));
+            model.Add(new Conv2D(64, Tuple.Create<uint, uint>(5, 5), activation: ActivationType.Tanh));
+            model.Add(new MaxPooling2D(Tuple.Create<uint, uint>(2, 2), Tuple.Create<uint, uint>(2, 2)));
+            model.Add(new Flatten());
+            model.Add(new Dropout(0.5f));
+            model.Add(new Dense(500, ActivationType.Tanh));
+            model.Add(new Dense(10));
+
+            model.Compile(Optimizers.SGD(0.1f), LossType.CategorialCrossEntropy, MetricType.Accuracy);
             model.Fit(train, 10, batchSize, val);
         }
     }
