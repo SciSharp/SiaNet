@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Version>0.3.1.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Community, Deepak Battini</Authors>
+    <PackageProjectUrl>https://github.com/deepakkumar1984/TensorSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deepakkumar1984/TensorSharp</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>tensor library, tensor, cuda tensor</PackageTags>
+    <Description>TensorSharp is an open source library providing efficient N-dimensional arrays for .NET. Currently, there are backends for running tensor computations on the CPU, and on CUDA GPU hardware. The library is designed to be efficient, easy to install/deploy, and simple to extend. The implementations of many of the core operators are based on the Torch7 project. This project is ported to .net standard</Description>
+    <PackageId>TensorSharp.Core</PackageId>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/TensorSharp/blob/master/LICENSE.md</PackageLicenseUrl>
+    <Company>TensorSharp</Company>
+    <Product>TensorSharp</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\CpuOps\Build\CpuOps.dll" Link="lib\CpuOps.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="lib\libgcc_s_seh-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\libgfortran-3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\libopenblas.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\libquadmath-0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

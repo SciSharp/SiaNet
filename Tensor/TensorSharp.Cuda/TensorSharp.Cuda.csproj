@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+    <Version>0.3.1.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>TensorSharp.Core.CUDA91</PackageId>
+    <Product>TensorSharp</Product>
+    <Company>TensorSharp</Company>
+    <Authors>Community, Deepak Battini</Authors>
+    <Description>TensorSharp is an open source library providing efficient N-dimensional arrays for .NET. Currently, there are backends for running tensor computations on the CPU, and on CUDA GPU hardware. The library is designed to be efficient, easy to install/deploy, and simple to extend. The implementations of many of the core operators are based on the Torch7 project. This project is ported to .net standard</Description>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/TensorSharp/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/deepakkumar1984/TensorSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deepakkumar1984/TensorSharp</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>tensor library, tensor, cuda tensor</PackageTags>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ManagedCuda\ManagedCuda.csproj" />
+    <ProjectReference Include="..\TensorSharp\TensorSharp.csproj" />
+  </ItemGroup>
+
+</Project>
