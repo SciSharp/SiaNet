@@ -32,11 +32,22 @@ namespace ManagedCuda.CudaDNN
 	/// <summary/>
 	public static class CudaDNNNativeMethods
 	{
-		internal const string CUDNN_API_DLL_NAME = "cudnn64_7.dll";
-		/// <summary>
-		/// Gives the version of the wrapped api
-		/// </summary>
-		public static Version Version
+#if CUDNN7 && WIN
+        internal const string CUDNN_API_DLL_NAME = @"cudnn64_7.dll";
+#elif CUDNN5 && WIN
+        internal const string CUDNN_API_DLL_NAME = @"cudnn64_5.dll";
+#elif CUDA91 && LINUX
+        internal const string CUDNN_API_DLL_NAME = @"libcudnn.so.7";
+#elif CUDA90 && LINUX
+        internal const string CUDNN_API_DLL_NAME = @"libcudnn.so.5";
+#else
+        internal const string CUDNN_API_DLL_NAME = @"cudnn";
+#endif
+
+        /// <summary>
+        /// Gives the version of the wrapped api
+        /// </summary>
+        public static Version Version
 		{
 			get { return new Version(7, 0, 5); }
 		}

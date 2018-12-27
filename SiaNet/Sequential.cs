@@ -65,11 +65,11 @@ namespace SiaNet
 
         private Variable Forward(Tensor input)
         {
-            Variable output = Variable.Create(input, "X");
+            Variable output = input.ToVariable("X");
             foreach (var layer in Layers)
             {
                 layer.Forward(output);
-                output = layer.Output;
+                output = layer.Output.ToVariable();
             }
 
             lastOutput = output;

@@ -49,48 +49,23 @@ namespace SiaNet.Layers
         public override void Forward(Variable x)
         {
             Input = x;
-            Variable weight = null;
+            Variable weight = BuildVar("w", new long[] { x.Data.Sizes[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Variable bias = null;
-            if (!Params.ContainsKey("w"))
-            {
-                weight = new Variable("w", x.Data.ElementType, x.Data.Sizes[1], Dim);
-                weight.Data = KernalInitializer.Operator(weight.Data);
-                weight.SetConstraint(KernalConstraint);
-                weight.SetRegularizer(KernalRegularizer);
-
-                Params.Add("w", weight);
-            }
-            else
-            {
-                weight = Params["w"];
-            }
 
             if (UseBias)
             {
-                if (!Params.ContainsKey("b"))
-                {
-                    bias = new Variable("b", x.Data.ElementType, 1, Dim);
-                    bias.Data = BiasInitializer.Operator(bias.Data);
-                    bias.SetConstraint(BiasConstraint);
-                    bias.SetRegularizer(BiasRegularizer);
+                bias = BuildVar("b", new long[] { 1, Dim }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
 
-                    Params.Add("b", bias);
-                }
-                else
-                {
-                    bias = Params["b"];
-                }
-
-                Output = Variable.Create(bias.Data.TVar().Expand(x.Data.Sizes[0], Dim)
+                Output = bias.Data.TVar().Expand(x.Data.Sizes[0], Dim)
                     .Addmm(1, 1, x.Data, weight.Data)
-                    .Evaluate());
+                    .Evaluate();
             }
             else
             {
-                Output = Variable.Create(x.Data.TVar().Dot(weight.Data.TVar()).Evaluate());
+                Output = x.Data.TVar().Dot(weight.Data.TVar()).Evaluate();
             }
 
-            Activation.Forward(Output);
+            Activation.Forward(Output.ToVariable());
         }
 
         public override void Backward(Tensor outputgrad)

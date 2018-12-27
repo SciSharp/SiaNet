@@ -35,9 +35,28 @@ namespace ManagedCuda.NVGraph
 	/// </summary>
 	public static class NVGraphNativeMathods
 	{
-		internal const string NVGRAPH_API_DLL_NAME = "nvgraph64_100.dll";
-
-		[DllImport(NVGRAPH_API_DLL_NAME, EntryPoint = "nvgraphStatusGetString")]
+#if CUDA100 && WIN
+        internal const string NVGRAPH_API_DLL_NAME = @"nvgraph64_100.dll";
+#elif CUDA92 && WIN
+        internal const string NVGRAPH_API_DLL_NAME = @"nvgraph64_92.dll";
+#elif CUDA91 && WIN
+        internal const string NVGRAPH_API_DLL_NAME = @"nvgraph64_91.dll";
+#elif CUDA90 && WIN
+        internal const string NVGRAPH_API_DLL_NAME = @"nvgraph64_90.dll";
+#elif CUDA80 && WIN
+        internal const string NVGRAPH_API_DLL_NAME = @"nvgraph64_80.dll";
+#elif CUDA100 && LINUX
+        internal const string NVGRAPH_API_DLL_NAME = @"libnvgraph.so.10.0";
+#elif CUDA92 && LINUX
+        internal const string NVGRAPH_API_DLL_NAME = @"libnvgraph.so.9.2";
+#elif CUDA91 && LINUX
+        internal const string NVGRAPH_API_DLL_NAME = @"libnvgraph.so.9.1";
+#elif CUDA90 && LINUX
+        internal const string NVGRAPH_API_DLL_NAME = @"libnvgraph.so.9.0";
+#elif CUDA90 && LINUX
+        internal const string NVGRAPH_API_DLL_NAME = @"libnvgraph.so.8.0";
+#endif
+        [DllImport(NVGRAPH_API_DLL_NAME, EntryPoint = "nvgraphStatusGetString")]
 		private static extern IntPtr nvgraphStatusGetStringInternal(nvgraphStatus status);
 
 		/// <summary/>

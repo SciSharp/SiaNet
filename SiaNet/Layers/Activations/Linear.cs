@@ -16,12 +16,12 @@ namespace SiaNet.Layers.Activations
         public override void Forward(Variable x)
         {
             Input = x;
-            Output = Variable.Create(x.Data);
+            Output = x.Data;
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = Output.Data;
+            Input.Grad = Input.Data;
         }
     }
 }

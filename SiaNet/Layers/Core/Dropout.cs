@@ -21,7 +21,6 @@ namespace SiaNet.Layers
         public override void Forward(Variable x)
         {
             Input = x;
-            Output = Variable.Create(x.Data);
 
             var p = 1 - Rate;
 
@@ -29,7 +28,7 @@ namespace SiaNet.Layers
                             .Div(p)
                             .Evaluate();
 
-            Output.Data = Output.Data.TVar().CMul(noise).Evaluate();
+            Output = Output.TVar().CMul(noise).Evaluate();
         }
 
         public override void Backward(Tensor outputgrad)

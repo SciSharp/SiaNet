@@ -54,5 +54,10 @@ namespace SiaNet
 
             return (t1.CMul(tensor1) + t2.CMul(tensor2)).Evaluate();
         }
+
+        public static Variable ToVariable(this Tensor t, string name = "")
+        {
+            return Variable.Create(t, name);
+        }
     }
 }

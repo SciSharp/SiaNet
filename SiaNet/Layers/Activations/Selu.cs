@@ -21,13 +21,13 @@ namespace SiaNet.Layers.Activations
 
             var elu = new Elu(alpha);
             elu.Forward(x);
-            Output = Variable.Create((elu.Output.Data.TVar() * scale).Evaluate());
+            Output = (elu.Output.TVar() * scale).Evaluate();
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            var keepElements = Output.Data.TVar() > 0;
-            var d = scale * alpha * (Output.Data.TVar().Exp());
+            var keepElements = Output.TVar() > 0;
+            var d = scale * alpha * (Output.TVar().Exp());
             Input.Grad = (outputgrad.TVar().CMul(keepElements) + (1 - keepElements).CMul(d)).Evaluate();
         }
     }

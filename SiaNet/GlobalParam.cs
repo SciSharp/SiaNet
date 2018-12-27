@@ -8,36 +8,17 @@ namespace SiaNet
 {
     public class Global
     {
-        public static Config Configuration { get; set; } = Config.GetConfig();
+        public static IAllocator Device = new TensorSharp.Cpu.CpuAllocator();
 
-        private static IAllocator device;
+        public static bool UseCudnn { get; set; }
 
-        public static IAllocator Device
-        {
-            get
-            {
-                if (device == null)
-                {
-                    if (Configuration.UseGpu)
-                    {
-                        UseGpu(0);
-                    }
-                    else
-                    {
-                        device = new TensorSharp.Cpu.CpuAllocator();
-                    }
-                }
-
-                return device;
-            }
-        }
-
-        public static void UseGpu(int gpuId = 0)
+        public static void UseGpu(int gpuId = 0, bool cudnn = false)
         {
             var cudaContext = new TSCudaContext();
             cudaContext.Precompile(Console.Write);
             cudaContext.CleanUnusedPTX();
-            device = new CudaAllocator(cudaContext, gpuId);
+            Device = new CudaAllocator(cudaContext, gpuId);
+            UseCudnn = cudnn;
         }
     }
 }

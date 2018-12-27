@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SiaNet.Constraints;
+using SiaNet.Initializers;
+using SiaNet.Regularizers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
@@ -11,7 +14,7 @@ namespace SiaNet.Layers
 
         public Variable Input { get; set; }
 
-        public Variable Output { get; set; }
+        public Tensor Output { get; set; }
 
         public string Name { get; set; }
 
@@ -43,6 +46,26 @@ namespace SiaNet.Layers
             {
                 Params[name] = value;
             }
+        }
+
+        public Variable BuildVar(string name, long[] shape, DType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
+        {
+            Variable v = null;
+            if (!Params.ContainsKey(name))
+            {
+                v = new Variable(name, elementType, shape);
+                v.Data = initializer.Operator(v.Data);
+                v.SetConstraint(constraint);
+                v.SetRegularizer(regularizer);
+                if(trainable)
+                    Params.Add(name, v);
+            }
+            else
+            {
+                v = Params[name];
+            }
+
+            return v;
         }
     }
 }

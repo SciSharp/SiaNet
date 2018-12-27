@@ -16,12 +16,12 @@ namespace SiaNet.Layers.Activations
         public override void Forward(Variable x)
         {
             Input = x;
-            Output = Variable.Create(x.Data.TVar().Tanh().Evaluate());
+            Output = x.Data.TVar().Tanh().Evaluate();
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad.TVar().CMul(1 - Output.Data.TVar().Pow(2)).Evaluate();
+            Input.Grad = outputgrad.TVar().CMul(1 - Output.TVar().Pow(2)).Evaluate();
         }
     }
 }

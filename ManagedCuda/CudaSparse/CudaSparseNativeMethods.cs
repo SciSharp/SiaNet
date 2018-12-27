@@ -35,11 +35,31 @@ namespace ManagedCuda.CudaSparse
 	/// </summary>
 	public static class CudaSparseNativeMethods
 	{
-		internal const string CUSPARSE_API_DLL_NAME = "cusparse64_100.dll";
+#if CUDA100 && WIN
+        internal const string CUSPARSE_API_DLL_NAME = @"cusparse64_100.dll";
+#elif CUDA92 && WIN
+        internal const string CUSPARSE_API_DLL_NAME = @"cusparse64_92.dll";
+#elif CUDA91 && WIN
+        internal const string CUSPARSE_API_DLL_NAME = @"cusparse64_91.dll";
+#elif CUDA90 && WIN
+        internal const string CUSPARSE_API_DLL_NAME = @"cusparse64_90.dll";
+#elif CUDA80 && WIN
+        internal const string CUSPARSE_API_DLL_NAME = @"cusparse64_80.dll";
+#elif CUDA100 && LINUX
+        internal const string CUSPARSE_API_DLL_NAME = @"libcusparse.so.10.0";
+#elif CUDA92 && LINUX
+        internal const string CUSPARSE_API_DLL_NAME = @"libcusparse.so.9.2";
+#elif CUDA91 && LINUX
+        internal const string CUSPARSE_API_DLL_NAME = @"libcusparse.so.9.1";
+#elif CUDA90 && LINUX
+        internal const string CUSPARSE_API_DLL_NAME = @"libcusparse.so.9.0";
+#elif CUDA90 && LINUX
+        internal const string CUSPARSE_API_DLL_NAME = @"libcusparse.so.8.0";
+#endif
 
-		#region CUSPARSE initialization and managment routines
-		/// <summary/>
-		[DllImport(CUSPARSE_API_DLL_NAME)]
+        #region CUSPARSE initialization and managment routines
+        /// <summary/>
+        [DllImport(CUSPARSE_API_DLL_NAME)]
 		public static extern cusparseStatus cusparseCreate(ref cusparseContext handle);
 		/// <summary/>
 		[DllImport(CUSPARSE_API_DLL_NAME)]

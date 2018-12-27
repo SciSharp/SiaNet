@@ -33,23 +33,43 @@ namespace ManagedCuda.CudaFFT
 	/// </summary>
 	public static class CudaFFTNativeMethods
 	{        
-		internal const string CUFFT_API_DLL_NAME = "cufft64_100.dll";
+		
+#if CUDA100 && WIN
+        internal const string CUFFT_API_DLL_NAME = @"cufft64_100.dll";
+#elif CUDA92 && WIN
+        internal const string CUFFT_API_DLL_NAME = @"cufft64_92.dll";
+#elif CUDA91 && WIN
+        internal const string CUFFT_API_DLL_NAME = @"cufft64_91.dll";
+#elif CUDA90 && WIN
+        internal const string CUFFT_API_DLL_NAME = @"cufft64_90.dll";
+#elif CUDA80 && WIN
+        internal const string CUFFT_API_DLL_NAME = @"cufft64_80.dll";
+#elif CUDA100 && LINUX
+        internal const string CUFFT_API_DLL_NAME = @"libcufft.so.10.0";
+#elif CUDA92 && LINUX
+        internal const string CUFFT_API_DLL_NAME = @"libcufft.so.9.2";
+#elif CUDA91 && LINUX
+        internal const string CUFFT_API_DLL_NAME = @"libcufft.so.9.1";
+#elif CUDA90 && LINUX
+        internal const string CUFFT_API_DLL_NAME = @"libcufft.so.9.0";
+#elif CUDA90 && LINUX
+        internal const string CUFFT_API_DLL_NAME = @"libcufft.so.8.0";
+#endif
 
-
-		/// <summary>
-		/// Creates a 1D FFT plan configuration for a specified signal size and data
-		/// type. The <c>batch</c> input parameter tells CUFFT how many 1D
-		/// transforms to configure.
-		/// </summary>
-		/// <param name="plan">Pointer to a <see cref="cufftHandle"/> object</param>
-		/// <param name="nx">The transform size (e.g., 256 for a 256-point FFT)</param>
-		/// <param name="type">The transform data type (e.g., C2C for complex to complex)</param>
-		/// <param name="batch">Number of transforms of size nx</param>
-		/// <returns>cufftResult Error Codes: <see cref="cufftResult.Success"/>, <see cref="cufftResult.AllocFailed"/>, 
-		/// <see cref="cufftResult.InvalidType"/>, <see cref="cufftResult.InvalidValue"/>, <see cref="cufftResult.InternalError"/>, 
-		/// <see cref="cufftResult.SetupFailed"/>, <see cref="cufftResult.InvalidSize"/>, 
-		/// </returns>
-		[DllImport(CUFFT_API_DLL_NAME)]
+        /// <summary>
+        /// Creates a 1D FFT plan configuration for a specified signal size and data
+        /// type. The <c>batch</c> input parameter tells CUFFT how many 1D
+        /// transforms to configure.
+        /// </summary>
+        /// <param name="plan">Pointer to a <see cref="cufftHandle"/> object</param>
+        /// <param name="nx">The transform size (e.g., 256 for a 256-point FFT)</param>
+        /// <param name="type">The transform data type (e.g., C2C for complex to complex)</param>
+        /// <param name="batch">Number of transforms of size nx</param>
+        /// <returns>cufftResult Error Codes: <see cref="cufftResult.Success"/>, <see cref="cufftResult.AllocFailed"/>, 
+        /// <see cref="cufftResult.InvalidType"/>, <see cref="cufftResult.InvalidValue"/>, <see cref="cufftResult.InternalError"/>, 
+        /// <see cref="cufftResult.SetupFailed"/>, <see cref="cufftResult.InvalidSize"/>, 
+        /// </returns>
+        [DllImport(CUFFT_API_DLL_NAME)]
 		public static extern cufftResult cufftPlan1d([In, Out] ref cufftHandle plan, [In] int nx, [In] cufftType type, [In] int batch);
 
 		/// <summary>

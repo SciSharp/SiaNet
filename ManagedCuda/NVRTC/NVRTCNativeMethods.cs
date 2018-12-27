@@ -32,9 +32,29 @@ namespace ManagedCuda.NVRTC
 	/// <summary/>
 	public static class NVRTCNativeMethods
 	{
-		internal const string NVRTC_API_DLL_NAME = "nvrtc64_100_0.dll";
-		
-		[DllImport(NVRTC_API_DLL_NAME, EntryPoint="nvrtcGetErrorString")]
+#if CUDA100 && WIN
+        internal const string NVRTC_API_DLL_NAME = @"nvrtc64_100_0.dll";
+#elif CUDA92 && WIN
+        internal const string NVRTC_API_DLL_NAME = @"nvrtc64_92.dll";
+#elif CUDA91 && WIN
+        internal const string NVRTC_API_DLL_NAME = @"nvrtc64_91.dll";
+#elif CUDA90 && WIN
+        internal const string NVRTC_API_DLL_NAME = @"nvrtc64_90.dll";
+#elif CUDA80 && WIN
+        internal const string NVRTC_API_DLL_NAME = @"nvrtc64_80.dll";
+#elif CUDA100 && LINUX
+        internal const string NVRTC_API_DLL_NAME = @"libnvrtc.so.10.0";
+#elif CUDA92 && LINUX
+        internal const string NVRTC_API_DLL_NAME = @"libnvrtc.so.9.2";
+#elif CUDA91 && LINUX
+        internal const string NVRTC_API_DLL_NAME = @"libnvrtc.so.9.1";
+#elif CUDA90 && LINUX
+        internal const string NVRTC_API_DLL_NAME = @"libnvrtc.so.9.0";
+#elif CUDA90 && LINUX
+        internal const string NVRTC_API_DLL_NAME = @"libnvrtc.so.8.0";
+#endif
+
+        [DllImport(NVRTC_API_DLL_NAME, EntryPoint="nvrtcGetErrorString")]
         internal static extern IntPtr nvrtcGetErrorStringInternal(nvrtcResult result);
 
 		/// <summary>

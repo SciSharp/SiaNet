@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define CUDA10
+
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using TensorSharp;
@@ -9,7 +11,6 @@ using SiaNet.Initializers;
 using SiaNet.Layers;
 using SiaNet.Layers.Activations;
 using TensorSharp.Expression;
-
 namespace Examples
 {
     class BasicTest
@@ -21,12 +22,13 @@ namespace Examples
             Global.UseGpu();
             //SetConstValue();
             //Elu();
-            TestSoftmax();
+            //TestSoftmax();
             //MNIST.Run();
             //TestActivations.Run();
 
-            MaxImpl();
-            ToArrayTest();
+            //MaxImpl();
+            //ToArrayTest();
+            FlattenTest();
         }
 
         private static void TestDense()
@@ -39,7 +41,7 @@ namespace Examples
             Dense d = new Dense(4, ActivationType.ReLU, new GlorotUniform(), null, null, true, new Zeros());
             d.Forward(Variable.Create(tensor));
             
-            Console.WriteLine(d.Output.Data.Format());
+            Console.WriteLine(d.Output.Format());
 
         }
         private static void SetConstValue()
@@ -142,7 +144,7 @@ namespace Examples
             tensor.Print();
             Softmax s = new Softmax();
             s.Forward(Variable.Create(tensor));
-            s.Output.Data.Print();
+            s.Output.Print();
             
         }
 
@@ -165,6 +167,17 @@ namespace Examples
             Tensor tensor = TVar.RandomNormal(new SeedSource(), 2, 1, Global.Device, DType.Float32, 100, 300).Evaluate();
             
             var arr = tensor.ToArray();
+        }
+
+        private static void FlattenTest()
+        {
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 1, 2, 3, 1 }, Global.Device).Evaluate();
+
+            tensor1 = tensor1.View(4, 2);
+
+            var c = tensor1.ElementCount();
+
+            tensor1.View(c, -1).Print();
         }
     }
 }

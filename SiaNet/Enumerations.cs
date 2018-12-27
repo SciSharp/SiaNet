@@ -57,4 +57,10 @@ namespace SiaNet
         MAPE,
         MSLE
     }
+
+    public enum PoolingPoolType
+    {
+        Max,
+        Avg
+    }
 }

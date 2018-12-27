@@ -17,12 +17,12 @@ namespace SiaNet.Layers.Activations
         {
             Input = x;
             var keepElements = x.Data.TVar() > 0;
-            Output = Variable.Create((x.Data.TVar().CMul(keepElements) + (1 - keepElements) * 0).Evaluate());
+            Output = (x.Data.TVar().CMul(keepElements) + (1 - keepElements) * 0).Evaluate();
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad.TVar().CMul(Output.Data.TVar() > 0).Evaluate();
+            Input.Grad = outputgrad.TVar().CMul(Output.TVar() > 0).Evaluate();
         }
     }
 }

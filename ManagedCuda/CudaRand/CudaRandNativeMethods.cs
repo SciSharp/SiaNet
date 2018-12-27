@@ -34,14 +34,34 @@ namespace ManagedCuda.CudaRand
 	/// </summary>
 	public static class CudaRandNativeMethods
 	{
-		internal const string CURAND_API_DLL_NAME = "curand64_100.dll";
+#if CUDA100 && WIN
+        internal const string CURAND_API_DLL_NAME = @"curand64_100.dll";
+#elif CUDA92 && WIN
+        internal const string CURAND_API_DLL_NAME = @"curand64_92.dll";
+#elif CUDA91 && WIN
+        internal const string CURAND_API_DLL_NAME = @"curand64_91.dll";
+#elif CUDA90 && WIN
+        internal const string CURAND_API_DLL_NAME = @"curand64_90.dll";
+#elif CUDA80 && WIN
+        internal const string CURAND_API_DLL_NAME = @"curand64_80.dll";
+#elif CUDA100 && LINUX
+        internal const string CURAND_API_DLL_NAME = @"libcurand.so.10.0";
+#elif CUDA92 && LINUX
+        internal const string CURAND_API_DLL_NAME = @"libcurand.so.9.2";
+#elif CUDA91 && LINUX
+        internal const string CURAND_API_DLL_NAME = @"libcurand.so.9.1";
+#elif CUDA90 && LINUX
+        internal const string CURAND_API_DLL_NAME = @"libcurand.so.9.0";
+#elif CUDA90 && LINUX
+        internal const string CURAND_API_DLL_NAME = @"libcurand.so.8.0";
+#endif
 
 
-		/// <summary>
-		/// Creates a new random number generator of type rng_type and returns it in ref generator.
-		/// </summary>
-		/// <returns>Status</returns>
-		[DllImport(CURAND_API_DLL_NAME)]
+        /// <summary>
+        /// Creates a new random number generator of type rng_type and returns it in ref generator.
+        /// </summary>
+        /// <returns>Status</returns>
+        [DllImport(CURAND_API_DLL_NAME)]
 		public static extern CurandStatus curandCreateGenerator(ref CurandGenerator generator, GeneratorType rng_type);
 
 
