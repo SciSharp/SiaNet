@@ -11,6 +11,8 @@ using SiaNet.Initializers;
 using SiaNet.Layers;
 using SiaNet.Layers.Activations;
 using TensorSharp.Expression;
+using System.Linq;
+
 namespace Examples
 {
     class BasicTest
@@ -28,7 +30,8 @@ namespace Examples
 
             //MaxImpl();
             //ToArrayTest();
-            FlattenTest();
+            //FlattenTest();
+            Im2ColTest();
         }
 
         private static void TestDense()
@@ -178,6 +181,29 @@ namespace Examples
             var c = tensor1.ElementCount();
 
             tensor1.View(c, -1).Print();
+        }
+
+        private static void PadTest()
+        {
+            Tensor tensor1 = TVar.RandomUniform(new SeedSource(), 0, 10, Global.Device, DType.Float32, 2, 2, 2, 4).Evaluate();
+            tensor1.Print();
+            
+            tensor1 = tensor1.PadAll(2, 0);
+            tensor1.Print();
+        }
+
+        private static void Im2ColTest()
+        {
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5,6,7,8,9 }, Global.Device).Evaluate();
+            tensor1 = tensor1.View(1, 1, 3, 3);
+            tensor1.Print();
+
+            Ops.Sin(tensor1).Print();
+
+            var t = tensor1.Unfold(1, 1, 1);
+            t.Print();
+
+            var tlist = tensor1.NDto2DList();
         }
     }
 }

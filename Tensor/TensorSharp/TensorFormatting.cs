@@ -397,7 +397,7 @@ namespace TensorSharp
                             finished = true;
                             break;
                         }
-                        counter[i] = 1;
+                        counter[i] = 0;
                     }
                     else
                     {

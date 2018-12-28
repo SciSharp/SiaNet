@@ -246,7 +246,7 @@ namespace TensorSharp
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Sin(Tensor result, Tensor src) { return (Tensor)OpRegistry.Invoke("sin", result, src); }
+        public static Tensor Sin(Tensor src) { return (Tensor)OpRegistry.Invoke("sin", null, src); }
         /// <summary>
         /// Coses the specified result.
         /// </summary>

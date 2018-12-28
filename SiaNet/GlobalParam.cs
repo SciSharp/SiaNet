@@ -12,6 +12,8 @@ namespace SiaNet
 
         public static bool UseCudnn { get; set; }
 
+        public static bool UseCuda { get; set; }
+
         public static void UseGpu(int gpuId = 0, bool cudnn = false)
         {
             var cudaContext = new TSCudaContext();
@@ -19,6 +21,7 @@ namespace SiaNet
             cudaContext.CleanUnusedPTX();
             Device = new CudaAllocator(cudaContext, gpuId);
             UseCudnn = cudnn;
+            UseCuda = true;
         }
     }
 }

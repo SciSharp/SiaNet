@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
+using TensorSharp.Cpu;
 
 namespace SiaNet.Layers
 {
@@ -58,6 +59,7 @@ namespace SiaNet.Layers
         }
         public override void Forward(Variable x)
         {
+            
             throw new NotImplementedException();
         }
 
