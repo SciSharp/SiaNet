@@ -15,14 +15,16 @@ namespace SiaNet.Losses
 
         public override TVar Call(TVar preds, TVar labels)
         {
-            return (preds - labels).Pow(2).MeanAll();
+            return MeanAll(Square(preds.Evaluate() - labels.Evaluate()));
         }
 
         public override TVar CalcGrad(TVar preds, TVar labels)
         {
-            var norm = 2.0f / preds.Evaluate().ElementCount();
+            var norm = 2 / preds.Evaluate().ElementCount();
+            return (preds - labels) * norm;
+            //var norm = 2.0f / preds.Evaluate().ElementCount();
 
-            return ((preds - labels) * norm);
+            //return ((preds - labels) * norm);
         }
     }
 }

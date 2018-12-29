@@ -858,5 +858,17 @@ namespace TensorSharp
 
             return result;
         }
+
+        public static Tensor operator +(Tensor lhs, Tensor rhs) { return TOps.Add(lhs, rhs); }
+
+        public static Tensor operator +(Tensor lhs, float rhs) { return TOps.Add(lhs, rhs); }
+
+        public static Tensor operator +(float lhs, Tensor rhs) { return TOps.Add(rhs, lhs); }
+
+        public static Tensor operator -(Tensor lhs, Tensor rhs) { return TOps.Sub(lhs, rhs); }
+
+        public static Tensor operator -(Tensor lhs, float rhs) { return TOps.Sub(lhs, rhs); }
+
+        public static Tensor operator -(float lhs, Tensor rhs) { return TOps.Sub(lhs, rhs); }
     }
 }

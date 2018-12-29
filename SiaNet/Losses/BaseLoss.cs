@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TensorSharp;
 using TensorSharp.Expression;
 
 namespace SiaNet.Losses
 {
-    public abstract class BaseLoss
+    public abstract class BaseLoss : TOps
     {
         public string Name { get; set; }
 
