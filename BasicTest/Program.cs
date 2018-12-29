@@ -21,7 +21,7 @@ namespace Examples
 
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Global.UseGpu();
             //SetConstValue();
             //Elu();
             //TestSoftmax();

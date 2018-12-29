@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp.Expression;
+using TensorSharp;
 
 namespace SiaNet.Losses
 {
@@ -15,9 +15,9 @@ namespace SiaNet.Losses
             FromLogit = fromLogit;
         }
 
-        public override TVar Call(TVar preds, TVar labels)
+        public override Tensor Call(Tensor preds, Tensor labels)
         {
-            TVar output = null;
+            Tensor output = null;
             if(!FromLogit)
             {
                 output = labels.Clamp(1e-7f, 1f - 1e-7f);

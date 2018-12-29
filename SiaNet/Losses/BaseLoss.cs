@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Losses
 {
@@ -15,9 +14,9 @@ namespace SiaNet.Losses
             Name = name;
         }
 
-        public abstract TVar Call(TVar preds, TVar labels);
+        public abstract Tensor Call(Tensor preds, Tensor labels);
 
-        public abstract TVar CalcGrad(TVar preds, TVar labels);
+        public abstract Tensor CalcGrad(Tensor preds, Tensor labels);
 
         public static BaseLoss Get(LossType lossType)
         {
