@@ -862,6 +862,25 @@ namespace TensorSharp
             return x / Sqrt(y);
         }
 
+        public static Tensor Tile(Tensor x, long repetitions)
+        {
+            long[] shape = new long[x.DimensionCount];
+            for (int i = 0; i < shape.Length; i++)
+            {
+                shape[i] = 1;
+            }
+
+            shape[shape.Length - 1] = repetitions;
+
+            return x.RepeatTensor(shape);
+        }
+
+        public static Tensor Repeat(Tensor x, int reps)
+        {
+            x = x.View(x.ElementCount(), 1).Tile(reps);
+            return x.View(1, x.ElementCount());
+        }
+
         /// <summary>
         /// Gets the seed.
         /// </summary>

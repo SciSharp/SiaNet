@@ -633,26 +633,13 @@ namespace TensorSharp
             paddedSrc = paddedSrc.PadToDimCount(urTensor.DimensionCount);
             var expandedSrc = paddedSrc.Expand(urTensor.Sizes);
             Ops.Copy(urTensor, expandedSrc);
-            /*
-            var sizesWritten = (long[])this.sizes.Clone();
-            using (var subResult = result.GetRegion(Enumerable.Repeat((long)0, DimensionCount).ToArray(), sizesWritten))
-            {
-                Ops.Copy(subResult, this);
-            }
-
-            for (int i = 0; i < repetitions.Length; ++i)
-            {
-                if (repetitions[i] == 1) continue;
-
-                sizesWritten[i] *= repetitions[i];
-                using (var subResultSrc = result.GetRegion(Enumerable.Repeat((long)0, DimensionCount).ToArray(), this.sizes))
-                using (var subResultTgt = result.GetRegion(Enumerable.Repeat((long)0, DimensionCount).ToArray(), this.sizes))
-                {
-                    Ops.Copy(subResultTgt, subResultSrc);
-                }
-            }*/
 
             return result;
+        }
+
+        public Tensor Tile(long repetitions)
+        {
+            return TOps.Tile(this, repetitions);
         }
 
         /*
@@ -870,6 +857,22 @@ namespace TensorSharp
             TOps.Fill(tensor, value);
             return tensor;
         }
+
+        public static Tensor Arange(IAllocator allocator, float start, float stop, int step = 1)
+        {
+            Tensor result = null;
+            List<float> data = new List<float>();
+            while (start <= stop)
+            {
+                data.Add(start);
+                start += step;
+            }
+
+            result = new Tensor(allocator, DType.Float32, 1, data.Count);
+            result.CopyFrom(data.ToArray());
+            return result;
+        }
+
 
         public static Tensor operator +(Tensor lhs, Tensor rhs) { return TOps.Add(lhs, rhs); }
 

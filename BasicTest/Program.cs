@@ -194,16 +194,10 @@ namespace Examples
 
         private static void Im2ColTest()
         {
-            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5,6,7,8,9 }, Global.Device).Evaluate();
-            tensor1 = tensor1.View(1, 1, 3, 3);
-            tensor1.Print();
-
-            Ops.Sin(tensor1).Print();
-
-            var t = tensor1.Unfold(1, 1, 1);
-            t.Print();
-
-            var tlist = tensor1.NDto2DList();
+            var t = Tensor.Arange(Global.Device, 1, 10, 3);
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, Global.Device).Evaluate();
+            tensor1 = tensor1.View(3, 1, 3);
+            TOps.Repeat(tensor1, 3).Print();
         }
     }
 }
