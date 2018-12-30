@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp.Expression;
+using TensorSharp;
 
 namespace SiaNet.Losses
 {
@@ -12,15 +12,15 @@ namespace SiaNet.Losses
         {
         }
 
-        public override TVar Call(TVar preds, TVar labels)
+        public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var y_true = labels.Clamp(float.Epsilon, 1);
-            var y_pred = preds.Clamp(float.Epsilon, 1);
+            var y_true = Clip(labels, float.Epsilon, 1);
+            var y_pred = Clip(preds, float.Epsilon, 1);
 
-            return y_true.CMul(y_true.CDiv(y_pred).Log()).SumAll();
+            return Sum(y_true * Log(y_true / y_pred));
         }
 
-        public override TVar CalcGrad(TVar preds, TVar labels)
+        public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
             throw new NotImplementedException();
         }

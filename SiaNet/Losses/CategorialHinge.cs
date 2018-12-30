@@ -14,15 +14,15 @@ namespace SiaNet.Losses
 
         }
 
-        public override TVar Call(TVar preds, TVar labels)
+        public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var pos = labels.CMul(preds).SumAll();
-            var neg = (1 - labels).CMul(labels).MaxAll();
+            var pos = Sum(labels * preds);
+            var neg = Max((1 - labels) * labels);
 
-            return TVar.Fill(Math.Max(0f, (neg.ToScalar().Evaluate() - pos.ToScalar().Evaluate() + 1)), Global.Device, DType.Float32, 1);
+            return Maximum(0f, neg - pos + 1);
         }
 
-        public override TVar CalcGrad(TVar preds, TVar labels)
+        public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
             throw new NotImplementedException();
         }

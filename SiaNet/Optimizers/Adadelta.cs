@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using SiaNet.Layers;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Optimizers
 {
@@ -39,17 +38,17 @@ namespace SiaNet.Optimizers
                 var param = item.Value;
                 if (!accumulators.ContainsKey(param.Name))
                 {
-                    accumulators[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
-                    delta_accumulators[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
+                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    delta_accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
                 }
 
-                accumulators[param.Name] = ((Rho * accumulators[param.Name].TVar()) + ((1 - Rho) * param.Grad.TVar().Pow(2))).Evaluate();
-                var update = param.Grad.TVar().CDiv((delta_accumulators[param.Name].TVar() + float.Epsilon).Sqrt().CDiv(accumulators[param.Name].TVar() + float.Epsilon));
-                param.Data = (param.Data.TVar() - (LearningRate * update)).Evaluate();
+                accumulators[param.Name] = (Rho * accumulators[param.Name]) + ((1 - Rho) * Square(param.Grad));
+                var update = param.Grad / (Sqrt(delta_accumulators[param.Name] + float.Epsilon) / (accumulators[param.Name] + float.Epsilon));
+                param.Data = param.Data - (LearningRate * update);
 
                 param.ApplyConstraint();
 
-                delta_accumulators[param.Name] = (Rho * delta_accumulators[param.Name].TVar() + (1 - Rho) * update.Pow(2)).Evaluate();
+                delta_accumulators[param.Name] = Rho * delta_accumulators[param.Name] + (1 - Rho) * Square(update);
             }
         }
     }

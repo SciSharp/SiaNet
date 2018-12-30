@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Losses
 {
@@ -14,17 +13,17 @@ namespace SiaNet.Losses
 
         }
 
-        public override TVar Call(TVar preds, TVar labels)
+        public override Tensor Call(Tensor preds, Tensor labels)
         {
-            return (preds - labels).MeanAll();
+            return Mean(_logcosh(preds - labels));
         }
 
-        private TVar _logcosh(TVar x)
+        private Tensor _logcosh(Tensor x)
         {
-            return (x + (-2 * x).Softplus() - TVar.Fill(2, Global.Device, DType.Float32, 1).Log());
+            return x + Softplus(-2 * x) - (float)Math.Log(2);
         }
 
-        public override TVar CalcGrad(TVar preds, TVar labels)
+        public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
             throw new NotImplementedException();
         }

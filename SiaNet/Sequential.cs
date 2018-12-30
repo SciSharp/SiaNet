@@ -150,8 +150,8 @@ namespace SiaNet
                     var (x, y) = train.GetBatch();
 
                     using (Variable pred = Forward(x))
-                    using (Tensor lossVal = LossFn.Call(pred.Data, y).Evaluate())
-                    using (Tensor grad = LossFn.CalcGrad(pred.Data, y).Evaluate())
+                    using (Tensor lossVal = LossFn.Call(pred.Data, y))
+                    using (Tensor grad = LossFn.CalcGrad(pred.Data, y))
                     using (Tensor reg_loss = ApplyRegularizer(lossVal))
                     {
                         //var metricVal = MetricFn.Call(pred.Data, y);
@@ -182,8 +182,8 @@ namespace SiaNet
 
                         var lossVal = LossFn.Call(pred.Data, y);
                         var metricVal = MetricFn.Call(pred.Data, y);
-                        val_losses.Add(lossVal.MeanAll().ToScalar().Evaluate());
-                        val_metrics.Add(metricVal.MeanAll().ToScalar().Evaluate());
+                        val_losses.Add(TOps.MeanF(lossVal));
+                        val_metrics.Add(TOps.MeanF(metricVal));
                     }
                 }
 

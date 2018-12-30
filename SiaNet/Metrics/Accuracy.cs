@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp.Expression;
+using TensorSharp;
 
 namespace SiaNet.Metrics
 {
@@ -13,10 +13,10 @@ namespace SiaNet.Metrics
 
         }
 
-        public override TVar Call(TVar preds, TVar labels)
+        public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var predData = preds.Argmax(1);
-            var labelData = labels.Argmax(1);
+            var predData = Argmax(preds, 1);
+            var labelData = Argmax(labels, 1);
 
             
             return predData;

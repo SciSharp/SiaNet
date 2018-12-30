@@ -45,16 +45,6 @@ namespace SiaNet
             return x.CDiv(y.Sqrt());
         }
 
-        
-
-        public static Tensor Maximum(TVar tensor1, TVar tensor2)
-        {
-            var t1 = (tensor1 >= tensor2);
-            var t2 = (tensor2 > tensor1);
-
-            return (t1.CMul(tensor1) + t2.CMul(tensor2)).Evaluate();
-        }
-
         public static Variable ToVariable(this Tensor t, string name = "")
         {
             return Variable.Create(t, name);

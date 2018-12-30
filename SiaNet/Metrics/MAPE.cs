@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SiaNet.Losses;
-using TensorSharp.Expression;
+using TensorSharp;
 
 namespace SiaNet.Metrics
 {
@@ -14,7 +14,7 @@ namespace SiaNet.Metrics
 
         }
 
-        public override TVar Call(TVar preds, TVar labels)
+        public override Tensor Call(Tensor preds, Tensor labels)
         {
             return new MeanAbsolutePercentageError().Call(preds, labels);
         }

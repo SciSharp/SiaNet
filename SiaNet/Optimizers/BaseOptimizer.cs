@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using SiaNet.Layers;
+using TensorSharp;
 
 namespace SiaNet.Optimizers
 {
-    public abstract class BaseOptimizer
+    public abstract class BaseOptimizer : TOps
     {
         public float LearningRate { get; set; }
 

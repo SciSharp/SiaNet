@@ -130,7 +130,7 @@ namespace TensorSharp
         /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="value">The value.</param>
-        public static void Fill( float value) { OpRegistry.Invoke("fill", null, value); }
+        public static void Fill(Tensor src, float value) { OpRegistry.Invoke("fill", src, value); }
 
         /// <summary>
         /// Dots the specified result.
@@ -368,7 +368,7 @@ namespace TensorSharp
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Clamp( Tensor src, float min, float max) { return (Tensor)OpRegistry.Invoke("clamp", null, src, min, max); }
+        public static Tensor Clip( Tensor src, float min, float max) { return (Tensor)OpRegistry.Invoke("clamp", null, src, min, max); }
 
 
         /// <summary>
@@ -659,28 +659,28 @@ namespace TensorSharp
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor SumAll( Tensor src) { return (Tensor)OpRegistry.Invoke("sumall", null, src); }
+        public static Tensor Sum( Tensor src) { return (Tensor)OpRegistry.Invoke("sumall", null, src); }
         /// <summary>
         /// Products all.
         /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor ProdAll( Tensor src) { return (Tensor)OpRegistry.Invoke("prodall", null, src); }
+        public static Tensor Prod( Tensor src) { return (Tensor)OpRegistry.Invoke("prodall", null, src); }
         /// <summary>
         /// Minimums all.
         /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor MinAll( Tensor src) { return (Tensor)OpRegistry.Invoke("minall", null, src); }
+        public static Tensor Min( Tensor src) { return (Tensor)OpRegistry.Invoke("minall", null, src); }
         /// <summary>
         /// Maximums all.
         /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor MaxAll( Tensor src) { return (Tensor)OpRegistry.Invoke("maxall", null, src); }
+        public static Tensor Max( Tensor src) { return (Tensor)OpRegistry.Invoke("maxall", null, src); }
 
         /// <summary>
         /// Means all.
@@ -688,7 +688,7 @@ namespace TensorSharp
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor MeanAll( Tensor src) { return (Tensor)OpRegistry.Invoke("meanall", null, src); }
+        public static Tensor Mean( Tensor src) { return (Tensor)OpRegistry.Invoke("meanall", null, src); }
         /// <summary>
         /// Norms all.
         /// </summary>
@@ -696,21 +696,21 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="value">The value.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor NormAll( Tensor src, float value) { return (Tensor)OpRegistry.Invoke("normall", null, src, value); }
+        public static Tensor Norm( Tensor src, float value) { return (Tensor)OpRegistry.Invoke("normall", null, src, value); }
         /// <summary>
         /// Standards all.
         /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor StdAll( Tensor src) { return (Tensor)OpRegistry.Invoke("stdall", null, src); }
+        public static Tensor Std( Tensor src) { return (Tensor)OpRegistry.Invoke("stdall", null, src); }
         /// <summary>
         /// Variables all.
         /// </summary>
         /// <param name="result">The result.</param>
         /// <param name="src">The source.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor VarAll( Tensor src) { return (Tensor)OpRegistry.Invoke("varall", null, src); }
+        public static Tensor Var( Tensor src) { return (Tensor)OpRegistry.Invoke("varall", null, src); }
 
 
         /// <summary>
@@ -718,51 +718,51 @@ namespace TensorSharp
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float SumAllF(Tensor src) { using (var resultTensor = SumAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float SumF(Tensor src) { using (var resultTensor = Sum(src)) { return resultTensor.GetElementAsFloat(0); } }
         /// <summary>
         /// Products all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float ProdAllF(Tensor src) { using (var resultTensor = ProdAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float ProdF(Tensor src) { using (var resultTensor = Prod(src)) { return resultTensor.GetElementAsFloat(0); } }
         /// <summary>
         /// Minimums all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float MinAllF(Tensor src) { using (var resultTensor = MinAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float MinF(Tensor src) { using (var resultTensor = Min(src)) { return resultTensor.GetElementAsFloat(0); } }
         /// <summary>
         /// Maximums all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float MaxAllF(Tensor src) { using (var resultTensor = MaxAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float MaxF(Tensor src) { using (var resultTensor = Max(src)) { return resultTensor.GetElementAsFloat(0); } }
 
         /// <summary>
         /// Means all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float MeanAllF(Tensor src) { using (var resultTensor = MeanAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float MeanF(Tensor src) { using (var resultTensor = Mean(src)) { return resultTensor.GetElementAsFloat(0); } }
         /// <summary>
         /// Variables all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float VarAllF(Tensor src) { using (var resultTensor = VarAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float VarF(Tensor src) { using (var resultTensor = Var(src)) { return resultTensor.GetElementAsFloat(0); } }
         /// <summary>
         /// Standards all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>System.Single.</returns>
-        public static float StdAllF(Tensor src) { using (var resultTensor = StdAll(src)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float StdF(Tensor src) { using (var resultTensor = Std(src)) { return resultTensor.GetElementAsFloat(0); } }
         /// <summary>
         /// Norms all.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="value">The value.</param>
         /// <returns>System.Single.</returns>
-        public static float NormAllF(Tensor src, float value) { using (var resultTensor = NormAll(src, value)) { return resultTensor.GetElementAsFloat(0); } }
+        public static float NormF(Tensor src, float value) { using (var resultTensor = Norm(src, value)) { return resultTensor.GetElementAsFloat(0); } }
 
 
         /// <summary>
@@ -802,6 +802,65 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public static Tensor ScatterFill( float value, int dim, Tensor indices) { return (Tensor)OpRegistry.Invoke("scatter_fill", null, value, dim, indices); }
 
+
+        public static Tensor Maximum(Tensor a, Tensor b)
+        {
+            var t1 = (a >= b);
+            var t2 = (a > b);
+
+            return (t1 * a + t2 * b);
+        }
+
+        public static Tensor Maximum(Tensor a, float b)
+        {
+            var b_t = new Tensor(a.Allocator, a.ElementType, a.Sizes);
+            TOps.Fill(b_t, b);
+            return Maximum(a, b_t);
+        }
+
+        public static Tensor Maximum(float a, Tensor b)
+        {
+            var a_t = new Tensor(b.Allocator, b.ElementType, b.Sizes);
+            TOps.Fill(a_t, a);
+            return Maximum(a_t, b);
+        }
+
+        public static Tensor Softplus(Tensor x)
+        {
+            return Log((Exp(x) + 1));
+        }
+
+        public static Tensor Softmax(Tensor x)
+        {
+            long[] shape = x.Sizes;
+            List<float> data = new List<float>();
+            for (long i = 0; i < shape[0]; i++)
+            {
+                var s_x = x.Select(0, i);
+                var exp = Exp(s_x);
+                var sum = SumF(exp);
+                var s_t = (exp / sum).View(1, shape[1]);
+                data.AddRange(s_t.ToArray().Cast<float>());
+            }
+
+            x.CopyFrom(data.ToArray());
+            return x;
+        }
+
+        public static Tensor L2Normalize(Tensor x, int axis = -1)
+        {
+            Tensor y = null;
+            if (axis == -1)
+            {
+                y = Max(Sum(Square(x)));
+            }
+            else
+            {
+                y = Max(Sum(Square(x), axis), axis);
+            }
+
+            return x / Sqrt(y);
+        }
 
         /// <summary>
         /// Gets the seed.
@@ -866,5 +925,7 @@ namespace TensorSharp
         /// <param name="seedSource">The seed source.</param>
         /// <param name="p">The p.</param>
         public static void RandomBernoulli( SeedSource seedSource, float p) { OpRegistry.Invoke("random_bernoulli", null, GetSeed(seedSource), p); }
+
+        
     }
 }

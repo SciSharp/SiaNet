@@ -859,6 +859,18 @@ namespace TensorSharp
             return result;
         }
 
+        public void Fill(float value)
+        {
+            TOps.Fill(this, value);
+        }
+
+        public static Tensor Constant(float value, IAllocator allocator, DType dtype, params long[] sizes)
+        {
+            Tensor tensor = new Tensor(allocator, dtype, sizes);
+            TOps.Fill(tensor, value);
+            return tensor;
+        }
+
         public static Tensor operator +(Tensor lhs, Tensor rhs) { return TOps.Add(lhs, rhs); }
 
         public static Tensor operator +(Tensor lhs, float rhs) { return TOps.Add(lhs, rhs); }
@@ -870,5 +882,45 @@ namespace TensorSharp
         public static Tensor operator -(Tensor lhs, float rhs) { return TOps.Sub(lhs, rhs); }
 
         public static Tensor operator -(float lhs, Tensor rhs) { return TOps.Sub(lhs, rhs); }
+
+        public static Tensor operator *(Tensor lhs, Tensor rhs) { return TOps.Mul(lhs, rhs); }
+
+        public static Tensor operator *(Tensor lhs, float rhs) { return TOps.Mul(lhs, rhs); }
+
+        public static Tensor operator *(float lhs, Tensor rhs) { return TOps.Mul(rhs, lhs); }
+
+        public static Tensor operator /(Tensor lhs, Tensor rhs) { return TOps.Div(lhs, rhs); }
+
+        public static Tensor operator /(Tensor lhs, float rhs) { return TOps.Mul(lhs, rhs); }
+
+        public static Tensor operator /(float lhs, Tensor rhs) { return TOps.Mul(rhs, lhs); }
+
+        public static Tensor operator >(Tensor lhs, Tensor rhs) { return TOps.GreaterThan(lhs, rhs); }
+
+        public static Tensor operator >(Tensor lhs, float rhs) { return TOps.GreaterThan(lhs, rhs); }
+
+        public static Tensor operator <(Tensor lhs, Tensor rhs) { return TOps.LessThan(lhs, rhs); }
+
+        public static Tensor operator <(Tensor lhs, float rhs) { return TOps.LessThan(lhs, rhs); }
+
+        public static Tensor operator >=(Tensor lhs, Tensor rhs) { return TOps.GreaterOrEqual(lhs, rhs); }
+
+        public static Tensor operator >=(Tensor lhs, float rhs) { return TOps.GreaterOrEqual(lhs, rhs); }
+
+        public static Tensor operator <=(Tensor lhs, Tensor rhs) { return TOps.LessOrEqual(lhs, rhs); }
+
+        public static Tensor operator <=(Tensor lhs, float rhs) { return TOps.LessOrEqual(lhs, rhs); }
+
+        //public static Tensor operator ==(Tensor lhs, Tensor rhs) { return TOps.EqualTo(lhs, rhs); }
+
+        //public static Tensor operator ==(Tensor lhs, float rhs) { return TOps.EqualTo(lhs, rhs); }
+
+        //public static Tensor operator ==(float lhs, Tensor rhs) { return TOps.EqualTo(rhs, lhs); }
+
+        //public static Tensor operator !=(Tensor lhs, Tensor rhs) { return TOps.NotEqual(lhs, rhs); }
+
+        //public static Tensor operator !=(Tensor lhs, float rhs) { return TOps.NotEqual(lhs, rhs); }
+
+        //public static Tensor operator !=(float lhs, Tensor rhs) { return TOps.NotEqual(rhs, lhs); }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp.Expression;
+using TensorSharp;
 
 namespace SiaNet.Metrics
 {
-    public abstract class BaseMetric
+    public abstract class BaseMetric : TOps
     {
         public string Name { get; set; }
 
@@ -14,7 +14,7 @@ namespace SiaNet.Metrics
             Name = name;
         }
 
-        public abstract TVar Call(TVar preds, TVar labels);
+        public abstract Tensor Call(Tensor Tensor, Tensor labels);
 
         public static BaseMetric Get(MetricType metricType)
         {

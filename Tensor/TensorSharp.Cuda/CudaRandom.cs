@@ -58,7 +58,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.Uniform(cpuCopy, seed, min, max);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
 
@@ -75,7 +75,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.Normal(cpuCopy, seed, mean, stdv);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
 
@@ -91,7 +91,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.Exponential(cpuCopy, seed, lambda);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
 
@@ -108,7 +108,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.Cauchy(cpuCopy, seed, median, sigma);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
 
@@ -125,7 +125,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.LogNormal(cpuCopy, seed, mean, stdv);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
 
@@ -141,7 +141,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.Geometric(cpuCopy, seed, p);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
 
@@ -157,7 +157,7 @@ namespace TensorSharp.CUDA
             using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
             {
                 cpuRandom.Bernoulli(cpuCopy, seed, p);
-                Ops.Copy(result, cpuCopy);
+                TOps.Copy(result, cpuCopy);
             }
         }
     }

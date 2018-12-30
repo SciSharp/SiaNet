@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using SiaNet.Layers;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Optimizers
 {
@@ -41,15 +40,15 @@ namespace SiaNet.Optimizers
 
                 if (!ms.ContainsKey(param.Name))
                 {
-                    ms[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
-                    us[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
+                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    us[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
 
-                    TVar m_t = (Beta1 * ms[param.Name].TVar()) + (1 - Beta1) * param.Grad.TVar();
-                    TVar u_t = TensorUtil.Maximum((Beta2 * us[param.Name].TVar()), param.Grad.TVar().Abs());
+                    var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
+                    var u_t = TOps.Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
 
-                    param.Data = (param.Data - lr_t * m_t.CDiv(u_t + float.Epsilon)).Evaluate();
-                    ms[param.Name] = m_t.Evaluate();
-                    us[param.Name] = u_t.Evaluate();
+                    param.Data = param.Data - lr_t * m_t / (u_t + float.Epsilon);
+                    ms[param.Name] = m_t;
+                    us[param.Name] = u_t;
 
                     param.ApplyConstraint();
                 }

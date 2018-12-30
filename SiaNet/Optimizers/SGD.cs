@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using SiaNet.Layers;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Optimizers
 {
@@ -34,17 +33,17 @@ namespace SiaNet.Optimizers
                 Variable param = p.Value;
                 if (!velocity.ContainsKey(param.Name))
                 {
-                    velocity[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
+                    velocity[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
                 }
 
-                velocity[param.Name] = ((velocity[param.Name].TVar() * Momentum) - (LearningRate * param.Grad.TVar())).Evaluate();
+                velocity[param.Name] = (velocity[param.Name] * Momentum) - (LearningRate * param.Grad);
                 if (Nesterov)
                 {
-                    param.Data = (param.Data.TVar() + (Momentum * velocity[param.Name].TVar()) - (LearningRate * param.Grad.TVar())).Evaluate();
+                    param.Data = param.Data + (Momentum * velocity[param.Name]) - (LearningRate * param.Grad);
                 }
                 else
                 {
-                    param.Data = (param.Data.TVar() - velocity[param.Name]).Evaluate();
+                    param.Data = param.Data - velocity[param.Name];
                 }
 
                 param.ApplyConstraint();

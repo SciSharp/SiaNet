@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using SiaNet.Layers;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Optimizers
 {
@@ -33,11 +32,11 @@ namespace SiaNet.Optimizers
                 var param = item.Value;
                 if (!accumulators.ContainsKey(param.Name))
                 {
-                    accumulators[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
+                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
                 }
 
-                accumulators[param.Name] = (accumulators[param.Name].TVar() + param.Grad.TVar().Pow(2)).Evaluate();
-                param.Data = (param.Data.TVar() - (LearningRate * param.Grad.TVar().CDiv(accumulators[param.Name].TVar().Sqrt() + float.Epsilon))).Evaluate();
+                accumulators[param.Name] = accumulators[param.Name] + Square(param.Grad);
+                param.Data = param.Data - (LearningRate * param.Grad / (Sqrt(accumulators[param.Name]) + float.Epsilon));
 
                 param.ApplyConstraint();
             }

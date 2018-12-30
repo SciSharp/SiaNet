@@ -20,14 +20,14 @@ namespace SiaNet.Losses
             Tensor output = null;
             if(!FromLogit)
             {
-                output = labels.Clamp(1e-7f, 1f - 1e-7f);
-                output = output.CDiv(1 - output).Log();
+                output = Clip(labels, float.Epsilon, 1f - float.Epsilon);
+                output = Log(output / (1 - output));
             }
 
-            return (preds.CMul(-output.Sigmoid().Log()) + (1 - preds).CMul(-(1 - output.Sigmoid()).Log()));
+            return preds * Log(-1 * Sigmoid(output)) + (1 - preds) * Log(-1 * (1 - Sigmoid(output)));
         }
 
-        public override TVar CalcGrad(TVar preds, TVar labels)
+        public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
             throw new NotImplementedException();
         }

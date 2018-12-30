@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using SiaNet.Layers;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Optimizers
 {
@@ -46,30 +45,30 @@ namespace SiaNet.Optimizers
 
                 if(!ms.ContainsKey(param.Name))
                 {
-                    ms[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
-                    vs[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
-                    if(AmsGrad)
-                        vhats[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, param.Data.Sizes).Evaluate();
+                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    vs[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    if (AmsGrad)
+                        vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
                     else
-                        vhats[param.Name] = TVar.Fill(0, Global.Device, DType.Float32, 1).Evaluate();
+                        vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, 1);
 
-                    var m_t = (Beta1 * ms[param.Name].TVar()) + (1 - Beta1) * param.Grad.TVar();
-                    var v_t = (Beta2 * vs[param.Name].TVar()) + (1 - Beta2) * param.Grad.TVar().Pow(2);
+                    var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
+                    var v_t = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad);
 
                     if (AmsGrad)
                     {
-                        TVar vhat_t = TensorUtil.Maximum(vhats[param.Name], v_t);
+                        Tensor vhat_t = TOps.Maximum(vhats[param.Name], v_t);
 
-                        param.Data = (param.Data.TVar() - lr_t * m_t.CDiv(vhat_t.Sqrt() + float.Epsilon)).Evaluate();
-                        vhats[param.Name] = vhat_t.Evaluate();
+                        param.Data = param.Data - lr_t * m_t / (Sqrt(vhat_t) + float.Epsilon);
+                        vhats[param.Name] = vhat_t;
                     }
                     else
                     {
-                        param.Data = (param.Data.TVar() - lr_t * m_t.CDiv(v_t.Sqrt() + float.Epsilon)).Evaluate();
+                        param.Data = param.Data - lr_t * m_t / (Sqrt(v_t) + float.Epsilon);
                     }
 
-                    ms[param.Name] = m_t.Evaluate();
-                    vs[param.Name] = v_t.Evaluate();
+                    ms[param.Name] = m_t;
+                    vs[param.Name] = v_t;
 
                     param.ApplyConstraint();
                 }
