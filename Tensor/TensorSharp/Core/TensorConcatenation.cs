@@ -66,7 +66,7 @@ namespace TensorSharp.Core
         /// <returns>System.Int64.</returns>
         private static long GetDimSize(Tensor tensor, int dim)
         {
-            return dim < tensor.DimensionCount ? tensor.Sizes[dim] : 1;
+            return dim < tensor.DimensionCount ? tensor.Shape[dim] : 1;
         }
 
         /// <summary>

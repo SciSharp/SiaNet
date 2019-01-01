@@ -89,7 +89,7 @@ namespace TensorSharp.CUDA.MatrixMul
                 var lhsPtr = CudaHelpers.GetBufferStart(lhs);
                 var rhsPtr = CudaHelpers.GetBufferStart(rhs);
 
-                int n = (int)lhs.Sizes[0];
+                int n = (int)lhs.Shape[0];
                 int incx = (int)lhs.Strides[0];
                 int incy = (int)rhs.Strides[0];
 
@@ -116,7 +116,7 @@ namespace TensorSharp.CUDA.MatrixMul
                 var lhsPtr = CudaHelpers.GetBufferStart(lhs);
                 var rhsPtr = CudaHelpers.GetBufferStart(rhs);
 
-                int n = (int)lhs.Sizes[0];
+                int n = (int)lhs.Shape[0];
                 int incx = (int)lhs.Strides[0];
                 int incy = (int)rhs.Strides[0];
 

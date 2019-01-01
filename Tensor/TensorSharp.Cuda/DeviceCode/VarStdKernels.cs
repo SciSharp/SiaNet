@@ -217,14 +217,14 @@ extern ""C"" {
             long num_orows = 1;
             for (int dim = 0; dim < dimension; dim++)
             {
-                num_orows *= src.Sizes[dim];
+                num_orows *= src.Shape[dim];
             }
-            long row_size = src.Sizes[dimension];
+            long row_size = src.Shape[dimension];
             // Treat all inner dimensions (i.e. dim > dimension) as one.
             long num_irows = 1;
             for (int dim = dimension + 1; dim < ndim; dim++)
             {
-                num_irows *= src.Sizes[dim];
+                num_irows *= src.Shape[dim];
             }
 
             var threads = new dim3((uint)Math.Min(512, num_irows));
@@ -255,9 +255,9 @@ extern ""C"" {
             long num_rows = 1;
             for (var dim = 0; dim < ndim - 1; dim++)
             {
-                num_rows *= src.Sizes[dim];
+                num_rows *= src.Shape[dim];
             }
-            var row_size = src.Sizes[ndim - 1];
+            var row_size = src.Shape[ndim - 1];
 
             // (Comment from cuTorch source): From limited testing, 16x32 seemed a good compromise for handling both long and short dimensions.
             var threads = new dim3(16, 32);
@@ -282,7 +282,7 @@ extern ""C"" {
         private Tensor RunVarOp(Tensor result, Tensor src, int dimension, bool normByN, bool applySqrt)
         {
             var context = CudaHelpers.TSContextForTensor(src);
-            var requiredOutputSize = (long[])src.Sizes.Clone();
+            var requiredOutputSize = (long[])src.Shape.Clone();
             requiredOutputSize[dimension] = 1;
             var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, true, requiredOutputSize);
 

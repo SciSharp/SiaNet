@@ -65,14 +65,14 @@ namespace TensorSharp
                     cpuByteTensor.Storage.CopyToStorage(cpuByteTensor.StorageOffset, lockData.Scan0, cpuByteTensor.Storage.ByteLength);
                     using (var permutedTensor = cpuByteTensor.Permute(2, 0, 1))
                     {
-                        using (var cpuFloatTensor = new Tensor(cpuAllocator, DType.Float32, permutedTensor.Sizes))
+                        using (var cpuFloatTensor = new Tensor(cpuAllocator, DType.Float32, permutedTensor.Shape))
                         {
                             Ops.Copy(cpuFloatTensor, permutedTensor);
 
                             // TODO this could be made more efficient by skipping a the following copy if allocator is a CpuAllocator,
                             // but make sure that in that case the result tensor is not disposed before returning.
 
-                            var result = new Tensor(allocator, DType.Float32, permutedTensor.Sizes);
+                            var result = new Tensor(allocator, DType.Float32, permutedTensor.Shape);
                             Ops.Copy(result, cpuFloatTensor);
                             Ops.Div(result, result, 255);
                             return result;

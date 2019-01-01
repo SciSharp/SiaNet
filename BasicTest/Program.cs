@@ -21,7 +21,7 @@ namespace Examples
 
         static void Main(string[] args)
         {
-            //Global.UseGpu();
+            Global.UseGpu();
             //SetConstValue();
             //Elu();
             //TestSoftmax();
@@ -195,9 +195,20 @@ namespace Examples
         private static void Im2ColTest()
         {
             var t = Tensor.Arange(Global.Device, 1, 10, 3);
-            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, Global.Device).Evaluate();
-            tensor1 = tensor1.View(3, 1, 3);
-            TOps.Repeat(tensor1, 3).Print();
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, Global.Device).Evaluate();
+            tensor1 = tensor1.View(1, 2, 3, 3);
+            ImgUtil.Im2Col(tensor1, 3, 3);
+
+            //var a = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            //a = a.View(8, 1);
+
+            //var b = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            //b = b.View(1, 8);
+
+            //a.Print(); b.Print();
+            //var c = a + b;
+            //c.Print();
+
         }
     }
 }

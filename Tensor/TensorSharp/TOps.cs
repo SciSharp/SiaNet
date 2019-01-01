@@ -31,7 +31,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public static Tensor NewContiguous(Tensor src)
         {
-            var result = new Tensor(src.Allocator, src.ElementType, (long[])src.Sizes.Clone());
+            var result = new Tensor(src.Allocator, src.ElementType, (long[])src.Shape.Clone());
             Copy(result, src);
             return result;
         }
@@ -78,7 +78,7 @@ namespace TensorSharp
                 //If the result is not on the CPU, it is much faster to build the tensor on the CPU and then copy
                 //An alternative to this would be building a specific GPU kernel for this operation
                 var cpuAlloc = new Cpu.CpuAllocator();
-                using (var cpuResult = new Tensor(cpuAlloc, src.ElementType, src.Sizes))
+                using (var cpuResult = new Tensor(cpuAlloc, src.ElementType, src.Shape))
                 {
                     DoFillOneHot(cpuResult, labelCount, labels);
                     Ops.Copy(src, cpuResult);
@@ -104,8 +104,8 @@ namespace TensorSharp
         private static void DoFillOneHot(Tensor src, int labelCount, int[] labels)
         {
             if (src.DimensionCount != 2) throw new InvalidOperationException("result must be a 2D tensor");
-            if (src.Sizes[0] != labels.Length) throw new InvalidOperationException("first dimension of result must equal the number of samples");
-            if (src.Sizes[1] > labelCount) throw new InvalidOperationException("second dimension of result must be at least as large as labelCount");
+            if (src.Shape[0] != labels.Length) throw new InvalidOperationException("first dimension of result must equal the number of samples");
+            if (src.Shape[1] > labelCount) throw new InvalidOperationException("second dimension of result must be at least as large as labelCount");
 
             Ops.Fill(src, 0);
             for (int i = 0; i < labels.Length; ++i)
@@ -813,14 +813,14 @@ namespace TensorSharp
 
         public static Tensor Maximum(Tensor a, float b)
         {
-            var b_t = new Tensor(a.Allocator, a.ElementType, a.Sizes);
+            var b_t = new Tensor(a.Allocator, a.ElementType, a.Shape);
             TOps.Fill(b_t, b);
             return Maximum(a, b_t);
         }
 
         public static Tensor Maximum(float a, Tensor b)
         {
-            var a_t = new Tensor(b.Allocator, b.ElementType, b.Sizes);
+            var a_t = new Tensor(b.Allocator, b.ElementType, b.Shape);
             TOps.Fill(a_t, a);
             return Maximum(a_t, b);
         }
@@ -832,7 +832,7 @@ namespace TensorSharp
 
         public static Tensor Softmax(Tensor x)
         {
-            long[] shape = x.Sizes;
+            long[] shape = x.Shape;
             List<float> data = new List<float>();
             for (long i = 0; i < shape[0]; i++)
             {
@@ -879,6 +879,66 @@ namespace TensorSharp
         {
             x = x.View(x.ElementCount(), 1).Tile(reps);
             return x.View(1, x.ElementCount());
+        }
+
+        public static ValueTuple<Tensor, Tensor> Broadcast(Tensor lhs, Tensor rhs)
+        {
+            if (!lhs.IsSameSizeAs(rhs))
+            {
+                if (lhs.Shape[0] == rhs.Shape[0] && (lhs.Shape[1] == 1 || rhs.Shape[1] == 1))
+                {
+                    if (lhs.Shape[1] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(1, rhs.Shape[1]);
+                    }
+
+                    if (rhs.Shape[1] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(1, lhs.Shape[1]);
+                    }
+                }
+
+                if (lhs.Shape[1] == rhs.Shape[1] && (lhs.Shape[0] == 1 || rhs.Shape[0] == 1))
+                {
+                    if (lhs.Shape[0] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(rhs.Shape[0], 1);
+                    }
+
+                    if (rhs.Shape[0] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(lhs.Shape[0], 1);
+                    }
+                }
+
+                if (lhs.Shape[1] == 1 && rhs.Shape[0] == 1)
+                {
+                    if (lhs.Shape[1] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(1, rhs.Shape[1]);
+                    }
+
+                    if (rhs.Shape[0] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(lhs.Shape[0], 1);
+                    }
+                }
+
+                if (lhs.Shape[0] == 1 || rhs.Shape[1] == 1)
+                {
+                    if (lhs.Shape[0] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(rhs.Shape[0], 1);
+                    }
+
+                    if (rhs.Shape[1] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(1, lhs.Shape[1]);
+                    }
+                }
+            }
+
+            return (lhs, rhs);
         }
 
         /// <summary>

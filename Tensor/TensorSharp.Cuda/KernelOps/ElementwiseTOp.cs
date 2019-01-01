@@ -110,7 +110,7 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(src);
             var cudaContext = context.CudaContextForTensor(src);
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, src.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, src.Shape);
             var elementCount = writeTarget.ElementCount();
 
             var ptx = kernels.GetPtx(context.Compiler);
@@ -143,7 +143,7 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(src);
             var cudaContext = context.CudaContextForTensor(src);
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, src.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, src.Shape);
             var elementCount = writeTarget.ElementCount();
 
             var ptx = kernels.GetPtx(context.Compiler);
@@ -176,7 +176,7 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(lhs);
             var cudaContext = context.CudaContextForTensor(lhs);
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, lhs, false, lhs.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, lhs, false, lhs.Shape);
             var elementCount = writeTarget.ElementCount();
 
             var ptx = kernels.GetPtx(context.Compiler);
@@ -210,7 +210,7 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(src);
             var cudaContext = context.CudaContextForTensor(src);
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, src.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, src.Shape);
             var elementCount = writeTarget.ElementCount();
 
             var ptx = kernels.GetPtx(context.Compiler);
@@ -242,7 +242,7 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(srcY);
             var cudaContext = context.CudaContextForTensor(srcY);
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, srcY, false, srcY.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, srcY, false, srcY.Shape);
             var elementCount = writeTarget.ElementCount();
 
             var ptx = kernels.GetPtx(context.Compiler);
@@ -271,7 +271,7 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(srcA);
             var cudaContext = context.CudaContextForTensor(srcA);
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, srcA, false, srcA.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, srcA, false, srcA.Shape);
             var elementCount = writeTarget.ElementCount();
 
             var ptx = kernels.GetPtx(context.Compiler);

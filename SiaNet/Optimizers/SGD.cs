@@ -33,7 +33,7 @@ namespace SiaNet.Optimizers
                 Variable param = p.Value;
                 if (!velocity.ContainsKey(param.Name))
                 {
-                    velocity[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    velocity[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                 }
 
                 velocity[param.Name] = (velocity[param.Name] * Momentum) - (LearningRate * param.Grad);

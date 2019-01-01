@@ -138,34 +138,34 @@ namespace TensorSharp.Cpu
             int dimw = 3;
             int dimh = 2;
 
-            var n = input.Sizes[0];
-            var nInputPlane = input.Sizes[dimf];
-            var inputWidth = input.Sizes[dimw];
-            var inputHeight = input.Sizes[dimh];
-            var nOutputPlane = weight.Sizes[0];
+            var n = input.Shape[0];
+            var nInputPlane = input.Shape[dimf];
+            var inputWidth = input.Shape[dimw];
+            var inputHeight = input.Shape[dimh];
+            var nOutputPlane = weight.Shape[0];
 
             var outputWidth = (inputWidth + 2 * cd.padW - cd.kW) / cd.dW + 1;
             var outputHeight = (inputHeight + 2 * cd.padH - cd.kH) / cd.dH + 1;
 
-            if (bias != null && (bias.Sizes[0] != nOutputPlane))
+            if (bias != null && (bias.Shape[0] != nOutputPlane))
                 throw new InvalidOperationException("bias has incorrect size. Expected 1D tensor of size " + nOutputPlane);
 
             if (outputWidth < 1 || outputHeight < 1)
                 throw new InvalidOperationException(string.Format(
                     "Output size too small; calculated output size = ({0}x{1}x{2}", nOutputPlane, outputHeight, outputWidth));
 
-            if (nInputPlane * cd.kW * cd.kH != weight.Sizes[1])
+            if (nInputPlane * cd.kW * cd.kH != weight.Shape[1])
                 throw new InvalidOperationException(
-                    string.Format("Input has incorrect number of channels. Got {0}, expected {1}", nInputPlane, weight.Sizes[1] / ((float)(cd.kW * cd.kH))));
+                    string.Format("Input has incorrect number of channels. Got {0}, expected {1}", nInputPlane, weight.Shape[1] / ((float)(cd.kW * cd.kH))));
 
             if (input.DimensionCount != 4)
                 throw new InvalidOperationException("4D input expected (NCHW order)");
 
 
-            if (finput.Sizes[0] != n || finput.Sizes[1] != cd.kW * cd.kH * nInputPlane || finput.Sizes[2] != outputHeight * outputWidth)
+            if (finput.Shape[0] != n || finput.Shape[1] != cd.kW * cd.kH * nInputPlane || finput.Shape[2] != outputHeight * outputWidth)
                 throw new InvalidOperationException("finput is incorrect size");
 
-            if (output.Sizes[0] != n || output.Sizes[1] != nOutputPlane || output.Sizes[2] != outputHeight || output.Sizes[3] != outputWidth)
+            if (output.Shape[0] != n || output.Shape[1] != nOutputPlane || output.Shape[2] != outputHeight || output.Shape[3] != outputWidth)
                 throw new InvalidOperationException("output is incorrect size");
 
             for (int i = 0; i < n; ++i)
@@ -232,7 +232,7 @@ namespace TensorSharp.Cpu
                 {
                     if (bias != null)
                     {
-                        using (var biasExp = bias.Expand(nOutputPlane, output2d.Sizes[1]))
+                        using (var biasExp = bias.Expand(nOutputPlane, output2d.Shape[1]))
                         {
                             Ops.Copy(output2d, biasExp);
                         }
@@ -274,9 +274,9 @@ namespace TensorSharp.Cpu
         /// </exception>
         public static void Conv2BackwardInput(Tensor input, Tensor gradOutput, Tensor gradInput, Tensor weight, Tensor finput, Tensor fgradInput, ConvolutionDesc2d cd)
         {
-            var nOutputPlane = weight.Sizes[0];
+            var nOutputPlane = weight.Shape[0];
 
-            if (gradOutput.Sizes[1] != nOutputPlane)
+            if (gradOutput.Shape[1] != nOutputPlane)
                 throw new InvalidOperationException("Number of output features must equal nOutputPlane");
 
             if (cd.kW <= 0 && cd.kH <= 0)
@@ -287,7 +287,7 @@ namespace TensorSharp.Cpu
 
             using (var weightT = weight.Transpose())
             {
-                var n = input.Sizes[0];
+                var n = input.Shape[0];
 
                 for (int i = 0; i < n; ++i)
                 {
@@ -311,7 +311,7 @@ namespace TensorSharp.Cpu
         /// <param name="cd">The cd.</param>
         private static void Conv2BackwardInputFrame(Tensor gradOutput, Tensor gradInput, Tensor weight, Tensor fgradInput, ConvolutionDesc2d cd)
         {
-            using (var gradOutput2d = gradOutput.View(gradOutput.Sizes[0], gradOutput.Sizes[1] * gradOutput.Sizes[2]))
+            using (var gradOutput2d = gradOutput.View(gradOutput.Shape[0], gradOutput.Shape[1] * gradOutput.Shape[2]))
             {
                 Ops.Addmm(fgradInput, 0, fgradInput, 1, weight, gradOutput2d);
             }
@@ -323,8 +323,8 @@ namespace TensorSharp.Cpu
             using (NativeWrapper.BuildTensorRefPtr(gradInput, out gradInputPtr))
             {
                 CpuOpsNative.TS_Unfolded_Acc(fgradInputPtr, gradInputPtr, cd.kW, cd.kH, cd.dW, cd.dH, cd.padW, cd.padH,
-                (int)gradInput.Sizes[0], (int)gradInput.Sizes[2], (int)gradInput.Sizes[1],
-                (int)gradOutput.Sizes[2], (int)gradOutput.Sizes[1]);
+                (int)gradInput.Shape[0], (int)gradInput.Shape[2], (int)gradInput.Shape[1],
+                (int)gradOutput.Shape[2], (int)gradOutput.Shape[1]);
             }
         }
 
@@ -347,10 +347,10 @@ namespace TensorSharp.Cpu
         /// </exception>
         public static void Conv2BackwardFilter(Tensor input, Tensor gradOutput, Tensor gradWeight, Tensor gradBias, Tensor finput, Tensor fgradInput, ConvolutionDesc2d cd)
         {
-            var nOutputPlane = gradWeight.Sizes[0];
-            var n = input.Sizes[0];
+            var nOutputPlane = gradWeight.Shape[0];
+            var n = input.Shape[0];
 
-            if (gradOutput.Sizes[1] != nOutputPlane)
+            if (gradOutput.Shape[1] != nOutputPlane)
                 throw new InvalidOperationException("Number of output features must equal nOutputPlane");
 
             if (cd.kW <= 0 && cd.kH <= 0)
@@ -379,7 +379,7 @@ namespace TensorSharp.Cpu
         /// <param name="cd">The cd.</param>
         private static void Conv2BackwardFilterFrame(Tensor gradOutput, Tensor gradWeight, Tensor gradBias, Tensor finput, ConvolutionDesc2d cd)
         {
-            using (var gradOutput2d = gradOutput.View(gradOutput.Sizes[0], gradOutput.Sizes[1] * gradOutput.Sizes[2]))
+            using (var gradOutput2d = gradOutput.View(gradOutput.Shape[0], gradOutput.Shape[1] * gradOutput.Shape[2]))
             using (var finputT = finput.Transpose())
             {
                 Ops.Addmm(gradWeight, 1, gradWeight, 1, gradOutput2d, finputT);

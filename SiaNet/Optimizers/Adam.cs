@@ -45,10 +45,10 @@ namespace SiaNet.Optimizers
 
                 if(!ms.ContainsKey(param.Name))
                 {
-                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
-                    vs[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    vs[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                     if (AmsGrad)
-                        vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                        vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                     else
                         vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, 1);
 

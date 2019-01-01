@@ -34,7 +34,7 @@ namespace SiaNet.Data
 
         public virtual void ToFrame(Tensor t)
         {
-            Shape = t.Sizes;
+            Shape = t.Shape;
             underlayingVariable = t;
         }
 

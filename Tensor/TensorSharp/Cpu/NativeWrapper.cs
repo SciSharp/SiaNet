@@ -48,13 +48,13 @@ namespace TensorSharp.Cpu
             if(args[0] == null)
             {
                 var otherTensor = args.OfType<Tensor>().First();
-                resultTensor = TensorResultBuilder.GetWriteTarget(null, otherTensor, false, otherTensor.Sizes);
+                resultTensor = TensorResultBuilder.GetWriteTarget(null, otherTensor, false, otherTensor.Shape);
             }
             else
             {
                 var resultSrc = (Tensor)args[0];
                 var otherTensor = args.OfType<Tensor>().Skip(1).First();
-                resultTensor = TensorResultBuilder.GetWriteTarget(resultSrc, otherTensor, false, otherTensor.Sizes);
+                resultTensor = TensorResultBuilder.GetWriteTarget(resultSrc, otherTensor, false, otherTensor.Shape);
             }
 
             args[0] = resultTensor;
@@ -74,9 +74,9 @@ namespace TensorSharp.Cpu
         /// <exception cref="ArgumentOutOfRangeException">dimension</exception>
         public static Tensor InvokeNullableResultDimensionwise(MethodInfo method, Tensor result, Tensor src, int dimension, params object[] extraArgs)
         {
-            if (dimension < 0 || dimension >= src.Sizes.Length) throw new ArgumentOutOfRangeException("dimension");
+            if (dimension < 0 || dimension >= src.Shape.Length) throw new ArgumentOutOfRangeException("dimension");
 
-            var desiredSize = (long[])src.Sizes.Clone();
+            var desiredSize = (long[])src.Shape.Clone();
             desiredSize[dimension] = 1;
             var resultTensor = TensorResultBuilder.GetWriteTarget(result, src, false, desiredSize);
 
@@ -222,8 +222,8 @@ namespace TensorSharp.Cpu
         {
             var tensorRef = new TensorRef64();
             tensorRef.buffer = CpuNativeHelpers.GetBufferStart(tensor);
-            tensorRef.dimCount = tensor.Sizes.Length;
-            tensorRef.sizes = AllocArray(tensor.Sizes);
+            tensorRef.dimCount = tensor.Shape.Length;
+            tensorRef.sizes = AllocArray(tensor.Shape);
             tensorRef.strides = AllocArray(tensor.Strides);
             tensorRef.elementType = (CpuDType)tensor.ElementType;
             return tensorRef;

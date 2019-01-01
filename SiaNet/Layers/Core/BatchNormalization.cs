@@ -68,16 +68,16 @@ namespace SiaNet.Layers
         {
             Input = x;
             
-            Variable beta = BuildVar("beta", x.Data.Sizes, x.Data.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
-            Variable gamma = BuildVar("gamma", x.Data.Sizes, x.Data.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);
+            Variable beta = BuildVar("beta", x.Data.Shape, x.Data.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
+            Variable gamma = BuildVar("gamma", x.Data.Shape, x.Data.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);
 
-            mu = BuildVar("mm", x.Data.Sizes, x.Data.ElementType, MovingMeanInitializer, null, null, false);
-            mv = BuildVar("mv", x.Data.Sizes, x.Data.ElementType, MovingVarianceInitializer, null, null, false);
+            mu = BuildVar("mm", x.Data.Shape, x.Data.ElementType, MovingMeanInitializer, null, null, false);
+            mv = BuildVar("mv", x.Data.Shape, x.Data.ElementType, MovingVarianceInitializer, null, null, false);
 
             norm = (x.Data - mu.Data.TVar()).CDiv((mv.Data.TVar() + float.Epsilon).Sqrt());
             
             var @out = gamma.Data.TVar().CMul(norm) + beta.Data;
-            Output = @out.View(x.Data.Sizes).Evaluate();
+            Output = @out.View(x.Data.Shape).Evaluate();
         }
 
         public override void Backward(Tensor outputgrad)
@@ -93,9 +93,9 @@ namespace SiaNet.Layers
 
             var dnorm = outputgrad.TVar().CMul(Params["gamma"].Data);
             var dvar = dnorm.CMul(mu.Data).Sum(0).CMul(-0.5f * (mv.TVar() + float.Epsilon).Pow(-3 / 2));
-            var dmu = dnorm.CMul(-var_inv).Sum(0) + dvar.CMul((-2 * X_mu).Sum(0) / Input.Data.Sizes[0]);
+            var dmu = dnorm.CMul(-var_inv).Sum(0) + dvar.CMul((-2 * X_mu).Sum(0) / Input.Data.Shape[0]);
 
-            var dX = dnorm.CMul(var_inv) + (dmu / Input.Data.Sizes[0]) + (dvar.CMul(2 / Input.Data.Sizes[0] * X_mu));
+            var dX = dnorm.CMul(var_inv) + (dmu / Input.Data.Shape[0]) + (dvar.CMul(2 / Input.Data.Shape[0] * X_mu));
 
             Input.Grad = dX.Evaluate();
             

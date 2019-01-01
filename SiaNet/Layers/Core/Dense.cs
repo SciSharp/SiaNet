@@ -49,14 +49,14 @@ namespace SiaNet.Layers
         public override void Forward(Variable x)
         {
             Input = x;
-            Variable weight = BuildVar("w", new long[] { x.Data.Sizes[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
+            Variable weight = BuildVar("w", new long[] { x.Data.Shape[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Variable bias = null;
 
             if (UseBias)
             {
                 bias = BuildVar("b", new long[] { 1, Dim }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
 
-                Output = bias.Data.TVar().Expand(x.Data.Sizes[0], Dim)
+                Output = bias.Data.TVar().Expand(x.Data.Shape[0], Dim)
                     .Addmm(1, 1, x.Data, weight.Data)
                     .Evaluate();
             }

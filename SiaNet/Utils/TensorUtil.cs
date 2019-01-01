@@ -16,7 +16,7 @@ namespace SiaNet
 
         public static TVar Softmax(this TVar x)
         {
-            long[] shape = x.Evaluate().Sizes;
+            long[] shape = x.Evaluate().Shape;
             List<float> data = new List<float>();
             for (long i = 0; i < shape[0]; i++)
             {
@@ -66,7 +66,7 @@ namespace SiaNet
                 for (int i = 0; i < tensor.DimensionCount - 2; ++i)
                 {
                     counter[i]++;
-                    if (counter[i] >= tensor.Sizes[i])
+                    if (counter[i] >= tensor.Shape[i])
                     {
                         if (i == tensor.DimensionCount - 3)
                         {
@@ -108,7 +108,7 @@ namespace SiaNet
                 data.AddRange(Pad2D(item).Cast<float>());
             }
 
-            var shape = tensor.Sizes;
+            var shape = tensor.Shape;
 
             shape[shape.Length - 1] = shape[shape.Length - 1] + 2;
             shape[shape.Length - 2] = shape[shape.Length - 2] + 2;
@@ -120,7 +120,7 @@ namespace SiaNet
 
         private static Array Pad2D(Tensor d, uint n = 1)
         {
-            long[] shape = d.Sizes;
+            long[] shape = d.Shape;
             Array data = d.ToArray();
 
             for (int i = 0; i < n; i++)
@@ -131,7 +131,7 @@ namespace SiaNet
                 Tensor t = new Tensor(Global.Device, DType.Float32, shape[0], shape[1] + 2);
                 Ops.Concat(t, 1, lr, d, lr);
                 d = t;
-                shape = d.Sizes;
+                shape = d.Shape;
 
                 Tensor tb = new Tensor(Global.Device, DType.Float32, 1, shape[1]);
                 Ops.Fill(tb, 0);
@@ -139,7 +139,7 @@ namespace SiaNet
                 t = new Tensor(Global.Device, DType.Float32, shape[0] + 2, shape[1]);
                 Ops.Concat(t, 0, tb, d, tb);
                 d = t;
-                shape = d.Sizes;
+                shape = d.Shape;
                 t.Dispose();
                 lr.Dispose();
                 tb.Dispose();

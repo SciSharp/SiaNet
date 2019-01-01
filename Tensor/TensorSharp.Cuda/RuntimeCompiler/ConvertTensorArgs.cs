@@ -109,7 +109,7 @@ namespace TensorSharp.CUDA.RuntimeCompiler
                 ti.dims = tensor.DimensionCount;
                 for (int i = 0; i < tensor.DimensionCount; ++i)
                 {
-                    ti.sizes[i] = (uint)tensor.Sizes[i];
+                    ti.sizes[i] = (uint)tensor.Shape[i];
                     ti.strides[i] = (uint)tensor.Strides[i];
                 }
 
@@ -127,7 +127,7 @@ namespace TensorSharp.CUDA.RuntimeCompiler
                 ti.dims = tensor.DimensionCount;
                 for (int i = 0; i < tensor.DimensionCount; ++i)
                 {
-                    ti.sizes[i] = (ulong)tensor.Sizes[i];
+                    ti.sizes[i] = (ulong)tensor.Shape[i];
                     ti.strides[i] = (ulong)tensor.Strides[i];
                 }
 

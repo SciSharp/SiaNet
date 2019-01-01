@@ -31,7 +31,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public static Tensor NewContiguous(Tensor src)
         {
-            var result = new Tensor(src.Allocator, src.ElementType, (long[])src.Sizes.Clone());
+            var result = new Tensor(src.Allocator, src.ElementType, (long[])src.Shape.Clone());
             Copy(result, src);
             return result;
         }
@@ -78,7 +78,7 @@ namespace TensorSharp
                 //If the result is not on the CPU, it is much faster to build the tensor on the CPU and then copy
                 //An alternative to this would be building a specific GPU kernel for this operation
                 var cpuAlloc = new Cpu.CpuAllocator();
-                using (var cpuResult = new Tensor(cpuAlloc, result.ElementType, result.Sizes))
+                using (var cpuResult = new Tensor(cpuAlloc, result.ElementType, result.Shape))
                 {
                     DoFillOneHot(cpuResult, labelCount, labels);
                     Ops.Copy(result, cpuResult);
@@ -104,8 +104,8 @@ namespace TensorSharp
         private static void DoFillOneHot(Tensor result, int labelCount, int[] labels)
         {
             if (result.DimensionCount != 2) throw new InvalidOperationException("result must be a 2D tensor");
-            if (result.Sizes[0] != labels.Length) throw new InvalidOperationException("first dimension of result must equal the number of samples");
-            if (result.Sizes[1] > labelCount) throw new InvalidOperationException("second dimension of result must be at least as large as labelCount");
+            if (result.Shape[0] != labels.Length) throw new InvalidOperationException("first dimension of result must equal the number of samples");
+            if (result.Shape[1] > labelCount) throw new InvalidOperationException("second dimension of result must be at least as large as labelCount");
 
             Ops.Fill(result, 0);
             for (int i = 0; i < labels.Length; ++i)

@@ -72,9 +72,9 @@ namespace TensorSharp.Cpu
             if (result != null && dim < 0 && dim >= result.DimensionCount) throw new ArgumentOutOfRangeException("dim");
             if (indices.DimensionCount != src.DimensionCount) throw new InvalidOperationException("src and indices must have same number of dimensions");
             if (result != null && !result.IsSameSizeAs(indices)) throw new InvalidOperationException("result and indices must be the same size");
-            if (result != null && !TensorResultBuilder.ArrayEqualExcept(src.Sizes, result.Sizes, dim)) throw new InvalidOperationException("result and src must be the same size except in dimension dim");
+            if (result != null && !TensorResultBuilder.ArrayEqualExcept(src.Shape, result.Shape, dim)) throw new InvalidOperationException("result and src must be the same size except in dimension dim");
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, indices.Allocator, src.ElementType, false, indices.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, indices.Allocator, src.ElementType, false, indices.Shape);
 
             NativeWrapper.InvokeTypeMatch(gather_func, writeTarget, src, dim, indices);
             return writeTarget;
@@ -108,7 +108,7 @@ namespace TensorSharp.Cpu
             if (dim < 0 && dim >= result.DimensionCount) throw new ArgumentOutOfRangeException("dim");
             if (indices.DimensionCount != src.DimensionCount) throw new InvalidOperationException("src and indices must have same number of dimensions");
             if (!src.IsSameSizeAs(indices)) throw new InvalidOperationException("src and indices must be the same size");
-            if (!TensorResultBuilder.ArrayEqualExcept(src.Sizes, result.Sizes, dim)) throw new InvalidOperationException("result and src must be the same size except in dimension dim");
+            if (!TensorResultBuilder.ArrayEqualExcept(src.Shape, result.Shape, dim)) throw new InvalidOperationException("result and src must be the same size except in dimension dim");
 
             var writeTarget = result;
 
@@ -138,7 +138,7 @@ namespace TensorSharp.Cpu
 
             if (dim < 0 && dim >= result.DimensionCount) throw new ArgumentOutOfRangeException("dim");
             if (indices.DimensionCount != result.DimensionCount) throw new InvalidOperationException("result and indices must have same number of dimensions");
-            if (!TensorResultBuilder.ArrayEqualExcept(indices.Sizes, result.Sizes, dim)) throw new InvalidOperationException("result and indices must be the same size except in dimension dim");
+            if (!TensorResultBuilder.ArrayEqualExcept(indices.Shape, result.Shape, dim)) throw new InvalidOperationException("result and indices must be the same size except in dimension dim");
 
             var writeTarget = result;
 

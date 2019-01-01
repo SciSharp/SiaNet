@@ -24,7 +24,7 @@ namespace SiaNet.Losses
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            var m = labels.Sizes[0];
+            var m = labels.Shape[0];
             var grad = Softmax(preds);
             grad = preds - 1;
             grad = grad / m;

@@ -24,7 +24,7 @@ namespace SiaNet.Layers
 
             var p = 1 - Rate;
 
-            noise = TVar.RandomBernoulli(new SeedSource(), p, Global.Device, x.Data.ElementType, x.Data.Sizes)
+            noise = TVar.RandomBernoulli(new SeedSource(), p, Global.Device, x.Data.ElementType, x.Data.Shape)
                             .Div(p)
                             .Evaluate();
 

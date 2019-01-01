@@ -105,10 +105,10 @@ namespace TensorSharp.Cpu
             if (m1.DimensionCount != 2) throw new ArgumentException("m1 must be a matrix", "m1");
             if (m2.DimensionCount != 2) throw new ArgumentException("m2 must be a matrix", "m2");
 
-            if (src.Sizes[0] != m1.Sizes[0] || src.Sizes[1] != m2.Sizes[1] || m1.Sizes[1] != m2.Sizes[0])
+            if (src.Shape[0] != m1.Shape[0] || src.Shape[1] != m2.Shape[1] || m1.Shape[1] != m2.Shape[0])
                 throw new InvalidOperationException("Size mismatch");
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, true, src.Sizes);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, true, src.Shape);
 
             if (writeTarget != src)
             {

@@ -60,11 +60,11 @@ namespace TensorSharp.CUDA
         /// <param name="cd">The cd.</param>
         public void Conv2Forward(Tensor input, Tensor output, Tensor weight, Tensor bias, Tensor finput, ConvolutionDesc2d cd)
         {
-            var batchSize = input.Sizes[0];
-            var nInputPlane = input.Sizes[1];
-            var inputWidth = input.Sizes[3];
-            var inputHeight = input.Sizes[2];
-            var nOutputPlane = weight.Sizes[0];
+            var batchSize = input.Shape[0];
+            var nInputPlane = input.Shape[1];
+            var inputWidth = input.Shape[3];
+            var inputHeight = input.Shape[2];
+            var nOutputPlane = weight.Shape[0];
 
             var outputWidth = (inputWidth + 2 * cd.padW - cd.kW) / cd.dW + 1;
             var outputHeight = (inputHeight + 2 * cd.padH - cd.kH) / cd.dH + 1;
@@ -79,7 +79,7 @@ namespace TensorSharp.CUDA
                     {
                         if (bias != null)
                         {
-                            using (var biasExp = bias.Expand(nOutputPlane, output2d.Sizes[1]))
+                            using (var biasExp = bias.Expand(nOutputPlane, output2d.Shape[1]))
                             {
                                 Ops.Copy(output2d, biasExp);
                             }
@@ -110,12 +110,12 @@ namespace TensorSharp.CUDA
         /// <param name="cd">The cd.</param>
         public void Conv2BackwardInput(Tensor input, Tensor gradOutput, Tensor gradInput, Tensor weight, Tensor finput, Tensor fgradInput, ConvolutionDesc2d cd)
         {
-            var nOutputPlane = weight.Sizes[0];
-            var batchSize = input.Sizes[0];
+            var nOutputPlane = weight.Shape[0];
+            var batchSize = input.Shape[0];
 
-            var nInputPlane = input.Sizes[1];
-            var inputWidth = input.Sizes[3];
-            var inputHeight = input.Sizes[2];
+            var nInputPlane = input.Shape[1];
+            var inputWidth = input.Shape[3];
+            var inputHeight = input.Shape[2];
 
             var outputWidth = (inputWidth + 2 * cd.padW - cd.kW) / cd.dW + 1;
             var outputHeight = (inputHeight + 2 * cd.padH - cd.kH) / cd.dH + 1;
@@ -149,12 +149,12 @@ namespace TensorSharp.CUDA
         /// <param name="cd">The cd.</param>
         public void Conv2BackwardFilter(Tensor input, Tensor gradOutput, Tensor gradWeight, Tensor gradBias, Tensor finput, Tensor fgradInput, ConvolutionDesc2d cd)
         {
-            var nOutputPlane = gradWeight.Sizes[0];
-            var batchSize = input.Sizes[0];
+            var nOutputPlane = gradWeight.Shape[0];
+            var batchSize = input.Shape[0];
 
-            var nInputPlane = input.Sizes[1];
-            var inputWidth = input.Sizes[3];
-            var inputHeight = input.Sizes[2];
+            var nInputPlane = input.Shape[1];
+            var inputWidth = input.Shape[3];
+            var inputHeight = input.Shape[2];
 
             var outputWidth = (inputWidth + 2 * cd.padW - cd.kW) / cd.dW + 1;
             var outputHeight = (inputHeight + 2 * cd.padH - cd.kH) / cd.dH + 1;
@@ -167,7 +167,7 @@ namespace TensorSharp.CUDA
                     im2colKernels.Im2Col(input_i, finput, (int)nInputPlane, (int)inputHeight, (int)inputWidth,
                         cd.kH, cd.kW, cd.padH, cd.padW, cd.dH, cd.dW, 1, 1);
 
-                    using (var gradOutput2d = gradOutput_i.View(gradOutput_i.Sizes[0], gradOutput_i.Sizes[1] * gradOutput_i.Sizes[2]))
+                    using (var gradOutput2d = gradOutput_i.View(gradOutput_i.Shape[0], gradOutput_i.Shape[1] * gradOutput_i.Shape[2]))
                     using (var finputT = finput.Transpose())
                     {
                         Ops.Addmm(gradWeight, 1, gradWeight, 1, gradOutput2d, finputT);

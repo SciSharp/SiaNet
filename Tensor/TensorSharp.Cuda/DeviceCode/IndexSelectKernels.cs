@@ -228,7 +228,7 @@ __device__ void indexSelectLargeIndex(TensorInfo<IndexType> dst,
             var context = CudaHelpers.TSContextForTensor(src);
             var cudaContext = context.CudaContextForTensor(src);
 
-            var requiredOutputSize = (long[])src.Sizes.Clone();
+            var requiredOutputSize = (long[])src.Shape.Clone();
             requiredOutputSize[dim] = 1;
             var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, true, requiredOutputSize);
 
@@ -240,7 +240,7 @@ __device__ void indexSelectLargeIndex(TensorInfo<IndexType> dst,
             // of the tensor `indices`.
             var numIndices = indices.ElementCount();
             var dstTotalSize = writeTarget.ElementCount();
-            var srcSelectDimSize = src.Sizes[dim];
+            var srcSelectDimSize = src.Shape[dim];
             var sliceSize = dstTotalSize / numIndices;
 
             var mpc = context.DeviceInfoForContext(cudaContext).MultiProcessorCount;
@@ -251,11 +251,11 @@ __device__ void indexSelectLargeIndex(TensorInfo<IndexType> dst,
             var largeIndexBlock = new dim3((uint)Math.Min(dstTotalSize, 128));
 
 
-            var newResultSize = (long[])writeTarget.Sizes.Clone();
+            var newResultSize = (long[])writeTarget.Shape.Clone();
             newResultSize[dim] = 1;
             var resultFlat = new Tensor(newResultSize, writeTarget.Strides, writeTarget.Storage, writeTarget.StorageOffset);
 
-            var newSrcSize = (long[])src.Sizes.Clone();
+            var newSrcSize = (long[])src.Shape.Clone();
             newSrcSize[dim] = 1;
             var srcFlat = new Tensor(newSrcSize, src.Strides, src.Storage, src.StorageOffset);
 

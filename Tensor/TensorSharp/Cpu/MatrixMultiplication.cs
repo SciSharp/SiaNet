@@ -100,7 +100,7 @@ namespace TensorSharp.Cpu
                 var lhsPtr = (float*)CpuNativeHelpers.GetBufferStart(lhs);
                 var rhsPtr = (float*)CpuNativeHelpers.GetBufferStart(rhs);
 
-                int n = (int)lhs.Sizes[0];
+                int n = (int)lhs.Shape[0];
                 int incx = (int)lhs.Strides[0];
                 int incy = (int)rhs.Strides[0];
                 *resultPtr = OpenBlasNative.sdot_(&n, lhsPtr, &incx, rhsPtr, &incy);
@@ -121,7 +121,7 @@ namespace TensorSharp.Cpu
                 var lhsPtr = (double*)CpuNativeHelpers.GetBufferStart(lhs);
                 var rhsPtr = (double*)CpuNativeHelpers.GetBufferStart(rhs);
 
-                int n = (int)lhs.Sizes[0];
+                int n = (int)lhs.Shape[0];
                 int incx = (int)lhs.Strides[0];
                 int incy = (int)rhs.Strides[0];
                 *resultPtr = OpenBlasNative.ddot_(&n, lhsPtr, &incx, rhsPtr, &incy);
@@ -173,7 +173,7 @@ namespace TensorSharp.Cpu
                 lhsClone = Ops.NewContiguous(lhs);
             }
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, rhs, false, lhs.Sizes[0]);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, rhs, false, lhs.Shape[0]);
 
             try
             {
@@ -209,8 +209,8 @@ namespace TensorSharp.Cpu
                 var xPtr = (float*)CpuNativeHelpers.GetBufferStart(vec);
 
                 byte trans = (byte)'t';
-                int m = (int)mat.Sizes[1];
-                int n = (int)mat.Sizes[0];
+                int m = (int)mat.Shape[1];
+                int n = (int)mat.Shape[0];
                 int incx = (int)vec.Strides[0];
                 int lda = (int)mat.Strides[0];
                 int incy = (int)result.Strides[0];
@@ -239,8 +239,8 @@ namespace TensorSharp.Cpu
                 var rhsPtr = (double*)CpuNativeHelpers.GetBufferStart(rhs);
 
                 byte trans = (byte)'t';
-                int m = (int)rhs.Sizes[1];
-                int n = (int)lhs.Sizes[0];
+                int m = (int)rhs.Shape[1];
+                int n = (int)lhs.Shape[0];
                 int lda = (int)rhs.Strides[0];
                 int ldb = (int)lhs.Strides[0];
                 int ldc = (int)result.Strides[0];
@@ -275,7 +275,7 @@ namespace TensorSharp.Cpu
             if (!(lhs.Storage is CpuStorage)) throw new ArgumentException("lhs must be a CPU tensor", "lhs");
             if (!(rhs.Storage is CpuStorage)) throw new ArgumentException("rhs must be a CPU tensor", "rhs");
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, lhs, false, lhs.Sizes[0], rhs.Sizes[1]);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, lhs, false, lhs.Shape[0], rhs.Shape[1]);
             
             Gemm(1, lhs, rhs, 0, writeTarget);
             
@@ -295,7 +295,7 @@ namespace TensorSharp.Cpu
         /// <exception cref="InvalidOperationException">Size mismatch</exception>
         public static void Gemm(float alpha, Tensor a, Tensor b, float beta, Tensor c)
         {
-            if (a.Sizes[0] != c.Sizes[0] || b.Sizes[1] != c.Sizes[1] || a.Sizes[1] != b.Sizes[0])
+            if (a.Shape[0] != c.Shape[0] || b.Shape[1] != c.Shape[1] || a.Shape[1] != b.Shape[0])
                 throw new InvalidOperationException("Size mismatch");
 
             BlasOp aOp = default(BlasOp);
@@ -329,7 +329,7 @@ namespace TensorSharp.Cpu
             }
             else
             {
-                var cNew = new Tensor(c.Allocator, c.ElementType, c.Sizes[1], c.Sizes[0]);
+                var cNew = new Tensor(c.Allocator, c.ElementType, c.Shape[1], c.Shape[0]);
                 cClone = cNew.Transpose();
                 Ops.Copy(cClone, c);
                 cNew.Dispose();
@@ -357,7 +357,7 @@ namespace TensorSharp.Cpu
                 }
                 else
                 {
-                    var aNew = new Tensor(aClone.Allocator, aClone.ElementType, aClone.Sizes[1], aClone.Sizes[0]);
+                    var aNew = new Tensor(aClone.Allocator, aClone.ElementType, aClone.Shape[1], aClone.Shape[0]);
                     var aClone2 = aNew.Transpose();
                     Ops.Copy(aClone2, aClone);
                     aClone.Dispose();
@@ -381,7 +381,7 @@ namespace TensorSharp.Cpu
                 }
                 else
                 {
-                    var bNew = new Tensor(bClone.Allocator, bClone.ElementType, bClone.Sizes[1], bClone.Sizes[0]);
+                    var bNew = new Tensor(bClone.Allocator, bClone.ElementType, bClone.Shape[1], bClone.Shape[0]);
                     var bClone2 = bNew.Transpose();
                     Ops.Copy(bClone2, bClone);
                     bClone.Dispose();
@@ -436,9 +436,9 @@ namespace TensorSharp.Cpu
                 bool ntb = transB == BlasOp.NonTranspose;
                 byte transa = (byte)transA;
                 byte transb = (byte)transB;
-                int m = (int)a.Sizes[nta ? 0 : 1];
-                int k = (int)b.Sizes[ntb ? 0 : 1];
-                int n = (int)b.Sizes[ntb ? 1 : 0];
+                int m = (int)a.Shape[nta ? 0 : 1];
+                int k = (int)b.Shape[ntb ? 0 : 1];
+                int n = (int)b.Shape[ntb ? 1 : 0];
                 int lda = (int)a.Strides[1];
                 int ldb = (int)b.Strides[1];
                 int ldc = (int)c.Strides[1];

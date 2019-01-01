@@ -49,13 +49,13 @@ namespace TensorSharp.CUDA.KernelOps
             var context = CudaHelpers.TSContextForTensor(src);
             var cudaContext = context.CudaContextForTensor(src);
 
-            var requiredOutputSize = (long[])src.Sizes.Clone();
+            var requiredOutputSize = (long[])src.Shape.Clone();
             requiredOutputSize[dim] = 1;
             var writeTarget = TensorResultBuilder.GetWriteTarget(result, src, false, requiredOutputSize);
             ThrowIfAnyTensorInvalid(writeTarget, src);
 
             var inElements = src.ElementCount();
-            var reductionSize = src.Sizes[dim];
+            var reductionSize = src.Shape[dim];
             var reductionStride = src.Strides[dim];
             var outElements = inElements / reductionSize;
             var contigReduction = reductionStride == 1;
@@ -64,7 +64,7 @@ namespace TensorSharp.CUDA.KernelOps
             // We must make sure that when the tensor is passed to the kernel, src.Sizes[dim] is set to 1
             // This includes for the purposes of determining which tensor specializations to use (changing
             // the dimension size to 1 may make the tensor non-contiguous
-            var newSizes = (long[])src.Sizes.Clone();
+            var newSizes = (long[])src.Shape.Clone();
             newSizes[dim] = 1;
             var srcSlim = new Tensor(newSizes, src.Strides, src.Storage, src.StorageOffset);
 

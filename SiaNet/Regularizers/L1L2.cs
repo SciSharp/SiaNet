@@ -16,7 +16,7 @@ namespace SiaNet.Regularizers
 
         public override Tensor Call(TVar x)
         {
-            Tensor regularizer = new Tensor(Global.Device, DType.Float32, x.Evaluate().Sizes);
+            Tensor regularizer = new Tensor(Global.Device, DType.Float32, x.Evaluate().Shape);
             if (L1 > 0)
             {
                 regularizer = (regularizer.TVar() + (x.Abs() * L1).SumAll()).Evaluate();

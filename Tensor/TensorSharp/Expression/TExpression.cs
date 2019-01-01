@@ -176,7 +176,7 @@ namespace TensorSharp.Expression
             {
                 if (writeTarget == null)
                 {
-                    writeTarget = new Tensor(srcVal.Allocator, type, srcVal.Sizes);
+                    writeTarget = new Tensor(srcVal.Allocator, type, srcVal.Shape);
                 }
 
                 Ops.Copy(writeTarget, srcVal);
@@ -223,7 +223,7 @@ namespace TensorSharp.Expression
             {
                 if (writeTarget == null)
                 {
-                    writeTarget = new Tensor(allocator, srcVal.ElementType, srcVal.Sizes);
+                    writeTarget = new Tensor(allocator, srcVal.ElementType, srcVal.Shape);
                 }
 
                 Ops.Copy(writeTarget, srcVal);

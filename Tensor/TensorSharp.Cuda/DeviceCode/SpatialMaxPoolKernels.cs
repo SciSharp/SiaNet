@@ -158,10 +158,10 @@ __global__ void MaxPoolBackward(const int nthreads, const float* top_diff,
             var context = CudaHelpers.TSContextForTensor(input);
             var cudaContext = context.CudaContextForTensor(input);
 
-            var iwidth = input.Sizes[3];
-            var iheight = input.Sizes[2];
-            var nInputPlane = input.Sizes[1];
-            var batchSize = input.Sizes[0];
+            var iwidth = input.Shape[3];
+            var iheight = input.Shape[2];
+            var nInputPlane = input.Shape[1];
+            var batchSize = input.Shape[0];
 
             long owidth;
             long oheight;
@@ -218,12 +218,12 @@ __global__ void MaxPoolBackward(const int nthreads, const float* top_diff,
             var dimh = 2;
             var dimc = 1;
 
-            var nbatch = input.Sizes[0];
-            var nslices = input.Sizes[dimc];
-            var iheight = input.Sizes[dimh];
-            var iwidth = input.Sizes[dimw];
-            var owidth = gradOutput.Sizes[dimw];
-            var oheight = gradOutput.Sizes[dimh];
+            var nbatch = input.Shape[0];
+            var nslices = input.Shape[dimc];
+            var iheight = input.Shape[dimh];
+            var iwidth = input.Shape[dimw];
+            var owidth = gradOutput.Shape[dimw];
+            var oheight = gradOutput.Shape[dimh];
 
 
             using (var gradOutputContig = Ops.AsContiguous(gradOutput))

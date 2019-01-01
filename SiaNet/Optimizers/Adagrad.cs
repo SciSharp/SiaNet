@@ -32,7 +32,7 @@ namespace SiaNet.Optimizers
                 var param = item.Value;
                 if (!accumulators.ContainsKey(param.Name))
                 {
-                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                 }
 
                 accumulators[param.Name] = accumulators[param.Name] + Square(param.Grad);

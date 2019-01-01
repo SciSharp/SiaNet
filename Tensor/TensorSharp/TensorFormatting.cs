@@ -88,7 +88,7 @@ namespace TensorSharp
             // if the tensor has holes, this will incorrectly include those elements
             // in the iteration.
             var minOffset = tensor.StorageOffset;
-            var maxOffset = minOffset + TensorDimensionHelpers.GetStorageSize(tensor.Sizes, tensor.Strides) - 1;
+            var maxOffset = minOffset + TensorDimensionHelpers.GetStorageSize(tensor.Shape, tensor.Strides) - 1;
             for (long i = minOffset; i <= maxOffset; ++i)
             {
                 var value = Convert.ToDouble((object)storage.GetElementAsFloat(i));
@@ -119,7 +119,7 @@ namespace TensorSharp
             // if the tensor has holes, this will incorrectly include those elements
             // in the iteration.
             var minOffset = tensor.StorageOffset;
-            var maxOffset = minOffset + TensorDimensionHelpers.GetStorageSize(tensor.Sizes, tensor.Strides) - 1;
+            var maxOffset = minOffset + TensorDimensionHelpers.GetStorageSize(tensor.Shape, tensor.Strides) - 1;
 
             for (long i = minOffset; i <= maxOffset; ++i)
             {
@@ -256,11 +256,11 @@ namespace TensorSharp
             {
                 result
                 .Append(" of size ")
-                .Append(tensor.Sizes[0]);
+                .Append(tensor.Shape[0]);
 
                 for (int i = 1; i < tensor.DimensionCount; ++i)
                 {
-                    result.Append("x").Append(tensor.Sizes[i]);
+                    result.Append("x").Append(tensor.Shape[i]);
                 }
             }
 
@@ -283,7 +283,7 @@ namespace TensorSharp
             if (scale != 1)
             {
                 builder.AppendLine(scale + " *");
-                for (int i = 0; i < tensor.Sizes[0]; ++i)
+                for (int i = 0; i < tensor.Shape[0]; ++i)
                 {
                     var value = Convert.ToDouble((object)tensor.GetElementAsFloat(i)) / scale;
                     builder.AppendLine(string.Format(format, value));
@@ -291,7 +291,7 @@ namespace TensorSharp
             }
             else
             {
-                for (int i = 0; i < tensor.Sizes[0]; ++i)
+                for (int i = 0; i < tensor.Shape[0]; ++i)
                 {
                     var value = Convert.ToDouble((object)tensor.GetElementAsFloat(i));
                     builder.AppendLine(string.Format(format, value));
@@ -317,18 +317,18 @@ namespace TensorSharp
             var nColumnPerLine = (int)Math.Floor((80 - indent.Length) / (double)(sz + 1));
             long firstColumn = 0;
             long lastColumn = -1;
-            while (firstColumn < tensor.Sizes[1])
+            while (firstColumn < tensor.Shape[1])
             {
-                if (firstColumn + nColumnPerLine - 2 < tensor.Sizes[1])
+                if (firstColumn + nColumnPerLine - 2 < tensor.Shape[1])
                 {
                     lastColumn = firstColumn + nColumnPerLine - 2;
                 }
                 else
                 {
-                    lastColumn = tensor.Sizes[1] - 1;
+                    lastColumn = tensor.Shape[1] - 1;
                 }
 
-                if (nColumnPerLine < tensor.Sizes[1])
+                if (nColumnPerLine < tensor.Shape[1])
                 {
                     if (firstColumn != 1)
                     {
@@ -342,7 +342,7 @@ namespace TensorSharp
                     builder.Append(scale).AppendLine(" *");
                 }
 
-                for (long l = 0; l < tensor.Sizes[0]; ++l)
+                for (long l = 0; l < tensor.Shape[0]; ++l)
                 {
                     using (var row = tensor.Select(0, l))
                     {
@@ -353,7 +353,7 @@ namespace TensorSharp
                             if (c == lastColumn)
                             {
                                 builder.AppendLine();
-                                if (l != tensor.Sizes[0])
+                                if (l != tensor.Shape[0])
                                 {
                                     builder.Append(scale != 1 ? indent + " " : indent);
                                 }
@@ -390,7 +390,7 @@ namespace TensorSharp
                 for (int i = 0; i < tensor.DimensionCount - 2; ++i)
                 {
                     counter[i]++;
-                    if (counter[i] >= tensor.Sizes[i])
+                    if (counter[i] >= tensor.Shape[i])
                     {
                         if (i == tensor.DimensionCount - 3)
                         {

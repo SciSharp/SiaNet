@@ -38,8 +38,8 @@ namespace SiaNet.Optimizers
                 var param = item.Value;
                 if (!accumulators.ContainsKey(param.Name))
                 {
-                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
-                    delta_accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    delta_accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                 }
 
                 accumulators[param.Name] = (Rho * accumulators[param.Name]) + ((1 - Rho) * Square(param.Grad));

@@ -55,7 +55,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_uniform", typeof(CudaStorage))]
         public void Uniform(Tensor result, int? seed, float min, float max)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.Uniform(cpuCopy, seed, min, max);
                 TOps.Copy(result, cpuCopy);
@@ -72,7 +72,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_normal", typeof(CudaStorage))]
         public void Normal(Tensor result, int? seed, float mean, float stdv)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.Normal(cpuCopy, seed, mean, stdv);
                 TOps.Copy(result, cpuCopy);
@@ -88,7 +88,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_exponential", typeof(CudaStorage))]
         public void Exponential(Tensor result, int? seed, float lambda)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.Exponential(cpuCopy, seed, lambda);
                 TOps.Copy(result, cpuCopy);
@@ -105,7 +105,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_cauchy", typeof(CudaStorage))]
         public void Cauchy(Tensor result, int? seed, float median, float sigma)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.Cauchy(cpuCopy, seed, median, sigma);
                 TOps.Copy(result, cpuCopy);
@@ -122,7 +122,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_lognormal", typeof(CudaStorage))]
         public void LogNormal(Tensor result, int? seed, float mean, float stdv)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.LogNormal(cpuCopy, seed, mean, stdv);
                 TOps.Copy(result, cpuCopy);
@@ -138,7 +138,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_geometric", typeof(CudaStorage))]
         public void Geometric(Tensor result, int? seed, float p)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.Geometric(cpuCopy, seed, p);
                 TOps.Copy(result, cpuCopy);
@@ -154,7 +154,7 @@ namespace TensorSharp.CUDA
         [RegisterOpStorageType("random_bernoulli", typeof(CudaStorage))]
         public void Bernoulli(Tensor result, int? seed, float p)
         {
-            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Sizes))
+            using (var cpuCopy = new Tensor(cpuAllocator, result.ElementType, result.Shape))
             {
                 cpuRandom.Bernoulli(cpuCopy, seed, p);
                 TOps.Copy(result, cpuCopy);

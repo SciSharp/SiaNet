@@ -75,13 +75,13 @@ REDUCE_INDEX_KERNELS(argmax, if (a.first > b.first) return a; else return b;)
             long num_orows = 1;
             for (int dim = 0; dim < dimension; dim++)
             {
-                num_orows *= src.Sizes[dim];
+                num_orows *= src.Shape[dim];
             }
-            var row_size = src.Sizes[dimension];
+            var row_size = src.Shape[dimension];
             long num_irows = 1;
             for (int dim = dimension + 1; dim < ndim; dim++)
             {
-                num_irows *= src.Sizes[dim];
+                num_irows *= src.Shape[dim];
             }
 
             var threads = new dim3((uint)Math.Min(512, num_irows));
@@ -114,9 +114,9 @@ REDUCE_INDEX_KERNELS(argmax, if (a.first > b.first) return a; else return b;)
             long num_rows = 1;
             for (int dim = 0; dim < ndim - 1; dim++)
             {
-                num_rows *= src.Sizes[dim];
+                num_rows *= src.Shape[dim];
             }
-            var row_size = src.Sizes[ndim - 1];
+            var row_size = src.Shape[ndim - 1];
 
             var threads = new dim3(16, 32);
             var grid = new dim3((uint)Math.Min(1024, ApplyUtils.CeilDiv(num_rows, threads.y)));
@@ -142,7 +142,7 @@ REDUCE_INDEX_KERNELS(argmax, if (a.first > b.first) return a; else return b;)
         private Tensor RunReduceIndexOp(Tensor resultIndices, Tensor src, int dimension, Tuple<float, float> init, string baseKernelName)
         {
             var context = CudaHelpers.TSContextForTensor(src);
-            var requiredOutputSize = (long[])src.Sizes.Clone();
+            var requiredOutputSize = (long[])src.Shape.Clone();
             requiredOutputSize[dimension] = 1;
             var writeTarget = TensorResultBuilder.GetWriteTarget(resultIndices, src.Allocator, DType.Float32, true, requiredOutputSize);
 

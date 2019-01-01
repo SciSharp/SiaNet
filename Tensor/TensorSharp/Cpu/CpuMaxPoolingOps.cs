@@ -76,16 +76,16 @@ namespace TensorSharp.Cpu
             var dimh = 2;
             var dimc = 1;
 
-            if (input.Sizes[dimw] < cd.kW - cd.padW || input.Sizes[dimh] < cd.kH - cd.padH)
+            if (input.Shape[dimw] < cd.kW - cd.padW || input.Shape[dimh] < cd.kH - cd.padH)
                 throw new InvalidOperationException("input image is smaller than kernel size");
 
             if (cd.padW > cd.kW / 2 || cd.padH > cd.kH / 2)
                 throw new InvalidOperationException("pad should be smaller than half of the kernel size");
 
-            var nbatch = input.Sizes[0];
-            var nslices = input.Sizes[dimc];
-            var iheight = input.Sizes[dimh];
-            var iwidth = input.Sizes[dimw];
+            var nbatch = input.Shape[0];
+            var nslices = input.Shape[dimc];
+            var iheight = input.Shape[dimh];
+            var iwidth = input.Shape[dimw];
 
             long owidth;
             long oheight;
@@ -150,12 +150,12 @@ namespace TensorSharp.Cpu
             var dimh = 2;
             var dimc = 1;
 
-            var nbatch = input.Sizes[0];
-            var nslices = input.Sizes[dimc];
-            var iheight = input.Sizes[dimh];
-            var iwidth = input.Sizes[dimw];
-            var owidth = gradOutput.Sizes[dimw];
-            var oheight = gradOutput.Sizes[dimh];
+            var nbatch = input.Shape[0];
+            var nslices = input.Shape[dimc];
+            var iheight = input.Shape[dimh];
+            var iwidth = input.Shape[dimw];
+            var owidth = gradOutput.Shape[dimw];
+            var oheight = gradOutput.Shape[dimh];
 
             Ops.Fill(gradInput, 0);
 

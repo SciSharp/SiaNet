@@ -79,7 +79,7 @@ namespace TensorSharp.Core
                 return false;
             }
 
-            return ArrayEqual(tensor.Sizes, requiredSizes);
+            return ArrayEqual(tensor.Shape, requiredSizes);
         }
 
         /// <summary>

@@ -42,7 +42,7 @@ namespace TensorSharp
                 writer.Write((int)tensor.ElementType);
                 for (int i = 0; i < tensor.DimensionCount; ++i)
                 {
-                    writer.Write(tensor.Sizes[i]);
+                    writer.Write(tensor.Shape[i]);
                 }
 
                 var byteCount = src.ElementType.Size() * tensor.ElementCount();

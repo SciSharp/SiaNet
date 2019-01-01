@@ -13,7 +13,7 @@ namespace SiaNet.Layers
     {
         public uint Filters { get; set; }
 
-        public uint KernalSize { get; set; }
+        public Tuple<uint, uint> KernalSize { get; set; }
 
         public uint Strides { get; set; }
 
@@ -37,7 +37,7 @@ namespace SiaNet.Layers
 
         public BaseRegularizer BiasRegularizer { get; set; }
 
-        public Conv1D(uint filters, uint kernalSize, uint strides = 1, uint? padding = null, uint dialationRate = 1, 
+        public Conv1D(uint filters, Tuple<uint, uint> kernalSize, uint strides = 1, uint? padding = null, uint dialationRate = 1, 
                 ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null,
                         BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null, bool useBias = true,
                         BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
@@ -61,7 +61,12 @@ namespace SiaNet.Layers
         public override void Forward(Variable x)
         {
             Input = x;
-            
+            Variable weight = BuildVar("w", new long[] { Filters, x.Data.Shape[1], KernalSize.Item1, KernalSize.Item2 }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
+            Variable bias = null;
+            if (UseBias)
+            {
+                bias = BuildVar("b", new long[] { Filters, 1}, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
+            }
         }
 
         public override void Backward(Tensor outputgrad)

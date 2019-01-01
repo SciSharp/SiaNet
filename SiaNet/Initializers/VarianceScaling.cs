@@ -32,7 +32,7 @@ namespace SiaNet.Initializers
 
         public override Tensor Operator(Tensor tensor)
         {
-            var shape = tensor.Sizes;
+            var shape = tensor.Shape;
             var hwScale = 1.0f;
             if (tensor.DimensionCount > 2)
             {

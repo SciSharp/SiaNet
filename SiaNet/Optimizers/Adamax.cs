@@ -40,8 +40,8 @@ namespace SiaNet.Optimizers
 
                 if (!ms.ContainsKey(param.Name))
                 {
-                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
-                    us[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Sizes);
+                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    us[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
 
                     var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
                     var u_t = TOps.Maximum((Beta2 * us[param.Name]), Abs(param.Grad));

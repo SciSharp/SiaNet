@@ -23,9 +23,9 @@ namespace SiaNet.Layers.Activations
         {
             Input.Grad = Output;
 
-            for (long i = 0; i < Input.Grad.Sizes[0]; i++)
+            for (long i = 0; i < Input.Grad.Shape[0]; i++)
             {
-                for (long j = 0; j < Input.Grad.Sizes[1]; j++)
+                for (long j = 0; j < Input.Grad.Shape[1]; j++)
                 {
                     float val = Input.Grad.GetElementAsFloat(i, j);
                     if(i == j)

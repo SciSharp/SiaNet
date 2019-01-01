@@ -15,7 +15,7 @@ namespace SiaNet.Data
 
         public ImageFrame(Tensor imageTensor)
         {
-            Shape = imageTensor.Sizes;
+            Shape = imageTensor.Shape;
             underlayingVariable = imageTensor;
         }
     }

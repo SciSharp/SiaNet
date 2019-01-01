@@ -30,7 +30,7 @@ namespace TensorSharp
         /// <summary>
         /// The sizes
         /// </summary>
-        private long[] sizes;
+        private long[] shape;
         /// <summary>
         /// The strides
         /// </summary>
@@ -77,7 +77,7 @@ namespace TensorSharp
         /// <param name="strides">The strides.</param>
         public Tensor(IAllocator allocator, DType elementType, long[] sizes, long[] strides)
         {
-            this.sizes = sizes;
+            this.shape = sizes;
             this.strides = strides;
             this.storageOffset = 0;
             this.storage = allocator.Allocate(elementType, TensorDimensionHelpers.GetStorageSize(sizes, strides));
@@ -92,7 +92,7 @@ namespace TensorSharp
         /// <param name="storageOffset">The storage offset.</param>
         public Tensor(long[] sizes, long[] strides, Storage storage, long storageOffset)
         {
-            this.sizes = sizes;
+            this.shape = sizes;
             this.strides = strides;
             this.storage = storage;
             this.storageOffset = storageOffset;
@@ -139,7 +139,7 @@ namespace TensorSharp
             return
                 Object.ReferenceEquals(this.storage, o.storage) &&
                 this.storageOffset == o.storageOffset &&
-                TensorResultBuilder.ArrayEqual(this.sizes, o.sizes) &&
+                TensorResultBuilder.ArrayEqual(this.shape, o.shape) &&
                 TensorResultBuilder.ArrayEqual(this.strides, o.strides);
         }
 
@@ -152,7 +152,7 @@ namespace TensorSharp
             return
                 storage.GetHashCode() ^
                 storageOffset.GetHashCode() ^
-                sizes.Aggregate(0, (acc, item) => acc ^ item.GetHashCode()) ^
+                shape.Aggregate(0, (acc, item) => acc ^ item.GetHashCode()) ^
                 strides.Aggregate(0, (acc, item) => acc ^ item.GetHashCode());
         }
 
@@ -165,7 +165,8 @@ namespace TensorSharp
         /// Gets the sizes.
         /// </summary>
         /// <value>The sizes.</value>
-        public long[] Sizes { get { return sizes; } }
+        public long[] Shape { get { return shape; } }
+
         /// <summary>
         /// Gets the strides.
         /// </summary>
@@ -191,7 +192,7 @@ namespace TensorSharp
         /// Gets the dimension count.
         /// </summary>
         /// <value>The dimension count.</value>
-        public int DimensionCount { get { return sizes.Length; } }
+        public int DimensionCount { get { return shape.Length; } }
 
 
         /// <summary>
@@ -201,7 +202,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public Tensor CopyRef()
         {
-            return new Tensor(sizes, strides, storage, storageOffset);
+            return new Tensor(shape, strides, storage, storageOffset);
         }
 
         /// <summary>
@@ -226,7 +227,7 @@ namespace TensorSharp
             if (elementCount.HasValue)
                 return elementCount.Value;
 
-            elementCount = TensorDimensionHelpers.ElementCount(sizes);
+            elementCount = TensorDimensionHelpers.ElementCount(shape);
             return elementCount.Value;
         }
 
@@ -237,12 +238,12 @@ namespace TensorSharp
         public bool IsContiguous()
         {
             long z = 1;
-            for (int d = sizes.Length - 1; d >= 0; d--)
+            for (int d = shape.Length - 1; d >= 0; d--)
             {
-                if (sizes[d] != 1)
+                if (shape[d] != 1)
                 {
                     if (strides[d] == z)
-                        z *= sizes[d];
+                        z *= shape[d];
                     else
                         return false;
                 }
@@ -258,7 +259,7 @@ namespace TensorSharp
         /// <returns><c>true</c> if [is same size as] [the specified other]; otherwise, <c>false</c>.</returns>
         public bool IsSameSizeAs(Tensor other)
         {
-            return Core.TensorResultBuilder.ArrayEqual(this.sizes, other.sizes);
+            return Core.TensorResultBuilder.ArrayEqual(this.shape, other.shape);
         }
 
         /// <summary>
@@ -276,7 +277,7 @@ namespace TensorSharp
             if (indices.Length != DimensionCount) throw new ArgumentException("Number of indices must equal number of tensor dimensions");
             for (int i = 0; i < indices.Length; ++i)
             {
-                if (indices[i] < 0 || indices[i] >= Sizes[i])
+                if (indices[i] < 0 || indices[i] >= Shape[i])
                     throw new ArgumentException("Index " + i + " with value " + indices[i] + " is out of range");
             }
 
@@ -304,7 +305,7 @@ namespace TensorSharp
             if (indices.Length != DimensionCount) throw new ArgumentException("Number of indices must equal number of tensor dimensions");
             for (int i = 0; i < indices.Length; ++i)
             {
-                if (indices[i] < 0 || indices[i] >= Sizes[i])
+                if (indices[i] < 0 || indices[i] >= Shape[i])
                     throw new ArgumentException("Index " + i + " with value " + indices[i] + " is out of range");
             }
 
@@ -340,6 +341,19 @@ namespace TensorSharp
             return new Tensor(sizes, TensorDimensionHelpers.GetContiguousStride(sizes), this.storage, this.storageOffset);
         }
 
+        public Tensor Reshape(params long[] sizes)
+        {
+            for (int i = 0; i < sizes.Length; i++)
+            {
+                if (sizes[i] == -1)
+                {
+                    sizes[i] = ElementCount();
+                }
+            }
+
+            return View(sizes);
+        }
+
         /// <summary>
         /// Narrows the specified dimension.
         /// </summary>
@@ -357,11 +371,11 @@ namespace TensorSharp
         public Tensor Narrow(int dimension, long startIndex, long size)
         {
             if (dimension < 0 || dimension >= DimensionCount) throw new ArgumentOutOfRangeException("dimension");
-            if (startIndex < 0 || startIndex >= sizes[dimension]) throw new ArgumentOutOfRangeException("startIndex");
-            if (size <= 0 || startIndex + size > sizes[dimension]) throw new ArgumentOutOfRangeException("size");
+            if (startIndex < 0 || startIndex >= shape[dimension]) throw new ArgumentOutOfRangeException("startIndex");
+            if (size <= 0 || startIndex + size > shape[dimension]) throw new ArgumentOutOfRangeException("size");
 
             var newOffset = storageOffset + startIndex * strides[dimension];
-            var newSizes = (long[])sizes.Clone();
+            var newSizes = (long[])shape.Clone();
             newSizes[dimension] = size;
 
             return new Tensor(newSizes, strides, storage, newOffset);
@@ -383,10 +397,10 @@ namespace TensorSharp
         {
             if (DimensionCount == 1) throw new InvalidOperationException("Select requires 2 or more dimensions");
             if (dimension < 0 || dimension >= DimensionCount) throw new ArgumentOutOfRangeException("dimension");
-            if (index < 0 || index >= sizes[dimension]) throw new ArgumentOutOfRangeException("index");
+            if (index < 0 || index >= shape[dimension]) throw new ArgumentOutOfRangeException("index");
 
             var result = Narrow(dimension, index, 1);
-            result.sizes = ArrayRemove(sizes, dimension);
+            result.shape = ArrayRemove(shape, dimension);
             result.strides = ArrayRemove(strides, dimension);
 
             return result;
@@ -426,7 +440,7 @@ namespace TensorSharp
                 return this;
             }
 
-            var newSizes = (long[])sizes.Clone();
+            var newSizes = (long[])shape.Clone();
             var newStrides = (long[])strides.Clone();
             ArraySwap(newSizes, dimension1, dimension2);
             ArraySwap(newStrides, dimension1, dimension2);
@@ -473,9 +487,9 @@ namespace TensorSharp
             var newStrides = (long[])strides.Clone();
             for (int i = 0; i < newSizes.Length; ++i)
             {
-                if (newSizes[i] != Sizes[i])
+                if (newSizes[i] != Shape[i])
                 {
-                    if (Sizes[i] != 1)
+                    if (Shape[i] != 1)
                         throw new InvalidOperationException("Can only expand singleton dimensions (dimensions of size 1)");
 
                     newStrides[i] = 0;
@@ -492,7 +506,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public Tensor Squeeze()
         {
-            var newSizeStrides = sizes.Zip(strides, Tuple.Create)
+            var newSizeStrides = shape.Zip(strides, Tuple.Create)
                 .Where(x => x.Item1 != 1)
                 .ToArray();
 
@@ -515,7 +529,7 @@ namespace TensorSharp
             if (DimensionCount == 1) throw new InvalidOperationException("Squeeze requires 2 or more dimensions");
             if (dimension < 0 || dimension >= DimensionCount) throw new ArgumentOutOfRangeException("dimension");
 
-            var newSizes = ArrayRemove(sizes, dimension);
+            var newSizes = ArrayRemove(shape, dimension);
             var newStrides = ArrayRemove(strides, dimension);
 
             return new Tensor(newSizes, newStrides, storage, storageOffset);
@@ -544,18 +558,18 @@ namespace TensorSharp
         {
             if (DimensionCount == 0) throw new InvalidOperationException("Cannot unfold an empty tensor");
             if (dimension < 0 || dimension >= DimensionCount) throw new ArgumentOutOfRangeException("dimension is out of range", "dimension");
-            if (size > sizes[dimension]) throw new ArgumentOutOfRangeException("size cannot be larger than the size of dimension", "size");
+            if (size > shape[dimension]) throw new ArgumentOutOfRangeException("size cannot be larger than the size of dimension", "size");
             if (step <= 0) throw new ArgumentOutOfRangeException("step must be at least 1", "step");
 
             var newSize = new long[DimensionCount + 1];
             var newStrides = new long[DimensionCount + 1];
-            Array.Copy(sizes, newSize, DimensionCount);
+            Array.Copy(shape, newSize, DimensionCount);
             Array.Copy(strides, newStrides, DimensionCount);
 
             newSize[DimensionCount] = size;
             newStrides[DimensionCount] = this.strides[dimension];
 
-            newSize[dimension] = (this.sizes[dimension] - size) / step + 1;
+            newSize[dimension] = (this.shape[dimension] - size) / step + 1;
             newStrides[dimension] = step * this.strides[dimension];
 
             return new Tensor(newSize, newStrides, this.Storage, this.StorageOffset);
@@ -593,7 +607,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         private Tensor PadToDimCount(int newDimCount)
         {
-            var newSizes = Pad1Prepend(this.sizes, newDimCount);
+            var newSizes = Pad1Prepend(this.shape, newDimCount);
 
             var newStrides = TensorDimensionHelpers.GetContiguousStride(newSizes);
             Array.Copy(this.strides, 0, newStrides, newStrides.Length - this.strides.Length, this.strides.Length);
@@ -618,7 +632,7 @@ namespace TensorSharp
             if (repetitions.Any(x => x < 1)) throw new InvalidOperationException("All dimensions must be repeated at least once");
 
             var paddedSrc = this.PadToDimCount(repetitions.Length);
-            var resultSize = paddedSrc.Sizes.Zip(repetitions, (s, r) => s * r).ToArray();
+            var resultSize = paddedSrc.Shape.Zip(repetitions, (s, r) => s * r).ToArray();
 
             var result = new Tensor(this.Allocator, this.ElementType, resultSize);
 
@@ -626,12 +640,12 @@ namespace TensorSharp
             for (int i = 0; i < paddedSrc.DimensionCount; ++i)
             {
                 var oldUrTensor = urTensor;
-                urTensor = urTensor.Unfold(i, paddedSrc.Sizes[i], paddedSrc.Sizes[i]);
+                urTensor = urTensor.Unfold(i, paddedSrc.Shape[i], paddedSrc.Shape[i]);
                 oldUrTensor.Dispose();
             }
 
             paddedSrc = paddedSrc.PadToDimCount(urTensor.DimensionCount);
-            var expandedSrc = paddedSrc.Expand(urTensor.Sizes);
+            var expandedSrc = paddedSrc.Expand(urTensor.Shape);
             Ops.Copy(urTensor, expandedSrc);
 
             return result;
@@ -832,7 +846,7 @@ namespace TensorSharp
         public Array ToArray()
         {
             long arraySize = 1;
-            foreach (var item in Sizes)
+            foreach (var item in Shape)
             {
                 arraySize *= item;
             }
@@ -873,14 +887,21 @@ namespace TensorSharp
             return result;
         }
 
-
-        public static Tensor operator +(Tensor lhs, Tensor rhs) { return TOps.Add(lhs, rhs); }
+        public static Tensor operator +(Tensor lhs, Tensor rhs)
+        {
+            (lhs, rhs) = TOps.Broadcast(lhs, rhs);
+            return TOps.Add(lhs, rhs);
+        }
 
         public static Tensor operator +(Tensor lhs, float rhs) { return TOps.Add(lhs, rhs); }
 
         public static Tensor operator +(float lhs, Tensor rhs) { return TOps.Add(rhs, lhs); }
 
-        public static Tensor operator -(Tensor lhs, Tensor rhs) { return TOps.Sub(lhs, rhs); }
+        public static Tensor operator -(Tensor lhs, Tensor rhs)
+        {
+            (lhs, rhs) = TOps.Broadcast(lhs, rhs);
+            return TOps.Sub(lhs, rhs);
+        }
 
         public static Tensor operator -(Tensor lhs, float rhs) { return TOps.Sub(lhs, rhs); }
 

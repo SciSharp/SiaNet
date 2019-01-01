@@ -54,7 +54,7 @@ namespace TensorSharp.CUDA
         public TensorShape(Tensor tensor)
         {
             this.ElementType = tensor.ElementType;
-            this.Sizes = tensor.Sizes;
+            this.Sizes = tensor.Shape;
             this.Strides = tensor.Strides;
         }
 
@@ -791,7 +791,7 @@ namespace TensorSharp.CUDA
             result.SetTensorNdDescriptor(
                 GetDataType(tensor.ElementType),
                 tensor.DimensionCount,
-                tensor.Sizes.Select(x => (int)x).ToArray(),
+                tensor.Shape.Select(x => (int)x).ToArray(),
                 tensor.Strides.Select(x => (int)x).ToArray());
             return result;
         }
@@ -808,7 +808,7 @@ namespace TensorSharp.CUDA
                 GetDataType(tensor.ElementType),
                 cudnnTensorFormat.NCHW,
                 tensor.DimensionCount,
-                tensor.Sizes.Select(x => (int)x).ToArray());
+                tensor.Shape.Select(x => (int)x).ToArray());
             return result;
         }
 

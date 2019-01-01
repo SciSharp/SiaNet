@@ -61,7 +61,7 @@ namespace SiaNet
             if (string.IsNullOrWhiteSpace(name))
                 name = "v";
 
-            Variable x = new Variable(name, data.ElementType, data.Sizes);
+            Variable x = new Variable(name, data.ElementType, data.Shape);
             x.Data = data;
 
             return x;

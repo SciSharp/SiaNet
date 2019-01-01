@@ -171,7 +171,7 @@ namespace TensorSharp.CUDA.KernelOps
             {
                 if (!isResultContig)
                 {
-                    resultContig = new Tensor(result.Allocator, result.ElementType, result.Sizes);
+                    resultContig = new Tensor(result.Allocator, result.ElementType, result.Shape);
                 }
 
                 var resultContigPtr = ((CudaStorage)resultContig.Storage).DevicePtrAtElement(resultContig.StorageOffset);
@@ -198,8 +198,8 @@ namespace TensorSharp.CUDA.KernelOps
         private void CopyGpuConvertTypes(Tensor result, Tensor src, long totalElements)
         {
             // Type conversions are currently done via CPU
-            using (var srcCopy = new Tensor(cpuAllocator, src.ElementType, src.Sizes))
-            using (var srcConverted = new Tensor(cpuAllocator, result.ElementType, src.Sizes))
+            using (var srcCopy = new Tensor(cpuAllocator, src.ElementType, src.Shape))
+            using (var srcConverted = new Tensor(cpuAllocator, result.ElementType, src.Shape))
             {
                 CopyGpuToCpu(srcCopy, src, totalElements);
                 Ops.Copy(srcConverted, srcCopy); // Do type conversion on CPU
@@ -224,7 +224,7 @@ namespace TensorSharp.CUDA.KernelOps
             }
             else
             {
-                var result = new Tensor(cpuAllocator, elementType, tensor.Sizes);
+                var result = new Tensor(cpuAllocator, elementType, tensor.Shape);
                 Ops.Copy(result, tensor);
                 return result;
             }

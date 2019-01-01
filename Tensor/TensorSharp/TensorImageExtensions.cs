@@ -48,30 +48,30 @@ namespace TensorSharp
                 throw new InvalidOperationException("tensor must have 2 or 3 dimensions");
 
             if (tensor.DimensionCount == 3 &&
-                (tensor.Sizes[0] != 1 && tensor.Sizes[0] != 3 && tensor.Sizes[0] != 4))
+                (tensor.Shape[0] != 1 && tensor.Shape[0] != 3 && tensor.Shape[0] != 4))
                 throw new InvalidOperationException("3D tensor's first dimension (color channels) must be of length 1, 3 or 4");
 
             Tensor src;
             if (tensor.DimensionCount == 2)
                 src = tensor.RepeatTensor(3, 1, 1);
-            else if (tensor.DimensionCount == 3 && tensor.Sizes[0] == 1)
+            else if (tensor.DimensionCount == 3 && tensor.Shape[0] == 1)
                 src = tensor.RepeatTensor(3, 1, 1);
             else
                 src = tensor.CopyRef();
 
             var cpuAllocator = new Cpu.CpuAllocator();
-            var bytesPerPixel = src.Sizes[0];
+            var bytesPerPixel = src.Shape[0];
 
             try
             {
-                using (var cpuFloatTensor = new Tensor(cpuAllocator, DType.Float32, src.Sizes))
+                using (var cpuFloatTensor = new Tensor(cpuAllocator, DType.Float32, src.Shape))
                 using (var permutedFloatTensor = cpuFloatTensor.Permute(1, 2, 0))
                 {
                     Ops.Copy(cpuFloatTensor, src);
                     Ops.Mul(cpuFloatTensor, cpuFloatTensor, 255);
 
                     var resultFormat = bytesPerPixel == 3 ? PixelFormat.Format24bppRgb : PixelFormat.Format32bppArgb;
-                    var result = new Bitmap((int)src.Sizes[2], (int)src.Sizes[1], resultFormat);
+                    var result = new Bitmap((int)src.Shape[2], (int)src.Shape[1], resultFormat);
 
 
 

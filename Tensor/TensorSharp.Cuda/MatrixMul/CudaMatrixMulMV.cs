@@ -72,7 +72,7 @@ namespace TensorSharp.CUDA.MatrixMul
                 lhsClone = Ops.NewContiguous(lhs);
             }
 
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, rhs, false, lhs.Sizes[0]);
+            var writeTarget = TensorResultBuilder.GetWriteTarget(result, rhs, false, lhs.Shape[0]);
 
             try
             {
@@ -109,8 +109,8 @@ namespace TensorSharp.CUDA.MatrixMul
                 var xPtr = CudaHelpers.GetBufferStart(vec);
 
                 Operation trans = Operation.Transpose;
-                int m = (int)mat.Sizes[1];
-                int n = (int)mat.Sizes[0];
+                int m = (int)mat.Shape[1];
+                int n = (int)mat.Shape[0];
                 int incx = (int)vec.Strides[0];
                 int lda = (int)mat.Strides[0];
                 int incy = (int)result.Strides[0];
@@ -141,8 +141,8 @@ namespace TensorSharp.CUDA.MatrixMul
                 var xPtr = CudaHelpers.GetBufferStart(vec);
 
                 Operation trans = Operation.Transpose;
-                int m = (int)mat.Sizes[1];
-                int n = (int)mat.Sizes[0];
+                int m = (int)mat.Shape[1];
+                int n = (int)mat.Shape[0];
                 int incx = (int)vec.Strides[0];
                 int lda = (int)mat.Strides[0];
                 int incy = (int)result.Strides[0];
