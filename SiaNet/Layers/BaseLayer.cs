@@ -8,7 +8,7 @@ using TensorSharp;
 
 namespace SiaNet.Layers
 {
-    public abstract class BaseLayer
+    public abstract class BaseLayer : TOps
     {
         public Dictionary<string, Variable> Params { get; set; }
 

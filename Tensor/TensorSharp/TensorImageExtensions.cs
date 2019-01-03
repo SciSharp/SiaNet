@@ -65,7 +65,7 @@ namespace TensorSharp
             try
             {
                 using (var cpuFloatTensor = new Tensor(cpuAllocator, DType.Float32, src.Shape))
-                using (var permutedFloatTensor = cpuFloatTensor.Permute(1, 2, 0))
+                using (var permutedFloatTensor = cpuFloatTensor.Transpose(1, 2, 0))
                 {
                     Ops.Copy(cpuFloatTensor, src);
                     Ops.Mul(cpuFloatTensor, cpuFloatTensor, 255);

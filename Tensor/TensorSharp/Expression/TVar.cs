@@ -827,7 +827,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="dims">The dims.</param>
         /// <returns>TVar.</returns>
-        public TVar Permute(params int[] dims) { return new TVar(new ViewExpression(this.Expression, src => src.Permute(dims))); }
+        public TVar Permute(params int[] dims) { return new TVar(new ViewExpression(this.Expression, src => src.Transpose(dims))); }
         /// <summary>
         /// Views the specified sizes.
         /// </summary>

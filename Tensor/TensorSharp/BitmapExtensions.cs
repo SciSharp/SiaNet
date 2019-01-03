@@ -63,7 +63,7 @@ namespace TensorSharp
                 using (var cpuByteTensor = new Tensor(cpuAllocator, DType.UInt8, sizes, strides))
                 {
                     cpuByteTensor.Storage.CopyToStorage(cpuByteTensor.StorageOffset, lockData.Scan0, cpuByteTensor.Storage.ByteLength);
-                    using (var permutedTensor = cpuByteTensor.Permute(2, 0, 1))
+                    using (var permutedTensor = cpuByteTensor.Transpose(2, 0, 1))
                     {
                         using (var cpuFloatTensor = new Tensor(cpuAllocator, DType.Float32, permutedTensor.Shape))
                         {

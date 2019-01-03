@@ -140,7 +140,6 @@ namespace SiaNet
                 Ops.Concat(t, 0, tb, d, tb);
                 d = t;
                 shape = d.Shape;
-                t.Dispose();
                 lr.Dispose();
                 tb.Dispose();
             }

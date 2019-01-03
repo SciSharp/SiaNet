@@ -20,7 +20,7 @@ namespace SiaNet.Layers
         {
             Input = x;
 
-            Output = x.Data.Permute(Dims);
+            Output = x.Data.Transpose(Dims);
         }
 
         public override void Backward(Tensor outputgrad)

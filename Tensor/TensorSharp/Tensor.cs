@@ -194,6 +194,20 @@ namespace TensorSharp
         /// <value>The dimension count.</value>
         public int DimensionCount { get { return shape.Length; } }
 
+        public ValueTuple<long, long, long, long, long> GetConv3DShape()
+        {
+            return (Shape[0], Shape[1], Shape[2], Shape[3], shape[4]);
+        }
+
+        public ValueTuple<long, long, long, long> GetConv2DShape()
+        {
+            return (Shape[0], Shape[1], Shape[2], Shape[3]);
+        }
+
+        public ValueTuple<long, long, long> GetConv1DShape()
+        {
+            return (Shape[0], Shape[1], Shape[2]);
+        }
 
         /// <summary>
         /// Returns a new Tensor object which points to the same storage as this,
@@ -453,7 +467,7 @@ namespace TensorSharp
         /// <param name="dims">The dims.</param>
         /// <returns>Tensor.</returns>
         /// <exception cref="InvalidOperationException">The number of permutation indices must equal the number of tensor dimensions</exception>
-        public Tensor Permute(params int[] dims)
+        public Tensor Transpose(params int[] dims)
         {
             if (dims.Length != this.DimensionCount)
                 throw new InvalidOperationException("The number of permutation indices must equal the number of tensor dimensions");
@@ -876,7 +890,7 @@ namespace TensorSharp
         {
             Tensor result = null;
             List<float> data = new List<float>();
-            while (start <= stop)
+            while (start < stop)
             {
                 data.Add(start);
                 start += step;

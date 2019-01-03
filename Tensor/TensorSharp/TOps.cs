@@ -576,6 +576,17 @@ namespace TensorSharp
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
         public static Tensor Sum( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("sum", null, src, dimension); }
+
+        public static Tensor Sum(Tensor src, params int[] dimension)
+        {
+            foreach (int dim in dimension)
+            {
+                src = Sum(src, dim);
+            }
+
+            return src;
+        }
+
         /// <summary>
         /// Products the specified result.
         /// </summary>

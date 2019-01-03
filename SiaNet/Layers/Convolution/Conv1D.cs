@@ -9,17 +9,17 @@ using TensorSharp.Cpu;
 
 namespace SiaNet.Layers
 {
-    public class Conv2D : BaseLayer
+    public class Conv1D : BaseLayer
     {
         public uint Filters { get; set; }
 
-        public Tuple<uint, uint> KernalSize { get; set; }
+        public uint KernalSize { get; set; }
 
-        public Tuple<uint, uint> Strides { get; set; }
+        public uint Strides { get; set; }
 
         public uint? Padding { get; set; }
 
-        public Tuple<uint, uint> DialationRate { get; set; }
+        public uint DilationRate { get; set; }
 
         public ActivationType Activation { get; set; }
 
@@ -37,17 +37,19 @@ namespace SiaNet.Layers
 
         public BaseRegularizer BiasRegularizer { get; set; }
 
-        public Conv2D(uint filters, Tuple<uint, uint> kernalSize, Tuple<uint, uint> strides = null, uint? padding = null, Tuple<uint, uint> dialationRate = null,
+        private Tensor xCols;
+
+        public Conv1D(uint filters, uint kernalSize, uint strides = 1, uint? padding = null, uint dilationRate = 1,
                     ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
                     BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null,
                     BaseConstraint biasConstraint = null)
-            : base("conv2d")
+            : base("conv1d")
         {
             Filters = filters;
             KernalSize = kernalSize;
-            Strides = strides ?? Tuple.Create<uint, uint>(1, 1);
+            Strides = strides;
             Padding = padding;
-            DialationRate = dialationRate ?? Tuple.Create<uint, uint>(1, 1);
+            DilationRate = dilationRate;
             Activation = activation;
             UseBias = useBias;
             KernalInitializer = kernalInitializer ?? new GlorotUniform();
@@ -59,13 +61,45 @@ namespace SiaNet.Layers
         }
         public override void Forward(Variable x)
         {
-            
-            throw new NotImplementedException();
+            //ToDo: Implement DilationRate
+            Input = x;
+            var (n, c, s) = x.Data.GetConv1DShape();
+
+            Variable weight = BuildVar("w", new long[] { Filters, c, KernalSize }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
+            Variable bias = null;
+            if (UseBias)
+            {
+                bias = BuildVar("b", new long[] { Filters, 1 }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
+            }
+
+            var steps_out = (s - KernalSize + 2 * Padding) / Strides + 1;
+
+            xCols = ImgUtil.Im2Col(x.Data, KernalSize, Padding, Strides);
+            var wRows = weight.Data.Reshape(Filters, -1);
+
+            Output = Dot(wRows, xCols);
+            if (UseBias)
+            {
+                Output = Output + bias.Data;
+            }
+
+            Output = Output.Reshape(Filters, steps_out.Value, n).Transpose(2, 0, 1);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            throw new NotImplementedException();
+            var dout_flat = outputgrad.Transpose(2, 0, 1).Reshape(Filters, -1);
+            var dW = Dot(dout_flat, xCols.Transpose());
+            dW = dW.Reshape(Params["w"].Data.Shape);
+            var db = Sum(outputgrad, 0, 1, 2).Reshape(Filters, -1);
+            var W_flat = Params["w"].Data.Reshape(Filters, -1);
+
+            var dX_col = Dot(W_flat.Transpose(), dout_flat);
+            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, Padding, Strides);
+
+            Params["w"].Grad = dW;
+            if (UseBias)
+                Params["b"].Grad = db;
         }
     }
 }
