@@ -339,7 +339,7 @@ namespace TensorSharp
         /// <param name="sizes">The sizes.</param>
         /// <returns>Tensor.</returns>
         /// <exception cref="InvalidOperationException">
-        /// Cannot use View on a non-contiguous tensor
+        /// Cannot use View on a non-contiguous tensor000
         /// or
         /// Output tensor must have the same number of elements as the input
         /// </exception>
@@ -357,11 +357,13 @@ namespace TensorSharp
 
         public Tensor Reshape(params long[] sizes)
         {
+            long prod = -1 * sizes.Aggregate(1L, (a, b) => a * b);
             for (int i = 0; i < sizes.Length; i++)
             {
                 if (sizes[i] == -1)
                 {
-                    sizes[i] = ElementCount();
+                    sizes[i] = ElementCount() / prod;
+                    break;
                 }
             }
 
@@ -948,17 +950,5 @@ namespace TensorSharp
         public static Tensor operator <=(Tensor lhs, Tensor rhs) { return TOps.LessOrEqual(lhs, rhs); }
 
         public static Tensor operator <=(Tensor lhs, float rhs) { return TOps.LessOrEqual(lhs, rhs); }
-
-        //public static Tensor operator ==(Tensor lhs, Tensor rhs) { return TOps.EqualTo(lhs, rhs); }
-
-        //public static Tensor operator ==(Tensor lhs, float rhs) { return TOps.EqualTo(lhs, rhs); }
-
-        //public static Tensor operator ==(float lhs, Tensor rhs) { return TOps.EqualTo(rhs, lhs); }
-
-        //public static Tensor operator !=(Tensor lhs, Tensor rhs) { return TOps.NotEqual(lhs, rhs); }
-
-        //public static Tensor operator !=(Tensor lhs, float rhs) { return TOps.NotEqual(lhs, rhs); }
-
-        //public static Tensor operator !=(float lhs, Tensor rhs) { return TOps.NotEqual(rhs, lhs); }
     }
 }

@@ -484,7 +484,7 @@ namespace TensorSharp
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Add( Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("addt", null, lhs, rhs); }
+        public static Tensor Add(Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("addt", null, lhs, rhs); }
         /// <summary>
         /// Subs the specified result.
         /// </summary>
@@ -492,7 +492,7 @@ namespace TensorSharp
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Sub( Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("subt", null, lhs, rhs); }
+        public static Tensor Sub(Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("subt", null, lhs, rhs); }
         /// <summary>
         /// Muls the specified result.
         /// </summary>
@@ -500,7 +500,7 @@ namespace TensorSharp
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Mul( Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("mult", null, lhs, rhs); }
+        public static Tensor Mul(Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("mult", null, lhs, rhs); }
         /// <summary>
         /// Divs the specified result.
         /// </summary>
@@ -508,7 +508,7 @@ namespace TensorSharp
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Div( Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("divt", null, lhs, rhs); }
+        public static Tensor Div(Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("divt", null, lhs, rhs); }
         /// <summary>
         /// Mods the specified result.
         /// </summary>
@@ -516,7 +516,7 @@ namespace TensorSharp
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Mod( Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("modt", null, lhs, rhs); }
+        public static Tensor Mod(Tensor lhs, Tensor rhs) { return (Tensor)OpRegistry.Invoke("modt", null, lhs, rhs); }
 
         /// <summary>
         /// Greaters the than.

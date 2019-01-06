@@ -16,7 +16,7 @@ namespace SiaNet.Layers
 
         public uint Strides { get; set; }
 
-        public uint? Padding { get; set; }
+        public PaddingType Padding { get; set; }
 
         public Tuple<uint, uint, uint> DialationRate { get; set; }
 
@@ -38,7 +38,7 @@ namespace SiaNet.Layers
 
         private Tensor xCols;
 
-        public Conv3D(uint filters, Tuple<uint, uint, uint> kernalSize, uint strides = 1, uint? padding = null, Tuple<uint, uint, uint> dialationRate = null,
+        public Conv3D(uint filters, Tuple<uint, uint, uint> kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, Tuple<uint, uint, uint> dialationRate = null,
                         ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
                         BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
             : base("conv3d")
@@ -71,11 +71,21 @@ namespace SiaNet.Layers
                 bias = BuildVar("b", new long[] { Filters, 1 }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
             }
 
-            var d_out = (d - KernalSize.Item1 + 2 * Padding) / Strides + 1;
-            var h_out = (h - KernalSize.Item2 + 2 * Padding) / Strides + 1;
-            var w_out = (w - KernalSize.Item3 + 2 * Padding) / Strides + 1;
+            uint? pad = null;
+            if (Padding == PaddingType.Same)
+            {
+                pad = 1;
+            }
+            else if (Padding == PaddingType.Full)
+            {
+                pad = 2;
+            }
 
-            xCols = ImgUtil.Im2Col(x.Data, KernalSize.Item1, KernalSize.Item2, KernalSize.Item3, Padding, Strides);
+            var d_out = (d - KernalSize.Item1 + 2 * pad) / Strides + 1;
+            var h_out = (h - KernalSize.Item2 + 2 * pad) / Strides + 1;
+            var w_out = (w - KernalSize.Item3 + 2 * pad) / Strides + 1;
+
+            xCols = ImgUtil.Im2Col(x.Data, KernalSize, pad, Strides);
             var wRows = weight.Data.Reshape(Filters, -1);
 
             Output = Dot(wRows, xCols);
@@ -89,6 +99,16 @@ namespace SiaNet.Layers
 
         public override void Backward(Tensor outputgrad)
         {
+            uint? pad = null;
+            if (Padding == PaddingType.Same)
+            {
+                pad = 1;
+            }
+            else if (Padding == PaddingType.Full)
+            {
+                pad = 2;
+            }
+
             var dout_flat = outputgrad.Transpose(4, 0, 1, 2, 3).Reshape(Filters, -1);
             var dW = Dot(dout_flat, xCols.Transpose());
             dW = dW.Reshape(Params["w"].Data.Shape);
@@ -96,7 +116,7 @@ namespace SiaNet.Layers
             var W_flat = Params["w"].Data.Reshape(Filters, -1);
 
             var dX_col = Dot(W_flat.Transpose(), dout_flat);
-            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize.Item1, KernalSize.Item2, KernalSize.Item3, Padding, Strides);
+            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize.Item1, KernalSize.Item2, KernalSize.Item3, pad, Strides);
 
             Params["w"].Grad = dW;
             if (UseBias)

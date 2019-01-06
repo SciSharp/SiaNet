@@ -12,6 +12,8 @@ using SiaNet.Layers;
 using SiaNet.Layers.Activations;
 using TensorSharp.Expression;
 using System.Linq;
+using MathNet.Numerics.LinearAlgebra;
+using Zeros = SiaNet.Initializers.Zeros;
 
 namespace Examples
 {
@@ -31,7 +33,8 @@ namespace Examples
             //MaxImpl();
             //ToArrayTest();
             //FlattenTest();
-            Im2ColTest();
+            //TestConv2d();
+            TestParallel();
         }
 
         private static void TestDense()
@@ -188,19 +191,37 @@ namespace Examples
             Tensor tensor1 = TVar.RandomUniform(new SeedSource(), 0, 10, Global.Device, DType.Float32, 2, 2, 2, 4).Evaluate();
             tensor1.Print();
             
-            tensor1 = tensor1.PadAll(2, 0);
+            tensor1 = tensor1.Pad(2, 0);
             tensor1.Print();
         }
 
-        private static void Im2ColTest()
+        private static void TestConv2d()
         {
             var t = Tensor.Arange(Global.Device, 1, 10, 3);
             Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, Global.Device).Evaluate();
-            tensor1 = tensor1.View(2, 1, 3, 3);
-            tensor1 = tensor1.PadAll(1);
+            tensor1 = tensor1.View(1, 2, 3, 3);
+            Conv2D conv2D = new Conv2D(3, new Tuple<uint, uint>(3, 3), kernalInitializer: new Ones());
+            conv2D.Forward(Variable.Create(tensor1));
+            conv2D.Output.Print();
+        }
 
-            var cols = tensor1.Unfold(0, 3, 1).Unfold(1, 1, 1);
-            cols.Print();
+        private static void TestParallel()
+        {
+            Tensor a = new Tensor(Global.Device, DType.Float32, 10, 5);
+            Tensor b = new Tensor(Global.Device, DType.Float32, 10, 20);
+            a.Print();
+            a = new RandomNormal().Operator(a);
+            b = new RandomNormal().Operator(b);
+
+            var c = a + b;
+            c.Print();
+
+            Matrix<float> ma = Matrix<float>.Build.Dense(10, 5);
+            Matrix<float> mb = Matrix<float>.Build.Dense(10, 20);
+
+            Matrix<float> mc = Matrix<float>.Build.Dense(10, 20);
+
+            mc = ma * mb;
         }
     }
 }

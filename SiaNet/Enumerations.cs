@@ -63,4 +63,11 @@ namespace SiaNet
         Max,
         Avg
     }
+
+    public enum PaddingType
+    {
+        Valid,
+        Same,
+        Full
+    }
 }

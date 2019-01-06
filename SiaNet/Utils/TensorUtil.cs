@@ -99,19 +99,65 @@ namespace SiaNet
             return result;
         }
 
-        public static Tensor PadAll(this Tensor tensor, uint n = 1, float value = 0)
+        public static Tensor Pad(this Tensor t, uint n = 1, float value = 0)
         {
             List<float> data = new List<float>();
+            Tensor tensor = new Tensor(t.Allocator, t.ElementType, t.Shape);
+            tensor.CopyFrom(t.ToArray());
             var tlist = tensor.NDto2DList();
+
+            bool fill3d = false;
+            long fillAfterBeforeCount = 0;
+            List<float> fillData = new List<float>();
+            if(tensor.DimensionCount == 5)
+            {
+                fill3d = true;
+                fillAfterBeforeCount = tensor.Shape[2];
+                long dataCount = (tensor.Shape[3] + (n * 2)) * (tensor.Shape[4] + (n * 2));
+                for (int i = 0; i < dataCount; i++) fillData.Add(value);
+            }
+
+             int counter = 1;
+
             foreach (var item in tlist)
             {
-                data.AddRange(Pad2D(item).Cast<float>());
+                if(fill3d)
+                {
+                    if(counter == 1)
+                    {
+                        data.AddRange(fillData);
+                    }
+                }
+
+                if (tensor.DimensionCount <= 3)
+                {
+                    data.AddRange(PadLR(item).Cast<float>());
+                }
+                else
+                {
+                    data.AddRange(Pad2D(item).Cast<float>());
+                }
+
+                if (fill3d)
+                {
+                    if (counter == fillAfterBeforeCount)
+                    {
+                        data.AddRange(fillData);
+                        counter = 0;
+                    }
+                }
+
+                counter++;
             }
 
             var shape = tensor.Shape;
 
-            shape[shape.Length - 1] = shape[shape.Length - 1] + 2;
-            shape[shape.Length - 2] = shape[shape.Length - 2] + 2;
+            shape[shape.Length - 1] = shape[shape.Length - 1] + (n * 2);
+            if (tensor.DimensionCount >= 4)
+               shape[shape.Length - 2] = shape[shape.Length - 2] + (n * 2);
+
+            if (tensor.DimensionCount >= 5)
+                shape[shape.Length - 3] = shape[shape.Length - 3] + (n * 2);
 
             tensor = new Tensor(Global.Device, tensor.ElementType, shape);
             tensor.CopyFrom(data.ToArray());
@@ -128,7 +174,7 @@ namespace SiaNet
                 Tensor lr = new Tensor(Global.Device, DType.Float32, shape[0], 1);
                 Ops.Fill(lr, 0);
 
-                Tensor t = new Tensor(Global.Device, DType.Float32, shape[0], shape[1] + 2);
+                Tensor t = new Tensor(Global.Device, DType.Float32, shape[0], shape[1] + (n * 2));
                 Ops.Concat(t, 1, lr, d, lr);
                 d = t;
                 shape = d.Shape;
@@ -136,14 +182,33 @@ namespace SiaNet
                 Tensor tb = new Tensor(Global.Device, DType.Float32, 1, shape[1]);
                 Ops.Fill(tb, 0);
                 
-                t = new Tensor(Global.Device, DType.Float32, shape[0] + 2, shape[1]);
+                t = new Tensor(Global.Device, DType.Float32, shape[0] + (n * 2), shape[1]);
                 Ops.Concat(t, 0, tb, d, tb);
                 d = t;
                 shape = d.Shape;
+
                 lr.Dispose();
                 tb.Dispose();
             }
-           
+
+            return d.ToArray();
+        }
+
+        private static Array PadLR(Tensor d, uint n = 1)
+        {
+            long[] shape = d.Shape;
+            Array data = d.ToArray();
+
+            for (int i = 0; i < n; i++)
+            {
+                Tensor lr = new Tensor(Global.Device, DType.Float32, shape[0], 1);
+                Ops.Fill(lr, 0);
+
+                Tensor t = new Tensor(Global.Device, DType.Float32, shape[0], shape[1] + 2);
+                Ops.Concat(t, 1, lr, d, lr);
+                d = t;
+                shape = d.Shape;
+            }
 
             return d.ToArray();
         }
