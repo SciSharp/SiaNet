@@ -923,7 +923,7 @@ namespace TensorSharp
 
         public static Tensor operator -(float lhs, Tensor rhs) { return TOps.Sub(lhs, rhs); }
 
-        public static Tensor operator *(Tensor lhs, Tensor rhs) { return TOps.Mul(lhs, rhs); }
+        public static Tensor operator *(Tensor lhs, Tensor rhs) { return TOps.Dot(lhs, rhs); }
 
         public static Tensor operator *(Tensor lhs, float rhs) { return TOps.Mul(lhs, rhs); }
 

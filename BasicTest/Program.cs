@@ -33,8 +33,8 @@ namespace Examples
             //MaxImpl();
             //ToArrayTest();
             //FlattenTest();
-            //TestConv2d();
-            TestParallel();
+            TestConv1d();
+            //TestParallel();
         }
 
         private static void TestDense()
@@ -198,30 +198,55 @@ namespace Examples
         private static void TestConv2d()
         {
             var t = Tensor.Arange(Global.Device, 1, 10, 3);
-            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, Global.Device).Evaluate();
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1 }, Global.Device).Evaluate();
             tensor1 = tensor1.View(1, 2, 3, 3);
             Conv2D conv2D = new Conv2D(3, new Tuple<uint, uint>(3, 3), kernalInitializer: new Ones());
             conv2D.Forward(Variable.Create(tensor1));
             conv2D.Output.Print();
         }
 
+        private static void TestConv1d()
+        {
+            var t = Tensor.Arange(Global.Device, 1, 10, 3);
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1 }, Global.Device).Evaluate();
+            tensor1 = tensor1.View(2, 3, 3);
+            Conv1D conv = new Conv1D(3, 3, kernalInitializer: new Ones());
+            conv.Forward(Variable.Create(tensor1));
+            conv.Output.Print();
+        }
+
+        private static void TestConv3d()
+        {
+            Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1 }, Global.Device).Evaluate();
+            tensor1 = tensor1.View(1, 2, 2, 3, 3);
+            Conv3D conv = new Conv3D(3, new Tuple<uint, uint, uint>(2, 3, 3), kernalInitializer: new Ones());
+            conv.Forward(Variable.Create(tensor1));
+            conv.Output.Print();
+        }
+
         private static void TestParallel()
         {
-            Tensor a = new Tensor(Global.Device, DType.Float32, 10, 5);
-            Tensor b = new Tensor(Global.Device, DType.Float32, 10, 20);
-            a.Print();
-            a = new RandomNormal().Operator(a);
-            b = new RandomNormal().Operator(b);
+            Tensor a = Tensor.FromArray(Global.Device, new float[] { 2, 3, 1, 2 });
+            Tensor b = Tensor.FromArray(Global.Device, new float[] { 1, 2, 2, 3, 1, 2 });
 
-            var c = a + b;
+            //Tensor c = new Tensor(Global.Device, DType.Float32, 2, 3);
+
+            a = a.View(2, 2);
+            b = b.View(2, 3);
+
+            a.Print();
+            b.Print();
+
+            var c = a * 2;
+
+            //Ops.Dot(c, a, b);
             c.Print();
 
-            Matrix<float> ma = Matrix<float>.Build.Dense(10, 5);
-            Matrix<float> mb = Matrix<float>.Build.Dense(10, 20);
+            Matrix<float> ma = Matrix<float>.Build.DenseOfArray(new float[,] { { 2, 3 }, { 1, 2 } });
+            Matrix<float> mb = Matrix<float>.Build.DenseOfArray(new float[,] { { 1, 2, 2 }, {3 , 1, 2 } });
 
-            Matrix<float> mc = Matrix<float>.Build.Dense(10, 20);
-
-            mc = ma * mb;
+            var mc = ma * mb;
+            Console.WriteLine(mc.ToMatrixString());
         }
     }
 }

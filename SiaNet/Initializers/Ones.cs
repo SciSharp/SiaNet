@@ -7,7 +7,7 @@ namespace SiaNet.Initializers
     public class Ones : Constant
     {
         public Ones()
-            : base("ones", 0)
+            : base("ones", 1)
         {
 
         }
