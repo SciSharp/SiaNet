@@ -611,6 +611,19 @@ namespace TensorSharp
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
         public static Tensor Max( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("max", null, src, dimension); }
+
+        public static Tensor Max(Tensor src, params int[] dimension)
+        {
+            var shape = src.Shape;
+            
+            foreach (var item in dimension)
+            {
+                src = Max(src, item);
+            }
+
+            return src;
+        }
+
         /// <summary>
         /// Argmins the specified result.
         /// </summary>
@@ -636,6 +649,17 @@ namespace TensorSharp
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
         public static Tensor Mean( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("mean", null, src, dimension); }
+
+        public static Tensor Mean(Tensor src, params int[] dimension)
+        {
+            foreach (var item in dimension)
+            {
+                src = Mean(src, item);
+            }
+
+            return src;
+        }
+
         /// <summary>
         /// Norms the specified result.
         /// </summary>

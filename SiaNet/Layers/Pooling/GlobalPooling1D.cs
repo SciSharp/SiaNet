@@ -17,12 +17,19 @@ namespace SiaNet.Layers
 
         public override void Forward(Variable x)
         {
-            throw new NotImplementedException();
+            Input = x;
+            if(PoolingType == PoolingPoolType.Max)
+            {
+                Output = Max(x.Data, 2);
+            }
+            else
+            {
+                Output = Mean(x.Data, 2);
+            }
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            throw new NotImplementedException();
         }
     }
 }

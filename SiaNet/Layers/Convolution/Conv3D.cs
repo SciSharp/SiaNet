@@ -116,7 +116,7 @@ namespace SiaNet.Layers
             var W_flat = Params["w"].Data.Reshape(Filters, -1);
 
             var dX_col = Dot(W_flat.Transpose(), dout_flat);
-            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize.Item1, KernalSize.Item2, KernalSize.Item3, pad, Strides);
+            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides);
 
             Params["w"].Grad = dW;
             if (UseBias)

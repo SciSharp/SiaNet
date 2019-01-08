@@ -33,7 +33,7 @@ namespace Examples
             //MaxImpl();
             //ToArrayTest();
             //FlattenTest();
-            TestConv1d();
+            TestConv2d();
             //TestParallel();
         }
 
@@ -200,6 +200,7 @@ namespace Examples
             var t = Tensor.Arange(Global.Device, 1, 10, 3);
             Tensor tensor1 = TVar.FromArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1 }, Global.Device).Evaluate();
             tensor1 = tensor1.View(1, 2, 3, 3);
+            var max = TOps.Max(tensor1, 2, 3);
             Conv2D conv2D = new Conv2D(3, new Tuple<uint, uint>(3, 3), kernalInitializer: new Ones());
             conv2D.Forward(Variable.Create(tensor1));
             conv2D.Output.Print();

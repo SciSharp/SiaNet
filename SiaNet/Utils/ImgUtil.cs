@@ -47,17 +47,17 @@ namespace SiaNet
             return Ops.NewContiguous(cols).Reshape(c * s, -1);
         }
 
-        public static Tensor Col2Im(Tensor cols, long[] x_shape, uint field_height, uint field_width, uint field_depth, uint? padding = null, uint stride = 1)
+        public static Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<uint, uint, uint> kernalSize, uint? padding = null, uint stride = 1)
         {
             return cols;
         }
 
-        public static Tensor Col2Im(Tensor cols, long[] x_shape, uint field_height, uint field_width, uint? padding = null, uint stride = 1)
+        public static Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<uint, uint> kernalSize, uint? padding = null, uint stride = 1)
         {
             return cols;
         }
 
-        public static Tensor Col2Im(Tensor cols, long[] x_shape, uint field_height, uint? padding = null, uint stride = 1)
+        public static Tensor Col2Im(Tensor cols, long[] x_shape, uint steps, uint? padding = null, uint stride = 1)
         {
             return cols;
         }
