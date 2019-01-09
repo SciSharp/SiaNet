@@ -18,9 +18,13 @@ namespace SiaNet.Layers.Activations
         public override void Forward(Variable x)
         {
             Input = x;
-            var keepElements = x.Data.TVar() > 0;
-            var d = _alpha * (x.Data.TVar().Exp() - 1);
-            Output = (x.Data.TVar().CMul(keepElements) + (1 - keepElements).CMul(d)).Evaluate();
+            var keepElements = x.Data > 0;
+            
+            var keepElements_Exp = x.Data <= 0;
+            keepElements_Exp.Print();
+            var d = _alpha * (Exp(x.Data * keepElements_Exp) - 1);
+            (x.Data + keepElements - x.Data - keepElements_Exp).Print();
+            Output = (x.Data + keepElements - x.Data - keepElements_Exp) + (1 - keepElements) * d;
         }
 
         public override void Backward(Tensor outputgrad)

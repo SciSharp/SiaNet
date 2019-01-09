@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{629A2A85-BA5A-4EBF-82FF-0FF405465432}"
 EndProject
@@ -15,9 +15,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CpuOps", "Tensor\CpuOps\Cpu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TensorSharp", "Tensor\TensorSharp\TensorSharp.csproj", "{CD04AE10-DCFB-4048-8D79-8C27E41B5AEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TensorSharp.Cuda", "Tensor\TensorSharp.Cuda\TensorSharp.Cuda.csproj", "{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicTest", "BasicTest\BasicTest.csproj", "{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicTest", "BasicTest\BasicTest.csproj", "{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,24 +99,6 @@ Global
 		{CD04AE10-DCFB-4048-8D79-8C27E41B5AEF}.ReleaseCpuOnly|x64.Build.0 = Release|x64
 		{CD04AE10-DCFB-4048-8D79-8C27E41B5AEF}.ReleaseCpuOnly|x86.ActiveCfg = Release|Any CPU
 		{CD04AE10-DCFB-4048-8D79-8C27E41B5AEF}.ReleaseCpuOnly|x86.Build.0 = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Debug|x64.ActiveCfg = Debug|x64
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Debug|x64.Build.0 = Debug|x64
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Debug|x86.Build.0 = Debug|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Release|x64.ActiveCfg = Release|x64
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Release|x64.Build.0 = Release|x64
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Release|x86.ActiveCfg = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.Release|x86.Build.0 = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.ReleaseCpuOnly|Any CPU.ActiveCfg = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.ReleaseCpuOnly|Any CPU.Build.0 = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.ReleaseCpuOnly|x64.ActiveCfg = Release|x64
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.ReleaseCpuOnly|x64.Build.0 = Release|x64
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.ReleaseCpuOnly|x86.ActiveCfg = Release|Any CPU
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2}.ReleaseCpuOnly|x86.Build.0 = Release|Any CPU
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}.Debug|x64.ActiveCfg = Debug|x64
@@ -144,7 +124,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{920E488B-9DDE-4AC0-863D-448645F9A15D} = {F759ACA4-E1D6-4434-93AD-64578E819A99}
 		{CD04AE10-DCFB-4048-8D79-8C27E41B5AEF} = {F759ACA4-E1D6-4434-93AD-64578E819A99}
-		{67E47BAB-8D0B-41A0-AE0D-C0D5C54341B2} = {F759ACA4-E1D6-4434-93AD-64578E819A99}
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF} = {629A2A85-BA5A-4EBF-82FF-0FF405465432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

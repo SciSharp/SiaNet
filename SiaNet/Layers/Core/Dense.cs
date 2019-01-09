@@ -51,32 +51,27 @@ namespace SiaNet.Layers
             Input = x;
             Variable weight = BuildVar("w", new long[] { x.Data.Shape[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Variable bias = null;
+            Output = (x.Data * weight.Data);
 
             if (UseBias)
             {
                 bias = BuildVar("b", new long[] { 1, Dim }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
-
-                Output = bias.Data.TVar().Expand(x.Data.Shape[0], Dim)
-                    .Addmm(1, 1, x.Data, weight.Data)
-                    .Evaluate();
-            }
-            else
-            {
-                Output = x.Data.TVar().Dot(weight.Data.TVar()).Evaluate();
+                Output += bias.Data;
             }
 
-            Activation.Forward(Output.ToVariable());
+            if (Activation!=null)
+                Activation.Forward(Output.ToVariable());
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Activation.Backward(outputgrad);
+            if (Activation != null)
+                Activation.Backward(outputgrad);
 
-            Input.Grad = outputgrad.TVar().Dot(Params["w"].Data.TVar().Transpose()).Evaluate();
-
-            Params["w"].Grad = outputgrad.TVar().Dot(Params["w"].Data.TVar().Transpose()).Evaluate();
-            if(UseBias)
-                Params["b"].Grad = (Params["b"].Grad + outputgrad.TVar().Sum(0)).Evaluate();
+            Input.Grad = (outputgrad * Params["w"].Data.Transpose());
+            Params["w"].Grad = Input.Data.Transpose() * outputgrad;
+            if (UseBias)
+                Params["b"].Grad = Sum(outputgrad, 0);
         }
     }
 }

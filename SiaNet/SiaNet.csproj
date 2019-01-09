@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tensor\TensorSharp.Cuda\TensorSharp.Cuda.csproj" />
+    <ProjectReference Include="..\Tensor\TensorSharp\TensorSharp.csproj" />
   </ItemGroup>
 
 </Project>
