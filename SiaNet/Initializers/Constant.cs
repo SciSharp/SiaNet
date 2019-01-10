@@ -22,8 +22,9 @@ namespace SiaNet.Initializers
             Value = value;
         }
 
-        public override Tensor Operator(Tensor tensor)
+        public override Tensor Operator(params long[] shape)
         {
+            Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
             Ops.Fill(tensor, Value);
             return tensor;
         }

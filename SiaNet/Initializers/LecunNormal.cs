@@ -6,8 +6,8 @@ namespace SiaNet.Initializers
 {
     public class LecunNormal : VarianceScaling
     {
-        public LecunNormal()
-            :base(1, "fan_in", "normal")
+        public LecunNormal(int? seed = null)
+            :base(1, "fan_in", "normal", seed)
         {
             Name = "lecun_normal";
         }

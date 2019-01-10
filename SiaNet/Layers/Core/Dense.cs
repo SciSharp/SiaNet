@@ -51,7 +51,7 @@ namespace SiaNet.Layers
             Input = x;
             Variable weight = BuildVar("w", new long[] { x.Data.Shape[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Variable bias = null;
-            Output = (x.Data * weight.Data);
+            Output = Dot(x.Data, weight.Data);
 
             if (UseBias)
             {
@@ -68,8 +68,8 @@ namespace SiaNet.Layers
             if (Activation != null)
                 Activation.Backward(outputgrad);
 
-            Input.Grad = (outputgrad * Params["w"].Data.Transpose());
-            Params["w"].Grad = Input.Data.Transpose() * outputgrad;
+            Input.Grad = Dot(outputgrad, Params["w"].Data.Transpose());
+            Params["w"].Grad = Dot(Input.Data.Transpose(), outputgrad);
             if (UseBias)
                 Params["b"].Grad = Sum(outputgrad, 0);
         }

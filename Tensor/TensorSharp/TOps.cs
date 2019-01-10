@@ -916,7 +916,7 @@ namespace TensorSharp
             return x.View(1, x.ElementCount());
         }
 
-        public static ValueTuple<Tensor, Tensor> Broadcast(Tensor lhs, Tensor rhs)
+        public static ValueTuple<Tensor, Tensor> Broadcast_Add(Tensor lhs, Tensor rhs)
         {
             if (!lhs.IsSameSizeAs(rhs))
             {
@@ -969,6 +969,74 @@ namespace TensorSharp
                     if (rhs.Shape[1] == 1)
                     {
                         rhs = rhs.RepeatTensor(1, lhs.Shape[1]);
+                    }
+                }
+            }
+
+            return (lhs, rhs);
+        }
+
+        public static ValueTuple<Tensor, Tensor> Broadcast_Mul(Tensor lhs, Tensor rhs)
+        {
+            if (!lhs.IsSameSizeAs(rhs))
+            {
+                if (lhs.Shape[0] == rhs.Shape[0] && (lhs.Shape[1] == 1 || rhs.Shape[1] == 1))
+                {
+                    if (lhs.Shape[1] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(1, rhs.Shape[1]);
+                    }
+
+                    if (rhs.Shape[1] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(1, lhs.Shape[1]);
+                    }
+                }
+
+                if (lhs.Shape[1] == rhs.Shape[1] && (lhs.Shape[0] == 1 || rhs.Shape[0] == 1))
+                {
+                    if (lhs.Shape[0] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(rhs.Shape[0], 1);
+                    }
+
+                    if (rhs.Shape[0] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(lhs.Shape[0], 1);
+                    }
+                }
+            }
+
+            return (lhs, rhs);
+        }
+
+        public static ValueTuple<Tensor, Tensor> Broadcast_Div(Tensor lhs, Tensor rhs)
+        {
+            if (!lhs.IsSameSizeAs(rhs))
+            {
+                if (lhs.Shape[0] == rhs.Shape[0] && (lhs.Shape[1] == 1 || rhs.Shape[1] == 1))
+                {
+                    if (lhs.Shape[1] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(1, rhs.Shape[1]);
+                    }
+
+                    if (rhs.Shape[1] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(1, lhs.Shape[1]);
+                    }
+                }
+
+                if (lhs.Shape[1] == rhs.Shape[1] && (lhs.Shape[0] == 1 || rhs.Shape[0] == 1))
+                {
+                    if (lhs.Shape[0] == 1)
+                    {
+                        lhs = lhs.RepeatTensor(rhs.Shape[0], 1);
+                    }
+
+                    if (rhs.Shape[0] == 1)
+                    {
+                        rhs = rhs.RepeatTensor(lhs.Shape[0], 1);
                     }
                 }
             }

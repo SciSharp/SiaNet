@@ -6,8 +6,8 @@ namespace SiaNet.Initializers
 {
     public class LecunUniform : VarianceScaling
     {
-        public LecunUniform()
-            :base(1, "fan_in", "uniform")
+        public LecunUniform(int? seed = null)
+            :base(1, "fan_in", "uniform", seed)
         {
             Name = "lecun_uniform";
         }

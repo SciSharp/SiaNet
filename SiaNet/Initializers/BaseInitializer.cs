@@ -5,7 +5,7 @@ using TensorSharp;
 
 namespace SiaNet.Initializers
 {
-    public abstract class BaseInitializer
+    public abstract class BaseInitializer : TOps
     {
         public string Name { get; set; }
 
@@ -14,6 +14,6 @@ namespace SiaNet.Initializers
             Name = name;
         }
 
-        public abstract Tensor Operator(Tensor tensor);
+        public abstract Tensor Operator(params long[] shape);
     }
 }

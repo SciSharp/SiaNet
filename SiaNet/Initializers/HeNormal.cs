@@ -6,8 +6,8 @@ namespace SiaNet.Initializers
 {
     public class HeNormal : VarianceScaling
     {
-        public HeNormal()
-            :base(2, "fan_in", "normal")
+        public HeNormal(int? seed = null)
+            :base(2, "fan_in", "normal", seed)
         {
             Name = "he_normal";
         }

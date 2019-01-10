@@ -12,17 +12,25 @@ namespace SiaNet.Initializers
 
         public float MaxVal { get; set; }
 
-        public RandomUniform(float minval = 0f, float maxval = 0.05f)
+        public int? Seed { get; set; }
+
+        public RandomUniform(float minval = 0f, float maxval = 0.05f, int? seed = null)
             :base("random_uniform")
         {
             MinVal = minval;
             MaxVal = maxval;
+            Seed = seed;
         }
 
-        public override Tensor Operator(Tensor array)
+        public override Tensor Operator(params long[] shape)
         {
-            Ops.RandomUniform(array, new SeedSource(), MinVal, MaxVal);
-            return array;
+            SeedSource seedSource = new SeedSource();
+            if (Seed.HasValue)
+                seedSource = new SeedSource(Seed.Value);
+
+            Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
+            Ops.RandomUniform(tensor, seedSource, MinVal, MaxVal);
+            return tensor;
         }
     }
 }

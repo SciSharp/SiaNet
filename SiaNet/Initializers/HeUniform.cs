@@ -6,8 +6,8 @@ namespace SiaNet.Initializers
 {
     public class HeUniform : VarianceScaling
     {
-        public HeUniform()
-            :base(2, "fan_in", "uniform")
+        public HeUniform(int? seed = null)
+            :base(2, "fan_in", "uniform", seed)
         {
             Name = "he_uniform";
         }

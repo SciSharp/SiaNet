@@ -8,16 +8,21 @@ namespace SiaNet.Constraints
 {
     public class UnitNorm : BaseConstraint
     {
-        public int Axis;
+        public uint? Axis;
 
-        public UnitNorm(int axis = 0)
+        public UnitNorm(uint? axis = 0)
         {
             Axis = axis;
         }
 
         public override Tensor Call(Tensor w)
         {
-            return w.TVar().CDiv(w.TVar().Sum(Axis).Sqrt()).Evaluate();
+            if(!Axis.HasValue)
+                w = w / (float.Epsilon + Sqrt(Sum(Square(w))));
+            else
+                w = w / (float.Epsilon + Sqrt(Sum(Square(w), (int)Axis.Value)));
+
+            return w;
         }
     }
 }

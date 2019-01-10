@@ -10,9 +10,9 @@ namespace SiaNet.Constraints
     {
         public float MaxValue { get; set; }
 
-        public int Axis { get; set; }
+        public uint? Axis { get; set; }
 
-        public MaxNorm(float maxValue, int axis = -1)
+        public MaxNorm(float maxValue, uint? axis = null)
         {
             MaxValue = maxValue;
             Axis = axis;
@@ -20,11 +20,18 @@ namespace SiaNet.Constraints
 
         public override Tensor Call(Tensor w)
         {
-            var norms = w.TVar().Pow(2).Sqrt();
-            var desired = norms.Clamp(0, MaxValue);
+            Tensor norms = null;
+            if(!Axis.HasValue)
+            {
+                norms = Sqrt(Sum(Square(w)));
+            }
+            else
+            {
+                norms = Sqrt(Sum(Square(w), (int)Axis.Value));
+            }
 
-            var wVar = w.TVar().CMul((desired.CDiv(float.Epsilon + norms)));
-            return wVar.Evaluate();
+            var desired = Clip(norms, 0, MaxValue);
+            return w * (desired / (float.Epsilon + norms));
         }
     }
 }

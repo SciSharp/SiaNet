@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Regularizers
 {
@@ -14,23 +13,23 @@ namespace SiaNet.Regularizers
 
         }
 
-        public override Tensor Call(TVar x)
+        public override Tensor Call(Tensor x)
         {
-            Tensor regularizer = new Tensor(Global.Device, DType.Float32, x.Evaluate().Shape);
+            Tensor regularizer = new Tensor(Global.Device, DType.Float32, x.Shape);
             if (L1 > 0)
             {
-                regularizer = (regularizer.TVar() + (x.Abs() * L1).SumAll()).Evaluate();
+                regularizer += Sum(L1 * Abs(x));
             }
 
             if (L2 > 0)
             {
-                regularizer = (regularizer.TVar() + (x.Pow(2) * L2).SumAll()).Evaluate();
+                regularizer += Sum(L2 * Square(x));
             }
 
             return regularizer;
         }
 
-        public override Tensor CalcGrad(TVar x, TVar grad)
+        public override Tensor CalcGrad(Tensor x, Tensor grad)
         {
             if (L1 > 0)
             {
@@ -39,10 +38,10 @@ namespace SiaNet.Regularizers
 
             if(L2 > 0)
             {
-                grad = grad + (L1 * x).CDiv((x.Abs() + float.Epsilon));
+                grad = grad + (L1 * x) / (Abs(x) + float.Epsilon);
             }
 
-            return grad.Evaluate();
+            return grad;
         }
     }
 }

@@ -14,7 +14,8 @@ namespace SiaNet.Constraints
 
         public override Tensor Call(Tensor w)
         {
-            return (w.TVar() > 0).AsType(DType.Float32).Evaluate();
+            w = w * (w >= 0);
+            return w;
         }
     }
 }

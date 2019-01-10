@@ -16,13 +16,13 @@ namespace SiaNet.Layers.Activations
         public override void Forward(Variable x)
         {
             Input = x;
-            var keepElements = x.Data.TVar() > 0;
-            Output = (x.Data.TVar().CMul(keepElements) + (1 - keepElements) * 0).Evaluate();
+            var keepElements = x.Data > 0;
+            Output = Mul(x.Data, keepElements) + (1 - keepElements) * 0;
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad.TVar().CMul(Output.TVar() > 0).Evaluate();
+            Input.Grad = Mul(outputgrad, Output > 0);
         }
     }
 }

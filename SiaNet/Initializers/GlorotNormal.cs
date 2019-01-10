@@ -6,8 +6,8 @@ namespace SiaNet.Initializers
 {
     public class GlorotNormal : VarianceScaling
     {
-        public GlorotNormal()
-           : base(1, "fan_avg", "normal")
+        public GlorotNormal(int? seed = null)
+           : base(1, "fan_avg", "normal", seed)
         {
             Name = "glorot_uniform";
         }

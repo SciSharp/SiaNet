@@ -905,7 +905,7 @@ namespace TensorSharp
 
         public static Tensor operator +(Tensor lhs, Tensor rhs)
         {
-            (lhs, rhs) = TOps.Broadcast(lhs, rhs);
+            (lhs, rhs) = TOps.Broadcast_Add(lhs, rhs);
             return TOps.Add(lhs, rhs);
         }
 
@@ -915,7 +915,7 @@ namespace TensorSharp
 
         public static Tensor operator -(Tensor lhs, Tensor rhs)
         {
-            (lhs, rhs) = TOps.Broadcast(lhs, rhs);
+            (lhs, rhs) = TOps.Broadcast_Add(lhs, rhs);
             return TOps.Sub(lhs, rhs);
         }
 
@@ -923,13 +923,42 @@ namespace TensorSharp
 
         public static Tensor operator -(float lhs, Tensor rhs) { return TOps.Sub(lhs, rhs); }
 
-        public static Tensor operator *(Tensor lhs, Tensor rhs) { return TOps.Dot(lhs, rhs); }
+        public static Tensor operator *(Tensor lhs, Tensor rhs)
+        {
+            if(rhs.DimensionCount == 1)
+            {
+                return TOps.Mul(lhs, rhs.ToArray().Cast<float>().First());
+            }
+
+            if (lhs.DimensionCount == 1)
+            {
+                return TOps.Mul(rhs, lhs.ToArray().Cast<float>().First());
+            }
+
+            (lhs, rhs) = TOps.Broadcast_Mul(lhs, rhs);
+
+            return TOps.Mul(lhs, rhs);
+        }
 
         public static Tensor operator *(Tensor lhs, float rhs) { return TOps.Mul(lhs, rhs); }
 
         public static Tensor operator *(float lhs, Tensor rhs) { return TOps.Mul(rhs, lhs); }
 
-        public static Tensor operator /(Tensor lhs, Tensor rhs) { return TOps.Div(lhs, rhs); }
+        public static Tensor operator /(Tensor lhs, Tensor rhs)
+        {
+            if (rhs.DimensionCount == 1)
+            {
+                return TOps.Div(lhs, rhs.ToArray().Cast<float>().First());
+            }
+
+            if (lhs.DimensionCount == 1)
+            {
+                return TOps.Div(lhs.ToArray().Cast<float>().First(), rhs);
+            }
+
+            (lhs, rhs) = TOps.Broadcast_Div(lhs, rhs);
+            return TOps.Div(lhs, rhs);
+        }
 
         public static Tensor operator /(Tensor lhs, float rhs) { return TOps.Div(lhs, rhs); }
 
@@ -939,16 +968,30 @@ namespace TensorSharp
 
         public static Tensor operator >(Tensor lhs, float rhs) { return TOps.GreaterThan(lhs, rhs); }
 
-        public static Tensor operator <(Tensor lhs, Tensor rhs) { return TOps.LessThan(lhs, rhs); }
+        public static Tensor operator <(Tensor lhs, Tensor rhs)
+        {
+            return TOps.GreaterThan(rhs, lhs);
+        }
 
-        public static Tensor operator <(Tensor lhs, float rhs) { return TOps.LessThan(lhs, rhs); }
+        public static Tensor operator <(Tensor lhs, float rhs)
+        {
+            Tensor rhs_t = Tensor.Constant(rhs, lhs.Allocator, lhs.ElementType, lhs.shape);
+            return TOps.GreaterThan(rhs_t, lhs);
+        }
 
         public static Tensor operator >=(Tensor lhs, Tensor rhs) { return TOps.GreaterOrEqual(lhs, rhs); }
 
         public static Tensor operator >=(Tensor lhs, float rhs) { return TOps.GreaterOrEqual(lhs, rhs); }
 
-        public static Tensor operator <=(Tensor lhs, Tensor rhs) { return TOps.LessOrEqual(lhs, rhs); }
+        public static Tensor operator <=(Tensor lhs, Tensor rhs)
+        {
+            return TOps.GreaterOrEqual(rhs, lhs);
+        }
 
-        public static Tensor operator <=(Tensor lhs, float rhs) { return TOps.LessOrEqual(lhs, rhs); }
+        public static Tensor operator <=(Tensor lhs, float rhs)
+        {
+            Tensor rhs_t = Tensor.Constant(rhs, lhs.Allocator, lhs.ElementType, lhs.shape);
+            return TOps.GreaterOrEqual(rhs_t, lhs);
+        }
     }
 }

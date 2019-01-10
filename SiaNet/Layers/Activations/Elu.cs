@@ -19,19 +19,17 @@ namespace SiaNet.Layers.Activations
         {
             Input = x;
             var keepElements = x.Data > 0;
-            
-            var keepElements_Exp = x.Data <= 0;
-            keepElements_Exp.Print();
-            var d = _alpha * (Exp(x.Data * keepElements_Exp) - 1);
-            (x.Data + keepElements - x.Data - keepElements_Exp).Print();
-            Output = (x.Data + keepElements - x.Data - keepElements_Exp) + (1 - keepElements) * d;
+            var keepElements_Exp = x.Data < 0;
+            var d = _alpha * (Exp(Mul(x.Data, keepElements_Exp)) - 1);
+            Output = Mul(x.Data, keepElements) + d;
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            var keepElements = Output.TVar() > 0;
-            var d = _alpha * (Output.TVar().Exp() - 1);
-            Input.Grad = (outputgrad.TVar().CMul(keepElements) + (1 - keepElements).CMul(d)).Evaluate();
+            var keepElements = Input.Data > 0;
+            var keepElements_Exp = Input.Data < 0;
+            var d = _alpha * Exp(Mul(Input.Data, keepElements_Exp));
+            Input.Grad = Mul(outputgrad, d);
         }
     }
 }

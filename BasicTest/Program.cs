@@ -24,7 +24,11 @@ namespace Examples
         static void Main(string[] args)
         {
             //TestDense();
-            TestAct();
+            //TestAct();
+
+            Tensor tensor = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
+            tensor = tensor.Reshape(3, -1);
+            TOps.Sum(tensor, 1).Print();
         }
 
         private static void TestDense()
@@ -46,7 +50,7 @@ namespace Examples
             Tensor tensor = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
             tensor = tensor.Reshape(3, -1);
 
-            var act = new Elu();
+            var act = new Selu();
             act.Forward(Variable.Create(tensor));
             act.Output.Print();
 

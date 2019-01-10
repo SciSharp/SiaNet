@@ -88,7 +88,7 @@ namespace SiaNet.Layers
             xCols = ImgUtil.Im2Col(x.Data, KernalSize, pad, Strides);
             var wRows = weight.Data.Reshape(Filters, -1);
 
-            Output = wRows * xCols;
+            Output = Dot(wRows,xCols);
             if (UseBias)
             {
                 Output = Output + bias.Data;

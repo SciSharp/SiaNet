@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TensorSharp", "Tensor\Tenso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicTest", "BasicTest\BasicTest.csproj", "{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.Test", "SiaNet.Test\SiaNet.Test.csproj", "{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,24 @@ Global
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}.ReleaseCpuOnly|x64.Build.0 = Release|Any CPU
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}.ReleaseCpuOnly|x86.ActiveCfg = Release|Any CPU
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF}.ReleaseCpuOnly|x86.Build.0 = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Debug|x64.Build.0 = Debug|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Debug|x86.Build.0 = Debug|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Release|x64.ActiveCfg = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Release|x64.Build.0 = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Release|x86.ActiveCfg = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.Release|x86.Build.0 = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.ReleaseCpuOnly|Any CPU.ActiveCfg = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.ReleaseCpuOnly|Any CPU.Build.0 = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.ReleaseCpuOnly|x64.ActiveCfg = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.ReleaseCpuOnly|x64.Build.0 = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.ReleaseCpuOnly|x86.ActiveCfg = Release|Any CPU
+		{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}.ReleaseCpuOnly|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

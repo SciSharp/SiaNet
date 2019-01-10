@@ -14,7 +14,9 @@ namespace SiaNet.Initializers
 
         public string Distribution { get; set; }
 
-        public VarianceScaling(float scale = 1, string mode = "fan_in", string distribution = "normal")
+        public int? Seed { get; set; }
+
+        public VarianceScaling(float scale = 1, string mode = "fan_in", string distribution = "normal", int? seed = null)
             : base("variance_scaling")
         {
             if (scale < 1f)
@@ -28,11 +30,12 @@ namespace SiaNet.Initializers
             Scale = scale;
             Mode = mode;
             Distribution = distribution;
+            Seed = seed;
         }
 
-        public override Tensor Operator(Tensor tensor)
+        public override Tensor Operator(params long[] shape)
         {
-            var shape = tensor.Shape;
+            Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
             var hwScale = 1.0f;
             if (tensor.DimensionCount > 2)
             {
@@ -46,25 +49,29 @@ namespace SiaNet.Initializers
             switch (Mode)
             {
                 case "fan_avg":
-                    factor = (@in + @out) / 2.0f;
+                    factor = Scale / Math.Max(1, (@in + @out) / 2.0f);
                     break;
                 case "fan_in":
-                    factor = @in;
+                    factor = Scale / Math.Max(1, @in);
                     break;
                 case "fan_out":
-                    factor = @out;
+                    factor = Scale / Math.Max(1, @out);
                     break;
             }
+
+            SeedSource seedSource = new SeedSource();
+            if (Seed.HasValue)
+                seedSource = new SeedSource(Seed.Value);
 
             switch (Distribution)
             {
                 case "uniform":
-                    float limit = (float)Math.Sqrt(3f * Scale);
-                    Ops.RandomUniform(tensor, new SeedSource(), -limit, limit);
+                    float limit = (float)Math.Sqrt(3f * factor);
+                    Ops.RandomUniform(tensor, seedSource, -limit, limit);
                     break;
                 case "normal":
-                    float stddev = (float)Math.Sqrt(Scale) / 0.87962566103423978f;
-                    Ops.RandomNormal(tensor, new SeedSource(), 0, stddev);
+                    float stddev = (float)Math.Sqrt(factor) / 0.87962566103423978f;
+                    Ops.RandomNormal(tensor, seedSource, 0, stddev);
                     break;
             }
 

@@ -5,7 +5,7 @@ using TensorSharp;
 
 namespace SiaNet.Constraints
 {
-    public abstract class BaseConstraint
+    public abstract class BaseConstraint : TOps
     {
         public abstract Tensor Call(Tensor w);
     }

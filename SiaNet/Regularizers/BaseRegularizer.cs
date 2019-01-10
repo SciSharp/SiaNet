@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Regularizers
 {
-    public abstract class BaseRegularizer
+    public abstract class BaseRegularizer : TOps
     {
         internal float L1 { get; set; }
 
@@ -18,8 +17,8 @@ namespace SiaNet.Regularizers
             L2 = l2;
         }
 
-        public abstract Tensor Call(TVar x);
+        public abstract Tensor Call(Tensor x);
 
-        public abstract Tensor CalcGrad(TVar x, TVar grad);
+        public abstract Tensor CalcGrad(Tensor x, Tensor grad);
     }
 }

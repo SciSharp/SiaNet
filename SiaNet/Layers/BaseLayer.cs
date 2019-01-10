@@ -54,7 +54,7 @@ namespace SiaNet.Layers
             if (!Params.ContainsKey(name))
             {
                 v = new Variable(name, elementType, shape);
-                v.Data = initializer.Operator(v.Data);
+                v.Data = initializer.Operator(v.Data.Shape);
                 v.SetConstraint(constraint);
                 v.SetRegularizer(regularizer);
                 if(trainable)

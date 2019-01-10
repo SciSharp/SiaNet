@@ -90,7 +90,7 @@ namespace SiaNet.Layers
             xCols = ImgUtil.Im2Col(x.Data, KernalSize, pad, Strides);
             xCols.Print();
             wRows.Print();
-            Output = wRows * xCols;
+            Output = Dot(wRows,xCols);
             
             if(UseBias)
             {

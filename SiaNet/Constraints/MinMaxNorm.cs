@@ -14,9 +14,9 @@ namespace SiaNet.Constraints
 
         public float Rate { get; set; }
 
-        public int Axis { get; set; }
+        public uint? Axis { get; set; }
 
-        public MinMaxNorm(float minVale = 0, float maxValue = 1, float rate = 1f, int axis = 0)
+        public MinMaxNorm(float minVale = 0, float maxValue = 1, float rate = 1f, uint? axis = 0)
         {
             MinValue = minVale;
             MaxValue = maxValue;
@@ -26,10 +26,15 @@ namespace SiaNet.Constraints
 
         public override Tensor Call(Tensor w)
         {
-            var norms = w.TVar().Pow(2).Sum(Axis).Sqrt();
-            var desired = norms.Clamp(MinValue, MaxValue) + (norms * (1 - Rate));
-            var wVar = desired.CDiv(norms + float.Epsilon);
-            return wVar.Evaluate();
+            Tensor norms = null;
+            if (!Axis.HasValue)
+                norms = Sqrt(Sum(Square(w)));
+            else
+                norms = Sqrt(Sum(Square(w), (int)Axis.Value));
+
+            var desired = Rate * Clip(norms, MinValue, MaxValue) + (1 - Rate) * norms;
+            w = w * (desired / (float.Epsilon + norms));
+            return w;
         }
     }
 }
