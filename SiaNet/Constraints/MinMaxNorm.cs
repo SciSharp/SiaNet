@@ -33,7 +33,7 @@ namespace SiaNet.Constraints
                 norms = Sqrt(Sum(Square(w), (int)Axis.Value));
 
             var desired = Rate * Clip(norms, MinValue, MaxValue) + (1 - Rate) * norms;
-            w = w * (desired / (float.Epsilon + norms));
+            w = w * (desired / (EPSILON + norms));
             return w;
         }
     }

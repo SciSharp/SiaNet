@@ -15,15 +15,19 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var first_log = Log(preds + 1);
-            var second_log = Log(labels + 1);
+            var first_log = Log(Clip(preds, EPSILON, float.MaxValue) + 1);
+            var second_log = Log(Clip(labels, EPSILON, float.MaxValue) + 1);
 
-            return Mean(Square(first_log - second_log));
+            return Mean(Square(first_log - second_log), 1).Reshape(1, -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            throw new NotImplementedException();
+            float norm = 2f / preds.Shape[0];
+            var first_log = Log(Clip(preds, EPSILON, float.MaxValue) + 1);
+            var second_log = Log(Clip(labels, EPSILON, float.MaxValue) + 1);
+
+            return  norm * (first_log - second_log) / (Clip(preds, EPSILON, float.MaxValue) + 1);
         }
     }
 }

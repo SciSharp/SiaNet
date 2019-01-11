@@ -13,32 +13,34 @@ namespace SiaNet.Regularizers
 
         }
 
-        public override Tensor Call(Tensor x)
+        public override float Call(Tensor x)
         {
-            Tensor regularizer = new Tensor(Global.Device, DType.Float32, x.Shape);
+            float result = 0;
             if (L1 > 0)
             {
-                regularizer += Sum(L1 * Abs(x));
+                result += SumF(L1 * Abs(x));
             }
 
             if (L2 > 0)
             {
-                regularizer += Sum(L2 * Square(x));
+                result += SumF(L2 * Square(x));
             }
 
-            return regularizer;
+            return result;
         }
 
-        public override Tensor CalcGrad(Tensor x, Tensor grad)
+        public override Tensor CalcGrad(Tensor x)
         {
+            Tensor grad = null;
+
             if (L1 > 0)
             {
-                grad = grad + (L1 * x);
+                grad = (L1 * x) / (Abs(x) + EPSILON); 
             }
 
             if(L2 > 0)
             {
-                grad = grad + (L1 * x) / (Abs(x) + float.Epsilon);
+                grad = (2 * L2 * x);
             }
 
             return grad;

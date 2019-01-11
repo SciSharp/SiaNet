@@ -24,6 +24,8 @@ namespace TensorSharp
     /// </summary>
     public class TOps
     {
+        public float EPSILON = 1e-07f;
+
         /// <summary>
         /// Creates new contiguous.
         /// </summary>
@@ -575,7 +577,16 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Sum( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("sum", null, src, dimension); }
+        public static Tensor Sum( Tensor src, int dimension)
+        {
+            if(dimension == -1)
+            {
+                var t = (Tensor)OpRegistry.Invoke("sum", null, src, 1);
+                return t.Reshape(1, -1);
+            }
+
+            return (Tensor)OpRegistry.Invoke("sum", null, src, dimension);
+        }
 
         public static Tensor Sum(Tensor src, params int[] dimension)
         {
@@ -610,7 +621,16 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Max( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("max", null, src, dimension); }
+        public static Tensor Max( Tensor src, int dimension)
+        {
+            if (dimension == -1)
+            {
+                var t = (Tensor)OpRegistry.Invoke("max", null, src, 1);
+                return t.Reshape(1, -1);
+            }
+
+            return (Tensor)OpRegistry.Invoke("max", null, src, dimension);
+        }
 
         public static Tensor Max(Tensor src, params int[] dimension)
         {
@@ -631,7 +651,7 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Argmin( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("argmin", null, src, dimension); }
+        public static Tensor Argmin(Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("argmin", null, src, dimension); }
         /// <summary>
         /// Argmaxes the specified result.
         /// </summary>
@@ -639,7 +659,7 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Argmax( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("argmax", null, src, dimension); }
+        public static Tensor Argmax(Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("argmax", null, src, dimension); }
 
         /// <summary>
         /// Means the specified result.
@@ -648,7 +668,16 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Mean( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("mean", null, src, dimension); }
+        public static Tensor Mean(Tensor src, int dimension)
+        {
+            if (dimension == -1)
+            {
+                var t = (Tensor)OpRegistry.Invoke("mean", null, src, 1);
+                return t.Reshape(1, -1);
+            }
+
+            return (Tensor)OpRegistry.Invoke("mean", null, src, dimension);
+        }
 
         public static Tensor Mean(Tensor src, params int[] dimension)
         {
@@ -884,15 +913,7 @@ namespace TensorSharp
 
         public static Tensor L2Normalize(Tensor x, int axis = -1)
         {
-            Tensor y = null;
-            if (axis == -1)
-            {
-                y = Max(Sum(Square(x)));
-            }
-            else
-            {
-                y = Max(Sum(Square(x), axis), axis);
-            }
+            Tensor y = y = Max(Sum(Square(x), axis), axis); ;
 
             return x / Sqrt(y);
         }

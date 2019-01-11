@@ -905,6 +905,16 @@ namespace TensorSharp
 
         public static Tensor operator +(Tensor lhs, Tensor rhs)
         {
+            if (rhs.DimensionCount == 1)
+            {
+                return TOps.Add(lhs, rhs.ToArray().Cast<float>().First());
+            }
+
+            if (lhs.DimensionCount == 1)
+            {
+                return TOps.Add(rhs, lhs.ToArray().Cast<float>().First());
+            }
+
             (lhs, rhs) = TOps.Broadcast_Add(lhs, rhs);
             return TOps.Add(lhs, rhs);
         }
@@ -915,6 +925,16 @@ namespace TensorSharp
 
         public static Tensor operator -(Tensor lhs, Tensor rhs)
         {
+            if (rhs.DimensionCount == 1)
+            {
+                return TOps.Sub(lhs, rhs.ToArray().Cast<float>().First());
+            }
+
+            if (lhs.DimensionCount == 1)
+            {
+                return TOps.Sub(lhs.ToArray().Cast<float>().First(), rhs);
+            }
+
             (lhs, rhs) = TOps.Broadcast_Add(lhs, rhs);
             return TOps.Sub(lhs, rhs);
         }

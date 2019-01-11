@@ -31,7 +31,7 @@ namespace SiaNet.Constraints
             }
 
             var desired = Clip(norms, 0, MaxValue);
-            return w * (desired / (float.Epsilon + norms));
+            return w * (desired / (EPSILON + norms));
         }
     }
 }

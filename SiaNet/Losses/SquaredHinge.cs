@@ -16,13 +16,14 @@ namespace SiaNet.Losses
         public override Tensor Call(Tensor preds, Tensor labels)
         {
             var value = 1 - labels * preds;
-            
-            return Mean(Square(Maximum(value, 0)));
+
+            return Mean(Square(Maximum(value, 0)), -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            throw new NotImplementedException();
+            float norm = 2f / preds.Shape[0];
+            return -1 * norm * labels * Maximum((1 - labels * preds), 0);
         }
     }
 }

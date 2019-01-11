@@ -16,7 +16,7 @@ namespace SiaNet.Optimizers
 
         private Dictionary<string, Tensor> delta_accumulators;
 
-        public Adadelta(float lr = 1f, float rho = 0.95f, float decayRate = 0, float epsilon = float.Epsilon)
+        public Adadelta(float lr = 1f, float rho = 0.95f, float decayRate = 0, float epsilon = 1e-07f)
             : base(lr)
         {
             DecayRate = decayRate;
@@ -43,7 +43,7 @@ namespace SiaNet.Optimizers
                 }
 
                 accumulators[param.Name] = (Rho * accumulators[param.Name]) + ((1 - Rho) * Square(param.Grad));
-                var update = param.Grad / (Sqrt(delta_accumulators[param.Name] + float.Epsilon) / (accumulators[param.Name] + float.Epsilon));
+                var update = param.Grad / (Sqrt(delta_accumulators[param.Name] + EPSILON) / (accumulators[param.Name] + EPSILON));
                 param.Data = param.Data - (LearningRate * update);
 
                 param.ApplyConstraint();

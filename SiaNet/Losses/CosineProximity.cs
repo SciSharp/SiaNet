@@ -15,14 +15,17 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var y_true = L2Normalize(labels);
-            var y_pred = L2Normalize(preds);
-            return -1 * Sum(labels * preds);
+            var y_true = L2Normalize(labels, -1);
+            var y_pred = L2Normalize(preds, -1);
+            y_true.Print();
+            y_pred.Print();
+            return -1 * Sum(y_true * y_pred, -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            throw new NotImplementedException();
+            var y_true = L2Normalize(labels, -1);
+            return -1 * labels / preds.Shape[0];
         }
     }
 }

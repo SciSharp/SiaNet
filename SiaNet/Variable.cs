@@ -91,9 +91,9 @@ namespace SiaNet
             }
         }
 
-        public Tensor ApplyRegularizer()
+        public float ApplyRegularizer()
         {
-            Tensor r = null;
+            float r = 0;
             if (regularizer != null)
             {
                 r = regularizer.Call(Data);
@@ -106,7 +106,7 @@ namespace SiaNet
         {
             if (regularizer != null)
             {
-                Grad = regularizer.CalcGrad(Data, Grad);
+                Grad += regularizer.CalcGrad(Data);
             }
         }
     }

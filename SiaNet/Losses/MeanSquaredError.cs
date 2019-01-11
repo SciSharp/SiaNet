@@ -15,12 +15,12 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            return Mean(Square(preds - labels));
+            return Mean(Square(preds - labels), 1).Reshape(1, -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            var norm = 2 / preds.ElementCount();
+            float norm = 2f / (float)preds.Shape[0];
             return (preds - labels) * norm;
         }
     }

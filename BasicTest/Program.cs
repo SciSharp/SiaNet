@@ -26,9 +26,7 @@ namespace Examples
             //TestDense();
             //TestAct();
 
-            Tensor tensor = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            tensor = tensor.Reshape(3, -1);
-            TOps.Sum(tensor, 1).Print();
+            TestLoss();
         }
 
         private static void TestDense()
@@ -56,6 +54,22 @@ namespace Examples
 
             act.Backward(act.Output);
             act.Input.Grad.Print();
+        }
+
+        private static void TestLoss()
+        {
+            Tensor preds = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
+            preds = preds.Reshape(3, -1);
+
+            Tensor labels = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
+            labels = labels.Reshape(3, -1);
+
+            var loss = new SiaNet.Losses.CosineProximity();
+            var l = loss.Call(preds, labels);
+            var data = l.ToArray();
+
+            var grad = loss.CalcGrad(preds, labels);
+            grad.Print();
         }
     }
 }

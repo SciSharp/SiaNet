@@ -15,7 +15,7 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            return Mean(_logcosh(preds - labels));
+            return Mean(_logcosh(preds - labels), -1);
         }
 
         private Tensor _logcosh(Tensor x)
@@ -25,7 +25,7 @@ namespace SiaNet.Losses
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            throw new NotImplementedException();
+            return -1 * Tanh(labels - preds) / preds.Shape[0];
         }
     }
 }

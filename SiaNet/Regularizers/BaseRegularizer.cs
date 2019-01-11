@@ -17,8 +17,8 @@ namespace SiaNet.Regularizers
             L2 = l2;
         }
 
-        public abstract Tensor Call(Tensor x);
+        public abstract float Call(Tensor x);
 
-        public abstract Tensor CalcGrad(Tensor x, Tensor grad);
+        public abstract Tensor CalcGrad(Tensor x);
     }
 }

@@ -20,7 +20,7 @@ namespace SiaNet.Losses
             Tensor output = null;
             if(!FromLogit)
             {
-                output = Clip(labels, float.Epsilon, 1f - float.Epsilon);
+                output = Clip(labels, EPSILON, 1f - EPSILON);
                 output = Log(output / (1 - output));
             }
 

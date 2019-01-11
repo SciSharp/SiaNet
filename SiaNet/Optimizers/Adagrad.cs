@@ -12,7 +12,7 @@ namespace SiaNet.Optimizers
 
         private Dictionary<string, Tensor> accumulators;
 
-        public Adagrad(float lr = 0.01f, float decayRate = 0, float epsilon = float.Epsilon)
+        public Adagrad(float lr = 0.01f, float decayRate = 0, float epsilon = 1e-07f)
             : base(lr)
         {
             DecayRate = decayRate;
@@ -36,7 +36,7 @@ namespace SiaNet.Optimizers
                 }
 
                 accumulators[param.Name] = accumulators[param.Name] + Square(param.Grad);
-                param.Data = param.Data - (LearningRate * param.Grad / (Sqrt(accumulators[param.Name]) + float.Epsilon));
+                param.Data = param.Data - (LearningRate * param.Grad / (Sqrt(accumulators[param.Name]) + EPSILON));
 
                 param.ApplyConstraint();
             }

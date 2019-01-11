@@ -14,15 +14,18 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var y_true = Clip(labels, float.Epsilon, 1);
-            var y_pred = Clip(preds, float.Epsilon, 1);
+            var y_true = Clip(labels, EPSILON, 1);
+            var y_pred = Clip(preds, EPSILON, 1);
 
-            return Sum(y_true * Log(y_true / y_pred));
+            return Sum(y_true * Log(y_true / y_pred), -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            throw new NotImplementedException();
+            var y_true = Clip(labels, EPSILON, 1);
+            var y_pred = Clip(preds, EPSILON, 1);
+
+            return Maximum((-1 * (y_true / y_pred)), 0);
         }
     }
 }

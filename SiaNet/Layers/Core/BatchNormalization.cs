@@ -74,7 +74,7 @@ namespace SiaNet.Layers
             mu = BuildVar("mm", x.Data.Shape, x.Data.ElementType, MovingMeanInitializer, null, null, false);
             mv = BuildVar("mv", x.Data.Shape, x.Data.ElementType, MovingVarianceInitializer, null, null, false);
 
-            norm = (x.Data - mu.Data.TVar()).CDiv((mv.Data.TVar() + float.Epsilon).Sqrt());
+            norm = (x.Data - mu.Data.TVar()).CDiv((mv.Data.TVar() + EPSILON).Sqrt());
             
             var @out = gamma.Data.TVar().CMul(norm) + beta.Data;
             Output = @out.View(x.Data.Shape).Evaluate();
@@ -86,13 +86,13 @@ namespace SiaNet.Layers
             Tensor mv = Params["mv"].Data;
 
             var X_mu = Input.Data.TVar() - mm.TVar();
-            var var_inv = 1 / (mv.TVar() + float.Epsilon).Sqrt();
+            var var_inv = 1 / (mv.TVar() + EPSILON).Sqrt();
 
             var dbeta = outputgrad.TVar().Sum(0);
             var dgamma = outputgrad.TVar().CMul(norm).Sum(0);
 
             var dnorm = outputgrad.TVar().CMul(Params["gamma"].Data);
-            var dvar = dnorm.CMul(mu.Data).Sum(0).CMul(-0.5f * (mv.TVar() + float.Epsilon).Pow(-3 / 2));
+            var dvar = dnorm.CMul(mu.Data).Sum(0).CMul(-0.5f * (mv.TVar() + EPSILON).Pow(-3 / 2));
             var dmu = dnorm.CMul(-var_inv).Sum(0) + dvar.CMul((-2 * X_mu).Sum(0) / Input.Data.Shape[0]);
 
             var dX = dnorm.CMul(var_inv) + (dmu / Input.Data.Shape[0]) + (dvar.CMul(2 / Input.Data.Shape[0] * X_mu));

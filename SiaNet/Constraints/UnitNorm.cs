@@ -18,9 +18,9 @@ namespace SiaNet.Constraints
         public override Tensor Call(Tensor w)
         {
             if(!Axis.HasValue)
-                w = w / (float.Epsilon + Sqrt(Sum(Square(w))));
+                w = w / (EPSILON + Sqrt(Sum(Square(w))));
             else
-                w = w / (float.Epsilon + Sqrt(Sum(Square(w), (int)Axis.Value)));
+                w = w / (EPSILON + Sqrt(Sum(Square(w), (int)Axis.Value)));
 
             return w;
         }

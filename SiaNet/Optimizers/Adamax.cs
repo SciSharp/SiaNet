@@ -15,7 +15,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> ms;
         private Dictionary<string, Tensor> us;
 
-        public Adamax(float lr = 0.002f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon=float.Epsilon)
+        public Adamax(float lr = 0.002f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon= 1e-07f)
             : base(lr)
         {
             Beta1 = beta_1;
@@ -46,7 +46,7 @@ namespace SiaNet.Optimizers
                     var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
                     var u_t = TOps.Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
 
-                    param.Data = param.Data - lr_t * m_t / (u_t + float.Epsilon);
+                    param.Data = param.Data - lr_t * m_t / (u_t + EPSILON);
                     ms[param.Name] = m_t;
                     us[param.Name] = u_t;
 

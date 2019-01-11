@@ -18,7 +18,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> vs;
         private Dictionary<string, Tensor> vhats;
 
-        public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon=float.Epsilon, bool amsgrad = false)
+        public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon= 1e-07f, bool amsgrad = false)
             : base(lr)
         {
             AmsGrad = amsgrad;
@@ -59,12 +59,12 @@ namespace SiaNet.Optimizers
                     {
                         Tensor vhat_t = TOps.Maximum(vhats[param.Name], v_t);
 
-                        param.Data = param.Data - lr_t * m_t / (Sqrt(vhat_t) + float.Epsilon);
+                        param.Data = param.Data - lr_t * m_t / (Sqrt(vhat_t) + EPSILON);
                         vhats[param.Name] = vhat_t;
                     }
                     else
                     {
-                        param.Data = param.Data - lr_t * m_t / (Sqrt(v_t) + float.Epsilon);
+                        param.Data = param.Data - lr_t * m_t / (Sqrt(v_t) + EPSILON);
                     }
 
                     ms[param.Name] = m_t;
