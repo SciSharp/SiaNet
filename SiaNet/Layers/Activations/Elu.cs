@@ -8,11 +8,12 @@ namespace SiaNet.Layers.Activations
 {
     public class Elu : BaseLayer
     {
-        private float _alpha;
+        public float Alpha { get; set; }
+
         public Elu(float alpha = 1)
             : base("elu")
         {
-            _alpha = alpha;
+            Alpha = alpha;
         }
 
         public override void Forward(Variable x)
@@ -20,7 +21,7 @@ namespace SiaNet.Layers.Activations
             Input = x;
             var keepElements = x.Data > 0;
             var keepElements_Exp = x.Data < 0;
-            var d = _alpha * (Exp(Mul(x.Data, keepElements_Exp)) - 1);
+            var d = Alpha * (Exp(Mul(x.Data, keepElements_Exp)) - 1);
             Output = Mul(x.Data, keepElements) + d;
         }
 
@@ -28,8 +29,8 @@ namespace SiaNet.Layers.Activations
         {
             var keepElements = Input.Data > 0;
             var keepElements_Exp = Input.Data < 0;
-            var d = _alpha * Exp(Mul(Input.Data, keepElements_Exp));
-            Input.Grad = Mul(outputgrad, d);
+            var d = Alpha * Exp(Mul(Input.Data, keepElements_Exp));
+            Input.Grad = outputgrad * d;
         }
     }
 }

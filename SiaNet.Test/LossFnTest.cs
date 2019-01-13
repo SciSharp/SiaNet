@@ -162,5 +162,31 @@ namespace SiaNet.Test
             var loss = new Losses.CosineProximity();
             RunLossFn(loss, preds, labels);
         }
+
+        [TestMethod]
+        public void BinaryCrossentropy()
+        {
+            Tensor preds = Tensor.FromArray(Global.Device, new float[] { 0.7f, 0.1f, 0.1f, 0.4f, 0.55f, 0.05f, 0.9f, 0.01f, 0.09f });
+            preds = preds.Reshape(-1, 1);
+
+            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 1, 0, 0, 0, 0, 1, 0, 1, 0 });
+            labels = labels.Reshape(-1, 1);
+
+            var loss = new Losses.BinaryCrossentropy();
+            RunLossFn(loss, preds, labels);
+        }
+
+        [TestMethod]
+        public void CategoricalCrossentropy()
+        {
+            Tensor preds = Tensor.FromArray(Global.Device, new float[] { 0.7f, 0.1f, 0.1f, 0.4f, 0.55f, 0.05f, 0.9f, 0.01f, 0.09f });
+            preds = preds.Reshape(-1, 3);
+
+            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 1, 0, 0, 0, 0, 1, 0, 1, 0 });
+            labels = labels.Reshape(-1, 3);
+
+            var loss = new Losses.CategoricalCrossentropy();
+            RunLossFn(loss, preds, labels);
+        }
     }
 }

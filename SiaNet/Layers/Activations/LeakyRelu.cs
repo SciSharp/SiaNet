@@ -8,22 +8,25 @@ namespace SiaNet.Layers.Activations
 {
     public class LeakyRelu : BaseLayer
     {
-        private float _alpha;
+        public float Alpha { get; set; }
 
         public LeakyRelu(float alpha = 0.3f)
             : base("leaky_relu")
         {
-            _alpha = alpha;
+            Alpha = alpha;
         }
 
-        public override void Forward(Variable data)
+        public override void Forward(Variable x)
         {
-            throw new NotImplementedException();
+            Input = x;
+            var keepElements = x.Data >= 0;
+            Output = x.Data * keepElements + (Alpha * x.Data * (1 - keepElements));
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            
+            var keepElements = Input.Data >= 0;
+            Input.Grad = outputgrad * (keepElements + (Alpha * (1 - keepElements)));
         }
     }
 }

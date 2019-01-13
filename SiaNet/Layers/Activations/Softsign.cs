@@ -17,12 +17,12 @@ namespace SiaNet.Layers.Activations
         {
             Input = x;
 
-            Output = x.Data.TVar().CDiv(1 + x.Data.TVar().Abs()).Evaluate();
+            Output = x.Data / (Abs(x.Data) + 1);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad.TVar().CMul(1 / (1 + Output.TVar().Abs())).Evaluate();
+            Input.Grad = outputgrad / Square(Abs(Input.Data) + 1);
         }
     }
 }

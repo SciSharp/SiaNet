@@ -21,7 +21,7 @@ namespace SiaNet.Layers.Activations
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = Input.Data;
+            Input.Grad = outputgrad;
         }
     }
 }

@@ -17,12 +17,13 @@ namespace SiaNet.Layers.Activations
         {
             Input = x;
             var keepElements = x.Data > 0;
-            Output = Mul(x.Data, keepElements) + (1 - keepElements) * 0;
+            Output = x.Data * keepElements + (1 - keepElements) * 0;
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = Mul(outputgrad, Output > 0);
+            var keepElements = Input.Data > 0;
+            Input.Grad = outputgrad * (keepElements + (1 - keepElements) * 0);
         }
     }
 }
