@@ -4,16 +4,13 @@ using TensorSharp;
 namespace SiaNet.Test
 {
     [TestClass]
-    public class LossFnTest
+    public class MetricsTest
     {
-        private void RunLossFn(Losses.BaseLoss loss, Tensor preds, Tensor labels)
+        private void RunMetrics(Metrics.BaseMetric loss, Tensor preds, Tensor labels)
         {
             var w = loss.Call(preds, labels);
             var data = w.ToArray();
             w.Print();
-
-            var grad = loss.CalcGrad(preds, labels);
-            grad.Print();
         }
 
         [TestMethod]
@@ -24,9 +21,8 @@ namespace SiaNet.Test
 
             Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
             labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.MeanSquaredError();
-            RunLossFn(loss, preds, labels);
+            var loss = new Metrics.MSE();
+            RunMetrics(loss, preds, labels);
         }
 
         [TestMethod]
@@ -38,8 +34,8 @@ namespace SiaNet.Test
             Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
             labels = labels.Reshape(3, -1);
 
-            var loss = new Losses.MeanSquaredLogError();
-            RunLossFn(loss, preds, labels);
+            var loss = new Metrics.MSLE();
+            RunMetrics(loss, preds, labels);
         }
 
         [TestMethod]
@@ -51,8 +47,8 @@ namespace SiaNet.Test
             Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
             labels = labels.Reshape(3, -1);
 
-            var loss = new Losses.MeanAbsoluteError();
-            RunLossFn(loss, preds, labels);
+            var loss = new Metrics.MAE();
+            RunMetrics(loss, preds, labels);
 
         }
 
@@ -65,102 +61,23 @@ namespace SiaNet.Test
             Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
             labels = labels.Reshape(3, -1);
 
-            var loss = new Losses.MeanAbsolutePercentageError();
-            RunLossFn(loss, preds, labels);
+            var loss = new Metrics.MAPE();
+            RunMetrics(loss, preds, labels);
 
         }
 
         [TestMethod]
-        public void SquareHinge()
+        public void Accuracy()
         {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            preds = preds.Reshape(3, -1);
+            Tensor preds = Tensor.FromArray(Global.Device, new float[] { 0.7f, 0.1f, 0.6f, 0.9f, 0.55f, 0.05f, 0.9f, 0.01f, 0.09f });
+            preds = preds.Reshape(-1, 3);
 
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            labels = labels.Reshape(3, -1);
+            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 1, 0, 0, 0, 0, 1, 0, 1, 0 });
+            labels = labels.Reshape(-1, 3);
 
-            var loss = new Losses.SquaredHinge();
-            RunLossFn(loss, preds, labels);
-
+            var loss = new Metrics.Accuracy();
+            RunMetrics(loss, preds, labels);
         }
 
-        [TestMethod]
-        public void Hinge()
-        {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            preds = preds.Reshape(3, -1);
-
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.Hinge();
-            RunLossFn(loss, preds, labels);
-
-        }
-
-        [TestMethod]
-        public void CategorialHinge()
-        {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            preds = preds.Reshape(3, -1);
-
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.CategorialHinge();
-            RunLossFn(loss, preds, labels);
-        }
-
-        [TestMethod]
-        public void LogCosh()
-        {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            preds = preds.Reshape(3, -1);
-
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.LogCosh();
-            RunLossFn(loss, preds, labels);
-        }
-
-        [TestMethod]
-        public void KullbackLeiblerDivergence()
-        {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            preds = preds.Reshape(3, -1);
-
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.KullbackLeiblerDivergence();
-            RunLossFn(loss, preds, labels);
-        }
-
-        [TestMethod]
-        public void Poisson()
-        {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            preds = preds.Reshape(3, -1);
-
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.Poisson();
-            RunLossFn(loss, preds, labels);
-        }
-
-        [TestMethod]
-        public void CosineProximity()
-        {
-            Tensor preds = Tensor.FromArray(Global.Device, new float[] { 9, 8, 7, 6, 5, 4, 3, 2, 1 });
-            preds = preds.Reshape(3, -1);
-
-            Tensor labels = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            labels = labels.Reshape(3, -1);
-
-            var loss = new Losses.CosineProximity();
-            RunLossFn(loss, preds, labels);
-        }
     }
 }

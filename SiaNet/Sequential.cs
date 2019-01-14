@@ -9,6 +9,7 @@ using SiaNet.Optimizers;
 using TensorSharp.Expression;
 using System.Linq;
 using TensorSharp;
+using System.Diagnostics;
 
 namespace SiaNet
 {
@@ -93,7 +94,7 @@ namespace SiaNet
             return curGradOutput;
         }
 
-        private Tensor ApplyRegularizer(TVar loss)
+        private Tensor ApplyRegularizer(Tensor loss)
         {
             foreach (var l in Layers)
             {
@@ -104,7 +105,7 @@ namespace SiaNet
                 }
             }
 
-            return loss.Evaluate();
+            return loss;
         }
 
         private void ApplyDeltaRegularizer()
@@ -135,44 +136,39 @@ namespace SiaNet
 
         public void Fit(IFrameIter train, int epochs, int batchSize, IFrameIter val = null)
         {
-            DateTime start = DateTime.Now;
             List<float> train_losses = new List<float>();
             List<float> train_metrics = new List<float>();
             List<float> val_losses = new List<float>();
             List<float> val_metrics = new List<float>();
 
             train.SetBatchSize(batchSize);
-            for(int iteration = 1; iteration <= epochs; iteration++)
+            for (int iteration = 1; iteration <= epochs; iteration++)
             {
+                Stopwatch sw = Stopwatch.StartNew();
                 train.Reset();
                 while (train.Next())
                 {
                     var (x, y) = train.GetBatch();
+                    Variable pred = Forward(x);
+                    Tensor lossVal = LossFn.Call(pred.Data, y);
+                    Tensor grad = LossFn.CalcGrad(pred.Data, y);
+                    Tensor reg_loss = ApplyRegularizer(lossVal);
 
-                    using (Variable pred = Forward(x))
-                    using (Tensor lossVal = LossFn.Call(pred.Data, y))
-                    using (Tensor grad = LossFn.CalcGrad(pred.Data, y))
-                    using (Tensor reg_loss = ApplyRegularizer(lossVal))
+                    var metricVal = MetricFn.Call(pred.Data, y);
+                    train_losses.Add(TOps.SumF(lossVal));
+                    train_metrics.Add(TOps.MeanF(metricVal));
+
+                    Backward(grad);
+
+                    ApplyDeltaRegularizer();
+
+                    foreach (var layer in Layers)
                     {
-                        //var metricVal = MetricFn.Call(pred.Data, y);
-                        train_losses.Add(reg_loss.TVar().ToScalar().Evaluate());
-                        //train_metrics.Add(metricVal.ToScalar().Evaluate());
-
-                        Backward(grad);
-
-                        ApplyDeltaRegularizer();
-
-                        foreach (var layer in Layers)
-                        {
-                            OptimizerFn.Update(iteration, layer);
-                        }
+                        OptimizerFn.Update(iteration, layer);
                     }
-
-                    x.Dispose();
-                    y.Dispose();
                 }
 
-                if(val != null)
+                if (val != null)
                 {
                     while (val.Next())
                     {
@@ -187,7 +183,8 @@ namespace SiaNet
                     }
                 }
 
-                Console.WriteLine("Epoch: {0}, Loss: {1}", iteration, train_losses.Average());
+                sw.Stop();
+                Console.WriteLine("Epoch: {0}, Loss: {1}, Metrics: {2}, Time: {3}(ms)", iteration, train_losses.Average(), train_metrics.Average(), sw.ElapsedMilliseconds);
             }
         }
     }

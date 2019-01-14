@@ -881,6 +881,11 @@ namespace TensorSharp
             return result;
         }
 
+        public float ToScalar()
+        {
+            return ToArray().Cast<float>().ToList()[0];
+        }
+
         public void Fill(float value)
         {
             TOps.Fill(this, value);

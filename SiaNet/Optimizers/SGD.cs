@@ -43,7 +43,7 @@ namespace SiaNet.Optimizers
                 }
                 else
                 {
-                    param.Data = param.Data - velocity[param.Name];
+                    param.Data = param.Data + velocity[param.Name];
                 }
 
                 param.ApplyConstraint();

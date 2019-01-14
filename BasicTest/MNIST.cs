@@ -31,7 +31,7 @@ namespace BasicTest
 
         public static void Run()
         {
-            Global.UseGpu();
+            //Global.UseGpu();
             string datasetFolder = @"C:\dataset\MNIST";
             LoadDataSet(datasetFolder);
 
@@ -44,8 +44,7 @@ namespace BasicTest
             model.Add(new Dense(10, ActivationType.Softmax, new GlorotUniform()));
 
             model.Compile(OptimizerType.SGD, LossType.CategorialCrossEntropy, MetricType.Accuracy);
-            model.Fit(trainIter, 1, 32);
-
+            model.Fit(trainIter, 10, 32);
         }
 
         static void LoadDataSet(string baseFolder)

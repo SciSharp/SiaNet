@@ -21,20 +21,17 @@ namespace SiaNet.Layers
         public override void Forward(Variable x)
         {
             Input = x;
-
+            noise = new Tensor(x.Data.Allocator, x.Data.ElementType, x.Data.Shape);
             var p = 1 - Rate;
 
-            noise = TVar.RandomBernoulli(new SeedSource(), p, Global.Device, x.Data.ElementType, x.Data.Shape)
-                            .Div(p)
-                            .Evaluate();
-
-            Output = Output.TVar().CMul(noise).Evaluate();
+            RandomBernoulli(noise, new SeedSource(), p);
+            Output = noise * p;
         }
 
         public override void Backward(Tensor outputgrad)
         {
             Input.Grad = outputgrad;
-            Input.Grad = Input.Grad.TVar().CMul(noise).Evaluate();
+            Input.Grad = Input.Grad * noise;
         }
     }
 }

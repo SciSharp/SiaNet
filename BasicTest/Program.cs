@@ -14,6 +14,7 @@ using TensorSharp.Expression;
 using System.Linq;
 using MathNet.Numerics.LinearAlgebra;
 using Zeros = SiaNet.Initializers.Zeros;
+using BasicTest;
 
 namespace Examples
 {
@@ -23,12 +24,14 @@ namespace Examples
 
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Global.UseGpu();
+            MNIST.Run();
+
             //TestDense();
             //TestAct();
 
-            TestLoss();
-
+            //TestLoss();
+            Console.ReadLine();
         }
 
         private static void TestDense()

@@ -24,7 +24,7 @@ namespace SiaNet.Layers.Activations
             Input.Grad = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
             for (int i = 0; i < Input.Grad.Shape[0]; i++)
             {
-                for (int j = 0; j < Input.Grad.Shape[0]; j++)
+                for (int j = 0; j < Input.Grad.Shape[1]; j++)
                 {
                     float v = 0;
                     if(i == j)

@@ -19,7 +19,7 @@ namespace SiaNet.Layers.Activations
             Output = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
             for (int i = 0; i < Input.Data.Shape[0]; i++)
             {
-                for (int j = 0; j < Input.Data.Shape[0]; j++)
+                for (int j = 0; j < Input.Data.Shape[1]; j++)
                 {
                     float d = Input.Data.GetElementAsFloat(i, j);
                     float r = 0;
@@ -42,7 +42,7 @@ namespace SiaNet.Layers.Activations
             Input.Grad = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
             for (int i = 0; i < Input.Data.Shape[0]; i++)
             {
-                for (int j = 0; j < Input.Data.Shape[0]; j++)
+                for (int j = 0; j < Input.Data.Shape[1]; j++)
                 {
                     float d = Input.Data.GetElementAsFloat(i, j);
                     float r = 0;
