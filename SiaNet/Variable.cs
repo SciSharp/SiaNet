@@ -28,30 +28,18 @@ namespace SiaNet
             }
         }
 
-        public Variable(params long[] shape)
-        {
-            Name = UUID.GetID("v");
-            Data = new Tensor(Global.Device, DType.Float32, shape);
-            Grad = new Tensor(Global.Device, DType.Float32, shape);
-        }
-
-        public Variable(DType dataType, params long[] shape)
-        {
-            Name = UUID.GetID("v");
-            Data = new Tensor(Global.Device, dataType, shape);
-            Grad = new Tensor(Global.Device, dataType, shape);
-        }
-
         public Variable(string name, params long[] shape)
         {
-            Name = UUID.GetID(name);
+            //Name = UUID.GetID(name);
+            Name = name;
             Data = new Tensor(Global.Device, DType.Float32, shape);
             Grad = new Tensor(Global.Device, DType.Float32, shape);
         }
 
         public Variable(string name, DType dataType, params long[] shape)
         {
-            Name = UUID.GetID(name);
+            //Name = UUID.GetID(name);
+            Name = name;
             Data = new Tensor(Global.Device, dataType, shape);
             Grad = new Tensor(Global.Device, dataType, shape);
         }
