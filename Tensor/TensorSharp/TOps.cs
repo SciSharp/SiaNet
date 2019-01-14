@@ -577,14 +577,9 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Sum( Tensor src, int dimension)
+        public static Tensor Sum(Tensor src, int dimension)
         {
-            if(dimension == -1)
-            {
-                var t = (Tensor)OpRegistry.Invoke("sum", null, src, 1);
-                return t.Reshape(1, -1);
-            }
-
+            dimension = dimension < 0 ? src.DimensionCount + dimension : dimension;
             return (Tensor)OpRegistry.Invoke("sum", null, src, dimension);
         }
 
@@ -605,7 +600,7 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Prod( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("prod", null, src, dimension); }
+        public static Tensor Prod( Tensor src, int dimension) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("prod", null, src, dimension); }
         /// <summary>
         /// Determines the minimum of the parameters.
         /// </summary>
@@ -613,7 +608,7 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Min( Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("min", null, src, dimension); }
+        public static Tensor Min( Tensor src, int dimension) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("min", null, src, dimension); }
         /// <summary>
         /// Determines the maximun of the parameters.
         /// </summary>
@@ -623,11 +618,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public static Tensor Max( Tensor src, int dimension)
         {
-            if (dimension == -1)
-            {
-                var t = (Tensor)OpRegistry.Invoke("max", null, src, 1);
-                return t.Reshape(1, -1);
-            }
+            dimension = dimension < 0 ? src.DimensionCount + dimension : dimension;
 
             return (Tensor)OpRegistry.Invoke("max", null, src, dimension);
         }
@@ -651,7 +642,7 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Argmin(Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("argmin", null, src, dimension); }
+        public static Tensor Argmin(Tensor src, int dimension) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("argmin", null, src, dimension); }
         /// <summary>
         /// Argmaxes the specified result.
         /// </summary>
@@ -659,7 +650,7 @@ namespace TensorSharp
         /// <param name="src">The source.</param>
         /// <param name="dimension">The dimension.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Argmax(Tensor src, int dimension) { return (Tensor)OpRegistry.Invoke("argmax", null, src, dimension); }
+        public static Tensor Argmax(Tensor src, int dimension) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("argmax", null, src, dimension); }
 
         /// <summary>
         /// Means the specified result.
@@ -670,11 +661,7 @@ namespace TensorSharp
         /// <returns>Tensor.</returns>
         public static Tensor Mean(Tensor src, int dimension)
         {
-            if (dimension == -1)
-            {
-                var t = (Tensor)OpRegistry.Invoke("mean", null, src, 1);
-                return t.Reshape(1, -1);
-            }
+            dimension = dimension < 0 ? src.DimensionCount + dimension : dimension;
 
             return (Tensor)OpRegistry.Invoke("mean", null, src, dimension);
         }
@@ -697,7 +684,7 @@ namespace TensorSharp
         /// <param name="dimension">The dimension.</param>
         /// <param name="value">The value.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Norm( Tensor src, int dimension, float value) { return (Tensor)OpRegistry.Invoke("norm", null, src, dimension, value); }
+        public static Tensor Norm( Tensor src, int dimension, float value) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("norm", null, src, dimension, value); }
         /// <summary>
         /// Standards the specified result.
         /// </summary>
@@ -706,7 +693,7 @@ namespace TensorSharp
         /// <param name="dimension">The dimension.</param>
         /// <param name="normByN">if set to <c>true</c> [norm by n].</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Std( Tensor src, int dimension, bool normByN) { return (Tensor)OpRegistry.Invoke("std", null, src, dimension, normByN); }
+        public static Tensor Std( Tensor src, int dimension, bool normByN) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("std", null, src, dimension, normByN); }
         /// <summary>
         /// Variables the specified result.
         /// </summary>
@@ -715,7 +702,7 @@ namespace TensorSharp
         /// <param name="dimension">The dimension.</param>
         /// <param name="normByN">if set to <c>true</c> [norm by n].</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Var( Tensor src, int dimension, bool normByN) { return (Tensor)OpRegistry.Invoke("var", null, src, dimension, normByN); }
+        public static Tensor Var( Tensor src, int dimension, bool normByN) { dimension = dimension < 0 ? src.DimensionCount + dimension : dimension; return (Tensor)OpRegistry.Invoke("var", null, src, dimension, normByN); }
 
         /// <summary>
         /// Sums all.
@@ -896,24 +883,12 @@ namespace TensorSharp
 
         public static Tensor Softmax(Tensor x)
         {
-            long[] shape = x.Shape;
-            List<float> data = new List<float>();
-            for (long i = 0; i < shape[0]; i++)
-            {
-                var s_x = x.Select(0, i);
-                var exp = Exp(s_x);
-                var sum = SumF(exp);
-                var s_t = (exp / sum).View(1, shape[1]);
-                data.AddRange(s_t.ToArray().Cast<float>());
-            }
-
-            x.CopyFrom(data.ToArray());
-            return x;
+            return Exp(x) / Sum(Exp(x), -1);
         }
 
         public static Tensor L2Normalize(Tensor x, int axis = -1)
         {
-            Tensor y = y = Max(Sum(Square(x), axis), axis); ;
+            Tensor y = Max(Sum(Square(x), axis), axis);
 
             return x / Sqrt(y);
         }

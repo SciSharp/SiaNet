@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using TensorSharp;
 
 namespace SiaNet.Losses
@@ -17,25 +18,19 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var loss = -1f * Sum(labels * Log(preds));
+            if (FromLogit)
+                preds = Softmax(preds);
+            else
+                preds /= Sum(preds, -1);
 
-            return loss;
+            preds = Clip(preds, EPSILON, 1 - EPSILON);
+            return Sum(-1 * labels * Log(preds), -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            var m = labels.Shape[0];
-            var grad = Softmax(preds);
-            grad = preds - 1;
-            grad = grad / m;
-            return grad;
-            //var norm = -1.0f / preds.Evaluate().Sizes[0];
-            //var labelShape = labels.Evaluate().Sizes;
-            //TVar gradInput = TVar.Fill(0, Global.Device, DType.Float32, labelShape);
-
-            //var indices = labels.View(labelShape);
-
-            //return gradInput.ScatterFill(norm, 1, indices);
+            preds = Clip(preds, EPSILON, 1 - EPSILON);
+            return (preds - labels) / preds;
         }
     }
 }

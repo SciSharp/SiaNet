@@ -15,15 +15,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Variable x)
         {
-            Output = x.Data.TVar().Sigmoid().Evaluate();
+            Input = x;
+            Output = Sigmoid(x.Data);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad.TVar()
-                .CMul(1 - Output.TVar())
-                .CMul(Output)
-                .Evaluate();
+            Input.Grad = outputgrad * Output * (1 - Output);
         }
     }
 }

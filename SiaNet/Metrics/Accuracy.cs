@@ -18,8 +18,9 @@ namespace SiaNet.Metrics
             var predData = Argmax(preds, 1);
             var labelData = Argmax(labels, 1);
 
-            
-            return predData;
+            var r = EqualTo(predData, labelData);
+
+            return r;
         }
     }
 }

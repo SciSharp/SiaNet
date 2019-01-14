@@ -370,6 +370,11 @@ namespace TensorSharp
             return View(sizes);
         }
 
+        public Tensor Ravel()
+        {
+            return View(ElementCount());
+        }
+
         /// <summary>
         /// Narrows the specified dimension.
         /// </summary>
