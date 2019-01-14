@@ -66,5 +66,13 @@ namespace TensorSharp.CUDA
         {
             return new CudaStorage(this, context, context.CudaContextForDevice(deviceId), elementType, elementCount);
         }
+
+        public void SetCurrent()
+        {
+            foreach (var item in context.devices)
+            {
+                item.CudaContext.SetCurrent();
+            }
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace TensorSharp.CUDA
         /// <summary>
         /// The devices
         /// </summary>
-        private readonly DeviceState[] devices;
+        public DeviceState[] devices;
         /// <summary>
         /// The P2P access
         /// </summary>

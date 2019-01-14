@@ -14,9 +14,11 @@ namespace SiaNet
 
         public static bool UseCuda { get; set; }
 
+        public static TSCudaContext cudaContext;
+
         public static void UseGpu(int gpuId = 0, bool cudnn = false)
         {
-            var cudaContext = new TSCudaContext();
+            cudaContext = new TSCudaContext();
             cudaContext.Precompile(Console.Write);
             cudaContext.CleanUnusedPTX();
             Device = new CudaAllocator(cudaContext, gpuId);

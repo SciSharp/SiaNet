@@ -42,5 +42,9 @@ namespace TensorSharp.Cpu
         {
             return new CpuStorage(this, elementType, elementCount);
         }
+
+        public void SetCurrent()
+        {
+        }
     }
 }

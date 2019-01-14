@@ -30,5 +30,7 @@ namespace TensorSharp
         /// <param name="elementCount">The element count.</param>
         /// <returns>Storage.</returns>
         Storage Allocate(DType elementType, long elementCount);
+
+        void SetCurrent();
     }
 }

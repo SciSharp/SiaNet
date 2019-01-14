@@ -31,19 +31,21 @@ namespace BasicTest
 
         public static void Run()
         {
-            //Global.UseGpu();
+            Global.UseGpu();
             string datasetFolder = @"C:\dataset\MNIST";
+            Console.WriteLine("MNIST Example started...");
             LoadDataSet(datasetFolder);
-
+            Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainingData.Item1, trainingData.Item2);
 
             Sequential model = new Sequential(784);
-            model.Add(new Dense(128, ActivationType.Sigmoid, new GlorotUniform()));
-            model.Add(new Dense(64, ActivationType.Sigmoid, new GlorotUniform()));
-            model.Add(new Dropout(0.5f));
+            model.Add(new Dense(728, ActivationType.ReLU, new GlorotUniform()));
+            //model.Add(new Dense(64, ActivationType.Sigmoid, new GlorotUniform()));
+            //model.Add(new Dropout(0.5f));
             model.Add(new Dense(10, ActivationType.Softmax, new GlorotUniform()));
 
-            model.Compile(OptimizerType.SGD, LossType.CategorialCrossEntropy, MetricType.Accuracy);
+            model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
+            Console.WriteLine("Model compiled.. initiating training");
             model.Fit(trainIter, 10, 32);
         }
 
@@ -72,15 +74,15 @@ namespace BasicTest
 
             for (int i = 0; i < images.Length; ++i)
             {
-                var target = inputs.TVar().Select(0, i);
+                var target = inputs.Select(0, i);
 
+                //target = Tensor.FromArray(Global.Device, images[i].pixels);
                 TVar.FromArray(images[i].pixels, cpuAllocator)
                     .AsType(DType.Float32)
                     .ToDevice(Global.Device)
                     .Evaluate(target);
 
-                target.Div(255)
-                    .Evaluate(target);
+                target = target / 255;
             }
 
 

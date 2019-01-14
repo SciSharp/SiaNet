@@ -11,6 +11,7 @@ using System.Linq;
 using TensorSharp;
 using System.Diagnostics;
 using System.Threading;
+using TensorSharp.CUDA;
 
 namespace SiaNet
 {
@@ -165,6 +166,7 @@ namespace SiaNet
                     //Thread thread = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
                     //thread.Start(train);
                     //workerThreads.Add(thread);
+
                     RunTrainOnBatch(train);
                 }
 
@@ -195,6 +197,7 @@ namespace SiaNet
 
         private void RunTrainOnBatch(object param)
         {
+            Global.Device.SetCurrent();
             IFrameIter train = (IFrameIter)param;
             var (x, y) = train.GetBatch();
             Variable pred = Forward(x);

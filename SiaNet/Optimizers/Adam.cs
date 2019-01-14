@@ -39,10 +39,8 @@ namespace SiaNet.Optimizers
 
             float t = iteration + 1;
             float lr_t = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, t)) / (1f - Math.Pow(Beta1, t)));
-            foreach (var item in layer.Params)
+            foreach (var param in layer.GetParameters())
             {
-                var param = item.Value;
-
                 if(!ms.ContainsKey(param.Name))
                 {
                     ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
