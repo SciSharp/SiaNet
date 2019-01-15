@@ -31,7 +31,6 @@ namespace BasicTest
 
         public static void Run()
         {
-            Global.UseGpu();
             string datasetFolder = @"C:\dataset\MNIST";
             Console.WriteLine("MNIST Example started...");
             LoadDataSet(datasetFolder);

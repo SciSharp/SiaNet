@@ -80,7 +80,7 @@ namespace SiaNet
         {
             Variable output = input.ToVariable("X");
             
-            foreach (var layer in Layers)
+            foreach (var layer in Layers.AsParallel())
             {
                 layer.Forward(output);
                 output = layer.Output.ToVariable();
@@ -90,21 +90,17 @@ namespace SiaNet
             return output;
         }
 
-        private Tensor Backward(Tensor gradOutput)
+        private void Backward(Tensor gradOutput)
         {
             var curGradOutput = gradOutput;
 
-            for (int i = Layers.Count - 1; i > 0; --i)
+            for (int i = Layers.Count - 1; i >= 0; --i)
             {
                 var layer = Layers[i];
 
                 layer.Backward(curGradOutput);
                 curGradOutput = layer.Input.Grad;
             }
-
-            Layers[0].Backward(curGradOutput);
-            curGradOutput = Layers[0].Input.Grad;
-            return curGradOutput;
         }
 
         private Tensor ApplyRegularizer(Tensor loss)
@@ -163,11 +159,16 @@ namespace SiaNet
                 train.Reset();
                 while (train.Next())
                 {
-                    //Thread thread = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
-                    //thread.Start(train);
-                    //workerThreads.Add(thread);
-
                     RunTrainOnBatch(train);
+                    //if (iteration == 1)
+                    //    RunTrainOnBatch(train);
+                    //else
+                    //{
+                    //    Thread thread = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
+                    //    thread.Start(train);
+                    //    workerThreads.Add(thread);
+                    //}
+                    //RunTrainOnBatch(train);
                 }
 
                 foreach (var item in workerThreads)
@@ -213,7 +214,7 @@ namespace SiaNet
 
             ApplyDeltaRegularizer();
 
-            foreach (var layer in Layers)
+            foreach (var layer in Layers.AsParallel())
             {
                 OptimizerFn.Update(currentIteration, layer);
             }
