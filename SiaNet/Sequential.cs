@@ -19,8 +19,6 @@ namespace SiaNet
     {
         public List<BaseLayer> Layers { get; set; }
 
-        public int[] InputShape { get; set; }
-
         private Variable lastOutput;
 
         public BaseLoss LossFn { get; set; }
@@ -54,9 +52,8 @@ namespace SiaNet
             }
         }
 
-        public Sequential(params int[] shape)
+        public Sequential()
         {
-            InputShape = shape;
             Layers = new List<BaseLayer>();
         }
 
@@ -80,7 +77,7 @@ namespace SiaNet
         {
             Variable output = input.ToVariable("X");
             
-            foreach (var layer in Layers.AsParallel())
+            foreach (var layer in Layers)
             {
                 layer.Forward(output);
                 output = layer.Output.ToVariable();
@@ -93,7 +90,6 @@ namespace SiaNet
         private void Backward(Tensor gradOutput)
         {
             var curGradOutput = gradOutput;
-
             for (int i = Layers.Count - 1; i >= 0; --i)
             {
                 var layer = Layers[i];
@@ -145,60 +141,75 @@ namespace SiaNet
 
         public void Fit(IFrameIter train, int epochs, int batchSize, IFrameIter val = null)
         {
-            List<Thread> workerThreads = new List<Thread>();
-
-            train.SetBatchSize(batchSize);
-            for (int iteration = 1; iteration <= epochs; iteration++)
+            try
             {
-                currentIteration = iteration;
-                train_losses.Clear();
-                train_metrics.Clear();
-                val_losses.Clear();
-                val_metrics.Clear();
-                Stopwatch sw = Stopwatch.StartNew();
-                train.Reset();
-                while (train.Next())
-                {
-                    RunTrainOnBatch(train);
-                    //if (iteration == 1)
-                    //    RunTrainOnBatch(train);
-                    //else
-                    //{
-                    //    Thread thread = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
-                    //    thread.Start(train);
-                    //    workerThreads.Add(thread);
-                    //}
-                    //RunTrainOnBatch(train);
-                }
+                List<Thread> workerThreads = new List<Thread>();
 
-                foreach (var item in workerThreads)
+                train.SetBatchSize(batchSize);
+                for (int iteration = 1; iteration <= epochs; iteration++)
                 {
-                    item.Join();
-                }
+                    currentIteration = iteration;
+                    train_losses.Clear();
+                    train_metrics.Clear();
+                    val_losses.Clear();
+                    val_metrics.Clear();
+                    Stopwatch sw = Stopwatch.StartNew();
+                    train.Reset();
+                    int running = 10;
+                    ThreadPool.SetMaxThreads(10, 0);
+                    AutoResetEvent done = new AutoResetEvent(false);
 
-                if (val != null)
-                {
-                    while (val.Next())
+                    while (train.Next())
                     {
-                        var (x, y) = val.GetBatch();
+                        //RunTrainOnBatch(train);
+                        ThreadPool.QueueUserWorkItem(RunTrainOnBatch, train);
+                        if (0 == Interlocked.Decrement(ref running))
+                            done.Set();
 
-                        var pred = Forward(x);
-
-                        var lossVal = LossFn.Call(pred.Data, y);
-                        var metricVal = MetricFn.Call(pred.Data, y);
-                        val_losses.Add(TOps.MeanF(lossVal));
-                        val_metrics.Add(TOps.MeanF(metricVal));
+                        //Thread thread = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
+                        //thread.Start(train);
+                        //workerThreads.Add(thread);
                     }
-                }
 
-                sw.Stop();
-                Console.WriteLine("Epoch: {0}, Loss: {1}, Metrics: {2}, Time: {3}(ms)", iteration, train_losses.Average(), train_metrics.Average(), sw.ElapsedMilliseconds);
+                    done.WaitOne();
+
+                    foreach (var item in workerThreads)
+                    {
+                        item.Join();
+                    }
+
+                    if (val != null)
+                    {
+                        while (val.Next())
+                        {
+                            var (x, y) = val.GetBatch();
+
+                            var pred = Forward(x);
+
+                            var lossVal = LossFn.Call(pred.Data, y);
+                            var metricVal = MetricFn.Call(pred.Data, y);
+                            val_losses.Add(TOps.MeanF(lossVal));
+                            val_metrics.Add(TOps.MeanF(metricVal));
+                        }
+                    }
+
+                    sw.Stop();
+                    Console.WriteLine("Epoch: {0}, Loss: {1}, Metrics: {2}, Time: {3}(ms)", iteration, train_losses.Average(), train_metrics.Average(), sw.ElapsedMilliseconds);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
             }
         }
 
         private void RunTrainOnBatch(object param)
         {
-            Global.Device.SetCurrent();
+            Global.SetNewContext();
             IFrameIter train = (IFrameIter)param;
             var (x, y) = train.GetBatch();
             Variable pred = Forward(x);

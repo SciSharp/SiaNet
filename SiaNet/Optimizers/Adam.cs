@@ -42,13 +42,9 @@ namespace SiaNet.Optimizers
             float t = iteration + 1;
             lr_t = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, t)) / (1f - Math.Pow(Beta1, t)));
             List<Thread> workerThreads = new List<Thread>();
-            foreach (var param in layer.GetParameters())
+            foreach (var param in layer.Params)
             {
-
-                //Thread thread = new Thread(new ParameterizedThreadStart(ApplyUpdate));
-                //thread.Start(param);
-                //workerThreads.Add(thread);
-                ApplyUpdate(param);
+                ApplyUpdate(param.Value);
             }
 
             foreach (var item in workerThreads)
@@ -57,38 +53,42 @@ namespace SiaNet.Optimizers
             }
         }
 
-        private void ApplyUpdate(object p)
+        private void ApplyUpdate(Variable param)
         {
-            Variable param = (Variable)p;
+            //Variable param = (Variable)p;
             if (!ms.ContainsKey(param.Name))
-            {
                 ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+
+            if (!vs.ContainsKey(param.Name))
                 vs[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+
+            if (!vhats.ContainsKey(param.Name))
+            {
                 if (AmsGrad)
                     vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                 else
                     vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, 1);
-
-                var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
-                var v_t = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad);
-
-                if (AmsGrad)
-                {
-                    Tensor vhat_t = TOps.Maximum(vhats[param.Name], v_t);
-
-                    param.Data = param.Data - lr_t * m_t / (Sqrt(vhat_t) + EPSILON);
-                    vhats[param.Name] = vhat_t;
-                }
-                else
-                {
-                    param.Data = param.Data - lr_t * m_t / (Sqrt(v_t) + EPSILON);
-                }
-
-                ms[param.Name] = m_t;
-                vs[param.Name] = v_t;
-
-                param.ApplyConstraint();
             }
+
+            var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
+            var v_t = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad);
+
+            if (AmsGrad)
+            {
+                Tensor vhat_t = TOps.Maximum(vhats[param.Name], v_t);
+
+                param.Data = param.Data - lr_t * m_t / (Sqrt(vhat_t) + EPSILON);
+                vhats[param.Name] = vhat_t;
+            }
+            else
+            {
+                param.Data = param.Data - lr_t * m_t / (Sqrt(v_t) + EPSILON);
+            }
+
+            ms[param.Name] = m_t;
+            vs[param.Name] = v_t;
+
+            param.ApplyConstraint();
         }
     }
 }

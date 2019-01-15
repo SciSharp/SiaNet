@@ -22,9 +22,9 @@ namespace SiaNet.Data
             current = -batchSize;
         }
 
-        public void SetBatchSize(int batchSize)
+        public void SetBatchSize(int _batchSize)
         {
-            batchSize = 32;
+            batchSize = _batchSize;
             current = -batchSize;
         }
 

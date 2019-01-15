@@ -37,10 +37,10 @@ namespace BasicTest
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainingData.Item1, trainingData.Item2);
 
-            Sequential model = new Sequential(784);
-            model.Add(new Dense(728, ActivationType.ReLU, new GlorotUniform()));
+            Sequential model = new Sequential();
+            model.Add(new Dense(784, ActivationType.ReLU, new GlorotUniform()));
             //model.Add(new Dense(64, ActivationType.Sigmoid, new GlorotUniform()));
-            //model.Add(new Dropout(0.5f));
+            model.Add(new Dropout(0.5f));
             model.Add(new Dense(10, ActivationType.Softmax, new GlorotUniform()));
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
@@ -53,12 +53,12 @@ namespace BasicTest
             var trainingImages = MnistParser.Parse(
                 Path.Combine(baseFolder, MnistTrainImages),
                 Path.Combine(baseFolder, MnistTrainLabels),
-                60000);
+                6000);
 
             var testImages = MnistParser.Parse(
                 Path.Combine(baseFolder, MnistTestImages),
                 Path.Combine(baseFolder, MnistTestLabels),
-                10000);
+                1000);
 
             trainingData = BuildSet(trainingImages);
             testingData = BuildSet(testImages);

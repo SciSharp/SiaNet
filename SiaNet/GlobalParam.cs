@@ -10,20 +10,27 @@ namespace SiaNet
     {
         public static IAllocator Device = new TensorSharp.Cpu.CpuAllocator();
 
-        public static bool UseCudnn { get; set; }
+        internal static bool UseCudnn { get; set; }
 
-        public static bool UseCuda { get; set; }
-
-        public static TSCudaContext cudaContext;
+        internal static bool UseCuda { get; set; }
 
         public static void UseGpu(int gpuId = 0, bool cudnn = false)
         {
-            cudaContext = new TSCudaContext();
-            cudaContext.Precompile(Console.Write);
-            cudaContext.CleanUnusedPTX();
-            Device = new CudaAllocator(cudaContext, gpuId);
+            SetNewContext(gpuId, true);
             UseCudnn = cudnn;
             UseCuda = true;
+        }
+
+        public static void SetNewContext(int gpuId = 0, bool compile = false)
+        {
+            var cudaContext = new TSCudaContext();
+            if (compile)
+            {
+                cudaContext.Precompile(Console.Write);
+                cudaContext.CleanUnusedPTX();
+            }
+
+            Device = new CudaAllocator(cudaContext, gpuId);
         }
     }
 }

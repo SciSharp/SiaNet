@@ -40,17 +40,18 @@ namespace SiaNet.Layers
         {
             get
             {
-                return Params[name];
+                return Params[Name + "_" +name];
             }
             set
             {
-                Params[name] = value;
+                Params[Name + "_" + name] = value;
             }
         }
 
         public Variable BuildVar(string name, long[] shape, DType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
         {
             Variable v = null;
+            name = Name + "_" + name;
             if (!Params.ContainsKey(name))
             {
                 v = new Variable(name, elementType, shape);

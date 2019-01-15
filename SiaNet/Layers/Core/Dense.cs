@@ -49,6 +49,7 @@ namespace SiaNet.Layers
         public override void Forward(Variable x)
         {
             Input = x;
+            
             Variable weight = BuildVar("w", new long[] { x.Data.Shape[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Variable bias = null;
             Output = Dot(x.Data, weight.Data);
@@ -68,10 +69,10 @@ namespace SiaNet.Layers
             if (Activation != null)
                 Activation.Backward(outputgrad);
 
-            Input.Grad = Dot(outputgrad, Params["w"].Data.Transpose());
-            Params["w"].Grad = Dot(Input.Data.Transpose(), outputgrad);
+            Input.Grad = Dot(outputgrad, base["w"].Data.Transpose());
+            base["w"].Grad = Dot(Input.Data.Transpose(), outputgrad);
             if (UseBias)
-                Params["b"].Grad = Sum(outputgrad, 0);
+                base["b"].Grad = Sum(outputgrad, 0);
         }
     }
 }
