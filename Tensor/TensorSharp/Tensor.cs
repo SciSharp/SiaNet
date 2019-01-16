@@ -17,6 +17,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using TensorSharp.Core;
+using TensorSharp.Expression;
 
 namespace TensorSharp
 {
@@ -911,6 +912,29 @@ namespace TensorSharp
             result = new Tensor(allocator, DType.Float32, 1, data.Count);
             result.CopyFrom(data.ToArray());
             return result;
+        }
+
+        /// <summary>
+        /// Ases the type.
+        /// </summary>
+        /// <param name="elementType">Type of the element.</param>
+        /// <returns>TVar.</returns>
+        public Tensor AsType(DType elementType)
+        {
+            return new TVar(new AsTypeExpression(this.TVar().Expression, elementType)).Evaluate();
+        }
+
+        /// <summary>
+        /// Converts to device.
+        /// </summary>
+        /// <param name="device">The device.</param>
+        /// <returns>TVar.</returns>
+        public Tensor ToDevice(IAllocator device)
+        {
+            if (Storage.Allocator.GetType().Name == device.GetType().Name)
+                return this;
+
+            return new TVar(new ToDeviceExpression(this.TVar().Expression, device)).Evaluate();
         }
 
         public static Tensor operator +(Tensor lhs, Tensor rhs)

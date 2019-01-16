@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SiaNet
 {
@@ -8,7 +9,6 @@ namespace SiaNet
     {
         private static Dictionary<string, int> CurrentIndexes = new Dictionary<string, int>();
         private static int counter = 0;
-        private static object lockObject = new object();
 
         public static void Reset()
         {
@@ -17,15 +17,12 @@ namespace SiaNet
 
         private static int Next(string name)
         {
-            lock (lockObject)
+            if (!CurrentIndexes.ContainsKey(name))
             {
-                if (!CurrentIndexes.ContainsKey(name))
-                {
-                    CurrentIndexes.Add(name, 0);
-                }
-
-                CurrentIndexes[name] += 1;
+                CurrentIndexes.Add(name, 0);
             }
+
+            CurrentIndexes[name] = new Random().Next(1, 10000);
 
             return CurrentIndexes[name];
         }
@@ -33,10 +30,9 @@ namespace SiaNet
         public static string GetID(string name)
         {
             string result = "";
-            lock (lockObject)
-            {
-                result = string.Format("{0}_{1}", name.ToLower(), counter++);
-            }
+            //Interlocked.Increment(ref counter);
+            counter = new Random(7).Next(1, 10000);
+            result = string.Format("{0}_{1}", name.ToLower(), counter);
 
             return result;
         }

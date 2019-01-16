@@ -12,6 +12,7 @@ using TensorSharp;
 using System.Diagnostics;
 using System.Threading;
 using TensorSharp.CUDA;
+using System.Threading.Tasks;
 
 namespace SiaNet
 {
@@ -36,6 +37,8 @@ namespace SiaNet
         List<float> val_metrics = new List<float>();
 
         int currentIteration = 0;
+
+        List<IAllocator> contextList = new List<IAllocator>();
 
         public long TotalParameterCount
         {
@@ -143,58 +146,11 @@ namespace SiaNet
         {
             try
             {
-                List<Thread> workerThreads = new List<Thread>();
-
                 train.SetBatchSize(batchSize);
+                List<Task> taskList = new List<Task>();
                 for (int iteration = 1; iteration <= epochs; iteration++)
                 {
-                    currentIteration = iteration;
-                    train_losses.Clear();
-                    train_metrics.Clear();
-                    val_losses.Clear();
-                    val_metrics.Clear();
-                    Stopwatch sw = Stopwatch.StartNew();
-                    train.Reset();
-                    int running = 10;
-                    ThreadPool.SetMaxThreads(10, 0);
-                    AutoResetEvent done = new AutoResetEvent(false);
-
-                    while (train.Next())
-                    {
-                        //RunTrainOnBatch(train);
-                        ThreadPool.QueueUserWorkItem(RunTrainOnBatch, train);
-                        if (0 == Interlocked.Decrement(ref running))
-                            done.Set();
-
-                        //Thread thread = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
-                        //thread.Start(train);
-                        //workerThreads.Add(thread);
-                    }
-
-                    done.WaitOne();
-
-                    foreach (var item in workerThreads)
-                    {
-                        item.Join();
-                    }
-
-                    if (val != null)
-                    {
-                        while (val.Next())
-                        {
-                            var (x, y) = val.GetBatch();
-
-                            var pred = Forward(x);
-
-                            var lossVal = LossFn.Call(pred.Data, y);
-                            var metricVal = MetricFn.Call(pred.Data, y);
-                            val_losses.Add(TOps.MeanF(lossVal));
-                            val_metrics.Add(TOps.MeanF(metricVal));
-                        }
-                    }
-
-                    sw.Stop();
-                    Console.WriteLine("Epoch: {0}, Loss: {1}, Metrics: {2}, Time: {3}(ms)", iteration, train_losses.Average(), train_metrics.Average(), sw.ElapsedMilliseconds);
+                    RunEpoch(iteration, train);
                 }
             }
             catch(Exception ex)
@@ -207,11 +163,65 @@ namespace SiaNet
             }
         }
 
-        private void RunTrainOnBatch(object param)
+        private int RunEpoch(int iteration, IFrameIter train, IFrameIter val = null)
         {
             Global.SetNewContext();
-            IFrameIter train = (IFrameIter)param;
-            var (x, y) = train.GetBatch();
+            currentIteration = iteration;
+            train_losses.Clear();
+            train_metrics.Clear();
+            val_losses.Clear();
+            val_metrics.Clear();
+            Stopwatch sw = Stopwatch.StartNew();
+            train.Reset();
+            List<KeyValuePair<Tensor, Tensor>> batchList = new List<KeyValuePair<Tensor, Tensor>>();
+            while (train.Next())
+            {
+                var (x, y) = train.GetBatch();
+               
+                
+                batchList.Add(new KeyValuePair<Tensor, Tensor>(x, y));
+                //Thread t = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
+                //t.Start(train);
+            }
+
+            RunTrainOnBatch(batchList[0].Key, batchList[0].Value);
+
+            foreach (var item in batchList.AsParallel().WithDegreeOfParallelism(4))
+            {
+                RunTrainOnBatch(item.Key, item.Value);
+            }
+
+            //Parallel.ForEach(batchList, new ParallelOptions() { MaxDegreeOfParallelism = 4 }, item =>
+            //{
+                
+            //});
+            
+
+            if (val != null)
+            {
+                while (val.Next())
+                {
+                    var (x, y) = val.GetBatch();
+
+                    var pred = Forward(x);
+
+                    var lossVal = LossFn.Call(pred.Data, y);
+                    var metricVal = MetricFn.Call(pred.Data, y);
+                    val_losses.Add(TOps.MeanF(lossVal));
+                    val_metrics.Add(TOps.MeanF(metricVal));
+                }
+            }
+
+            sw.Stop();
+            Console.WriteLine("Epoch: {0}, Loss: {1}, Metrics: {2}, Time: {3}(ms)", iteration, train_losses.Average(), train_metrics.Average(), sw.ElapsedMilliseconds);
+            return iteration;
+        }
+
+        private void RunTrainOnBatch(Tensor x, Tensor y)
+        {
+            //Global.SetNewContext();
+            x = x.ToDevice(Global.Device);
+            y = y.ToDevice(Global.Device);
             Variable pred = Forward(x);
             Tensor lossVal = LossFn.Call(pred.Data, y);
             Tensor grad = LossFn.CalcGrad(pred.Data, y);
@@ -225,7 +235,7 @@ namespace SiaNet
 
             ApplyDeltaRegularizer();
 
-            foreach (var layer in Layers.AsParallel())
+            foreach (var layer in Layers)
             {
                 OptimizerFn.Update(currentIteration, layer);
             }

@@ -14,9 +14,12 @@ namespace SiaNet
 
         internal static bool UseCuda { get; set; }
 
+        internal static int contextId = 0;
+
         public static void UseGpu(int gpuId = 0, bool cudnn = false)
         {
             SetNewContext(gpuId, true);
+        
             UseCudnn = cudnn;
             UseCuda = true;
         }

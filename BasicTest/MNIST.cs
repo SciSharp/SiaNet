@@ -45,7 +45,7 @@ namespace BasicTest
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
-            model.Fit(trainIter, 10, 32);
+            model.Fit(trainIter, 10, 1024);
         }
 
         static void LoadDataSet(string baseFolder)
@@ -66,19 +66,19 @@ namespace BasicTest
 
         public static (ImageFrame, ImageFrame) BuildSet(DigitImage[] images)
         {
-            var inputs = new Tensor(Global.Device, DType.Float32, images.Length, MnistParser.ImageSize, MnistParser.ImageSize);
-            var outputs = new Tensor(Global.Device, DType.Float32, images.Length, 10);
-
             var cpuAllocator = new TensorSharp.Cpu.CpuAllocator();
+
+            var inputs = new Tensor(cpuAllocator, DType.Float32, images.Length, MnistParser.ImageSize, MnistParser.ImageSize);
+            var outputs = new Tensor(cpuAllocator, DType.Float32, images.Length, 10);
+
+            
 
             for (int i = 0; i < images.Length; ++i)
             {
                 var target = inputs.Select(0, i);
 
-                //target = Tensor.FromArray(Global.Device, images[i].pixels);
                 TVar.FromArray(images[i].pixels, cpuAllocator)
                     .AsType(DType.Float32)
-                    .ToDevice(Global.Device)
                     .Evaluate(target);
 
                 target = target / 255;
@@ -86,7 +86,6 @@ namespace BasicTest
 
 
             Ops.FillOneHot(outputs, MnistParser.LabelCount, images.Select(x => (int)x.label).ToArray());
-            //var targetValues = Tensor.FromArray(allocator, images.Select(x => (float)x.label).ToArray());
             inputs = inputs.View(images.Length, 784);
             return (new ImageFrame(inputs), new ImageFrame(outputs));
         }
