@@ -10,9 +10,9 @@ namespace SiaNet.Layers
 {
     public abstract class BaseLayer : TOps
     {
-        public Dictionary<string, Variable> Params { get; set; }
+        public Dictionary<string, Parameter> Params { get; set; }
 
-        public Variable Input { get; set; }
+        public Parameter Input { get; set; }
 
         public Tensor Output { get; set; }
 
@@ -21,14 +21,14 @@ namespace SiaNet.Layers
         public BaseLayer(string name)
         {
             Name = UUID.GetID(name);
-            Params = new Dictionary<string, Variable>();
+            Params = new Dictionary<string, Parameter>();
         }
 
-        public abstract void Forward(Variable x);
+        public abstract void Forward(Parameter x);
 
         public abstract void Backward(Tensor outputgrad);
 
-        public IEnumerable<Variable> GetParameters()
+        public IEnumerable<Parameter> GetParameters()
         {
             foreach (var item in Params)
             {
@@ -36,7 +36,7 @@ namespace SiaNet.Layers
             }
         }
         
-        public Variable this[string name]
+        public Parameter this[string name]
         {
             get
             {
@@ -48,13 +48,13 @@ namespace SiaNet.Layers
             }
         }
 
-        public Variable BuildVar(string name, long[] shape, DType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
+        public Parameter BuildParam(string name, long[] shape, DType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
         {
-            Variable v = null;
+            Parameter v = null;
             name = Name + "_" + name;
             if (!Params.ContainsKey(name))
             {
-                v = new Variable(name, elementType, shape);
+                v = new Parameter(name, elementType, shape);
                 v.Data = initializer.Operator(v.Data.Shape);
                 v.SetConstraint(constraint);
                 v.SetRegularizer(regularizer);

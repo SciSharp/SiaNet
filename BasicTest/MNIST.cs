@@ -77,7 +77,7 @@ namespace BasicTest
             {
                 var target = inputs.Select(0, i);
 
-                TVar.FromArray(images[i].pixels, cpuAllocator)
+                Variable.FromArray(images[i].pixels, cpuAllocator)
                     .AsType(DType.Float32)
                     .Evaluate(target);
 

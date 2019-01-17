@@ -32,7 +32,7 @@ namespace SiaNet.Layers
             EmbeddingsRegularizer = embeddingsRegularizer;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             
         }

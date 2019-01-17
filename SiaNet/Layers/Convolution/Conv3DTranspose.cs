@@ -20,7 +20,7 @@ namespace SiaNet.Layers
             Name = "conv3d_transpose";
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Forward(x);
             Output = Output.Transpose();

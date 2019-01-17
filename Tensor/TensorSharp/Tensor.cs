@@ -921,7 +921,7 @@ namespace TensorSharp
         /// <returns>TVar.</returns>
         public Tensor AsType(DType elementType)
         {
-            return new TVar(new AsTypeExpression(this.TVar().Expression, elementType)).Evaluate();
+            return new Variable(new AsTypeExpression(this.TVar().Expression, elementType)).Evaluate();
         }
 
         /// <summary>
@@ -934,7 +934,7 @@ namespace TensorSharp
             if (Storage.Allocator.GetType().Name == device.GetType().Name)
                 return this;
 
-            return new TVar(new ToDeviceExpression(this.TVar().Expression, device)).Evaluate();
+            return new Variable(new ToDeviceExpression(this.TVar().Expression, device)).Evaluate();
         }
 
         public static Tensor operator +(Tensor lhs, Tensor rhs)

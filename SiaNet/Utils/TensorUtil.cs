@@ -9,12 +9,12 @@ namespace SiaNet
 {
     public static class TensorUtil
     {
-        public static TVar Softplus(this TVar x)
+        public static Variable Softplus(this Variable x)
         {
             return (x.Exp() + 1).Log();
         }
 
-        public static TVar Softmax(this TVar x)
+        public static Variable Softmax(this Variable x)
         {
             long[] shape = x.Evaluate().Shape;
             List<float> data = new List<float>();
@@ -27,12 +27,12 @@ namespace SiaNet
                 data.AddRange(s_t.ToArray().Cast<float>());
             }
 
-            return TVar.FromArray(data.ToArray(), Global.Device).View(shape);
+            return Variable.FromArray(data.ToArray(), Global.Device).View(shape);
         }
 
-        public static TVar L2Normalize(this TVar x, int axis = -1)
+        public static Variable L2Normalize(this Variable x, int axis = -1)
         {
-            TVar y = null;
+            Variable y = null;
             if (axis == -1)
             {
                 y = x.Pow(2).SumAll().MaxAll();
@@ -45,9 +45,9 @@ namespace SiaNet
             return x.CDiv(y.Sqrt());
         }
 
-        public static Variable ToVariable(this Tensor t, string name = "")
+        public static Parameter ToParameter(this Tensor t, string name = "")
         {
-            return Variable.Create(t, name);
+            return Parameter.Create(t, name);
         }
 
         public static List<Tensor> NDto2DList(this Tensor tensor)

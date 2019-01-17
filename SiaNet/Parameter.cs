@@ -8,7 +8,7 @@ using SiaNet.Regularizers;
 
 namespace SiaNet
 {
-    public class Variable : IDisposable
+    public class Parameter : IDisposable
     {
         public Tensor Data { get; set; }
 
@@ -28,7 +28,7 @@ namespace SiaNet
             }
         }
 
-        public Variable(string name, params long[] shape)
+        public Parameter(string name, params long[] shape)
         {
             //Name = UUID.GetID(name);
             Name = name;
@@ -36,7 +36,7 @@ namespace SiaNet
             Grad = new Tensor(Global.Device, DType.Float32, shape);
         }
 
-        public Variable(string name, DType dataType, params long[] shape)
+        public Parameter(string name, DType dataType, params long[] shape)
         {
             //Name = UUID.GetID(name);
             Name = name;
@@ -44,12 +44,12 @@ namespace SiaNet
             Grad = new Tensor(Global.Device, dataType, shape);
         }
 
-        public static Variable Create(Tensor data, string name = "")
+        public static Parameter Create(Tensor data, string name = "")
         {
             if (string.IsNullOrWhiteSpace(name))
                 name = "v";
 
-            Variable x = new Variable(name, data.ElementType, data.Shape);
+            Parameter x = new Parameter(name, data.ElementType, data.Shape);
             x.Data = data;
 
             return x;

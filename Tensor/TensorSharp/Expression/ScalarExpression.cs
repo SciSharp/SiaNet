@@ -21,7 +21,7 @@ namespace TensorSharp.Expression
     /// <summary>
     /// Class SExpression.
     /// </summary>
-    public abstract class SExpression
+    public abstract class ScalarExpression
     {
         /// <summary>
         /// Evaluates this instance.
@@ -33,10 +33,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class ConstScalarExpression.
-    /// Implements the <see cref="TensorSharp.Expression.SExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.ScalarExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.SExpression" />
-    public class ConstScalarExpression : SExpression
+    /// <seealso cref="TensorSharp.Expression.ScalarExpression" />
+    public class ConstScalarExpression : ScalarExpression
     {
         /// <summary>
         /// The value
@@ -64,10 +64,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class DelegateScalarExpression.
-    /// Implements the <see cref="TensorSharp.Expression.SExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.ScalarExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.SExpression" />
-    public class DelegateScalarExpression : SExpression
+    /// <seealso cref="TensorSharp.Expression.ScalarExpression" />
+    public class DelegateScalarExpression : ScalarExpression
     {
         /// <summary>
         /// The evaluate
@@ -95,15 +95,15 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class UnaryScalarExpression.
-    /// Implements the <see cref="TensorSharp.Expression.SExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.ScalarExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.SExpression" />
-    public class UnaryScalarExpression : SExpression
+    /// <seealso cref="TensorSharp.Expression.ScalarExpression" />
+    public class UnaryScalarExpression : ScalarExpression
     {
         /// <summary>
         /// The source
         /// </summary>
-        private readonly SExpression src;
+        private readonly ScalarExpression src;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -115,7 +115,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public UnaryScalarExpression(SExpression src, Func<float, float> evaluate)
+        public UnaryScalarExpression(ScalarExpression src, Func<float, float> evaluate)
         {
             this.src = src;
             this.evaluate = evaluate;
@@ -133,19 +133,19 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class BinaryScalarExpression.
-    /// Implements the <see cref="TensorSharp.Expression.SExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.ScalarExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.SExpression" />
-    public class BinaryScalarExpression : SExpression
+    /// <seealso cref="TensorSharp.Expression.ScalarExpression" />
+    public class BinaryScalarExpression : ScalarExpression
     {
         /// <summary>
         /// The left
         /// </summary>
-        private readonly SExpression left;
+        private readonly ScalarExpression left;
         /// <summary>
         /// The right
         /// </summary>
-        private readonly SExpression right;
+        private readonly ScalarExpression right;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -158,7 +158,7 @@ namespace TensorSharp.Expression
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public BinaryScalarExpression(SExpression left, SExpression right, Func<float, float, float> evaluate)
+        public BinaryScalarExpression(ScalarExpression left, ScalarExpression right, Func<float, float, float> evaluate)
         {
             this.left = left;
             this.right = right;

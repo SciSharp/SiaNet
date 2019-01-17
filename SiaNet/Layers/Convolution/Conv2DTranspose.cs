@@ -21,7 +21,7 @@ namespace SiaNet.Layers
         }
 
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             base.Forward(x);
             Output = Output.Transpose();

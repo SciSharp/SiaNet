@@ -21,18 +21,26 @@ namespace TensorSharp.Expression
     /// <summary>
     /// Class TVar.
     /// </summary>
-    public class TVar
+    public class Variable
     {
         /// <summary>
         /// The expression
         /// </summary>
-        private TExpression expression;
+        private VariableExpression expression;
+
+        public long[] Shape
+        {
+            get
+            {
+                return Evaluate().Shape;
+            }
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TVar"/> class.
+        /// Initializes a new instance of the <see cref="Variable"/> class.
         /// </summary>
         /// <param name="expression">The expression.</param>
-        public TVar(TExpression expression)
+        public Variable(VariableExpression expression)
         {
             this.expression = expression;
         }
@@ -63,25 +71,25 @@ namespace TensorSharp.Expression
         /// Gets the expression.
         /// </summary>
         /// <value>The expression.</value>
-        public TExpression Expression { get { return expression; } }
+        public VariableExpression Expression { get { return expression; } }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="Tensor"/> to <see cref="TVar"/>.
+        /// Performs an implicit conversion from <see cref="Tensor"/> to <see cref="Variable"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator TVar(Tensor value)
+        public static implicit operator Variable(Tensor value)
         {
-            return new TVar(new TensorValueExpression(value));
+            return new Variable(new TensorValueExpression(value));
         }
 
         /// <summary>
         /// Converts to scalar.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar ToScalar()
+        public ScalarVar ToScalar()
         {
-            return new SVar(new DelegateScalarExpression(() =>
+            return new ScalarVar(new DelegateScalarExpression(() =>
             {
                 using (var result = this.Expression.Evaluate(null))
                 {
@@ -99,15 +107,14 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar Fill(SVar value, IAllocator allocator, DType type, params long[] sizes) { return new TVar(new FillExpression(allocator, type, sizes, res => Ops.Fill(res, value.Evaluate()))); }
-
+        public static Variable Fill(ScalarVar value, IAllocator allocator, DType type, params long[] sizes) { return new Variable(new FillExpression(allocator, type, sizes, res => Ops.Fill(res, value.Evaluate()))); }
 
         /// <summary>
         /// Implements the - operator.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator -(TVar src) { return new TVar(new UnaryTensorExpression(src.Expression, Ops.Neg)); }
+        public static Variable operator -(Variable src) { return new Variable(new UnaryTensorExpression(src.Expression, Ops.Neg)); }
 
         /// <summary>
         /// Implements the + operator.
@@ -115,28 +122,32 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator +(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Add)); }
+        public static Variable operator +(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Add)); }
         /// <summary>
         /// Implements the + operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator +(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.Add)); }
+        public static Variable operator +(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.Add)); }
+
         /// <summary>
         /// Implements the * operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator *(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Mul)); }
+        public static Variable operator *(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Mul)); }
+
         /// <summary>
         /// Implements the * operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator *(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.Mul)); }
+        public static Variable operator *(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.Mul)); }
+
+        public static Variable operator *(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.Mul)); }
 
         /// <summary>
         /// Implements the - operator.
@@ -144,28 +155,28 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator -(SVar lhs, TVar rhs) { return new TVar(new BinaryScalarTensorExpression(lhs.Expression, rhs.Expression, Ops.Sub)); }
+        public static Variable operator -(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryScalarTensorExpression(lhs.Expression, rhs.Expression, Ops.Sub)); }
         /// <summary>
         /// Implements the - operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator -(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Sub)); }
+        public static Variable operator -(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Sub)); }
         /// <summary>
         /// Implements the / operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator /(SVar lhs, TVar rhs) { return new TVar(new BinaryScalarTensorExpression(lhs.Expression, rhs.Expression, Ops.Div)); }
+        public static Variable operator /(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryScalarTensorExpression(lhs.Expression, rhs.Expression, Ops.Div)); }
         /// <summary>
         /// Implements the / operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator /(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Div)); }
+        public static Variable operator /(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.Div)); }
 
         /// <summary>
         /// Implements the + operator.
@@ -173,14 +184,14 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator +(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.Add)); }
+        public static Variable operator +(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.Add)); }
         /// <summary>
         /// Implements the - operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator -(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.Sub)); }
+        public static Variable operator -(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.Sub)); }
 
         /// <summary>
         /// Implements the &gt; operator.
@@ -188,42 +199,42 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator >(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.GreaterThan)); }
+        public static Variable operator >(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.GreaterThan)); }
         /// <summary>
         /// Implements the &lt; operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator <(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.LessThan)); }
+        public static Variable operator <(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.LessThan)); }
         /// <summary>
         /// Implements the &gt;= operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator >=(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.GreaterOrEqual)); }
+        public static Variable operator >=(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.GreaterOrEqual)); }
         /// <summary>
         /// Implements the &lt;= operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator <=(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.LessOrEqual)); }
+        public static Variable operator <=(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.LessOrEqual)); }
         /// <summary>
         /// Implements the == operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator ==(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.EqualTo)); }
+        public static Variable operator ==(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.EqualTo)); }
         /// <summary>
         /// Implements the != operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator !=(TVar lhs, TVar rhs) { return new TVar(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.NotEqual)); }
+        public static Variable operator !=(Variable lhs, Variable rhs) { return new Variable(new BinaryTensorTensorExpression(lhs.Expression, rhs.Expression, Ops.NotEqual)); }
 
         /// <summary>
         /// Implements the &gt; operator.
@@ -231,42 +242,42 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator >(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.GreaterThan)); }
+        public static Variable operator >(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.GreaterThan)); }
         /// <summary>
         /// Implements the &lt; operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator <(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.LessThan)); }
+        public static Variable operator <(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.LessThan)); }
         /// <summary>
         /// Implements the &gt;= operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator >=(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.GreaterOrEqual)); }
+        public static Variable operator >=(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.GreaterOrEqual)); }
         /// <summary>
         /// Implements the &lt;= operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator <=(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.LessOrEqual)); }
+        public static Variable operator <=(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.LessOrEqual)); }
         /// <summary>
         /// Implements the == operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator ==(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.EqualTo)); }
+        public static Variable operator ==(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.EqualTo)); }
         /// <summary>
         /// Implements the != operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator !=(TVar lhs, SVar rhs) { return new TVar(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.NotEqual)); }
+        public static Variable operator !=(Variable lhs, ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(lhs.Expression, rhs.Expression, Ops.NotEqual)); }
 
 
         // Use symmetry of these Scalar/Tensor ops to share kernels with the Tensor/Scalar versions
@@ -276,42 +287,42 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator >(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.LessThan)); }
+        public static Variable operator >(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.LessThan)); }
         /// <summary>
         /// Implements the &lt; operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator <(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.GreaterThan)); }
+        public static Variable operator <(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.GreaterThan)); }
         /// <summary>
         /// Implements the &gt;= operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator >=(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.LessOrEqual)); }
+        public static Variable operator >=(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.LessOrEqual)); }
         /// <summary>
         /// Implements the &lt;= operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator <=(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.GreaterOrEqual)); }
+        public static Variable operator <=(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.GreaterOrEqual)); }
         /// <summary>
         /// Implements the == operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator ==(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.EqualTo)); }
+        public static Variable operator ==(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.EqualTo)); }
         /// <summary>
         /// Implements the != operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static TVar operator !=(SVar lhs, TVar rhs) { return new TVar(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.NotEqual)); }
+        public static Variable operator !=(ScalarVar lhs, Variable rhs) { return new Variable(new BinaryTensorScalarExpression(rhs.Expression, lhs.Expression, Ops.NotEqual)); }
 
 
         /// <summary>
@@ -319,7 +330,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="rhs">The RHS.</param>
         /// <returns>TVar.</returns>
-        public TVar Dot(TVar rhs) { return new TVar(new BinaryTensorTensorExpression(this.Expression, rhs.Expression, Ops.Dot)); }
+        public Variable Dot(Variable rhs) { return new Variable(new BinaryTensorTensorExpression(this.Expression, rhs.Expression, Ops.Dot)); }
 
         // Returns beta * this + alpha * m1 * m2
         /// <summary>
@@ -330,153 +341,153 @@ namespace TensorSharp.Expression
         /// <param name="m1">The m1.</param>
         /// <param name="m2">The m2.</param>
         /// <returns>TVar.</returns>
-        public TVar Addmm(float beta, float alpha, TVar m1, TVar m2) { return new TVar(new AddmmExpression(beta, this.Expression, alpha, m1.Expression, m2.Expression)); }
+        public Variable Addmm(float beta, float alpha, Variable m1, Variable m2) { return new Variable(new AddmmExpression(beta, this.Expression, alpha, m1.Expression, m2.Expression)); }
 
         /// <summary>
         /// cs the mul.
         /// </summary>
         /// <param name="rhs">The RHS.</param>
         /// <returns>TVar.</returns>
-        public TVar CMul(TVar rhs) { return new TVar(new BinaryTensorTensorExpression(this.Expression, rhs.Expression, Ops.Mul)); }
+        public Variable CMul(Variable rhs) { return new Variable(new BinaryTensorTensorExpression(this.Expression, rhs.Expression, Ops.Mul)); }
         /// <summary>
         /// cs the div.
         /// </summary>
         /// <param name="rhs">The RHS.</param>
         /// <returns>TVar.</returns>
-        public TVar CDiv(TVar rhs) { return new TVar(new BinaryTensorTensorExpression(this.Expression, rhs.Expression, Ops.Div)); }
+        public Variable CDiv(Variable rhs) { return new Variable(new BinaryTensorTensorExpression(this.Expression, rhs.Expression, Ops.Div)); }
 
         /// <summary>
         /// Divs the specified RHS.
         /// </summary>
         /// <param name="rhs">The RHS.</param>
         /// <returns>TVar.</returns>
-        public TVar Div(SVar rhs) { return new TVar(new BinaryTensorScalarExpression(this.Expression, rhs.Expression, Ops.Div)); }
+        public Variable Div(ScalarVar rhs) { return new Variable(new BinaryTensorScalarExpression(this.Expression, rhs.Expression, Ops.Div)); }
 
 
         /// <summary>
         /// Abses this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Abs() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Abs)); }
+        public Variable Abs() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Abs)); }
         /// <summary>
         /// Signs this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Sign() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Sign)); }
+        public Variable Sign() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Sign)); }
 
         /// <summary>
         /// SQRTs this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Sqrt() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Abs)); }
+        public Variable Sqrt() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Abs)); }
         /// <summary>
         /// Exps this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Exp() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Exp)); }
+        public Variable Exp() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Exp)); }
         /// <summary>
         /// Logs this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Log() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Log)); }
+        public Variable Log() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Log)); }
         /// <summary>
         /// Log1ps this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Log1p() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Log1p)); }
+        public Variable Log1p() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Log1p)); }
         /// <summary>
         /// Floors this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Floor() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Floor)); }
+        public Variable Floor() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Floor)); }
         /// <summary>
         /// Ceils this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Ceil() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Ceil)); }
+        public Variable Ceil() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Ceil)); }
         /// <summary>
         /// Rounds this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Round() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Round)); }
+        public Variable Round() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Round)); }
         /// <summary>
         /// Truncs this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Trunc() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Trunc)); }
+        public Variable Trunc() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Trunc)); }
         /// <summary>
         /// Fracs this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Frac() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Frac)); }
+        public Variable Frac() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Frac)); }
 
         /// <summary>
         /// Sins this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Sin() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Abs)); }
+        public Variable Sin() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Abs)); }
         /// <summary>
         /// Coses this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Cos() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Cos)); }
+        public Variable Cos() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Cos)); }
         /// <summary>
         /// Tans this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Tan() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Tan)); }
+        public Variable Tan() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Tan)); }
 
         /// <summary>
         /// Asins this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Asin() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Asin)); }
+        public Variable Asin() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Asin)); }
         /// <summary>
         /// Acoses this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Acos() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Acos)); }
+        public Variable Acos() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Acos)); }
         /// <summary>
         /// Atans this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Atan() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Atan)); }
+        public Variable Atan() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Atan)); }
 
         /// <summary>
         /// Sinhes this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Sinh() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Sinh)); }
+        public Variable Sinh() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Sinh)); }
         /// <summary>
         /// Coshes this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Cosh() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Cosh)); }
+        public Variable Cosh() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Cosh)); }
         /// <summary>
         /// Tanhes this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Tanh() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Tanh)); }
+        public Variable Tanh() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Tanh)); }
 
         /// <summary>
         /// Sigmoids this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Sigmoid() { return new TVar(new UnaryTensorExpression(this.Expression, Ops.Sigmoid)); }
+        public Variable Sigmoid() { return new Variable(new UnaryTensorExpression(this.Expression, Ops.Sigmoid)); }
 
         /// <summary>
         /// Pows the specified y.
         /// </summary>
         /// <param name="y">The y.</param>
         /// <returns>TVar.</returns>
-        public TVar Pow(SVar y) { return new TVar(new BinaryTensorScalarExpression(this.Expression, y.Expression, Ops.Pow)); }
+        public Variable Pow(ScalarVar y) { return new Variable(new BinaryTensorScalarExpression(this.Expression, y.Expression, Ops.Pow)); }
         /// <summary>
         /// Clamps the specified minimum.
         /// </summary>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>TVar.</returns>
-        public TVar Clamp(SVar min, SVar max) { return new TVar(new UnaryTensorExpression(this.Expression, (res, src) => Ops.Clamp(res, src, min.Evaluate(), max.Evaluate()))); }
+        public Variable Clamp(ScalarVar min, ScalarVar max) { return new Variable(new UnaryTensorExpression(this.Expression, (res, src) => Ops.Clamp(res, src, min.Evaluate(), max.Evaluate()))); }
 
         /// <summary>
         /// Atan2s the specified y.
@@ -484,7 +495,7 @@ namespace TensorSharp.Expression
         /// <param name="y">The y.</param>
         /// <param name="x">The x.</param>
         /// <returns>TVar.</returns>
-        public static TVar Atan2(TVar y, TVar x) { return new TVar(new BinaryTensorTensorExpression(x.Expression, y.Expression, Ops.Atan2)); }
+        public static Variable Atan2(Variable y, Variable x) { return new Variable(new BinaryTensorTensorExpression(x.Expression, y.Expression, Ops.Atan2)); }
         /// <summary>
         /// Lerps the specified a.
         /// </summary>
@@ -492,7 +503,7 @@ namespace TensorSharp.Expression
         /// <param name="b">The b.</param>
         /// <param name="weight">The weight.</param>
         /// <returns>TVar.</returns>
-        public static TVar Lerp(TVar a, TVar b, SVar weight) { return new TVar(new BinaryTensorTensorExpression(a.Expression, b.Expression, (res, aVal, bVal) => Ops.Lerp(res, aVal, bVal, weight.Evaluate()))); }
+        public static Variable Lerp(Variable a, Variable b, ScalarVar weight) { return new Variable(new BinaryTensorTensorExpression(a.Expression, b.Expression, (res, aVal, bVal) => Ops.Lerp(res, aVal, bVal, weight.Evaluate()))); }
 
 
         /// <summary>
@@ -500,109 +511,109 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Sum(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Sum(result, src, dimension))); }
+        public Variable Sum(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Sum(result, src, dimension))); }
         /// <summary>
         /// Products the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Prod(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Prod(result, src, dimension))); }
+        public Variable Prod(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Prod(result, src, dimension))); }
         /// <summary>
         /// Determines the minimum of the parameters.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Min(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Min(result, src, dimension))); }
+        public Variable Min(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Min(result, src, dimension))); }
         /// <summary>
         /// Determines the maximun of the parameters.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Max(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Max(result, src, dimension))); }
+        public Variable Max(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Max(result, src, dimension))); }
         /// <summary>
         /// Argmins the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Argmin(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Argmin(result, src, dimension))); }
+        public Variable Argmin(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Argmin(result, src, dimension))); }
         /// <summary>
         /// Argmaxes the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Argmax(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Argmax(result, src, dimension))); }
+        public Variable Argmax(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Argmax(result, src, dimension))); }
 
         /// <summary>
         /// Means the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <returns>TVar.</returns>
-        public TVar Mean(int dimension) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Mean(result, src, dimension))); }
+        public Variable Mean(int dimension) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Mean(result, src, dimension))); }
         /// <summary>
         /// Norms the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <param name="value">The value.</param>
         /// <returns>TVar.</returns>
-        public TVar Norm(int dimension, float value) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Norm(result, src, dimension, value))); }
+        public Variable Norm(int dimension, float value) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Norm(result, src, dimension, value))); }
         /// <summary>
         /// Standards the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <param name="normByN">if set to <c>true</c> [norm by n].</param>
         /// <returns>TVar.</returns>
-        public TVar Std(int dimension, bool normByN = false) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Std(result, src, dimension, normByN))); }
+        public Variable Std(int dimension, bool normByN = false) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Std(result, src, dimension, normByN))); }
         /// <summary>
         /// Variables the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <param name="normByN">if set to <c>true</c> [norm by n].</param>
         /// <returns>TVar.</returns>
-        public TVar Var(int dimension, bool normByN = false) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Var(result, src, dimension, normByN))); }
+        public Variable Var(int dimension, bool normByN = false) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.Var(result, src, dimension, normByN))); }
 
 
         /// <summary>
         /// Sums all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar SumAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.SumAll(result, src))); }
+        public Variable SumAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.SumAll(result, src))); }
         /// <summary>
         /// Products all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar ProdAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.ProdAll(result, src))); }
+        public Variable ProdAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.ProdAll(result, src))); }
         /// <summary>
         /// Minimums all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar MinAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.MinAll(result, src))); }
+        public Variable MinAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.MinAll(result, src))); }
         /// <summary>
         /// Maximums all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar MaxAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.MaxAll(result, src))); }
+        public Variable MaxAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.MaxAll(result, src))); }
 
         /// <summary>
         /// Means all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar MeanAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.MeanAll(result, src))); }
+        public Variable MeanAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.MeanAll(result, src))); }
         /// <summary>
         /// Variables all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar VarAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.VarAll(result, src))); }
+        public Variable VarAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.VarAll(result, src))); }
         /// <summary>
         /// Standards all.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar StdAll() { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.StdAll(result, src))); }
+        public Variable StdAll() { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.StdAll(result, src))); }
         /// <summary>
         /// Norms all.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>TVar.</returns>
-        public TVar NormAll(float value) { return new TVar(new UnaryTensorExpression(this.Expression, (result, src) => Ops.NormAll(result, src, value))); }
+        public Variable NormAll(float value) { return new Variable(new UnaryTensorExpression(this.Expression, (result, src) => Ops.NormAll(result, src, value))); }
 
 
         /// <summary>
@@ -611,14 +622,14 @@ namespace TensorSharp.Expression
         /// <param name="dimension">The dimension.</param>
         /// <param name="indices">The indices.</param>
         /// <returns>TVar.</returns>
-        public TVar Gather(int dimension, TVar indices) { return new TVar(new BinaryTensorTensorExpression(this.Expression, indices.Expression, (res, src, ind) => Ops.Gather(res, src, dimension, ind))); }
+        public Variable Gather(int dimension, Variable indices) { return new Variable(new BinaryTensorTensorExpression(this.Expression, indices.Expression, (res, src, ind) => Ops.Gather(res, src, dimension, ind))); }
         /// <summary>
         /// Scatters the specified dimension.
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <param name="indices">The indices.</param>
         /// <returns>TVar.</returns>
-        public TVar Scatter(int dimension, TVar indices) { return new TVar(new BinaryTensorTensorExpression(this.Expression, indices.Expression, (res, src, ind) => Ops.Scatter(res, src, dimension, ind))); }
+        public Variable Scatter(int dimension, Variable indices) { return new Variable(new BinaryTensorTensorExpression(this.Expression, indices.Expression, (res, src, ind) => Ops.Scatter(res, src, dimension, ind))); }
 
         // Returns a copy of this tensor, with the given indices filled with the given value.
         // If, when this op is evaluated, the write target is the same tensor as this, then the copy is unnecessary and is skipped.
@@ -629,7 +640,7 @@ namespace TensorSharp.Expression
         /// <param name="dimension">The dimension.</param>
         /// <param name="indices">The indices.</param>
         /// <returns>TVar.</returns>
-        public TVar ScatterFill(SVar value, int dimension, TVar indices) { return new TVar(new ScatterFillExpression(this.Expression, value, dimension, indices.Expression)); }
+        public Variable ScatterFill(ScalarVar value, int dimension, Variable indices) { return new Variable(new ScatterFillExpression(this.Expression, value, dimension, indices.Expression)); }
 
 
 
@@ -643,9 +654,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomUniform(SeedSource seedSource, SVar min, SVar max, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomUniform(SeedSource seedSource, ScalarVar min, ScalarVar max, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomUniform(res, seedSource, min.Evaluate(), max.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomUniform(res, seedSource, min.Evaluate(), max.Evaluate())));
         }
 
         /// <summary>
@@ -658,9 +669,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomNormal(SeedSource seedSource, SVar mean, SVar stdv, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomNormal(SeedSource seedSource, ScalarVar mean, ScalarVar stdv, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomNormal(res, seedSource, mean.Evaluate(), stdv.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomNormal(res, seedSource, mean.Evaluate(), stdv.Evaluate())));
         }
 
         /// <summary>
@@ -672,9 +683,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomExponential(SeedSource seedSource, SVar lambda, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomExponential(SeedSource seedSource, ScalarVar lambda, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomExponential(res, seedSource, lambda.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomExponential(res, seedSource, lambda.Evaluate())));
         }
 
         /// <summary>
@@ -687,9 +698,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomCauchy(SeedSource seedSource, SVar median, SVar sigma, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomCauchy(SeedSource seedSource, ScalarVar median, ScalarVar sigma, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomCauchy(res, seedSource, median.Evaluate(), sigma.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomCauchy(res, seedSource, median.Evaluate(), sigma.Evaluate())));
         }
 
         /// <summary>
@@ -702,9 +713,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomLogNormal(SeedSource seedSource, SVar mean, SVar stdv, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomLogNormal(SeedSource seedSource, ScalarVar mean, ScalarVar stdv, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomLogNormal(res, seedSource, mean.Evaluate(), stdv.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomLogNormal(res, seedSource, mean.Evaluate(), stdv.Evaluate())));
         }
 
         /// <summary>
@@ -716,9 +727,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomGeometric(SeedSource seedSource, SVar p, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomGeometric(SeedSource seedSource, ScalarVar p, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomGeometric(res, seedSource, p.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomGeometric(res, seedSource, p.Evaluate())));
         }
 
         /// <summary>
@@ -730,9 +741,9 @@ namespace TensorSharp.Expression
         /// <param name="type">The type.</param>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public static TVar RandomBernoulli(SeedSource seedSource, SVar p, IAllocator allocator, DType type, params long[] sizes)
+        public static Variable RandomBernoulli(SeedSource seedSource, ScalarVar p, IAllocator allocator, DType type, params long[] sizes)
         {
-            return new TVar(new FillExpression(allocator, type, sizes, res => Ops.RandomBernoulli(res, seedSource, p.Evaluate())));
+            return new Variable(new FillExpression(allocator, type, sizes, res => Ops.RandomBernoulli(res, seedSource, p.Evaluate())));
         }
 
 
@@ -742,9 +753,9 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="elementType">Type of the element.</param>
         /// <returns>TVar.</returns>
-        public TVar AsType(DType elementType)
+        public Variable AsType(DType elementType)
         {
-            return new TVar(new AsTypeExpression(this.Expression, elementType));
+            return new Variable(new AsTypeExpression(this.Expression, elementType));
         }
 
         /// <summary>
@@ -752,9 +763,9 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="device">The device.</param>
         /// <returns>TVar.</returns>
-        public TVar ToDevice(IAllocator device)
+        public Variable ToDevice(IAllocator device)
         {
-            return new TVar(new ToDeviceExpression(this.Expression, device));
+            return new Variable(new ToDeviceExpression(this.Expression, device));
         }
 
         /// <summary>
@@ -771,7 +782,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="result">The result.</param>
         /// <exception cref="InvalidOperationException">cannot write to given result - it is not a valid lvalue</exception>
-        public void Evaluate(TVar result)
+        public void Evaluate(Variable result)
         {
             if (!result.Expression.IsValidLvalue)
                 throw new InvalidOperationException("cannot write to given result - it is not a valid lvalue");
@@ -788,12 +799,10 @@ namespace TensorSharp.Expression
         /// <param name="array">The array.</param>
         /// <param name="allocator">The allocator.</param>
         /// <returns>TVar.</returns>
-        public static TVar FromArray(Array array, IAllocator allocator)
+        public static Variable FromArray(Array array, IAllocator allocator)
         {
-            return new TVar(new FromArrayExpression(allocator, array));
+            return new Variable(new FromArrayExpression(allocator, array));
         }
-
-
 
         /// <summary>
         /// Selects the specified dimension.
@@ -801,7 +810,7 @@ namespace TensorSharp.Expression
         /// <param name="dimension">The dimension.</param>
         /// <param name="index">The index.</param>
         /// <returns>TVar.</returns>
-        public TVar Select(int dimension, long index) { return new TVar(new ViewExpression(this.Expression, src => src.Select(dimension, index))); }
+        public Variable Select(int dimension, long index) { return new Variable(new ViewExpression(this.Expression, src => src.Select(dimension, index))); }
         /// <summary>
         /// Narrows the specified dimension.
         /// </summary>
@@ -809,42 +818,42 @@ namespace TensorSharp.Expression
         /// <param name="startIndex">The start index.</param>
         /// <param name="size">The size.</param>
         /// <returns>TVar.</returns>
-        public TVar Narrow(int dimension, long startIndex, long size) { return new TVar(new ViewExpression(this.Expression, src => src.Narrow(dimension, startIndex, size))); }
+        public Variable Narrow(int dimension, long startIndex, long size) { return new Variable(new ViewExpression(this.Expression, src => src.Narrow(dimension, startIndex, size))); }
         /// <summary>
         /// Transposes this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Transpose() { return new TVar(new ViewExpression(this.Expression, src => src.Transpose())); }
+        public Variable Transpose() { return new Variable(new ViewExpression(this.Expression, src => src.Transpose())); }
         /// <summary>
         /// Transposes the specified dim1.
         /// </summary>
         /// <param name="dim1">The dim1.</param>
         /// <param name="dim2">The dim2.</param>
         /// <returns>TVar.</returns>
-        public TVar Transpose(int dim1, int dim2) { return new TVar(new ViewExpression(this.Expression, src => src.Transpose(dim1, dim2))); }
+        public Variable Transpose(int dim1, int dim2) { return new Variable(new ViewExpression(this.Expression, src => src.Transpose(dim1, dim2))); }
         /// <summary>
         /// Permutes the specified dims.
         /// </summary>
         /// <param name="dims">The dims.</param>
         /// <returns>TVar.</returns>
-        public TVar Permute(params int[] dims) { return new TVar(new ViewExpression(this.Expression, src => src.Transpose(dims))); }
+        public Variable Permute(params int[] dims) { return new Variable(new ViewExpression(this.Expression, src => src.Transpose(dims))); }
         /// <summary>
         /// Views the specified sizes.
         /// </summary>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public TVar View(params long[] sizes) { return new TVar(new ViewExpression(this.Expression, src => src.View(sizes))); }
+        public Variable View(params long[] sizes) { return new Variable(new ViewExpression(this.Expression, src => src.View(sizes))); }
         /// <summary>
         /// Expands the specified sizes.
         /// </summary>
         /// <param name="sizes">The sizes.</param>
         /// <returns>TVar.</returns>
-        public TVar Expand(params long[] sizes) { return new TVar(new ViewExpression(this.Expression, src => src.Expand(sizes))); }
+        public Variable Expand(params long[] sizes) { return new Variable(new ViewExpression(this.Expression, src => src.Expand(sizes))); }
         /// <summary>
         /// Squeezes this instance.
         /// </summary>
         /// <returns>TVar.</returns>
-        public TVar Squeeze() { return new TVar(new ViewExpression(this.Expression, src => src.Squeeze())); }
+        public Variable Squeeze() { return new Variable(new ViewExpression(this.Expression, src => src.Squeeze())); }
 
         public void Print()
         {
@@ -862,9 +871,9 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>TVar.</returns>
-        public static TVar TVar(this Tensor value)
+        public static Variable TVar(this Tensor value)
         {
-            return new Expression.TVar(new TensorValueExpression(value));
+            return new Expression.Variable(new TensorValueExpression(value));
         }
 
       

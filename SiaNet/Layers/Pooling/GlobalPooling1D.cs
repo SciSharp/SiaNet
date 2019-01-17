@@ -15,7 +15,7 @@ namespace SiaNet.Layers
             PoolingType = poolingType;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             if(PoolingType == PoolingPoolType.Max)

@@ -23,7 +23,7 @@ namespace SiaNet.Layers
             Padding = padding;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             var (n, c, d, h, w) = x.Data.GetConv3DShape();

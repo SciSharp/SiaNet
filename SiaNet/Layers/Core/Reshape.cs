@@ -24,7 +24,7 @@ namespace SiaNet.Layers
             TargetShape = targetShape;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
 

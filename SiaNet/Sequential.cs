@@ -20,7 +20,7 @@ namespace SiaNet
     {
         public List<BaseLayer> Layers { get; set; }
 
-        private Variable lastOutput;
+        private Parameter lastOutput;
 
         public BaseLoss LossFn { get; set; }
 
@@ -65,7 +65,7 @@ namespace SiaNet
             Layers.Add(l);
         }
 
-        public IEnumerable<Variable> GetParameters()
+        public IEnumerable<Parameter> GetParameters()
         {
             foreach (var layer in Layers)
             {
@@ -76,14 +76,14 @@ namespace SiaNet
             }
         }
 
-        private Variable Forward(Tensor input)
+        private Parameter Forward(Tensor input)
         {
-            Variable output = input.ToVariable("X");
+            Parameter output = input.ToParameter("X");
             
             foreach (var layer in Layers)
             {
                 layer.Forward(output);
-                output = layer.Output.ToVariable();
+                output = layer.Output.ToParameter();
             }
 
             lastOutput = output;
@@ -222,7 +222,7 @@ namespace SiaNet
             //Global.SetNewContext();
             x = x.ToDevice(Global.Device);
             y = y.ToDevice(Global.Device);
-            Variable pred = Forward(x);
+            Parameter pred = Forward(x);
             Tensor lossVal = LossFn.Call(pred.Data, y);
             Tensor grad = LossFn.CalcGrad(pred.Data, y);
             Tensor reg_loss = ApplyRegularizer(lossVal);

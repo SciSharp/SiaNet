@@ -59,17 +59,17 @@ namespace SiaNet.Layers
             KernalRegularizer = kernalRegularizer;
             BiasRegularizer = biasRegularizer;
         }
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             //ToDo: Implement DilationRate
             Input = x;
             var (n, c, s) = x.Data.GetConv1DShape();
 
-            Variable weight = BuildVar("w", new long[] { Filters, c, KernalSize }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
-            Variable bias = null;
+            Parameter weight = BuildParam("w", new long[] { Filters, c, KernalSize }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
+            Parameter bias = null;
             if (UseBias)
             {
-                bias = BuildVar("b", new long[] { Filters, 1 }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
+                bias = BuildParam("b", new long[] { Filters, 1 }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
             }
 
             uint? pad = null;

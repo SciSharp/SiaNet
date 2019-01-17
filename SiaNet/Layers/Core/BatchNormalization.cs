@@ -38,11 +38,11 @@ namespace SiaNet.Layers
 
         public BaseRegularizer GammaRegularizer { get; set; }
 
-        private Variable mu;
+        private Parameter mu;
 
-        private Variable mv;
+        private Parameter mv;
 
-        private TVar norm;
+        private Variable norm;
 
         public BatchNormalization(int axis = -1, float momentum = 0.99f, float epsilon = 0.001f, bool center = true, bool scale = true,
                                    BaseInitializer betaInitializer = null, BaseRegularizer betaRegularizer = null, BaseConstraint betaConstraint = null, BaseInitializer gammaInitializer = null,
@@ -64,15 +64,15 @@ namespace SiaNet.Layers
             GammaRegularizer = gammaRegularizer;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             
-            Variable beta = BuildVar("beta", x.Data.Shape, x.Data.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
-            Variable gamma = BuildVar("gamma", x.Data.Shape, x.Data.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);
+            Parameter beta = BuildParam("beta", x.Data.Shape, x.Data.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
+            Parameter gamma = BuildParam("gamma", x.Data.Shape, x.Data.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);
 
-            mu = BuildVar("mm", x.Data.Shape, x.Data.ElementType, MovingMeanInitializer, null, null, false);
-            mv = BuildVar("mv", x.Data.Shape, x.Data.ElementType, MovingVarianceInitializer, null, null, false);
+            mu = BuildParam("mm", x.Data.Shape, x.Data.ElementType, MovingMeanInitializer, null, null, false);
+            mv = BuildParam("mv", x.Data.Shape, x.Data.ElementType, MovingVarianceInitializer, null, null, false);
 
             norm = (x.Data - mu.Data.TVar()).CDiv((mv.Data.TVar() + EPSILON).Sqrt());
             

@@ -13,7 +13,7 @@ namespace SiaNet.Layers.Activations
         {
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             Output = Tanh(x.Data);

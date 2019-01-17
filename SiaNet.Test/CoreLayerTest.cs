@@ -14,7 +14,7 @@ namespace SiaNet.Test
             Tensor grad = Tensor.FromArray(Global.Device, new float[] { 1, -1, -2, 2, -3, -4, 5, 4, -5 });
             grad = grad.Reshape(3, -1);
             Layers.Dense l = new Layers.Dense(3, ActivationType.Linear, new Initializers.Ones(), useBias: true);
-            l.Forward(Variable.Create(x));
+            l.Forward(Parameter.Create(x));
             l.Output.Print();
             l.Backward(grad);
             l.Input.Grad.Print();

@@ -46,22 +46,22 @@ namespace SiaNet.Layers
             BiasRegularizer = biasRegularizer;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             
-            Variable weight = BuildVar("w", new long[] { x.Data.Shape[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
-            Variable bias = null;
+            Parameter weight = BuildParam("w", new long[] { x.Data.Shape[1], Dim }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
+            Parameter bias = null;
             Output = Dot(x.Data, weight.Data);
 
             if (UseBias)
             {
-                bias = BuildVar("b", new long[] { 1, Dim }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
+                bias = BuildParam("b", new long[] { 1, Dim }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
                 Output += bias.Data;
             }
 
             if (Activation!=null)
-                Activation.Forward(Output.ToVariable());
+                Activation.Forward(Output.ToParameter());
         }
 
         public override void Backward(Tensor outputgrad)

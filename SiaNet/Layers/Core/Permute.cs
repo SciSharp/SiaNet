@@ -16,7 +16,7 @@ namespace SiaNet.Layers
             Dims = dims;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
 

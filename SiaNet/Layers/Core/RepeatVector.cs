@@ -20,7 +20,7 @@ namespace SiaNet.Layers
             NumTimes = numTimes;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             Output = x.Data.RepeatTensor(NumTimes);

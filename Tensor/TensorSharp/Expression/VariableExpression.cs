@@ -21,7 +21,7 @@ namespace TensorSharp.Expression
     /// <summary>
     /// Class TExpression.
     /// </summary>
-    public abstract class TExpression
+    public abstract class VariableExpression
     {
         /// <summary>
         /// Gets a value indicating whether this instance is valid lvalue.
@@ -30,10 +30,10 @@ namespace TensorSharp.Expression
         public bool IsValidLvalue { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TExpression"/> class.
+        /// Initializes a new instance of the <see cref="VariableExpression"/> class.
         /// </summary>
         /// <param name="isValidLvalue">if set to <c>true</c> [is valid lvalue].</param>
-        public TExpression(bool isValidLvalue = false)
+        public VariableExpression(bool isValidLvalue = false)
         {
             this.IsValidLvalue = isValidLvalue;
         }
@@ -48,15 +48,15 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class ViewExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class ViewExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class ViewExpression : VariableExpression
     {
         /// <summary>
         /// The source
         /// </summary>
-        private readonly TExpression src;
+        private readonly VariableExpression src;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -67,7 +67,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public ViewExpression(TExpression src, Func<Tensor, Tensor> evaluate)
+        public ViewExpression(VariableExpression src, Func<Tensor, Tensor> evaluate)
             : base(src.IsValidLvalue)
         {
             this.src = src;
@@ -93,10 +93,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class FromArrayExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class FromArrayExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class FromArrayExpression : VariableExpression
     {
         /// <summary>
         /// The allocator
@@ -140,15 +140,15 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class AsTypeExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class AsTypeExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class AsTypeExpression : VariableExpression
     {
         /// <summary>
         /// The source
         /// </summary>
-        private readonly TExpression src;
+        private readonly VariableExpression src;
         /// <summary>
         /// The type
         /// </summary>
@@ -159,7 +159,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="type">The type.</param>
-        public AsTypeExpression(TExpression src, DType type)
+        public AsTypeExpression(VariableExpression src, DType type)
         {
             this.src = src;
             this.type = type;
@@ -187,15 +187,15 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class ToDeviceExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class ToDeviceExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class ToDeviceExpression : VariableExpression
     {
         /// <summary>
         /// The source
         /// </summary>
-        private readonly TExpression src;
+        private readonly VariableExpression src;
         /// <summary>
         /// The allocator
         /// </summary>
@@ -206,7 +206,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="allocator">The allocator.</param>
-        public ToDeviceExpression(TExpression src, IAllocator allocator)
+        public ToDeviceExpression(VariableExpression src, IAllocator allocator)
         {
             this.src = src;
             this.allocator = allocator;
@@ -234,23 +234,23 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class ScatterFillExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class ScatterFillExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class ScatterFillExpression : VariableExpression
     {
         /// <summary>
         /// The source
         /// </summary>
-        private readonly TExpression src;
+        private readonly VariableExpression src;
         /// <summary>
         /// The indices
         /// </summary>
-        private readonly TExpression indices;
+        private readonly VariableExpression indices;
         /// <summary>
         /// The value
         /// </summary>
-        private readonly SVar value;
+        private readonly ScalarVar value;
         /// <summary>
         /// The dimension
         /// </summary>
@@ -264,7 +264,7 @@ namespace TensorSharp.Expression
         /// <param name="value">The value.</param>
         /// <param name="dimension">The dimension.</param>
         /// <param name="indices">The indices.</param>
-        public ScatterFillExpression(TExpression src, SVar value, int dimension, TExpression indices)
+        public ScatterFillExpression(VariableExpression src, ScalarVar value, int dimension, VariableExpression indices)
         {
             this.src = src;
             this.value = value;
@@ -295,10 +295,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class FillExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class FillExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class FillExpression : VariableExpression
     {
         /// <summary>
         /// The allocator
@@ -351,10 +351,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class AddmmExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class AddmmExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class AddmmExpression : VariableExpression
     {
         /// <summary>
         /// The source
@@ -365,7 +365,7 @@ namespace TensorSharp.Expression
         /// <summary>
         /// The m2
         /// </summary>
-        private readonly TExpression src, m1, m2;
+        private readonly VariableExpression src, m1, m2;
         /// <summary>
         /// The alpha
         /// </summary>
@@ -382,7 +382,7 @@ namespace TensorSharp.Expression
         /// <param name="alpha">The alpha.</param>
         /// <param name="m1">The m1.</param>
         /// <param name="m2">The m2.</param>
-        public AddmmExpression(float beta, TExpression src, float alpha, TExpression m1, TExpression m2)
+        public AddmmExpression(float beta, VariableExpression src, float alpha, VariableExpression m1, VariableExpression m2)
         {
             this.beta = beta;
             this.src = src;
@@ -410,10 +410,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class TensorValueExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class TensorValueExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class TensorValueExpression : VariableExpression
     {
         /// <summary>
         /// The value
@@ -449,10 +449,10 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class BinaryTensorTensorExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class BinaryTensorTensorExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class BinaryTensorTensorExpression : VariableExpression
     {
         /// <summary>
         /// The left
@@ -460,7 +460,7 @@ namespace TensorSharp.Expression
         /// <summary>
         /// The right
         /// </summary>
-        private readonly TExpression left, right;
+        private readonly VariableExpression left, right;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -472,7 +472,7 @@ namespace TensorSharp.Expression
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public BinaryTensorTensorExpression(TExpression left, TExpression right, Func<Tensor, Tensor, Tensor, Tensor> evaluate)
+        public BinaryTensorTensorExpression(VariableExpression left, VariableExpression right, Func<Tensor, Tensor, Tensor, Tensor> evaluate)
         {
             this.left = left;
             this.right = right;
@@ -496,15 +496,15 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class UnaryTensorExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class UnaryTensorExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class UnaryTensorExpression : VariableExpression
     {
         /// <summary>
         /// The source
         /// </summary>
-        private readonly TExpression src;
+        private readonly VariableExpression src;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -515,7 +515,7 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="src">The source.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public UnaryTensorExpression(TExpression src, Func<Tensor, Tensor, Tensor> evaluate)
+        public UnaryTensorExpression(VariableExpression src, Func<Tensor, Tensor, Tensor> evaluate)
         {
             this.src = src;
             this.evaluate = evaluate;
@@ -537,19 +537,19 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class BinaryScalarTensorExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class BinaryScalarTensorExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class BinaryScalarTensorExpression : VariableExpression
     {
         /// <summary>
         /// The left
         /// </summary>
-        public readonly SExpression left;
+        public readonly ScalarExpression left;
         /// <summary>
         /// The right
         /// </summary>
-        public readonly TExpression right;
+        public readonly VariableExpression right;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -561,7 +561,7 @@ namespace TensorSharp.Expression
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public BinaryScalarTensorExpression(SExpression left, TExpression right, Func<Tensor, float, Tensor, Tensor> evaluate)
+        public BinaryScalarTensorExpression(ScalarExpression left, VariableExpression right, Func<Tensor, float, Tensor, Tensor> evaluate)
         {
             this.left = left;
             this.right = right;
@@ -584,19 +584,19 @@ namespace TensorSharp.Expression
 
     /// <summary>
     /// Class BinaryTensorScalarExpression.
-    /// Implements the <see cref="TensorSharp.Expression.TExpression" />
+    /// Implements the <see cref="TensorSharp.Expression.VariableExpression" />
     /// </summary>
-    /// <seealso cref="TensorSharp.Expression.TExpression" />
-    public class BinaryTensorScalarExpression : TExpression
+    /// <seealso cref="TensorSharp.Expression.VariableExpression" />
+    public class BinaryTensorScalarExpression : VariableExpression
     {
         /// <summary>
         /// The left
         /// </summary>
-        public readonly TExpression left;
+        public readonly VariableExpression left;
         /// <summary>
         /// The right
         /// </summary>
-        public readonly SExpression right;
+        public readonly ScalarExpression right;
         /// <summary>
         /// The evaluate
         /// </summary>
@@ -608,7 +608,7 @@ namespace TensorSharp.Expression
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <param name="evaluate">The evaluate.</param>
-        public BinaryTensorScalarExpression(TExpression left, SExpression right, Func<Tensor, Tensor, float, Tensor> evaluate)
+        public BinaryTensorScalarExpression(VariableExpression left, ScalarExpression right, Func<Tensor, Tensor, float, Tensor> evaluate)
         {
             this.left = left;
             this.right = right;

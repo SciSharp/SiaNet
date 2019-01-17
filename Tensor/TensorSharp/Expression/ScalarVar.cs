@@ -21,19 +21,19 @@ namespace TensorSharp.Expression
     /// <summary>
     /// Class SVar.
     /// </summary>
-    public class SVar
+    public class ScalarVar
     {
         /// <summary>
         /// The expression
         /// </summary>
-        private SExpression expression;
+        private ScalarExpression expression;
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SVar"/> class.
+        /// Initializes a new instance of the <see cref="ScalarVar"/> class.
         /// </summary>
         /// <param name="expression">The expression.</param>
-        public SVar(SExpression expression)
+        public ScalarVar(ScalarExpression expression)
         {
             this.expression = expression;
         }
@@ -52,22 +52,22 @@ namespace TensorSharp.Expression
         /// Gets the expression.
         /// </summary>
         /// <value>The expression.</value>
-        public SExpression Expression { get { return expression; } }
+        public ScalarExpression Expression { get { return expression; } }
 
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.Single"/> to <see cref="SVar"/>.
+        /// Performs an implicit conversion from <see cref="System.Single"/> to <see cref="ScalarVar"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SVar(float value) { return new SVar(new ConstScalarExpression(value)); }
+        public static implicit operator ScalarVar(float value) { return new ScalarVar(new ConstScalarExpression(value)); }
 
         /// <summary>
         /// Implements the - operator.
         /// </summary>
         /// <param name="src">The source.</param>
         /// <returns>The result of the operator.</returns>
-        public static SVar operator -(SVar src) { return new SVar(new UnaryScalarExpression(src.expression, val => -val)); }
+        public static ScalarVar operator -(ScalarVar src) { return new ScalarVar(new UnaryScalarExpression(src.expression, val => -val)); }
 
         /// <summary>
         /// Implements the + operator.
@@ -75,132 +75,132 @@ namespace TensorSharp.Expression
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static SVar operator +(SVar lhs, SVar rhs) { return new SVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l + r)); }
+        public static ScalarVar operator +(ScalarVar lhs, ScalarVar rhs) { return new ScalarVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l + r)); }
         /// <summary>
         /// Implements the - operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static SVar operator -(SVar lhs, SVar rhs) { return new SVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l - r)); }
+        public static ScalarVar operator -(ScalarVar lhs, ScalarVar rhs) { return new ScalarVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l - r)); }
         /// <summary>
         /// Implements the * operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static SVar operator *(SVar lhs, SVar rhs) { return new SVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l * r)); }
+        public static ScalarVar operator *(ScalarVar lhs, ScalarVar rhs) { return new ScalarVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l * r)); }
         /// <summary>
         /// Implements the / operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static SVar operator /(SVar lhs, SVar rhs) { return new SVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l / r)); }
+        public static ScalarVar operator /(ScalarVar lhs, ScalarVar rhs) { return new ScalarVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l / r)); }
         /// <summary>
         /// Implements the % operator.
         /// </summary>
         /// <param name="lhs">The LHS.</param>
         /// <param name="rhs">The RHS.</param>
         /// <returns>The result of the operator.</returns>
-        public static SVar operator %(SVar lhs, SVar rhs) { return new SVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l % r)); }
+        public static ScalarVar operator %(ScalarVar lhs, ScalarVar rhs) { return new ScalarVar(new BinaryScalarExpression(lhs.expression, rhs.expression, (l, r) => l % r)); }
 
 
         /// <summary>
         /// Abses this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Abs() { return new SVar(new UnaryScalarExpression(this.expression, val => Math.Abs(val))); }
+        public ScalarVar Abs() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => Math.Abs(val))); }
         /// <summary>
         /// Signs this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Sign() { return new SVar(new UnaryScalarExpression(this.expression, val => Math.Sign(val))); }
+        public ScalarVar Sign() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => Math.Sign(val))); }
 
         /// <summary>
         /// SQRTs this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Sqrt() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Sqrt(val))); }
+        public ScalarVar Sqrt() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Sqrt(val))); }
         /// <summary>
         /// Exps this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Exp() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Exp(val))); }
+        public ScalarVar Exp() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Exp(val))); }
         /// <summary>
         /// Logs this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Log() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Log(val))); }
+        public ScalarVar Log() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Log(val))); }
         /// <summary>
         /// Floors this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Floor() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Floor(val))); }
+        public ScalarVar Floor() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Floor(val))); }
         /// <summary>
         /// Ceils this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Ceil() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Ceiling(val))); }
+        public ScalarVar Ceil() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Ceiling(val))); }
         /// <summary>
         /// Rounds this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Round() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Round(val))); }
+        public ScalarVar Round() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Round(val))); }
         /// <summary>
         /// Truncs this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Trunc() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Truncate(val))); }
+        public ScalarVar Trunc() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Truncate(val))); }
 
 
         /// <summary>
         /// Sins this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Sin() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Sin(val))); }
+        public ScalarVar Sin() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Sin(val))); }
         /// <summary>
         /// Coses this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Cos() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Cos(val))); }
+        public ScalarVar Cos() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Cos(val))); }
         /// <summary>
         /// Tans this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Tan() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Tan(val))); }
+        public ScalarVar Tan() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Tan(val))); }
 
         /// <summary>
         /// Asins this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Asin() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Asin(val))); }
+        public ScalarVar Asin() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Asin(val))); }
         /// <summary>
         /// Acoses this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Acos() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Acos(val))); }
+        public ScalarVar Acos() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Acos(val))); }
         /// <summary>
         /// Atans this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Atan() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Atan(val))); }
+        public ScalarVar Atan() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Atan(val))); }
 
         /// <summary>
         /// Sinhes this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Sinh() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Sinh(val))); }
+        public ScalarVar Sinh() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Sinh(val))); }
         /// <summary>
         /// Coshes this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Cosh() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Cosh(val))); }
+        public ScalarVar Cosh() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Cosh(val))); }
         /// <summary>
         /// Tanhes this instance.
         /// </summary>
         /// <returns>SVar.</returns>
-        public SVar Tanh() { return new SVar(new UnaryScalarExpression(this.expression, val => (float)Math.Tanh(val))); }
+        public ScalarVar Tanh() { return new ScalarVar(new UnaryScalarExpression(this.expression, val => (float)Math.Tanh(val))); }
 
 
         /// <summary>
@@ -208,21 +208,21 @@ namespace TensorSharp.Expression
         /// </summary>
         /// <param name="y">The y.</param>
         /// <returns>SVar.</returns>
-        public SVar Pow(SVar y) { return new SVar(new BinaryScalarExpression(this.expression, y.expression, (xVal, yVal) => (float)Math.Pow(xVal, yVal))); }
+        public ScalarVar Pow(ScalarVar y) { return new ScalarVar(new BinaryScalarExpression(this.expression, y.expression, (xVal, yVal) => (float)Math.Pow(xVal, yVal))); }
         /// <summary>
         /// Clamps the specified minimum.
         /// </summary>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
         /// <returns>SVar.</returns>
-        public SVar Clamp(SVar min, SVar max) { return new SVar(new DelegateScalarExpression(() => ClampFloat(this.expression.Evaluate(), min.expression.Evaluate(), max.expression.Evaluate()))); }
+        public ScalarVar Clamp(ScalarVar min, ScalarVar max) { return new ScalarVar(new DelegateScalarExpression(() => ClampFloat(this.expression.Evaluate(), min.expression.Evaluate(), max.expression.Evaluate()))); }
 
         /// <summary>
         /// Pows the specified y.
         /// </summary>
         /// <param name="y">The y.</param>
         /// <returns>TVar.</returns>
-        public TVar Pow(TVar y) { return new TVar(new BinaryScalarTensorExpression(this.Expression, y.Expression, Ops.Tpow)); }
+        public Variable Pow(Variable y) { return new Variable(new BinaryScalarTensorExpression(this.Expression, y.Expression, Ops.Tpow)); }
 
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace TensorSharp.Expression
         /// <param name="y">The y.</param>
         /// <param name="x">The x.</param>
         /// <returns>SVar.</returns>
-        public static SVar Atan2(SVar y, SVar x) { return new SVar(new DelegateScalarExpression(() => (float)Math.Atan2(y.Evaluate(), x.Evaluate()))); }
+        public static ScalarVar Atan2(ScalarVar y, ScalarVar x) { return new ScalarVar(new DelegateScalarExpression(() => (float)Math.Atan2(y.Evaluate(), x.Evaluate()))); }
         /// <summary>
         /// Lerps the specified a.
         /// </summary>
@@ -239,7 +239,7 @@ namespace TensorSharp.Expression
         /// <param name="b">The b.</param>
         /// <param name="weight">The weight.</param>
         /// <returns>SVar.</returns>
-        public static SVar Lerp(SVar a, SVar b, SVar weight) { return new SVar(new DelegateScalarExpression(() => (float)LerpFloat(a.Evaluate(), b.Evaluate(), weight.Evaluate()))); }
+        public static ScalarVar Lerp(ScalarVar a, ScalarVar b, ScalarVar weight) { return new ScalarVar(new DelegateScalarExpression(() => (float)LerpFloat(a.Evaluate(), b.Evaluate(), weight.Evaluate()))); }
 
 
         /// <summary>

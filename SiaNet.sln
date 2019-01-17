@@ -19,9 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicTest", "BasicTest\Basi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiaNet.Test", "SiaNet.Test\SiaNet.Test.csproj", "{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiGPUTest", "MultiGPUTest\MultiGPUTest.csproj", "{5D66B617-045B-4FA5-BDD1-6791E351014B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiGPUTest", "MultiGPUTest\MultiGPUTest.csproj", "{5D66B617-045B-4FA5-BDD1-6791E351014B}"
 EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64

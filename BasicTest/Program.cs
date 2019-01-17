@@ -38,8 +38,9 @@ namespace Examples
         {
             Tensor tensor = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
             tensor = tensor.Reshape(3, -1);
+            tensor.ToParameter();
             Dense d = new Dense(6, ActivationType.Linear, new Ones(), null, null, true, new Ones());
-            d.Forward(Variable.Create(tensor));
+            d.Forward(Parameter.Create(tensor));
             d.Output.Print();
 
             d.Backward(d.Output);
@@ -54,7 +55,7 @@ namespace Examples
             tensor = tensor.Reshape(3, -1);
 
             var act = new Selu();
-            act.Forward(Variable.Create(tensor));
+            act.Forward(Parameter.Create(tensor));
             act.Output.Print();
 
             act.Backward(act.Output);

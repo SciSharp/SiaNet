@@ -18,7 +18,7 @@ namespace SiaNet.Layers
             Rate = rate;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             noise = new Tensor(x.Data.Allocator, x.Data.ElementType, x.Data.Shape);

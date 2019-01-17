@@ -30,7 +30,7 @@ namespace SiaNet.Optimizers
 
             foreach (var p in layer.Params)
             {
-                Variable param = p.Value;
+                Parameter param = p.Value;
                 if (!velocity.ContainsKey(param.Name))
                 {
                     velocity[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);

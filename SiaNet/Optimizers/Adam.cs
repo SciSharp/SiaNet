@@ -53,7 +53,7 @@ namespace SiaNet.Optimizers
             }
         }
 
-        private void ApplyUpdate(Variable param)
+        private void ApplyUpdate(Parameter param)
         {
             //Variable param = (Variable)p;
             if (!ms.ContainsKey(param.Name))

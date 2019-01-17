@@ -31,17 +31,17 @@ namespace SiaNet.Layers.Activations
             neg_relu = new Relu();
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             //ToDo: Implement shared axes
             Input = x;
             long[] paramShape = x.Data.Shape.ToList().Skip(1).ToArray();
 
-            Variable alpha = BuildVar("a", paramShape, x.Data.ElementType, AlphaInitializer, AlphaConstraint, AlphaRegularizer);
+            Parameter alpha = BuildParam("a", paramShape, x.Data.ElementType, AlphaInitializer, AlphaConstraint, AlphaRegularizer);
             pos_relu.Forward(x);
             var pos = pos_relu.Output;
 
-            Variable negX = Variable.Create(-1 * x.Data);
+            Parameter negX = Parameter.Create(-1 * x.Data);
             neg_relu.Forward(negX);
             var neg = -1f * alpha.Data * neg_relu.Output;
             Output = pos + neg;

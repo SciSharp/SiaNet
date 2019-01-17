@@ -16,7 +16,7 @@ namespace SiaNet.Layers.Activations
             Alpha = alpha;
         }
 
-        public override void Forward(Variable x)
+        public override void Forward(Parameter x)
         {
             Input = x;
             var keepElements = x.Data > 0;

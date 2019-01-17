@@ -41,7 +41,7 @@ namespace BasicTest
 
         private static void RunAct(BaseLayer act, Tensor x)
         {
-            act.Forward(Variable.Create(x));
+            act.Forward(Parameter.Create(x));
             act.Output.Print(act.Name);
         }
     }
