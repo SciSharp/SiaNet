@@ -779,7 +779,12 @@ namespace TensorSharp
         /// <param name="dim">The dim.</param>
         /// <param name="indices">The indices.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Scatter(Tensor result, Tensor src, int dim, Tensor indices) { return (Tensor)OpRegistry.Invoke("scatter", result, src, dim, indices); }
+        public static Tensor Scatter(Tensor result, Tensor src, int dim, Tensor indices)
+        {
+            if (result == null)
+                result = src;
+            return (Tensor)OpRegistry.Invoke("scatter", result, src, dim, indices);
+        }
         /// <summary>
         /// Scatters the fill.
         /// </summary>

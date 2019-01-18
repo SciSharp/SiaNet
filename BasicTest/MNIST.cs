@@ -45,7 +45,7 @@ namespace BasicTest
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
-            model.Fit(trainIter, 10, 1024);
+            model.Fit(trainIter, 10, 10000);
         }
 
         static void LoadDataSet(string baseFolder)
@@ -53,12 +53,12 @@ namespace BasicTest
             var trainingImages = MnistParser.Parse(
                 Path.Combine(baseFolder, MnistTrainImages),
                 Path.Combine(baseFolder, MnistTrainLabels),
-                6000);
+                60000);
 
             var testImages = MnistParser.Parse(
                 Path.Combine(baseFolder, MnistTestImages),
                 Path.Combine(baseFolder, MnistTestLabels),
-                1000);
+                10000);
 
             trainingData = BuildSet(trainingImages);
             testingData = BuildSet(testImages);
@@ -68,8 +68,8 @@ namespace BasicTest
         {
             var cpuAllocator = new TensorSharp.Cpu.CpuAllocator();
 
-            var inputs = new Tensor(cpuAllocator, DType.Float32, images.Length, MnistParser.ImageSize, MnistParser.ImageSize);
-            var outputs = new Tensor(cpuAllocator, DType.Float32, images.Length, 10);
+            var inputs = new Tensor(Global.Device, DType.Float32, images.Length, MnistParser.ImageSize, MnistParser.ImageSize);
+            var outputs = new Tensor(Global.Device, DType.Float32, images.Length, 10);
 
             
 
@@ -78,6 +78,7 @@ namespace BasicTest
                 var target = inputs.Select(0, i);
 
                 Variable.FromArray(images[i].pixels, cpuAllocator)
+                    .ToDevice(Global.Device)
                     .AsType(DType.Float32)
                     .Evaluate(target);
 

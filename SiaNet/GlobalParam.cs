@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
 using TensorSharp.CUDA;
+using TensorSharp.CUDA.DeviceCode;
+using TensorSharp.CUDA.RuntimeCompiler;
 
 namespace SiaNet
 {
@@ -12,7 +14,7 @@ namespace SiaNet
 
         internal static bool UseCudnn { get; set; }
 
-        internal static bool UseCuda { get; set; }
+        public static bool UseCuda { get; set; }
 
         internal static int contextId = 0;
 
@@ -35,5 +37,7 @@ namespace SiaNet
 
             Device = new CudaAllocator(cudaContext, gpuId);
         }
+
+      
     }
 }

@@ -147,7 +147,8 @@ namespace SiaNet
             try
             {
                 train.SetBatchSize(batchSize);
-                List<Task> taskList = new List<Task>();
+                if(val !=null)
+                    val.SetBatchSize(batchSize);
                 for (int iteration = 1; iteration <= epochs; iteration++)
                 {
                     RunEpoch(iteration, train);
@@ -165,7 +166,6 @@ namespace SiaNet
 
         private int RunEpoch(int iteration, IFrameIter train, IFrameIter val = null)
         {
-            Global.SetNewContext();
             currentIteration = iteration;
             train_losses.Clear();
             train_metrics.Clear();
@@ -173,29 +173,14 @@ namespace SiaNet
             val_metrics.Clear();
             Stopwatch sw = Stopwatch.StartNew();
             train.Reset();
-            List<KeyValuePair<Tensor, Tensor>> batchList = new List<KeyValuePair<Tensor, Tensor>>();
+            if(val!=null)
+                val.Reset();
+            
             while (train.Next())
             {
                 var (x, y) = train.GetBatch();
-               
-                
-                batchList.Add(new KeyValuePair<Tensor, Tensor>(x, y));
-                //Thread t = new Thread(new ParameterizedThreadStart(RunTrainOnBatch));
-                //t.Start(train);
+                RunTrainOnBatch(x, y);
             }
-
-            RunTrainOnBatch(batchList[0].Key, batchList[0].Value);
-
-            foreach (var item in batchList.AsParallel().WithDegreeOfParallelism(4))
-            {
-                RunTrainOnBatch(item.Key, item.Value);
-            }
-
-            //Parallel.ForEach(batchList, new ParallelOptions() { MaxDegreeOfParallelism = 4 }, item =>
-            //{
-                
-            //});
-            
 
             if (val != null)
             {
@@ -220,8 +205,6 @@ namespace SiaNet
         private void RunTrainOnBatch(Tensor x, Tensor y)
         {
             //Global.SetNewContext();
-            x = x.ToDevice(Global.Device);
-            y = y.ToDevice(Global.Device);
             Parameter pred = Forward(x);
             Tensor lossVal = LossFn.Call(pred.Data, y);
             Tensor grad = LossFn.CalcGrad(pred.Data, y);

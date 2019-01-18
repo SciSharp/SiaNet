@@ -39,23 +39,16 @@ namespace SiaNet.Optimizers
                 LearningRate = LearningRate * (1 / 1 + DecayRate * iteration);
             }
 
-            float t = iteration + 1;
+            float t = iteration;
             lr_t = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, t)) / (1f - Math.Pow(Beta1, t)));
-            List<Thread> workerThreads = new List<Thread>();
             foreach (var param in layer.Params)
             {
                 ApplyUpdate(param.Value);
-            }
-
-            foreach (var item in workerThreads)
-            {
-                item.Join();
             }
         }
 
         private void ApplyUpdate(Parameter param)
         {
-            //Variable param = (Variable)p;
             if (!ms.ContainsKey(param.Name))
                 ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
 
