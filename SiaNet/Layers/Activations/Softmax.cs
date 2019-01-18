@@ -22,21 +22,21 @@ namespace SiaNet.Layers.Activations
         public override void Backward(Tensor outputgrad)
         {
             Input.Grad = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
-            for (int i = 0; i < Input.Grad.Shape[0]; i++)
-            {
-                for (int j = 0; j < Input.Grad.Shape[1]; j++)
-                {
-                    float v = 0;
-                    if(i == j)
-                    {
-                        v = Output.GetElementAsFloat(i, j) * (1 - Input.Data.GetElementAsFloat(i, j));
-                    }
-                    else
-                    {
-                        v = -1 * Output.GetElementAsFloat(i, j) * Input.Data.GetElementAsFloat(i, j);
-                    }
-                }
-            }
+            //for (int i = 0; i < Input.Grad.Shape[0]; i++)
+            //{
+            //    for (int j = 0; j < Input.Grad.Shape[1]; j++)
+            //    {
+            //        float v = 0;
+            //        if(i == j)
+            //        {
+            //            v = Output.GetElementAsFloat(i, j) * (1 - Input.Data.GetElementAsFloat(i, j));
+            //        }
+            //        else
+            //        {
+            //            v = -1 * Output.GetElementAsFloat(i, j) * Input.Data.GetElementAsFloat(i, j);
+            //        }
+            //    }
+            //}
         }
     }
 }

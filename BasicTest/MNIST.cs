@@ -45,7 +45,7 @@ namespace BasicTest
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
-            model.Fit(trainIter, 10, 10000);
+            model.Fit(trainIter, 10, 32);
         }
 
         static void LoadDataSet(string baseFolder)
