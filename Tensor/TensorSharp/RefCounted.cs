@@ -45,7 +45,7 @@ namespace TensorSharp
             if (refCount > 0)
             {
                 Destroy();
-                refCount = 0;
+                refCount = 1;
             }
         }
 

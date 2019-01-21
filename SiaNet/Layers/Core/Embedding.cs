@@ -32,9 +32,9 @@ namespace SiaNet.Layers
             EmbeddingsRegularizer = embeddingsRegularizer;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            
+            Input = x.ToParameter();
         }
 
         public override void Backward(Tensor outputgrad)

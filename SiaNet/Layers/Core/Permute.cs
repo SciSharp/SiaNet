@@ -16,15 +16,15 @@ namespace SiaNet.Layers
             Dims = dims;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
-
-            Output = x.Data.Transpose(Dims);
+            Input = x.ToParameter();
+            Output = x.Transpose(Dims);
         }
 
         public override void Backward(Tensor outputgrad)
         {
+            Input.Grad = outputgrad;
         }
     }
 }

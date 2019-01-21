@@ -13,17 +13,14 @@ namespace SiaNet.Data
 
         public long[] Shape
         {
-            get; set;
-        }
-
-        public DataFrame(params long[] shape)
-        {
-            Shape = shape;
+            get
+            {
+                return underlayingVariable.Shape;
+            }
         }
 
         public void Reshape(params long[] newShape)
         {
-            Shape = newShape;
             underlayingVariable = underlayingVariable.View(Shape);
         }
 
@@ -34,7 +31,6 @@ namespace SiaNet.Data
 
         public virtual void ToFrame(Tensor t)
         {
-            Shape = t.Shape;
             underlayingVariable = t;
         }
 
@@ -53,7 +49,7 @@ namespace SiaNet.Data
                 }
 
                 start = start - 1;
-                DataFrame frame = new DataFrame(end - start);
+                DataFrame frame = new DataFrame();
                 frame.ToFrame(underlayingVariable.Narrow(1, start, end - start));
 
                 return frame;

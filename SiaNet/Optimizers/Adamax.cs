@@ -42,16 +42,16 @@ namespace SiaNet.Optimizers
                 {
                     ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
                     us[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
-
-                    var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
-                    var u_t = TOps.Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
-
-                    param.Data = param.Data - lr_t * m_t / (u_t + EPSILON);
-                    ms[param.Name] = m_t;
-                    us[param.Name] = u_t;
-
-                    param.ApplyConstraint();
                 }
+
+                var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
+                var u_t = TOps.Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
+
+                param.Data = param.Data - lr_t * m_t / (u_t + EPSILON);
+                ms[param.Name] = m_t;
+                us[param.Name] = u_t;
+
+                param.ApplyConstraint();
             }
         }
     }

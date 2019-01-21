@@ -36,16 +36,23 @@ namespace BasicTest
             LoadDataSet(datasetFolder);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainingData.Item1, trainingData.Item2);
+            DataFrameIter valIter = new DataFrameIter(testingData.Item1, testingData.Item2);
 
             Sequential model = new Sequential();
-            model.Add(new Dense(784, ActivationType.ReLU, new GlorotUniform()));
-            //model.Add(new Dense(64, ActivationType.Sigmoid, new GlorotUniform()));
-            model.Add(new Dropout(0.5f));
+            model.Add(new Dense(784, ActivationType.Sigmoid, new GlorotUniform()));
             model.Add(new Dense(10, ActivationType.Softmax, new GlorotUniform()));
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
-            model.Fit(trainIter, 10, 32);
+
+            model.EpochEnd += Model_EpochEnd;
+
+            model.Train(trainIter, 25, 32);
+        }
+
+        private static void Model_EpochEnd(object sender, EpochEndEventArgs e)
+        {
+            Console.WriteLine("Epoch: {0}, Samples/sec: {1}, Loss: {2}, Metric: {3}, Elapse: {4}", e.Epoch, e.SamplesSeen, e.Loss, e.Metric, e.Duration);
         }
 
         static void LoadDataSet(string baseFolder)
@@ -53,12 +60,12 @@ namespace BasicTest
             var trainingImages = MnistParser.Parse(
                 Path.Combine(baseFolder, MnistTrainImages),
                 Path.Combine(baseFolder, MnistTrainLabels),
-                60000);
+                600);
 
             var testImages = MnistParser.Parse(
                 Path.Combine(baseFolder, MnistTestImages),
                 Path.Combine(baseFolder, MnistTestLabels),
-                10000);
+                100);
 
             trainingData = BuildSet(trainingImages);
             testingData = BuildSet(testImages);
@@ -71,14 +78,11 @@ namespace BasicTest
             var inputs = new Tensor(Global.Device, DType.Float32, images.Length, MnistParser.ImageSize, MnistParser.ImageSize);
             var outputs = new Tensor(Global.Device, DType.Float32, images.Length, 10);
 
-            
-
             for (int i = 0; i < images.Length; ++i)
             {
                 var target = inputs.Select(0, i);
 
-                Variable.FromArray(images[i].pixels, cpuAllocator)
-                    .ToDevice(Global.Device)
+                Variable.FromArray(images[i].pixels, Global.Device)
                     .AsType(DType.Float32)
                     .Evaluate(target);
 

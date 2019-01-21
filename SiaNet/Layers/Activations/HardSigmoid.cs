@@ -13,9 +13,9 @@ namespace SiaNet.Layers.Activations
         {
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
+            Input = x.ToParameter();
             Output = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
             for (int i = 0; i < Input.Data.Shape[0]; i++)
             {

@@ -17,9 +17,9 @@ namespace SiaNet.Layers.Activations
             Name = "selu";
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
+            Input = x.ToParameter();
            
             base.Forward(x);
             Output = scale * Output;

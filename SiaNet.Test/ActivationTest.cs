@@ -10,7 +10,7 @@ namespace SiaNet.Test
     {
         private void RunAct(BaseLayer l, Tensor x, Tensor grad)
         {
-            l.Forward(Parameter.Create(x));
+            l.Forward(x);
             l.Output.Print();
 
             l.Backward(grad);

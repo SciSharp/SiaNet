@@ -20,14 +20,15 @@ namespace SiaNet.Layers
             NumTimes = numTimes;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
-            Output = x.Data.RepeatTensor(NumTimes);
+            Input = x.ToParameter();
+            Output = x.RepeatTensor(NumTimes);
         }
 
         public override void Backward(Tensor outputgrad)
         {
+            Input.Grad = outputgrad;
         }
     }
 }

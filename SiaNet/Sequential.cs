@@ -16,29 +16,15 @@ using System.Threading.Tasks;
 
 namespace SiaNet
 {
-    public class Sequential
+    public partial class Sequential
     {
         public List<BaseLayer> Layers { get; set; }
-
-        private Parameter lastOutput;
 
         public BaseLoss LossFn { get; set; }
 
         public BaseMetric MetricFn { get; set; }
 
         public BaseOptimizer OptimizerFn { get; set; }
-
-        List<float> train_losses = new List<float>();
-
-        List<float> train_metrics = new List<float>();
-
-        List<float> val_losses = new List<float>();
-
-        List<float> val_metrics = new List<float>();
-
-        int currentIteration = 0;
-
-        List<IAllocator> contextList = new List<IAllocator>();
 
         public long TotalParameterCount
         {
@@ -76,17 +62,16 @@ namespace SiaNet
             }
         }
 
-        private Parameter Forward(Tensor input)
+        private Tensor Forward(Tensor input)
         {
-            Parameter output = input.ToParameter("X");
+            Tensor output = input;
             
             foreach (var layer in Layers)
             {
-                layer.Forward(output);
-                output = layer.Output.ToParameter();
+                layer.Forward(input);
+                output = layer.Output;
             }
 
-            lastOutput = output;
             return output;
         }
 
@@ -140,88 +125,6 @@ namespace SiaNet
             OptimizerFn = optimizer;
             LossFn = BaseLoss.Get(loss);
             MetricFn = BaseMetric.Get(metric);
-        }
-
-        public void Fit(IFrameIter train, int epochs, int batchSize, IFrameIter val = null)
-        {
-            try
-            {
-                train.SetBatchSize(batchSize);
-                if(val !=null)
-                    val.SetBatchSize(batchSize);
-                for (int iteration = 1; iteration <= epochs; iteration++)
-                {
-                    RunEpoch(iteration, train);
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            finally
-            {
-                GC.Collect();
-            }
-        }
-
-        private int RunEpoch(int iteration, IFrameIter train, IFrameIter val = null)
-        {
-            currentIteration = iteration;
-            train_losses.Clear();
-            train_metrics.Clear();
-            val_losses.Clear();
-            val_metrics.Clear();
-            Stopwatch sw = Stopwatch.StartNew();
-            train.Reset();
-            if(val!=null)
-                val.Reset();
-            
-            while (train.Next())
-            {
-                var (x, y) = train.GetBatch();
-                RunTrainOnBatch(x, y);
-            }
-
-            if (val != null)
-            {
-                while (val.Next())
-                {
-                    var (x, y) = val.GetBatch();
-
-                    var pred = Forward(x);
-
-                    var lossVal = LossFn.Call(pred.Data, y);
-                    var metricVal = MetricFn.Call(pred.Data, y);
-                    val_losses.Add(TOps.MeanF(lossVal));
-                    val_metrics.Add(TOps.MeanF(metricVal));
-                }
-            }
-
-            sw.Stop();
-            Console.WriteLine("Epoch: {0}, Loss: {1}, Metrics: {2}, Time: {3}(ms)", iteration, train_losses.Average(), train_metrics.Average(), sw.ElapsedMilliseconds);
-            return iteration;
-        }
-
-        private void RunTrainOnBatch(Tensor x, Tensor y)
-        {
-            //Global.SetNewContext();
-            Parameter pred = Forward(x);
-            Tensor lossVal = LossFn.Call(pred.Data, y);
-            Tensor grad = LossFn.CalcGrad(pred.Data, y);
-            Tensor reg_loss = ApplyRegularizer(lossVal);
-
-            var metricVal = MetricFn.Call(pred.Data, y);
-            train_losses.Add(TOps.SumF(lossVal));
-            train_metrics.Add(TOps.MeanF(metricVal));
-
-            Backward(grad);
-
-            ApplyDeltaRegularizer();
-
-            foreach (var layer in Layers)
-            {
-                OptimizerFn.Update(currentIteration, layer);
-            }
         }
     }
 }

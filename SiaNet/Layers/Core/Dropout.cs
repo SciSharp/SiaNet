@@ -15,13 +15,14 @@ namespace SiaNet.Layers
         public Dropout(float rate)
             :base("dropout")
         {
+            SkipPred = true;
             Rate = rate;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
-            noise = new Tensor(x.Data.Allocator, x.Data.ElementType, x.Data.Shape);
+            Input = x.ToParameter();
+            noise = new Tensor(x.Allocator, x.ElementType, x.Shape);
             var p = 1 - Rate;
 
             RandomBernoulli(noise, new SeedSource(), p);

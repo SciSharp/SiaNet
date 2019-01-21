@@ -64,20 +64,20 @@ namespace SiaNet.Layers
             GammaRegularizer = gammaRegularizer;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
+            Input = x.ToParameter();
             
-            Parameter beta = BuildParam("beta", x.Data.Shape, x.Data.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
-            Parameter gamma = BuildParam("gamma", x.Data.Shape, x.Data.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);
+            Parameter beta = BuildParam("beta", x.Shape, x.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
+            Parameter gamma = BuildParam("gamma", x.Shape, x.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);
 
-            mu = BuildParam("mm", x.Data.Shape, x.Data.ElementType, MovingMeanInitializer, null, null, false);
-            mv = BuildParam("mv", x.Data.Shape, x.Data.ElementType, MovingVarianceInitializer, null, null, false);
+            mu = BuildParam("mm", x.Shape, x.ElementType, MovingMeanInitializer, null, null, false);
+            mv = BuildParam("mv", x.Shape, x.ElementType, MovingVarianceInitializer, null, null, false);
 
-            norm = (x.Data - mu.Data.TVar()).CDiv((mv.Data.TVar() + EPSILON).Sqrt());
+            norm = (x - mu.Data.TVar()).CDiv((mv.Data.TVar() + EPSILON).Sqrt());
             
             var @out = gamma.Data.TVar().CMul(norm) + beta.Data;
-            Output = @out.View(x.Data.Shape).Evaluate();
+            Output = @out.View(x.Shape).Evaluate();
         }
 
         public override void Backward(Tensor outputgrad)

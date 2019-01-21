@@ -72,14 +72,14 @@ namespace TensorSharp.CUDA
             this.CudaContext = new CudaContext(deviceId);
             this.DeviceInfo = this.CudaContext.GetDeviceInfo();
 
-            this.BlasHandles = new ObjectPool<CudaBlas>(1, () =>
+            this.BlasHandles = new ObjectPool<CudaBlas>(2, () =>
             {
                 CudaContext.SetCurrent();
                 return new CudaBlas();
             },
                 blas => blas.Dispose());
 
-            this.DnnHandles = new ObjectPool<ManagedCuda.CudaDNN.CudaDNNContext>(0, () =>
+            this.DnnHandles = new ObjectPool<ManagedCuda.CudaDNN.CudaDNNContext>(2, () =>
             {
                 CudaContext.SetCurrent();
                 return new ManagedCuda.CudaDNN.CudaDNNContext();

@@ -13,15 +13,17 @@ namespace SiaNet.Layers.Activations
         {
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
-            Output = Softmax(x.Data);
+            Input = x.ToParameter();
+            Output = Softmax(x);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
+            Input.Grad = -1 * outputgrad * Output * Input.Data;
+            //Input.Grad = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
+
             //for (int i = 0; i < Input.Grad.Shape[0]; i++)
             //{
             //    for (int j = 0; j < Input.Grad.Shape[1]; j++)

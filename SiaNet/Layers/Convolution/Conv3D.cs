@@ -58,17 +58,17 @@ namespace SiaNet.Layers
             BiasRegularizer = biasRegularizer;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
             //ToDo: Implement DilationRate
-            Input = x;
-            var (n, c, d, h, w) = x.Data.GetConv3DShape();
+            Input = x.ToParameter();
+            var (n, c, d, h, w) = x.GetConv3DShape();
 
-            Parameter weight = BuildParam("w", new long[] { Filters, c, KernalSize.Item1, KernalSize.Item2, KernalSize.Item2 }, x.Data.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
+            Parameter weight = BuildParam("w", new long[] { Filters, c, KernalSize.Item1, KernalSize.Item2, KernalSize.Item2 }, x.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Parameter bias = null;
             if (UseBias)
             {
-                bias = BuildParam("b", new long[] { Filters, 1 }, x.Data.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
+                bias = BuildParam("b", new long[] { Filters, 1 }, x.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
             }
 
             uint? pad = null;
@@ -85,7 +85,7 @@ namespace SiaNet.Layers
             var h_out = (h - KernalSize.Item2 + 2 * pad) / Strides + 1;
             var w_out = (w - KernalSize.Item3 + 2 * pad) / Strides + 1;
 
-            xCols = ImgUtil.Im2Col(x.Data, KernalSize, pad, Strides);
+            xCols = ImgUtil.Im2Col(x, KernalSize, pad, Strides);
             var wRows = weight.Data.Reshape(Filters, -1);
 
             Output = Dot(wRows,xCols);

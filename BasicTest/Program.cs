@@ -40,7 +40,7 @@ namespace Examples
             tensor = tensor.Reshape(3, -1);
             tensor.ToParameter();
             Dense d = new Dense(6, ActivationType.Linear, new Ones(), null, null, true, new Ones());
-            d.Forward(Parameter.Create(tensor));
+            d.Forward(tensor);
             d.Output.Print();
 
             d.Backward(d.Output);
@@ -55,7 +55,7 @@ namespace Examples
             tensor = tensor.Reshape(3, -1);
 
             var act = new Selu();
-            act.Forward(Parameter.Create(tensor));
+            act.Forward(tensor);
             act.Output.Print();
 
             act.Backward(act.Output);

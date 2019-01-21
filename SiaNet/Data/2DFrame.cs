@@ -10,15 +10,15 @@ namespace SiaNet.Data
         private long cols;
 
         public DataFrame2D(long columnLength)
-            : base(0, columnLength)
+            : base()
         {
             cols = columnLength;
         }
 
         public void Load(float[] array)
         {
-            Shape = new long[] { array.LongLength / cols, cols };
-            underlayingVariable = new Tensor(Global.Device, DType.Float32, Shape);
+            long[] shape = new long[] { array.LongLength / cols, cols };
+            underlayingVariable = new Tensor(Global.Device, DType.Float32, shape);
             underlayingVariable.CopyFrom(array);
         }
 

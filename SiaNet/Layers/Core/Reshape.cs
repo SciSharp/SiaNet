@@ -24,11 +24,11 @@ namespace SiaNet.Layers
             TargetShape = targetShape;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
+            Input = x.ToParameter();
 
-            Output = x.Data.View(TargetShape);
+            Output = x.View(TargetShape);
         }
 
         public override void Backward(Tensor outputgrad)

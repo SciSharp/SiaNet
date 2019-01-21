@@ -23,10 +23,10 @@ namespace SiaNet.Layers
             Padding = padding;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
-            var (n, c, h, w) = x.Data.GetConv2DShape();
+            Input = x.ToParameter();
+            var (n, c, h, w) = x.GetConv2DShape();
 
             uint? pad = null;
             if (Padding == PaddingType.Same)
@@ -41,7 +41,7 @@ namespace SiaNet.Layers
             var h_out = (h - PoolSize.Item1) / Strides + 1;
             var w_out = (w - PoolSize.Item2) / Strides + 1;
 
-            var x_reshaped = x.Data.Reshape(n * c, 1, h, w);
+            var x_reshaped = x.Reshape(n * c, 1, h, w);
             xCols = ImgUtil.Im2Col(x_reshaped, PoolSize, pad, Strides);
             Output = Mean(xCols, 0);
             Output = Output.Reshape(h_out, w_out, n, c).Transpose(2, 3, 0, 1);

@@ -18,13 +18,15 @@ namespace SiaNet.Layers
 
         public string Name { get; set; }
 
+        public bool SkipPred { get; set; }
+
         public BaseLayer(string name)
         {
             Name = UUID.GetID(name);
             Params = new Dictionary<string, Parameter>();
         }
 
-        public abstract void Forward(Parameter x);
+        public abstract void Forward(Tensor x);
 
         public abstract void Backward(Tensor outputgrad);
 

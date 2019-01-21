@@ -5,7 +5,7 @@ using TensorSharp;
 
 namespace SiaNet.Data
 {
-    public class DataFrameIter : IFrameIter
+    public class DataFrameIter
     {
         private DataFrame frameX;
         private DataFrame frameY;
@@ -14,7 +14,15 @@ namespace SiaNet.Data
 
         private int current = 0;
 
-        public DataFrameIter(DataFrame X, DataFrame Y)
+        public long DataSize
+        {
+            get
+            {
+                return frameX.underlayingVariable.Shape[0];
+            }
+        }
+
+        public DataFrameIter(DataFrame X, DataFrame Y = null)
         {
             frameX = X;
             frameY = Y;
@@ -34,6 +42,18 @@ namespace SiaNet.Data
             Tensor y = frameY.GetBatch(current, batchSize);
 
             return (x, y);
+        }
+
+        public Tensor GetBatchX()
+        {
+            Tensor x = frameX.GetBatch(current, batchSize);
+            return x;
+        }
+
+        public Tensor GetBatchY()
+        {
+            Tensor y = frameY.GetBatch(current, batchSize);
+            return y;
         }
 
         public bool Next()

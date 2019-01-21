@@ -15,21 +15,22 @@ namespace SiaNet.Layers
             PoolingType = poolingType;
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
+            Input = x.ToParameter();
             if(PoolingType == PoolingPoolType.Max)
             {
-                Output = Max(x.Data, 2);
+                Output = Max(x, 2);
             }
             else
             {
-                Output = Mean(x.Data, 2);
+                Output = Mean(x, 2);
             }
         }
 
         public override void Backward(Tensor outputgrad)
         {
+            Input.Grad = outputgrad;
         }
     }
 }

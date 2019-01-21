@@ -13,11 +13,11 @@ namespace SiaNet.Layers.Activations
         {
         }
 
-        public override void Forward(Parameter x)
+        public override void Forward(Tensor x)
         {
-            Input = x;
+            Input = x.ToParameter();
 
-            Output = x.Data / (Abs(x.Data) + 1);
+            Output = x / (Abs(x) + 1);
         }
 
         public override void Backward(Tensor outputgrad)
