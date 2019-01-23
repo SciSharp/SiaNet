@@ -22,7 +22,7 @@ namespace SiaNet
                 CurrentIndexes.Add(name, 0);
             }
 
-            CurrentIndexes[name] = new Random().Next(1, 10000);
+            CurrentIndexes[name] = counter++;
 
             return CurrentIndexes[name];
         }
@@ -30,9 +30,7 @@ namespace SiaNet
         public static string GetID(string name)
         {
             string result = "";
-            //Interlocked.Increment(ref counter);
-            counter = new Random(7).Next(1, 10000);
-            result = string.Format("{0}_{1}", name.ToLower(), counter);
+            result = string.Format("{0}_{1}", name.ToLower(), Next(name));
 
             return result;
         }

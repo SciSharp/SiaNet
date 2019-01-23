@@ -59,8 +59,6 @@ namespace SiaNet.Optimizers
             {
                 if (AmsGrad)
                     vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
-                else
-                    vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, 1);
             }
 
             var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
@@ -68,7 +66,7 @@ namespace SiaNet.Optimizers
 
             if (AmsGrad)
             {
-                Tensor vhat_t = TOps.Maximum(vhats[param.Name], v_t);
+                Tensor vhat_t = Maximum(vhats[param.Name], v_t);
 
                 param.Data = param.Data - lr_t * m_t / (Sqrt(vhat_t) + EPSILON);
                 vhats[param.Name] = vhat_t;

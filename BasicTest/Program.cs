@@ -26,27 +26,20 @@ namespace Examples
         {
             Global.UseGpu();
             MNIST.Run();
-
-            //TestDense();
-            //TestAct();
-
-            //TestLoss();
+            //SoftmaxAct();
             Console.ReadLine();
         }
 
-        private static void TestDense()
+        private static void SoftmaxAct()
         {
-            Tensor tensor = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
-            tensor = tensor.Reshape(3, -1);
-            tensor.ToParameter();
-            Dense d = new Dense(6, ActivationType.Linear, new Ones(), null, null, true, new Ones());
-            d.Forward(tensor);
-            d.Output.Print();
+            Tensor x = Tensor.FromArray(Global.Device, new float[] { 1, -2, 3, 4, -5, 6, 7, -8, 9 });
+            x = x.Reshape(3, -1);
+            (x - TOps.Max(x, -1)).Print();
+            var y = TOps.Softmax(x);
+            y.Print();
 
-            d.Backward(d.Output);
-            d.Input.Grad.Print();
-            d.Params["w"].Grad.Print();
-            d.Params["b"].Grad.Print();
+            var grad = x - y / TOps.Sum(y, -1);
+            grad.Print();
         }
        
         private static void TestAct()

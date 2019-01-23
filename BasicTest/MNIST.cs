@@ -39,8 +39,13 @@ namespace BasicTest
             DataFrameIter valIter = new DataFrameIter(testingData.Item1, testingData.Item2);
 
             Sequential model = new Sequential();
-            model.Add(new Dense(784, ActivationType.Sigmoid, new GlorotUniform()));
-            model.Add(new Dense(10, ActivationType.Softmax, new GlorotUniform()));
+            model.Add(new Dense(dim: 784, activation: ActivationType.ReLU, kernalInitializer: new GlorotUniform()));
+            model.Add(new Dense(dim: 10, activation: ActivationType.Softmax, kernalInitializer: new GlorotUniform()));
+
+            //model.Add(new Dense(dim: 784, kernalInitializer: new GlorotUniform()));
+            //model.Add(new SiaNet.Layers.Activations.Relu());
+            //model.Add(new Dense(dim: 10, kernalInitializer: new GlorotUniform()));
+            //model.Add(new SiaNet.Layers.Activations.Softmax());
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");

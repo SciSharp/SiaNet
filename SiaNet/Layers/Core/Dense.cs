@@ -73,7 +73,6 @@ namespace SiaNet.Layers
             {
                 Activation.Backward(outputgrad);
                 outputgrad = Activation.Input.Grad;
-                outputgrad.Print();
             }
 
             Input.Grad = Dot(outputgrad, base["w"].Data.Transpose());

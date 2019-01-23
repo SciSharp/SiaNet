@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
+using System.Linq;
 
 namespace SiaNet.Data
 {
     public class DataFrame2D : DataFrame
     {
-        private long cols;
+        private long features;
 
-        public DataFrame2D(long columnLength)
+        public DataFrame2D(long num_features)
             : base()
         {
-            cols = columnLength;
+            features = num_features;
         }
 
-        public void Load(float[] array)
+        public void Load(params float[] array)
         {
-            long[] shape = new long[] { array.LongLength / cols, cols };
-            underlayingVariable = new Tensor(Global.Device, DType.Float32, shape);
-            underlayingVariable.CopyFrom(array);
+            underlayingVariable = Tensor.FromArray(Global.Device, array.ToArray());
+            underlayingVariable.AsType(DType.Float32);
+            underlayingVariable = underlayingVariable.Reshape(-1, features);
         }
 
         public override void ToFrame(Tensor t)

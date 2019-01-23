@@ -882,6 +882,14 @@ namespace TensorSharp
             return result;
         }
 
+        public List<float> DataFloat
+        {
+            get
+            {
+                return ToArray().Cast<float>().ToList();
+            }
+        }
+
         public float ToScalar()
         {
             return ToArray().Cast<float>().ToList()[0];
@@ -970,6 +978,7 @@ namespace TensorSharp
             }
 
             (lhs, rhs) = TOps.Broadcast_Add(lhs, rhs);
+
             return TOps.Sub(lhs, rhs);
         }
 

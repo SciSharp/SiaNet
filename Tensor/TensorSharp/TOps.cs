@@ -881,9 +881,11 @@ namespace TensorSharp
             return Log((Exp(x) + 1));
         }
 
-        public static Tensor Softmax(Tensor x)
+        public static Tensor Softmax(Tensor x, int axis=-1)
         {
-            return Exp(x) / Sum(Exp(x), -1);
+            var e = Exp(x - Max(x, axis));
+            var s = Sum(e, axis);
+            return e / s;
         }
 
         public static Tensor L2Normalize(Tensor x, int axis = -1)

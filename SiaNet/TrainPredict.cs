@@ -121,7 +121,7 @@ namespace SiaNet
             Tensor pred = Forward(x);
             Tensor lossVal = LossFn.Call(pred, y);
             Tensor grad = LossFn.CalcGrad(pred, y);
-            Tensor reg_loss = ApplyRegularizer(lossVal);
+            lossVal = ApplyRegularizer(lossVal);
 
             var metricVal = MetricFn.Call(pred, y);
             train_losses.Add(TOps.SumF(lossVal));

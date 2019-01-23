@@ -8,7 +8,7 @@ namespace SiaNet.Initializers
 {
     public class RandomNormal : BaseInitializer
     {
-        public float Mean { get; set; }
+        public float MeanVal { get; set; }
 
         public float StdDev { get; set; }
 
@@ -17,7 +17,7 @@ namespace SiaNet.Initializers
         public RandomNormal(float mean = 0f, float stddev = 0.05f, int? seed = null)
             :base ("random_normal")
         {
-            Mean = mean;
+            MeanVal = mean;
             StdDev = stddev;
             Seed = seed;
         }
@@ -29,7 +29,7 @@ namespace SiaNet.Initializers
                 seedSource = new SeedSource(Seed.Value);
 
             Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
-            Ops.RandomNormal(tensor, seedSource, Mean, StdDev);
+            Ops.RandomNormal(tensor, seedSource, MeanVal, StdDev);
             return tensor;
         }
 

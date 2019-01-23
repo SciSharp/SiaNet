@@ -64,15 +64,19 @@ namespace SiaNet
 
         private Tensor Forward(Tensor input)
         {
-            Tensor output = input;
-            
+            BaseLayer lastLayer = null;
+
             foreach (var layer in Layers)
             {
-                layer.Forward(input);
-                output = layer.Output;
+                if (lastLayer == null)
+                    layer.Forward(input);
+                else
+                    layer.Forward(lastLayer.Output);
+
+                lastLayer = layer;
             }
 
-            return output;
+            return lastLayer.Output;
         }
 
         private void Backward(Tensor gradOutput)

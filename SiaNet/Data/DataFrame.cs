@@ -72,5 +72,10 @@ namespace SiaNet.Data
                 return underlayingVariable.Narrow(axis, start, Shape[0] - start);
             }
         }
+
+        public void Print()
+        {
+            underlayingVariable.Print();
+        }
     }
 }
