@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SiaNet\SiaNet.csproj" />
+    <ProjectReference Include="..\..\SiaNet\SiaNet.csproj" />
   </ItemGroup>
 
 </Project>
