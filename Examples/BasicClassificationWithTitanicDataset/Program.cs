@@ -77,28 +77,33 @@ namespace BasicClassificationWithTitanicDataset
 
         private static Frame<int, string> PreProcesData(Frame<int, string> frame, bool isTest = false)
         {
-            frame.DropColumn("PassengerId"); //Drop ID Column
-            frame.DropColumn("Name"); //Drop name Column
-            frame.DropColumn("Ticket"); //Drop name Column
-            frame.DropColumn("Cabin"); //Drop name Column
+            // Drop some colmuns which will not help in prediction
+            frame.DropColumn("PassengerId");
+            frame.DropColumn("Name");
+            frame.DropColumn("Ticket");
+            frame.DropColumn("Cabin");
 
+            //Fill missing data with nearest values
             frame = frame.FillMissing(Direction.Forward);
 
+            // Convert male/female to 1/0
             frame["Sex"] = frame.GetColumn<string>("Sex").SelectValues<double>((x) => {
                 return x == "male" ? 1 : 0;
             });
 
+            // Convert S/C/Q -> 0/1/2
             frame["Embarked"] = frame.GetColumn<string>("Embarked").SelectValues<double>((x) => {
                 if (x == "S")
-                    return 1;
+                    return 0;
                 else if (x == "C")
-                    return 2;
+                    return 1;
                 else if (x == "Q")
-                    return 3;
+                    return 2;
 
                 return 0;
             });
 
+            // Convert Survived to 1 or 0
             if(!isTest)
                 frame["Survived"] = frame.GetColumn<bool>("Survived").SelectValues<double>((x) => {
                     return x ? 1 : 0;
