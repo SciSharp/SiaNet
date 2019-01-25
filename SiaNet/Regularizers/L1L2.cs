@@ -10,7 +10,7 @@ namespace SiaNet.Regularizers
         public L1L2(float l1 = 0.01f, float l2 = 0.01f)
             : base(l1, l2)
         {
-
+            Name = "L1L2";
         }
 
         public override float Call(Tensor x)

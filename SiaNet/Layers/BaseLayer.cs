@@ -10,11 +10,14 @@ namespace SiaNet.Layers
 {
     public abstract class BaseLayer : TOps
     {
-        public Dictionary<string, Parameter> Params { get; set; }
+        [NonSerialized]
+        public Dictionary<string, Parameter> Params;
 
-        public Parameter Input { get; set; }
+        [NonSerialized]
+        public Parameter Input;
 
-        public Tensor Output { get; set; }
+        [NonSerialized]
+        public Tensor Output;
 
         public string Name { get; set; }
 
@@ -30,14 +33,6 @@ namespace SiaNet.Layers
 
         public abstract void Backward(Tensor outputgrad);
 
-        public IEnumerable<Parameter> GetParameters()
-        {
-            foreach (var item in Params)
-            {
-                yield return item.Value;
-            }
-        }
-        
         public Parameter this[string name]
         {
             get

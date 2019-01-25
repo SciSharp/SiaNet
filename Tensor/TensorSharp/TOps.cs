@@ -24,6 +24,7 @@ namespace TensorSharp
     /// </summary>
     public class TOps
     {
+        [NonSerialized]
         public float EPSILON = 1e-07f;
 
         /// <summary>

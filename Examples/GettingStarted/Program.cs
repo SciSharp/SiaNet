@@ -18,9 +18,9 @@ namespace GettingStarted
             //Build model with simple fully connected layers
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
-            model.Add(new Dense(4, ActivationType.ReLU));
-            model.Add(new Dense(2, ActivationType.ReLU));
-            model.Add(new Dense(1, ActivationType.Sigmoid));
+            model.Add(new Dense(4, ActType.ReLU));
+            model.Add(new Dense(2, ActType.ReLU));
+            model.Add(new Dense(1, ActType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);

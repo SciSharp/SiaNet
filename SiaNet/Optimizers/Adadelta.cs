@@ -17,7 +17,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> delta_accumulators;
 
         public Adadelta(float lr = 1f, float rho = 0.95f, float decayRate = 0, float epsilon = 1e-07f)
-            : base(lr)
+            : base(lr, "adadelta")
         {
             DecayRate = decayRate;
             Rho = rho;

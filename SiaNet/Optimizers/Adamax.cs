@@ -16,7 +16,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> us;
 
         public Adamax(float lr = 0.002f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon= 1e-07f)
-            : base(lr)
+            : base(lr, "adamax")
         {
             Beta1 = beta_1;
             Beta2 = beta_2;

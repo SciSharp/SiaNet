@@ -13,7 +13,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> velocity;
 
         public SGD(float lr = 0.01f, float momentum = 0.9f, float decayRate = 0, bool nesterov = false)
-            : base(lr)
+            : base(lr, "sgd")
         {
             Nesterov = nesterov;
             Momentum = momentum;

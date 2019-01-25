@@ -6,46 +6,46 @@ namespace SiaNet.Layers.Activations
 {
     internal class ActivationRegistry
     {
-        internal static BaseLayer Get(ActivationType activationType)
+        internal static BaseLayer Get(ActType activationType)
         {
             BaseLayer act = null;
 
             switch (activationType)
             {
-                case ActivationType.ReLU:
+                case ActType.ReLU:
                     act = new Relu();
                     break;
-                case ActivationType.Sigmoid:
+                case ActType.Sigmoid:
                     act = new Sigmoid();
                     break;
-                case ActivationType.Tanh:
+                case ActType.Tanh:
                     act = new Tanh();
                     break;
-                case ActivationType.Elu:
+                case ActType.Elu:
                     act = new Elu();
                     break;
-                case ActivationType.Exp:
+                case ActType.Exp:
                     act = new Exp();
                     break;
-                case ActivationType.HargSigmoid:
+                case ActType.HargSigmoid:
                     act = new HardSigmoid();
                     break;
-                case ActivationType.LeakyReLU:
+                case ActType.LeakyReLU:
                     act = new LeakyRelu();
                     break;
-                case ActivationType.PReLU:
+                case ActType.PReLU:
                     act = new PRelu();
                     break;
-                case ActivationType.SeLU:
+                case ActType.SeLU:
                     act = new Selu();
                     break;
-                case ActivationType.Softmax:
+                case ActType.Softmax:
                     act = new Softmax();
                     break;
-                case ActivationType.Softplus:
+                case ActType.Softplus:
                     act = new Softplus();
                     break;
-                case ActivationType.SoftSign:
+                case ActType.SoftSign:
                     act = new Softsign();
                     break;
                 default:

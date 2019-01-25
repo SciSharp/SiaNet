@@ -9,7 +9,7 @@ namespace SiaNet.Regularizers
         public L1(float l = 0.01f)
             : base(l, 0)
         {
-
+            Name = "L1";
         }
     }
 }

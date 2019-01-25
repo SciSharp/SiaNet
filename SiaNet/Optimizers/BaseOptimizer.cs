@@ -8,15 +8,18 @@ namespace SiaNet.Optimizers
 {
     public abstract class BaseOptimizer : TOps
     {
+        public string Name { get; set; }
+
         public float LearningRate { get; set; }
 
         public float Momentum { get; set; }
 
         public float DecayRate { get; set; }
 
-        public BaseOptimizer(float lr)
+        public BaseOptimizer(float lr, string name)
         {
             LearningRate = lr;
+            Name = name;
         }
 
         public abstract void Update(int iteration, BaseLayer layer);

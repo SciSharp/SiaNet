@@ -39,8 +39,8 @@ namespace BasicTest
             DataFrameIter valIter = new DataFrameIter(testingData.Item1, testingData.Item2);
 
             Sequential model = new Sequential();
-            model.Add(new Dense(dim: 784, activation: ActivationType.ReLU, kernalInitializer: new GlorotUniform()));
-            model.Add(new Dense(dim: 10, activation: ActivationType.Softmax, kernalInitializer: new GlorotUniform()));
+            model.Add(new Dense(dim: 784, activation: ActType.ReLU, kernalInitializer: new GlorotUniform()));
+            model.Add(new Dense(dim: 10, activation: ActType.Softmax, kernalInitializer: new GlorotUniform()));
 
             //model.Add(new Dense(dim: 784, kernalInitializer: new GlorotUniform()));
             //model.Add(new SiaNet.Layers.Activations.Relu());

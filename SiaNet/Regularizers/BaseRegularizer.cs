@@ -7,6 +7,8 @@ namespace SiaNet.Regularizers
 {
     public abstract class BaseRegularizer : TOps
     {
+        public string Name { get; set; }
+
         internal float L1 { get; set; }
 
         internal float L2 { get; set; }

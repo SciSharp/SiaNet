@@ -19,9 +19,9 @@ namespace BasicClassificationWithTitanicDataset
 
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
-            model.Add(new Dense(16, ActivationType.ReLU));
-            model.Add(new Dense(8, ActivationType.ReLU));
-            model.Add(new Dense(1, ActivationType.Sigmoid));
+            model.Add(new Dense(16, ActType.ReLU));
+            model.Add(new Dense(8, ActType.ReLU));
+            model.Add(new Dense(1, ActType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
@@ -29,9 +29,10 @@ namespace BasicClassificationWithTitanicDataset
             // Train for 100 epoch with batch size of 2
             model.Train(train, 100, 32, val);
 
-            model.Predict(test);
+            model.SaveModel("model.json");
 
-            Console.ReadLine();
+            var prediction = model.Predict(test);
+            prediction.Print();
         }
 
         private static void Model_EpochEnd(object sender, EpochEndEventArgs e)

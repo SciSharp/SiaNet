@@ -21,7 +21,7 @@ namespace SiaNet.Layers
 
         public uint DilationRate { get; set; }
 
-        public ActivationType Activation { get; set; }
+        public ActType Act { get; set; }
 
         public bool UseBias { get; set; }
 
@@ -40,7 +40,7 @@ namespace SiaNet.Layers
         private Tensor xCols;
 
         public Conv1D(uint filters, uint kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, uint dilationRate = 1,
-                    ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
+                    ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
                     BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null,
                     BaseConstraint biasConstraint = null)
             : base("conv1d")
@@ -50,7 +50,7 @@ namespace SiaNet.Layers
             Strides = strides;
             Padding = padding;
             DilationRate = dilationRate;
-            Activation = activation;
+            Act = activation;
             UseBias = useBias;
             KernalInitializer = kernalInitializer ?? new GlorotUniform();
             BiasInitializer = biasInitializer ?? new Zeros();

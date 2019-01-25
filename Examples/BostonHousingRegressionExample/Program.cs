@@ -14,8 +14,8 @@ namespace BostonHousingRegressionExample
 
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
-            model.Add(new Dense(64, ActivationType.ReLU));
-            model.Add(new Dense(64, ActivationType.ReLU));
+            model.Add(new Dense(64, ActType.ReLU));
+            model.Add(new Dense(64, ActType.ReLU));
             model.Add(new Dense(1));
 
             //Compile with Optimizer, Loss and Metric

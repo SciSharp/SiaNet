@@ -14,7 +14,7 @@ namespace SiaNet.Layers
     {
         public int Dim { get; set; }
 
-        public BaseLayer Activation { get; set; }
+        public BaseLayer Act { get; set; }
 
         public bool UseBias { get; set; }
 
@@ -30,13 +30,13 @@ namespace SiaNet.Layers
 
         public BaseRegularizer BiasRegularizer { get; set; }
 
-        public Dense(int dim, ActivationType activation = ActivationType.Linear,
+        public Dense(int dim, ActType activation = ActType.Linear,
                     BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null,
                     bool useBias = false, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
             : base("dense")
         {
             Dim = dim;
-            Activation = ActivationRegistry.Get(activation);
+            Act = ActivationRegistry.Get(activation);
             UseBias = useBias;
             KernalInitializer = kernalInitializer ?? new GlorotUniform();
             BiasInitializer = biasInitializer ?? new Zeros();
@@ -60,19 +60,19 @@ namespace SiaNet.Layers
                 Output += bias.Data;
             }
 
-            if (Activation != null)
+            if (Act != null)
             {
-                Activation.Forward(Output);
-                Output = Activation.Output;
+                Act.Forward(Output);
+                Output = Act.Output;
             }
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            if (Activation != null)
+            if (Act != null)
             {
-                Activation.Backward(outputgrad);
-                outputgrad = Activation.Input.Grad;
+                Act.Backward(outputgrad);
+                outputgrad = Act.Input.Grad;
             }
 
             Input.Grad = Dot(outputgrad, base["w"].Data.Transpose());

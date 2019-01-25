@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SiaNet
 {
-    public enum ActivationType
+    public enum ActType
     {
         Linear,
         ReLU,

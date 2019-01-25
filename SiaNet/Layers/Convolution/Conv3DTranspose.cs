@@ -11,7 +11,7 @@ namespace SiaNet.Layers
     public class Conv3DTranspose : Conv3D
     {
         public Conv3DTranspose(uint filters, Tuple<uint, uint, uint> kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, Tuple<uint, uint, uint> dialationRate = null,
-                                ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null,
+                                ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null,
                                  BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null,
                                 bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
             : base(filters, kernalSize, strides, padding, dialationRate, activation, kernalInitializer, kernalRegularizer, kernalConstraint, useBias, biasInitializer

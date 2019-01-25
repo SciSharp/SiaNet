@@ -11,7 +11,7 @@ namespace SiaNet.Layers
     public class Conv2DTranspose : Conv2D
     {
         public Conv2DTranspose(uint filters, Tuple<uint, uint> kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, Tuple<uint, uint> dialationRate = null,
-                                ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
+                                ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
                                 BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null,
                                 BaseConstraint biasConstraint = null)
             : base(filters, kernalSize, strides, padding, dialationRate, activation, kernalInitializer, kernalRegularizer, kernalConstraint, useBias, biasInitializer

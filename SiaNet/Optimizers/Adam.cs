@@ -21,7 +21,7 @@ namespace SiaNet.Optimizers
         private float lr_t = 0;
 
         public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon= 1e-07f, bool amsgrad = false)
-            : base(lr)
+            : base(lr, "adam")
         {
             AmsGrad = amsgrad;
             Beta1 = beta_1;

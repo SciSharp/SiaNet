@@ -15,7 +15,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> accumulators;
 
         public RMSProp(float lr = 0.01f, float rho = 0.9f, float decayRate = 0, float epsilon = 1e-07f)
-            : base(lr)
+            : base(lr, "rmsprop")
         {
             DecayRate = decayRate;
             Rho = rho;

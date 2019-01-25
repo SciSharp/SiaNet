@@ -21,7 +21,7 @@ namespace SiaNet.Layers
 
         public Tuple<uint, uint> DialationRate { get; set; }
 
-        public ActivationType Activation { get; set; }
+        public ActType Act { get; set; }
 
         public bool UseBias { get; set; }
 
@@ -40,7 +40,7 @@ namespace SiaNet.Layers
         private Tensor xCols;
 
         public Conv2D(uint filters, Tuple<uint, uint> kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, Tuple<uint, uint> dialationRate = null, 
-                ActivationType activation = ActivationType.Linear, BaseInitializer kernalInitializer = null,
+                ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null,
                         BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null, bool useBias = true,
                         BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
             : base("conv2d")
@@ -50,7 +50,7 @@ namespace SiaNet.Layers
             Strides = strides;
             Padding = padding;
             DialationRate = dialationRate ?? new Tuple<uint, uint>(1, 1);
-            Activation = activation;
+            Act = activation;
             UseBias = useBias;
             KernalInitializer = kernalInitializer ?? new GlorotUniform();
             BiasInitializer = biasInitializer ?? new Zeros();

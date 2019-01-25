@@ -13,7 +13,8 @@ using System.Diagnostics;
 using System.Threading;
 using TensorSharp.CUDA;
 using System.Threading.Tasks;
-
+using System.IO;
+using Newtonsoft.Json;
 namespace SiaNet
 {
     public partial class Sequential
@@ -26,21 +27,6 @@ namespace SiaNet
 
         public BaseOptimizer OptimizerFn { get; set; }
 
-        public long TotalParameterCount
-        {
-            get
-            {
-                var parameters = GetParameters();
-                long total = 0;
-                foreach (var item in parameters)
-                {
-                    total += item.Data.ElementCount();
-                }
-
-                return total;
-            }
-        }
-
         public Sequential()
         {
             Layers = new List<BaseLayer>();
@@ -49,17 +35,6 @@ namespace SiaNet
         public void Add(BaseLayer l)
         {
             Layers.Add(l);
-        }
-
-        public IEnumerable<Parameter> GetParameters()
-        {
-            foreach (var layer in Layers)
-            {
-                foreach (var v in layer.GetParameters())
-                {
-                    yield return v;
-                }
-            }
         }
 
         private Tensor Forward(Tensor input)
@@ -129,6 +104,21 @@ namespace SiaNet
             OptimizerFn = optimizer;
             LossFn = BaseLoss.Get(loss);
             MetricFn = BaseMetric.Get(metric);
+        }
+
+        public void SaveModel(string filePath)
+        {
+            string modelJson = JsonConvert.SerializeObject(this
+                                                    , Formatting.Indented
+                                                    , new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto });
+            File.WriteAllText(filePath, modelJson);
+        }
+
+        public static Sequential LoadModel(string filePath)
+        {
+            string jsondata = File.ReadAllText(filePath);
+            Sequential model = JsonConvert.DeserializeObject<Sequential>(jsondata, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Auto });
+            return model;
         }
     }
 }

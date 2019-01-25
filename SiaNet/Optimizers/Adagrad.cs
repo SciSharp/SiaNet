@@ -13,7 +13,7 @@ namespace SiaNet.Optimizers
         private Dictionary<string, Tensor> accumulators;
 
         public Adagrad(float lr = 0.01f, float decayRate = 0, float epsilon = 1e-07f)
-            : base(lr)
+            : base(lr, "adagrad")
         {
             DecayRate = decayRate;
             Epsilon = epsilon;
