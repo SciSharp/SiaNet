@@ -5,20 +5,17 @@ using TensorSharp;
 
 namespace SiaNet.Metrics
 {
-    public class Accuracy : BaseMetric
+    public class BinaryAccuracy : BaseMetric
     {
-        public Accuracy()
-            :base("accuracy")
+        public BinaryAccuracy()
+            :base("binary_accuracy")
         {
 
         }
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            preds = Argmax(preds, -1);
-            labels = Argmax(labels, -1);
-
-            var r = EqualTo(preds, labels);
+            var r = EqualTo(preds, Round(labels));
 
             return r;
         }

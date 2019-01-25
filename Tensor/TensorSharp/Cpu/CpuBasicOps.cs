@@ -50,9 +50,9 @@ namespace TensorSharp.Cpu
             {
                 return MatrixMultiplication.Dot(result, lhs, rhs);
             }
-            else if (lhs.DimensionCount == 2 && rhs.DimensionCount == 1)
+            else if (lhs.DimensionCount == 2 && (rhs.DimensionCount == 1 || rhs.PossibleVector))
             {
-                return MatrixMultiplication.Mul_M_V(result, lhs, rhs);
+                return MatrixMultiplication.Mul_M_V(result, lhs, rhs.Ravel()).Reshape(lhs.Shape[0], 1);
             }
             else if (lhs.DimensionCount == 2 && rhs.DimensionCount == 2)
             {

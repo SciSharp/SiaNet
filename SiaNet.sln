@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{629A2A85-BA5A-4EBF-82FF-0FF405465432}"
 EndProject
@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicTest", "BasicTest\Basi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiaNet.Test", "SiaNet.Test\SiaNet.Test.csproj", "{38CCF340-4BB3-4CA3-BC54-F3A353DBF2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{7CAF634E-D33A-4C23-A8AB-C9AA2B222538}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{7CAF634E-D33A-4C23-A8AB-C9AA2B222538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegressionExample", "RegressionExample\RegressionExample.csproj", "{98E2A067-6F41-4454-A4A9-61991E8E887C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +159,24 @@ Global
 		{7CAF634E-D33A-4C23-A8AB-C9AA2B222538}.ReleaseCpuOnly|x64.Build.0 = Release|Any CPU
 		{7CAF634E-D33A-4C23-A8AB-C9AA2B222538}.ReleaseCpuOnly|x86.ActiveCfg = Release|Any CPU
 		{7CAF634E-D33A-4C23-A8AB-C9AA2B222538}.ReleaseCpuOnly|x86.Build.0 = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Debug|x64.Build.0 = Debug|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Debug|x86.Build.0 = Debug|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Release|x64.ActiveCfg = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Release|x64.Build.0 = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Release|x86.ActiveCfg = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.Release|x86.Build.0 = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.ReleaseCpuOnly|Any CPU.ActiveCfg = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.ReleaseCpuOnly|Any CPU.Build.0 = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.ReleaseCpuOnly|x64.ActiveCfg = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.ReleaseCpuOnly|x64.Build.0 = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.ReleaseCpuOnly|x86.ActiveCfg = Release|Any CPU
+		{98E2A067-6F41-4454-A4A9-61991E8E887C}.ReleaseCpuOnly|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -166,9 +186,13 @@ Global
 		{CD04AE10-DCFB-4048-8D79-8C27E41B5AEF} = {F759ACA4-E1D6-4434-93AD-64578E819A99}
 		{A7A6262D-CCB3-43ED-898F-D96D192BA1EF} = {629A2A85-BA5A-4EBF-82FF-0FF405465432}
 		{7CAF634E-D33A-4C23-A8AB-C9AA2B222538} = {629A2A85-BA5A-4EBF-82FF-0FF405465432}
+		{98E2A067-6F41-4454-A4A9-61991E8E887C} = {629A2A85-BA5A-4EBF-82FF-0FF405465432}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6C42162-F42A-47A2-B05A-1558143593A2}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

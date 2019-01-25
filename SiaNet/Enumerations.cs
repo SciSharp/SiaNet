@@ -52,6 +52,7 @@ namespace SiaNet
     {
         None,
         Accuracy,
+        BinaryAccurary,
         MSE,
         MAE,
         MAPE,

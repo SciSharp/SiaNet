@@ -24,6 +24,9 @@ namespace SiaNet.Metrics
                 case MetricType.Accuracy:
                     metric = new Accuracy();
                     break;
+                case MetricType.BinaryAccurary:
+                    metric = new BinaryAccuracy();
+                    break;
                 case MetricType.MSE:
                     metric = new MSE();
                     break;

@@ -32,16 +32,12 @@ namespace SiaNet
         {
             //Name = UUID.GetID(name);
             Name = name;
-            Data = new Tensor(Global.Device, DType.Float32, shape);
-            Grad = new Tensor(Global.Device, DType.Float32, shape);
         }
 
         public Parameter(string name, DType dataType, params long[] shape)
         {
             //Name = UUID.GetID(name);
             Name = name;
-            Data = new Tensor(Global.Device, dataType, shape);
-            Grad = new Tensor(Global.Device, dataType, shape);
         }
 
         public static Parameter Create(Tensor data, string name = "")

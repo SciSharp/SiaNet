@@ -18,7 +18,7 @@ namespace SiaNet.Data
         {
             get
             {
-                return frameX.underlayingVariable.Shape[0];
+                return frameX.UnderlayingTensor.Shape[0];
             }
         }
 

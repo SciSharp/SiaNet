@@ -24,9 +24,9 @@ namespace Examples
 
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Global.UseGpu();
             MNIST.Run();
-            //SoftmaxAct();
+
             Console.ReadLine();
         }
 

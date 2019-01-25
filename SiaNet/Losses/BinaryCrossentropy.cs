@@ -33,16 +33,8 @@ namespace SiaNet.Losses
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            Tensor output = preds;
-            //if (!FromLogit)
-            //{
-            //    output = Clip(output, EPSILON, 1f - EPSILON);
-            //    output = Log(output / (1 - output));
-            //    output = 1 / (output - Square(output));
-            //}
-
-            output = Clip(output, EPSILON, 1f - EPSILON);
-            return -1 * (labels - 1) / (1 - preds) - labels / preds;
+            Tensor output = Clip(preds, EPSILON, 1f - EPSILON);
+            return -1 * (labels - 1) / (1 - output) - labels / output;
         }
     }
 }

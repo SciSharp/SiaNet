@@ -68,14 +68,14 @@ namespace TensorSharp.CUDA.MatrixMul
                 // we can pass row-major matrices to BLAS functions that expect column-major by swapping A and B,
                 // and transposing all 3 matrices
 
-                cClone = c.Transpose();
-                aClone = b.Transpose(); // Note swap of a and b
-                bClone = a.Transpose();
+                cClone = c.IntTranspose();
+                aClone = b.IntTranspose(); // Note swap of a and b
+                bClone = a.IntTranspose();
             }
             else
             {
                 var cNew = new Tensor(c.Allocator, c.ElementType, c.Shape[1], c.Shape[0]);
-                cClone = cNew.Transpose();
+                cClone = cNew.IntTranspose();
                 Ops.Copy(cClone, c);
                 cNew.Dispose();
                 copyC = true;
@@ -96,14 +96,14 @@ namespace TensorSharp.CUDA.MatrixMul
                     aClone.Strides[0] != 0)
                 {
                     aOp = BlasOp.Transpose;
-                    var aNew = aClone.Transpose();
+                    var aNew = aClone.IntTranspose();
                     aClone.Dispose();
                     aClone = aNew;
                 }
                 else
                 {
                     var aNew = new Tensor(aClone.Allocator, aClone.ElementType, aClone.Shape[1], aClone.Shape[0]);
-                    var aClone2 = aNew.Transpose();
+                    var aClone2 = aNew.IntTranspose();
                     Ops.Copy(aClone2, aClone);
                     aClone.Dispose();
                     aClone = aClone2;
@@ -120,14 +120,14 @@ namespace TensorSharp.CUDA.MatrixMul
                     bClone.Strides[0] != 0)
                 {
                     bOp = BlasOp.Transpose;
-                    var bNew = bClone.Transpose();
+                    var bNew = bClone.IntTranspose();
                     bClone.Dispose();
                     bClone = bNew;
                 }
                 else
                 {
                     var bNew = new Tensor(bClone.Allocator, bClone.ElementType, bClone.Shape[1], bClone.Shape[0]);
-                    var bClone2 = bNew.Transpose();
+                    var bClone2 = bNew.IntTranspose();
                     Ops.Copy(bClone2, bClone);
                     bClone.Dispose();
                     bClone = bClone2;

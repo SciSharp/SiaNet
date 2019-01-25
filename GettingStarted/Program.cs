@@ -1,7 +1,9 @@
 ﻿using System;
 using SiaNet;
 using SiaNet.Data;
+using SiaNet.Initializers;
 using SiaNet.Layers;
+using TensorSharp;
 
 namespace GettingStarted
 {
@@ -9,7 +11,6 @@ namespace GettingStarted
     {
         static void Main(string[] args)
         {
-            Global.UseGpu();
             var (x, y) = PrepDataset();
 
             DataFrameIter trainSet = new DataFrameIter(x, y);
@@ -17,11 +18,22 @@ namespace GettingStarted
             //Build model with simple fully connected layers
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
+            model.Add(new Dense(4, ActivationType.ReLU));
             model.Add(new Dense(2, ActivationType.ReLU));
             model.Add(new Dense(1));
 
-            model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.Accuracy);
-            model.Train(trainSet, 100, 4);
+            //Compile with Optimizer, Loss and Metric
+            model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
+
+            // Train for 100 epoch with batch size of 2
+            model.Train(trainSet, 1000, 2);
+
+            //Create prediction data to evaluate, the output should be 0, 1
+            DataFrame2D predX = new DataFrame2D(2);
+            predX.Load(1, 0, 1, 1);
+
+            var rawPred = model.Predict(predX);
+            rawPred.Print();
 
             Console.ReadLine();
         }
@@ -36,12 +48,10 @@ namespace GettingStarted
             // We will prepare XOR gate dataset which will be treated as classification problem.
             // More about this: https://medium.com/@jayeshbahire/the-xor-problem-in-neural-networks-50006411840b
             DataFrame2D x = new DataFrame2D(2);
-            x.Load(0f, 0f, 0f, 1f, 1f, 0f, 1f, 1f);
-            x.Print();
+            x.Load(new float[] { 0, 0, 0, 1, 1, 0, 1, 1 });
 
             DataFrame2D y = new DataFrame2D(1);
-            y.Load(0f, 1f, 0f, 1f);
-            y.Print();
+            y.Load(new float[] { 0, 1, 1, 0 });
 
             return (x, y);
         }

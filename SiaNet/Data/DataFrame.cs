@@ -9,73 +9,80 @@ namespace SiaNet.Data
 {
     public class DataFrame
     {
-        internal Tensor underlayingVariable;
+        internal Tensor UnderlayingTensor;
 
         public long[] Shape
         {
             get
             {
-                return underlayingVariable.Shape;
+                return UnderlayingTensor.Shape;
             }
         }
 
         public void Reshape(params long[] newShape)
         {
-            underlayingVariable = underlayingVariable.View(Shape);
+            UnderlayingTensor = UnderlayingTensor.Reshape(Shape);
         }
 
         public Tensor GetTensor()
         {
-            return underlayingVariable;
+            return UnderlayingTensor;
         }
 
         public virtual void ToFrame(Tensor t)
         {
-            underlayingVariable = t;
+            UnderlayingTensor = TOps.NewContiguous(t);
         }
 
-        public DataFrame this[int start, int end]
+        public DataFrame this[uint start, uint end]
         {
             get
             {
-                if (start < 1)
-                {
-                    throw new ArgumentException("Start cannot be less than 1");
-                }
-
-                if (end < start)
+                if (end <= start)
                 {
                     throw new ArgumentException("End must be greater than start");
                 }
 
-                start = start - 1;
                 DataFrame frame = new DataFrame();
-                frame.ToFrame(underlayingVariable.Narrow(1, start, end - start));
+                var count = end - start + 1;
+                if (count > 0)
+                    frame.ToFrame(UnderlayingTensor.Narrow(1, start, count));
 
+                return frame;
+            }
+        }
+
+        public DataFrame this[uint index]
+        {
+            get
+            {
+                DataFrame frame = new DataFrame();
+                var t = TOps.NewContiguous(UnderlayingTensor.Select(1, index));
+                frame.ToFrame(t.Reshape(-1, 1));
                 return frame;
             }
         }
 
         public void Norm(float value)
         {
-            underlayingVariable = underlayingVariable.TVar().NormAll(value).Evaluate();
+            UnderlayingTensor = UnderlayingTensor.TVar().NormAll(value).Evaluate();
         }
 
         public Tensor GetBatch(int start, int size, int axis = 0)
         {
             if (start + size <= Shape[0])
             {
-                return underlayingVariable.Narrow(axis, start, size);
+                return UnderlayingTensor.Narrow(axis, start, size);
             }
             else
             {
-                return underlayingVariable.Narrow(axis, start, Shape[0] - start);
+                return UnderlayingTensor.Narrow(axis, start, Shape[0] - start);
             }
         }
 
-        public void Print()
+        public void Head(uint count = 5, string title = "")
         {
-            underlayingVariable.Print();
+            UnderlayingTensor.Print(count, title);
         }
     }
 }

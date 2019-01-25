@@ -65,7 +65,7 @@ namespace TensorSharp.CUDA.MatrixMul
             }
             else if (lhs.Strides[0] == 1) // If lhs is column-major, transpose it
             {
-                lhsClone = lhs.Transpose();
+                lhsClone = lhs.IntTranspose();
             }
             else // If lhs is not contiguous in either dimension, make a temporary contiguous copy
             {

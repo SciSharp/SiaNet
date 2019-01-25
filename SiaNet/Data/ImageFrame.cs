@@ -11,19 +11,19 @@ namespace SiaNet.Data
     {
         public ImageFrame(Tensor imageTensor)
         {
-            underlayingVariable = imageTensor;
+            UnderlayingTensor = imageTensor;
         }
 
         public ImageFrame(Bitmap img, int? height = null, int? width = null)
         {
             var mat = img.ToMat();
-            underlayingVariable = img.ToTensor(Global.Device);
+            UnderlayingTensor = img.ToTensor(Global.Device);
         }
 
         public ImageFrame(string imagePath, int? height = null, int? width = null)
         {
             Bitmap bitmap = new Bitmap(imagePath);
-            underlayingVariable = bitmap.ToTensor(Global.Device);
+            UnderlayingTensor = bitmap.ToTensor(Global.Device);
         }
     }
 }

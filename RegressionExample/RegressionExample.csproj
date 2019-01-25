@@ -9,4 +9,13 @@
     <ProjectReference Include="..\SiaNet\SiaNet.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="test.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="train.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -47,7 +47,7 @@ namespace BasicTest
             //model.Add(new Dense(dim: 10, kernalInitializer: new GlorotUniform()));
             //model.Add(new SiaNet.Layers.Activations.Softmax());
 
-            model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
+            model.Compile(OptimizerType.SGD, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
 
             model.EpochEnd += Model_EpochEnd;
@@ -93,7 +93,6 @@ namespace BasicTest
 
                 target = target / 255;
             }
-
 
             Ops.FillOneHot(outputs, MnistParser.LabelCount, images.Select(x => (int)x.label).ToArray());
             inputs = inputs.View(images.Length, 784);

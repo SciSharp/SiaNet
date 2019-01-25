@@ -67,12 +67,27 @@ namespace TensorSharp
         {
             long acc = 1;
             var stride = new long[dims.Length];
-
             for (int i = dims.Length - 1; i >= 0; --i)
             {
                 stride[i] = acc;
                 acc *= dims[i];
             }
+            //if (dims.Last() == 1)
+            //{
+            //    for (int i = 0; i < dims.Length; i++)
+            //    {
+            //        stride[i] = acc;
+            //        acc *= dims[i];
+            //    }
+            //}
+            //else
+            //{
+            //    for (int i = dims.Length - 1; i >= 0; --i)
+            //    {
+            //        stride[i] = acc;
+            //        acc *= dims[i];
+            //    }
+            //}
 
             return stride;
         }

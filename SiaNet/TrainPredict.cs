@@ -137,7 +137,27 @@ namespace SiaNet
             }
         }
 
-        public Tensor Predict(DataFrame x, int batch_size = 128)
+        public Tensor Predict(DataFrame x)
+        {
+            List<float> predictions = new List<float>();
+
+            Tensor output = x.GetTensor();
+            foreach (var layer in Layers)
+            {
+                if (layer.SkipPred)
+                    continue;
+
+                layer.Forward(output);
+                output = layer.Output;
+            }
+
+            predictions.AddRange(output.ToArray().Cast<float>());
+            Tensor pred = Tensor.FromArray(Global.Device, predictions.ToArray());
+            
+            return pred.View(output.Shape);
+        }
+
+        public Tensor Predict(DataFrame x, int batch_size)
         {
             DataFrameIter dataFrameIter = new DataFrameIter(x);
             List<float> predictions = new List<float>();

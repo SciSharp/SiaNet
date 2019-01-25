@@ -195,6 +195,18 @@ namespace TensorSharp
         /// <value>The dimension count.</value>
         public int DimensionCount { get { return shape.Length; } }
 
+        public bool PossibleVector
+        {
+            get
+            {
+                bool result = false;
+                if (Shape[1] == 1)
+                    result = true;
+
+                return result;
+            }
+        }
+
         public ValueTuple<long, long, long, long, long> GetConv3DShape()
         {
             return (Shape[0], Shape[1], Shape[2], Shape[3], shape[4]);
@@ -428,15 +440,21 @@ namespace TensorSharp
             return result;
         }
 
-
-        /// <summary>
-        /// Transposes this instance.
-        /// </summary>
-        /// <returns>Tensor.</returns>
-        /// <exception cref="InvalidOperationException">Parameterless Transpose is only valid on 2d tensors</exception>
         public Tensor Transpose()
         {
             if (DimensionCount != 2) throw new InvalidOperationException("Parameterless Transpose is only valid on 2d tensors");
+            return Transpose(0, 1, true);
+        }
+
+        /// <summary>
+        /// Transposes this instance without NewContiguous.
+        /// </summary>
+        /// <returns>Tensor.</returns>
+        /// <exception cref="InvalidOperationException">Parameterless Transpose is only valid on 2d tensors</exception>
+        internal Tensor IntTranspose()
+        {
+            if (DimensionCount != 2) throw new InvalidOperationException("Parameterless Transpose is only valid on 2d tensors");
+
             return Transpose(0, 1);
         }
 
@@ -451,7 +469,7 @@ namespace TensorSharp
         /// or
         /// dimension2
         /// </exception>
-        public Tensor Transpose(int dimension1, int dimension2)
+        private Tensor Transpose(int dimension1, int dimension2, bool NewContiguous = false)
         {
             if (dimension1 < 0 || dimension1 >= DimensionCount) throw new ArgumentOutOfRangeException("dimension1");
             if (dimension2 < 0 || dimension2 >= DimensionCount) throw new ArgumentOutOfRangeException("dimension2");
@@ -466,6 +484,10 @@ namespace TensorSharp
             var newStrides = (long[])strides.Clone();
             ArraySwap(newSizes, dimension1, dimension2);
             ArraySwap(newStrides, dimension1, dimension2);
+
+            if (NewContiguous)
+                return TOps.NewContiguous(new Tensor(newSizes, newStrides, storage, storageOffset)).Reshape(newSizes);
+
             return new Tensor(newSizes, newStrides, storage, storageOffset);
         }
 
@@ -850,14 +872,23 @@ namespace TensorSharp
             return TensorSerialization.Deserialize(allocator, stream);
         }
 
-        public void Print(string title = "")
+        public void Print(uint count = 0, string title = "")
         {
+            
             if(!string.IsNullOrWhiteSpace(title))
             {
                 Console.WriteLine("-----{0}------", title);
             }
 
-            Console.WriteLine(Format());
+            if (count > 0)
+            {
+                var t = Narrow(0, 0, count);
+                Console.WriteLine(t.Format());
+            }
+            else
+            {
+                Console.WriteLine(Format());
+            }
 
             if (!string.IsNullOrWhiteSpace(title))
             {

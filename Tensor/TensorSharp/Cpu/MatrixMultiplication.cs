@@ -25,15 +25,15 @@ namespace TensorSharp.Cpu
     public enum BlasOp : byte
     {
         /// <summary>
-        /// The non transpose
+        /// The non IntTranspose
         /// </summary>
         NonTranspose = (byte)'n',
         /// <summary>
-        /// The transpose
+        /// The IntTranspose
         /// </summary>
         Transpose = (byte)'t',
         /// <summary>
-        /// The conjugate transpose
+        /// The conjugate IntTranspose
         /// </summary>
         ConjugateTranspose = (byte)'c',
     }
@@ -164,9 +164,9 @@ namespace TensorSharp.Cpu
             {
                 lhsClone = lhs.CopyRef();
             }
-            else if (lhs.Strides[0] == 1) // If lhs is column-major, transpose it
+            else if (lhs.Strides[0] == 1) // If lhs is column-major, IntTranspose it
             {
-                lhsClone = lhs.Transpose();
+                lhsClone = lhs.IntTranspose();
             }
             else // If lhs is not contiguous in either dimension, make a temporary contiguous copy
             {
@@ -199,7 +199,7 @@ namespace TensorSharp.Cpu
         /// <exception cref="ArgumentException">lhs must be contiguous in the last dimension</exception>
         private static void Run_M_V_float(Tensor result, Tensor mat, Tensor vec)
         {
-            // Require lhs to be row-major. This means we must tell BLAS to transpose it (BLAS expects column-major matrices)
+            // Require lhs to be row-major. This means we must tell BLAS to IntTranspose it (BLAS expects column-major matrices)
             if (mat.Strides[1] != 1) throw new ArgumentException("lhs must be contiguous in the last dimension");
 
             unsafe
@@ -229,7 +229,7 @@ namespace TensorSharp.Cpu
         /// <exception cref="ArgumentException">lhs must be contiguous in the last dimension</exception>
         private static void Run_M_V_double(Tensor result, Tensor lhs, Tensor rhs)
         {
-            // Require lhs to be row-major. This means we must tell BLAS to transpose it (BLAS expects column-major matrices)
+            // Require lhs to be row-major. This means we must tell BLAS to IntTranspose it (BLAS expects column-major matrices)
             if (lhs.Strides[1] != 1) throw new ArgumentException("lhs must be contiguous in the last dimension");
 
             unsafe
@@ -323,14 +323,14 @@ namespace TensorSharp.Cpu
                 // we can pass row-major matrices to BLAS functions that expect column-major by swapping A and B,
                 // and transposing all 3 matrices
 
-                cClone = c.Transpose();
-                aClone = b.Transpose(); // Note swap of a and b
-                bClone = a.Transpose();
+                cClone = c.IntTranspose();
+                aClone = b.IntTranspose(); // Note swap of a and b
+                bClone = a.IntTranspose();
             }
             else
             {
                 var cNew = new Tensor(c.Allocator, c.ElementType, c.Shape[1], c.Shape[0]);
-                cClone = cNew.Transpose();
+                cClone = cNew.IntTranspose();
                 Ops.Copy(cClone, c);
                 cNew.Dispose();
                 copyC = true;
@@ -351,14 +351,14 @@ namespace TensorSharp.Cpu
                     aClone.Strides[0] != 0)
                 {
                     aOp = BlasOp.Transpose;
-                    var aNew = aClone.Transpose();
+                    var aNew = aClone.IntTranspose();
                     aClone.Dispose();
                     aClone = aNew;
                 }
                 else
                 {
                     var aNew = new Tensor(aClone.Allocator, aClone.ElementType, aClone.Shape[1], aClone.Shape[0]);
-                    var aClone2 = aNew.Transpose();
+                    var aClone2 = aNew.IntTranspose();
                     Ops.Copy(aClone2, aClone);
                     aClone.Dispose();
                     aClone = aClone2;
@@ -368,21 +368,21 @@ namespace TensorSharp.Cpu
                 if (bClone.Strides[0] == 1 &&
                     bClone.Strides[1] != 0)
                 {
-                    // If a is contiguous in dimension 0 (column-major)
+                    // If b is contiguous in dimension 0 (column-major)
                     bOp = BlasOp.NonTranspose;
                 }
                 else if (bClone.Strides[1] == 1 &&
                     bClone.Strides[0] != 0)
                 {
                     bOp = BlasOp.Transpose;
-                    var bNew = bClone.Transpose();
+                    var bNew = bClone.IntTranspose();
                     bClone.Dispose();
                     bClone = bNew;
                 }
                 else
                 {
                     var bNew = new Tensor(bClone.Allocator, bClone.ElementType, bClone.Shape[1], bClone.Shape[0]);
-                    var bClone2 = bNew.Transpose();
+                    var bClone2 = bNew.IntTranspose();
                     Ops.Copy(bClone2, bClone);
                     bClone.Dispose();
                     bClone = bClone2;
