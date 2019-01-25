@@ -11,6 +11,34 @@ Developing a C# wrapper to help developer easily create and train deep neural ne
 * Code well structured, easy to extend if you would like to extend with new layer, loss, metrics, optimizers, constraints, regularizer
 
 
-Work in progress
+# A Basic example
+The below is a classification example with Titainc dataset. Able to reach 75% accuravy in 10 epoch. 
+```
+var dataset = LoadTrain(); //Load train data
+var test = LoadTest(); //Load test data
 
+var (train, val) = dataset.Split(0.25);
 
+//Build model
+var model = new Sequential();
+model.EpochEnd += Model_EpochEnd;
+model.Add(new Dense(16, ActivationType.ReLU));
+model.Add(new Dense(8, ActivationType.ReLU));
+model.Add(new Dense(1, ActivationType.Sigmoid));
+
+//Compile with Optimizer, Loss and Metric
+model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
+
+// Train for 100 epoch with batch size of 2
+model.Train(train, 100, 32, val);
+
+var predictions = model.Predict(test);
+predictions.Print();
+```
+### Training Result
+
+![Figure 1-1](https://i.ibb.co/KG87pv4/Titanic-1.png "Figure 1-1")
+
+Complete Code: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples/BasicClassificationWithTitanicDataset/Program.cs
+
+More examples: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples
