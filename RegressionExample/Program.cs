@@ -3,7 +3,7 @@ using SiaNet.Data;
 using SiaNet.Layers;
 using System;
 
-namespace RegressionExample
+namespace BostonHousingRegressionExample
 {
     class Program
     {

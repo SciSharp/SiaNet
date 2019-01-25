@@ -20,20 +20,20 @@ namespace GettingStarted
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(4, ActivationType.ReLU));
             model.Add(new Dense(2, ActivationType.ReLU));
-            model.Add(new Dense(1));
+            model.Add(new Dense(1, ActivationType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Train for 100 epoch with batch size of 2
-            model.Train(trainSet, 1000, 2);
+            model.Train(trainSet, 1000, 4);
 
-            //Create prediction data to evaluate, the output should be 0, 1
+            //Create prediction data to evaluate
             DataFrame2D predX = new DataFrame2D(2);
-            predX.Load(1, 0, 1, 1);
+            predX.Load(1, 0, 1, 1); //Result should be 1 and 0
 
             var rawPred = model.Predict(predX);
-            rawPred.Print();
+            TOps.Round(rawPred).Print();
 
             Console.ReadLine();
         }

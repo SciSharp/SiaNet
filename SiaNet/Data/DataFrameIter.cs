@@ -30,6 +30,16 @@ namespace SiaNet.Data
             current = -batchSize;
         }
 
+        public DataFrameIter(Tensor X, Tensor Y = null)
+        {
+            frameX = new DataFrame();
+            frameY = new DataFrame();
+            frameX.ToFrame(X);
+            frameY.ToFrame(Y);
+            batchSize = 32;
+            current = -batchSize;
+        }
+
         public void SetBatchSize(int _batchSize)
         {
             batchSize = _batchSize;
@@ -65,6 +75,18 @@ namespace SiaNet.Data
         public void Reset()
         {
             current = -batchSize;
+        }
+
+        public (DataFrameIter, DataFrameIter) Split(double testDataSize = 0.33f)
+        {
+            long trainSize = Convert.ToInt64(frameX.Shape[0] * (1 - testDataSize));
+            var trainX = frameX.UnderlayingTensor.Narrow(0, 0, trainSize);
+            var valX = frameX.UnderlayingTensor.Narrow(0, trainSize, frameX.Shape[0] - trainSize);
+
+            var trainY = frameY.UnderlayingTensor.Narrow(0, 0, trainSize);
+            var valY = frameY.UnderlayingTensor.Narrow(0, trainSize, frameX.Shape[0] - trainSize);
+
+            return (new DataFrameIter(trainX, trainY), new DataFrameIter(valX, valY));
         }
     }
 }

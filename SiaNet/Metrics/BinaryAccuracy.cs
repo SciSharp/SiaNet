@@ -15,7 +15,8 @@ namespace SiaNet.Metrics
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var r = EqualTo(preds, Round(labels));
+            preds = Clip(preds, 0, 1);
+            var r = EqualTo(Round(preds), labels);
 
             return r;
         }

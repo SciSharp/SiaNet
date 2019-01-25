@@ -5,6 +5,7 @@ using TensorSharp;
 using System.Linq;
 using System.IO;
 using CsvHelper;
+using System.Data;
 
 namespace SiaNet.Data
 {
@@ -60,6 +61,14 @@ namespace SiaNet.Data
                 result.Load(allValues.ToArray());
             }
 
+            return result;
+        }
+
+        public static DataFrame2D FromDataTable(DataTable dt)
+        {
+            DataFrame2D result = null;
+
+            
             return result;
         }
     }
