@@ -16,4 +16,10 @@
     <ProjectReference Include="..\SiaNet\SiaNet.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="CoreLayerTest.cs">
+      <Generator></Generator>
+    </Compile>
+  </ItemGroup>
+
 </Project>

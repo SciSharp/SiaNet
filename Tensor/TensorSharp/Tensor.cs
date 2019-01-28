@@ -506,7 +506,7 @@ namespace TensorSharp
             foreach (var swap in SwapsForPermutation(dims))
             {
                 var resultOld = result;
-                result = result.Transpose(swap.Item1, swap.Item2);
+                result = result.Transpose(swap.Item1, swap.Item2, true);
                 resultOld.Dispose();
             }
 

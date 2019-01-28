@@ -24,7 +24,7 @@ namespace SiaNet.Layers
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad;
+            Input.Grad = outputgrad.Reshape(Input.Data.Shape);
         }
     }
 }

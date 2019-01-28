@@ -9,11 +9,12 @@ namespace SiaNet.Test
         [TestMethod]
         public void Dense()
         {
+            Global.UseGpu();
             Tensor x = Tensor.FromArray(Global.Device, new float[] { -1, 2, 3, -4, 5, 6, 7, -8, 9 });
             x = x.Reshape(3, -1);
-            Tensor grad = Tensor.FromArray(Global.Device, new float[] { 1, -1, -2, 2, -3, -4, 5, 4, -5 });
+            Tensor grad = Tensor.FromArray(Global.Device, new float[] { 1, -1, -2, 2, -3, -4, 5, 4, -5, 1, -1, -2, 2, -3, -4, 5, 4, -5 });
             grad = grad.Reshape(3, -1);
-            Layers.Dense l = new Layers.Dense(3, ActType.Linear, new Initializers.Ones(), useBias: true);
+            Layers.Dense l = new Layers.Dense(6, ActType.Linear, new Initializers.Ones());
             l.Forward(x);
             l.Output.Print();
             l.Backward(grad);

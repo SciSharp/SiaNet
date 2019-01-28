@@ -29,11 +29,11 @@ namespace SiaNet.Optimizers
         {
             if (DecayRate > 0)
             {
-                LearningRate = LearningRate * (1 / 1 + DecayRate * iteration);
+                LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
             float t = iteration + 1;
-            float lr_t = Convert.ToSingle(LearningRate / Math.Sqrt(1f - Math.Pow(Beta1, t)));
+            float lr_t = Convert.ToSingle(LearningRate / (1f - Math.Pow(Beta1, t)));
             foreach (var item in layer.Params)
             {
                 var param = item.Value;
@@ -45,7 +45,7 @@ namespace SiaNet.Optimizers
                 }
 
                 var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
-                var u_t = TOps.Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
+                var u_t = Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
 
                 param.Data = param.Data - lr_t * m_t / (u_t + EPSILON);
                 ms[param.Name] = m_t;

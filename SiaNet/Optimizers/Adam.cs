@@ -36,7 +36,7 @@ namespace SiaNet.Optimizers
         {
             if (DecayRate > 0)
             {
-                LearningRate = LearningRate * (1 / 1 + DecayRate * iteration);
+                LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
             float t = iteration;
@@ -73,7 +73,7 @@ namespace SiaNet.Optimizers
             }
             else
             {
-                param.Data = param.Data - lr_t * m_t / (Sqrt(v_t) + EPSILON);
+                param.Data = param.Data - (lr_t * m_t / (Sqrt(v_t) + EPSILON));
             }
 
             ms[param.Name] = m_t;

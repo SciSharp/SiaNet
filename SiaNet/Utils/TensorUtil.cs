@@ -102,8 +102,8 @@ namespace SiaNet
         public static Tensor Pad(this Tensor t, uint n = 1, float value = 0)
         {
             List<float> data = new List<float>();
-            Tensor tensor = new Tensor(t.Allocator, t.ElementType, t.Shape);
-            tensor.CopyFrom(t.ToArray());
+            Tensor tensor = t.CopyRef(); // new Tensor(t.Allocator, t.ElementType, t.Shape);
+            //tensor.CopyFrom(t.ToArray());
             var tlist = tensor.NDto2DList();
 
             bool fill3d = false;
@@ -166,6 +166,7 @@ namespace SiaNet
 
         private static Array Pad2D(Tensor d, uint n = 1)
         {
+            d = TOps.NewContiguous(d);
             long[] shape = d.Shape;
             Array data = d.ToArray();
 

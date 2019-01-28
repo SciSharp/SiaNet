@@ -96,6 +96,8 @@ namespace SiaNet
             {
                 var (x, y) = train.GetBatch();
                 RunTrainOnBatch(iteration, x, y);
+                x.Dispose();
+                y.Dispose();
             }
 
             if (val != null)
@@ -108,8 +110,12 @@ namespace SiaNet
 
                     var lossVal = LossFn.Call(pred, y);
                     var metricVal = MetricFn.Call(pred, y);
-                    val_losses.Add(TOps.SumF(lossVal));
+                    val_losses.Add(TOps.MeanF(lossVal));
                     val_metrics.Add(TOps.MeanF(metricVal));
+                    x.Dispose();
+                    y.Dispose();
+                    lossVal.Dispose();
+                    metricVal.Dispose();
                 }
             }
 
@@ -124,7 +130,7 @@ namespace SiaNet
             lossVal = ApplyRegularizer(lossVal);
 
             var metricVal = MetricFn.Call(pred, y);
-            train_losses.Add(TOps.SumF(lossVal));
+            train_losses.Add(TOps.MeanF(lossVal));
             train_metrics.Add(TOps.MeanF(metricVal));
 
             Backward(grad);

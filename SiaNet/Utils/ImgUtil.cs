@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
 using System.Linq;
+using TensorSharp.CUDA.DeviceCode;
 
 namespace SiaNet
 {
@@ -22,16 +23,22 @@ namespace SiaNet
             return Ops.NewContiguous(cols).Reshape(c * d * h * w, -1);
         }
 
-        public static Tensor Im2Col(Tensor x, Tuple<uint, uint> kernalSize, uint? padding=null, uint stride = 1)
+        public static Tensor Im2Col(Tensor x, Tuple<uint, uint> kernalSize, uint? padding=null, uint stride = 1, Tuple<uint, uint> dialation=null)
         {
-            var (n, c, h, w) = x.GetConv2DShape();
-            if (padding.HasValue)
-            {
-                x = x.Pad(1, padding.Value);
-            }
+            Im2ColKernels im2ColKernels = new Im2ColKernels();
+            if (dialation == null)
+                dialation = Tuple.Create<uint, uint>(0, 0);
 
-            var cols = x.Transpose(0, 1, 2, 3).Unfold(2, kernalSize.Item2, stride).Unfold(3, kernalSize.Item1, stride);
-            return Ops.NewContiguous(cols).Reshape(c * h * w, -1);
+            if (padding.HasValue)
+                padding = 0;
+
+            var (n, c, h, w) = x.GetConv2DShape();
+
+            var out_height = (h + 2 * padding.Value - kernalSize.Item1) / stride + 1;
+            var out_width = (w + 2 * padding.Value - kernalSize.Item2) / stride + 1;
+            Tensor cols = new Tensor(Global.Device, DType.Float32, (c * kernalSize.Item1 * kernalSize.Item2), (n * out_height * out_width));
+            im2ColKernels.Im2Col(x, cols, (int)c, (int)h, (int)w, (int)kernalSize.Item1, (int)kernalSize.Item2, (int)padding.Value, (int)padding.Value, (int)stride, (int)stride, (int)dialation.Item1, (int)dialation.Item2);
+            return cols.Reshape(c * kernalSize.Item1 * kernalSize.Item2, -1);
         }
 
         public static Tensor Im2Col(Tensor x, uint steps, uint? padding = null, uint stride = 1)
@@ -52,9 +59,20 @@ namespace SiaNet
             return cols;
         }
 
-        public static Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<uint, uint> kernalSize, uint? padding = null, uint stride = 1)
+        public static Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<uint, uint> kernalSize, uint? padding = null, uint stride = 1, Tuple<uint, uint> dialation = null)
         {
-            return cols;
+            Im2ColKernels im2ColKernels = new Im2ColKernels();
+            if (dialation == null)
+                dialation = Tuple.Create<uint, uint>(0, 0);
+
+            if (padding.HasValue)
+                padding = 0;
+
+            Tensor im = new Tensor(Global.Device, DType.Float32, x_shape);
+            im2ColKernels.Col2Im(cols, im, (int)x_shape[1], (int)x_shape[2], (int)x_shape[3], (int)kernalSize.Item1, (int)kernalSize.Item2
+                        , (int)padding.Value, (int)padding.Value, (int)stride, (int)stride, (int)dialation.Item1, (int)dialation.Item2);
+
+            return im;
         }
 
         public static Tensor Col2Im(Tensor cols, long[] x_shape, uint steps, uint? padding = null, uint stride = 1)
@@ -62,4 +80,5 @@ namespace SiaNet
             return cols;
         }
     }
+
 }

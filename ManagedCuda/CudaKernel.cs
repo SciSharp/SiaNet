@@ -2288,7 +2288,6 @@ namespace ManagedCuda
 
 			//Wait for device to finish previous jobs
 			res = DriverAPINativeMethods.ContextManagement.cuCtxSynchronize();
-			Debug.WriteLine(String.Format("{0:G}, {1}: {2}, Kernel: {3}", DateTime.Now, "cuCtxSynchronize", res, _kernelName));
 			if (res != CUResult.Success) throw new CudaException(res);
 
 			//Create events to measure execution times
@@ -2298,7 +2297,6 @@ namespace ManagedCuda
 
 			//Launch the kernel
 			res = DriverAPINativeMethods.Launch.cuLaunchKernel(_function, _gridDim.x, _gridDim.y, _gridDim.z, _blockDim.x, _blockDim.y, _blockDim.z, _sharedMemSize, new CUstream(), paramsList, null);
-			Debug.WriteLine(String.Format("{0:G}, {1}: {2}, Kernel: {3}", DateTime.Now, "cuLaunchKernel", res, _kernelName));
 
 			//Free pinned managed parameters during kernel launch (before sync)
 			for (int i = 0; i < paramCount; i++)
@@ -2341,7 +2339,6 @@ namespace ManagedCuda
 			
 			//Launch the kernel
 			res = DriverAPINativeMethods.Launch.cuLaunchKernel(_function, _gridDim.x, _gridDim.y, _gridDim.z, _blockDim.x, _blockDim.y, _blockDim.z, _sharedMemSize, stream, paramsList, null);
-			Debug.WriteLine(String.Format("{0:G}, {1}: {2}, Kernel: {3}", DateTime.Now, "cuLaunchKernel", res, _kernelName));
 
 			//Free pinned managed parameters
 			for (int i = 0; i < paramCount; i++)

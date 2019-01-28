@@ -28,11 +28,12 @@ namespace SiaNet.Layers
         {
             Input = x.ToParameter();
 
-            Output = x.View(TargetShape);
+            Output = x.Reshape(TargetShape);
         }
 
         public override void Backward(Tensor outputgrad)
         {
+            Input.Grad = outputgrad.Reshape(Input.Data.Shape);
         }
     }
 }

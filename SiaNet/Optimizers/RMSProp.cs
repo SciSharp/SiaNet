@@ -14,7 +14,7 @@ namespace SiaNet.Optimizers
 
         private Dictionary<string, Tensor> accumulators;
 
-        public RMSProp(float lr = 0.01f, float rho = 0.9f, float decayRate = 0, float epsilon = 1e-07f)
+        public RMSProp(float lr = 0.001f, float rho = 0.9f, float decayRate = 0, float epsilon = 1e-07f)
             : base(lr, "rmsprop")
         {
             DecayRate = decayRate;
@@ -27,7 +27,7 @@ namespace SiaNet.Optimizers
         {
             if(DecayRate > 0)
             {
-                LearningRate = LearningRate * (1 / 1 + DecayRate * iteration);
+                LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
             foreach (var item in layer.Params)
@@ -40,7 +40,7 @@ namespace SiaNet.Optimizers
 
                 accumulators[param.Name] = Rho * accumulators[param.Name] + (1 - Rho) * Square(param.Grad);
 
-                param.Data = param.Data - (LearningRate * param.Grad / (Square(accumulators[param.Name]) + Epsilon));
+                param.Data = param.Data - (LearningRate * param.Grad / (Sqrt(accumulators[param.Name]) + Epsilon));
 
                 param.ApplyConstraint();
             }

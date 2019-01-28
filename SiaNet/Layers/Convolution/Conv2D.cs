@@ -73,7 +73,7 @@ namespace SiaNet.Layers
                 bias = BuildParam("b", new long[] { Filters, 1}, x.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
             }
 
-            uint? pad = null;
+            uint? pad = 0;
             if(Padding == PaddingType.Same)
             {
                 pad = 1;
@@ -83,21 +83,20 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var h_out = (h - KernalSize.Item1 + 2 * pad) / Strides + 1;
-            var w_out = (w - KernalSize.Item2 + 2 * pad) / Strides + 1;
+            var h_out = (h - KernalSize.Item1 + 2 * pad - 2 * DialationRate.Item1) / Strides + 1;
+            var w_out = (w - KernalSize.Item2 + 2 * pad - 2 * DialationRate.Item1) / Strides + 1;
             
             var wRows = weight.Data.Reshape(Filters, -1);
-            xCols = ImgUtil.Im2Col(x, KernalSize, pad, Strides);
-            xCols.Print();
-            wRows.Print();
-            Output = Dot(wRows,xCols);
+            xCols = ImgUtil.Im2Col(x, KernalSize, pad, Strides, DialationRate);
+            Output = Dot(wRows, xCols);
             
             if(UseBias)
             {
                 Output = Output + bias.Data;
             }
 
-            Output = Output.Reshape(Filters, h_out.Value, w_out.Value, n).Transpose(3, 0, 1, 2);
+            Output = Output.Reshape(Filters, h_out.Value, w_out.Value, n);
+            Output = Output.Transpose(3, 0, 1, 2);
         }
 
         public override void Backward(Tensor outputgrad)
@@ -114,16 +113,16 @@ namespace SiaNet.Layers
 
             var dout_flat = outputgrad.Transpose(3, 0, 1, 2).Reshape(Filters, -1);
             var dW = Dot(dout_flat, xCols.Transpose());
-            dW = dW.Reshape(Params["w"].Data.Shape);
+            dW = dW.Reshape(base["w"].Data.Shape);
             var db = Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
-            var W_flat = Params["w"].Data.Reshape(Filters, -1);
+            var W_flat = base["w"].Data.Reshape(Filters, -1);
 
             var dX_col = Dot(W_flat.Transpose(), dout_flat);
-            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides);
+            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides, DialationRate);
 
-            Params["w"].Grad = dW;
+            base["w"].Grad = dW;
             if(UseBias)
-                Params["b"].Grad = db;
+                base["b"].Grad = db;
         }
     }
 }

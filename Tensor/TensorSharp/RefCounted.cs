@@ -42,11 +42,16 @@ namespace TensorSharp
         /// </summary>
         ~RefCounted()
         {
-            if (refCount > 0)
+            try
             {
-                Destroy();
-                refCount = 1;
+                if (refCount > 0)
+                {
+                    Destroy();
+                    refCount = 1;
+                }
             }
+            catch
+            { }
         }
 
         /// <summary>

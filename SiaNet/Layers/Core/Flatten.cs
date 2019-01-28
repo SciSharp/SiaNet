@@ -18,12 +18,12 @@ namespace SiaNet.Layers
         {
             Input = x.ToParameter();
 
-            Output = x.View(1, x.ElementCount());
+            Output = x.Reshape(x.Shape[0], -1);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad;
+            Input.Grad = outputgrad.Reshape(Input.Data.Shape);
         }
     }
 }

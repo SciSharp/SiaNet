@@ -30,7 +30,7 @@ namespace SiaNet.Optimizers
         {
             if (DecayRate > 0)
             {
-                LearningRate = LearningRate * (1 / 1 + DecayRate * iteration);
+                LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
             foreach (var item in layer.Params)
@@ -43,7 +43,7 @@ namespace SiaNet.Optimizers
                 }
 
                 accumulators[param.Name] = (Rho * accumulators[param.Name]) + ((1 - Rho) * Square(param.Grad));
-                var update = param.Grad / (Sqrt(delta_accumulators[param.Name] + EPSILON) / (accumulators[param.Name] + EPSILON));
+                var update = param.Grad * Sqrt(delta_accumulators[param.Name] + EPSILON) / Sqrt(accumulators[param.Name] + EPSILON);
                 param.Data = param.Data - (LearningRate * update);
 
                 param.ApplyConstraint();
