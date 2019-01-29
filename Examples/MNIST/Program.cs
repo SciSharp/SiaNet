@@ -13,7 +13,7 @@ namespace MNIST
             Global.UseGpu();
 
             string datasetFolder = @"C:\dataset\MNIST";
-            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, 60000, 10000);
+            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, 6000, 1000);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainX, trainY);
             DataFrameIter valIter = new DataFrameIter(valX, valY);
@@ -25,7 +25,7 @@ namespace MNIST
 
             model.EpochEnd += Model_EpochEnd;
 
-            model.Train(trainIter, 10, 32, valIter);
+            model.Train(trainIter, 10, 128, valIter);
 
             Console.ReadLine();
         }

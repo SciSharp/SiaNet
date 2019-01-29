@@ -70,6 +70,7 @@ namespace SiaNet
                         OnEpochEnd(iteration, samplesSeen, train_losses.Average(), val_losses.Average(), train_metrics.Average(), val_metrics.Average(), batchWatch.ElapsedMilliseconds);
 
                     LearningHistory.Add(train_losses, train_metrics, val_losses, val_metrics);
+                    GC.Collect();
                 }
             }
             catch (Exception ex)
@@ -141,6 +142,10 @@ namespace SiaNet
             {
                 OptimizerFn.Update(i, layer);
             }
+
+            pred.Dispose();
+            lossVal.Dispose();
+            grad.Dispose();
         }
 
         public Tensor Predict(DataFrame x)
