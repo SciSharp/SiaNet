@@ -48,9 +48,11 @@ More examples: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples
 To build the project with the specific cuda installed in your machine, please change the "Conditional Compilation Property" in the ManagedCuda project properties -> Build.
 
 Following are the combination: 
+
 {WIN/LINUX},{CUDA80/CUDA90/CUDA91/CUDA92/CUDA100},{CUDNN5/CUDNN7}
 
 Ex: WIN,CUDA100,CUDNN7 - For Cuda 10 with CuDNN7 on Windows
+
 Ex: LINUX,CUDA90,CUDNN5 - For Cuda 9 with CuDNN5 on Linux
 
 
