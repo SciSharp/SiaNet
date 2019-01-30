@@ -13,7 +13,7 @@ namespace BasicClassificationWithTitanicDataset
     {
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Global.UseGpu();
             var dataset = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
 
@@ -26,7 +26,7 @@ namespace BasicClassificationWithTitanicDataset
             model.Add(new Dense(1, ActType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.SGD, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
+            model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Train for 100 epoch with batch size of 2
             model.Train(train, 100, 32, val);
