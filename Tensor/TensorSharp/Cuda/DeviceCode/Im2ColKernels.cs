@@ -27,7 +27,7 @@ namespace TensorSharp.CUDA.DeviceCode
     /// </summary>
     /// <seealso cref="TensorSharp.CUDA.DeviceCode.CudaCode" />
     [Precompile]
-    public class Im2ColKernels : CudaCode
+    public class Im2ColCuda : CudaCode
     {
 
         /// <summary>
@@ -138,9 +138,9 @@ extern ""C"" {
 ";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Im2ColKernels"/> class.
+        /// Initializes a new instance of the <see cref="Im2ColCuda"/> class.
         /// </summary>
-        public Im2ColKernels() : base(Code)
+        public Im2ColCuda() : base(Code)
         {
         }
 

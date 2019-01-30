@@ -28,7 +28,7 @@ namespace TensorSharp.CUDA
         /// <summary>
         /// The im2col kernels
         /// </summary>
-        private readonly Im2ColKernels im2colKernels = new Im2ColKernels();
+        private readonly Im2ColCuda im2colKernels = new Im2ColCuda();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpatialConvolution"/> class.

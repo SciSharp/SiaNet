@@ -10,10 +10,10 @@ namespace MNIST
     {
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Global.UseGpu();
 
             string datasetFolder = @"C:\dataset\MNIST";
-            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, 60000, 10000);
+            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, 600, 100);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainX, trainY);
             DataFrameIter valIter = new DataFrameIter(valX, valY);

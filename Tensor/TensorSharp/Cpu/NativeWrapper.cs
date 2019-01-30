@@ -160,12 +160,16 @@ namespace TensorSharp.Cpu
                         var tensorRef = AllocTensorRef(tensor);
                         var tensorPtr = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(TensorRef64)));
                         Marshal.StructureToPtr(tensorRef, tensorPtr, false);
-
+                        
                         args[i] = tensorPtr;
 
                         freeListTensor.Add(tensorRef);
                         freeListPtr.Add(tensorPtr);
                     }
+                    //else if(args[i] is IntPtr)
+                    //{
+                    //    freeListPtr.Add((IntPtr)args[i]);
+                    //}
                 }
 
                 //return method.Invoke(null, args);

@@ -843,5 +843,15 @@ namespace TensorSharp.Cpu
         /// <returns>System.Int32.</returns>
         [DllImport(dll, CallingConvention = cc)] public static extern int TS_ScatterFill(IntPtr result, float value, int dim, IntPtr indices);
 
+        [DllImport(dll, CallingConvention = cc)]
+        public static extern int TS_Im2Cols(int n, IntPtr data_im, int height, int width, int ksize_h, int ksize_w, 
+                                            int pad_h, int pad_w, int stride_h, int stride_w, int dilation_h, 
+                                            int dilation_w, int height_col, int width_col, IntPtr data_col);
+
+        [DllImport(dll, CallingConvention = cc)]
+        public static extern int TS_Cols2Im(int n, IntPtr data_col, int height, int width, int channels, int ksize_h, int ksize_w,
+                                            int pad_h, int pad_w, int stride_h, int stride_w, int dilation_h,
+                                            int dilation_w, int height_col, int width_col, IntPtr data_im);
+
     }
 }

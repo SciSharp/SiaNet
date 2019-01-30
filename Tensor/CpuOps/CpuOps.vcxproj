@@ -102,10 +102,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>.\Build</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>.\Build\</OutDir>
+    <OutDir>.\Build</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -242,6 +243,8 @@
     <ClCompile Include="ElementwiseOps.cpp" />
     <ClCompile Include="GatherScatterOps.cpp" />
     <ClCompile Include="General.cpp" />
+    <ClCompile Include="ImUtil.cpp" />
+    <ClCompile Include="ImUtil.h" />
     <ClCompile Include="MaxPoolingFrame.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
     <ClCompile Include="TensorRandom.cpp" />
