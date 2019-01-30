@@ -26,7 +26,6 @@ namespace SiaNet
 
         public static Tensor Im2Col(Tensor x, Tuple<uint, uint> kernalSize, uint? padding=null, uint stride = 1, Tuple<uint, uint> dialation=null)
         {
-            
             if (dialation == null)
                 dialation = Tuple.Create<uint, uint>(0, 0);
 

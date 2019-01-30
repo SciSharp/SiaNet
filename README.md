@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
+`![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
 [![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) [![Join the chat at https://gitter.im/sia-cog/SiaNet](https://badges.gitter.im/sia-cog/SiaNet.svg)](https://gitter.im/sia-cog/SiaNet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # A C# deep learning library
@@ -12,7 +12,7 @@ Developing a C# wrapper to help developer easily create and train deep neural ne
 
 
 # A Basic example
-The below is a classification example with Titainc dataset. Able to reach 75% accuravy in 10 epoch. 
+The below is a classification example with Titanic dataset. Able to reach 75% accuracy within 10 epoch. 
 ```
 var dataset = LoadTrain(); //Load train data
 var test = LoadTest(); //Load test data
@@ -29,7 +29,7 @@ model.Add(new Dense(1, ActivationType.Sigmoid));
 //Compile with Optimizer, Loss and Metric
 model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
-// Train for 100 epoch with batch size of 2
+// Train for 100 epoch with batch size of 32
 model.Train(train, 100, 32, val);
 
 var predictions = model.Predict(test);
@@ -49,10 +49,12 @@ To build the project with the specific cuda installed in your machine, please ch
 
 Following are the combination: 
 
-{WIN/LINUX},{CUDA80/CUDA90/CUDA91/CUDA92/CUDA100},{CUDNN5/CUDNN7}
+{WIN/LINUX},{CUDA80/CUDA90/CUDA91/CUDA92/CUDA100},{CUDNN5/CUDNN7/NA}
 
 Ex: WIN,CUDA100,CUDNN7 - For Cuda 10 with CuDNN7 on Windows
 
 Ex: LINUX,CUDA90,CUDNN5 - For Cuda 9 with CuDNN5 on Linux
+
+Ex: WIN,CUDA92,NA - For Cuda 10 with No CuDNN installed on Windows
 
 

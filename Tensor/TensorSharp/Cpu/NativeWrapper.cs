@@ -166,10 +166,6 @@ namespace TensorSharp.Cpu
                         freeListTensor.Add(tensorRef);
                         freeListPtr.Add(tensorPtr);
                     }
-                    //else if(args[i] is IntPtr)
-                    //{
-                    //    freeListPtr.Add((IntPtr)args[i]);
-                    //}
                 }
 
                 //return method.Invoke(null, args);

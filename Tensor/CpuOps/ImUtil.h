@@ -2,22 +2,23 @@
 
 #include "General.h"
 #include "TensorRef.h"
+#include "TensorApply-inl.h"
 
-OPS_API int TS_Im2Cols(const int n, const TensorRef* data_im,
-	const int height, const int width,
-	const int ksize_h, const int ksize_w,
-	const int pad_h, const int pad_w,
-	const int stride_h, const int stride_w,
-	const int dilation_h, const int dilation_w,
-	const int height_col, const int width_col,
+OPS_API int TS_Im2Cols(TensorRef* data_im,
+	int height, int width, int channels,
+	int ksize_h, int ksize_w,
+	int pad_h, int pad_w,
+	int stride_h, int stride_w,
+	int dilation_h, int dilation_w,
+	int height_col, int width_col,
 	TensorRef* data_col);
 
-OPS_API int TS_Cols2Im(const int n, float* data_col,
-	const int height, const int width, const int channels,
-	const int kernel_h, const int kernel_w,
-	const int pad_h, const int pad_w,
-	const int stride_h, const int stride_w,
-	const int dilation_h, const int dilation_w,
-	const int height_col, const int width_col,
-	float* data_im);
+OPS_API int TS_Cols2Im(TensorRef* data_col,
+	int height, int width, int channels,
+	int kernel_h, int kernel_w,
+	int pad_h, int pad_w,
+	int stride_h, int stride_w,
+	int dilation_h, int dilation_w,
+	int height_col, int width_col,
+	TensorRef* data_im);
 

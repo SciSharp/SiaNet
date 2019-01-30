@@ -22,9 +22,8 @@ namespace TensorSharp.Cpu
                              / stride_h + 1;
             int width_col = (width + 2 * pad_w - (dilation_w * (ksize_w - 1) + 1))
                             / stride_w + 1;
-            int num_kernels = channels * height_col * width_col;
 
-            NativeWrapper.InvokeTypeMatch(im2cols_func, num_kernels, im, height, width, ksize_h, ksize_w, pad_h, pad_w, stride_h, stride_w,
+            NativeWrapper.InvokeTypeMatch(im2cols_func, im, height, width, channels, ksize_h, ksize_w, pad_h, pad_w, stride_h, stride_w,
                                             dilation_h, dilation_w, height_col, width_col, col);
         }
 
@@ -40,10 +39,9 @@ namespace TensorSharp.Cpu
                    / stride_h + 1;
             int width_col = (width + 2 * pad_w - (dilation_w * (patch_w - 1) + 1))
                              / stride_w + 1;
-            int num_kernels = channels * height * width;
 
-            NativeWrapper.InvokeTypeMatch(cols2im_func, num_kernels, im, height, width, patch_h, patch_w, pad_h, pad_w, stride_h, stride_w,
-                                            dilation_h, dilation_w, height_col, width_col, col);
+            NativeWrapper.InvokeTypeMatch(cols2im_func, col, height, channels, width, patch_h, patch_w, pad_h, pad_w, stride_h, stride_w,
+                                            dilation_h, dilation_w, height_col, width_col, im);
         }
     }
 }
