@@ -10,15 +10,15 @@ namespace MNIST
     {
         static void Main(string[] args)
         {
-            //Global.UseGpu();
+            Global.UseGpu();
 
             string datasetFolder = @"C:\dataset\MNIST";
-            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, 6000, 1000);
+            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, 60000, 10000, true);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainX, trainY);
             DataFrameIter valIter = new DataFrameIter(valX, valY);
 
-            Sequential model = BuildConvModel();
+            Sequential model = BuildFCModel();
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
