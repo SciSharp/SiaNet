@@ -40,7 +40,7 @@ namespace TensorSharp.Cpu
             int width_col = (width + 2 * pad_w - (dilation_w * (patch_w - 1) + 1))
                              / stride_w + 1;
 
-            NativeWrapper.InvokeTypeMatch(cols2im_func, col, height, channels, width, patch_h, patch_w, pad_h, pad_w, stride_h, stride_w,
+            NativeWrapper.InvokeTypeMatch(cols2im_func, col, height, width, channels, patch_h, patch_w, pad_h, pad_w, stride_h, stride_w,
                                             dilation_h, dilation_w, height_col, width_col, im);
         }
     }

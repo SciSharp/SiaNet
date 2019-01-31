@@ -27,7 +27,7 @@ namespace SiaNet
         public static Tensor Im2Col(Tensor x, Tuple<uint, uint> kernalSize, uint? padding=null, uint stride = 1, Tuple<uint, uint> dialation=null)
         {
             if (dialation == null)
-                dialation = Tuple.Create<uint, uint>(0, 0);
+                dialation = Tuple.Create<uint, uint>(1, 1);
 
             if (padding.HasValue)
                 padding = 0;
@@ -76,7 +76,7 @@ namespace SiaNet
         {
             
             if (dialation == null)
-                dialation = Tuple.Create<uint, uint>(0, 0);
+                dialation = Tuple.Create<uint, uint>(1, 1);
 
             if (padding.HasValue)
                 padding = 0;

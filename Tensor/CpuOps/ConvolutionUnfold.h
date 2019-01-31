@@ -62,7 +62,7 @@ void unfolded_acc(
 	T *input_data = (T*)input->buffer;
 	T *finput_data = (T*)finput->buffer;
 
-#pragma omp parallel for private(nip)
+#pragma omp parallel
 	for (nip = 0; nip < nInputPlane; nip++)
 	{
 		size_t kw, kh, y, x;
