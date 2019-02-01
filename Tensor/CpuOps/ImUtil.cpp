@@ -9,265 +9,95 @@
 
 using namespace std;
 
-int IM2COL_MAX_THREAD_NUMBER = (int)std::thread::hardware_concurrency() * .7;
-
-typedef struct {
-	float*  data_im;
-	int     channels;
-	int     height;
-	int     width;
-	int     kernel_h;
-	int     kernel_w;
-	int     pad_h;
-	int     pad_w;
-	int     stride_h;
-	int     stride_w;
-	int     dilation_h;
-	int     dilation_w;
-	int     output_h;
-	int     output_w;
-	int     channel_size;
-	int     data_col_size;
-	float*  data_col;
-	int*    range_channel;
-} im2col_arg_t;
-
 inline bool is_a_ge_zero_and_a_lt_b(int a, int b) {
 	return static_cast<unsigned>(a) < static_cast<unsigned>(b);
 }
 
-void im2col_inner_thread(void* set_args, int pos)
-{
-	im2col_arg_t* args = (im2col_arg_t*)set_args;
-	float*  data_im = args->data_im;
-	//int     channels      = args -> channels     ;
-	int     height = args->height;
-	int     width = args->width;
-	int     kernel_h = args->kernel_h;
-	int     kernel_w = args->kernel_w;
-	int     pad_h = args->pad_h;
-	int     pad_w = args->pad_w;
-	int     stride_h = args->stride_h;
-	int     stride_w = args->stride_w;
-	int     dilation_h = args->dilation_h;
-	int     dilation_w = args->dilation_w;
-	int     output_h = args->output_h;
-	int     output_w = args->output_w;
-	int     channel_size = args->channel_size;
-	int     data_col_size = args->data_col_size;
-	float*  data_col = args->data_col;
-	int*    range_channel = args->range_channel;
-
-	data_im += range_channel[pos] * channel_size;
-	data_col += range_channel[pos] * data_col_size;
-	int channel, kernel_row, kernel_col, output_rows, output_cols;
-
-	for (channel = range_channel[pos]; channel < range_channel[pos + 1]; channel++, data_im += channel_size)
-	{
-		for (kernel_row = 0; kernel_row < kernel_h; kernel_row++) {
-			for (kernel_col = 0; kernel_col < kernel_w; kernel_col++) {
-				int input_row = -pad_h + kernel_row * dilation_h;
-				for (output_rows = output_h; output_rows; output_rows--) {
-					if (!is_a_ge_zero_and_a_lt_b(input_row, height)) {
-						for (output_cols = output_w; output_cols; output_cols--) {
-							*(data_col++) = 0;
-						}
-					}
-					else {
-						int input_col = -pad_w + kernel_col * dilation_w;
-						for (int output_col = output_w; output_col; output_col--) {
-							if (is_a_ge_zero_and_a_lt_b(input_col, width)) {
-								*(data_col++) = data_im[input_row * width + input_col];
-							}
-							else {
-								*(data_col++) = 0;
-							}
-							input_col += stride_w;
-						}
-					}
-					input_row += stride_h;
-				}
-			}
-		}
-	}
-}
-
-void col2im_inner_thread(void* set_args, int pos)
-{
-	im2col_arg_t* args = (im2col_arg_t*)set_args;
-
-	float*  data_im = args->data_im;
-	//int     channels      = args -> channels     ;
-	int     height = args->height;
-	int     width = args->width;
-	int     kernel_h = args->kernel_h;
-	int     kernel_w = args->kernel_w;
-	int     pad_h = args->pad_h;
-	int     pad_w = args->pad_w;
-	int     stride_h = args->stride_h;
-	int     stride_w = args->stride_w;
-	int     dilation_h = args->dilation_h;
-	int     dilation_w = args->dilation_w;
-	int     output_h = args->output_h;
-	int     output_w = args->output_w;
-	int     channel_size = args->channel_size;
-	int     data_col_size = args->data_col_size;
-	float*  data_col = args->data_col;
-	int*    range_channel = args->range_channel;
-
-	data_im += range_channel[pos] * channel_size;
-	data_col += range_channel[pos] * data_col_size;
-
-	for (int channel = range_channel[pos]; channel < range_channel[pos + 1]; channel++, data_im += channel_size)
-	{
-		for (int kernel_row = 0; kernel_row < kernel_h; kernel_row++) {
-			for (int kernel_col = 0; kernel_col < kernel_w; kernel_col++) {
-				int input_row = -pad_h + kernel_row * dilation_h;
-				for (int output_rows = output_h; output_rows; output_rows--) {
-					if (!is_a_ge_zero_and_a_lt_b(input_row, height)) {
-						for (int output_cols = output_w; output_cols; output_cols--) {
-							*(data_col++) = 0;
-						}
-					}
-					else {
-						int input_col = -pad_w + kernel_col * dilation_w;
-						for (int output_col = output_w; output_col; output_col--) {
-							if (is_a_ge_zero_and_a_lt_b(input_col, width)) {
-								*(data_col++) = data_im[input_row * width + input_col];
-							}
-							else {
-								*(data_col++) = 0;
-							}
-							input_col += stride_w;
-						}
-					}
-					input_row += stride_h;
-				}
-			}
-		}
-	}
-}
-
-static void divide(int M, int* range_M)
-{
-	int dx = M % IM2COL_MAX_THREAD_NUMBER;
-	int dy = M / IM2COL_MAX_THREAD_NUMBER;
-	int index = 0;
-	int i;
-	for (i = 0; i < IM2COL_MAX_THREAD_NUMBER + 1; i++)
-	{
-		range_M[i] = index;
-		if (i < dx)
-		{
-			index = index + dy + 1;
-		}
-		else
-		{
-			index = index + dy;
-		}
-	}
-}
-
 template<typename T>
-INLINE_FUNC void im2cols(TensorRef* data_im_t,
-	int height, int width, int channels,
-	int kernel_h, int kernel_w,
-	int pad_h, int pad_w,
-	int stride_h, int stride_w,
-	int dilation_h, int dilation_w,
+INLINE_FUNC void im2cols(const TensorRef* data_im_t,
+	const int height, const int width, const int channels,
+	const int kernel_h, const int kernel_w,
+	const int pad_h, const int pad_w,
+	const int stride_h, const int stride_w,
+	const int dilation_h, const int dilation_w,
 	int height_col, int width_col,
 	TensorRef* data_col_t) {
 	T* data_im = (T*)data_im_t->buffer;
 	T* data_col = (T*)data_col_t->buffer;
-	const int output_h = (height + 2 * pad_h - (dilation_h * (kernel_h - 1) + 1)) / stride_h + 1;
-	const int output_w = (width + 2 * pad_w - (dilation_w * (kernel_w - 1) + 1)) / stride_w + 1;
-	const int channel_size = height * width;
-	const int data_col_size = output_h * output_w * kernel_h * kernel_w;
-	int channel;
-	
-	im2col_arg_t      ins_args;
-	int* range_channel;
-	
-	ins_args.data_im = (float*)data_im;
-	//ins_args.channels      = channels;
-	ins_args.height = height;
-	ins_args.width = width;
-	ins_args.kernel_h = kernel_h;
-	ins_args.kernel_w = kernel_w;
-	ins_args.pad_h = pad_h;
-	ins_args.pad_w = pad_w;
-	ins_args.stride_h = stride_h;
-	ins_args.stride_w = stride_w;
-	ins_args.dilation_h = dilation_h;
-	ins_args.dilation_w = dilation_w;
-	ins_args.output_h = output_h;
-	ins_args.output_w = output_w;
-	ins_args.channel_size = channel_size;
-	ins_args.data_col_size = data_col_size;
-	ins_args.data_col = (float*)data_col;
-	ins_args.range_channel = range_channel;
-	
-	divide(channels, range_channel);
-	int i;
-	omp_set_num_threads(IM2COL_MAX_THREAD_NUMBER);
+	int dil_kernel_h = (kernel_h - 1) * dilation_h + 1;
+	int dil_kernel_w = (kernel_w - 1) * dilation_w + 1;
+	height_col = (height + 2 * pad_h - dil_kernel_h) / stride_h + 1;
+	width_col = (width + 2 * pad_w - dil_kernel_w) / stride_w + 1;
+	int channels_col = channels * kernel_h * kernel_w;
 #pragma omp parallel for
-	for (i = 0; i < IM2COL_MAX_THREAD_NUMBER; i++)
-	{
-		im2col_inner_thread(&ins_args, i);
+	for (int c = 0; c < channels_col; ++c) {
+		int w_offset = c % kernel_w;
+		int h_offset = (c / kernel_w) % kernel_h;
+		int c_im = c / kernel_h / kernel_w;
+
+		const int hc0 = h_offset * dilation_h - pad_h;
+		const int wc0 = w_offset * dilation_w - pad_w;
+		for (int h = 0; h < height_col; ++h) {
+			int h_pad = h * stride_h + hc0;
+
+			const int row_offset = (c * height_col + h) * width_col;
+			const int srow_offset = (c_im * height + h_pad) * width;
+			for (int w = 0; w < width_col; ++w) {
+				int w_pad = w * stride_w + wc0;
+				if ((((unsigned)h_pad) < ((unsigned)height)) && (((unsigned)w_pad) < ((unsigned)width)))
+					data_col[row_offset + w] = data_im[srow_offset + w_pad];
+				else {
+					data_col[row_offset + w] = 0.;
+				}
+			}
+		}
 	}
 }
 
 
 
 template<typename T>
-INLINE_FUNC void cols2im(TensorRef* data_col_t,
-	int height, int width, int channels,
-	int kernel_h, int kernel_w,
-	int pad_h, int pad_w,
-	int stride_h, int stride_w,
-	int dilation_h, int dilation_w,
+INLINE_FUNC void cols2im(const TensorRef* data_col_t,
+	const int height, const int width, const int channels,
+	const int kernel_h, const int kernel_w,
+	const int pad_h, const int pad_w,
+	const int stride_h, const int stride_w,
+	const int dilation_h, const int dilation_w,
 	int height_col, int width_col,
 	TensorRef* data_im_t) {
 	T* data_im = (T*)data_im_t->buffer;
 	T* data_col = (T*)data_col_t->buffer;
 
-	const int output_h = (height + 2 * pad_h -
-		(dilation_h * (kernel_h - 1) + 1)) / stride_h + 1;
-	const int output_w = (width + 2 * pad_w -
-		(dilation_w * (kernel_w - 1) + 1)) / stride_w + 1;
-	const int channel_size = height * width;
-	const int data_col_size = output_h * output_w * kernel_h * kernel_w;
-	int channel;
+	int dil_patch_h = (kernel_h - 1) * dilation_h + 1;
+	int dil_patch_w = (kernel_w - 1) * dilation_w + 1;
+	height_col = (height + 2 * pad_h - dil_patch_h) / stride_h + 1;
+	width_col = (width + 2 * pad_w - dil_patch_w) / stride_w + 1;
+	long chunk_len = kernel_h * kernel_w;
 
-	im2col_arg_t      ins_args;
-	int* range_channel;
-	
-	ins_args.data_im = (float*)data_im;
-	//ins_args.channels      = channels;
-	ins_args.height = height;
-	ins_args.width = width;
-	ins_args.kernel_h = kernel_h;
-	ins_args.kernel_w = kernel_w;
-	ins_args.pad_h = pad_h;
-	ins_args.pad_w = pad_w;
-	ins_args.stride_h = stride_h;
-	ins_args.stride_w = stride_w;
-	ins_args.dilation_h = dilation_h;
-	ins_args.dilation_w = dilation_w;
-	ins_args.output_h = output_h;
-	ins_args.output_w = output_w;
-	ins_args.channel_size = channel_size;
-	ins_args.data_col_size = data_col_size;
-	ins_args.data_col = (float*)data_col;
-	ins_args.range_channel = range_channel;
+	//caffe_set((size_t)height * (size_t)width * (size_t)channels, Dtype(0), data_im);
 
-	divide(channels, range_channel);
-	int i;
-	omp_set_num_threads(IM2COL_MAX_THREAD_NUMBER);
-#pragma omp parallel for
-	for (i = 0; i < IM2COL_MAX_THREAD_NUMBER; i++)
-	{
-		col2im_inner_thread(&ins_args, i);
+#pragma omp parallel for if (channels > 1)
+	for (int idx = 0; idx < channels; ++idx) {
+		for (int inner_idx = 0; inner_idx < chunk_len; ++inner_idx) {
+			int c = idx * chunk_len + inner_idx;
+			int w_offset = c % kernel_w;
+			int h_offset = (c / kernel_w) % kernel_h;
+			int c_im = c / kernel_h / kernel_w;
+
+			const int hc0 = h_offset * dilation_h - pad_h;
+			const int wc0 = w_offset * dilation_w - pad_w;
+			for (int h = 0; h < height_col; ++h) {
+				for (int w = 0; w < width_col; ++w) {
+					int h_pad = h * stride_h + hc0;
+					const int srow_offset = (c_im * height + h_pad) * width;
+					const int row_offset = (c * height_col + h) * width_col;
+					int w_pad = w * stride_w + wc0;
+					if ((((unsigned)h_pad) < ((unsigned)height)) && (((unsigned)w_pad) < ((unsigned)width))) {
+						data_im[srow_offset + w_pad] += data_col[row_offset + w];
+					}
+				}
+			}
+		}
 	}
 }
 
