@@ -15,8 +15,8 @@ namespace SiaNet.Metrics
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            preds = Argmax(preds, -1);
-            labels = Argmax(labels, -1);
+            preds = Argmax(preds, 1);
+            labels = Argmax(labels, 1);
 
             var r = EqualTo(preds, labels);
 

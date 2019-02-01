@@ -61,8 +61,8 @@ namespace SiaNet.Optimizers
                     vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
             }
 
-            var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
-            var v_t = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad);
+            var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * (param.Grad + EPSILON);
+            var v_t = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad + EPSILON);
 
             if (AmsGrad)
             {

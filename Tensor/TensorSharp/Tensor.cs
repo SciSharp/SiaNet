@@ -913,14 +913,14 @@ namespace TensorSharp
             return result;
         }
 
-        //public List<float> DataFloat
-        //{
-        //    get
-        //    {
-        //        return ToArray().Cast<float>().ToList();
-        //    }
-        //}
-       
+        public List<float> DataFloat
+        {
+            get
+            {
+                return ToArray().Cast<float>().ToList();
+            }
+        }
+
         public void Fill(float value)
         {
             TOps.Fill(this, value);

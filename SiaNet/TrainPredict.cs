@@ -138,6 +138,11 @@ namespace SiaNet
 
             ApplyDeltaRegularizer();
 
+            //for (int k = Layers.Count - 1; k >= 0; k--)
+            //{
+            //    OptimizerFn.Update(i, Layers[k]);
+            //}
+
             foreach (var layer in Layers)
             {
                 OptimizerFn.Update(i, layer);

@@ -26,7 +26,19 @@ namespace MNIST
 
             model.EpochEnd += Model_EpochEnd;
 
-            model.Train(trainIter, 10, 200, valIter);
+            model.Train(trainIter, 10, 64, valIter);
+
+            //var x = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1 });
+            //x = x.Reshape(2, 1, 3, 3);
+            //var (n, d, h, w) = x.GetConv2DShape();
+            //x = x.Reshape(n * d, 1, h, w);
+            //x.Print();
+            //var X_col = ImgUtil.Im2Col(x, new Tuple<uint, uint>(3, 3), padding: 1, stride: 1);
+            //X_col.Print();
+            //var max_idx = TOps.Max(X_col, 0);
+            //max_idx.Print();
+            //var output = TOps.IndexSelect(X_col, 0, max_idx);
+            //output.Print();
 
             Console.ReadLine();
         }

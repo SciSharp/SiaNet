@@ -38,20 +38,19 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var h_out = (h - PoolSize.Item1) / Strides + 1;
-            var w_out = (w - PoolSize.Item2) / Strides + 1;
+            var h_out = (h - PoolSize.Item1 + 2 * pad.Value) / Strides + 1;
+            var w_out = (w - PoolSize.Item2 + 2 * pad.Value) / Strides + 1;
 
             var x_reshaped = x.Reshape(n * c, 1, h, w);
             xCols = ImgUtil.Im2Col(x_reshaped, PoolSize, pad, Strides);
-            Output = Argmax(xCols, 0);
+            Output = Max(xCols, 0);
             Output = Output.Reshape(h_out, w_out, n, c).Transpose(2, 3, 0, 1);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Tensor dX_col = new Tensor(xCols.Allocator, xCols.ElementType, xCols.Shape);
+            var dX_col = Tensor.Constant(0, Global.Device, DType.Float32, xCols.Shape);
             var (n, c, h, w) = Input.Data.GetConv2DShape();
-            Fill(dX_col, 0);
             uint? pad = null;
             if (Padding == PaddingType.Same)
             {
@@ -62,7 +61,7 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var dout_flat = outputgrad.Transpose(2, 3, 0, 1).Reshape(1, -1);
+            var dout_flat = outputgrad.Transpose(2, 3, 0, 1);
             var dX = ImgUtil.Col2Im(dout_flat, Input.Data.Shape, PoolSize, pad, Strides);
             Input.Grad = dX.Reshape(n, c, h, w);
         }

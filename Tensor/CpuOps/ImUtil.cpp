@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int IM2COL_MAX_THREAD_NUMBER = 8;
+int IM2COL_MAX_THREAD_NUMBER = (int)std::thread::hardware_concurrency() * .7;
 
 typedef struct {
 	float*  data_im;
@@ -168,7 +168,6 @@ static void divide(int M, int* range_M)
 	}
 }
 
-double im2col_elapsed_time = 0;
 template<typename T>
 INLINE_FUNC void im2cols(TensorRef* data_im_t,
 	int height, int width, int channels,
@@ -207,7 +206,7 @@ INLINE_FUNC void im2cols(TensorRef* data_im_t,
 	ins_args.data_col_size = data_col_size;
 	ins_args.data_col = (float*)data_col;
 	ins_args.range_channel = range_channel;
-
+	
 	divide(channels, range_channel);
 	int i;
 	omp_set_num_threads(IM2COL_MAX_THREAD_NUMBER);
@@ -216,7 +215,6 @@ INLINE_FUNC void im2cols(TensorRef* data_im_t,
 	{
 		im2col_inner_thread(&ins_args, i);
 	}
-
 }
 
 
@@ -271,7 +269,6 @@ INLINE_FUNC void cols2im(TensorRef* data_col_t,
 	{
 		col2im_inner_thread(&ins_args, i);
 	}
-
 }
 
 int TS_Im2Cols(TensorRef* data_im,

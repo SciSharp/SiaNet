@@ -62,7 +62,6 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            //ToDo: Implement DilationRate
             Input = x.ToParameter();
             var (n, c, h, w) = x.GetConv2DShape();
 
@@ -83,8 +82,8 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var h_out = (h - KernalSize.Item1 + 2 * pad - 2 * DialationRate.Item1) / Strides + 1;
-            var w_out = (w - KernalSize.Item2 + 2 * pad - 2 * DialationRate.Item1) / Strides + 1;
+            var h_out = (h - KernalSize.Item1 + 2 * pad) / Strides + 1;
+            var w_out = (w - KernalSize.Item2 + 2 * pad) / Strides + 1;
             
             var wRows = weight.Data.Reshape(Filters, -1);
             xCols = ImgUtil.Im2Col(x, KernalSize, pad, Strides, DialationRate);
@@ -111,12 +110,13 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var dout_flat = outputgrad.Transpose(3, 0, 1, 2).Reshape(Filters, -1);
+            var dout_flat = outputgrad.Transpose(1, 2, 3, 0).Reshape(Filters, -1);
             var dW = Dot(dout_flat, xCols.Transpose());
             dW = dW.Reshape(base["w"].Data.Shape);
-            var db = Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
-            var W_flat = base["w"].Data.Reshape(Filters, -1);
 
+            var db = Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
+
+            var W_flat = base["w"].Data.Reshape(Filters, -1);
             var dX_col = Dot(W_flat.Transpose(), dout_flat);
             Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides, DialationRate);
 
