@@ -4,6 +4,7 @@
 #include "TensorApply-inl.h"
 #include "math.h"
 #include <ppl.h>
+#include <omp.h>
 
 using namespace concurrency;
 using namespace std;
@@ -29,9 +30,12 @@ INLINE_FUNC void im2cols(TensorRef* data_im_t,
 		(dilation_w * (kernel_w - 1) + 1)) / stride_w + 1;
 	const int channel_size = height * width;
 	int channel;
+	
 #pragma omp parallel
 	{
-#pragma omp for
+		omp_set_num_threads(4);
+		omp_set_nested(4);
+#pragma omp parallel for
 		for (channel = 0; channel < channels; channel++)
 		{
 			for (int kernel_row = 0; kernel_row < kernel_h; kernel_row++) {
@@ -52,7 +56,7 @@ INLINE_FUNC void im2cols(TensorRef* data_im_t,
 								}
 								else {
 									*(data_col++) = 0;
-								}
+				 				}
 								input_col += stride_w;
 							}
 						}
@@ -85,9 +89,12 @@ INLINE_FUNC void cols2im(TensorRef* data_col_t,
 		(dilation_w * (kernel_w - 1) + 1)) / stride_w + 1;
 	const int channel_size = height * width;
 	int channel;
+	
 #pragma omp parallel
 	{
-#pragma omp for
+		omp_set_num_threads(4);
+		omp_set_nested(4);
+#pragma omp parallel for
 		for (channel = 0; channel < channels; channel++){
 			for (int kernel_row = 0; kernel_row < kernel_h; kernel_row++) {
 				for (int kernel_col = 0; kernel_col < kernel_w; kernel_col++) {
