@@ -14,7 +14,7 @@ namespace SiaNet
 
         internal static bool UseCudnn { get; set; }
 
-        public static bool UseCuda { get; set; }
+        internal static bool UseCuda { get; set; }
 
         internal static int contextId = 0;
 

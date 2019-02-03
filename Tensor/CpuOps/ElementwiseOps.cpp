@@ -87,11 +87,6 @@ template <typename T> INLINE_FUNC T Clamp(T val, T min, T max) {
 	return val;
 }
 
-
-
-
-
-
 DECLARE_UNARY_ALL_CPU_TYPES(TS_Abs, abs)
 DECLARE_UNARY_ALL_CPU_TYPES(TS_Neg, Neg)
 DECLARE_UNARY_ALL_CPU_TYPES(TS_Sign, sgn)

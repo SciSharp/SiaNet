@@ -22,7 +22,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad * Output * (1 - Output);
+            //Input.Grad = -1 * outputgrad * Output * Output;
+
+            var scattered = Scatter(Output, 0, Output);
+            var dx = Output * outputgrad;
+            var s = outputgrad * Sum(dx, -1);
+            Input.Grad = dx - (Output * s);
+            
 
             //var grad = Tensor.Constant(0, Global.Device, DType.Float32, Input.Grad.Shape);
 
@@ -38,7 +44,7 @@ namespace SiaNet.Layers.Activations
             //        {
             //            v = Output.GetElementAsFloat(i, j) * (1 - Output.GetElementAsFloat(i, j));
             //        }
-            //        else
+            //        elsex 
             //        {
             //            v = -1 * Output.GetElementAsFloat(i, j) * Output.GetElementAsFloat(i, j);
             //        }

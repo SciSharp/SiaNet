@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TensorSharp.Core;
+using TensorSharp.Expression;
 
 namespace TensorSharp
 {
@@ -843,7 +844,12 @@ namespace TensorSharp
         /// <param name="dim">The dim.</param>
         /// <param name="indices">The indices.</param>
         /// <returns>Tensor.</returns>
-        public static Tensor Scatter( Tensor src, int dim, Tensor indices) { return (Tensor)OpRegistry.Invoke("scatter", null, src, dim, indices); }
+        public static Tensor Scatter( Tensor src, int dim, Tensor indices)
+        {
+            var result = src;
+            result = (Tensor)OpRegistry.Invoke("scatter", result, src, dim, indices);
+            return result;
+        }
         /// <summary>
         /// Scatters the fill.
         /// </summary>
@@ -913,6 +919,12 @@ namespace TensorSharp
         {
             x = x.View(x.ElementCount(), 1).Tile(reps);
             return x.View(1, x.ElementCount());
+        }
+
+        public static Tensor Diag(Tensor x)
+        {
+
+            return (Tensor)OpRegistry.Invoke("diag", null, x);
         }
 
         public static ValueTuple<Tensor, Tensor> Broadcast_Add(Tensor lhs, Tensor rhs)

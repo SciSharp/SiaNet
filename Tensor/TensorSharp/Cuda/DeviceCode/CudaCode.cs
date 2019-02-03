@@ -13,6 +13,7 @@
 // ***********************************************************************
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TensorSharp.CUDA.RuntimeCompiler;
@@ -71,6 +72,12 @@ namespace TensorSharp.CUDA.DeviceCode
         public void Precompile(CudaCompiler compiler)
         {
             ptx = compiler.CompileToPtx(code, requiredHeaders);
+        }
+
+        public static string ReadFile(string name)
+        {
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "/Cuda/DeviceCode/CU/" + name;
+            return File.ReadAllText(filePath);
         }
     }
 

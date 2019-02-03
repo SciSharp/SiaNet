@@ -32,7 +32,7 @@ namespace SiaNet.Layers
 
         public Dense(int dim, ActType activation = ActType.Linear,
                     BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null,
-                    bool useBias = false, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
+                    bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
             : base("dense")
         {
             Dim = dim;

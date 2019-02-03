@@ -13,7 +13,7 @@ namespace BasicClassificationWithTitanicDataset
     {
         static void Main(string[] args)
         {
-            //Global.UseGpu();
+            Global.UseGpu();
             var dataset = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
 
@@ -31,10 +31,8 @@ namespace BasicClassificationWithTitanicDataset
             // Train for 100 epoch with batch size of 2
             model.Train(train, 100, 32, val);
 
-            model.SaveModel("model.json");
-
-            var prediction = model.Predict(test);
-            TOps.Round(prediction).Print();
+            //var prediction = model.Predict(test);
+            //TOps.Round(prediction).Print();
         }
 
         private static void Model_EpochEnd(object sender, EpochEndEventArgs e)

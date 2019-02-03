@@ -9,19 +9,20 @@ namespace BostonHousingRegressionExample
     {
         static void Main(string[] args)
         {
+            Global.UseGpu();
             var train = LoadTrain("./train.csv");
             var val = LoadTest("./test.csv");
 
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(64, ActType.ReLU));
-            model.Add(new Dense(64, ActType.ReLU));
+            model.Add(new Dense(32, ActType.ReLU));
             model.Add(new Dense(1));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.MeanSquaredError, MetricType.MAE);
 
-            // Train for 100 epoch with batch size of 2
+            // Train for 100 epoch with batch size of 32
             model.Train(train, 100, 32);
 
             Console.ReadLine();
