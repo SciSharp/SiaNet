@@ -34,7 +34,7 @@ namespace TensorSharp.CUDA.DeviceCode
         /// <summary>
         /// The code
         /// </summary>
-        public static string Code = @"
+        public static readonly string Code = @"
 
 // Compute the offsets into the given tensors for a linear index. For the 't2'
 // tensor, dimension 'dim' is skipped. The tensors are assumed to have the same
@@ -103,18 +103,6 @@ struct IndexToScatterGatherOffsets<IndexType, -1> {
         *t2Offset += curDimIndex * t2.strides[d];
       }
       linearId /= index.sizes[d];
-    }
-  }
-};
-
-// Same as above but using a dynamic number of dimensions.
-template <typename IndexType>
-struct DiagOffsets<IndexType, -1> {
-  static __device__ void compute(IndexType linearId, const TensorInfo<IndexType>& t1, IndexType* t1Offset) {
-    for (int d = t1.dims - 1; d >= 0; d--) {
-      IndexType curDimIndex = linearId % t1.sizes[d];
-      *t1Offset += curDimIndex * t1.strides[d];
-      linearId /= t1.sizes[d];
     }
   }
 };
@@ -197,32 +185,6 @@ __global__ void scatterFill_kernel(
   }
 }
 
-template <typename IndexType, int Dims>
-__global__ void diag_kernel(
-    TensorInfo<IndexType> tensor,
-    TensorInfo<IndexType> src,
-    const IndexType totalElements) {
-  for (IndexType i = blockIdx.x * blockDim.x + threadIdx.x; i < totalElements; i += gridDim.x * blockDim.x) {
-    for (IndexType j = blockIdx.x * blockDim.x + threadIdx.x; j < totalElements; j += gridDim.x * blockDim.x) {
-        IndexType tensorOffset = 0;
-        IndexType srcOffset = 0;
-
-        DiagOffsets<IndexType, -1>::compute(linearId, dim, src, &srcOffset);
-        DiagOffsets<IndexType, -1>::compute(linearId, dim, tensor, &tensorOffset);
-        
-        if(i == j)
-        {
-            srcOffset += src.strides[i];
-            tensor.data[tensorOffset] = src.data[srcOffset];
-        }
-        else
-        {
-            tensor.data[tensorOffset] = 0;
-        }
-    }
-  }
-}
-
 
 #define DECLARE_GATHER(KERNEL_NAME, INDEX_TYPE, DIMS) \
     extern ""C"" {\
@@ -262,25 +224,12 @@ __global__ void diag_kernel(
             scatterFill_kernel<INDEX_TYPE, DIMS>(tensor, indices, value, dim, totalElements);\
         }\
     }
-
-#define DECLARE_DIAG(KERNEL_NAME, INDEX_TYPE, DIMS) \
-    extern ""C"" {\
-        __global__ void KERNEL_NAME(\
-                                          TensorInfo<INDEX_TYPE> tensor,\
-                                          TensorInfo<INDEX_TYPE> src,\
-                                          INDEX_TYPE totalElements)\
-        {\
-            diag_kernel<INDEX_TYPE, DIMS>(tensor, src, totalElements);\
-        }\
-    }
 ";
 
         /// <summary>
         /// The gather base name
         /// </summary>
         private const string GatherBaseName = "gather_";
-
-        private const string DiagBaseName = "diag_";
         /// <summary>
         /// The scatter base name
         /// </summary>
@@ -304,7 +253,6 @@ __global__ void diag_kernel(
         /// <returns>System.String.</returns>
         private static string GetCode()
         {
-            Code = ReadFile("GatherSelect.cu");
             var sb = new StringBuilder(Code);
             sb.AppendLine(GetMacroInvocations(true, 1));
             sb.AppendLine(GetMacroInvocations(true, 2));
@@ -327,8 +275,7 @@ __global__ void diag_kernel(
             return
                 string.Format("DECLARE_GATHER({0}, {1}, {2})\n", MakeKernelName(GatherBaseName, is32, dims), indexType, dims) +
                 string.Format("DECLARE_SCATTER({0}, {1}, {2})\n", MakeKernelName(ScatterBaseName, is32, dims), indexType, dims) +
-                string.Format("DECLARE_SCATTERFILL({0}, {1}, {2})\n", MakeKernelName(ScatterFillBaseName, is32, dims), indexType, dims) +
-                string.Format("DECLARE_DIAG({0}, {1}, {2})\n", MakeKernelName(DiagBaseName, is32, dims), indexType, dims);
+                string.Format("DECLARE_SCATTERFILL({0}, {1}, {2})\n", MakeKernelName(ScatterFillBaseName, is32, dims), indexType, dims);
         }
 
 
@@ -506,35 +453,6 @@ __global__ void diag_kernel(
                 var kernelName = MakeKernelName(ScatterFillBaseName, false, -1);
                 Invoke(context, cudaContext, kernelName, grid, block, 0, CUstream.NullStream, false,
                    writeTarget, indices, value, dim, (long)nElement);
-            }
-
-            return writeTarget;
-        }
-
-        public Tensor Diag(Tensor result, Tensor src)
-        {
-            var context = CudaHelpers.TSContextForTensor(src);
-            var cudaContext = context.CudaContextForTensor(src);
-
-            var writeTarget = TensorResultBuilder.GetWriteTarget(result, src.Allocator, src.ElementType, false, result.Shape);
-
-            var nElement = src.ElementCount();
-            var block = ApplyUtils.GetApplyBlock();
-            var grid = ApplyUtils.GetApplyGrid(context.DeviceInfoForContext(cudaContext), nElement);
-
-            if (ApplyUtils.CanUse32BitIndexMath(writeTarget) &&
-                ApplyUtils.CanUse32BitIndexMath(src))
-            {
-                var dims = src.DimensionCount <= 3 ? src.DimensionCount : -1;
-                var kernelName = MakeKernelName(DiagBaseName, true, dims);
-                Invoke(context, cudaContext, kernelName, grid, block, 0, CUstream.NullStream, true,
-                    writeTarget, src, (int)nElement);
-            }
-            else
-            {
-                var kernelName = MakeKernelName(DiagBaseName, false, -1);
-                Invoke(context, cudaContext, kernelName, grid, block, 0, CUstream.NullStream, false,
-                   writeTarget, src, (long)nElement);
             }
 
             return writeTarget;

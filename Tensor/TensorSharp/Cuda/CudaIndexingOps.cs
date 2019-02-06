@@ -87,6 +87,6 @@ namespace TensorSharp.CUDA
         public Tensor ScatterFill(Tensor result, float value, int dimension, Tensor indices) { return gather.ScatterFill(result, value, dimension, indices); }
 
         [RegisterOpStorageType("diag", typeof(CudaStorage))]
-        public Tensor Diag(Tensor result, Tensor src) { return gather.Diag(result, src); }
+        public Tensor Diag(Tensor result, Tensor src) { return src; }
     }
 }
