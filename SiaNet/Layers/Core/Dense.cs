@@ -76,9 +76,9 @@ namespace SiaNet.Layers
             }
 
             Input.Grad = Dot(outputgrad, base["w"].Data.Transpose());
-            base["w"].Grad = Dot(Input.Data.Transpose(), outputgrad);
+            this["w"].Grad = Dot(Input.Data.Transpose(), outputgrad);
             if (UseBias)
-                base["b"].Grad = Sum(outputgrad, 0);
+                this["b"].Grad = Sum(outputgrad, 0);
         }
     }
 }

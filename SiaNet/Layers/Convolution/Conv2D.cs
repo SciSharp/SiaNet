@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using TensorSharp;
 using TensorSharp.Cpu;
+using System.Linq;
 
 namespace SiaNet.Layers
 {
@@ -100,7 +101,7 @@ namespace SiaNet.Layers
 
         public override void Backward(Tensor outputgrad)
         {
-            uint? pad = null;
+            uint? pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;
@@ -114,15 +115,17 @@ namespace SiaNet.Layers
             var dW = Dot(dout_flat, xCols.Transpose());
             dW = dW.Reshape(base["w"].Data.Shape);
 
-            var db = Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
-
             var W_flat = base["w"].Data.Reshape(Filters, -1);
             var dX_col = Dot(W_flat.Transpose(), dout_flat);
             Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides, DialationRate);
 
-            base["w"].Grad = dW;
-            if(UseBias)
-                base["b"].Grad = db;
+            this["w"].Grad = dW;
+            
+            if (UseBias)
+            {
+                var db = Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
+                this["b"].Grad = db;
+            }
         }
     }
 }

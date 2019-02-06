@@ -12,20 +12,16 @@ namespace MNIST
     {
         static void Main(string[] args)
         {
-            Global.UseGpu();
-
-            Tensor x = Tensor.FromArray(Global.Device, new float[] { 3, 4, 5, 7, 2 });
-            
-            TOps.Diag(x).Print();
+            //Global.UseGpu();
 
             string datasetFolder = @"C:\dataset\MNIST";
 
-            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, trainCount: 6000, testCount: 1000, flatten: true);
+            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, trainCount: 600, testCount: 100);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainX, trainY);
             DataFrameIter valIter = new DataFrameIter(valX, valY);
 
-            Sequential model = BuildFCModel();
+            Sequential model = BuildConvModel();
 
             model.Compile(OptimizerType.Adam, LossType.CategorialCrossEntropy, MetricType.Accuracy);
             Console.WriteLine("Model compiled.. initiating training");
@@ -40,8 +36,8 @@ namespace MNIST
         private static Sequential BuildFCModel()
         {
             Sequential model = new Sequential();
-            model.Add(new Dense(dim: 784, activation: ActType.ReLU, kernalInitializer: new Ones()));
-            model.Add(new Dense(dim: 10, activation: ActType.Softmax, kernalInitializer: new Ones()));
+            model.Add(new Dense(dim: 784, activation: ActType.ReLU));
+            model.Add(new Dense(dim: 10, activation: ActType.Softmax));
 
             return model;
         }
