@@ -40,7 +40,8 @@ namespace SiaNet.Optimizers
             }
 
             float t = iteration;
-            lr_t = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, t)) / (1f - Math.Pow(Beta1, t)));
+            lr_t = LearningRate;
+            //lr_t = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, t)) / (1f - Math.Pow(Beta1, t)));
             foreach (var p in layer.Params)
             {
                 var param = p.Value;

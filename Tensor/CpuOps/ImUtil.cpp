@@ -22,8 +22,8 @@ INLINE_FUNC void im2cols(const TensorRef* data_im_t,
 	const int dilation_h, const int dilation_w,
 	int height_col, int width_col,
 	TensorRef* data_col_t) {
-	T* data_im = (T*)data_im_t->buffer;
-	T* data_col = (T*)data_col_t->buffer;
+	T *data_im = (T*)data_im_t->buffer;
+	T *data_col = (T*)data_col_t->buffer;
 	int dil_kernel_h = (kernel_h - 1) * dilation_h + 1;
 	int dil_kernel_w = (kernel_w - 1) * dilation_w + 1;
 	height_col = (height + 2 * pad_h - dil_kernel_h) / stride_h + 1;
@@ -33,7 +33,7 @@ INLINE_FUNC void im2cols(const TensorRef* data_im_t,
 	for (int c = 0; c < channels_col; ++c) {
 		int w_offset = c % kernel_w;
 		int h_offset = (c / kernel_w) % kernel_h;
-		int c_im = c / kernel_h / kernel_w;
+		int c_im = c / (kernel_h * kernel_w);
 
 		const int hc0 = h_offset * dilation_h - pad_h;
 		const int wc0 = w_offset * dilation_w - pad_w;
@@ -65,8 +65,8 @@ INLINE_FUNC void cols2im(const TensorRef* data_col_t,
 	const int dilation_h, const int dilation_w,
 	int height_col, int width_col,
 	TensorRef* data_im_t) {
-	T* data_im = (T*)data_im_t->buffer;
-	T* data_col = (T*)data_col_t->buffer;
+	T *data_im = (T*)data_im_t->buffer;
+	T *data_col = (T*)data_col_t->buffer;
 
 	int dil_patch_h = (kernel_h - 1) * dilation_h + 1;
 	int dil_patch_w = (kernel_w - 1) * dilation_w + 1;
@@ -82,7 +82,7 @@ INLINE_FUNC void cols2im(const TensorRef* data_col_t,
 			int c = idx * chunk_len + inner_idx;
 			int w_offset = c % kernel_w;
 			int h_offset = (c / kernel_w) % kernel_h;
-			int c_im = c / kernel_h / kernel_w;
+			int c_im = c / (kernel_h * kernel_w);
 
 			const int hc0 = h_offset * dilation_h - pad_h;
 			const int wc0 = w_offset * dilation_w - pad_w;

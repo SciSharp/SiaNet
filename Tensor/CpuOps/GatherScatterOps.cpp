@@ -92,9 +92,9 @@ INLINE_FUNC void Diag_Apply(TensorRef* result, TensorRef* src)
 		T * rData, __int64 rSize, __int64 rStride,
 		T * sData, __int64 sSize, __int64 sStride)
 	{
-		for (int i = 0; i < iSize; ++i)
+		for (int i = 0; i < rSize; ++i)
 		{
-			for (int j = 0; i < iSize; j++)
+			for (int j = 0; i < rSize; j++)
 			{
 				if (i == j)
 				{
@@ -109,7 +109,7 @@ INLINE_FUNC void Diag_Apply(TensorRef* result, TensorRef* src)
 		}
 	};
 
-	ApplyDim3<T, T, T>(result, src, indices, dim, func);
+	ApplyDim2<T, T>(result, src, 0, func);
 }
 
 int TS_Diag(TensorRef * result, TensorRef * src)
