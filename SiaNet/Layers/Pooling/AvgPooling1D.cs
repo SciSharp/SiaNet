@@ -28,7 +28,7 @@ namespace SiaNet.Layers
             Input = x.ToParameter();
             var (n, c, s) = x.GetConv1DShape();
 
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;
@@ -52,7 +52,7 @@ namespace SiaNet.Layers
             var (n, c, s) = Input.Data.GetConv1DShape();
 
             Fill(dX_col, 0);
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;

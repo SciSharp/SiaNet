@@ -59,7 +59,7 @@ namespace SiaNet.Data
                     .AsType(DType.Float32)
                     .Evaluate(target);
 
-                target = target / 255;
+                //target = target / 255;
             }
 
             Ops.FillOneHot(outputs, LabelCount, images.Select(x => (int)x.label).ToArray());

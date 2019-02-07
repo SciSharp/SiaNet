@@ -15,18 +15,19 @@ namespace SiaNet.Optimizers
 
         public float Beta2 { get; set; }
 
+        public float Epsilon { get; set; }
+
         private Dictionary<string, Tensor> ms;
         private Dictionary<string, Tensor> vs;
         private Dictionary<string, Tensor> vhats;
-        private float lr_t = 0;
-
-        public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon = 1e-07f, bool amsgrad = false)
+        public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon = 1e-08f, bool amsgrad = false)
             : base(lr, "adam")
         {
             AmsGrad = amsgrad;
             Beta1 = beta_1;
             Beta2 = beta_2;
             DecayRate = decayRate;
+            Epsilon = epsilon;
             ms = new Dictionary<string, Tensor>();
             vs = new Dictionary<string, Tensor>();
             vhats = new Dictionary<string, Tensor>();
@@ -39,9 +40,7 @@ namespace SiaNet.Optimizers
                 LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
-            float t = iteration;
-            lr_t = LearningRate;
-            //lr_t = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, t)) / (1f - Math.Pow(Beta1, t)));
+            LearningRate = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, iteration)) / (1f - Math.Pow(Beta1, iteration)));
             foreach (var p in layer.Params)
             {
                 var param = p.Value;
@@ -59,7 +58,7 @@ namespace SiaNet.Optimizers
 
                 ms[param.Name] = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
                 vs[param.Name] = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad);
-
+                
                 var m_cap = ms[param.Name] / (1f - (float)Math.Pow(Beta1, iteration));
                 var v_cap = vs[param.Name] / (1f - (float)Math.Pow(Beta2, iteration));
 
@@ -67,12 +66,12 @@ namespace SiaNet.Optimizers
                 {
                     Tensor vhat_t = Maximum(vhats[param.Name], v_cap);
 
-                    param.Data = param.Data - (lr_t * m_cap / (Sqrt(vhat_t) + EPSILON));
+                    param.Data = param.Data - (LearningRate * m_cap / (Sqrt(vhat_t) + Epsilon));
                     vhats[param.Name] = vhat_t;
                 }
                 else
                 {
-                    param.Data = param.Data - (lr_t * m_cap / (Sqrt(v_cap) + EPSILON));
+                    param.Data = param.Data - (LearningRate * m_cap / (Sqrt(v_cap) + Epsilon));
                 }
 
                 param.ApplyConstraint();

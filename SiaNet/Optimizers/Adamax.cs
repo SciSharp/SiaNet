@@ -47,7 +47,7 @@ namespace SiaNet.Optimizers
                 var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
                 var u_t = Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
 
-                param.Data = param.Data - lr_t * m_t / (u_t + EPSILON);
+                param.Data = param.Data - LearningRate * m_t / (u_t + EPSILON);
                 ms[param.Name] = m_t;
                 us[param.Name] = u_t;
 
