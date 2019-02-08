@@ -22,9 +22,10 @@ namespace SiaNet.Layers.Activations
 
         public override void Backward(Tensor outputgrad)
         {
-            var s = Output.Reshape(-1, 1);
-            var d = Diag(s) - Dot(s, s.Transpose());
-            Input.Grad = outputgrad * Sum(d, -1).Reshape(Input.Data.Shape);
+            Input.Grad = outputgrad * Output * (1 - Output);
+            //var s = Output.Reshape(-1, 1);
+            //var d = Diag(s) - Dot(s, s.Transpose());
+            //Input.Grad = outputgrad * Sum(d, -1).Reshape(Input.Data.Shape);
         }
     }
 }

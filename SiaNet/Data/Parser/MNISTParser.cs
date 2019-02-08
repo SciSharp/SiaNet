@@ -55,11 +55,12 @@ namespace SiaNet.Data
             {
                 var target = inputs.Select(0, i);
 
-                Variable.FromArray(images[i].pixels, Global.Device)
+                Variable.FromArray(images[i].pixels, cpuAllocator)
                     .AsType(DType.Float32)
+                    .ToDevice(Global.Device)
                     .Evaluate(target);
 
-                //target = target / 255;
+                target = target / 255;
             }
 
             Ops.FillOneHot(outputs, LabelCount, images.Select(x => (int)x.label).ToArray());
