@@ -28,7 +28,7 @@ namespace SiaNet.Layers
             Input = x.ToParameter();
             var (n, c, d, h, w) = x.GetConv3DShape();
 
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;
@@ -53,7 +53,7 @@ namespace SiaNet.Layers
             Tensor dX_col = new Tensor(xCols.Allocator, xCols.ElementType, xCols.Shape);
             var (n, c, d, h, w) = Input.Data.GetConv3DShape();
             Fill(dX_col, 0);
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;

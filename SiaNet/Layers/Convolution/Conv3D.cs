@@ -71,7 +71,7 @@ namespace SiaNet.Layers
                 bias = BuildParam("b", new long[] { Filters, 1 }, x.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
             }
 
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;
@@ -94,12 +94,12 @@ namespace SiaNet.Layers
                 Output = Output + bias.Data;
             }
 
-            Output = Output.Reshape(Filters, d_out.Value, h_out.Value, w_out.Value, n).Transpose(4, 0, 1, 2, 3);
+            Output = Output.Reshape(Filters, d_out, h_out, w_out, n).Transpose(4, 0, 1, 2, 3);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;

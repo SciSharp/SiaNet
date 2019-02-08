@@ -28,7 +28,7 @@ namespace SiaNet.Layers
             Input = x.ToParameter();
             var (n, c, h, w) = x.GetConv2DShape();
 
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;
@@ -38,8 +38,8 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var h_out = (h - PoolSize.Item1 + 2 * pad.Value) / Strides + 1;
-            var w_out = (w - PoolSize.Item2 + 2 * pad.Value) / Strides + 1;
+            var h_out = (h - PoolSize.Item1 + 2 * pad) / Strides + 1;
+            var w_out = (w - PoolSize.Item2 + 2 * pad) / Strides + 1;
 
             var x_reshaped = x.Reshape(n * c, 1, h, w);
             xCols = ImgUtil.Im2Col(x_reshaped, PoolSize, pad, Strides);
@@ -51,7 +51,7 @@ namespace SiaNet.Layers
         {
             var dX_col = Tensor.Constant(0, Global.Device, DType.Float32, xCols.Shape);
             var (n, c, h, w) = Input.Data.GetConv2DShape();
-            uint? pad = null;
+            int pad = 0;
             if (Padding == PaddingType.Same)
             {
                 pad = 1;
