@@ -12,12 +12,12 @@ namespace MNIST
     {
         static void Main(string[] args)
         {
-            //Global.UseGpu();
+            Global.UseGpu();
 
             string datasetFolder = @"C:\dataset\MNIST";
             bool useDenseModel = false;
 
-            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, trainCount: 6000, testCount: 1000, flatten: useDenseModel);
+            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, trainCount: 60000, testCount: 10000, flatten: useDenseModel);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainX, trainY);
             DataFrameIter valIter = new DataFrameIter(valX, valY);

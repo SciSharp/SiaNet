@@ -84,37 +84,3 @@ int TS_ScatterFill(TensorRef* result, float value, int dim, TensorRef* indices)
 		SWITCH_TENSOR_TYPE_ALL_CPU(result->elementType, ScatterFill_Apply, result, value, dim, indices)
 		API_END()
 }
-
-template<typename T>
-INLINE_FUNC void Diag_Apply(TensorRef* result, TensorRef* src)
-{
-	auto func = [](
-		T * rData, __int64 rSize, __int64 rStride,
-		T * sData, __int64 sSize, __int64 sStride)
-	{
-		for (int i = 0; i < rSize; ++i)
-		{
-			for (int j = 0; i < rSize; j++)
-			{
-				if (i == j)
-				{
-					*(rData + i * j * rStride) = sData[i * sStride];
-				}
-				else
-				{
-					*(rData + i * j * rStride) = sData[i * sStride];
-				}
-				
-			}
-		}
-	};
-
-	ApplyDim2<T, T>(result, src, 0, func);
-}
-
-int TS_Diag(TensorRef * result, TensorRef * src)
-{
-	API_BEGIN()
-	SWITCH_TENSOR_TYPE_ALL_CPU(result->elementType, Diag_Apply, result, src)
-	API_END()
-}

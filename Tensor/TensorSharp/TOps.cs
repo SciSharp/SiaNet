@@ -923,8 +923,7 @@ namespace TensorSharp
 
         public static Tensor Diag(Tensor x)
         {
-
-            return (Tensor)OpRegistry.Invoke("diag", null, x);
+            return (Tensor)OpRegistry.Invoke("diag", x);
         }
 
         public static ValueTuple<Tensor, Tensor> Broadcast_Add(Tensor lhs, Tensor rhs)

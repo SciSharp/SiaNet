@@ -35,13 +35,13 @@ INLINE_FUNC void Copy_ToResult(TensorRef* result, TensorRef* src)
 {
 	switch (src->elementType)
 	{
-	case DType::Float32: Copy_Apply<TResult, float>(result, src); break;
-	case DType::Float64: Copy_Apply<TResult, double>(result, src); break;
-	case DType::Int32: Copy_Apply<TResult, __int32>(result, src); break;
-	case DType::UInt8: Copy_Apply<TResult, uint8>(result, src); break;
-	default:
-		throw TSError("Tensor type not supported for Copy");\
-		break;
+		case DType::Float32: Copy_Apply<TResult, float>(result, src); break;
+		case DType::Float64: Copy_Apply<TResult, double>(result, src); break;
+		case DType::Int32: Copy_Apply<TResult, __int32>(result, src); break;
+		case DType::UInt8: Copy_Apply<TResult, uint8>(result, src); break;
+		default:
+			throw TSError("Tensor type not supported for Copy");\
+			break;
 	}
 }
 

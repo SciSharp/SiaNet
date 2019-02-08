@@ -3,6 +3,7 @@
 #include "TensorApplyDim-inl.h"
 #include "TensorApply-inl.h"
 #include <cmath>
+#include <iostream>
 
 template <typename T> INLINE_FUNC T min(T a, T b) {
 	if (a < b)
@@ -110,10 +111,6 @@ int TS_Max(TensorRef* result, TensorRef* src, int dimension)
 	API_END()
 }
 
-
-
-
-
 template<typename T>
 INLINE_FUNC void Argmin_Apply(TensorRef* resultIndices, TensorRef* src, int dimension)
 {
@@ -186,8 +183,6 @@ OPS_API int TS_Argmax(TensorRef *resultIndices, TensorRef* src, int dimension)
 	API_END()
 }
 
-
-
 template<typename T>
 INLINE_FUNC void Mean_Apply(TensorRef* result, TensorRef* src, int dimension)
 {
@@ -248,8 +243,6 @@ int TS_Norm(TensorRef* result, TensorRef* src, int dimension, float value)
 	SWITCH_TENSOR_TYPE_FLOAT(result->elementType, Norm_Apply, result, src, dimension, value)
 	API_END()
 }
-
-
 
 template<typename T>
 INLINE_FUNC void Std_Apply(TensorRef* result, TensorRef* src, int dimension, bool normByN)
@@ -534,5 +527,40 @@ int TS_NormAll(TensorRef* result, TensorRef* src, float value)
 {
 	API_BEGIN()
 	SWITCH_TENSOR_TYPE_FLOAT(src->elementType, NormAll_Apply, result, src, value)
+	API_END()
+}
+
+template<typename T>
+INLINE_FUNC void Diag_Apply(TensorRef* result, TensorRef* src)
+{
+	T* result_p = (T*)result->buffer;
+	T* src_p = (T*)src->buffer;
+	__int64 sSize = src->ElementCount();
+	
+	__int64 pos = 0;
+
+#pragma omp parallel for
+	for (__int64 i = 0; i < sSize; ++i)
+	{
+		for (__int64 j = 0; j < sSize; ++j)
+		{
+			if (i == j)
+			{
+				result_p[pos] = src_p[i];
+			}
+			else
+			{
+				result_p[pos] = T(0);
+			}
+
+			pos++;
+		}
+	}
+}
+
+int TS_Diag(TensorRef* result, TensorRef* src)
+{
+	API_BEGIN()
+	SWITCH_TENSOR_TYPE_ALL_CPU(result->elementType, Diag_Apply, result, src)
 	API_END()
 }

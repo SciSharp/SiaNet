@@ -853,5 +853,8 @@ namespace TensorSharp.Cpu
                                             int pad_h, int pad_w, int stride_h, int stride_w, int dilation_h,
                                             int dilation_w, int height_col, int width_col, IntPtr data_im);
 
+
+        [DllImport(dll, CallingConvention = cc)] public static extern int TS_Diag(IntPtr result, IntPtr src);
+
     }
 }

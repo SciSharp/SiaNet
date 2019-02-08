@@ -1126,5 +1126,15 @@ namespace TensorSharp.Cpu
             NativeWrapper.InvokeTypeMatch(normall_func, writeTarget, src, value);
             return writeTarget;
         }
+
+        private MethodInfo diag_func = NativeWrapper.GetMethod("TS_Diag");
+
+        [RegisterOpStorageType("diag", typeof(CpuStorage))]
+        public Tensor Diag(Tensor src)
+        {
+            var writeTarget = TensorResultBuilder.GetWriteTarget(null, src, false, src.ElementCount(), src.ElementCount());
+            NativeWrapper.InvokeTypeMatch(diag_func, writeTarget, src);
+            return writeTarget;
+        }
     }
 }

@@ -20,9 +20,9 @@ namespace SiaNet.Test
         [TestMethod]
         public void Softmax()
         {
-            Tensor x = Tensor.FromArray(Global.Device, new float[] { 1,2,3,4,5,6,7,8,9,9,8,7,6,5,4,3,2,1 });
+            Tensor x = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, -4, 5, 6, -7, 8, -9, 9, -8, 7, 6, 5, -4, 3, 2, -1, 1, 2, 3, 4, 5, 6, -7, 8, 9, 9, 8, -7, 6, 5, -4, 3, 2, 1 });
             Tensor grad = Tensor.FromArray(Global.Device, new float[] { 1, -1, -2, 2, -3, -4, 5, 4, -5, 1, -1, -2, 2, -3, -4, 5, 4, -5 });
-            x = x.Reshape(3, -1);
+            x = x.Reshape(6, 6);
             grad = grad.Reshape(3, -1);
             var act = new Softmax();
             RunAct(act, x, grad);

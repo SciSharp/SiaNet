@@ -22,8 +22,8 @@ INLINE_FUNC void im2cols(const TensorRef* data_im_t,
 	const int dilation_h, const int dilation_w,
 	int height_col, int width_col,
 	TensorRef* data_col_t) {
-	T *data_im = (T*)data_im_t->buffer;
-	T *data_col = (T*)data_col_t->buffer;
+	T* data_im = (T*)data_im_t->buffer;
+	T* data_col = (T*)data_col_t->buffer;
 	int dil_kernel_h = (kernel_h - 1) * dilation_h + 1;
 	int dil_kernel_w = (kernel_w - 1) * dilation_w + 1;
 	height_col = (height + 2 * pad_h - dil_kernel_h) / stride_h + 1;

@@ -36,6 +36,7 @@ OPS_API int TS_MeanAll(TensorRef* result, TensorRef* src);
 OPS_API int TS_VarAll(TensorRef* result, TensorRef* src);
 OPS_API int TS_StdAll(TensorRef* result, TensorRef* src);
 OPS_API int TS_NormAll(TensorRef* result, TensorRef* src, float value);
+OPS_API int TS_Diag(TensorRef* result, TensorRef* src);
 
 
 //
