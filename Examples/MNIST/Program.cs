@@ -14,6 +14,12 @@ namespace MNIST
         {
             Global.UseGpu();
 
+            Tensor x = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            x = x.Reshape(3, 3);
+
+            var result = TOps.Diag(x);
+            result.Print();
+
             string datasetFolder = @"C:\dataset\MNIST";
             bool useDenseModel = false;
 
@@ -50,9 +56,9 @@ namespace MNIST
         private static Sequential BuildConvModel()
         {
             Sequential model = new Sequential();
-            model.Add(new Conv2D(filters: 16, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.Sigmoid));
+            model.Add(new Conv2D(filters: 16, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.ReLU));
             model.Add(new MaxPooling2D(poolSize: Tuple.Create<uint, uint>(2, 2)));
-            model.Add(new Conv2D(filters: 32, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.Sigmoid));
+            model.Add(new Conv2D(filters: 32, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.ReLU));
             model.Add(new MaxPooling2D(poolSize: Tuple.Create<uint, uint>(2, 2)));
             //model.Add(new Dropout(0.2f));
             model.Add(new Flatten());

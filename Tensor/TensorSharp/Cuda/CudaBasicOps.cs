@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TensorSharp.Core;
+using TensorSharp.Cuda.DeviceCode;
 using TensorSharp.CUDA.DeviceCode;
 using TensorSharp.CUDA.KernelOps;
 using TensorSharp.CUDA.MatrixMul;
@@ -60,6 +61,8 @@ namespace TensorSharp.CUDA
         /// The reduce dim index kernels
         /// </summary>
         private readonly ReduceDimIndexKernels reduceDimIndexKernels = new ReduceDimIndexKernels();
+
+        private readonly MatrixOps matrixOps = new MatrixOps();
 
 
         /// <summary>
@@ -986,5 +989,11 @@ namespace TensorSharp.CUDA
             return writeTarget;
         }
 
+
+        [RegisterOpStorageType("diag", typeof(CudaStorage))]
+        public Tensor Diag(Tensor src)
+        {
+            return matrixOps.Diag(src);
+        }
     }
 }

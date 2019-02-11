@@ -2,69 +2,17 @@
 // tensor, dimension 'dim' is skipped. The tensors are assumed to have the same
 // size (with the exception of 't2' in dimension 'dim').
 // This version uses a static number of dimensions.
-template <typename IndexType, int Dims>
-struct IndexToScatterGatherOffsets {
-	static __device__ void compute(
-		IndexType linearId, const int dim,
-		const TensorInfo<IndexType>& index, IndexType* indexOffset,
-		const TensorInfo<IndexType>& t1, IndexType* t1Offset,
-		const TensorInfo<IndexType>& t2, IndexType* t2Offset) {
-		for (int d = Dims - 1; d >= 0; d--) {
-			IndexType curDimIndex = linearId % index.sizes[d];
-			*indexOffset += curDimIndex * index.strides[d];
-			*t1Offset += curDimIndex * t1.strides[d];
-			if (d != dim) {
-				*t2Offset += curDimIndex * t2.strides[d];
-			}
-			linearId /= index.sizes[d];
-		}
-	}
-
-	static __device__ void compute(
-		IndexType linearId, const int dim,
-		const TensorInfo<IndexType>& index, IndexType* indexOffset,
-		const TensorInfo<IndexType>& t2, IndexType* t2Offset) {
-		for (int d = Dims - 1; d >= 0; d--) {
-			IndexType curDimIndex = linearId % index.sizes[d];
-			*indexOffset += curDimIndex * index.strides[d];
-			if (d != dim) {
-				*t2Offset += curDimIndex * t2.strides[d];
-			}
-			linearId /= index.sizes[d];
-		}
-	}
-};
-
 // Same as above but using a dynamic number of dimensions.
 template <typename IndexType>
-struct IndexToScatterGatherOffsets<IndexType, -1> {
+struct DiagOffsets<IndexType, -1> {
 	static __device__ void compute(
-		IndexType linearId, const int dim,
-		const TensorInfo<IndexType>& index, IndexType* indexOffset,
-		const TensorInfo<IndexType>& t1, IndexType* t1Offset,
-		const TensorInfo<IndexType>& t2, IndexType* t2Offset) {
-		for (int d = index.dims - 1; d >= 0; d--) {
-			IndexType curDimIndex = linearId % index.sizes[d];
-			*indexOffset += curDimIndex * index.strides[d];
-			*t1Offset += curDimIndex * t1.strides[d];
-			if (d != dim) {
-				*t2Offset += curDimIndex * t2.strides[d];
+		IndexType linearId, const int dim, const TensorInfo<IndexType>& t, IndexType* tOffset) {
+		for (int d = t.dims - 1; d >= 0; d--) {
+			IndexType curDimIndex = linearId % t.sizes[d];
+			*tOffset += curDimIndex * t.strides[d];
 			}
-			linearId /= index.sizes[d];
-		}
-	}
 
-	static __device__ void compute(
-		IndexType linearId, const int dim,
-		const TensorInfo<IndexType>& index, IndexType* indexOffset,
-		const TensorInfo<IndexType>& t2, IndexType* t2Offset) {
-		for (int d = index.dims - 1; d >= 0; d--) {
-			IndexType curDimIndex = linearId % index.sizes[d];
-			*indexOffset += curDimIndex * index.strides[d];
-			if (d != dim) {
-				*t2Offset += curDimIndex * t2.strides[d];
-			}
-			linearId /= index.sizes[d];
+			linearId /= t.sizes[d];
 		}
 	}
 };
@@ -75,20 +23,27 @@ __global__ void diag_kernel(
 	TensorInfo<IndexType> tensor,
 	TensorInfo<IndexType> src,
 	const IndexType totalElements) {
-	for (IndexType linearId = blockIdx.x * blockDim.x + threadIdx.x; linearId < totalElements; linearId += gridDim.x * blockDim.x) {
-		IndexType tensorOffset = 0;
-		IndexType srcOffset = 0;
-		IndexType indexOffset = 0;
+	for (IndexType i = blockIdx.x * blockDim.x + threadIdx.x; i < totalElements; i += gridDim.x * blockDim.x) {
+		for (IndexType j = blockIdx.x * blockDim.x + threadIdx.x; j < totalElements; j += gridDim.x * blockDim.x) {
+			IndexType tensorOffset = 0;
+			IndexType srcOffset = 0;
 
-		IndexToScatterGatherOffsets<IndexType, Dims>::compute(linearId, dim,
-			index, &indexOffset,
-			tensor, &tensorOffset,
-			src, &srcOffset);
+			DiagOffsets<IndexType>::compute(i, dim, tensor, &tensorOffset);
+			DiagOffsets<IndexType>::compute(i, dim, src, &srcOffset);
 
-		IndexType indexValue = (IndexType)index.data[indexOffset];
-		srcOffset += indexValue * src.strides[dim];
+			if (i == j)
+			{
+				IndexType indexValue = (IndexType)src.data[tensorOffset];
+				srcOffset += indexValue * src.strides[dim];
 
-		tensor.data[tensorOffset] = src.data[srcOffset];
+				tensor.data[tensorOffset] = src.data[srcOffset];
+			}
+			else
+			{
+				tensor.data[tensorOffset] = 0;
+			}
+			
+		}
 	}
 };
 

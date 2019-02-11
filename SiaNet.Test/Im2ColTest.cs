@@ -24,7 +24,7 @@ namespace SiaNet.Test
         [TestMethod]
         public void DiagTest()
         {
-            //Global.UseGpu();
+            Global.UseGpu();
             Tensor x = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
             x = x.Reshape(3, 3);
 

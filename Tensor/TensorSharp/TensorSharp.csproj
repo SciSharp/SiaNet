@@ -34,10 +34,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Cuda\DeviceCode\MatrixKernels.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
   </ItemGroup>
@@ -62,9 +58,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Cuda\DeviceCode\CU\GatherSelect.cu">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Cuda\DeviceCode\CU\MatrixOps.c">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
