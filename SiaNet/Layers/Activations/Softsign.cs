@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Layers.Activations
 {
@@ -17,12 +16,12 @@ namespace SiaNet.Layers.Activations
         {
             Input = x.ToParameter();
 
-            Output = x / (Abs(x) + 1);
+            Output = x / (K.Abs(x) + 1);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Input.Grad = outputgrad / Square(Abs(Input.Data) + 1);
+            Input.Grad = outputgrad / K.Square(K.Abs(Input.Data) + 1);
         }
     }
 }

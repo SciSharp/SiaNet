@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SiaNet.Engine;
 using SiaNet.Layers;
-using TensorSharp;
 
 namespace SiaNet.Optimizers
 {
@@ -33,7 +33,7 @@ namespace SiaNet.Optimizers
                 Parameter param = p.Value;
                 if (!moments.ContainsKey(param.Name))
                 {
-                    moments[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    moments[param.Name] = K.Constant(0, param.Data.Shape);
                 }
 
                 moments[param.Name] = (Momentum * moments[param.Name]) - (LearningRate * param.Grad);

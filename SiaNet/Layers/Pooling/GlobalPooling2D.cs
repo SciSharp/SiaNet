@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Layers
 {
@@ -20,11 +20,11 @@ namespace SiaNet.Layers
             Input = x.ToParameter();
             if (PoolingType == PoolingPoolType.Max)
             {
-                Output = Max(x, 2, 3);
+                Output = K.Max(x, 2, 3);
             }
             else
             {
-                Output = Mean(x, 2, 3);
+                Output = K.Mean(x, 2, 3);
             }
         }
 

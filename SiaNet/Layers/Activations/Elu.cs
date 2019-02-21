@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Layers.Activations
 {
@@ -21,15 +20,15 @@ namespace SiaNet.Layers.Activations
             Input = x.ToParameter();
             var keepElements = x > 0;
             var keepElements_Exp = x < 0;
-            var d = Alpha * (Exp(Mul(x, keepElements_Exp)) - 1);
-            Output = Mul(x, keepElements) + d;
+            var d = Alpha * (K.Exp(K.Mul(x, keepElements_Exp)) - 1);
+            Output = K.Mul(x, keepElements) + d;
         }
 
         public override void Backward(Tensor outputgrad)
         {
             var keepElements = Input.Data > 0;
             var keepElements_Exp = Input.Data < 0;
-            var d = Alpha * Exp(Mul(Input.Data, keepElements_Exp));
+            var d = Alpha * K.Exp(K.Mul(Input.Data, keepElements_Exp));
             Input.Grad = outputgrad * d;
         }
     }

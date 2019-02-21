@@ -4,23 +4,22 @@ using SiaNet.Regularizers;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Cpu;
 using System.Linq;
+using SiaNet.Engine;
 
 namespace SiaNet.Layers
 {
     public class Conv2D : BaseLayer
     {
-        public uint Filters { get; set; }
+        public int Filters { get; set; }
 
-        public Tuple<uint, uint> KernalSize { get; set; }
+        public Tuple<int, int> KernalSize { get; set; }
 
-        public uint Strides { get; set; }
+        public int Strides { get; set; }
 
         public PaddingType Padding { get; set; }
 
-        public Tuple<uint, uint> DialationRate { get; set; }
+        public Tuple<int, int> DialationRate { get; set; }
 
         public ActType Act { get; set; }
 
@@ -40,7 +39,7 @@ namespace SiaNet.Layers
 
         private Tensor xCols;
 
-        public Conv2D(uint filters, Tuple<uint, uint> kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, Tuple<uint, uint> dialationRate = null, 
+        public Conv2D(int filters, Tuple<int, int> kernalSize, int strides = 1, PaddingType padding = PaddingType.Same, Tuple<int, int> dialationRate = null, 
                 ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null,
                         BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null, bool useBias = true,
                         BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
@@ -50,7 +49,7 @@ namespace SiaNet.Layers
             KernalSize = kernalSize;
             Strides = strides;
             Padding = padding;
-            DialationRate = dialationRate ?? new Tuple<uint, uint>(1, 1);
+            DialationRate = dialationRate ?? Tuple.Create(1, 1);
             Act = activation;
             UseBias = useBias;
             KernalInitializer = kernalInitializer ?? new GlorotUniform();
@@ -83,12 +82,14 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
-            var h_out = (h - KernalSize.Item1 + 2 * pad) / Strides + 1;
-            var w_out = (w - KernalSize.Item2 + 2 * pad) / Strides + 1;
+            var dialatedKernel = Tuple.Create(((KernalSize.Item1 - 1) * DialationRate.Item1 + 1), ((KernalSize.Item2 - 1) * DialationRate.Item2 + 1));
+
+            var h_out = (h - dialatedKernel.Item1 + 2 * pad) / Strides + 1;
+            var w_out = (w - dialatedKernel.Item2 + 2 * pad) / Strides + 1;
             
             var wRows = weight.Data.Reshape(Filters, -1);
-            xCols = ImgUtil.Im2Col(x, KernalSize, pad, Strides, DialationRate);
-            Output = Dot(wRows, xCols);
+            xCols = K.Im2Col(x, dialatedKernel, pad, Strides);
+            Output = K.Dot(wRows, xCols);
             
             if(UseBias)
             {
@@ -112,18 +113,18 @@ namespace SiaNet.Layers
             }
 
             var dout_flat = outputgrad.Transpose(1, 2, 3, 0).Reshape(Filters, -1);
-            var dW = Dot(dout_flat, xCols.Transpose());
+            var dW = K.Dot(dout_flat, xCols.Transpose());
             dW = dW.Reshape(base["w"].Data.Shape);
 
             var W_flat = base["w"].Data.Reshape(Filters, -1);
-            var dX_col = Dot(W_flat.Transpose(), dout_flat);
-            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides, DialationRate);
+            var dX_col = K.Dot(W_flat.Transpose(), dout_flat);
+            Input.Grad = K.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides);
 
             this["w"].Grad = dW;
             
             if (UseBias)
             {
-                var db = Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
+                var db = K.Sum(outputgrad, 0, 2, 3).Reshape(Filters, -1);
                 this["b"].Grad = db;
             }
         }

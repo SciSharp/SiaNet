@@ -1,9 +1,9 @@
 ﻿using System;
 using SiaNet;
 using SiaNet.Data;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Layers;
-using TensorSharp;
 
 namespace GettingStarted
 {
@@ -11,29 +11,32 @@ namespace GettingStarted
     {
         static void Main(string[] args)
         {
+            //Setup Engine
+            Global.SetBackend(SiaNetBackend.ArrayFire);
+            Global.UseDevice(DeviceType.CPU);
+
+            //Prep Data
             var (x, y) = PrepDataset();
-
             DataFrameIter trainSet = new DataFrameIter(x, y);
-
+            
             //Build model with simple fully connected layers
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(4, ActType.ReLU));
             model.Add(new Dense(2, ActType.ReLU));
-            model.Add(new Dense(1, ActType.Sigmoid));
+            model.Add(new Dense(1, ActType.ReLU));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Train for 100 epoch with batch size of 2
-            model.Train(trainSet, 1000, 4);
+            model.Train(trainSet, 100, 4);
 
             //Create prediction data to evaluate
             DataFrame2D predX = new DataFrame2D(2);
             predX.Load(1, 0, 1, 1); //Result should be 1 and 0
 
             var rawPred = model.Predict(predX);
-            TOps.Round(rawPred).Print();
 
             Console.ReadLine();
         }

@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Losses
 {
-    public abstract class BaseLoss : TOps
+    public abstract class BaseLoss
     {
+        internal IBackend K = Global.Backend;
+
         public string Name { get; set; }
 
         public BaseLoss(string name)

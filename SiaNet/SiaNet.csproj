@@ -6,14 +6,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="12.1.1" />
-    <PackageReference Include="HDF.PInvoke" Version="1.10.4" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
+    <Compile Remove="Data\Parser\MNISTParser.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tensor\TensorSharp\TensorSharp.csproj" />
+    <ProjectReference Include="..\Backends\SiaNet.Backend.ArrayFire\SiaNet.Backend.ArrayFire.csproj" />
+    <ProjectReference Include="..\Backends\SiaNet.Backend.TensorSharp\SiaNet.Backend.TensorSharp.csproj" />
+    <ProjectReference Include="..\SiaNet.Engine\SiaNet.Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Parser\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="12.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
   </ItemGroup>
 
 </Project>

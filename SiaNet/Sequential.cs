@@ -6,15 +6,14 @@ using SiaNet.Layers;
 using SiaNet.Losses;
 using SiaNet.Metrics;
 using SiaNet.Optimizers;
-using TensorSharp.Expression;
 using System.Linq;
-using TensorSharp;
 using System.Diagnostics;
 using System.Threading;
-using TensorSharp.CUDA;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using SiaNet.Engine;
+
 namespace SiaNet
 {
     public partial class Sequential

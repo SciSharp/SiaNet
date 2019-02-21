@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Regularizers
 {
-    public abstract class BaseRegularizer : TOps
+    public abstract class BaseRegularizer
     {
+        internal IBackend K = Global.Backend;
+
         public string Name { get; set; }
 
         internal float L1 { get; set; }

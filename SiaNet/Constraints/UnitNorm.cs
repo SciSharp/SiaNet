@@ -1,28 +1,22 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Constraints
 {
     public class UnitNorm : BaseConstraint
     {
-        public uint? Axis;
+        public int Axis;
 
-        public UnitNorm(uint? axis = 0)
+        public UnitNorm(int axis = 0)
         {
             Axis = axis;
         }
 
         public override Tensor Call(Tensor w)
         {
-            if(!Axis.HasValue)
-                w = w / (EPSILON + Sqrt(Sum(Square(w))));
-            else
-                w = w / (EPSILON + Sqrt(Sum(Square(w), (int)Axis.Value)));
-
-            return w;
+            return w / (K.Epsilon() + K.Sqrt(K.Sum(K.Square(w), Axis)));
         }
     }
 }

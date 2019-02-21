@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Constraints
 {
@@ -10,9 +9,9 @@ namespace SiaNet.Constraints
     {
         public float MaxValue { get; set; }
 
-        public uint? Axis { get; set; }
+        public int Axis { get; set; }
 
-        public MaxNorm(float maxValue, uint? axis = null)
+        public MaxNorm(float maxValue = 2, int axis = 0)
         {
             MaxValue = maxValue;
             Axis = axis;
@@ -20,18 +19,10 @@ namespace SiaNet.Constraints
 
         public override Tensor Call(Tensor w)
         {
-            Tensor norms = null;
-            if(!Axis.HasValue)
-            {
-                norms = Sqrt(Sum(Square(w)));
-            }
-            else
-            {
-                norms = Sqrt(Sum(Square(w), (int)Axis.Value));
-            }
+            Tensor norms = K.Sqrt(K.Sum(K.Square(w), Axis));
 
-            var desired = Clip(norms, 0, MaxValue);
-            return w * (desired / (EPSILON + norms));
+            var desired = K.Clip(norms, 0, MaxValue);
+            return w * (desired / (K.Epsilon() + norms));
         }
     }
 }

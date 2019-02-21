@@ -1,24 +1,24 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Layers
 {
     public class AvgPooling2D : BaseLayer
     {
-        public Tuple<uint, uint> PoolSize { get; set; }
+        public Tuple<int, int> PoolSize { get; set; }
 
-        public uint Strides { get; set; }
+        public int Strides { get; set; }
 
         public PaddingType Padding { get; set; }
 
         private Tensor xCols;
 
-        public AvgPooling2D(Tuple<uint, uint> poolSize = null, uint strides = 1, PaddingType padding = PaddingType.Same)
+        public AvgPooling2D(Tuple<int, int> poolSize = null, int strides = 1, PaddingType padding = PaddingType.Same)
             : base("avgpooling2d")
         {
-            PoolSize = poolSize ?? Tuple.Create<uint, uint>(2, 2);
+            PoolSize = poolSize ?? Tuple.Create(2, 2);
             Strides = strides;
             Padding = padding;
         }
@@ -42,16 +42,16 @@ namespace SiaNet.Layers
             var w_out = (w - PoolSize.Item2) / Strides + 1;
 
             var x_reshaped = x.Reshape(n * c, 1, h, w);
-            xCols = ImgUtil.Im2Col(x_reshaped, PoolSize, pad, Strides);
-            Output = Mean(xCols, 0);
+            xCols = K.Im2Col(x_reshaped, PoolSize, pad, Strides);
+            Output = K.Mean(xCols, 0);
             Output = Output.Reshape(h_out, w_out, n, c).Transpose(2, 3, 0, 1);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            Tensor dX_col = new Tensor(xCols.Allocator, xCols.ElementType, xCols.Shape);
+            Tensor dX_col = K.Constant(0, xCols.Shape);
             var (n, c, h, w) = Input.Data.GetConv2DShape();
-            Fill(dX_col, 0);
+            
             int pad = 0;
             if (Padding == PaddingType.Same)
             {
@@ -63,7 +63,7 @@ namespace SiaNet.Layers
             }
 
             var dout_flat = outputgrad.Transpose(2, 3, 0, 1).Reshape(1, -1);
-            var dX = ImgUtil.Col2Im(dout_flat, Input.Data.Shape, PoolSize, pad, Strides);
+            var dX = K.Col2Im(dout_flat, Input.Data.Shape, PoolSize, pad, Strides);
             Input.Grad = dX.Reshape(n, c, h, w);
         }
     }

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Metrics
 {
@@ -15,8 +15,8 @@ namespace SiaNet.Metrics
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            preds = Clip(preds, 0, 1);
-            var r = EqualTo(Round(preds), labels);
+            preds = K.Clip(preds, 0, 1);
+            var r = K.EqualTo(K.Round(preds), labels);
 
             return r;
         }

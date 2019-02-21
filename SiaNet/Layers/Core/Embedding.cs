@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using SiaNet.Constraints;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Layers.Activations;
 using SiaNet.Regularizers;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Layers
 {

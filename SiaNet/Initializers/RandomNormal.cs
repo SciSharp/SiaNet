@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Initializers
 {
@@ -24,13 +23,7 @@ namespace SiaNet.Initializers
 
         public override Tensor Operator(params long[] shape)
         {
-            SeedSource seedSource = new SeedSource();
-            if (Seed.HasValue)
-                seedSource = new SeedSource(Seed.Value);
-
-            Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
-            Ops.RandomNormal(tensor, seedSource, MeanVal, StdDev);
-            return tensor;
+            return K.RandomNormal(shape, MeanVal, StdDev, Seed);
         }
 
     }

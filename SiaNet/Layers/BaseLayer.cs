@@ -1,15 +1,17 @@
 ﻿using SiaNet.Constraints;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Regularizers;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Layers
 {
-    public abstract class BaseLayer : TOps
+    public abstract class BaseLayer
     {
+        internal IBackend K = Global.Backend;
+
         [NonSerialized]
         public Dictionary<string, Parameter> Params;
 
@@ -25,7 +27,7 @@ namespace SiaNet.Layers
 
         public BaseLayer(string name)
         {
-            Name = UUID.GetID(name);
+            Name = K.UUID(name);
             Params = new Dictionary<string, Parameter>();
         }
 
@@ -45,7 +47,7 @@ namespace SiaNet.Layers
             }
         }
 
-        public Parameter BuildParam(string name, long[] shape, DType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
+        public Parameter BuildParam(string name, long[] shape, DataType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
         {
             Parameter v = null;
             name = Name + "_" + name;

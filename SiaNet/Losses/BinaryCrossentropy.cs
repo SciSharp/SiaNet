@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using TensorSharp;
+using SiaNet.Engine;
 
 namespace SiaNet.Losses
 {
@@ -21,19 +21,19 @@ namespace SiaNet.Losses
             Tensor output = preds;
             if (!FromLogit)
             {
-                output = Clip(output, EPSILON, 1f - EPSILON);
-                output = Log(output / (1 - output));
+                output = K.Clip(output, K.Epsilon(), 1f - K.Epsilon());
+                output = K.Log(output / (1 - output));
             }
 
-            float scale = (2f * preds.ElementCount()) / 3f;
-            output = Sigmoid(output);
+            float scale = (2f * preds.ElementCount) / 3f;
+            output = K.Sigmoid(output);
 
-            return -1 * labels * Log(output) - (1 - labels) * Log(1 - output);
+            return -1 * labels * K.Log(output) - (1 - labels) * K.Log(1 - output);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            Tensor output = Clip(preds, EPSILON, 1f - EPSILON);
+            Tensor output = K.Clip(preds, K.Epsilon(), 1f - K.Epsilon());
             return -1 * (labels - 1) / (1 - output) - labels / output;
         }
     }

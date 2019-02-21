@@ -5,7 +5,7 @@ using Deedle;
 using SiaNet;
 using SiaNet.Layers;
 using SiaNet.Regularizers;
-using TensorSharp;
+using SiaNet.Engine;
 
 namespace BasicClassificationWithTitanicDataset
 {
@@ -13,7 +13,9 @@ namespace BasicClassificationWithTitanicDataset
     {
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Setup Engine
+            Global.SetBackend(SiaNetBackend.ArrayFire);
+            Global.UseDevice(DeviceType.CPU);
             var dataset = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
 

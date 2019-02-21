@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Layers
 {
@@ -27,8 +26,7 @@ namespace SiaNet.Layers
 
             if (noise == null)
             {
-                noise = new Tensor(x.Allocator, x.ElementType, x.Shape);
-                RandomBernoulli(noise, new SeedSource(), p);
+                noise = K.RandomBernoulli(x.Shape, p);
             }
 
             Output = noise * p;

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using TensorSharp;
 using SiaNet.Constraints;
 using SiaNet.Regularizers;
+using SiaNet.Engine;
 
 namespace SiaNet
 {
-    public class Parameter : IDisposable
+    public class Parameter
     {
         public Tensor Data { get; set; }
 
@@ -34,7 +34,7 @@ namespace SiaNet
             Name = name;
         }
 
-        public Parameter(string name, DType dataType, params long[] shape)
+        public Parameter(string name, DataType dataType, params long[] shape)
         {
             //Name = UUID.GetID(name);
             Name = name;
@@ -49,12 +49,6 @@ namespace SiaNet
             x.Data = data;
 
             return x;
-        }
-
-        public void Dispose()
-        {
-            Data.Dispose();
-            Grad.Dispose();
         }
 
         public void SetConstraint(BaseConstraint fn)

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp.Expression;
 using System.Linq;
-using TensorSharp;
+using SiaNet.Engine;
 
 namespace SiaNet.Data
 {
     public class DataFrame
     {
+        internal IBackend K = Global.Backend;
+
         internal Tensor UnderlayingTensor;
 
         public long[] Shape
@@ -31,7 +32,7 @@ namespace SiaNet.Data
 
         public virtual void ToFrame(Tensor t)
         {
-            UnderlayingTensor = TOps.NewContiguous(t);
+            UnderlayingTensor = t;
         }
 
         public DataFrame this[uint start, uint end]
@@ -46,7 +47,7 @@ namespace SiaNet.Data
                 DataFrame frame = new DataFrame();
                 var count = end - start + 1;
                 if (count > 0)
-                    frame.ToFrame(UnderlayingTensor.Narrow(1, start, count));
+                    frame.ToFrame(UnderlayingTensor.SliceCols(start, end));
 
                 return frame;
             }
@@ -57,32 +58,27 @@ namespace SiaNet.Data
             get
             {
                 DataFrame frame = new DataFrame();
-                var t = TOps.NewContiguous(UnderlayingTensor.Select(1, index));
-                frame.ToFrame(t.Reshape(-1, 1));
+                frame.ToFrame(UnderlayingTensor.SliceCols(index, index));
+
                 return frame;
             }
-        }
-
-        public void Norm(float value)
-        {
-            UnderlayingTensor = UnderlayingTensor.TVar().NormAll(value).Evaluate();
         }
 
         public Tensor GetBatch(int start, int size, int axis = 0)
         {
             if (start + size <= Shape[0])
             {
-                return UnderlayingTensor.Narrow(axis, start, size);
+                return UnderlayingTensor.SliceRows(start, start + size - 1);
             }
             else
             {
-                return UnderlayingTensor.Narrow(axis, start, Shape[0] - start);
+                return UnderlayingTensor.SliceRows(start, Shape[0] - 1);
             }
         }
 
         public void Head(uint count = 5, string title = "")
         {
-            UnderlayingTensor.Print(count, title);
+            K.Print(UnderlayingTensor.SliceRows(0, count), title);
         }
     }
 }

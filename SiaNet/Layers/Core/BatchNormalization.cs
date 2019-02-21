@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using SiaNet.Constraints;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Layers.Activations;
 using SiaNet.Regularizers;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Layers
 {
@@ -42,7 +41,7 @@ namespace SiaNet.Layers
 
         private Parameter mv;
 
-        private Variable norm;
+        private Tensor norm;
 
         public BatchNormalization(int axis = -1, float momentum = 0.99f, float epsilon = 0.001f, bool center = true, bool scale = true,
                                    BaseInitializer betaInitializer = null, BaseRegularizer betaRegularizer = null, BaseConstraint betaConstraint = null, BaseInitializer gammaInitializer = null,
@@ -74,10 +73,10 @@ namespace SiaNet.Layers
             mu = BuildParam("mm", x.Shape, x.ElementType, MovingMeanInitializer, null, null, false);
             mv = BuildParam("mv", x.Shape, x.ElementType, MovingVarianceInitializer, null, null, false);
 
-            norm = (x - mu.Data.TVar()).CDiv((mv.Data.TVar() + EPSILON).Sqrt());
+            norm = (x - mu.Data) / K.Sqrt((mv.Data + K.Epsilon()));
             
-            var @out = gamma.Data.TVar().CMul(norm) + beta.Data;
-            Output = @out.View(x.Shape).Evaluate();
+            var @out = gamma.Data * norm + beta.Data;
+            Output = K.Reshape(@out, x.Shape);
         }
 
         public override void Backward(Tensor outputgrad)
@@ -85,22 +84,22 @@ namespace SiaNet.Layers
             Tensor mm = Params["mm"].Data;
             Tensor mv = Params["mv"].Data;
 
-            var X_mu = Input.Data.TVar() - mm.TVar();
-            var var_inv = 1 / (mv.TVar() + EPSILON).Sqrt();
+            var X_mu = Input.Data - mm;
+            var var_inv = 1 / K.Sqrt(mv + K.Epsilon());
 
-            var dbeta = outputgrad.TVar().Sum(0);
-            var dgamma = outputgrad.TVar().CMul(norm).Sum(0);
+            var dbeta = K.Sum(outputgrad, 0);
+            var dgamma = K.Sum(outputgrad * norm, 0);
 
-            var dnorm = outputgrad.TVar().CMul(Params["gamma"].Data);
-            var dvar = dnorm.CMul(mu.Data).Sum(0).CMul(-0.5f * (mv.TVar() + EPSILON).Pow(-3 / 2));
-            var dmu = dnorm.CMul(-var_inv).Sum(0) + dvar.CMul((-2 * X_mu).Sum(0) / Input.Data.Shape[0]);
+            var dnorm = outputgrad * Params["gamma"].Data;
+            var dvar = K.Sum(dnorm * mu.Data, 0) * K.Pow(-0.5f * (mv + K.Epsilon()), -3 / 2);
+            var dmu = K.Sum(-1 * dnorm * var_inv, 0) + K.Sum(dvar * (-2 * X_mu), 0) / Input.Data.Shape[0];
 
-            var dX = dnorm.CMul(var_inv) + (dmu / Input.Data.Shape[0]) + (dvar.CMul(2 / Input.Data.Shape[0] * X_mu));
+            var dX = dnorm * var_inv + (dmu / Input.Data.Shape[0]) + (dvar * (2 / Input.Data.Shape[0] * X_mu));
 
-            Input.Grad = dX.Evaluate();
-            
-            Params["beta"].Grad = dgamma.Evaluate();
-            Params["gamma"].Grad = dgamma.Evaluate();
+            Input.Grad = dX;
+
+            Params["beta"].Grad = dgamma;
+            Params["gamma"].Grad = dgamma;
         }
     }
 }

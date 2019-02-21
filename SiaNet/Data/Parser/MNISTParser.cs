@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 using System.Linq;
 
 namespace SiaNet.Data

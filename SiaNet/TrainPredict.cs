@@ -3,13 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using TensorSharp;
 using System.Linq;
+using SiaNet.Engine;
 
 namespace SiaNet
 {
     public partial class Sequential
     {
+        internal IBackend K = Global.Backend;
+
         List<float> train_losses = new List<float>();
 
         List<float> train_metrics = new List<float>();
@@ -96,6 +98,7 @@ namespace SiaNet
             while (train.Next())
             {
                 var (x, y) = train.GetBatch();
+
                 RunTrainOnBatch(iteration, x, y);
                 x.Dispose();
                 y.Dispose();
@@ -111,8 +114,8 @@ namespace SiaNet
 
                     var lossVal = LossFn.Call(pred, y);
                     var metricVal = MetricFn.Call(pred, y);
-                    val_losses.Add(TOps.MeanF(lossVal));
-                    val_metrics.Add(TOps.MeanF(metricVal));
+                    val_losses.Add(K.Mean(lossVal));
+                    val_metrics.Add(K.Mean(metricVal));
                     x.Dispose();
                     y.Dispose();
                     lossVal.Dispose();
@@ -129,10 +132,9 @@ namespace SiaNet
             Tensor lossVal = LossFn.Call(pred, y);
             Tensor grad = LossFn.CalcGrad(pred, y);
             lossVal = ApplyRegularizer(lossVal);
-
             var metricVal = MetricFn.Call(pred, y);
-            train_losses.Add(TOps.MeanF(lossVal));
-            train_metrics.Add(TOps.MeanF(metricVal));
+            train_losses.Add(K.Mean(lossVal));
+            train_metrics.Add(K.Mean(metricVal));
 
             Backward(grad);
 
@@ -163,9 +165,8 @@ namespace SiaNet
             }
 
             predictions.AddRange(output.ToArray().Cast<float>());
-            Tensor pred = Tensor.FromArray(Global.Device, predictions.ToArray());
-            
-            return pred.View(output.Shape);
+
+            return K.CreateVariable(predictions.ToArray(), output.Shape);
         }
 
         public Tensor Predict(DataFrame x, int batch_size)
@@ -191,10 +192,7 @@ namespace SiaNet
                 predictions.AddRange(output.ToArray().Cast<float>());
             }
 
-            Tensor pred = new Tensor(Global.Device, DType.Float32, outshape);
-            pred.CopyFrom(predictions.ToArray());
-
-            return pred;
+            return K.CreateVariable(predictions.ToArray(), outshape);
         }
 
         protected void OnBatchEnd(int epoch, int batch, float loss, float metric)

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SiaNet.Engine;
 using SiaNet.Layers;
-using TensorSharp;
 
 namespace SiaNet.Optimizers
 {
@@ -32,11 +32,11 @@ namespace SiaNet.Optimizers
                 var param = item.Value;
                 if (!accumulators.ContainsKey(param.Name))
                 {
-                    accumulators[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    accumulators[param.Name] = K.Constant(0, param.Data.Shape);
                 }
 
-                accumulators[param.Name] = accumulators[param.Name] + Square(param.Grad);
-                param.Data = param.Data - (LearningRate * param.Grad / (Sqrt(accumulators[param.Name]) + EPSILON));
+                accumulators[param.Name] = accumulators[param.Name] + K.Square(param.Grad);
+                param.Data = param.Data - (LearningRate * param.Grad / (K.Sqrt(accumulators[param.Name]) + K.Epsilon()));
 
                 param.ApplyConstraint();
             }

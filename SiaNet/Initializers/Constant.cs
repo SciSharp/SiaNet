@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Initializers
 {
@@ -24,8 +23,7 @@ namespace SiaNet.Initializers
 
         public override Tensor Operator(params long[] shape)
         {
-            Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
-            Ops.Fill(tensor, Value);
+            Tensor tensor = K.Constant(Value, shape);
             return tensor;
         }
     }

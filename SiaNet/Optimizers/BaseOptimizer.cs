@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SiaNet.Engine;
 using SiaNet.Layers;
-using TensorSharp;
 
 namespace SiaNet.Optimizers
 {
-    public abstract class BaseOptimizer : TOps
+    public abstract class BaseOptimizer 
     {
+        internal IBackend K = Global.Backend;
+
         public string Name { get; set; }
 
         public float LearningRate { get; set; }

@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Losses
 {
@@ -16,16 +15,16 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var pos = Sum(labels * preds, -1);
-            var neg = Max((1 - labels) * preds, -1);
+            var pos = K.Sum(labels * preds, -1);
+            var neg = K.Max((1 - labels) * preds, -1);
 
-            return Maximum(neg - pos + 1, 0f);
+            return K.Maximum(neg - pos + 1, 0f);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            var diff = (1 - labels) * preds - Sum(labels * preds, -1);
-            return Maximum(diff, 0);
+            var diff = (1 - labels) * preds - K.Sum(labels * preds, -1);
+            return K.Maximum(diff, 0);
         }
     }
 }

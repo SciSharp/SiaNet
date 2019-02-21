@@ -1,35 +1,31 @@
 ﻿using SiaNet.Constraints;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Regularizers;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Layers
 {
-    public class Conv3DTranspose : Conv3D
+    public class Conv3DTranspose : BaseLayer
     {
-        public Conv3DTranspose(uint filters, Tuple<uint, uint, uint> kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, Tuple<uint, uint, uint> dialationRate = null,
+        public Conv3DTranspose(int filters, Tuple<int, int, int> kernalSize, int strides = 1, PaddingType padding = PaddingType.Same, Tuple<int, int, int> dialationRate = null,
                                 ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null,
                                  BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null,
                                 bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
-            : base(filters, kernalSize, strides, padding, dialationRate, activation, kernalInitializer, kernalRegularizer, kernalConstraint, useBias, biasInitializer
-                  , biasRegularizer, biasConstraint)
+            : base("conv3d_transpose")
         {
-            Name = "conv3d_transpose";
         }
 
         public override void Forward(Tensor x)
         {
-            Forward(x);
-            Output = Output.Transpose();
+            throw new NotImplementedException();
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            outputgrad = outputgrad.Transpose();
-            Backward(outputgrad);
+            throw new NotImplementedException();
         }
     }
 }

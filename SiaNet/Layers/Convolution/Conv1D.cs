@@ -1,25 +1,24 @@
 ﻿using SiaNet.Constraints;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Regularizers;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Cpu;
 
 namespace SiaNet.Layers
 {
     public class Conv1D : BaseLayer
     {
-        public uint Filters { get; set; }
+        public int Filters { get; set; }
 
-        public uint KernalSize { get; set; }
+        public int KernalSize { get; set; }
 
-        public uint Strides { get; set; }
+        public int Strides { get; set; }
 
         public PaddingType Padding { get; set; }
 
-        public uint DilationRate { get; set; }
+        public int DilationRate { get; set; }
 
         public ActType Act { get; set; }
 
@@ -39,7 +38,7 @@ namespace SiaNet.Layers
 
         private Tensor xCols;
 
-        public Conv1D(uint filters, uint kernalSize, uint strides = 1, PaddingType padding = PaddingType.Same, uint dilationRate = 1,
+        public Conv1D(int filters, int kernalSize, int strides = 1, PaddingType padding = PaddingType.Same, int dilationRate = 1,
                     ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null,
                     BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null,
                     BaseConstraint biasConstraint = null)
@@ -59,9 +58,9 @@ namespace SiaNet.Layers
             KernalRegularizer = kernalRegularizer;
             BiasRegularizer = biasRegularizer;
         }
+
         public override void Forward(Tensor x)
         {
-            //ToDo: Implement DilationRate
             Input = x.ToParameter();
             var (n, c, s) = x.GetConv1DShape();
 
@@ -82,18 +81,20 @@ namespace SiaNet.Layers
                 pad = 2;
             }
 
+            KernalSize = (KernalSize - 1) * DilationRate + 1;
+
             var steps_out = (s - KernalSize + 2 * pad) / Strides + 1;
 
-            xCols = ImgUtil.Im2Col(x, KernalSize, pad, Strides);
+            xCols = K.Im2Col(x, Tuple.Create(KernalSize, KernalSize), pad, Strides);
             var wRows = weight.Data.Reshape(Filters, -1);
             
-            Output = Dot(wRows, xCols);
+            Output = K.Dot(wRows, xCols);
             if (UseBias)
             {
                 Output = Output + bias.Data;
             }
 
-            Output = Output.Reshape(Filters, steps_out, n).Transpose(2, 0, 1);
+            Output = K.Transpose(Output.Reshape(Filters, steps_out, n), 2, 0, 1);
         }
 
         public override void Backward(Tensor outputgrad)
@@ -109,13 +110,13 @@ namespace SiaNet.Layers
             }
 
             var dout_flat = outputgrad.Transpose(2, 0, 1).Reshape(Filters, -1);
-            var dW = Dot(dout_flat, xCols.Transpose());
+            var dW = K.Dot(dout_flat, xCols.Transpose());
             dW = dW.Reshape(Params["w"].Data.Shape);
-            var db = Sum(outputgrad, 0, 1, 2).Reshape(Filters, -1);
+            var db = K.Sum(outputgrad, 0, 1, 2).Reshape(Filters, -1);
             var W_flat = Params["w"].Data.Reshape(Filters, -1);
 
-            var dX_col = Dot(W_flat.Transpose(), dout_flat);
-            Input.Grad = ImgUtil.Col2Im(dX_col, Input.Data.Shape, KernalSize, pad, Strides);
+            var dX_col = K.Dot(W_flat.Transpose(), dout_flat);
+            Input.Grad = K.Col2Im(dX_col, Input.Data.Shape, Tuple.Create(KernalSize, KernalSize), pad, Strides);
 
             Params["w"].Grad = dW;
             if (UseBias)

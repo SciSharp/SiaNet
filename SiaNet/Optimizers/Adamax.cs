@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SiaNet.Engine;
 using SiaNet.Layers;
-using TensorSharp;
 
 namespace SiaNet.Optimizers
 {
@@ -40,14 +40,14 @@ namespace SiaNet.Optimizers
 
                 if (!ms.ContainsKey(param.Name))
                 {
-                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
-                    us[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    ms[param.Name] = K.Constant(0, param.Data.Shape);
+                    us[param.Name] = K.Constant(0, param.Data.Shape);
                 }
 
                 var m_t = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
-                var u_t = Maximum((Beta2 * us[param.Name]), Abs(param.Grad));
+                var u_t = K.Maximum((Beta2 * us[param.Name]), K.Abs(param.Grad));
 
-                param.Data = param.Data - LearningRate * m_t / (u_t + EPSILON);
+                param.Data = param.Data - LearningRate * m_t / (u_t + K.Epsilon());
                 ms[param.Name] = m_t;
                 us[param.Name] = u_t;
 

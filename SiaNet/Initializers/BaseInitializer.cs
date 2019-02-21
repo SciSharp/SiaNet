@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Initializers
 {
-    public abstract class BaseInitializer : TOps
+    public abstract class BaseInitializer
     {
+        internal IBackend K = Global.Backend;
+
         public string Name { get; set; }
 
         public BaseInitializer(string name)

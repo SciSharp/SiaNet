@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 using System.Linq;
 using System.IO;
 using CsvHelper;
 using System.Data;
+using SiaNet.Engine;
 
 namespace SiaNet.Data
 {
@@ -21,13 +21,13 @@ namespace SiaNet.Data
 
         public void Load(params float[] array)
         {
-            UnderlayingTensor = Tensor.FromArray(Global.Device, array.ToArray());
-            UnderlayingTensor = UnderlayingTensor.Reshape(-1, features);
+            long rows = array.LongLength / features;
+            UnderlayingTensor = K.CreateVariable(array, new long[] { rows, features });
         }
 
         public override void ToFrame(Tensor t)
         {
-            if(t.DimensionCount != 2)
+            if(t.DimCount != 2)
             {
                 throw new ArgumentException("2D tensor expected");
             }

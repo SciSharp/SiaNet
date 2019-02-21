@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using SiaNet.Constraints;
+using SiaNet.Engine;
 using SiaNet.Initializers;
 using SiaNet.Layers.Activations;
 using SiaNet.Regularizers;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Layers
 {
@@ -52,7 +51,7 @@ namespace SiaNet.Layers
             
             Parameter weight = BuildParam("w", new long[] { x.Shape[1], Dim }, x.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Parameter bias = null;
-            Output = Dot(x, weight.Data);
+            Output = K.Dot(x, weight.Data);
 
             if (UseBias)
             {
@@ -75,10 +74,10 @@ namespace SiaNet.Layers
                 outputgrad = Act.Input.Grad;
             }
 
-            Input.Grad = Dot(outputgrad, base["w"].Data.Transpose());
-            this["w"].Grad = Dot(Input.Data.Transpose(), outputgrad);
+            Input.Grad = K.Dot(outputgrad, base["w"].Data.Transpose());
+            this["w"].Grad = K.Dot(Input.Data.Transpose(), outputgrad);
             if (UseBias)
-                this["b"].Grad = Sum(outputgrad, 0);
+                this["b"].Grad = K.Sum(outputgrad, 0);
         }
     }
 }

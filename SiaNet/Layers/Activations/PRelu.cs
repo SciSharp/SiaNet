@@ -5,8 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using TensorSharp;
-using TensorSharp.Expression;
+using SiaNet.Engine;
 
 namespace SiaNet.Layers.Activations
 {

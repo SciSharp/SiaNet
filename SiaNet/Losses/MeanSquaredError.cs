@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Losses
 {
@@ -15,7 +15,7 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            return Mean(Square(preds - labels), 1).Reshape(1, -1);
+            return K.Mean(K.Square(preds - labels), -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)

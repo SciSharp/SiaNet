@@ -1,8 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.Expression;
 
 namespace SiaNet.Initializers
 {
@@ -35,11 +34,11 @@ namespace SiaNet.Initializers
 
         public override Tensor Operator(params long[] shape)
         {
-            Tensor tensor = new Tensor(Global.Device, DType.Float32, shape);
+            Tensor tensor = null;
             var hwScale = 1.0f;
-            if (tensor.DimensionCount > 2)
+            if (shape.Length > 2)
             {
-                for (int i = 2; i < tensor.DimensionCount; ++i)
+                for (int i = 2; i < shape.Length; ++i)
                     hwScale *= shape[i];
             }
 
@@ -59,19 +58,15 @@ namespace SiaNet.Initializers
                     break;
             }
 
-            SeedSource seedSource = new SeedSource();
-            if (Seed.HasValue)
-                seedSource = new SeedSource(Seed.Value);
-
             switch (Distribution)
             {
                 case "uniform":
                     float limit = (float)Math.Sqrt(3f * factor);
-                    Ops.RandomUniform(tensor, seedSource, -limit, limit);
+                    tensor = K.RandomUniform(shape, -limit, limit, Seed);
                     break;
                 case "normal":
                     float stddev = (float)Math.Sqrt(factor) / 0.87962566103423978f;
-                    Ops.RandomNormal(tensor, seedSource, 0, stddev);
+                    tensor = K.RandomNormal(shape, 0, stddev, Seed);
                     break;
             }
 

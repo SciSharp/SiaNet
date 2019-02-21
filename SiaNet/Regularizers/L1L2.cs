@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Regularizers
 {
@@ -18,12 +18,12 @@ namespace SiaNet.Regularizers
             float result = 0;
             if (L1 > 0)
             {
-                result += SumF(L1 * Abs(x));
+                result += K.Sum(L1 * K.Abs(x));
             }
 
             if (L2 > 0)
             {
-                result += SumF(L2 * Square(x));
+                result += K.Sum(L2 * K.Square(x));
             }
 
             return result;
@@ -35,7 +35,7 @@ namespace SiaNet.Regularizers
 
             if (L1 > 0)
             {
-                grad = (L1 * x) / (Abs(x) + EPSILON); 
+                grad = (L1 * x) / (K.Abs(x) + K.Epsilon()); 
             }
 
             if(L2 > 0)

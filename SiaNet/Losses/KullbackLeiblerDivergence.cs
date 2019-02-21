@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Losses
 {
@@ -14,18 +14,18 @@ namespace SiaNet.Losses
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            var y_true = Clip(labels, EPSILON, 1);
-            var y_pred = Clip(preds, EPSILON, 1);
+            var y_true = K.Clip(labels, K.Epsilon(), 1);
+            var y_pred = K.Clip(preds, K.Epsilon(), 1);
 
-            return Sum(y_true * Log(y_true / y_pred), -1);
+            return K.Sum(y_true * K.Log(y_true / y_pred), -1);
         }
 
         public override Tensor CalcGrad(Tensor preds, Tensor labels)
         {
-            var y_true = Clip(labels, EPSILON, 1);
-            var y_pred = Clip(preds, EPSILON, 1);
+            var y_true = K.Clip(labels, K.Epsilon(), 1);
+            var y_pred = K.Clip(preds, K.Epsilon(), 1);
 
-            return Maximum((-1 * (y_true / y_pred)), 0);
+            return K.Maximum((-1 * (y_true / y_pred)), 0);
         }
     }
 }

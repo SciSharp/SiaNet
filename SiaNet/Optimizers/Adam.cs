@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using SiaNet.Engine;
 using SiaNet.Layers;
-using TensorSharp;
 
 namespace SiaNet.Optimizers
 {
@@ -45,33 +45,33 @@ namespace SiaNet.Optimizers
             {
                 var param = p.Value;
                 if (!ms.ContainsKey(param.Name))
-                    ms[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    ms[param.Name] = K.Constant(0, param.Data.Shape);
 
                 if (!vs.ContainsKey(param.Name))
-                    vs[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                    vs[param.Name] = K.Constant(0, param.Data.Shape);
 
                 if (!vhats.ContainsKey(param.Name))
                 {
                     if (AmsGrad)
-                        vhats[param.Name] = Tensor.Constant(0, Global.Device, DType.Float32, param.Data.Shape);
+                        vhats[param.Name] = K.Constant(0, param.Data.Shape);
                 }
 
                 ms[param.Name] = (Beta1 * ms[param.Name]) + (1 - Beta1) * param.Grad;
-                vs[param.Name] = (Beta2 * vs[param.Name]) + (1 - Beta2) * Square(param.Grad);
+                vs[param.Name] = (Beta2 * vs[param.Name]) + (1 - Beta2) * K.Square(param.Grad);
                 
                 var m_cap = ms[param.Name] / (1f - (float)Math.Pow(Beta1, iteration));
                 var v_cap = vs[param.Name] / (1f - (float)Math.Pow(Beta2, iteration));
 
                 if (AmsGrad)
                 {
-                    Tensor vhat_t = Maximum(vhats[param.Name], v_cap);
+                    Tensor vhat_t = K.Maximum(vhats[param.Name], v_cap);
 
-                    param.Data = param.Data - (LearningRate * m_cap / (Sqrt(vhat_t) + Epsilon));
+                    param.Data = param.Data - (LearningRate * m_cap / (K.Sqrt(vhat_t) + Epsilon));
                     vhats[param.Name] = vhat_t;
                 }
                 else
                 {
-                    param.Data = param.Data - (LearningRate * m_cap / (Sqrt(v_cap) + Epsilon));
+                    param.Data = param.Data - (LearningRate * m_cap / (K.Sqrt(v_cap) + Epsilon));
                 }
 
                 param.ApplyConstraint();

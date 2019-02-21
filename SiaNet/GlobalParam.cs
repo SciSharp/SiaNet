@@ -1,43 +1,66 @@
-﻿using System;
+﻿using SiaNet.Backend.ArrayFire;
+using SiaNet.Backend.TensorSharp;
+using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
-using TensorSharp.CUDA;
-using TensorSharp.CUDA.DeviceCode;
-using TensorSharp.CUDA.RuntimeCompiler;
 
 namespace SiaNet
 {
     public class Global
     {
-        public static IAllocator Device = new TensorSharp.Cpu.CpuAllocator();
+        public static IBackend backend = null;
+
+        private static SiaNetBackend BackendType { get; set; } = SiaNetBackend.ArrayFire;
+
+        public static IBackend Backend
+        {
+            get
+            {
+                if(backend == null)
+                {
+                    switch (BackendType)
+                    {
+                        case SiaNetBackend.TensorSharp:
+                            backend = new TensorSharpBackend();
+                            break;
+                        case SiaNetBackend.ArrayFire:
+                            backend = new ArrayFireBackend();
+                            break;
+                        case SiaNetBackend.CNTK:
+                            throw new NotImplementedException();
+                        case SiaNetBackend.Tensorflow:
+                            throw new NotImplementedException();
+                        case SiaNetBackend.MxNet:
+                            throw new NotImplementedException();
+                        default:
+                            break;
+                    }
+                    
+                }
+
+                return backend;
+            }
+        }
 
         internal static bool UseCudnn { get; set; }
 
-        internal static bool UseCuda { get; set; }
-
         internal static int contextId = 0;
 
-        public static void UseGpu(int gpuId = 0, bool cudnn = false)
+        public static void UseDevice(DeviceType deviceType, bool cudnn = false)
         {
-            SetNewContext(gpuId, true);
-        
-            UseCudnn = cudnn;
-            UseCuda = true;
-        }
-
-        public static void SetNewContext(int gpuId = 0, bool compile = false)
-        {
-            var cudaContext = new TSCudaContext();
-            if (compile)
+            if(cudnn && deviceType != DeviceType.CUDA)
             {
-                cudaContext.Precompile(Console.Write);
-                cudaContext.CleanUnusedPTX();
+                throw new ArgumentException("CuDnn work with CUDA device type");
             }
 
-            Device = new CudaAllocator(cudaContext, gpuId);
+            UseCudnn = cudnn;
+            Backend.SetDevice(deviceType);
         }
 
-      
+        public static void SetBackend(SiaNetBackend backend)
+        {
+            BackendType = backend;
+        }
     }
 }

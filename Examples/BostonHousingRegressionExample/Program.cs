@@ -1,5 +1,6 @@
 ﻿using SiaNet;
 using SiaNet.Data;
+using SiaNet.Engine;
 using SiaNet.Layers;
 using System;
 
@@ -9,10 +10,15 @@ namespace BostonHousingRegressionExample
     {
         static void Main(string[] args)
         {
-            Global.UseGpu();
+            //Setup Engine
+            Global.SetBackend(SiaNetBackend.ArrayFire);
+            Global.UseDevice(DeviceType.CPU);
+
+            //Load Train and Test CSV data
             var train = LoadTrain("./train.csv");
             var val = LoadTest("./test.csv");
 
+            //Build Model
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(64, ActType.ReLU));

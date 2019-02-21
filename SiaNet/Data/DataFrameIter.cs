@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Data
 {
@@ -80,11 +80,11 @@ namespace SiaNet.Data
         public (DataFrameIter, DataFrameIter) Split(double testDataSize = 0.33f)
         {
             long trainSize = Convert.ToInt64(frameX.Shape[0] * (1 - testDataSize));
-            var trainX = frameX.UnderlayingTensor.Narrow(0, 0, trainSize);
-            var valX = frameX.UnderlayingTensor.Narrow(0, trainSize, frameX.Shape[0] - trainSize);
+            var trainX = frameX.UnderlayingTensor.SliceRows(0, trainSize);
+            var valX = frameX.UnderlayingTensor.SliceRows(trainSize + 1, frameX.Shape[0] - 1);
 
-            var trainY = frameY.UnderlayingTensor.Narrow(0, 0, trainSize);
-            var valY = frameY.UnderlayingTensor.Narrow(0, trainSize, frameX.Shape[0] - trainSize);
+            var trainY = frameY.UnderlayingTensor.SliceRows(0, trainSize);
+            var valY = frameY.UnderlayingTensor.SliceRows(trainSize + 1, frameX.Shape[0] - 1);
 
             return (new DataFrameIter(trainX, trainY), new DataFrameIter(valX, valY));
         }

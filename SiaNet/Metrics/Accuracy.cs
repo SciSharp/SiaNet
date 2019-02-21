@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SiaNet.Engine;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using TensorSharp;
 
 namespace SiaNet.Metrics
 {
@@ -15,10 +15,10 @@ namespace SiaNet.Metrics
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            preds = Argmax(preds, 1);
-            labels = Argmax(labels, 1);
+            preds = K.Argmax(preds, 1);
+            labels = K.Argmax(labels, 1);
 
-            var r = EqualTo(preds, labels);
+            var r = K.EqualTo(preds, labels);
 
             return r;
         }
