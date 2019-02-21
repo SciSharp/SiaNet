@@ -77,7 +77,7 @@ namespace SiaNet.Backend.TensorSharp.CUDA.DeviceCode
         public static string ReadFile(string name)
         {
             string filePath = AppDomain.CurrentDomain.BaseDirectory + "/Cuda/DeviceCode/CU/" + name;
-            return File.ReadAllText(filePath);
+            return File.ReadAllText(filePath, Encoding.UTF8);
         }
     }
 

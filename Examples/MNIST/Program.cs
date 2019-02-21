@@ -14,10 +14,16 @@ namespace MNIST
         {
             Global.UseGpu();
 
-            string datasetFolder = @"C:\dataset\MNIST";
-            bool useDenseModel = true;
+            Tensor x = Tensor.FromArray(Global.Device, new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            x = x.Reshape(3, 3);
 
-            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, trainCount: 600, testCount: 100, flatten: useDenseModel);
+            var result = TOps.Diag(x);
+            result.Print();
+
+            string datasetFolder = @"C:\dataset\MNIST";
+            bool useDenseModel = false;
+
+            var ((trainX, trainY), (valX, valY)) = MNISTParser.LoadDataSet(datasetFolder, trainCount: 60000, testCount: 10000, flatten: useDenseModel);
             Console.WriteLine("Train and Test data loaded");
             DataFrameIter trainIter = new DataFrameIter(trainX, trainY);
             DataFrameIter valIter = new DataFrameIter(valX, valY);
@@ -50,9 +56,9 @@ namespace MNIST
         private static Sequential BuildConvModel()
         {
             Sequential model = new Sequential();
-            model.Add(new Conv2D(filters: 16, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.Sigmoid));
+            model.Add(new Conv2D(filters: 16, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.ReLU));
             model.Add(new MaxPooling2D(poolSize: Tuple.Create<uint, uint>(2, 2)));
-            model.Add(new Conv2D(filters: 32, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.Sigmoid));
+            model.Add(new Conv2D(filters: 32, kernalSize: Tuple.Create<uint, uint>(5, 5), activation: ActType.ReLU));
             model.Add(new MaxPooling2D(poolSize: Tuple.Create<uint, uint>(2, 2)));
             //model.Add(new Dropout(0.2f));
             model.Add(new Flatten());
