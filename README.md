@@ -62,9 +62,7 @@ Complete Code: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples/Ba
 
 More examples: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples
 
-# CUDA Support
-
-## TensorSharp Build with CUDA
-
+# Contribution
+Any help is welcome!!!
 
 
