@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SiaNet.Backend.CNTKLib</AssemblyName>
+    <RootNamespace>SiaNet.Backend.CNTKLib</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CNTK.GPU" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SiaNet.Engine\SiaNet.Engine.csproj" />
+  </ItemGroup>
+
+</Project>

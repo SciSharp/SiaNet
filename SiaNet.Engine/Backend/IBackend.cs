@@ -115,8 +115,6 @@ namespace SiaNet.Engine
 
         Tensor Trunc(Tensor x);
 
-        Tensor Factorial(Tensor x);
-
         Tensor Sin(Tensor x);
 
         Tensor Cos(Tensor x);
@@ -218,8 +216,6 @@ namespace SiaNet.Engine
         Tensor Softmax(Tensor x, int axis = -1);
 
         Tensor Softplus(Tensor x, int axis = -1);
-
-        Tensor L1Normalize(Tensor x, int axis = -1);
 
         Tensor L2Normalize(Tensor x, int axis = -1);
 

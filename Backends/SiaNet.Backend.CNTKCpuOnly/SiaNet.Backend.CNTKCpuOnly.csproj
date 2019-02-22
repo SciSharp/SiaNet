@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SiaNet.Backend.CNTK\CNTKBackend.cs" Link="CNTKBackend.cs" />
+    <Compile Include="..\SiaNet.Backend.CNTK\CNTKTensor.cs" Link="CNTKTensor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CNTK.CPUOnly" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SiaNet.Engine\SiaNet.Engine.csproj" />
+  </ItemGroup>
+
+</Project>

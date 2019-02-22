@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TensorSharp.Properties;
+using SiaNet.Backend.TensorSharp.Properties;
 
 namespace SiaNet.Backend.TensorSharp.CUDA.DeviceCode
 {
