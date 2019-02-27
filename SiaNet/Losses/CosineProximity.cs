@@ -13,12 +13,12 @@ namespace SiaNet.Losses
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             return -1 * _cossine_sim(preds, labels);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             var y_true = K.Max(K.Sum(labels, -1), -1) / (K.Abs(preds * K.Abs(labels)));
             var y_pred = K.Max(K.Sum(preds, -1), -1) / K.Square(K.Abs(preds));

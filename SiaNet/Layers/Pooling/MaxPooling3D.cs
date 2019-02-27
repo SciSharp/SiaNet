@@ -25,7 +25,7 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
             var (n, c, d, h, w) = x.GetConv3DShape();
 
             int pad = 0;

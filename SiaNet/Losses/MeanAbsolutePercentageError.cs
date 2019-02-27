@@ -13,13 +13,13 @@ namespace SiaNet.Losses
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             var diff = K.Abs(preds - labels) / K.Clip(K.Abs(labels), K.Epsilon(), float.MaxValue);
             return 100 * K.Reshape(K.Mean(diff, 1), 1, -1);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             var diff = (preds - labels) / K.Clip(K.Abs(labels) * K.Abs(labels - preds), K.Epsilon(), float.MaxValue);
             return 100 * diff / preds.Shape[0];

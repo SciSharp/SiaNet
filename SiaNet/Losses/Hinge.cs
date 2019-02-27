@@ -13,12 +13,12 @@ namespace SiaNet.Losses
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             return K.Mean(K.Maximum(1 - labels * preds, 0), -1);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             return K.Neg(K.Maximum(labels / preds.Shape[0], 0));
         }

@@ -33,7 +33,7 @@ namespace SiaNet.Layers.Activations
         public override void Forward(Tensor x)
         {
             //ToDo: Implement shared axes
-            Input = x.ToParameter();
+            base.Forward(x);
             long[] paramShape = x.Shape.ToList().Skip(1).ToArray();
 
             Parameter alpha = BuildParam("a", paramShape, x.ElementType, AlphaInitializer, AlphaConstraint, AlphaRegularizer);

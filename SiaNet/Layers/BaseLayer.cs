@@ -31,9 +31,15 @@ namespace SiaNet.Layers
             Params = new Dictionary<string, Parameter>();
         }
 
-        public abstract void Forward(Tensor x);
+        public virtual void Forward(Tensor x)
+        {
+            Input = x.ToParameter();
+        }
 
-        public abstract void Backward(Tensor outputgrad);
+        public virtual void Backward(Tensor outputgrad)
+        {
+
+        }
 
         public Parameter this[string name]
         {

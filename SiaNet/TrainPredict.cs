@@ -112,7 +112,7 @@ namespace SiaNet
 
                     var pred = Forward(x);
 
-                    var lossVal = LossFn.Call(pred, y);
+                    var lossVal = LossFn.Forward(pred, y);
                     var metricVal = MetricFn.Call(pred, y);
                     val_losses.Add(K.Mean(lossVal));
                     val_metrics.Add(K.Mean(metricVal));
@@ -129,8 +129,8 @@ namespace SiaNet
         private void RunTrainOnBatch(int i, Tensor x, Tensor y)
         {
             Tensor pred = Forward(x);
-            Tensor lossVal = LossFn.Call(pred, y);
-            Tensor grad = LossFn.CalcGrad(pred, y);
+            Tensor lossVal = LossFn.Forward(pred, y);
+            Tensor grad = LossFn.Backward(pred, y);
             lossVal = ApplyRegularizer(lossVal);
             var metricVal = MetricFn.Call(pred, y);
             train_losses.Add(K.Mean(lossVal));

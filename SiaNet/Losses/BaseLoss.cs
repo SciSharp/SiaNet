@@ -16,9 +16,9 @@ namespace SiaNet.Losses
             Name = name;
         }
 
-        public abstract Tensor Call(Tensor preds, Tensor labels);
+        public abstract Tensor Forward(Tensor preds, Tensor labels);
 
-        public abstract Tensor CalcGrad(Tensor preds, Tensor labels);
+        public abstract Tensor Backward(Tensor preds, Tensor labels);
 
         public static BaseLoss Get(LossType lossType)
         {

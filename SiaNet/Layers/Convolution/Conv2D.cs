@@ -62,7 +62,7 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
             var (n, c, h, w) = x.GetConv2DShape();
 
             Parameter weight = BuildParam("w", new long[] { Filters, c, KernalSize.Item1, KernalSize.Item2 }, x.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);

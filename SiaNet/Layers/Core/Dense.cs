@@ -47,7 +47,7 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
             
             Parameter weight = BuildParam("w", new long[] { x.Shape[1], Dim }, x.ElementType, KernalInitializer, KernalConstraint, KernalRegularizer);
             Parameter bias = null;

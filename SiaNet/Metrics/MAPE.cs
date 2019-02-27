@@ -16,7 +16,7 @@ namespace SiaNet.Metrics
 
         public override Tensor Call(Tensor preds, Tensor labels)
         {
-            return new MeanAbsolutePercentageError().Call(preds, labels);
+            return new MeanAbsolutePercentageError().Forward(preds, labels);
         }
     }
 }

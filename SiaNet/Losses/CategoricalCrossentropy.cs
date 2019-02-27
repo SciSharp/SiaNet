@@ -16,7 +16,7 @@ namespace SiaNet.Losses
             FromLogit = fromLogit;
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             if (FromLogit)
                 preds = K.Softmax(preds);
@@ -27,7 +27,7 @@ namespace SiaNet.Losses
             return K.Sum(-1 * labels * K.Log(preds), -1);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             preds = K.Clip(preds, K.Epsilon(), 1 - K.Epsilon());
             return (preds - labels) / preds;

@@ -14,15 +14,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
-            var keepElements = x > 0;
-            Output = x * keepElements + (1 - keepElements) * 0;
+            base.Forward(x);
+            Output = Global.ActFunc.ReluForward(x);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            var keepElements = Input.Data > 0;
-            Input.Grad = outputgrad * (keepElements + (1 - keepElements) * 0);
+            Input.Grad = Global.ActFunc.ReluBackward(Input.Data, outputgrad);
         }
     }
 }

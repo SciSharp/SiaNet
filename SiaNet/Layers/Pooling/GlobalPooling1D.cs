@@ -17,7 +17,7 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
             if(PoolingType == PoolingPoolType.Max)
             {
                 Output = K.Max(x, 2);

@@ -65,7 +65,7 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
             
             Parameter beta = BuildParam("beta", x.Shape, x.ElementType, BetaInitializer, BetaConstraint, BetaRegularizer);
             Parameter gamma = BuildParam("gamma", x.Shape, x.ElementType, GammaInitializer, GammaConstraint, GammaRegularizer);

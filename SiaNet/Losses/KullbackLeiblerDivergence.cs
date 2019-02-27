@@ -12,7 +12,7 @@ namespace SiaNet.Losses
         {
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             var y_true = K.Clip(labels, K.Epsilon(), 1);
             var y_pred = K.Clip(preds, K.Epsilon(), 1);
@@ -20,7 +20,7 @@ namespace SiaNet.Losses
             return K.Sum(y_true * K.Log(y_true / y_pred), -1);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             var y_true = K.Clip(labels, K.Epsilon(), 1);
             var y_pred = K.Clip(preds, K.Epsilon(), 1);

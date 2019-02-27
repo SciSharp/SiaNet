@@ -214,7 +214,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Neg(Tensor x)
         {
-            return Out(Arith.Neg(In(x)));
+            return Out(In(-1, x.Shape) * In(x));
         }
 
         public Tensor Pow(Tensor x, float value)

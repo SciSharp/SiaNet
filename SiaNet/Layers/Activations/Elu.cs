@@ -17,19 +17,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
-            var keepElements = x > 0;
-            var keepElements_Exp = x < 0;
-            var d = Alpha * (K.Exp(K.Mul(x, keepElements_Exp)) - 1);
-            Output = K.Mul(x, keepElements) + d;
+            base.Forward(x);
+            Output = Global.ActFunc.EluForward(Alpha, x);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            var keepElements = Input.Data > 0;
-            var keepElements_Exp = Input.Data < 0;
-            var d = Alpha * K.Exp(K.Mul(Input.Data, keepElements_Exp));
-            Input.Grad = outputgrad * d;
+            Input.Grad = Global.ActFunc.EluBackward(Alpha, Input.Data, outputgrad);
         }
     }
 }

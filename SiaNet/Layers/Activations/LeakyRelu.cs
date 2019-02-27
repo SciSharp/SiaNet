@@ -17,15 +17,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
-            var keepElements = x >= 0;
-            Output = x * keepElements + (Alpha * x * (1 - keepElements));
+            base.Forward(x);
+            Output = Global.ActFunc.LeakyReluForward(Alpha, x);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            var keepElements = Input.Data >= 0;
-            Input.Grad = outputgrad * (keepElements + (Alpha * (1 - keepElements)));
+            Input.Grad = Global.ActFunc.LeakyReluBackward(Alpha, Input.Data, outputgrad);
         }
     }
 }

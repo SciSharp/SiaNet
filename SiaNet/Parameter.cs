@@ -8,36 +8,20 @@ using SiaNet.Engine;
 
 namespace SiaNet
 {
-    public class Parameter
+    public class Parameter : BaseParameter
     {
-        public Tensor Data { get; set; }
-
-        public Tensor Grad { get; set; }
-
-        public string Name { get; set; }
-
         private BaseConstraint constraint;
 
         private BaseRegularizer regularizer;
 
-        public bool HaveRegularizer
-        {
-            get
-            {
-                return regularizer != null;
-            }
-        }
-
         public Parameter(string name, params long[] shape)
+            :base (name, shape)
         {
-            //Name = UUID.GetID(name);
-            Name = name;
         }
 
         public Parameter(string name, DataType dataType, params long[] shape)
+            : base(name, dataType, shape)
         {
-            //Name = UUID.GetID(name);
-            Name = name;
         }
 
         public static Parameter Create(Tensor data, string name = "")
@@ -49,6 +33,14 @@ namespace SiaNet
             x.Data = data;
 
             return x;
+        }
+
+        public bool HaveRegularizer
+        {
+            get
+            {
+                return regularizer != null;
+            }
         }
 
         public void SetConstraint(BaseConstraint fn)

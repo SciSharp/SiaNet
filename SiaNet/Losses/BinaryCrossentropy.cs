@@ -16,7 +16,7 @@ namespace SiaNet.Losses
             FromLogit = fromLogit;
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             Tensor output = preds;
             if (!FromLogit)
@@ -31,7 +31,7 @@ namespace SiaNet.Losses
             return -1 * labels * K.Log(output) - (1 - labels) * K.Log(1 - output);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             Tensor output = K.Clip(preds, K.Epsilon(), 1f - K.Epsilon());
             return -1 * (labels - 1) / (1 - output) - labels / output;

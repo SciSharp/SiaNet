@@ -15,15 +15,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
-            Output = K.Softmax(x);
+            base.Forward(x);
+            Output = Global.ActFunc.SoftmaxForward(x);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            var s = Output.Reshape(-1, 1);
-            var d = K.Diag(s) - K.Dot(s, s.Transpose());
-            Input.Grad = outputgrad * K.Sum(d, -1).Reshape(Input.Data.Shape);
+            Input.Grad = Global.ActFunc.SoftmaxBackward(Input.Data, outputgrad);
         }
     }
 }

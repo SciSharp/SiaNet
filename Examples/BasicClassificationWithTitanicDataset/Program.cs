@@ -15,23 +15,22 @@ namespace BasicClassificationWithTitanicDataset
         {
             //Setup Engine
             Global.SetBackend(SiaNetBackend.ArrayFire);
-            Global.UseDevice(DeviceType.CPU);
+            Global.UseDevice(DeviceType.Default);
             var dataset = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
-
             var (train, val) = dataset.Split(0.25);
 
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(64, ActType.ReLU));
             model.Add(new Dense(32, ActType.ReLU));
-            model.Add(new Dense(1, ActType.Sigmoid));
-
+            model.Add(new Dense(1, ActType.ReLU));
+            
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
-            // Train for 100 epoch with batch size of 2
-            model.Train(train, 100, 32, val);
+            // Perform training with train and val dataset
+            model.Train(train, epochs: 25, batchSize: 32, val: val);
 
             //var prediction = model.Predict(test);
             //TOps.Round(prediction).Print();
@@ -74,7 +73,7 @@ namespace BasicClassificationWithTitanicDataset
             var data = frame.ToArray2D<float>().Cast<float>().ToArray();
             DataFrame2D df = new DataFrame2D(frame.ColumnCount);
             df.Load(data);
-
+            
             return df;
         }
 

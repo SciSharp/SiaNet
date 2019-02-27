@@ -14,7 +14,7 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
             Output = K.Tanh(x);
         }
 

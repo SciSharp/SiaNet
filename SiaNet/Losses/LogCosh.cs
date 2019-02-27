@@ -13,7 +13,7 @@ namespace SiaNet.Losses
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             return K.Mean(_logcosh(preds - labels), -1);
         }
@@ -23,7 +23,7 @@ namespace SiaNet.Losses
             return x + K.Softplus(-2 * x) - (float)Math.Log(2);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             return -1 * K.Tanh(labels - preds) / preds.Shape[0];
         }

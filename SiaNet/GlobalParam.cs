@@ -1,6 +1,7 @@
 ﻿using SiaNet.Backend.ArrayFire;
 using SiaNet.Backend.TensorSharp;
 using SiaNet.Engine;
+using SiaNet.Engine.Layers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace SiaNet
     public class Global
     {
         public static IBackend backend = null;
+
+        public static ActivationFunc ActFunc = null;
 
         private static SiaNetBackend BackendType { get; set; } = SiaNetBackend.ArrayFire;
 
@@ -23,9 +26,11 @@ namespace SiaNet
                     {
                         case SiaNetBackend.TensorSharp:
                             backend = new TensorSharpBackend();
+                            ActFunc = new TensorSharpActivations(backend);
                             break;
                         case SiaNetBackend.ArrayFire:
                             backend = new ArrayFireBackend();
+                            ActFunc = new ArrayFireActivations(backend);
                             break;
                         case SiaNetBackend.CNTK:
                             throw new NotImplementedException();

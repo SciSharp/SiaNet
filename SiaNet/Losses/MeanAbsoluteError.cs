@@ -13,12 +13,12 @@ namespace SiaNet.Losses
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             return K.Reshape(K.Mean(K.Abs(preds - labels), 1), 1, -1);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             return (preds - labels) / ((float)preds.Shape[0] * K.Abs(preds - labels));
         }

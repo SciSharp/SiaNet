@@ -13,7 +13,7 @@ namespace SiaNet.Losses
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Forward(Tensor preds, Tensor labels)
         {
             var pos = K.Sum(labels * preds, -1);
             var neg = K.Max((1 - labels) * preds, -1);
@@ -21,7 +21,7 @@ namespace SiaNet.Losses
             return K.Maximum(neg - pos + 1, 0f);
         }
 
-        public override Tensor CalcGrad(Tensor preds, Tensor labels)
+        public override Tensor Backward(Tensor preds, Tensor labels)
         {
             var diff = (1 - labels) * preds - K.Sum(labels * preds, -1);
             return K.Maximum(diff, 0);

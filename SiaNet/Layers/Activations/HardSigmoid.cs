@@ -14,13 +14,13 @@ namespace SiaNet.Layers.Activations
 
         public override void Forward(Tensor x)
         {
-            throw new NotImplementedException();
-            
+            base.Forward(x);
+            Output = Global.ActFunc.HardSigmoidForward(x);
         }
 
         public override void Backward(Tensor outputgrad)
         {
-            throw new NotImplementedException();
+            Input.Grad = Global.ActFunc.HardSigmoidBackward(Input.Data, outputgrad);
         }
     }
 }

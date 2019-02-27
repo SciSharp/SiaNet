@@ -33,7 +33,7 @@ namespace SiaNet.Layers
 
         public override void Forward(Tensor x)
         {
-            Input = x.ToParameter();
+            base.Forward(x);
         }
 
         public override void Backward(Tensor outputgrad)
