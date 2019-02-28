@@ -131,12 +131,12 @@ namespace SiaNet.Engine
 
         public static Tensor operator *(Tensor a, Tensor b)
         {
-            if (a.IsVector && a.IsScalar)
+            if (a.IsScalar)
             {
                 return a.ToScalar() * b;
             }
 
-            if (b.IsVector && b.IsScalar)
+            if (b.IsScalar)
             {
                 return a * b.ToScalar();
             }
@@ -157,12 +157,12 @@ namespace SiaNet.Engine
 
         public static Tensor operator /(Tensor a, Tensor b)
         {
-            if (a.IsVector && a.IsScalar)
+            if (a.IsScalar)
             {
                 return a.ToScalar() / b;
             }
 
-            if (b.IsVector && b.IsScalar)
+            if (b.IsScalar)
             {
                 return a / b.ToScalar();
             }
@@ -178,12 +178,12 @@ namespace SiaNet.Engine
 
         public static Tensor operator +(Tensor a, Tensor b)
         {
-            if (a.IsVector && a.IsScalar)
+            if (a.IsScalar)
             {
                 return a.ToScalar() + b;
             }
 
-            if (b.IsVector && b.IsScalar)
+            if (b.IsScalar)
             {
                 return a + b.ToScalar();
             }
@@ -204,12 +204,12 @@ namespace SiaNet.Engine
 
         public static Tensor operator -(Tensor a, Tensor b)
         {
-            if (a.IsVector && a.IsScalar)
+            if (a.IsScalar)
             {
                 return a.ToScalar() - b;
             }
 
-            if (b.IsVector && b.IsScalar)
+            if (b.IsScalar)
             {
                 return a - b.ToScalar();
             }
@@ -369,6 +369,11 @@ namespace SiaNet.Engine
         public Array ToArray()
         {
             return K.GetArray(this);
+        }
+
+        public void Print(string title = "")
+        {
+            K.Print(this, title);
         }
 
         public void Dispose()

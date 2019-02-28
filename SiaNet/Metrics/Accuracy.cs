@@ -13,7 +13,7 @@ namespace SiaNet.Metrics
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Calc(Tensor preds, Tensor labels)
         {
             preds = K.Argmax(preds, 1);
             labels = K.Argmax(labels, 1);

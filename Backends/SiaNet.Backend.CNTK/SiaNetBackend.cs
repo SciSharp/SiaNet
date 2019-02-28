@@ -7,11 +7,11 @@ using C = CNTK.CNTKLib;
 
 namespace SiaNet.Backend.CNTKLib
 {
-    public class CNTKBackend : IBackend
+    public class SiaNetBackend : IBackend
     {
         private Variable In(Tensor x)
         {
-            return ((CNTKTensor)x).InternalTensor;
+            return ((NDArrayTensor)x).InternalTensor;
         }
 
         private Variable In(float value, params long[] shape)
@@ -25,9 +25,9 @@ namespace SiaNet.Backend.CNTKLib
             return new Constant(shape, CNTK.DataType.Float, initValue: (double)value, device: DeviceDescriptor.CPUDevice);
         }
 
-        private CNTKTensor Out(Variable x)
+        private NDArrayTensor Out(Variable x)
         {
-            CNTKTensor tensor = new CNTKTensor
+            NDArrayTensor tensor = new NDArrayTensor
             {
                 InternalTensor = x
             };

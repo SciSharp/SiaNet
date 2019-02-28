@@ -8,15 +8,15 @@ using SiaNet.Engine.Layers;
 
 namespace SiaNet.Backend.TensorSharp
 {
-    public class TensorSharpBackend : IBackend
+    public class SiaNetBackend : IBackend
     {
         int counter = 0;
 
-        public static TensorSharpBackend Instance
+        public static SiaNetBackend Instance
         {
             get
             {
-                return new TensorSharpBackend();
+                return new SiaNetBackend();
             }
         }
 
@@ -670,7 +670,7 @@ namespace SiaNet.Backend.TensorSharp
 
         public ActivationFunc GetActFunc()
         {
-            return new TensorSharpActivations(this);
+            return new SiaNetActivations(this);
         }
     }
 }

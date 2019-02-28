@@ -11,13 +11,13 @@ namespace SiaNet.Backend.TensorSharp
 
         public NDArrayTensor()
         {
-            K = new TensorSharpBackend();
+            K = new SiaNetBackend();
         }
 
         public NDArrayTensor(NDArray arr)
         {
             InternalTensor = arr;
-            K = new TensorSharpBackend();
+            K = new SiaNetBackend();
         }
 
         public override string Name

@@ -9,19 +9,19 @@ using SiaNet.Engine.Layers;
 
 namespace SiaNet.Backend.ArrayFire
 {
-    public class ArrayFireBackend : IBackend
+    public class SiaNetBackend : IBackend
     {
         int counter = 0;
 
-        public ArrayFireBackend()
+        public SiaNetBackend()
         {
         }
 
-        public static ArrayFireBackend Instance
+        public static SiaNetBackend Instance
         {
             get
             {
-                return new ArrayFireBackend();
+                return new SiaNetBackend();
             }
         }
 
@@ -109,7 +109,7 @@ namespace SiaNet.Backend.ArrayFire
             var result = Out(Data.CreateArray(data));
 
             result.Name = name != "" ? UUID(name) : UUID("V");
-            if(shape.Length == 2)
+            if (shape.Length == 2)
                 result = (NDArrayTensor)result.Reshape(shape).Transpose();
 
             if (shape.Length == 3)
@@ -820,7 +820,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public ActivationFunc GetActFunc()
         {
-            return new ArrayFireActivations(this);
+            return new SiaNetActivations(this);
         }
     }
 }

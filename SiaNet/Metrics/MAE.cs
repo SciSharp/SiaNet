@@ -14,7 +14,7 @@ namespace SiaNet.Metrics
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Calc(Tensor preds, Tensor labels)
         {
             return new MeanAbsoluteError().Forward(preds, labels);
         }

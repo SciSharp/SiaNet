@@ -8,7 +8,7 @@ namespace SiaNet.Optimizers
 {
     public abstract class BaseOptimizer 
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         public string Name { get; set; }
 

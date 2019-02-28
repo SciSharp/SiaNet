@@ -10,7 +10,7 @@ namespace SiaNet
 {
     public partial class Sequential
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         List<float> train_losses = new List<float>();
 
@@ -72,7 +72,6 @@ namespace SiaNet
                         OnEpochEnd(iteration, samplesSeen, train_losses.Average(), val_losses.Average(), train_metrics.Average(), val_metrics.Average(), batchWatch.ElapsedMilliseconds);
 
                     LearningHistory.Add(train_losses, train_metrics, val_losses, val_metrics);
-                    GC.Collect();
                 }
             }
             catch (Exception ex)
@@ -98,7 +97,6 @@ namespace SiaNet
             while (train.Next())
             {
                 var (x, y) = train.GetBatch();
-
                 RunTrainOnBatch(iteration, x, y);
                 x.Dispose();
                 y.Dispose();
@@ -113,7 +111,7 @@ namespace SiaNet
                     var pred = Forward(x);
 
                     var lossVal = LossFn.Forward(pred, y);
-                    var metricVal = MetricFn.Call(pred, y);
+                    var metricVal = MetricFn.Calc(pred, y);
                     val_losses.Add(K.Mean(lossVal));
                     val_metrics.Add(K.Mean(metricVal));
                     x.Dispose();
@@ -132,7 +130,7 @@ namespace SiaNet
             Tensor lossVal = LossFn.Forward(pred, y);
             Tensor grad = LossFn.Backward(pred, y);
             lossVal = ApplyRegularizer(lossVal);
-            var metricVal = MetricFn.Call(pred, y);
+            var metricVal = MetricFn.Calc(pred, y);
             train_losses.Add(K.Mean(lossVal));
             train_metrics.Add(K.Mean(metricVal));
 

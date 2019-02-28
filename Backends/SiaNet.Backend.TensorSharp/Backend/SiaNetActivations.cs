@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SiaNet.Backend.ArrayFire
+namespace SiaNet.Backend.TensorSharp
 {
-    public class ArrayFireActivations : ActivationFunc
+    public class SiaNetActivations : ActivationFunc
     {
-        public ArrayFireActivations(IBackend backend)
+        public SiaNetActivations(IBackend backend)
             : base(backend)
         {
 

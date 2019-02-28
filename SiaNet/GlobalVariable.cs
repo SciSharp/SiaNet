@@ -2,13 +2,27 @@
 using SiaNet.Engine.Layers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace SiaNet
 {
     public class Global
     {
-        public static IBackend Backend { get; set; }
+        private static IBackend _backend;
+
+        public static IBackend CurrentBackend
+        {
+            get
+            {
+                if(_backend == null)
+                {
+                    throw new NullReferenceException("Invoke Global.UseEngine() function first to setup the backend and device.");
+                }
+
+                return _backend;
+            }
+        }
 
         internal static ActivationFunc ActFunc = null;
 
@@ -16,7 +30,7 @@ namespace SiaNet
 
         public static void UseEngine(IBackend backend, DeviceType deviceType, bool cudnn = false)
         {
-            Backend = backend;
+            _backend = backend;
             ActFunc = backend.GetActFunc();
             if(cudnn && deviceType != DeviceType.CUDA)
             {
@@ -24,7 +38,7 @@ namespace SiaNet
             }
 
             UseCudnn = cudnn;
-            Backend.SetDevice(deviceType);
+            _backend.SetDevice(deviceType);
         }
     }
 }

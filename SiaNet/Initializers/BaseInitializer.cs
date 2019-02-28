@@ -7,7 +7,7 @@ namespace SiaNet.Initializers
 {
     public abstract class BaseInitializer
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         public string Name { get; set; }
 

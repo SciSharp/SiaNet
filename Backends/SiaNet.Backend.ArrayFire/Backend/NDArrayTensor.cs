@@ -11,13 +11,13 @@ namespace SiaNet.Backend.ArrayFire
 
         public NDArrayTensor()
         {
-            K = new ArrayFireBackend();
+            K = new SiaNetBackend();
         }
 
         public NDArrayTensor(NDArray arr)
         {
             InternalTensor = arr;
-            K = new ArrayFireBackend();
+            K = new SiaNetBackend();
         }
 
         public override string Name

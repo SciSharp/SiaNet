@@ -74,6 +74,7 @@ namespace SiaNet.Optimizers
                     param.Data = param.Data - (LearningRate * m_cap / (K.Sqrt(v_cap) + Epsilon));
                 }
 
+                //param.Data.Print();
                 param.ApplyConstraint();
             }
         }

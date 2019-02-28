@@ -10,7 +10,7 @@ namespace SiaNet.Layers
 {
     public abstract class BaseLayer
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         [NonSerialized]
         public Dictionary<string, Parameter> Params;

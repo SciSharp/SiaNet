@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SiaNet.Backend.CNTKLib</AssemblyName>
     <RootNamespace>SiaNet.Backend.CNTKLib</RootNamespace>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

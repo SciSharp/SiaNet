@@ -8,7 +8,7 @@ namespace SiaNet.Data
 {
     public class DataFrame
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         internal Tensor UnderlayingTensor;
 

@@ -56,7 +56,7 @@ namespace SiaNet.Layers
             if (UseBias)
             {
                 bias = BuildParam("b", new long[] { 1, Dim }, x.ElementType, BiasInitializer, BiasConstraint, BiasRegularizer);
-                Output += bias.Data;
+                Output = Output + bias.Data;
             }
 
             if (Act != null)

@@ -5,19 +5,19 @@ using System.Text;
 
 namespace SiaNet.Backend.CNTKLib
 {
-    public class CNTKTensor : Tensor
+    public class NDArrayTensor : Tensor
     {
         public CNTK.Function InternalTensor;
 
-        public CNTKTensor()
+        public NDArrayTensor()
         {
-            K = new CNTKBackend();
+            K = new SiaNetBackend();
         }
 
-        public CNTKTensor(CNTK.Function arr)
+        public NDArrayTensor(CNTK.Function arr)
         {
             InternalTensor = arr;
-            K = new CNTKBackend();
+            K = new SiaNetBackend();
         }
 
         public override string Name

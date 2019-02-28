@@ -7,7 +7,7 @@ namespace SiaNet.Regularizers
 {
     public abstract class BaseRegularizer
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         public string Name { get; set; }
 

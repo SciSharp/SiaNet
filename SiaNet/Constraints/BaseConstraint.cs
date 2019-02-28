@@ -7,7 +7,7 @@ namespace SiaNet.Constraints
 {
     public abstract class BaseConstraint
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         public abstract Tensor Call(Tensor w);
     }

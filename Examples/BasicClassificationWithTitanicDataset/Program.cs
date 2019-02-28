@@ -15,7 +15,7 @@ namespace BasicClassificationWithTitanicDataset
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(ArrayFireBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
 
             var dataset = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
@@ -25,10 +25,10 @@ namespace BasicClassificationWithTitanicDataset
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(64, ActType.ReLU));
             model.Add(new Dense(32, ActType.ReLU));
-            model.Add(new Dense(1, ActType.ReLU));
+            model.Add(new Dense(1, ActType.Sigmoid));
             
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
+            model.Compile(OptimizerType.RMSprop, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Perform training with train and val dataset
             model.Train(train, epochs: 25, batchSize: 32, val: val);

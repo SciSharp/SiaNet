@@ -13,7 +13,7 @@ namespace SiaNet.Metrics
 
         }
 
-        public override Tensor Call(Tensor preds, Tensor labels)
+        public override Tensor Calc(Tensor preds, Tensor labels)
         {
             preds = K.Clip(preds, 0, 1);
             var r = K.EqualTo(K.Round(preds), labels);

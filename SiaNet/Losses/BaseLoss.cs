@@ -7,7 +7,7 @@ namespace SiaNet.Losses
 {
     public abstract class BaseLoss
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         public string Name { get; set; }
 

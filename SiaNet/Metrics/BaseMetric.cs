@@ -7,7 +7,7 @@ namespace SiaNet.Metrics
 {
     public abstract class BaseMetric
     {
-        internal IBackend K = Global.Backend;
+        internal IBackend K = Global.CurrentBackend;
 
         public string Name { get; set; }
 
@@ -16,7 +16,7 @@ namespace SiaNet.Metrics
             Name = name;
         }
 
-        public abstract Tensor Call(Tensor Tensor, Tensor labels);
+        public abstract Tensor Calc(Tensor Tensor, Tensor labels);
 
         public static BaseMetric Get(MetricType metricType)
         {

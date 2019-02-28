@@ -1,6 +1,5 @@
 ﻿using System;
 using SiaNet;
-using SiaNet.Backend.ArrayFire;
 using SiaNet.Data;
 using SiaNet.Engine;
 using SiaNet.Initializers;
@@ -13,7 +12,7 @@ namespace GettingStarted
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(ArrayFireBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
 
             //Prep Data
             var (x, y) = PrepDataset();
@@ -24,20 +23,20 @@ namespace GettingStarted
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(4, ActType.ReLU));
             model.Add(new Dense(2, ActType.ReLU));
-            model.Add(new Dense(1, ActType.ReLU));
+            model.Add(new Dense(1, ActType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Train for 100 epoch with batch size of 2
-            model.Train(trainSet, 100, 4);
+            model.Train(trainSet, 25, 4);
 
             //Create prediction data to evaluate
             DataFrame2D predX = new DataFrame2D(2);
-            predX.Load(1, 0, 1, 1); //Result should be 1 and 0
+            predX.Load(0, 0, 0, 1); //Result should be 0 and 1
 
             var rawPred = model.Predict(predX);
-
+            Global.CurrentBackend.Round(rawPred).Print();
             Console.ReadLine();
         }
 
