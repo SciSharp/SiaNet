@@ -1,4 +1,5 @@
 ﻿using SiaNet.Engine;
+using SiaNet.Engine.Layers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -533,6 +534,11 @@ namespace SiaNet.Backend.TensorFlowLib
         }
 
         public Tensor Var(Tensor x, params int[] dim)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActivationFunc GetActFunc()
         {
             throw new NotImplementedException();
         }

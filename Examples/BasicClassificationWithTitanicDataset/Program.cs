@@ -6,6 +6,7 @@ using SiaNet;
 using SiaNet.Layers;
 using SiaNet.Regularizers;
 using SiaNet.Engine;
+using SiaNet.Backend.ArrayFire;
 
 namespace BasicClassificationWithTitanicDataset
 {
@@ -14,8 +15,8 @@ namespace BasicClassificationWithTitanicDataset
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.SetBackend(SiaNetBackend.ArrayFire);
-            Global.UseDevice(DeviceType.Default);
+            Global.UseEngine(ArrayFireBackend.Instance, DeviceType.CPU);
+
             var dataset = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
             var (train, val) = dataset.Split(0.25);

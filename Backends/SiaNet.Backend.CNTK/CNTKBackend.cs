@@ -1,5 +1,6 @@
 ﻿using CNTK;
 using SiaNet.Engine;
+using SiaNet.Engine.Layers;
 using System;
 using System.Linq;
 using C = CNTK.CNTKLib;
@@ -594,6 +595,11 @@ namespace SiaNet.Backend.CNTKLib
         }
 
         public Tensor Var(Tensor x, params int[] dim)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActivationFunc GetActFunc()
         {
             throw new NotImplementedException();
         }

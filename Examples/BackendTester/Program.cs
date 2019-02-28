@@ -1,7 +1,7 @@
 ﻿using SiaNet;
 using SiaNet.Backend.TensorSharp;
-using SiaNet.Data;
 using SiaNet.Engine;
+using SiaNet.Initializers;
 using System;
 
 namespace BackendTester
@@ -10,11 +10,9 @@ namespace BackendTester
     {
         static void Main(string[] args)
         {
-            Global.SetBackend(SiaNetBackend.ArrayFire);
-            var K = Global.Backend;
-            var x = K.CreateVariable(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, new long[] { 3, 3 });
-
-            K.Print(x.SliceCols(2, 2));
+            Global.UseEngine(TensorSharpBackend.Instance, DeviceType.CPU);
+            Constant init = new Constant(3);
+            var tensor = init.Operator(3, 3);
         }
     }
 }

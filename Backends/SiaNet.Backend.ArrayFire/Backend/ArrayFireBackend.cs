@@ -5,6 +5,7 @@ using System.Text;
 using System.Linq;
 using SiaNet.Backend.ArrayFire.Interop;
 using System.Drawing;
+using SiaNet.Engine.Layers;
 
 namespace SiaNet.Backend.ArrayFire
 {
@@ -14,6 +15,14 @@ namespace SiaNet.Backend.ArrayFire
 
         public ArrayFireBackend()
         {
+        }
+
+        public static ArrayFireBackend Instance
+        {
+            get
+            {
+                return new ArrayFireBackend();
+            }
         }
 
         private NDArray In(Tensor x)
@@ -807,6 +816,11 @@ namespace SiaNet.Backend.ArrayFire
         public Array GetArray(Tensor x)
         {
             return Data.GetData<float>(In(x)).ToArray();
+        }
+
+        public ActivationFunc GetActFunc()
+        {
+            return new ArrayFireActivations(this);
         }
     }
 }

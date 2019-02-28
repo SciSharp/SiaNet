@@ -10,8 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Backends\SiaNet.Backend.ArrayFire\SiaNet.Backend.ArrayFire.csproj" />
-    <ProjectReference Include="..\Backends\SiaNet.Backend.TensorSharp\SiaNet.Backend.TensorSharp.csproj" />
     <ProjectReference Include="..\SiaNet.Engine\SiaNet.Engine.csproj" />
   </ItemGroup>
 

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Backends\SiaNet.Backend.ArrayFire\SiaNet.Backend.ArrayFire.csproj" />
     <ProjectReference Include="..\..\SiaNet\SiaNet.csproj" />
   </ItemGroup>
 

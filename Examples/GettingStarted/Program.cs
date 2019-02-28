@@ -1,5 +1,6 @@
 ﻿using System;
 using SiaNet;
+using SiaNet.Backend.ArrayFire;
 using SiaNet.Data;
 using SiaNet.Engine;
 using SiaNet.Initializers;
@@ -12,8 +13,7 @@ namespace GettingStarted
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.SetBackend(SiaNetBackend.ArrayFire);
-            Global.UseDevice(DeviceType.CPU);
+            Global.UseEngine(ArrayFireBackend.Instance, DeviceType.CPU);
 
             //Prep Data
             var (x, y) = PrepDataset();

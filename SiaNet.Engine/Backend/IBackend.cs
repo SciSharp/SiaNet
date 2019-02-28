@@ -1,4 +1,5 @@
 ﻿using SiaNet.Engine;
+using SiaNet.Engine.Layers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -232,6 +233,8 @@ namespace SiaNet.Engine
         Array GetArray(Tensor x);
 
         void Dispose(Tensor x);
+
+        ActivationFunc GetActFunc();
         #endregion
     }
 }

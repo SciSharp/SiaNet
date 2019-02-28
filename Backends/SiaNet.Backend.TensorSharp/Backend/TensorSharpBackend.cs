@@ -4,12 +4,21 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Drawing;
+using SiaNet.Engine.Layers;
 
 namespace SiaNet.Backend.TensorSharp
 {
     public class TensorSharpBackend : IBackend
     {
         int counter = 0;
+
+        public static TensorSharpBackend Instance
+        {
+            get
+            {
+                return new TensorSharpBackend();
+            }
+        }
 
         private NDArray In(Tensor x)
         {
@@ -657,6 +666,11 @@ namespace SiaNet.Backend.TensorSharp
         public Array GetArray(Tensor x)
         {
             return In(x).ToArray();
+        }
+
+        public ActivationFunc GetActFunc()
+        {
+            return new TensorSharpActivations(this);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SiaNet;
+using SiaNet.Backend.ArrayFire;
 using SiaNet.Data;
 using SiaNet.Engine;
 using SiaNet.Layers;
@@ -11,8 +12,7 @@ namespace BostonHousingRegressionExample
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.SetBackend(SiaNetBackend.ArrayFire);
-            Global.UseDevice(DeviceType.CPU);
+            Global.UseEngine(ArrayFireBackend.Instance, DeviceType.CPU);
 
             //Load Train and Test CSV data
             var train = LoadTrain("./train.csv");
