@@ -1,5 +1,7 @@
 `![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
-[![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) [![Join the chat at https://gitter.im/sia-cog/SiaNet](https://badges.gitter.im/sia-cog/SiaNet.svg)](https://gitter.im/sia-cog/SiaNet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) 
+
+[<img src="https://img.shields.io/badge/slack-@siadroid/npp-green.svg?logo=slack">](https://siadroid.slack.com/messages/CGL4QULPM)
 
 # A C# deep learning library
 
