@@ -12,7 +12,7 @@ namespace BostonHousingRegressionExample
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.TensorSharp.SiaNetBackend.Instance, DeviceType.CPU);
 
             //Load Train and Test CSV data
             var ds = LoadTrain("./train.csv");
@@ -22,15 +22,15 @@ namespace BostonHousingRegressionExample
             //Build Model
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
-            model.Add(new Dense(64, ActType.ReLU));
-            model.Add(new Dense(32, ActType.ReLU));
-            model.Add(new Dense(1, ActType.Sigmoid));
+            model.Add(new Dense(64, activation: ActType.ReLU));
+            model.Add(new Dense(32, activation: ActType.ReLU));
+            model.Add(new Dense(1, activation: ActType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
             model.Compile(OptimizerType.Adam, LossType.MeanSquaredError, MetricType.MAE);
 
             // Train for 100 epoch with batch size of 32
-            model.Train(train, 100, 32, val);
+            model.Train(train, 100, 32, test);
 
             Console.ReadLine();
         }
@@ -39,7 +39,6 @@ namespace BostonHousingRegressionExample
         {
             Console.WriteLine("Epoch: {0}, Loss: {1}, Metric: {2}, Val_Loss: {3}, Val_Metric: {4}", e.Epoch, e.Loss, e.Metric, e.ValidationLoss, e.ValidationMetric);
         }
-
 
         public static DataFrameIter LoadTrain(string filename)
         {

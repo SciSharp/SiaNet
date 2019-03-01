@@ -1,4 +1,4 @@
-`![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
+![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
 [![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) 
 
 [<img src="https://img.shields.io/badge/slack-@siadroid/sianet-green.svg?logo=slack">](https://siadroid.slack.com/messages/CGL4QULPM)

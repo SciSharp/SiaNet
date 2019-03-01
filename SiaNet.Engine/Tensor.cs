@@ -380,5 +380,10 @@ namespace SiaNet.Engine
         {
             K.Dispose(this);
         }
+
+        public virtual void ApplyUpdate(Tensor tensor)
+        {
+            
+        }
     }
 }

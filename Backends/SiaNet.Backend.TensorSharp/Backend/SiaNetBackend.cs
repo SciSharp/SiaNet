@@ -625,7 +625,9 @@ namespace SiaNet.Backend.TensorSharp
 
         public Tensor RandomBernoulli(long[] shape, float p)
         {
-            throw new NotImplementedException();
+            var result = new NDArray(DeviceManager.Current, DType.Float32, shape);
+            TOps.RandomBernoulli(result, new SeedSource(), p);
+            return Out(result);
         }
 
         public Tensor Tile(Tensor x, int n, int axis = 0)

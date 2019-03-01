@@ -61,7 +61,7 @@ namespace SiaNet.Optimizers
                 
                 var m_cap = ms[param.Name] / (1f - (float)Math.Pow(Beta1, iteration));
                 var v_cap = vs[param.Name] / (1f - (float)Math.Pow(Beta2, iteration));
-
+                //m_cap.Print();
                 if (AmsGrad)
                 {
                     Tensor vhat_t = K.Maximum(vhats[param.Name], v_cap);

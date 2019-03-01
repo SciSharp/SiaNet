@@ -73,5 +73,10 @@ namespace SiaNet.Layers
 
             return v;
         }
+
+        public void ApplyUpdate(string name, Parameter p)
+        {
+            this[name] = p;
+        }
     }
 }

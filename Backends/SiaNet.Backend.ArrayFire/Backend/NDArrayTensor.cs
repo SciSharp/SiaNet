@@ -25,5 +25,10 @@ namespace SiaNet.Backend.ArrayFire
             get;
             set;
         }
+
+        public override void ApplyUpdate(Tensor tensor)
+        {
+            this.InternalTensor = ((NDArrayTensor)tensor).InternalTensor;
+        }
     }
 }

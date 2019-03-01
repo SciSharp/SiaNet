@@ -21,15 +21,14 @@ namespace GettingStarted
             //Build model with simple fully connected layers
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
-            model.Add(new Dense(4, ActType.ReLU));
-            model.Add(new Dense(2, ActType.ReLU));
+            model.Add(new Dense(64, ActType.ReLU));
             model.Add(new Dense(1, ActType.Sigmoid));
 
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
+            model.Compile(OptimizerType.SGD, LossType.MeanSquaredError, MetricType.BinaryAccurary);
 
             // Train for 100 epoch with batch size of 2
-            model.Train(trainSet, 25, 4);
+            model.Train(trainSet, 1000, 2);
 
             //Create prediction data to evaluate
             DataFrame2D predX = new DataFrame2D(2);

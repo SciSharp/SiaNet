@@ -88,5 +88,10 @@ namespace SiaNet.Data
 
             return (new DataFrameIter(trainX, trainY), new DataFrameIter(valX, valY));
         }
+
+        public void Shuffle()
+        {
+
+        }
     }
 }
