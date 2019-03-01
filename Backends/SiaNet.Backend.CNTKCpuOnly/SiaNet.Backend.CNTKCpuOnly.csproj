@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\SiaNet.Backend.CNTK\CNTKBackend.cs" Link="CNTKBackend.cs" />
-    <Compile Include="..\SiaNet.Backend.CNTK\CNTKTensor.cs" Link="CNTKTensor.cs" />
+    <Compile Include="..\SiaNet.Backend.CNTK\NDArrayTensor.cs" Link="NDArrayTensor.cs" />
+    <Compile Include="..\SiaNet.Backend.CNTK\SiaNetBackend.cs" Link="SiaNetBackend.cs" />
   </ItemGroup>
 
   <ItemGroup>

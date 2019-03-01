@@ -29,8 +29,8 @@ Ex: WIN,CUDA92,NA - For Cuda 10 with No CuDNN installed on Windows
 # A Basic example
 The below is a classification example with Titanic dataset. Able to reach 75% accuracy within 10 epoch. 
 ```
-//Setup Engine. If using TensorSharp then pass SiaNet.Backend.TensorSharp.SiaNetBackend.Instance. Once other backend is developed you 
-//will be able to use CNTK, TensorFlow and MxNet as well.
+//Setup Engine. If using TensorSharp then pass SiaNet.Backend.TensorSharp.SiaNetBackend.Instance. 
+//Once other backend is ready you will be able to use CNTK, TensorFlow and MxNet as well.
 Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
 
 var dataset = LoadTrain(); //Load train data
