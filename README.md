@@ -3,6 +3,12 @@
 
 [<img src="https://img.shields.io/badge/slack-@siadroid/sianet-green.svg?logo=slack">](https://siadroid.slack.com/messages/CGL4QULPM)
 
+Trello is used to track SiaNet devlopment activities. You are welcome to watch any task and track progress. Suggestion will be put on the wishlist and then will be planned out for development
+
+https://trello.com/b/bLbgQLgy/sianet-development
+
+
+
 # A C# deep learning library
 
 Developing a C# wrapper to help developer easily create and train deep neural network models.
