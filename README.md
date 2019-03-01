@@ -1,5 +1,13 @@
 `![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
-[![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) [![Join the chat at https://gitter.im/sia-cog/SiaNet](https://badges.gitter.im/sia-cog/SiaNet.svg)](https://gitter.im/sia-cog/SiaNet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) 
+
+[<img src="https://img.shields.io/badge/slack-@siadroid/sianet-green.svg?logo=slack">](https://siadroid.slack.com/messages/CGL4QULPM)
+
+Trello is used to track SiaNet devlopment activities. You are welcome to watch any task and track progress. Suggestion will be put on the wishlist and then will be planned out for development
+
+https://trello.com/b/bLbgQLgy/sianet-development
+
+
 
 # A C# deep learning library
 
