@@ -40,7 +40,7 @@ namespace SiaNet.Optimizers
                 LearningRate = LearningRate * (1 / (1 + DecayRate * iteration));
             }
 
-            LearningRate = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, iteration)) / (1f - Math.Pow(Beta1, iteration)));
+            //LearningRate = Convert.ToSingle(LearningRate * Math.Sqrt(1f - Math.Pow(Beta2, iteration)) / (1f - Math.Pow(Beta1, iteration)));
             foreach (var p in layer.Params)
             {
                 var param = p.Value;

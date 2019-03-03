@@ -49,6 +49,9 @@ namespace SiaNet.Layers.Activations
                 case ActType.SoftSign:
                     act = new Softsign();
                     break;
+                case ActType.Linear:
+                    act = new Linear();
+                    break;
                 default:
                     break;
             }
