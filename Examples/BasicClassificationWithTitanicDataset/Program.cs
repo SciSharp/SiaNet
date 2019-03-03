@@ -17,21 +17,20 @@ namespace BasicClassificationWithTitanicDataset
             //Setup Engine
             Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
 
-            var dataset = LoadTrain(); //Load train data
+            var train = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
-            var (train, val) = dataset.Split(0.25);
 
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
+            model.Add(new Dense(128, ActType.ReLU));
             model.Add(new Dense(64, ActType.ReLU));
-            model.Add(new Dense(32, ActType.ReLU));
             model.Add(new Dense(1, ActType.Sigmoid));
             
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.RMSprop, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
+            model.Compile(OptimizerType.Adam, LossType.MeanSquaredError, MetricType.BinaryAccurary);
 
             // Perform training with train and val dataset
-            model.Train(train, epochs: 25, batchSize: 32, val: val);
+            model.Train(train, epochs: 1000, batchSize: 32);
 
             //var prediction = model.Predict(test);
             //TOps.Round(prediction).Print();
@@ -39,7 +38,7 @@ namespace BasicClassificationWithTitanicDataset
 
         private static void Model_EpochEnd(object sender, EpochEndEventArgs e)
         {
-            Console.WriteLine("Epoch: {0}, Loss: {1}, Acc: {2}, Val_Loss: {3}, Val_Acc: {4}", e.Epoch, e.Loss, e.Metric, e.ValidationLoss, e.ValidationMetric);
+            Console.WriteLine("Epoch: {0}, Loss: {1}, Acc: {2}", e.Epoch, e.Loss, e.Metric);
         }
 
         private static DataFrameIter LoadTrain()
