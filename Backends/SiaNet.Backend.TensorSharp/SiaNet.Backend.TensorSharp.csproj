@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -29,10 +29,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Library\ManagedCuda\SiaNet.ManagedCuda.csproj" />
@@ -75,5 +71,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="lib\*.*">
+      <PackagePath>lib/</PackagePath>
+      <Pack>true</Pack>
+    </None>
+  </ItemGroup>
 </Project>
