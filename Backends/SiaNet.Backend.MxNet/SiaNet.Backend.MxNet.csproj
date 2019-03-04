@@ -3,6 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>0.4.1</Version>
+    <Authors>Deepak Battini</Authors>
+    <Description>MxNet backend for SiaNet library. Please install SiaNet along with this backend.</Description>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
+    <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>MxNet Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

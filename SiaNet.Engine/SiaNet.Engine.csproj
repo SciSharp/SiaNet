@@ -4,6 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Version>0.4.1</Version>
+    <Authors>Deepak Battini</Authors>
+    <Description>Dependency package for SiaNet and its backends.</Description>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>

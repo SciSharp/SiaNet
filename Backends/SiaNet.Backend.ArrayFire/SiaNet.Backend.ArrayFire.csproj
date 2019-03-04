@@ -6,6 +6,15 @@
     <RootNamespace>SiaNet.Backend.ArrayFire</RootNamespace>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Version>0.4.1</Version>
+    <Authors>Deepak Battini</Authors>
+    <Description>ArrayFire backend for SiaNet library. Please install SiaNet along with this backend.</Description>
+    <Copyright></Copyright>
+    <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>ArrayFire Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
 
   <ItemGroup>

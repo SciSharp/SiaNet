@@ -4,6 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Version>0.4.1</Version>
+    <Authors>Deepak Battini</Authors>
+    <Description>CNTK CPU Only backend for SiaNet library. Please install SiaNet along with this backend.</Description>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
+    <RepositoryType>Git</RepositoryType>
+    <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
+    <PackageTags>CNTK Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

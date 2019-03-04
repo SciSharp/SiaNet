@@ -4,6 +4,21 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Version>0.4.1</Version>
+    <Authors>Deepak Battini</Authors>
+    <Description>Developing a C# wrapper to help developer easily create and train deep neural network models.
+
+Easy to use library, just focus on research
+Multiple backend - ArrayFire (In Progress), TensorSharp (In Progress), CNTK (Not Started), TensorFlow (Not Started), MxNet (Not Started)
+CUDA/ OpenCL support for some of the backends
+Light weight libray, built with .NET standard 2.0
+Code well structured, easy to extend if you would like to extend with new layer, loss, metrics, optimizers, constraints, regularizer</Description>
+    <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright />
+    <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
