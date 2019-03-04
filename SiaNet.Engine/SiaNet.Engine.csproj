@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

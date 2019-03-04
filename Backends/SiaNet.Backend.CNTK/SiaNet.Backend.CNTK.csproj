@@ -14,6 +14,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
     <PackageTags>CNTK Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

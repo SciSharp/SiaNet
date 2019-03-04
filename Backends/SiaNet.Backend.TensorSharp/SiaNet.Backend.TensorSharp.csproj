@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://github.com/deepakkumar1984</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
     <Authors>Deepak Battini</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

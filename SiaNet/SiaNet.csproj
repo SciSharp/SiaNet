@@ -19,6 +19,8 @@ Code well structured, easy to extend if you would like to extend with new layer,
     <RepositoryType>Git</RepositoryType>
     <PackageTags>CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>0.4.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
