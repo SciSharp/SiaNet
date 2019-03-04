@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Library\ManagedCuda\ManagedCuda.csproj" />
+    <ProjectReference Include="..\..\Library\ManagedCuda\SiaNet.ManagedCuda.csproj" />
     <ProjectReference Include="..\..\SiaNet.Engine\SiaNet.Engine.csproj" />
   </ItemGroup>
 

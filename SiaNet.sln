@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{7613
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CpuOps", "Library\CpuOps\CpuOps.vcxproj", "{920E488B-9DDE-4AC0-863D-448645F9A15D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedCuda", "Library\ManagedCuda\ManagedCuda.csproj", "{D54D5F47-4596-49D0-8BB6-57567704E515}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiaNet.ManagedCuda", "Library\ManagedCuda\SiaNet.ManagedCuda.csproj", "{D54D5F47-4596-49D0-8BB6-57567704E515}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackendTester", "Examples\BackendTester\BackendTester.csproj", "{D1577671-72F4-46BF-830E-B0E31342F5C9}"
 EndProject
@@ -43,9 +43,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiaNet.Backend.MxNet", "Backends\SiaNet.Backend.MxNet\SiaNet.Backend.MxNet.csproj", "{4D24CA80-763F-4627-90F9-63BD2D93D8F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiaNet.Backend.MxNet", "Backends\SiaNet.Backend.MxNet\SiaNet.Backend.MxNet.csproj", "{4D24CA80-763F-4627-90F9-63BD2D93D8F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainingWithRandomData", "Examples\TrainingWithRandomData\TrainingWithRandomData.csproj", "{DDB5A65E-7441-45C2-A03E-004BACC5A371}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainingWithRandomData", "Examples\TrainingWithRandomData\TrainingWithRandomData.csproj", "{DDB5A65E-7441-45C2-A03E-004BACC5A371}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

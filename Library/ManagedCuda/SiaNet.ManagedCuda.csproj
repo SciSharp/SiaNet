@@ -5,6 +5,9 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>ManagedCUDAKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyName>SiaNet.ManagedCuda</AssemblyName>
+    <RootNamespace>SiaNet.ManagedCuda</RootNamespace>
+    <Version>0.4.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
