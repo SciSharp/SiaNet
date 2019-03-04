@@ -5,6 +5,7 @@
     <AssemblyName>SiaNet.Backend.CNTKLib</AssemblyName>
     <RootNamespace>SiaNet.Backend.CNTKLib</RootNamespace>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <Version>0.4.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
