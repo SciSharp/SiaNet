@@ -1,3 +1,4 @@
+[![sianet MyGet Build Status](https://www.myget.org/BuildSource/Badge/sianet?identifier=16133a9f-c6e8-4cf1-b68c-1c44d8c2b124)](https://www.myget.org/)
 ![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
 [![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) 
 
