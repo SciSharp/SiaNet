@@ -22,10 +22,10 @@ namespace BostonHousingRegressionExample
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(64, activation: ActType.ReLU));
             model.Add(new Dense(32, activation: ActType.ReLU));
-            model.Add(new Dense(1, activation: ActType.Sigmoid));
+            model.Add(new Dense(1, activation: ActType.ReLU));
 
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.Adam, LossType.MeanSquaredError, MetricType.MAE);
+            model.Compile(OptimizerType.Adagrad, LossType.MeanSquaredError, MetricType.MAE);
 
             // Train for 100 epoch with batch size of 32
             model.Train(ds, 25, 32);
@@ -43,7 +43,6 @@ namespace BostonHousingRegressionExample
             DataFrame2D data = DataFrame2D.ReadCsv(filename, true);
             var x = data[1, 13];
             var y = data[14];
-
             return new DataFrameIter(x, y);
         }
 

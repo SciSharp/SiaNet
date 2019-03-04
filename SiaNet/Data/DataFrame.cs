@@ -45,6 +45,7 @@ namespace SiaNet.Data
                 }
 
                 DataFrame frame = new DataFrame();
+                
                 var count = end - start + 1;
                 if (count > 0)
                     frame.ToFrame(UnderlayingTensor.SliceCols(start, end));
