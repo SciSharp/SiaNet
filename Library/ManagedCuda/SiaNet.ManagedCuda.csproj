@@ -7,7 +7,7 @@
     <AssemblyOriginatorKeyFile>ManagedCUDAKey.snk</AssemblyOriginatorKeyFile>
     <AssemblyName>SiaNet.ManagedCuda</AssemblyName>
     <RootNamespace>SiaNet.ManagedCuda</RootNamespace>
-    <Version>0.4.1</Version>
+    <Version>0.4.1.1</Version>
     <Authors>Deepak Battini</Authors>
     <Description>Dependency package for TensorSharp Backend</Description>
     <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>

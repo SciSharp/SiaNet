@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Version>0.4.1</Version>
+    <Version>0.4.1.1</Version>
     <Authors>Deepak Battini</Authors>
     <Description>CNTK CPU Only backend for SiaNet library. Please install SiaNet along with this backend.</Description>
     <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>

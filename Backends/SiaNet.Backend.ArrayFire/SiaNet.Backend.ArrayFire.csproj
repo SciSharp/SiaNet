@@ -5,7 +5,7 @@
     <AssemblyName>SiaNet.Backend.ArrayFire</AssemblyName>
     <RootNamespace>SiaNet.Backend.ArrayFire</RootNamespace>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Version>0.4.1</Version>
+    <Version>0.4.1.1</Version>
     <Authors>Deepak Battini</Authors>
     <Description>ArrayFire backend for SiaNet library. Please install SiaNet along with this backend.</Description>
     <Copyright></Copyright>

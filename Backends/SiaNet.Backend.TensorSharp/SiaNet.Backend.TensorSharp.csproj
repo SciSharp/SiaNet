@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Platforms>AnyCPU;x64;x86</Platforms>
-    <Version>0.4.1</Version>
+    <Version>0.4.1.1</Version>
     <PackageTags>TensorSharp Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
     <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
