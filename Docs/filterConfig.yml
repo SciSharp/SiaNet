@@ -1,0 +1,9 @@
+apiRules:
+
+- exclude:
+    uidRegex: '^SiaNet.Engine.BackendUtil'
+    type: Class
+
+- exclude:
+    uidRegex: '^System.Object'
+    type: Type

@@ -3,7 +3,7 @@
     using SiaNet.Engine;
 
     /// <summary>
-    /// 
+    /// Base class for Constraints
     /// </summary>
     public abstract class BaseConstraint
     {
