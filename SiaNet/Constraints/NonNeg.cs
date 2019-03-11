@@ -5,13 +5,19 @@ using System.Text;
 
 namespace SiaNet.Constraints
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class NonNeg : BaseConstraint
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public NonNeg()
         {
         }
 
-        public override Tensor Call(Tensor w)
+        internal override Tensor Call(Tensor w)
         {
             w = w * (w >= 0);
             return w;

@@ -7,14 +7,21 @@ namespace SiaNet.Constraints
 {
     public class UnitNorm : BaseConstraint
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public int Axis;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="axis"></param>
         public UnitNorm(int axis = 0)
         {
             Axis = axis;
         }
 
-        public override Tensor Call(Tensor w)
+        internal override Tensor Call(Tensor w)
         {
             return w / (K.Epsilon() + K.Sqrt(K.Sum(K.Square(w), Axis)));
         }

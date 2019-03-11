@@ -1,14 +1,14 @@
-﻿using SiaNet.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiaNet.Constraints
+﻿namespace SiaNet.Constraints
 {
+    using SiaNet.Engine;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseConstraint
     {
         internal IBackend K = Global.CurrentBackend;
 
-        public abstract Tensor Call(Tensor w);
+        internal abstract Tensor Call(Tensor w);
     }
 }

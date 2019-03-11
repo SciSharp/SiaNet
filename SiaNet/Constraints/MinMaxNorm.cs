@@ -5,10 +5,19 @@ using System.Text;
 
 namespace SiaNet.Constraints
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MinMaxNorm : BaseConstraint
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public float MinValue { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public float MaxValue { get; set; }
 
         public float Rate { get; set; }
@@ -23,7 +32,7 @@ namespace SiaNet.Constraints
             Axis = axis;
         }
 
-        public override Tensor Call(Tensor w)
+        internal override Tensor Call(Tensor w)
         {
             Tensor norms = null;
             norms = K.Sqrt(K.Sum(K.Square(w), (int)Axis));

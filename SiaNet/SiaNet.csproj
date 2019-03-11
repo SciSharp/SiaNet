@@ -24,6 +24,10 @@ Code well structured, easy to extend if you would like to extend with new layer,
     <FileVersion>0.4.1.1</FileVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\DeepakProj\git\SiaNet\SiaNet\SiaNet.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Data\Parser\MNISTParser.cs" />
   </ItemGroup>
@@ -38,6 +42,10 @@ Code well structured, easy to extend if you would like to extend with new layer,
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="12.1.2" />
+    <PackageReference Include="docfx.console" Version="2.40.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
   </ItemGroup>
