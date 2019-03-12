@@ -1,32 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SiaNet.Engine;
-using SiaNet.Layers;
-
-namespace SiaNet.Optimizers
+﻿namespace SiaNet.Optimizers
 {
+    using SiaNet.Engine;
+    using SiaNet.Layers;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class BaseOptimizer 
     {
         internal IBackend K = Global.CurrentBackend;
 
+        /// <summary>
+        /// Gets or sets the name of the optimizer function
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the learning rate for the optimizer.
+        /// </summary>
+        /// <value>
+        /// The learning rate.
+        /// </value>
         public float LearningRate { get; set; }
 
+        /// <summary>
+        /// Parameter that accelerates SGD in the relevant direction and dampens oscillations.
+        /// </summary>
+        /// <value>
+        /// The momentum.
+        /// </value>
         public float Momentum { get; set; }
 
+        /// <summary>
+        /// Learning rate decay over each update.
+        /// </summary>
+        /// <value>
+        /// The decay rate.
+        /// </value>
         public float DecayRate { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseOptimizer"/> class.
+        /// </summary>
+        /// <param name="lr">The lr.</param>
+        /// <param name="name">The name.</param>
         public BaseOptimizer(float lr, string name)
         {
             LearningRate = lr;
             Name = name;
         }
 
-        public abstract void Update(int iteration, BaseLayer layer);
+        /// <summary>
+        /// Updates the specified iteration.
+        /// </summary>
+        /// <param name="iteration">The iteration.</param>
+        /// <param name="layer">The layer.</param>
+        internal abstract void Update(int iteration, BaseLayer layer);
 
-        public static BaseOptimizer Get(OptimizerType optimizerType)
+        /// <summary>
+        /// Gets the specified optimizer type.
+        /// </summary>
+        /// <param name="optimizerType">Type of the optimizer.</param>
+        /// <returns></returns>
+        internal static BaseOptimizer Get(OptimizerType optimizerType)
         {
             BaseOptimizer opt = null;
             switch (optimizerType)

@@ -1,25 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using SiaNet.Engine;
-using SiaNet.Layers;
-
-namespace SiaNet.Optimizers
+﻿namespace SiaNet.Optimizers
 {
+    using System;
+    using System.Collections.Generic;
+    using SiaNet.Engine;
+    using SiaNet.Layers;
+
+    /// <summary>
+    /// Adam is an optimization algorithm that can used instead of the classical stochastic gradient descent procedure to update network weights iterative based in training data.
+    /// <para>
+    /// Adam was presented by Diederik Kingma from OpenAI and Jimmy Ba from the University of Toronto in their 2015 ICLR paper(poster) titled “Adam: A Method for Stochastic Optimization“. 
+    /// I will quote liberally from their paper in this post, unless stated otherwise.
+    /// </para>
+    /// </summary>
+    /// <seealso cref="SiaNet.Optimizers.BaseOptimizer" />
     public class Adam : BaseOptimizer
     {
+        /// <summary>
+        /// Whether to apply the AMSGrad variant of this algorithm from the paper "On the Convergence of Adam and Beyond".
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [ams grad]; otherwise, <c>false</c>.
+        /// </value>
         public bool AmsGrad { get; set; }
 
+        /// <summary>
+        /// Gets or sets the beta 1 value.
+        /// </summary>
+        /// <value>
+        /// The beta1.
+        /// </value>
         public float Beta1 { get; set; }
 
+        /// <summary>
+        /// Gets or sets the beta 2 value.
+        /// </summary>
+        /// <value>
+        /// The beta2.
+        /// </value>
         public float Beta2 { get; set; }
 
+        /// <summary>
+        /// Fuzz factor. Lowest float value but > 0
+        /// </summary>
+        /// <value>
+        /// The epsilon.
+        /// </value>
         public float Epsilon { get; set; }
 
         private Dictionary<string, Tensor> ms;
         private Dictionary<string, Tensor> vs;
         private Dictionary<string, Tensor> vhats;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Adam"/> class.
+        /// </summary>
+        /// <param name="lr">Initial learning rate for the optimizer</param>
+        /// <param name="beta_1">The beta 1 value.</param>
+        /// <param name="beta_2">The beta 2 value.</param>
+        /// <param name="decayRate">Learning rate decay over each update.</param>
+        /// <param name="epsilon">Fuzz factor. Lowest float value but > 0.</param>
+        /// <param name="amsgrad">Whether to apply the AMSGrad variant of this algorithm from the paper "On the Convergence of Adam and Beyond".</param>
         public Adam(float lr = 0.01f, float beta_1 = 0.9f, float beta_2 = 0.999f, float decayRate = 0, float epsilon = 1e-08f, bool amsgrad = false)
             : base(lr, "adam")
         {
@@ -33,7 +73,7 @@ namespace SiaNet.Optimizers
             vhats = new Dictionary<string, Tensor>();
         }
 
-        public override void Update(int iteration, BaseLayer layer)
+        internal override void Update(int iteration, BaseLayer layer)
         {
             if (DecayRate > 0)
             {

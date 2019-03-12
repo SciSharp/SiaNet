@@ -5,6 +5,10 @@ using System.Text;
 
 namespace SiaNet.Losses
 {
+    /// <summary>
+    /// Squared Hinge Loss function is a variant of Hinge Loss, it solves the problem in hinge loss that the derivative of hinge loss has a discontinuity at Pred * True = 1
+    /// </summary>
+    /// <seealso cref="SiaNet.Losses.BaseLoss" />
     public class SquaredHinge : BaseLoss
     {
         public SquaredHinge()

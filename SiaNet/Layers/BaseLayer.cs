@@ -60,7 +60,7 @@ namespace SiaNet.Layers
             if (!Params.ContainsKey(name))
             {
                 v = new Parameter(name, elementType, shape);
-                v.Data = initializer.Operator(shape);
+                v.Data = initializer.Generate(shape);
                 v.SetConstraint(constraint);
                 v.SetRegularizer(regularizer);
                 if(trainable)

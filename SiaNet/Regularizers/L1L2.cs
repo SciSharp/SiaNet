@@ -1,19 +1,30 @@
-﻿using SiaNet.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiaNet.Regularizers
+﻿namespace SiaNet.Regularizers
 {
+    using SiaNet.Engine;
+
+    /// <summary>
+    /// Combined regularizer for Lasso and Ridge regression technique
+    /// </summary>
+    /// <seealso cref="SiaNet.Regularizers.BaseRegularizer" />
     public class L1L2 : BaseRegularizer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="L1L2"/> class.
+        /// </summary>
+        /// <param name="l1">The l1 value. Default to 0.01</param>
+        /// <param name="l2">The l2 value. Default to 0.01</param>
         public L1L2(float l1 = 0.01f, float l2 = 0.01f)
             : base(l1, l2)
         {
             Name = "L1L2";
         }
 
-        public override float Call(Tensor x)
+        /// <summary>
+        /// Calls the specified x.
+        /// </summary>
+        /// <param name="x">The x.</param>
+        /// <returns></returns>
+        internal override float Call(Tensor x)
         {
             float result = 0;
             if (L1 > 0)
@@ -29,7 +40,12 @@ namespace SiaNet.Regularizers
             return result;
         }
 
-        public override Tensor CalcGrad(Tensor x)
+        /// <summary>
+        /// Calculates the grad.
+        /// </summary>
+        /// <param name="x">The x.</param>
+        /// <returns></returns>
+        internal override Tensor CalcGrad(Tensor x)
         {
             Tensor grad = null;
 
