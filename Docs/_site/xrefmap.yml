@@ -3251,58 +3251,58 @@ references:
   isSpec: "True"
   fullName: SiaNet.History.Add
   nameWithType: History.Add
-- uid: SiaNet.History.TrainLoss
-  name: TrainLoss
-  href: api/SiaNet.History.html#SiaNet_History_TrainLoss
-  commentId: P:SiaNet.History.TrainLoss
-  fullName: SiaNet.History.TrainLoss
-  nameWithType: History.TrainLoss
-- uid: SiaNet.History.TrainLoss*
-  name: TrainLoss
-  href: api/SiaNet.History.html#SiaNet_History_TrainLoss_
-  commentId: Overload:SiaNet.History.TrainLoss
+- uid: SiaNet.History.TrainLosses
+  name: TrainLosses
+  href: api/SiaNet.History.html#SiaNet_History_TrainLosses
+  commentId: P:SiaNet.History.TrainLosses
+  fullName: SiaNet.History.TrainLosses
+  nameWithType: History.TrainLosses
+- uid: SiaNet.History.TrainLosses*
+  name: TrainLosses
+  href: api/SiaNet.History.html#SiaNet_History_TrainLosses_
+  commentId: Overload:SiaNet.History.TrainLosses
   isSpec: "True"
-  fullName: SiaNet.History.TrainLoss
-  nameWithType: History.TrainLoss
-- uid: SiaNet.History.TrainMetric
-  name: TrainMetric
-  href: api/SiaNet.History.html#SiaNet_History_TrainMetric
-  commentId: P:SiaNet.History.TrainMetric
-  fullName: SiaNet.History.TrainMetric
-  nameWithType: History.TrainMetric
-- uid: SiaNet.History.TrainMetric*
-  name: TrainMetric
-  href: api/SiaNet.History.html#SiaNet_History_TrainMetric_
-  commentId: Overload:SiaNet.History.TrainMetric
+  fullName: SiaNet.History.TrainLosses
+  nameWithType: History.TrainLosses
+- uid: SiaNet.History.TrainMetrics
+  name: TrainMetrics
+  href: api/SiaNet.History.html#SiaNet_History_TrainMetrics
+  commentId: P:SiaNet.History.TrainMetrics
+  fullName: SiaNet.History.TrainMetrics
+  nameWithType: History.TrainMetrics
+- uid: SiaNet.History.TrainMetrics*
+  name: TrainMetrics
+  href: api/SiaNet.History.html#SiaNet_History_TrainMetrics_
+  commentId: Overload:SiaNet.History.TrainMetrics
   isSpec: "True"
-  fullName: SiaNet.History.TrainMetric
-  nameWithType: History.TrainMetric
-- uid: SiaNet.History.ValLoss
-  name: ValLoss
-  href: api/SiaNet.History.html#SiaNet_History_ValLoss
-  commentId: P:SiaNet.History.ValLoss
-  fullName: SiaNet.History.ValLoss
-  nameWithType: History.ValLoss
-- uid: SiaNet.History.ValLoss*
-  name: ValLoss
-  href: api/SiaNet.History.html#SiaNet_History_ValLoss_
-  commentId: Overload:SiaNet.History.ValLoss
+  fullName: SiaNet.History.TrainMetrics
+  nameWithType: History.TrainMetrics
+- uid: SiaNet.History.ValLosses
+  name: ValLosses
+  href: api/SiaNet.History.html#SiaNet_History_ValLosses
+  commentId: P:SiaNet.History.ValLosses
+  fullName: SiaNet.History.ValLosses
+  nameWithType: History.ValLosses
+- uid: SiaNet.History.ValLosses*
+  name: ValLosses
+  href: api/SiaNet.History.html#SiaNet_History_ValLosses_
+  commentId: Overload:SiaNet.History.ValLosses
   isSpec: "True"
-  fullName: SiaNet.History.ValLoss
-  nameWithType: History.ValLoss
-- uid: SiaNet.History.ValMetric
-  name: ValMetric
-  href: api/SiaNet.History.html#SiaNet_History_ValMetric
-  commentId: P:SiaNet.History.ValMetric
-  fullName: SiaNet.History.ValMetric
-  nameWithType: History.ValMetric
-- uid: SiaNet.History.ValMetric*
-  name: ValMetric
-  href: api/SiaNet.History.html#SiaNet_History_ValMetric_
-  commentId: Overload:SiaNet.History.ValMetric
+  fullName: SiaNet.History.ValLosses
+  nameWithType: History.ValLosses
+- uid: SiaNet.History.ValMetrics
+  name: ValMetrics
+  href: api/SiaNet.History.html#SiaNet_History_ValMetrics
+  commentId: P:SiaNet.History.ValMetrics
+  fullName: SiaNet.History.ValMetrics
+  nameWithType: History.ValMetrics
+- uid: SiaNet.History.ValMetrics*
+  name: ValMetrics
+  href: api/SiaNet.History.html#SiaNet_History_ValMetrics_
+  commentId: Overload:SiaNet.History.ValMetrics
   isSpec: "True"
-  fullName: SiaNet.History.ValMetric
-  nameWithType: History.ValMetric
+  fullName: SiaNet.History.ValMetrics
+  nameWithType: History.ValMetrics
 - uid: SiaNet.Initializers
   name: SiaNet.Initializers
   href: api/SiaNet.Initializers.html
@@ -8298,28 +8298,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Parameter.SetRegularizer
   nameWithType: Parameter.SetRegularizer
-- uid: SiaNet.ParamValidator
-  name: ParamValidator
-  href: api/SiaNet.ParamValidator.html
-  commentId: T:SiaNet.ParamValidator
-  fullName: SiaNet.ParamValidator
-  nameWithType: ParamValidator
-- uid: SiaNet.ParamValidator.Validate(System.String,System.String,System.String[])
-  name: Validate(String, String, String[])
-  href: api/SiaNet.ParamValidator.html#SiaNet_ParamValidator_Validate_System_String_System_String_System_String___
-  commentId: M:SiaNet.ParamValidator.Validate(System.String,System.String,System.String[])
-  name.vb: Validate(String, String, String())
-  fullName: SiaNet.ParamValidator.Validate(System.String, System.String, System.String[])
-  fullName.vb: SiaNet.ParamValidator.Validate(System.String, System.String, System.String())
-  nameWithType: ParamValidator.Validate(String, String, String[])
-  nameWithType.vb: ParamValidator.Validate(String, String, String())
-- uid: SiaNet.ParamValidator.Validate*
-  name: Validate
-  href: api/SiaNet.ParamValidator.html#SiaNet_ParamValidator_Validate_
-  commentId: Overload:SiaNet.ParamValidator.Validate
-  isSpec: "True"
-  fullName: SiaNet.ParamValidator.Validate
-  nameWithType: ParamValidator.Validate
 - uid: SiaNet.Regularizers
   name: SiaNet.Regularizers
   href: api/SiaNet.Regularizers.html
@@ -8529,32 +8507,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Sequential.LoadModel
   nameWithType: Sequential.LoadModel
-- uid: SiaNet.Sequential.LossFn
-  name: LossFn
-  href: api/SiaNet.Sequential.html#SiaNet_Sequential_LossFn
-  commentId: P:SiaNet.Sequential.LossFn
-  fullName: SiaNet.Sequential.LossFn
-  nameWithType: Sequential.LossFn
-- uid: SiaNet.Sequential.LossFn*
-  name: LossFn
-  href: api/SiaNet.Sequential.html#SiaNet_Sequential_LossFn_
-  commentId: Overload:SiaNet.Sequential.LossFn
-  isSpec: "True"
-  fullName: SiaNet.Sequential.LossFn
-  nameWithType: Sequential.LossFn
-- uid: SiaNet.Sequential.MetricFn
-  name: MetricFn
-  href: api/SiaNet.Sequential.html#SiaNet_Sequential_MetricFn
-  commentId: P:SiaNet.Sequential.MetricFn
-  fullName: SiaNet.Sequential.MetricFn
-  nameWithType: Sequential.MetricFn
-- uid: SiaNet.Sequential.MetricFn*
-  name: MetricFn
-  href: api/SiaNet.Sequential.html#SiaNet_Sequential_MetricFn_
-  commentId: Overload:SiaNet.Sequential.MetricFn
-  isSpec: "True"
-  fullName: SiaNet.Sequential.MetricFn
-  nameWithType: Sequential.MetricFn
 - uid: SiaNet.Sequential.OnBatchEnd(System.Int32,System.Int32,System.Single,System.Single)
   name: OnBatchEnd(Int32, Int32, Single, Single)
   href: api/SiaNet.Sequential.html#SiaNet_Sequential_OnBatchEnd_System_Int32_System_Int32_System_Single_System_Single_
@@ -8620,19 +8572,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Sequential.OnTrainingEnd
   nameWithType: Sequential.OnTrainingEnd
-- uid: SiaNet.Sequential.OptimizerFn
-  name: OptimizerFn
-  href: api/SiaNet.Sequential.html#SiaNet_Sequential_OptimizerFn
-  commentId: P:SiaNet.Sequential.OptimizerFn
-  fullName: SiaNet.Sequential.OptimizerFn
-  nameWithType: Sequential.OptimizerFn
-- uid: SiaNet.Sequential.OptimizerFn*
-  name: OptimizerFn
-  href: api/SiaNet.Sequential.html#SiaNet_Sequential_OptimizerFn_
-  commentId: Overload:SiaNet.Sequential.OptimizerFn
-  isSpec: "True"
-  fullName: SiaNet.Sequential.OptimizerFn
-  nameWithType: Sequential.OptimizerFn
 - uid: SiaNet.Sequential.Predict(SiaNet.Data.DataFrame)
   name: Predict(DataFrame)
   href: api/SiaNet.Sequential.html#SiaNet_Sequential_Predict_SiaNet_Data_DataFrame_
@@ -8684,25 +8623,6 @@ references:
   commentId: E:SiaNet.Sequential.TrainingEnd
   fullName: SiaNet.Sequential.TrainingEnd
   nameWithType: Sequential.TrainingEnd
-- uid: SiaNet.TensorExtension
-  name: TensorExtension
-  href: api/SiaNet.TensorExtension.html
-  commentId: T:SiaNet.TensorExtension
-  fullName: SiaNet.TensorExtension
-  nameWithType: TensorExtension
-- uid: SiaNet.TensorExtension.ToParameter(SiaNet.Engine.Tensor,System.String)
-  name: ToParameter(Tensor, String)
-  href: api/SiaNet.TensorExtension.html#SiaNet_TensorExtension_ToParameter_SiaNet_Engine_Tensor_System_String_
-  commentId: M:SiaNet.TensorExtension.ToParameter(SiaNet.Engine.Tensor,System.String)
-  fullName: SiaNet.TensorExtension.ToParameter(SiaNet.Engine.Tensor, System.String)
-  nameWithType: TensorExtension.ToParameter(Tensor, String)
-- uid: SiaNet.TensorExtension.ToParameter*
-  name: ToParameter
-  href: api/SiaNet.TensorExtension.html#SiaNet_TensorExtension_ToParameter_
-  commentId: Overload:SiaNet.TensorExtension.ToParameter
-  isSpec: "True"
-  fullName: SiaNet.TensorExtension.ToParameter
-  nameWithType: TensorExtension.ToParameter
 - uid: SiaNet.TrainingEndEventArgs
   name: TrainingEndEventArgs
   href: api/SiaNet.TrainingEndEventArgs.html

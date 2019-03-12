@@ -93,11 +93,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Global_CurrentBackend.md&amp;value=---%0Auid%3A%20SiaNet.Global.CurrentBackend%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L14">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L21">View Source</a>
   </span>
   <a id="SiaNet_Global_CurrentBackend_" data-uid="SiaNet.Global.CurrentBackend*"></a>
   <h4 id="SiaNet_Global_CurrentBackend" data-uid="SiaNet.Global.CurrentBackend">CurrentBackend</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Get the current backend of the SiaNet. Plaese invoke Global.UseEngine method to set the backend.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -114,7 +115,24 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Engine.IBackend.html">IBackend</a></td>
-        <td></td>
+        <td><p>The current backend.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NullReferenceException</span></td>
+        <td><p>Invoke Global.UseEngine() function first to setup the backend and device.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -125,11 +143,22 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Global_UseEngine_SiaNet_Engine_IBackend_SiaNet_Engine_DeviceType_System_Boolean_.md&amp;value=---%0Auid%3A%20SiaNet.Global.UseEngine(SiaNet.Engine.IBackend%2CSiaNet.Engine.DeviceType%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L31">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L57">View Source</a>
   </span>
   <a id="SiaNet_Global_UseEngine_" data-uid="SiaNet.Global.UseEngine*"></a>
   <h4 id="SiaNet_Global_UseEngine_SiaNet_Engine_IBackend_SiaNet_Engine_DeviceType_System_Boolean_" data-uid="SiaNet.Global.UseEngine(SiaNet.Engine.IBackend,SiaNet.Engine.DeviceType,System.Boolean)">UseEngine(IBackend, DeviceType, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Method to set the backend and device type.</p>
+<p>
+Supported Engine: ArrayFire, TensorSharp, CNTK, TensorFlow, MXNet
+</p>
+<p>
+Supported Device: CPU, CUDA, OpenCL
+</p>
+<p>
+Example use:
+<pre><code>Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);</code></pre>
+</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -148,17 +177,36 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.IBackend.html">IBackend</a></td>
         <td><span class="parametername">backend</span></td>
-        <td></td>
+        <td><p>The backend.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Engine.DeviceType.html">DeviceType</a></td>
         <td><span class="parametername">deviceType</span></td>
-        <td></td>
+        <td><p>Type of the device.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">cudnn</span></td>
-        <td></td>
+        <td><p>if set to <code>true</code> [cudnn].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>CuDnn work with CUDA device type</p>
+</td>
       </tr>
     </tbody>
   </table>

@@ -73,7 +73,8 @@
   
   <h1 id="SiaNet_TrainingEndEventArgs" data-uid="SiaNet.TrainingEndEventArgs" class="text-break">Class TrainingEndEventArgs
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Event triggered when the completed model training ends</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -100,11 +101,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_TrainingEndEventArgs__ctor_SiaNet_History_System_Int64_.md&amp;value=---%0Auid%3A%20SiaNet.TrainingEndEventArgs.%23ctor(SiaNet.History%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L82">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L221">View Source</a>
   </span>
   <a id="SiaNet_TrainingEndEventArgs__ctor_" data-uid="SiaNet.TrainingEndEventArgs.#ctor*"></a>
   <h4 id="SiaNet_TrainingEndEventArgs__ctor_SiaNet_History_System_Int64_" data-uid="SiaNet.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)">TrainingEndEventArgs(History, Int64)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.TrainingEndEventArgs.html">TrainingEndEventArgs</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -123,12 +125,14 @@
       <tr>
         <td><a class="xref" href="SiaNet.History.html">History</a></td>
         <td><span class="parametername">history</span></td>
-        <td></td>
+        <td><p>The training history with all epoch losses and metrics for both train and validation dataset.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int64</span></td>
         <td><span class="parametername">duration</span></td>
-        <td></td>
+        <td><p>The total time taken (in millisecond) to finish the model training.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -139,11 +143,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_TrainingEndEventArgs_Duration.md&amp;value=---%0Auid%3A%20SiaNet.TrainingEndEventArgs.Duration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L92">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L243">View Source</a>
   </span>
   <a id="SiaNet_TrainingEndEventArgs_Duration_" data-uid="SiaNet.TrainingEndEventArgs.Duration*"></a>
   <h4 id="SiaNet_TrainingEndEventArgs_Duration" data-uid="SiaNet.TrainingEndEventArgs.Duration">Duration</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the total time taken (in millisecond) to finish the model training.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -160,7 +165,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int64</span></td>
-        <td></td>
+        <td><p>The duration.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -169,11 +175,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_TrainingEndEventArgs_History.md&amp;value=---%0Auid%3A%20SiaNet.TrainingEndEventArgs.History%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L90">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L235">View Source</a>
   </span>
   <a id="SiaNet_TrainingEndEventArgs_History_" data-uid="SiaNet.TrainingEndEventArgs.History*"></a>
   <h4 id="SiaNet_TrainingEndEventArgs_History" data-uid="SiaNet.TrainingEndEventArgs.History">History</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets the training history with all epoch losses and metrics for both train and validation dataset.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -190,10 +197,15 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.History.html">History</a></td>
-        <td></td>
+        <td><p>The history.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><span class="xref">System.EventArgs</span></div>
+  </div>
 </article>
           </div>
           
@@ -205,7 +217,7 @@
                     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_TrainingEndEventArgs.md&amp;value=---%0Auid%3A%20SiaNet.TrainingEndEventArgs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L80" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L214" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
