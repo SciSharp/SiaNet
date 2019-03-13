@@ -7,6 +7,7 @@ using SiaNet.Layers;
 using SiaNet.Regularizers;
 using SiaNet.Engine;
 using SiaNet.Backend.ArrayFire;
+using SiaNet.Events;
 
 namespace BasicClassificationWithTitanicDataset
 {
