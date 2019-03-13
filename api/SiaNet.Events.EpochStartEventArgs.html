@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Global
+    <title>Class EpochStartEventArgs
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Global
+    <meta name="title" content="Class EpochStartEventArgs
    ">
     <meta name="generator" content="docfx 2.40.12.0">
     
@@ -68,102 +68,49 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SiaNet.Global">
+            <article class="content wrap" id="_content" data-uid="SiaNet.Events.EpochStartEventArgs">
   
   
-  <h1 id="SiaNet_Global" data-uid="SiaNet.Global" class="text-break">Class Global
+  <h1 id="SiaNet_Events_EpochStartEventArgs" data-uid="SiaNet.Events.EpochStartEventArgs" class="text-break">Class EpochStartEventArgs
   </h1>
-  <div class="markdown level0 summary"><p>Global settings for SiaNet library</p>
+  <div class="markdown level0 summary"><p>Event triggered when the training epoch starts</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Global</span></div>
+    <div class="level1"><span class="xref">System.EventArgs</span></div>
+    <div class="level2"><span class="xref">EpochStartEventArgs</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.html">SiaNet</a></h6>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.EventArgs.Empty</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Events.html">SiaNet.Events</a></h6>
   <h6><strong>Assembly</strong>: SiaNet.dll</h6>
-  <h5 id="SiaNet_Global_syntax">Syntax</h5>
+  <h5 id="SiaNet_Events_EpochStartEventArgs_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Global</code></pre>
+    <pre><code class="lang-csharp hljs">public class EpochStartEventArgs : EventArgs</code></pre>
   </div>
-  <h3 id="properties">Properties
+  <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Global_CurrentBackend.md&amp;value=---%0Auid%3A%20SiaNet.Global.CurrentBackend%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Events_EpochStartEventArgs__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20SiaNet.Events.EpochStartEventArgs.%23ctor(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L21">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L104">View Source</a>
   </span>
-  <a id="SiaNet_Global_CurrentBackend_" data-uid="SiaNet.Global.CurrentBackend*"></a>
-  <h4 id="SiaNet_Global_CurrentBackend" data-uid="SiaNet.Global.CurrentBackend">CurrentBackend</h4>
-  <div class="markdown level1 summary"><p>Get the current backend of the SiaNet. Plaese invoke Global.UseEngine method to set the backend.</p>
+  <a id="SiaNet_Events_EpochStartEventArgs__ctor_" data-uid="SiaNet.Events.EpochStartEventArgs.#ctor*"></a>
+  <h4 id="SiaNet_Events_EpochStartEventArgs__ctor_System_Int32_" data-uid="SiaNet.Events.EpochStartEventArgs.#ctor(System.Int32)">EpochStartEventArgs(Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.Events.EpochStartEventArgs.html">EpochStartEventArgs</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IBackend CurrentBackend { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SiaNet.Engine.IBackend.html">IBackend</a></td>
-        <td><p>The current backend.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.NullReferenceException</span></td>
-        <td><p>Invoke Global.UseEngine() function first to setup the backend and device.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Global_UseEngine_SiaNet_Engine_IBackend_SiaNet_Engine_DeviceType_System_Boolean_.md&amp;value=---%0Auid%3A%20SiaNet.Global.UseEngine(SiaNet.Engine.IBackend%2CSiaNet.Engine.DeviceType%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L60">View Source</a>
-  </span>
-  <a id="SiaNet_Global_UseEngine_" data-uid="SiaNet.Global.UseEngine*"></a>
-  <h4 id="SiaNet_Global_UseEngine_SiaNet_Engine_IBackend_SiaNet_Engine_DeviceType_System_Boolean_" data-uid="SiaNet.Global.UseEngine(SiaNet.Engine.IBackend,SiaNet.Engine.DeviceType,System.Boolean)">UseEngine(IBackend, DeviceType, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Method to set the backend and device type.</p>
-<p>
-Supported Engine: ArrayFire, TensorSharp, CNTK, TensorFlow, MXNet
-</p>
-<p>
-Supported Device: CPU, CUDA, OpenCL
-</p>
-<p>
-Example use:
-<pre><code>Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);</code></pre>
-</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void UseEngine(IBackend backend, DeviceType deviceType, bool cudnn = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public EpochStartEventArgs(int epoch)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,41 +123,51 @@ Example use:
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SiaNet.Engine.IBackend.html">IBackend</a></td>
-        <td><span class="parametername">backend</span></td>
-        <td><p>The backend.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="SiaNet.Engine.DeviceType.html">DeviceType</a></td>
-        <td><span class="parametername">deviceType</span></td>
-        <td><p>Type of the device.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">cudnn</span></td>
-        <td><p>if set to <code>true</code> [cudnn].</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">epoch</span></td>
+        <td><p>The current epoch number.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 class="exceptions">Exceptions</h5>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Events_EpochStartEventArgs_Epoch.md&amp;value=---%0Auid%3A%20SiaNet.Events.EpochStartEventArgs.Epoch%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L115">View Source</a>
+  </span>
+  <a id="SiaNet_Events_EpochStartEventArgs_Epoch_" data-uid="SiaNet.Events.EpochStartEventArgs.Epoch*"></a>
+  <h4 id="SiaNet_Events_EpochStartEventArgs_Epoch" data-uid="SiaNet.Events.EpochStartEventArgs.Epoch">Epoch</h4>
+  <div class="markdown level1 summary"><p>Gets the current epoch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Epoch { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Condition</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ArgumentException</span></td>
-        <td><p>CuDnn work with CUDA device type</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The epoch.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><span class="xref">System.EventArgs</span></div>
+  </div>
 </article>
           </div>
           
@@ -219,10 +176,10 @@ Example use:
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Global.md&amp;value=---%0Auid%3A%20SiaNet.Global%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Events_EpochStartEventArgs.md&amp;value=---%0Auid%3A%20SiaNet.Events.EpochStartEventArgs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/GlobalVariable.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/TrainingEvents.cs/#L98" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

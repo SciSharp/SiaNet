@@ -5,30 +5,6 @@
   "files": [
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.BatchEndEventArgs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SiaNet.BatchEndEventArgs.html",
-          "hash": "DsALKkDWhvFFUddl1oE17A=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.BatchStartEventArgs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SiaNet.BatchStartEventArgs.html",
-          "hash": "koQ0SOfW4cl8XQGVLtzJJQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/SiaNet.Constraints.BaseConstraint.yml",
       "output": {
         ".html": {
@@ -36,7 +12,7 @@
           "hash": "+ZPVbzse9FOcGRbgogBqzg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +24,7 @@
           "hash": "Si/ArhFVKC3qd0j52cJGlQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +36,7 @@
           "hash": "VAGrGkq1STGUKZUn7Mmf6A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +48,7 @@
           "hash": "3FCqvtgCDHA2dhG1AiVcVw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +60,7 @@
           "hash": "7Wg5pPXY2fs8l+qOOLNymw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +72,7 @@
           "hash": "D9U+CPgXe2dgYli1Nd8iAA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.ActType.html",
-          "hash": "ASwl3z0WIbfpB8p8AaWyoQ=="
+          "hash": "vWg5qIZeEkeBYD7UtAObSw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -189,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.DataType.html",
-          "hash": "1qlw/0rdBpEHI06tTqmxBA=="
+          "hash": "9KvlMPNETawt6VlMzfL+Hg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -201,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.DeviceType.html",
-          "hash": "Im2aimFP3R189AqZ9KiQlg=="
+          "hash": "t5iTsd9M5/nkfqT9OIztfw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -213,31 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.IBackend.html",
-          "hash": "TZrurLVF4jTsBEPiDI3oMg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.Engine.Layers.ActivationFunc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SiaNet.Engine.Layers.ActivationFunc.html",
-          "hash": "KAtJxUrM0GOWk16k8VvviA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.Engine.Layers.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SiaNet.Engine.Layers.html",
-          "hash": "UPehM+rxkYXcAHTGIozeAw=="
+          "hash": "nnilkVINmmIA2hycldvRAA=="
         }
       },
       "is_incremental": false,
@@ -249,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.LossType.html",
-          "hash": "sePXnPmIcH80PmOmgVNp8Q=="
+          "hash": "35brwraJEsIFpxzW01xBNg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -261,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.MetricType.html",
-          "hash": "PZHQWpAzqctaIe8nV+S1ow=="
+          "hash": "Il+5g8RLaCs9UvHfDjP/Yw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -273,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.OptimizerType.html",
-          "hash": "igql9DehAqYHcoFHXErZ8A=="
+          "hash": "lXi3tNCZMCN+Zx8IVFDPtg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -285,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.PaddingType.html",
-          "hash": "2EZxYMZ0ltLMv0V/ef5DjQ=="
+          "hash": "O8xzxCV1RWjsoXNAHeOSMw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.PoolingPoolType.html",
-          "hash": "FcWfB9BM9fPWYBJRiM7MdQ=="
+          "hash": "vBHhOd2laEi1eFQUrgn7pQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -309,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.SiaNetBackend.html",
-          "hash": "9w908wEdFDmw967HtfjdVQ=="
+          "hash": "bD5qBVFwQgcAl48092iRgQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -321,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.Tensor.html",
-          "hash": "WUIVQgAIQN3axlXUPsiBIQ=="
+          "hash": "Uvz5G13Mje8s594Aif6O5g=="
         }
       },
       "is_incremental": false,
@@ -333,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Engine.html",
-          "hash": "ArJFC40Ol0pPksEKgFPVew=="
+          "hash": "INiUuCBfqB0x6KjspxR3RQ=="
         }
       },
       "is_incremental": false,
@@ -341,26 +293,74 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.EpochEndEventArgs.yml",
+      "source_relative_path": "api/SiaNet.Events.BatchEndEventArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SiaNet.EpochEndEventArgs.html",
-          "hash": "QmPoZiH+F6lWBvafZjoszw=="
+          "relative_path": "api/SiaNet.Events.BatchEndEventArgs.html",
+          "hash": "A6Uo2uoUNQsn5x51q9OD8A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.EpochStartEventArgs.yml",
+      "source_relative_path": "api/SiaNet.Events.BatchStartEventArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SiaNet.EpochStartEventArgs.html",
-          "hash": "lHv4FfqRZ48Ujme6LrGYgA=="
+          "relative_path": "api/SiaNet.Events.BatchStartEventArgs.html",
+          "hash": "pjXM257uQRtLIT6DEGXYbg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.EpochEndEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.EpochEndEventArgs.html",
+          "hash": "baaolh7sCJlqlUTpYAEb9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.EpochStartEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.EpochStartEventArgs.html",
+          "hash": "OHEG/TQBOf0w8vt5ILFfiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.TrainingEndEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.TrainingEndEventArgs.html",
+          "hash": "J4sJ/1IaBbAzIW/JJSIrCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.html",
+          "hash": "FuY8wUlNso6agQ8XRWWP4g=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Global.html",
-          "hash": "GClNNAJUuyaQum8PeOX3rA=="
+          "hash": "ON2mDyBGvIiZ4tW1do+FZw=="
         }
       },
       "is_incremental": false,
@@ -384,7 +384,7 @@
           "hash": "ecM2DKt0oSmz5MsxSCQ/gg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1308,7 +1308,7 @@
           "hash": "wW8ATSep1AYGBv0PeyHkTg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1320,7 +1320,7 @@
           "hash": "hL82PZ3ijziwcbV13dwIOQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1332,7 +1332,7 @@
           "hash": "5uC/tON4S1RB3uZj1B373A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1344,7 +1344,7 @@
           "hash": "MD7JJpiU23Ll5i4rhjv+1Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1356,7 +1356,7 @@
           "hash": "pVLF0be9BP5veHJktcR1Yw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1368,7 +1368,7 @@
           "hash": "qzuNUpB6xur1PfRngSS5eg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1380,7 +1380,7 @@
           "hash": "KBCxBFEfOCMc78O5XDcNIQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1392,7 +1392,7 @@
           "hash": "hczRwRfx8bSq+x5JpiwhsA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1416,7 +1416,7 @@
           "hash": "jjPIkNTqJU69EV6GVbtyZg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1428,7 +1428,7 @@
           "hash": "K2mVn573SydYU0eFM1PW2g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1440,7 +1440,7 @@
           "hash": "H8wsKoc5TRLVwyr2tPIdGA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1452,7 +1452,7 @@
           "hash": "rJO3QlXlLJT7ySMuiyOyqg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1464,7 +1464,7 @@
           "hash": "rP4+rbpX99B/pg343rAM6g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1473,19 +1473,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.Sequential.html",
-          "hash": "YXQ6dWENf7NcobHxgU+1jg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SiaNet.TrainingEndEventArgs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SiaNet.TrainingEndEventArgs.html",
-          "hash": "2euhcivpULd2geGpw048MQ=="
+          "hash": "oN/2H6Xq/d69lU6q2gQB8A=="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SiaNet.html",
-          "hash": "FZ055XTOuWnc7KBDvHVFsw=="
+          "hash": "pGOgRlpYyu7R5dgRIwNhgw=="
         }
       },
       "is_incremental": false,
@@ -1509,10 +1497,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "CoMEGAkZw9HumM8thM3KmQ=="
+          "hash": "m+0jjEV111WK+kR9UcI2LA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1521,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "d9eN1auK4A+xP/F3+Qjieg=="
+          "hash": "m2Fis7JTKDOnEqb0ryHh1g=="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "SNosu2pt03gHPoLqkz3XZA=="
+          "hash": "AxaamJCVMVTXIUAgtfbDYQ=="
         }
       },
       "is_incremental": true,
@@ -1592,17 +1580,17 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 125,
-          "skipped_file_count": 37
-        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
           "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 124,
+          "skipped_file_count": 121
         }
       }
     },
