@@ -7,122 +7,6 @@ references:
   commentId: N:SiaNet
   fullName: SiaNet
   nameWithType: SiaNet
-- uid: SiaNet.BatchEndEventArgs
-  name: BatchEndEventArgs
-  href: api/SiaNet.BatchEndEventArgs.html
-  commentId: T:SiaNet.BatchEndEventArgs
-  fullName: SiaNet.BatchEndEventArgs
-  nameWithType: BatchEndEventArgs
-- uid: SiaNet.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
-  name: BatchEndEventArgs(Int32, Int64, Single, Single)
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs__ctor_System_Int32_System_Int64_System_Single_System_Single_
-  commentId: M:SiaNet.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
-  fullName: SiaNet.BatchEndEventArgs.BatchEndEventArgs(System.Int32, System.Int64, System.Single, System.Single)
-  nameWithType: BatchEndEventArgs.BatchEndEventArgs(Int32, Int64, Single, Single)
-- uid: SiaNet.BatchEndEventArgs.#ctor*
-  name: BatchEndEventArgs
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs__ctor_
-  commentId: Overload:SiaNet.BatchEndEventArgs.#ctor
-  isSpec: "True"
-  fullName: SiaNet.BatchEndEventArgs.BatchEndEventArgs
-  nameWithType: BatchEndEventArgs.BatchEndEventArgs
-- uid: SiaNet.BatchEndEventArgs.Batch
-  name: Batch
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Batch
-  commentId: P:SiaNet.BatchEndEventArgs.Batch
-  fullName: SiaNet.BatchEndEventArgs.Batch
-  nameWithType: BatchEndEventArgs.Batch
-- uid: SiaNet.BatchEndEventArgs.Batch*
-  name: Batch
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Batch_
-  commentId: Overload:SiaNet.BatchEndEventArgs.Batch
-  isSpec: "True"
-  fullName: SiaNet.BatchEndEventArgs.Batch
-  nameWithType: BatchEndEventArgs.Batch
-- uid: SiaNet.BatchEndEventArgs.Epoch
-  name: Epoch
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Epoch
-  commentId: P:SiaNet.BatchEndEventArgs.Epoch
-  fullName: SiaNet.BatchEndEventArgs.Epoch
-  nameWithType: BatchEndEventArgs.Epoch
-- uid: SiaNet.BatchEndEventArgs.Epoch*
-  name: Epoch
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Epoch_
-  commentId: Overload:SiaNet.BatchEndEventArgs.Epoch
-  isSpec: "True"
-  fullName: SiaNet.BatchEndEventArgs.Epoch
-  nameWithType: BatchEndEventArgs.Epoch
-- uid: SiaNet.BatchEndEventArgs.Loss
-  name: Loss
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Loss
-  commentId: P:SiaNet.BatchEndEventArgs.Loss
-  fullName: SiaNet.BatchEndEventArgs.Loss
-  nameWithType: BatchEndEventArgs.Loss
-- uid: SiaNet.BatchEndEventArgs.Loss*
-  name: Loss
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Loss_
-  commentId: Overload:SiaNet.BatchEndEventArgs.Loss
-  isSpec: "True"
-  fullName: SiaNet.BatchEndEventArgs.Loss
-  nameWithType: BatchEndEventArgs.Loss
-- uid: SiaNet.BatchEndEventArgs.Metric
-  name: Metric
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Metric
-  commentId: P:SiaNet.BatchEndEventArgs.Metric
-  fullName: SiaNet.BatchEndEventArgs.Metric
-  nameWithType: BatchEndEventArgs.Metric
-- uid: SiaNet.BatchEndEventArgs.Metric*
-  name: Metric
-  href: api/SiaNet.BatchEndEventArgs.html#SiaNet_BatchEndEventArgs_Metric_
-  commentId: Overload:SiaNet.BatchEndEventArgs.Metric
-  isSpec: "True"
-  fullName: SiaNet.BatchEndEventArgs.Metric
-  nameWithType: BatchEndEventArgs.Metric
-- uid: SiaNet.BatchStartEventArgs
-  name: BatchStartEventArgs
-  href: api/SiaNet.BatchStartEventArgs.html
-  commentId: T:SiaNet.BatchStartEventArgs
-  fullName: SiaNet.BatchStartEventArgs
-  nameWithType: BatchStartEventArgs
-- uid: SiaNet.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
-  name: BatchStartEventArgs(Int32, Int32)
-  href: api/SiaNet.BatchStartEventArgs.html#SiaNet_BatchStartEventArgs__ctor_System_Int32_System_Int32_
-  commentId: M:SiaNet.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
-  fullName: SiaNet.BatchStartEventArgs.BatchStartEventArgs(System.Int32, System.Int32)
-  nameWithType: BatchStartEventArgs.BatchStartEventArgs(Int32, Int32)
-- uid: SiaNet.BatchStartEventArgs.#ctor*
-  name: BatchStartEventArgs
-  href: api/SiaNet.BatchStartEventArgs.html#SiaNet_BatchStartEventArgs__ctor_
-  commentId: Overload:SiaNet.BatchStartEventArgs.#ctor
-  isSpec: "True"
-  fullName: SiaNet.BatchStartEventArgs.BatchStartEventArgs
-  nameWithType: BatchStartEventArgs.BatchStartEventArgs
-- uid: SiaNet.BatchStartEventArgs.Batch
-  name: Batch
-  href: api/SiaNet.BatchStartEventArgs.html#SiaNet_BatchStartEventArgs_Batch
-  commentId: P:SiaNet.BatchStartEventArgs.Batch
-  fullName: SiaNet.BatchStartEventArgs.Batch
-  nameWithType: BatchStartEventArgs.Batch
-- uid: SiaNet.BatchStartEventArgs.Batch*
-  name: Batch
-  href: api/SiaNet.BatchStartEventArgs.html#SiaNet_BatchStartEventArgs_Batch_
-  commentId: Overload:SiaNet.BatchStartEventArgs.Batch
-  isSpec: "True"
-  fullName: SiaNet.BatchStartEventArgs.Batch
-  nameWithType: BatchStartEventArgs.Batch
-- uid: SiaNet.BatchStartEventArgs.Epoch
-  name: Epoch
-  href: api/SiaNet.BatchStartEventArgs.html#SiaNet_BatchStartEventArgs_Epoch
-  commentId: P:SiaNet.BatchStartEventArgs.Epoch
-  fullName: SiaNet.BatchStartEventArgs.Epoch
-  nameWithType: BatchStartEventArgs.Epoch
-- uid: SiaNet.BatchStartEventArgs.Epoch*
-  name: Epoch
-  href: api/SiaNet.BatchStartEventArgs.html#SiaNet_BatchStartEventArgs_Epoch_
-  commentId: Overload:SiaNet.BatchStartEventArgs.Epoch
-  isSpec: "True"
-  fullName: SiaNet.BatchStartEventArgs.Epoch
-  nameWithType: BatchStartEventArgs.Epoch
 - uid: SiaNet.Constraints
   name: SiaNet.Constraints
   href: api/SiaNet.Constraints.html
@@ -677,12 +561,12 @@ references:
   commentId: F:SiaNet.Engine.ActType.Exp
   fullName: SiaNet.Engine.ActType.Exp
   nameWithType: ActType.Exp
-- uid: SiaNet.Engine.ActType.HargSigmoid
-  name: HargSigmoid
-  href: api/SiaNet.Engine.ActType.html#SiaNet_Engine_ActType_HargSigmoid
-  commentId: F:SiaNet.Engine.ActType.HargSigmoid
-  fullName: SiaNet.Engine.ActType.HargSigmoid
-  nameWithType: ActType.HargSigmoid
+- uid: SiaNet.Engine.ActType.HardSigmoid
+  name: HardSigmoid
+  href: api/SiaNet.Engine.ActType.html#SiaNet_Engine_ActType_HardSigmoid
+  commentId: F:SiaNet.Engine.ActType.HardSigmoid
+  fullName: SiaNet.Engine.ActType.HardSigmoid
+  nameWithType: ActType.HardSigmoid
 - uid: SiaNet.Engine.ActType.LeakyReLU
   name: LeakyReLU
   href: api/SiaNet.Engine.ActType.html#SiaNet_Engine_ActType_LeakyReLU
@@ -2093,161 +1977,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Var
   nameWithType: IBackend.Var
-- uid: SiaNet.Engine.Layers
-  name: SiaNet.Engine.Layers
-  href: api/SiaNet.Engine.Layers.html
-  commentId: N:SiaNet.Engine.Layers
-  fullName: SiaNet.Engine.Layers
-  nameWithType: SiaNet.Engine.Layers
-- uid: SiaNet.Engine.Layers.ActivationFunc
-  name: ActivationFunc
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html
-  commentId: T:SiaNet.Engine.Layers.ActivationFunc
-  fullName: SiaNet.Engine.Layers.ActivationFunc
-  nameWithType: ActivationFunc
-- uid: SiaNet.Engine.Layers.ActivationFunc.#ctor(SiaNet.Engine.IBackend)
-  name: ActivationFunc(IBackend)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc__ctor_SiaNet_Engine_IBackend_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.#ctor(SiaNet.Engine.IBackend)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.ActivationFunc(SiaNet.Engine.IBackend)
-  nameWithType: ActivationFunc.ActivationFunc(IBackend)
-- uid: SiaNet.Engine.Layers.ActivationFunc.#ctor*
-  name: ActivationFunc
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc__ctor_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.#ctor
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.ActivationFunc
-  nameWithType: ActivationFunc.ActivationFunc
-- uid: SiaNet.Engine.Layers.ActivationFunc.EluBackward(System.Single,SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  name: EluBackward(Single, Tensor, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_EluBackward_System_Single_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.EluBackward(System.Single,SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.EluBackward(System.Single, SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.EluBackward(Single, Tensor, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.EluBackward*
-  name: EluBackward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_EluBackward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.EluBackward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.EluBackward
-  nameWithType: ActivationFunc.EluBackward
-- uid: SiaNet.Engine.Layers.ActivationFunc.EluForward(System.Single,SiaNet.Engine.Tensor)
-  name: EluForward(Single, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_EluForward_System_Single_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.EluForward(System.Single,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.EluForward(System.Single, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.EluForward(Single, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.EluForward*
-  name: EluForward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_EluForward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.EluForward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.EluForward
-  nameWithType: ActivationFunc.EluForward
-- uid: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidBackward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  name: HardSigmoidBackward(Tensor, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_HardSigmoidBackward_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.HardSigmoidBackward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidBackward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.HardSigmoidBackward(Tensor, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidBackward*
-  name: HardSigmoidBackward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_HardSigmoidBackward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.HardSigmoidBackward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidBackward
-  nameWithType: ActivationFunc.HardSigmoidBackward
-- uid: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidForward(SiaNet.Engine.Tensor)
-  name: HardSigmoidForward(Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_HardSigmoidForward_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.HardSigmoidForward(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidForward(SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.HardSigmoidForward(Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidForward*
-  name: HardSigmoidForward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_HardSigmoidForward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.HardSigmoidForward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.HardSigmoidForward
-  nameWithType: ActivationFunc.HardSigmoidForward
-- uid: SiaNet.Engine.Layers.ActivationFunc.LeakyReluBackward(System.Single,SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  name: LeakyReluBackward(Single, Tensor, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_LeakyReluBackward_System_Single_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.LeakyReluBackward(System.Single,SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.LeakyReluBackward(System.Single, SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.LeakyReluBackward(Single, Tensor, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.LeakyReluBackward*
-  name: LeakyReluBackward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_LeakyReluBackward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.LeakyReluBackward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.LeakyReluBackward
-  nameWithType: ActivationFunc.LeakyReluBackward
-- uid: SiaNet.Engine.Layers.ActivationFunc.LeakyReluForward(System.Single,SiaNet.Engine.Tensor)
-  name: LeakyReluForward(Single, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_LeakyReluForward_System_Single_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.LeakyReluForward(System.Single,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.LeakyReluForward(System.Single, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.LeakyReluForward(Single, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.LeakyReluForward*
-  name: LeakyReluForward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_LeakyReluForward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.LeakyReluForward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.LeakyReluForward
-  nameWithType: ActivationFunc.LeakyReluForward
-- uid: SiaNet.Engine.Layers.ActivationFunc.ReluBackward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  name: ReluBackward(Tensor, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_ReluBackward_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.ReluBackward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.ReluBackward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.ReluBackward(Tensor, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.ReluBackward*
-  name: ReluBackward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_ReluBackward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.ReluBackward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.ReluBackward
-  nameWithType: ActivationFunc.ReluBackward
-- uid: SiaNet.Engine.Layers.ActivationFunc.ReluForward(SiaNet.Engine.Tensor)
-  name: ReluForward(Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_ReluForward_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.ReluForward(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.ReluForward(SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.ReluForward(Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.ReluForward*
-  name: ReluForward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_ReluForward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.ReluForward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.ReluForward
-  nameWithType: ActivationFunc.ReluForward
-- uid: SiaNet.Engine.Layers.ActivationFunc.SoftmaxBackward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  name: SoftmaxBackward(Tensor, Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_SoftmaxBackward_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.SoftmaxBackward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.SoftmaxBackward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.SoftmaxBackward(Tensor, Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.SoftmaxBackward*
-  name: SoftmaxBackward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_SoftmaxBackward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.SoftmaxBackward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.SoftmaxBackward
-  nameWithType: ActivationFunc.SoftmaxBackward
-- uid: SiaNet.Engine.Layers.ActivationFunc.SoftmaxForward(SiaNet.Engine.Tensor)
-  name: SoftmaxForward(Tensor)
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_SoftmaxForward_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Layers.ActivationFunc.SoftmaxForward(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Layers.ActivationFunc.SoftmaxForward(SiaNet.Engine.Tensor)
-  nameWithType: ActivationFunc.SoftmaxForward(Tensor)
-- uid: SiaNet.Engine.Layers.ActivationFunc.SoftmaxForward*
-  name: SoftmaxForward
-  href: api/SiaNet.Engine.Layers.ActivationFunc.html#SiaNet_Engine_Layers_ActivationFunc_SoftmaxForward_
-  commentId: Overload:SiaNet.Engine.Layers.ActivationFunc.SoftmaxForward
-  isSpec: "True"
-  fullName: SiaNet.Engine.Layers.ActivationFunc.SoftmaxForward
-  nameWithType: ActivationFunc.SoftmaxForward
 - uid: SiaNet.Engine.LossType
   name: LossType
   href: api/SiaNet.Engine.LossType.html
@@ -3042,148 +2771,315 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.Tensor.Transpose
   nameWithType: Tensor.Transpose
-- uid: SiaNet.EpochEndEventArgs
+- uid: SiaNet.Events
+  name: SiaNet.Events
+  href: api/SiaNet.Events.html
+  commentId: N:SiaNet.Events
+  fullName: SiaNet.Events
+  nameWithType: SiaNet.Events
+- uid: SiaNet.Events.BatchEndEventArgs
+  name: BatchEndEventArgs
+  href: api/SiaNet.Events.BatchEndEventArgs.html
+  commentId: T:SiaNet.Events.BatchEndEventArgs
+  fullName: SiaNet.Events.BatchEndEventArgs
+  nameWithType: BatchEndEventArgs
+- uid: SiaNet.Events.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
+  name: BatchEndEventArgs(Int32, Int64, Single, Single)
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs__ctor_System_Int32_System_Int64_System_Single_System_Single_
+  commentId: M:SiaNet.Events.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
+  fullName: SiaNet.Events.BatchEndEventArgs.BatchEndEventArgs(System.Int32, System.Int64, System.Single, System.Single)
+  nameWithType: BatchEndEventArgs.BatchEndEventArgs(Int32, Int64, Single, Single)
+- uid: SiaNet.Events.BatchEndEventArgs.#ctor*
+  name: BatchEndEventArgs
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs__ctor_
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.#ctor
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchEndEventArgs.BatchEndEventArgs
+  nameWithType: BatchEndEventArgs.BatchEndEventArgs
+- uid: SiaNet.Events.BatchEndEventArgs.Batch
+  name: Batch
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Batch
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Batch
+  fullName: SiaNet.Events.BatchEndEventArgs.Batch
+  nameWithType: BatchEndEventArgs.Batch
+- uid: SiaNet.Events.BatchEndEventArgs.Batch*
+  name: Batch
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Batch_
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Batch
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchEndEventArgs.Batch
+  nameWithType: BatchEndEventArgs.Batch
+- uid: SiaNet.Events.BatchEndEventArgs.Epoch
+  name: Epoch
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Epoch
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Epoch
+  fullName: SiaNet.Events.BatchEndEventArgs.Epoch
+  nameWithType: BatchEndEventArgs.Epoch
+- uid: SiaNet.Events.BatchEndEventArgs.Epoch*
+  name: Epoch
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Epoch_
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Epoch
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchEndEventArgs.Epoch
+  nameWithType: BatchEndEventArgs.Epoch
+- uid: SiaNet.Events.BatchEndEventArgs.Loss
+  name: Loss
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Loss
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Loss
+  fullName: SiaNet.Events.BatchEndEventArgs.Loss
+  nameWithType: BatchEndEventArgs.Loss
+- uid: SiaNet.Events.BatchEndEventArgs.Loss*
+  name: Loss
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Loss_
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Loss
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchEndEventArgs.Loss
+  nameWithType: BatchEndEventArgs.Loss
+- uid: SiaNet.Events.BatchEndEventArgs.Metric
+  name: Metric
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Metric
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Metric
+  fullName: SiaNet.Events.BatchEndEventArgs.Metric
+  nameWithType: BatchEndEventArgs.Metric
+- uid: SiaNet.Events.BatchEndEventArgs.Metric*
+  name: Metric
+  href: api/SiaNet.Events.BatchEndEventArgs.html#SiaNet_Events_BatchEndEventArgs_Metric_
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Metric
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchEndEventArgs.Metric
+  nameWithType: BatchEndEventArgs.Metric
+- uid: SiaNet.Events.BatchStartEventArgs
+  name: BatchStartEventArgs
+  href: api/SiaNet.Events.BatchStartEventArgs.html
+  commentId: T:SiaNet.Events.BatchStartEventArgs
+  fullName: SiaNet.Events.BatchStartEventArgs
+  nameWithType: BatchStartEventArgs
+- uid: SiaNet.Events.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
+  name: BatchStartEventArgs(Int32, Int32)
+  href: api/SiaNet.Events.BatchStartEventArgs.html#SiaNet_Events_BatchStartEventArgs__ctor_System_Int32_System_Int32_
+  commentId: M:SiaNet.Events.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
+  fullName: SiaNet.Events.BatchStartEventArgs.BatchStartEventArgs(System.Int32, System.Int32)
+  nameWithType: BatchStartEventArgs.BatchStartEventArgs(Int32, Int32)
+- uid: SiaNet.Events.BatchStartEventArgs.#ctor*
+  name: BatchStartEventArgs
+  href: api/SiaNet.Events.BatchStartEventArgs.html#SiaNet_Events_BatchStartEventArgs__ctor_
+  commentId: Overload:SiaNet.Events.BatchStartEventArgs.#ctor
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchStartEventArgs.BatchStartEventArgs
+  nameWithType: BatchStartEventArgs.BatchStartEventArgs
+- uid: SiaNet.Events.BatchStartEventArgs.Batch
+  name: Batch
+  href: api/SiaNet.Events.BatchStartEventArgs.html#SiaNet_Events_BatchStartEventArgs_Batch
+  commentId: P:SiaNet.Events.BatchStartEventArgs.Batch
+  fullName: SiaNet.Events.BatchStartEventArgs.Batch
+  nameWithType: BatchStartEventArgs.Batch
+- uid: SiaNet.Events.BatchStartEventArgs.Batch*
+  name: Batch
+  href: api/SiaNet.Events.BatchStartEventArgs.html#SiaNet_Events_BatchStartEventArgs_Batch_
+  commentId: Overload:SiaNet.Events.BatchStartEventArgs.Batch
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchStartEventArgs.Batch
+  nameWithType: BatchStartEventArgs.Batch
+- uid: SiaNet.Events.BatchStartEventArgs.Epoch
+  name: Epoch
+  href: api/SiaNet.Events.BatchStartEventArgs.html#SiaNet_Events_BatchStartEventArgs_Epoch
+  commentId: P:SiaNet.Events.BatchStartEventArgs.Epoch
+  fullName: SiaNet.Events.BatchStartEventArgs.Epoch
+  nameWithType: BatchStartEventArgs.Epoch
+- uid: SiaNet.Events.BatchStartEventArgs.Epoch*
+  name: Epoch
+  href: api/SiaNet.Events.BatchStartEventArgs.html#SiaNet_Events_BatchStartEventArgs_Epoch_
+  commentId: Overload:SiaNet.Events.BatchStartEventArgs.Epoch
+  isSpec: "True"
+  fullName: SiaNet.Events.BatchStartEventArgs.Epoch
+  nameWithType: BatchStartEventArgs.Epoch
+- uid: SiaNet.Events.EpochEndEventArgs
   name: EpochEndEventArgs
-  href: api/SiaNet.EpochEndEventArgs.html
-  commentId: T:SiaNet.EpochEndEventArgs
-  fullName: SiaNet.EpochEndEventArgs
+  href: api/SiaNet.Events.EpochEndEventArgs.html
+  commentId: T:SiaNet.Events.EpochEndEventArgs
+  fullName: SiaNet.Events.EpochEndEventArgs
   nameWithType: EpochEndEventArgs
-- uid: SiaNet.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
+- uid: SiaNet.Events.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
   name: EpochEndEventArgs(Int32, Int64, Single, Single, Single, Single, Int64)
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs__ctor_System_Int32_System_Int64_System_Single_System_Single_System_Single_System_Single_System_Int64_
-  commentId: M:SiaNet.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
-  fullName: SiaNet.EpochEndEventArgs.EpochEndEventArgs(System.Int32, System.Int64, System.Single, System.Single, System.Single, System.Single, System.Int64)
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs__ctor_System_Int32_System_Int64_System_Single_System_Single_System_Single_System_Single_System_Int64_
+  commentId: M:SiaNet.Events.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
+  fullName: SiaNet.Events.EpochEndEventArgs.EpochEndEventArgs(System.Int32, System.Int64, System.Single, System.Single, System.Single, System.Single, System.Int64)
   nameWithType: EpochEndEventArgs.EpochEndEventArgs(Int32, Int64, Single, Single, Single, Single, Int64)
-- uid: SiaNet.EpochEndEventArgs.#ctor*
+- uid: SiaNet.Events.EpochEndEventArgs.#ctor*
   name: EpochEndEventArgs
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs__ctor_
-  commentId: Overload:SiaNet.EpochEndEventArgs.#ctor
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs__ctor_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.#ctor
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.EpochEndEventArgs
+  fullName: SiaNet.Events.EpochEndEventArgs.EpochEndEventArgs
   nameWithType: EpochEndEventArgs.EpochEndEventArgs
-- uid: SiaNet.EpochEndEventArgs.Duration
+- uid: SiaNet.Events.EpochEndEventArgs.Duration
   name: Duration
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Duration
-  commentId: P:SiaNet.EpochEndEventArgs.Duration
-  fullName: SiaNet.EpochEndEventArgs.Duration
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Duration
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Duration
+  fullName: SiaNet.Events.EpochEndEventArgs.Duration
   nameWithType: EpochEndEventArgs.Duration
-- uid: SiaNet.EpochEndEventArgs.Duration*
+- uid: SiaNet.Events.EpochEndEventArgs.Duration*
   name: Duration
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Duration_
-  commentId: Overload:SiaNet.EpochEndEventArgs.Duration
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Duration_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Duration
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.Duration
+  fullName: SiaNet.Events.EpochEndEventArgs.Duration
   nameWithType: EpochEndEventArgs.Duration
-- uid: SiaNet.EpochEndEventArgs.Epoch
+- uid: SiaNet.Events.EpochEndEventArgs.Epoch
   name: Epoch
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Epoch
-  commentId: P:SiaNet.EpochEndEventArgs.Epoch
-  fullName: SiaNet.EpochEndEventArgs.Epoch
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Epoch
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Epoch
+  fullName: SiaNet.Events.EpochEndEventArgs.Epoch
   nameWithType: EpochEndEventArgs.Epoch
-- uid: SiaNet.EpochEndEventArgs.Epoch*
+- uid: SiaNet.Events.EpochEndEventArgs.Epoch*
   name: Epoch
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Epoch_
-  commentId: Overload:SiaNet.EpochEndEventArgs.Epoch
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Epoch_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Epoch
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.Epoch
+  fullName: SiaNet.Events.EpochEndEventArgs.Epoch
   nameWithType: EpochEndEventArgs.Epoch
-- uid: SiaNet.EpochEndEventArgs.Loss
+- uid: SiaNet.Events.EpochEndEventArgs.Loss
   name: Loss
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Loss
-  commentId: P:SiaNet.EpochEndEventArgs.Loss
-  fullName: SiaNet.EpochEndEventArgs.Loss
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Loss
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Loss
+  fullName: SiaNet.Events.EpochEndEventArgs.Loss
   nameWithType: EpochEndEventArgs.Loss
-- uid: SiaNet.EpochEndEventArgs.Loss*
+- uid: SiaNet.Events.EpochEndEventArgs.Loss*
   name: Loss
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Loss_
-  commentId: Overload:SiaNet.EpochEndEventArgs.Loss
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Loss_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Loss
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.Loss
+  fullName: SiaNet.Events.EpochEndEventArgs.Loss
   nameWithType: EpochEndEventArgs.Loss
-- uid: SiaNet.EpochEndEventArgs.Metric
+- uid: SiaNet.Events.EpochEndEventArgs.Metric
   name: Metric
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Metric
-  commentId: P:SiaNet.EpochEndEventArgs.Metric
-  fullName: SiaNet.EpochEndEventArgs.Metric
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Metric
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Metric
+  fullName: SiaNet.Events.EpochEndEventArgs.Metric
   nameWithType: EpochEndEventArgs.Metric
-- uid: SiaNet.EpochEndEventArgs.Metric*
+- uid: SiaNet.Events.EpochEndEventArgs.Metric*
   name: Metric
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_Metric_
-  commentId: Overload:SiaNet.EpochEndEventArgs.Metric
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_Metric_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Metric
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.Metric
+  fullName: SiaNet.Events.EpochEndEventArgs.Metric
   nameWithType: EpochEndEventArgs.Metric
-- uid: SiaNet.EpochEndEventArgs.SamplesSeen
+- uid: SiaNet.Events.EpochEndEventArgs.SamplesSeen
   name: SamplesSeen
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_SamplesSeen
-  commentId: P:SiaNet.EpochEndEventArgs.SamplesSeen
-  fullName: SiaNet.EpochEndEventArgs.SamplesSeen
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_SamplesSeen
+  commentId: P:SiaNet.Events.EpochEndEventArgs.SamplesSeen
+  fullName: SiaNet.Events.EpochEndEventArgs.SamplesSeen
   nameWithType: EpochEndEventArgs.SamplesSeen
-- uid: SiaNet.EpochEndEventArgs.SamplesSeen*
+- uid: SiaNet.Events.EpochEndEventArgs.SamplesSeen*
   name: SamplesSeen
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_SamplesSeen_
-  commentId: Overload:SiaNet.EpochEndEventArgs.SamplesSeen
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_SamplesSeen_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.SamplesSeen
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.SamplesSeen
+  fullName: SiaNet.Events.EpochEndEventArgs.SamplesSeen
   nameWithType: EpochEndEventArgs.SamplesSeen
-- uid: SiaNet.EpochEndEventArgs.ValidationLoss
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationLoss
   name: ValidationLoss
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_ValidationLoss
-  commentId: P:SiaNet.EpochEndEventArgs.ValidationLoss
-  fullName: SiaNet.EpochEndEventArgs.ValidationLoss
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_ValidationLoss
+  commentId: P:SiaNet.Events.EpochEndEventArgs.ValidationLoss
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationLoss
   nameWithType: EpochEndEventArgs.ValidationLoss
-- uid: SiaNet.EpochEndEventArgs.ValidationLoss*
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationLoss*
   name: ValidationLoss
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_ValidationLoss_
-  commentId: Overload:SiaNet.EpochEndEventArgs.ValidationLoss
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_ValidationLoss_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.ValidationLoss
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.ValidationLoss
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationLoss
   nameWithType: EpochEndEventArgs.ValidationLoss
-- uid: SiaNet.EpochEndEventArgs.ValidationMetric
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationMetric
   name: ValidationMetric
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_ValidationMetric
-  commentId: P:SiaNet.EpochEndEventArgs.ValidationMetric
-  fullName: SiaNet.EpochEndEventArgs.ValidationMetric
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_ValidationMetric
+  commentId: P:SiaNet.Events.EpochEndEventArgs.ValidationMetric
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationMetric
   nameWithType: EpochEndEventArgs.ValidationMetric
-- uid: SiaNet.EpochEndEventArgs.ValidationMetric*
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationMetric*
   name: ValidationMetric
-  href: api/SiaNet.EpochEndEventArgs.html#SiaNet_EpochEndEventArgs_ValidationMetric_
-  commentId: Overload:SiaNet.EpochEndEventArgs.ValidationMetric
+  href: api/SiaNet.Events.EpochEndEventArgs.html#SiaNet_Events_EpochEndEventArgs_ValidationMetric_
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.ValidationMetric
   isSpec: "True"
-  fullName: SiaNet.EpochEndEventArgs.ValidationMetric
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationMetric
   nameWithType: EpochEndEventArgs.ValidationMetric
-- uid: SiaNet.EpochStartEventArgs
+- uid: SiaNet.Events.EpochStartEventArgs
   name: EpochStartEventArgs
-  href: api/SiaNet.EpochStartEventArgs.html
-  commentId: T:SiaNet.EpochStartEventArgs
-  fullName: SiaNet.EpochStartEventArgs
+  href: api/SiaNet.Events.EpochStartEventArgs.html
+  commentId: T:SiaNet.Events.EpochStartEventArgs
+  fullName: SiaNet.Events.EpochStartEventArgs
   nameWithType: EpochStartEventArgs
-- uid: SiaNet.EpochStartEventArgs.#ctor(System.Int32)
+- uid: SiaNet.Events.EpochStartEventArgs.#ctor(System.Int32)
   name: EpochStartEventArgs(Int32)
-  href: api/SiaNet.EpochStartEventArgs.html#SiaNet_EpochStartEventArgs__ctor_System_Int32_
-  commentId: M:SiaNet.EpochStartEventArgs.#ctor(System.Int32)
-  fullName: SiaNet.EpochStartEventArgs.EpochStartEventArgs(System.Int32)
+  href: api/SiaNet.Events.EpochStartEventArgs.html#SiaNet_Events_EpochStartEventArgs__ctor_System_Int32_
+  commentId: M:SiaNet.Events.EpochStartEventArgs.#ctor(System.Int32)
+  fullName: SiaNet.Events.EpochStartEventArgs.EpochStartEventArgs(System.Int32)
   nameWithType: EpochStartEventArgs.EpochStartEventArgs(Int32)
-- uid: SiaNet.EpochStartEventArgs.#ctor*
+- uid: SiaNet.Events.EpochStartEventArgs.#ctor*
   name: EpochStartEventArgs
-  href: api/SiaNet.EpochStartEventArgs.html#SiaNet_EpochStartEventArgs__ctor_
-  commentId: Overload:SiaNet.EpochStartEventArgs.#ctor
+  href: api/SiaNet.Events.EpochStartEventArgs.html#SiaNet_Events_EpochStartEventArgs__ctor_
+  commentId: Overload:SiaNet.Events.EpochStartEventArgs.#ctor
   isSpec: "True"
-  fullName: SiaNet.EpochStartEventArgs.EpochStartEventArgs
+  fullName: SiaNet.Events.EpochStartEventArgs.EpochStartEventArgs
   nameWithType: EpochStartEventArgs.EpochStartEventArgs
-- uid: SiaNet.EpochStartEventArgs.Epoch
+- uid: SiaNet.Events.EpochStartEventArgs.Epoch
   name: Epoch
-  href: api/SiaNet.EpochStartEventArgs.html#SiaNet_EpochStartEventArgs_Epoch
-  commentId: P:SiaNet.EpochStartEventArgs.Epoch
-  fullName: SiaNet.EpochStartEventArgs.Epoch
+  href: api/SiaNet.Events.EpochStartEventArgs.html#SiaNet_Events_EpochStartEventArgs_Epoch
+  commentId: P:SiaNet.Events.EpochStartEventArgs.Epoch
+  fullName: SiaNet.Events.EpochStartEventArgs.Epoch
   nameWithType: EpochStartEventArgs.Epoch
-- uid: SiaNet.EpochStartEventArgs.Epoch*
+- uid: SiaNet.Events.EpochStartEventArgs.Epoch*
   name: Epoch
-  href: api/SiaNet.EpochStartEventArgs.html#SiaNet_EpochStartEventArgs_Epoch_
-  commentId: Overload:SiaNet.EpochStartEventArgs.Epoch
+  href: api/SiaNet.Events.EpochStartEventArgs.html#SiaNet_Events_EpochStartEventArgs_Epoch_
+  commentId: Overload:SiaNet.Events.EpochStartEventArgs.Epoch
   isSpec: "True"
-  fullName: SiaNet.EpochStartEventArgs.Epoch
+  fullName: SiaNet.Events.EpochStartEventArgs.Epoch
   nameWithType: EpochStartEventArgs.Epoch
+- uid: SiaNet.Events.TrainingEndEventArgs
+  name: TrainingEndEventArgs
+  href: api/SiaNet.Events.TrainingEndEventArgs.html
+  commentId: T:SiaNet.Events.TrainingEndEventArgs
+  fullName: SiaNet.Events.TrainingEndEventArgs
+  nameWithType: TrainingEndEventArgs
+- uid: SiaNet.Events.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
+  name: TrainingEndEventArgs(History, Int64)
+  href: api/SiaNet.Events.TrainingEndEventArgs.html#SiaNet_Events_TrainingEndEventArgs__ctor_SiaNet_History_System_Int64_
+  commentId: M:SiaNet.Events.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
+  fullName: SiaNet.Events.TrainingEndEventArgs.TrainingEndEventArgs(SiaNet.History, System.Int64)
+  nameWithType: TrainingEndEventArgs.TrainingEndEventArgs(History, Int64)
+- uid: SiaNet.Events.TrainingEndEventArgs.#ctor*
+  name: TrainingEndEventArgs
+  href: api/SiaNet.Events.TrainingEndEventArgs.html#SiaNet_Events_TrainingEndEventArgs__ctor_
+  commentId: Overload:SiaNet.Events.TrainingEndEventArgs.#ctor
+  isSpec: "True"
+  fullName: SiaNet.Events.TrainingEndEventArgs.TrainingEndEventArgs
+  nameWithType: TrainingEndEventArgs.TrainingEndEventArgs
+- uid: SiaNet.Events.TrainingEndEventArgs.Duration
+  name: Duration
+  href: api/SiaNet.Events.TrainingEndEventArgs.html#SiaNet_Events_TrainingEndEventArgs_Duration
+  commentId: P:SiaNet.Events.TrainingEndEventArgs.Duration
+  fullName: SiaNet.Events.TrainingEndEventArgs.Duration
+  nameWithType: TrainingEndEventArgs.Duration
+- uid: SiaNet.Events.TrainingEndEventArgs.Duration*
+  name: Duration
+  href: api/SiaNet.Events.TrainingEndEventArgs.html#SiaNet_Events_TrainingEndEventArgs_Duration_
+  commentId: Overload:SiaNet.Events.TrainingEndEventArgs.Duration
+  isSpec: "True"
+  fullName: SiaNet.Events.TrainingEndEventArgs.Duration
+  nameWithType: TrainingEndEventArgs.Duration
+- uid: SiaNet.Events.TrainingEndEventArgs.History
+  name: History
+  href: api/SiaNet.Events.TrainingEndEventArgs.html#SiaNet_Events_TrainingEndEventArgs_History
+  commentId: P:SiaNet.Events.TrainingEndEventArgs.History
+  fullName: SiaNet.Events.TrainingEndEventArgs.History
+  nameWithType: TrainingEndEventArgs.History
+- uid: SiaNet.Events.TrainingEndEventArgs.History*
+  name: History
+  href: api/SiaNet.Events.TrainingEndEventArgs.html#SiaNet_Events_TrainingEndEventArgs_History_
+  commentId: Overload:SiaNet.Events.TrainingEndEventArgs.History
+  isSpec: "True"
+  fullName: SiaNet.Events.TrainingEndEventArgs.History
+  nameWithType: TrainingEndEventArgs.History
 - uid: SiaNet.Global
   name: Global
   href: api/SiaNet.Global.html
@@ -8623,48 +8519,3 @@ references:
   commentId: E:SiaNet.Sequential.TrainingEnd
   fullName: SiaNet.Sequential.TrainingEnd
   nameWithType: Sequential.TrainingEnd
-- uid: SiaNet.TrainingEndEventArgs
-  name: TrainingEndEventArgs
-  href: api/SiaNet.TrainingEndEventArgs.html
-  commentId: T:SiaNet.TrainingEndEventArgs
-  fullName: SiaNet.TrainingEndEventArgs
-  nameWithType: TrainingEndEventArgs
-- uid: SiaNet.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
-  name: TrainingEndEventArgs(History, Int64)
-  href: api/SiaNet.TrainingEndEventArgs.html#SiaNet_TrainingEndEventArgs__ctor_SiaNet_History_System_Int64_
-  commentId: M:SiaNet.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
-  fullName: SiaNet.TrainingEndEventArgs.TrainingEndEventArgs(SiaNet.History, System.Int64)
-  nameWithType: TrainingEndEventArgs.TrainingEndEventArgs(History, Int64)
-- uid: SiaNet.TrainingEndEventArgs.#ctor*
-  name: TrainingEndEventArgs
-  href: api/SiaNet.TrainingEndEventArgs.html#SiaNet_TrainingEndEventArgs__ctor_
-  commentId: Overload:SiaNet.TrainingEndEventArgs.#ctor
-  isSpec: "True"
-  fullName: SiaNet.TrainingEndEventArgs.TrainingEndEventArgs
-  nameWithType: TrainingEndEventArgs.TrainingEndEventArgs
-- uid: SiaNet.TrainingEndEventArgs.Duration
-  name: Duration
-  href: api/SiaNet.TrainingEndEventArgs.html#SiaNet_TrainingEndEventArgs_Duration
-  commentId: P:SiaNet.TrainingEndEventArgs.Duration
-  fullName: SiaNet.TrainingEndEventArgs.Duration
-  nameWithType: TrainingEndEventArgs.Duration
-- uid: SiaNet.TrainingEndEventArgs.Duration*
-  name: Duration
-  href: api/SiaNet.TrainingEndEventArgs.html#SiaNet_TrainingEndEventArgs_Duration_
-  commentId: Overload:SiaNet.TrainingEndEventArgs.Duration
-  isSpec: "True"
-  fullName: SiaNet.TrainingEndEventArgs.Duration
-  nameWithType: TrainingEndEventArgs.Duration
-- uid: SiaNet.TrainingEndEventArgs.History
-  name: History
-  href: api/SiaNet.TrainingEndEventArgs.html#SiaNet_TrainingEndEventArgs_History
-  commentId: P:SiaNet.TrainingEndEventArgs.History
-  fullName: SiaNet.TrainingEndEventArgs.History
-  nameWithType: TrainingEndEventArgs.History
-- uid: SiaNet.TrainingEndEventArgs.History*
-  name: History
-  href: api/SiaNet.TrainingEndEventArgs.html#SiaNet_TrainingEndEventArgs_History_
-  commentId: Overload:SiaNet.TrainingEndEventArgs.History
-  isSpec: "True"
-  fullName: SiaNet.TrainingEndEventArgs.History
-  nameWithType: TrainingEndEventArgs.History

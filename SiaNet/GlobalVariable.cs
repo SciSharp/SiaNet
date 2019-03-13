@@ -5,7 +5,7 @@
     using System;
 
     /// <summary>
-    /// 
+    /// Global settings for SiaNet library
     /// </summary>
     public class Global
     {
@@ -31,6 +31,9 @@
             }
         }
 
+        /// <summary>
+        /// The Activation Function instance implemented by the backends
+        /// </summary>
         internal static ActivationFunc ActFunc = null;
 
         internal static bool UseCudnn { get; set; }

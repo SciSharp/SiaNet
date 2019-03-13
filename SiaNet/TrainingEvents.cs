@@ -1,4 +1,4 @@
-﻿namespace SiaNet
+﻿namespace SiaNet.Events
 {
     /// <summary>
     /// Event triggered when batch training starts

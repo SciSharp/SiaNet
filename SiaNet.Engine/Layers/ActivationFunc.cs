@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SiaNet.Engine.Layers
+﻿namespace SiaNet.Engine.Layers
 {
+    using System;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class ActivationFunc
     {
         IBackend K;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActivationFunc"/> class.
+        /// </summary>
+        /// <param name="backend">The backend.</param>
         public ActivationFunc(IBackend backend)
         {
             K = backend;

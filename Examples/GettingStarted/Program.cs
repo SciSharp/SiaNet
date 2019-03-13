@@ -2,6 +2,7 @@
 using SiaNet;
 using SiaNet.Data;
 using SiaNet.Engine;
+using SiaNet.Events;
 using SiaNet.Initializers;
 using SiaNet.Layers;
 
