@@ -84,9 +84,14 @@
       <h4><a class="xref" href="SiaNet.Layers.AvgPooling3D.html">AvgPooling3D</a></h4>
       <section></section>
       <h4><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></h4>
-      <section></section>
+      <section><p>Base class for the layers</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.BatchNormalization.html">BatchNormalization</a></h4>
-      <section></section>
+      <section><p>Batch normalization layer (Ioffe and Szegedy, 2014).</p>
+<p>
+Normalize the activations of the previous layer at each batch, i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation close to 1.
+</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.Conv1D.html">Conv1D</a></h4>
       <section></section>
       <h4><a class="xref" href="SiaNet.Layers.Conv2D.html">Conv2D</a></h4>
@@ -98,13 +103,21 @@
       <h4><a class="xref" href="SiaNet.Layers.Conv3DTranspose.html">Conv3DTranspose</a></h4>
       <section></section>
       <h4><a class="xref" href="SiaNet.Layers.Dense.html">Dense</a></h4>
-      <section></section>
+      <section><p>Dense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument,
+kernel is a weights matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.Dropout.html">Dropout</a></h4>
-      <section></section>
+      <section><p>Applies Dropout to the input. Dropout consists in randomly setting a fraction rate of input units to 0 at each update during training time, which helps prevent overfitting.</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.Embedding.html">Embedding</a></h4>
-      <section></section>
+      <section><p>Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -&gt; [[0.25, 0.1], [0.6, -0.2]]</p>
+<p>
+This layer can only be used as the first layer in a model.
+</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.Flatten.html">Flatten</a></h4>
-      <section></section>
+      <section><p>Flattens the input. Does not affect the batch size.</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.GlobalPooling1D.html">GlobalPooling1D</a></h4>
       <section></section>
       <h4><a class="xref" href="SiaNet.Layers.GlobalPooling2D.html">GlobalPooling2D</a></h4>
@@ -118,11 +131,14 @@
       <h4><a class="xref" href="SiaNet.Layers.MaxPooling3D.html">MaxPooling3D</a></h4>
       <section></section>
       <h4><a class="xref" href="SiaNet.Layers.Permute.html">Permute</a></h4>
-      <section></section>
+      <section><p>Permutes the dimensions of the input according to a given pattern. Useful for e.g.connecting RNNs and convnets together.</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.Repeat.html">Repeat</a></h4>
-      <section></section>
+      <section><p>Repeat the input for specified number of times, for an axis</p>
+</section>
       <h4><a class="xref" href="SiaNet.Layers.Reshape.html">Reshape</a></h4>
-      <section></section>
+      <section><p>Reshapes an output to a certain shape.</p>
+</section>
 </article>
           </div>
           

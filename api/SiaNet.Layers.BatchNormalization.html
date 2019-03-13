@@ -73,7 +73,11 @@
   
   <h1 id="SiaNet_Layers_BatchNormalization" data-uid="SiaNet.Layers.BatchNormalization" class="text-break">Class BatchNormalization
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Batch normalization layer (Ioffe and Szegedy, 2014).</p>
+<p>
+Normalize the activations of the previous layer at each batch, i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation close to 1.
+</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -104,9 +108,6 @@
     <div>
       <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_BuildParam_System_String_System_Int64___SiaNet_Engine_DataType_SiaNet_Initializers_BaseInitializer_SiaNet_Constraints_BaseConstraint_SiaNet_Regularizers_BaseRegularizer_System_Boolean_">BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)</a>
     </div>
-    <div>
-      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_System_String_SiaNet_Parameter_">BaseLayer.ApplyUpdate(String, Parameter)</a>
-    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Layers.html">SiaNet.Layers</a></h6>
   <h6><strong>Assembly</strong>: SiaNet.dll</h6>
@@ -121,11 +122,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization__ctor_System_Int32_System_Single_System_Single_System_Boolean_System_Boolean_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_SiaNet_Initializers_BaseInitializer_SiaNet_Initializers_BaseInitializer_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.%23ctor(System.Int32%2CSystem.Single%2CSystem.Single%2CSystem.Boolean%2CSystem.Boolean%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Initializers.BaseInitializer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L46">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L152">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization__ctor_" data-uid="SiaNet.Layers.BatchNormalization.#ctor*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization__ctor_System_Int32_System_Single_System_Single_System_Boolean_System_Boolean_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_SiaNet_Initializers_BaseInitializer_SiaNet_Initializers_BaseInitializer_" data-uid="SiaNet.Layers.BatchNormalization.#ctor(System.Int32,System.Single,System.Single,System.Boolean,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Initializers.BaseInitializer)">BatchNormalization(Int32, Single, Single, Boolean, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint, BaseInitializer, BaseRegularizer, BaseConstraint, BaseInitializer, BaseInitializer)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.Layers.BatchNormalization.html">BatchNormalization</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -144,67 +146,80 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">axis</span></td>
-        <td></td>
+        <td><p>Integer, the axis that should be normalized (typically the features axis). For instance, after a Conv2D layer set axis=1 in BatchNormalization.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Single</span></td>
         <td><span class="parametername">momentum</span></td>
-        <td></td>
+        <td><p>Momentum for the moving mean and the moving variance.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Single</span></td>
         <td><span class="parametername">epsilon</span></td>
-        <td></td>
+        <td><p>Small float added to variance to avoid dividing by zero.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">center</span></td>
-        <td></td>
+        <td><p>If True, add offset of beta to normalized tensor. If False, beta is ignored.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">scale</span></td>
-        <td></td>
+        <td><p>If True, multiply by gamma. If False, gamma is not used. When the next layer is linear (also e.g. relu), this can be disabled since the scaling will be done by the next layer.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">betaInitializer</span></td>
-        <td></td>
+        <td><p>Initializer for beta weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
         <td><span class="parametername">betaRegularizer</span></td>
-        <td></td>
+        <td><p>Regularizer function for beta weight matrix</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
         <td><span class="parametername">betaConstraint</span></td>
-        <td></td>
+        <td><p>Constraint function for beta weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">gammaInitializer</span></td>
-        <td></td>
+        <td><p>Initializer for gamma weight matrix</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
         <td><span class="parametername">gammaRegularizer</span></td>
-        <td></td>
+        <td><p>Regularizer function for gamma weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
         <td><span class="parametername">gammaConstraint</span></td>
-        <td></td>
+        <td><p>Constraint function for gamma weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">movingMeanInitializer</span></td>
-        <td></td>
+        <td><p>Initializer for moving mean weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">movingVarianceInitializer</span></td>
-        <td></td>
+        <td><p>Initializer for moving variance weight matrix.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -215,11 +230,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Axis.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Axis%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L14">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L23">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Axis_" data-uid="SiaNet.Layers.BatchNormalization.Axis*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Axis" data-uid="SiaNet.Layers.BatchNormalization.Axis">Axis</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Integer, the axis that should be normalized (typically the features axis). For instance, after a Conv2D layer set axis=1 in BatchNormalization.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -236,7 +252,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The axis.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -245,11 +262,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_BetaConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.BetaConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L32">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L95">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_BetaConstraint_" data-uid="SiaNet.Layers.BatchNormalization.BetaConstraint*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_BetaConstraint" data-uid="SiaNet.Layers.BatchNormalization.BetaConstraint">BetaConstraint</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constraint function for beta weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -266,7 +284,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td></td>
+        <td><p>The beta constraint.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -275,11 +294,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_BetaInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.BetaInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L24">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L63">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_BetaInitializer_" data-uid="SiaNet.Layers.BatchNormalization.BetaInitializer*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_BetaInitializer" data-uid="SiaNet.Layers.BatchNormalization.BetaInitializer">BetaInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializer for beta weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -296,7 +316,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The beta initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -305,11 +326,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_BetaRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.BetaRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L36">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L111">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_BetaRegularizer_" data-uid="SiaNet.Layers.BatchNormalization.BetaRegularizer*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_BetaRegularizer" data-uid="SiaNet.Layers.BatchNormalization.BetaRegularizer">BetaRegularizer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Regularizer function for beta weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -326,7 +348,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td></td>
+        <td><p>The beta regularizer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -335,11 +358,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Center.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Center%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L20">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L47">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Center_" data-uid="SiaNet.Layers.BatchNormalization.Center*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Center" data-uid="SiaNet.Layers.BatchNormalization.Center">Center</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>If True, add offset of beta to normalized tensor. If False, beta is ignored.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -356,7 +380,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if center; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -365,11 +390,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Epsilon.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Epsilon%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L18">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L39">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Epsilon_" data-uid="SiaNet.Layers.BatchNormalization.Epsilon*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Epsilon" data-uid="SiaNet.Layers.BatchNormalization.Epsilon">Epsilon</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Small float added to variance to avoid dividing by zero.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -386,7 +412,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Single</span></td>
-        <td></td>
+        <td><p>The epsilon.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -395,11 +422,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_GammaConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.GammaConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L34">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L103">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_GammaConstraint_" data-uid="SiaNet.Layers.BatchNormalization.GammaConstraint*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_GammaConstraint" data-uid="SiaNet.Layers.BatchNormalization.GammaConstraint">GammaConstraint</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constraint function for gamma weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -416,7 +444,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td></td>
+        <td><p>The gamma constraint.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -425,11 +454,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_GammaInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.GammaInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L26">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L71">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_GammaInitializer_" data-uid="SiaNet.Layers.BatchNormalization.GammaInitializer*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_GammaInitializer" data-uid="SiaNet.Layers.BatchNormalization.GammaInitializer">GammaInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializer for gamma weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -446,7 +476,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The gamma initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -455,11 +486,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_GammaRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.GammaRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L38">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L119">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_GammaRegularizer_" data-uid="SiaNet.Layers.BatchNormalization.GammaRegularizer*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_GammaRegularizer" data-uid="SiaNet.Layers.BatchNormalization.GammaRegularizer">GammaRegularizer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Regularizer function for gamma weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -476,7 +508,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td></td>
+        <td><p>The gamma regularizer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -485,11 +518,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Momentum.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Momentum%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L16">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L31">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Momentum_" data-uid="SiaNet.Layers.BatchNormalization.Momentum*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Momentum" data-uid="SiaNet.Layers.BatchNormalization.Momentum">Momentum</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Momentum for the moving mean and the moving variance.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -506,7 +540,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Single</span></td>
-        <td></td>
+        <td><p>The momentum.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -515,11 +550,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_MovingMeanInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.MovingMeanInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L28">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L79">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_MovingMeanInitializer_" data-uid="SiaNet.Layers.BatchNormalization.MovingMeanInitializer*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_MovingMeanInitializer" data-uid="SiaNet.Layers.BatchNormalization.MovingMeanInitializer">MovingMeanInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializer for moving mean weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -536,7 +572,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The moving mean initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -545,11 +582,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_MovingVarianceInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.MovingVarianceInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L30">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L87">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_MovingVarianceInitializer_" data-uid="SiaNet.Layers.BatchNormalization.MovingVarianceInitializer*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_MovingVarianceInitializer" data-uid="SiaNet.Layers.BatchNormalization.MovingVarianceInitializer">MovingVarianceInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializer for moving variance weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -566,7 +604,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The moving variance initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -575,11 +614,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Scale.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Scale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L22">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L55">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Scale_" data-uid="SiaNet.Layers.BatchNormalization.Scale*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Scale" data-uid="SiaNet.Layers.BatchNormalization.Scale">Scale</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>If True, multiply by gamma. If False, gamma is not used. When the next layer is linear (also e.g. relu), this can be disabled since the scaling will be done by the next layer.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -596,7 +636,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if scale; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -607,11 +648,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Backward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Backward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L82">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L196">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Backward_" data-uid="SiaNet.Layers.BatchNormalization.Backward*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Backward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.BatchNormalization.Backward(SiaNet.Engine.Tensor)">Backward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Calculate the gradient of this layer function</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -630,7 +672,8 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">outputgrad</span></td>
-        <td></td>
+        <td><p>The calculated output grad from previous layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -641,11 +684,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization_Forward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization.Forward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L66">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L176">View Source</a>
   </span>
   <a id="SiaNet_Layers_BatchNormalization_Forward_" data-uid="SiaNet.Layers.BatchNormalization.Forward*"></a>
   <h4 id="SiaNet_Layers_BatchNormalization_Forward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.BatchNormalization.Forward(SiaNet.Engine.Tensor)">Forward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Forwards the inputs and compute the output</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -664,12 +708,17 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The input tensor for this layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Forward_SiaNet_Engine_Tensor_">BaseLayer.Forward(Tensor)</a></div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></div>
+  </div>
 </article>
           </div>
           
@@ -681,7 +730,7 @@
                     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_BatchNormalization.md&amp;value=---%0Auid%3A%20SiaNet.Layers.BatchNormalization%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/BatchNormalization.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
