@@ -73,7 +73,11 @@
   
   <h1 id="SiaNet_Layers_Activations_PRelu" data-uid="SiaNet.Layers.Activations.PRelu" class="text-break">Class PRelu
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Parametric Rectified Linear Unit.</p>
+<p>
+It follows: f(x) = alpha* x for x&lt; 0, f(x) = x for x >= 0, where alpha is a learned array with the same shape as x.
+</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -104,9 +108,6 @@
     <div>
       <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_BuildParam_System_String_System_Int64___SiaNet_Engine_DataType_SiaNet_Initializers_BaseInitializer_SiaNet_Constraints_BaseConstraint_SiaNet_Regularizers_BaseRegularizer_System_Boolean_">BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)</a>
     </div>
-    <div>
-      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_System_String_SiaNet_Parameter_">BaseLayer.ApplyUpdate(String, Parameter)</a>
-    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Layers.Activations.html">SiaNet.Layers.Activations</a></h6>
   <h6><strong>Assembly</strong>: SiaNet.dll</h6>
@@ -121,11 +122,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu__ctor_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_System_Int64___.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu.%23ctor(SiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint%2CSystem.Int64%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L23">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L59">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_PRelu__ctor_" data-uid="SiaNet.Layers.Activations.PRelu.#ctor*"></a>
   <h4 id="SiaNet_Layers_Activations_PRelu__ctor_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_System_Int64___" data-uid="SiaNet.Layers.Activations.PRelu.#ctor(SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Int64[])">PRelu(BaseInitializer, BaseRegularizer, BaseConstraint, Int64[])</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.Layers.Activations.PRelu.html">PRelu</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -144,22 +146,26 @@
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">alphaInitializer</span></td>
-        <td></td>
+        <td><p>The alpha initializer.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
         <td><span class="parametername">alphaRegularizer</span></td>
-        <td></td>
+        <td><p>The alpha regularizer.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
         <td><span class="parametername">alphaConstraint</span></td>
-        <td></td>
+        <td><p>The alpha constraint.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int64</span>[]</td>
         <td><span class="parametername">sharedAxes</span></td>
-        <td></td>
+        <td><p>The shared axes.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -170,11 +176,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu_AlphaConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu.AlphaConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L18">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L40">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_PRelu_AlphaConstraint_" data-uid="SiaNet.Layers.Activations.PRelu.AlphaConstraint*"></a>
   <h4 id="SiaNet_Layers_Activations_PRelu_AlphaConstraint" data-uid="SiaNet.Layers.Activations.PRelu.AlphaConstraint">AlphaConstraint</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the constraint function for the alpha parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -191,7 +198,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td></td>
+        <td><p>The alpha constraint.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -200,11 +208,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu_AlphaInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu.AlphaInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L14">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L24">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_PRelu_AlphaInitializer_" data-uid="SiaNet.Layers.Activations.PRelu.AlphaInitializer*"></a>
   <h4 id="SiaNet_Layers_Activations_PRelu_AlphaInitializer" data-uid="SiaNet.Layers.Activations.PRelu.AlphaInitializer">AlphaInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the initializer for the alpha parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -221,7 +230,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The alpha initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -230,11 +240,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu_AlphaRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu.AlphaRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L16">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L32">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_PRelu_AlphaRegularizer_" data-uid="SiaNet.Layers.Activations.PRelu.AlphaRegularizer*"></a>
   <h4 id="SiaNet_Layers_Activations_PRelu_AlphaRegularizer" data-uid="SiaNet.Layers.Activations.PRelu.AlphaRegularizer">AlphaRegularizer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets the regularizer function for alpha parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -251,7 +262,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td></td>
+        <td><p>The alpha regularizer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -262,11 +274,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu_Backward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu.Backward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L48">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L92">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_PRelu_Backward_" data-uid="SiaNet.Layers.Activations.PRelu.Backward*"></a>
   <h4 id="SiaNet_Layers_Activations_PRelu_Backward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Activations.PRelu.Backward(SiaNet.Engine.Tensor)">Backward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Calculate the gradient of this layer function</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -285,7 +298,8 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">outputgrad</span></td>
-        <td></td>
+        <td><p>The calculated output grad from previous layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -296,11 +310,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu_Forward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu.Forward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L33">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L73">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_PRelu_Forward_" data-uid="SiaNet.Layers.Activations.PRelu.Forward*"></a>
   <h4 id="SiaNet_Layers_Activations_PRelu_Forward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Activations.PRelu.Forward(SiaNet.Engine.Tensor)">Forward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Forwards the inputs and compute the output</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -319,12 +334,17 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The input tensor for this layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Forward_SiaNet_Engine_Tensor_">BaseLayer.Forward(Tensor)</a></div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></div>
+  </div>
 </article>
           </div>
           
@@ -336,7 +356,7 @@
                     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_PRelu.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.PRelu%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/PRelu.cs/#L16" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -4734,19 +4734,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Layers.BaseLayer.BaseLayer
   nameWithType: BaseLayer.BaseLayer
-- uid: SiaNet.Layers.BaseLayer.ApplyUpdate(System.String,SiaNet.Parameter)
-  name: ApplyUpdate(String, Parameter)
-  href: api/SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_System_String_SiaNet_Parameter_
-  commentId: M:SiaNet.Layers.BaseLayer.ApplyUpdate(System.String,SiaNet.Parameter)
-  fullName: SiaNet.Layers.BaseLayer.ApplyUpdate(System.String, SiaNet.Parameter)
-  nameWithType: BaseLayer.ApplyUpdate(String, Parameter)
-- uid: SiaNet.Layers.BaseLayer.ApplyUpdate*
-  name: ApplyUpdate
-  href: api/SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_
-  commentId: Overload:SiaNet.Layers.BaseLayer.ApplyUpdate
-  isSpec: "True"
-  fullName: SiaNet.Layers.BaseLayer.ApplyUpdate
-  nameWithType: BaseLayer.ApplyUpdate
 - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
   name: Backward(Tensor)
   href: api/SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Backward_SiaNet_Engine_Tensor_
@@ -5917,45 +5904,45 @@ references:
   isSpec: "True"
   fullName: SiaNet.Layers.Dense.Forward
   nameWithType: Dense.Forward
-- uid: SiaNet.Layers.Dense.KernalConstraint
-  name: KernalConstraint
-  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernalConstraint
-  commentId: P:SiaNet.Layers.Dense.KernalConstraint
-  fullName: SiaNet.Layers.Dense.KernalConstraint
-  nameWithType: Dense.KernalConstraint
-- uid: SiaNet.Layers.Dense.KernalConstraint*
-  name: KernalConstraint
-  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernalConstraint_
-  commentId: Overload:SiaNet.Layers.Dense.KernalConstraint
+- uid: SiaNet.Layers.Dense.KernelConstraint
+  name: KernelConstraint
+  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernelConstraint
+  commentId: P:SiaNet.Layers.Dense.KernelConstraint
+  fullName: SiaNet.Layers.Dense.KernelConstraint
+  nameWithType: Dense.KernelConstraint
+- uid: SiaNet.Layers.Dense.KernelConstraint*
+  name: KernelConstraint
+  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernelConstraint_
+  commentId: Overload:SiaNet.Layers.Dense.KernelConstraint
   isSpec: "True"
-  fullName: SiaNet.Layers.Dense.KernalConstraint
-  nameWithType: Dense.KernalConstraint
-- uid: SiaNet.Layers.Dense.KernalInitializer
-  name: KernalInitializer
-  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernalInitializer
-  commentId: P:SiaNet.Layers.Dense.KernalInitializer
-  fullName: SiaNet.Layers.Dense.KernalInitializer
-  nameWithType: Dense.KernalInitializer
-- uid: SiaNet.Layers.Dense.KernalInitializer*
-  name: KernalInitializer
-  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernalInitializer_
-  commentId: Overload:SiaNet.Layers.Dense.KernalInitializer
+  fullName: SiaNet.Layers.Dense.KernelConstraint
+  nameWithType: Dense.KernelConstraint
+- uid: SiaNet.Layers.Dense.KernelInitializer
+  name: KernelInitializer
+  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernelInitializer
+  commentId: P:SiaNet.Layers.Dense.KernelInitializer
+  fullName: SiaNet.Layers.Dense.KernelInitializer
+  nameWithType: Dense.KernelInitializer
+- uid: SiaNet.Layers.Dense.KernelInitializer*
+  name: KernelInitializer
+  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernelInitializer_
+  commentId: Overload:SiaNet.Layers.Dense.KernelInitializer
   isSpec: "True"
-  fullName: SiaNet.Layers.Dense.KernalInitializer
-  nameWithType: Dense.KernalInitializer
-- uid: SiaNet.Layers.Dense.KernalRegularizer
-  name: KernalRegularizer
-  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernalRegularizer
-  commentId: P:SiaNet.Layers.Dense.KernalRegularizer
-  fullName: SiaNet.Layers.Dense.KernalRegularizer
-  nameWithType: Dense.KernalRegularizer
-- uid: SiaNet.Layers.Dense.KernalRegularizer*
-  name: KernalRegularizer
-  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernalRegularizer_
-  commentId: Overload:SiaNet.Layers.Dense.KernalRegularizer
+  fullName: SiaNet.Layers.Dense.KernelInitializer
+  nameWithType: Dense.KernelInitializer
+- uid: SiaNet.Layers.Dense.KernelRegularizer
+  name: KernelRegularizer
+  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernelRegularizer
+  commentId: P:SiaNet.Layers.Dense.KernelRegularizer
+  fullName: SiaNet.Layers.Dense.KernelRegularizer
+  nameWithType: Dense.KernelRegularizer
+- uid: SiaNet.Layers.Dense.KernelRegularizer*
+  name: KernelRegularizer
+  href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_KernelRegularizer_
+  commentId: Overload:SiaNet.Layers.Dense.KernelRegularizer
   isSpec: "True"
-  fullName: SiaNet.Layers.Dense.KernalRegularizer
-  nameWithType: Dense.KernalRegularizer
+  fullName: SiaNet.Layers.Dense.KernelRegularizer
+  nameWithType: Dense.KernelRegularizer
 - uid: SiaNet.Layers.Dense.UseBias
   name: UseBias
   href: api/SiaNet.Layers.Dense.html#SiaNet_Layers_Dense_UseBias

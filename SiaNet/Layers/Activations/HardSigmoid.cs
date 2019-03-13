@@ -1,10 +1,7 @@
-﻿using SiaNet.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiaNet.Layers.Activations
+﻿namespace SiaNet.Layers.Activations
 {
+    using SiaNet.Engine;
+
     public class HardSigmoid : BaseLayer
     {
         public HardSigmoid()

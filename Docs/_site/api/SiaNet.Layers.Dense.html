@@ -73,7 +73,9 @@
   
   <h1 id="SiaNet_Layers_Dense" data-uid="SiaNet.Layers.Dense" class="text-break">Class Dense
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Dense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument,
+kernel is a weights matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -104,9 +106,6 @@
     <div>
       <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_BuildParam_System_String_System_Int64___SiaNet_Engine_DataType_SiaNet_Initializers_BaseInitializer_SiaNet_Constraints_BaseConstraint_SiaNet_Regularizers_BaseRegularizer_System_Boolean_">BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)</a>
     </div>
-    <div>
-      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_System_String_SiaNet_Parameter_">BaseLayer.ApplyUpdate(String, Parameter)</a>
-    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Layers.html">SiaNet.Layers</a></h6>
   <h6><strong>Assembly</strong>: SiaNet.dll</h6>
@@ -121,15 +120,16 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense__ctor_System_Int32_SiaNet_Engine_ActType_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_System_Boolean_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.%23ctor(System.Int32%2CSiaNet.Engine.ActType%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint%2CSystem.Boolean%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L32">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L100">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense__ctor_" data-uid="SiaNet.Layers.Dense.#ctor*"></a>
   <h4 id="SiaNet_Layers_Dense__ctor_System_Int32_SiaNet_Engine_ActType_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_System_Boolean_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_" data-uid="SiaNet.Layers.Dense.#ctor(System.Int32,SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)">Dense(Int32, ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.Layers.Dense.html">Dense</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dense(int dim, ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Dense(int dim, ActType activation = ActType.Linear, BaseInitializer kernelInitializer = null, BaseRegularizer kernelRegularizer = null, BaseConstraint kernelConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -144,47 +144,56 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">dim</span></td>
-        <td></td>
+        <td><p>Dimensions of the output space</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Engine.ActType.html">ActType</a></td>
         <td><span class="parametername">activation</span></td>
-        <td></td>
+        <td><p>Activation function to use. If none specified linear activation will be used</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td><span class="parametername">kernalInitializer</span></td>
-        <td></td>
+        <td><span class="parametername">kernelInitializer</span></td>
+        <td><p>Initializer for kernel weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td><span class="parametername">kernalRegularizer</span></td>
-        <td></td>
+        <td><span class="parametername">kernelRegularizer</span></td>
+        <td><p>Regularizer function applied to bias weight matrix</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td><span class="parametername">kernalConstraint</span></td>
-        <td></td>
+        <td><span class="parametername">kernelConstraint</span></td>
+        <td><p>Constraint function applied to kernel weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">useBias</span></td>
-        <td></td>
+        <td><p>if set to <code>true</code> will use bias parameter.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">biasInitializer</span></td>
-        <td></td>
+        <td><p>Initializer for bias weight matrix</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
         <td><span class="parametername">biasRegularizer</span></td>
-        <td></td>
+        <td><p>Regularizer function applied to bias weight matrix</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
         <td><span class="parametername">biasConstraint</span></td>
-        <td></td>
+        <td><p>Constraint function applied to bias weight matrix</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -195,11 +204,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_Act.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.Act%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L16">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L30">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_Act_" data-uid="SiaNet.Layers.Dense.Act*"></a>
   <h4 id="SiaNet_Layers_Dense_Act" data-uid="SiaNet.Layers.Dense.Act">Act</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Activation function to use. If none specified linear activation will be used</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -216,7 +226,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></td>
-        <td></td>
+        <td><p>The act.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -225,11 +236,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_BiasConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.BiasConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L26">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L70">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_BiasConstraint_" data-uid="SiaNet.Layers.Dense.BiasConstraint*"></a>
   <h4 id="SiaNet_Layers_Dense_BiasConstraint" data-uid="SiaNet.Layers.Dense.BiasConstraint">BiasConstraint</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constraint function applied to bias weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -246,7 +258,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td></td>
+        <td><p>The bias constraint.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -255,11 +268,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_BiasInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.BiasInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L22">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L54">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_BiasInitializer_" data-uid="SiaNet.Layers.Dense.BiasInitializer*"></a>
   <h4 id="SiaNet_Layers_Dense_BiasInitializer" data-uid="SiaNet.Layers.Dense.BiasInitializer">BiasInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializer for bias weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -276,7 +290,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The bias initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -285,11 +300,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_BiasRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.BiasRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L30">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L86">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_BiasRegularizer_" data-uid="SiaNet.Layers.Dense.BiasRegularizer*"></a>
   <h4 id="SiaNet_Layers_Dense_BiasRegularizer" data-uid="SiaNet.Layers.Dense.BiasRegularizer">BiasRegularizer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constraint function applied to bias weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -306,7 +322,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td></td>
+        <td><p>The bias regularizer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -315,11 +332,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_Dim.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.Dim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L14">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L22">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_Dim_" data-uid="SiaNet.Layers.Dense.Dim*"></a>
   <h4 id="SiaNet_Layers_Dense_Dim" data-uid="SiaNet.Layers.Dense.Dim">Dim</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Dimensions of the output space</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -336,24 +354,26 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The dim.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_KernalConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.KernalConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_KernelConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.KernelConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L24">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L62">View Source</a>
   </span>
-  <a id="SiaNet_Layers_Dense_KernalConstraint_" data-uid="SiaNet.Layers.Dense.KernalConstraint*"></a>
-  <h4 id="SiaNet_Layers_Dense_KernalConstraint" data-uid="SiaNet.Layers.Dense.KernalConstraint">KernalConstraint</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="SiaNet_Layers_Dense_KernelConstraint_" data-uid="SiaNet.Layers.Dense.KernelConstraint*"></a>
+  <h4 id="SiaNet_Layers_Dense_KernelConstraint" data-uid="SiaNet.Layers.Dense.KernelConstraint">KernelConstraint</h4>
+  <div class="markdown level1 summary"><p>Constraint function applied to kernel weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BaseConstraint KernalConstraint { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BaseConstraint KernelConstraint { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -366,24 +386,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td></td>
+        <td><p>The kernel constraint.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_KernalInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.KernalInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_KernelInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.KernelInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L20">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L46">View Source</a>
   </span>
-  <a id="SiaNet_Layers_Dense_KernalInitializer_" data-uid="SiaNet.Layers.Dense.KernalInitializer*"></a>
-  <h4 id="SiaNet_Layers_Dense_KernalInitializer" data-uid="SiaNet.Layers.Dense.KernalInitializer">KernalInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="SiaNet_Layers_Dense_KernelInitializer_" data-uid="SiaNet.Layers.Dense.KernelInitializer*"></a>
+  <h4 id="SiaNet_Layers_Dense_KernelInitializer" data-uid="SiaNet.Layers.Dense.KernelInitializer">KernelInitializer</h4>
+  <div class="markdown level1 summary"><p>Initializer for kernel weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BaseInitializer KernalInitializer { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BaseInitializer KernelInitializer { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -396,24 +418,26 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The kernel initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_KernalRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.KernalRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_KernelRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.KernelRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L28">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L78">View Source</a>
   </span>
-  <a id="SiaNet_Layers_Dense_KernalRegularizer_" data-uid="SiaNet.Layers.Dense.KernalRegularizer*"></a>
-  <h4 id="SiaNet_Layers_Dense_KernalRegularizer" data-uid="SiaNet.Layers.Dense.KernalRegularizer">KernalRegularizer</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="SiaNet_Layers_Dense_KernelRegularizer_" data-uid="SiaNet.Layers.Dense.KernelRegularizer*"></a>
+  <h4 id="SiaNet_Layers_Dense_KernelRegularizer" data-uid="SiaNet.Layers.Dense.KernelRegularizer">KernelRegularizer</h4>
+  <div class="markdown level1 summary"><p>Regularizer function applied to kernel weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BaseRegularizer KernalRegularizer { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BaseRegularizer KernelRegularizer { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -426,7 +450,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td></td>
+        <td><p>The kernel regularizer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -435,11 +460,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_UseBias.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.UseBias%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L18">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L38">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_UseBias_" data-uid="SiaNet.Layers.Dense.UseBias*"></a>
   <h4 id="SiaNet_Layers_Dense_UseBias" data-uid="SiaNet.Layers.Dense.UseBias">UseBias</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether to use bias parameter.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -456,7 +482,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p><code>true</code> if [use bias]; otherwise, <code>false</code>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -467,11 +494,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_Backward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.Backward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L69">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L145">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_Backward_" data-uid="SiaNet.Layers.Dense.Backward*"></a>
   <h4 id="SiaNet_Layers_Dense_Backward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Dense.Backward(SiaNet.Engine.Tensor)">Backward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Calculate the gradient of this layer function</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -490,7 +518,8 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">outputgrad</span></td>
-        <td></td>
+        <td><p>The calculated output grad from previous layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -501,11 +530,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense_Forward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense.Forward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L48">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L120">View Source</a>
   </span>
   <a id="SiaNet_Layers_Dense_Forward_" data-uid="SiaNet.Layers.Dense.Forward*"></a>
   <h4 id="SiaNet_Layers_Dense_Forward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Dense.Forward(SiaNet.Engine.Tensor)">Forward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Forwards the inputs and compute the output</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -524,12 +554,17 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The input tensor for this layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Forward_SiaNet_Engine_Tensor_">BaseLayer.Forward(Tensor)</a></div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></div>
+  </div>
 </article>
           </div>
           
@@ -541,7 +576,7 @@
                     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Dense.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Dense%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Dense.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

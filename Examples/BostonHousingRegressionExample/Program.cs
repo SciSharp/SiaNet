@@ -22,11 +22,11 @@ namespace BostonHousingRegressionExample
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(64, activation: ActType.ReLU));
-            model.Add(new Dense(32, activation: ActType.ReLU));
-            model.Add(new Dense(1, activation: ActType.ReLU));
+            //model.Add(new Dense(32, activation: ActType.ReLU));
+            model.Add(new Dense(1));
 
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.Adagrad, LossType.MeanSquaredError, MetricType.MAE);
+            model.Compile(OptimizerType.Adam, LossType.MeanSquaredError, MetricType.MAE);
 
             // Train for 100 epoch with batch size of 32
             model.Train(ds, 25, 32);

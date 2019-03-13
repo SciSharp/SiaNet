@@ -73,7 +73,11 @@
   
   <h1 id="SiaNet_Layers_Embedding" data-uid="SiaNet.Layers.Embedding" class="text-break">Class Embedding
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Turns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -&gt; [[0.25, 0.1], [0.6, -0.2]]</p>
+<p>
+This layer can only be used as the first layer in a model.
+</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -104,9 +108,6 @@
     <div>
       <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_BuildParam_System_String_System_Int64___SiaNet_Engine_DataType_SiaNet_Initializers_BaseInitializer_SiaNet_Constraints_BaseConstraint_SiaNet_Regularizers_BaseRegularizer_System_Boolean_">BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)</a>
     </div>
-    <div>
-      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_System_String_SiaNet_Parameter_">BaseLayer.ApplyUpdate(String, Parameter)</a>
-    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Layers.html">SiaNet.Layers</a></h6>
   <h6><strong>Assembly</strong>: SiaNet.dll</h6>
@@ -121,11 +122,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding__ctor_System_Int32_System_Int32_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.%23ctor(System.Int32%2CSystem.Int32%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L24">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L65">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding__ctor_" data-uid="SiaNet.Layers.Embedding.#ctor*"></a>
   <h4 id="SiaNet_Layers_Embedding__ctor_System_Int32_System_Int32_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_" data-uid="SiaNet.Layers.Embedding.#ctor(System.Int32,System.Int32,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)">Embedding(Int32, Int32, BaseInitializer, BaseRegularizer, BaseConstraint)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.Layers.Embedding.html">Embedding</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -144,27 +146,32 @@
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">inputDim</span></td>
-        <td></td>
+        <td><p>Size of the vocabulary, i.e. maximum integer index + 1.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">outputDim</span></td>
-        <td></td>
+        <td><p>int &gt;= 0, Dimension of the dense embedding.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
         <td><span class="parametername">embeddingsInitializer</span></td>
-        <td></td>
+        <td><p>Initializer for the embedding weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
         <td><span class="parametername">embeddingsRegularizer</span></td>
-        <td></td>
+        <td><p>Regularizer function for the embedding weight matrix.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
         <td><span class="parametername">embeddingsConstraint</span></td>
-        <td></td>
+        <td><p>Constraint function for the embedding weight matrix.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -175,11 +182,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_EmbeddingsConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.EmbeddingsConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L20">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L47">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_EmbeddingsConstraint_" data-uid="SiaNet.Layers.Embedding.EmbeddingsConstraint*"></a>
   <h4 id="SiaNet_Layers_Embedding_EmbeddingsConstraint" data-uid="SiaNet.Layers.Embedding.EmbeddingsConstraint">EmbeddingsConstraint</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constraint function for the embedding weight matrix</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -196,7 +204,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
-        <td></td>
+        <td><p>The embeddings constraint.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -205,11 +214,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_EmbeddingsInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.EmbeddingsInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L18">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L39">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_EmbeddingsInitializer_" data-uid="SiaNet.Layers.Embedding.EmbeddingsInitializer*"></a>
   <h4 id="SiaNet_Layers_Embedding_EmbeddingsInitializer" data-uid="SiaNet.Layers.Embedding.EmbeddingsInitializer">EmbeddingsInitializer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializer for the embedding weight matrix.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -226,7 +236,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
-        <td></td>
+        <td><p>The embeddings initializer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -235,11 +246,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_EmbeddingsRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.EmbeddingsRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L22">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L55">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_EmbeddingsRegularizer_" data-uid="SiaNet.Layers.Embedding.EmbeddingsRegularizer*"></a>
   <h4 id="SiaNet_Layers_Embedding_EmbeddingsRegularizer" data-uid="SiaNet.Layers.Embedding.EmbeddingsRegularizer">EmbeddingsRegularizer</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Regularizer function for the embedding weight matrix.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -256,7 +268,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
-        <td></td>
+        <td><p>The embeddings regularizer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -265,11 +278,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_InputDim.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.InputDim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L14">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L23">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_InputDim_" data-uid="SiaNet.Layers.Embedding.InputDim*"></a>
   <h4 id="SiaNet_Layers_Embedding_InputDim" data-uid="SiaNet.Layers.Embedding.InputDim">InputDim</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>int &gt; 0, Size of the vocabulary, i.e. maximum integer index + 1.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -286,7 +300,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The input dim.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -295,11 +310,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_OutputDim.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.OutputDim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L16">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L31">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_OutputDim_" data-uid="SiaNet.Layers.Embedding.OutputDim*"></a>
   <h4 id="SiaNet_Layers_Embedding_OutputDim" data-uid="SiaNet.Layers.Embedding.OutputDim">OutputDim</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>int &gt;= 0, Dimension of the dense embedding.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -316,7 +332,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>The output dim.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -327,11 +344,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_Backward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.Backward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L39">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L88">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_Backward_" data-uid="SiaNet.Layers.Embedding.Backward*"></a>
   <h4 id="SiaNet_Layers_Embedding_Backward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Embedding.Backward(SiaNet.Engine.Tensor)">Backward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Calculate the gradient of this layer function</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -350,7 +368,8 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">outputgrad</span></td>
-        <td></td>
+        <td><p>The calculated output grad from previous layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -361,11 +380,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding_Forward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding.Forward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L34">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L79">View Source</a>
   </span>
   <a id="SiaNet_Layers_Embedding_Forward_" data-uid="SiaNet.Layers.Embedding.Forward*"></a>
   <h4 id="SiaNet_Layers_Embedding_Forward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Embedding.Forward(SiaNet.Engine.Tensor)">Forward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Forwards the inputs and compute the output</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -384,12 +404,17 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The input tensor for this layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Forward_SiaNet_Engine_Tensor_">BaseLayer.Forward(Tensor)</a></div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></div>
+  </div>
 </article>
           </div>
           
@@ -401,7 +426,7 @@
                     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Embedding.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Embedding%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Core/Embedding.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

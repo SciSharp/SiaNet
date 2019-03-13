@@ -73,7 +73,10 @@
   
   <h1 id="SiaNet_Layers_Activations_Selu" data-uid="SiaNet.Layers.Activations.Selu" class="text-break">Class Selu
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>SELU is equal to: scale * elu(x, alpha), where alpha and scale are predefined constants.
+The values of alpha and scale are chosen so that the mean and variance of the inputs are preserved between two consecutive layers as long as the weights are initialized correctly (see lecun_normal initialization)
+and the number of inputs is &quot;large enough&quot;</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -108,9 +111,6 @@
     <div>
       <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_BuildParam_System_String_System_Int64___SiaNet_Engine_DataType_SiaNet_Initializers_BaseInitializer_SiaNet_Constraints_BaseConstraint_SiaNet_Regularizers_BaseRegularizer_System_Boolean_">BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)</a>
     </div>
-    <div>
-      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_ApplyUpdate_System_String_SiaNet_Parameter_">BaseLayer.ApplyUpdate(String, Parameter)</a>
-    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Layers.Activations.html">SiaNet.Layers.Activations</a></h6>
   <h6><strong>Assembly</strong>: SiaNet.dll</h6>
@@ -125,11 +125,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_Selu__ctor.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.Selu.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L13">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L19">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_Selu__ctor_" data-uid="SiaNet.Layers.Activations.Selu.#ctor*"></a>
   <h4 id="SiaNet_Layers_Activations_Selu__ctor" data-uid="SiaNet.Layers.Activations.Selu.#ctor">Selu()</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SiaNet.Layers.Activations.Selu.html">Selu</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -142,11 +143,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_Selu_Backward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.Selu.Backward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L27">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L41">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_Selu_Backward_" data-uid="SiaNet.Layers.Activations.Selu.Backward*"></a>
   <h4 id="SiaNet_Layers_Activations_Selu_Backward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Activations.Selu.Backward(SiaNet.Engine.Tensor)">Backward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Calculate the gradient of this layer function</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -165,7 +167,8 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">outputgrad</span></td>
-        <td></td>
+        <td><p>The calculated output grad from previous layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -176,11 +179,12 @@
     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_Selu_Forward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.Selu.Forward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L19">View Source</a>
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L29">View Source</a>
   </span>
   <a id="SiaNet_Layers_Activations_Selu_Forward_" data-uid="SiaNet.Layers.Activations.Selu.Forward*"></a>
   <h4 id="SiaNet_Layers_Activations_Selu_Forward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Activations.Selu.Forward(SiaNet.Engine.Tensor)">Forward(Tensor)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Forwards the inputs and compute the output</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -199,12 +203,17 @@
       <tr>
         <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The input tensor for this layer.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="SiaNet.Layers.Activations.Elu.html#SiaNet_Layers_Activations_Elu_Forward_SiaNet_Engine_Tensor_">Elu.Forward(Tensor)</a></div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="SiaNet.Layers.Activations.Elu.html">Elu</a></div>
+  </div>
 </article>
           </div>
           
@@ -216,7 +225,7 @@
                     <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Activations_Selu.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Activations.Selu%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Activations/Selu.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
