@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace SiaNet
 {
-    public class ParamValidator
+    internal class ParamValidator
     {
-        public static void Validate(string name, string value, params string[] validValues)
+        internal static void Validate(string name, string value, params string[] validValues)
         {
             if (!validValues.Contains(value))
             {

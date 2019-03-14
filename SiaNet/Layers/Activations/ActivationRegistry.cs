@@ -28,7 +28,7 @@ namespace SiaNet.Layers.Activations
                 case ActType.Exp:
                     act = new Exp();
                     break;
-                case ActType.HargSigmoid:
+                case ActType.HardSigmoid:
                     act = new HardSigmoid();
                     break;
                 case ActType.LeakyReLU:

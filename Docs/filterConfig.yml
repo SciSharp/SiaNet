@@ -5,5 +5,9 @@ apiRules:
     type: Class
 
 - exclude:
+    uidRegex: '^SiaNet.Engine.Layers.ActivationFunc'
+    type: Class
+
+- exclude:
     uidRegex: '^System.Object'
     type: Type

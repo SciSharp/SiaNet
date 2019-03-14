@@ -1,0 +1,1614 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/git/SiaNet/Docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Constraints.BaseConstraint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Constraints.BaseConstraint.html",
+          "hash": "+ZPVbzse9FOcGRbgogBqzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Constraints.MaxNorm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Constraints.MaxNorm.html",
+          "hash": "Si/ArhFVKC3qd0j52cJGlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Constraints.MinMaxNorm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Constraints.MinMaxNorm.html",
+          "hash": "VAGrGkq1STGUKZUn7Mmf6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Constraints.NonNeg.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Constraints.NonNeg.html",
+          "hash": "3FCqvtgCDHA2dhG1AiVcVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Constraints.UnitNorm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Constraints.UnitNorm.html",
+          "hash": "7Wg5pPXY2fs8l+qOOLNymw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Constraints.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Constraints.html",
+          "hash": "D9U+CPgXe2dgYli1Nd8iAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Data.DataFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Data.DataFrame.html",
+          "hash": "+pFowsQlw501MaL9cP4uxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Data.DataFrame2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Data.DataFrame2D.html",
+          "hash": "R+oEhrhGDJsaUmrn38bkAQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Data.DataFrameIter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Data.DataFrameIter.html",
+          "hash": "CDI4vz51iP4GqpxkF3bHgg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Data.ImageFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Data.ImageFrame.html",
+          "hash": "G7/tkObkhYDabw/TB0Ew1g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Data.html",
+          "hash": "nzbjB4ivMy2R4vqMvzsulA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.ActType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.ActType.html",
+          "hash": "vWg5qIZeEkeBYD7UtAObSw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.BaseParameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.BaseParameter.html",
+          "hash": "lJe264TCDi78sdhgOP96uA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.DataType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.DataType.html",
+          "hash": "9KvlMPNETawt6VlMzfL+Hg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.DeviceType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.DeviceType.html",
+          "hash": "t5iTsd9M5/nkfqT9OIztfw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.IBackend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.IBackend.html",
+          "hash": "nnilkVINmmIA2hycldvRAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.LossType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.LossType.html",
+          "hash": "35brwraJEsIFpxzW01xBNg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.MetricType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.MetricType.html",
+          "hash": "Il+5g8RLaCs9UvHfDjP/Yw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.OptimizerType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.OptimizerType.html",
+          "hash": "lXi3tNCZMCN+Zx8IVFDPtg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.PaddingType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.PaddingType.html",
+          "hash": "O8xzxCV1RWjsoXNAHeOSMw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.PoolingPoolType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.PoolingPoolType.html",
+          "hash": "vBHhOd2laEi1eFQUrgn7pQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.SiaNetBackend.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.SiaNetBackend.html",
+          "hash": "bD5qBVFwQgcAl48092iRgQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.Tensor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.Tensor.html",
+          "hash": "Uvz5G13Mje8s594Aif6O5g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Engine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Engine.html",
+          "hash": "INiUuCBfqB0x6KjspxR3RQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.BatchEndEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.BatchEndEventArgs.html",
+          "hash": "A6Uo2uoUNQsn5x51q9OD8A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.BatchStartEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.BatchStartEventArgs.html",
+          "hash": "pjXM257uQRtLIT6DEGXYbg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.EpochEndEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.EpochEndEventArgs.html",
+          "hash": "baaolh7sCJlqlUTpYAEb9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.EpochStartEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.EpochStartEventArgs.html",
+          "hash": "OHEG/TQBOf0w8vt5ILFfiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.TrainingEndEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.TrainingEndEventArgs.html",
+          "hash": "J4sJ/1IaBbAzIW/JJSIrCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Events.html",
+          "hash": "FuY8wUlNso6agQ8XRWWP4g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Global.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Global.html",
+          "hash": "ON2mDyBGvIiZ4tW1do+FZw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.History.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.History.html",
+          "hash": "ecM2DKt0oSmz5MsxSCQ/gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.BaseInitializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.BaseInitializer.html",
+          "hash": "e9sUB8mShExRZbTsCHxdOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.Constant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.Constant.html",
+          "hash": "oB/hVMVZnFQJT5gziiNy2w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.GlorotNormal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.GlorotNormal.html",
+          "hash": "ieNk3kHOh5s0jzEXRJyGIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.GlorotUniform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.GlorotUniform.html",
+          "hash": "Flen+uBgwec/QRHpgUeKIw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.HeNormal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.HeNormal.html",
+          "hash": "HXr6JJlqas5iB9AWulO0hw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.HeUniform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.HeUniform.html",
+          "hash": "FRNWjQecTexdEi1vW1p3dA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.LecunNormal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.LecunNormal.html",
+          "hash": "9gjy39i4dA7gMLFzFRXo6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.LecunUniform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.LecunUniform.html",
+          "hash": "NdyGy2W4aJKyvRuK5fKDdw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.Ones.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.Ones.html",
+          "hash": "T0yeETtj6pi8TF7h9C+PKA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.RandomNormal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.RandomNormal.html",
+          "hash": "4J8CvjF3BI96IW2f3jNsRQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.RandomUniform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.RandomUniform.html",
+          "hash": "dKgUI06FxUxInWMgr6HMsw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.TruncatedNormal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.TruncatedNormal.html",
+          "hash": "d28FyG8ee+VUqtUzNY5tyA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.VarianceScaling.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.VarianceScaling.html",
+          "hash": "Wo/zIv1BtCLxrq/bRa8MXg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.Zeros.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.Zeros.html",
+          "hash": "tE1i9TZvrU9Kj2QEvn0eew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Initializers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Initializers.html",
+          "hash": "keeGuuR/5Ykt2kCF+t4UQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Elu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Elu.html",
+          "hash": "jn0ztQsfFuel3Dz6X9Eafg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Exp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Exp.html",
+          "hash": "dibBvC3xKpObE+8aQYByAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.HardSigmoid.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.HardSigmoid.html",
+          "hash": "JWjfzaj5wMpNwlJWrb6JaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.LeakyRelu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.LeakyRelu.html",
+          "hash": "RjNEK/yJyCR3mT5owV5l4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Linear.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Linear.html",
+          "hash": "o/4f+o6pCgy676htRBB1zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.PRelu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.PRelu.html",
+          "hash": "hQyi+l+r9GrJfUqgIXLx3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Relu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Relu.html",
+          "hash": "Pl6fDy+M4da7SwW//2yv0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Selu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Selu.html",
+          "hash": "3rFjEsoGf2TPWqNiEHeUvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Sigmoid.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Sigmoid.html",
+          "hash": "+3aOziOa5JlDjDm3OMAzEQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Softmax.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Softmax.html",
+          "hash": "CefYxr8zsCopjWuzyLy7Dg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Softplus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Softplus.html",
+          "hash": "zFfnJG7As7k9JiDTuQYo0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Softsign.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Softsign.html",
+          "hash": "gljAYdjE5L74Rp+x7ROSrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.Tanh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.Tanh.html",
+          "hash": "/gd4A0nsdo1Pg2kL8MzPTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Activations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Activations.html",
+          "hash": "5dCJAA2deFBV0lwPQ/G3+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.AvgPooling1D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.AvgPooling1D.html",
+          "hash": "/BR11w4T+67zmyY8lbB93w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.AvgPooling2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.AvgPooling2D.html",
+          "hash": "kBTmsixgn6zQnK3Bc8KRUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.AvgPooling3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.AvgPooling3D.html",
+          "hash": "I4AgKq0RkvjSZWQ1jmR45A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.BaseLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.BaseLayer.html",
+          "hash": "eUETOEyb7XltHonvgThaxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.BatchNormalization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.BatchNormalization.html",
+          "hash": "KbZQ9jP6ny+Hrk40MRhnJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Conv1D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Conv1D.html",
+          "hash": "ce3UiLfUwcUPtGt3Ei++Eg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Conv2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Conv2D.html",
+          "hash": "8e+GgwGJaJxeIdnD/UBkMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Conv2DTranspose.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Conv2DTranspose.html",
+          "hash": "imuDuSdV7Va21bG142DKLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Conv3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Conv3D.html",
+          "hash": "LOztx113PlAo4+hOP9T3Zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Conv3DTranspose.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Conv3DTranspose.html",
+          "hash": "Z5eRoXfNUZ6IcssvGvD2fA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Dense.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Dense.html",
+          "hash": "mER+nfI6f264pb2okMhnOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Dropout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Dropout.html",
+          "hash": "uO15wpsonDY+ZAhbCI5cyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Embedding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Embedding.html",
+          "hash": "cbxbVPDDH8dmT/nFXxBiEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Flatten.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Flatten.html",
+          "hash": "ftTczlScxXRCSzZZLpTiXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.GlobalPooling1D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.GlobalPooling1D.html",
+          "hash": "r+dcSY4UnRo3YeiBVhOpTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.GlobalPooling2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.GlobalPooling2D.html",
+          "hash": "ZJantz9rpWdlLpHgMiU2nw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.GlobalPooling3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.GlobalPooling3D.html",
+          "hash": "6gm9PALi6kdaY8Eiy3r+EA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.MaxPooling1D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.MaxPooling1D.html",
+          "hash": "2xK6DYakl3KkXH0r2b0n7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.MaxPooling2D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.MaxPooling2D.html",
+          "hash": "N/c0rQcaMkQb+XIx+1hN9g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.MaxPooling3D.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.MaxPooling3D.html",
+          "hash": "soeUigX/x5joLAWcN5KuuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Permute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Permute.html",
+          "hash": "tg/lfG+E9Awl84VRF/RyIw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Repeat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Repeat.html",
+          "hash": "myib3Rfpvk9HIvgL6x423A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.Reshape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.Reshape.html",
+          "hash": "W0pgBvvHkYDjjXkBfD/85g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Layers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Layers.html",
+          "hash": "ItN6++t2+4N7o9PK6PiJHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.BaseLoss.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.BaseLoss.html",
+          "hash": "wiHTEXNMhcv6zQ0QAkuJkA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.BinaryCrossentropy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.BinaryCrossentropy.html",
+          "hash": "gxO1DYFH/pi4lpGAMhWzUQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.CategorialHinge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.CategorialHinge.html",
+          "hash": "JxhZEF9Kk8OuFLlaAKMFzA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.CategoricalCrossentropy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.CategoricalCrossentropy.html",
+          "hash": "XZBk2jeGfUVmBbFOcAxoaA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.CosineProximity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.CosineProximity.html",
+          "hash": "pZgg4CPjqO+kVA6BQ8oArw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.Hinge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.Hinge.html",
+          "hash": "JB7aR+oIUOLOc5uU/lpt7g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.KullbackLeiblerDivergence.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.KullbackLeiblerDivergence.html",
+          "hash": "Fay1xeGL9DeQx0F8Ae5Y0w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.LogCosh.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.LogCosh.html",
+          "hash": "9pcrUaLUslbvD7gLiFXuiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.MeanAbsoluteError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.MeanAbsoluteError.html",
+          "hash": "qhbUUa2BRdB56VxJepnJiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.MeanAbsolutePercentageError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.MeanAbsolutePercentageError.html",
+          "hash": "iarjr8oR5FhO3tPWhLYu9A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.MeanSquaredError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.MeanSquaredError.html",
+          "hash": "MPBbd14Ner3bvqCb7vHNnQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.MeanSquaredLogError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.MeanSquaredLogError.html",
+          "hash": "GT3IJ+h/noL9iFsyn2oAMA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.Poisson.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.Poisson.html",
+          "hash": "qeTlaoswhwUYzMAhJGInbg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.SquaredHinge.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.SquaredHinge.html",
+          "hash": "JudASKJiVncPlO1rTxX+ww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Losses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Losses.html",
+          "hash": "g9JoQiEuFyITU5mCCv29Dw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.Accuracy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.Accuracy.html",
+          "hash": "Jyr/CYXubqwc64HajLR9dg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.BaseMetric.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.BaseMetric.html",
+          "hash": "uchZBcGR2Hc/99gXoZXZPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.BinaryAccuracy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.BinaryAccuracy.html",
+          "hash": "on/0Z185KlWpP4XYzSU73Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.MAE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.MAE.html",
+          "hash": "96MVcYf5jGqdFhTw5+z4nw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.MAPE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.MAPE.html",
+          "hash": "nY9w/Pb226mVvIj7greL9w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.MSE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.MSE.html",
+          "hash": "FbXkn2nJzm7HQ6xAsR/qLw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.MSLE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.MSLE.html",
+          "hash": "VcgGXccNXMorBJ2dYz35VA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Metrics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Metrics.html",
+          "hash": "OQVl7nC+IfiIJ8loKXDnxw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.Adadelta.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.Adadelta.html",
+          "hash": "wW8ATSep1AYGBv0PeyHkTg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.Adagrad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.Adagrad.html",
+          "hash": "hL82PZ3ijziwcbV13dwIOQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.Adam.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.Adam.html",
+          "hash": "5uC/tON4S1RB3uZj1B373A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.Adamax.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.Adamax.html",
+          "hash": "MD7JJpiU23Ll5i4rhjv+1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.BaseOptimizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.BaseOptimizer.html",
+          "hash": "pVLF0be9BP5veHJktcR1Yw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.RMSProp.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.RMSProp.html",
+          "hash": "qzuNUpB6xur1PfRngSS5eg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.SGD.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.SGD.html",
+          "hash": "KBCxBFEfOCMc78O5XDcNIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Optimizers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Optimizers.html",
+          "hash": "hczRwRfx8bSq+x5JpiwhsA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Parameter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Parameter.html",
+          "hash": "nYo8zR7aVtEqvy8t7H/b1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Regularizers.BaseRegularizer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Regularizers.BaseRegularizer.html",
+          "hash": "jjPIkNTqJU69EV6GVbtyZg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Regularizers.L1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Regularizers.L1.html",
+          "hash": "K2mVn573SydYU0eFM1PW2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Regularizers.L1L2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Regularizers.L1L2.html",
+          "hash": "H8wsKoc5TRLVwyr2tPIdGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Regularizers.L2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Regularizers.L2.html",
+          "hash": "rJO3QlXlLJT7ySMuiyOyqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Regularizers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Regularizers.html",
+          "hash": "rP4+rbpX99B/pg343rAM6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.Sequential.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.Sequential.html",
+          "hash": "oN/2H6Xq/d69lU6q2gQB8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SiaNet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SiaNet.html",
+          "hash": "pGOgRlpYyu7R5dgRIwNhgw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "m+0jjEV111WK+kR9UcI2LA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "m2Fis7JTKDOnEqb0ryHh1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "AxaamJCVMVTXIUAgtfbDYQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "GIXMkWqcpd6qE9VkTdO17Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "k+/dkjFuwAVS32HduMpmBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 124,
+          "skipped_file_count": 88
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

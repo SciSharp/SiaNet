@@ -1,0 +1,711 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Conv1D
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Conv1D
+   ">
+    <meta name="generator" content="docfx 2.40.12.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="SiaNet.Layers.Conv1D">
+  
+  
+  <h1 id="SiaNet_Layers_Conv1D" data-uid="SiaNet.Layers.Conv1D" class="text-break">Class Conv1D
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="SiaNet.Layers.BaseLayer.html">BaseLayer</a></div>
+    <div class="level2"><span class="xref">Conv1D</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Params">BaseLayer.Params</a>
+    </div>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Input">BaseLayer.Input</a>
+    </div>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Output">BaseLayer.Output</a>
+    </div>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Name">BaseLayer.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_SkipPred">BaseLayer.SkipPred</a>
+    </div>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Item_System_String_">BaseLayer.Item[String]</a>
+    </div>
+    <div>
+      <a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_BuildParam_System_String_System_Int64___SiaNet_Engine_DataType_SiaNet_Initializers_BaseInitializer_SiaNet_Constraints_BaseConstraint_SiaNet_Regularizers_BaseRegularizer_System_Boolean_">BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SiaNet.Layers.html">SiaNet.Layers</a></h6>
+  <h6><strong>Assembly</strong>: SiaNet.dll</h6>
+  <h5 id="SiaNet_Layers_Conv1D_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Conv1D : BaseLayer</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D__ctor_System_Int32_System_Int32_System_Int32_SiaNet_Engine_PaddingType_System_Int32_SiaNet_Engine_ActType_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_System_Boolean_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSiaNet.Engine.PaddingType%2CSystem.Int32%2CSiaNet.Engine.ActType%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint%2CSystem.Boolean%2CSiaNet.Initializers.BaseInitializer%2CSiaNet.Regularizers.BaseRegularizer%2CSiaNet.Constraints.BaseConstraint)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L41">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D__ctor_" data-uid="SiaNet.Layers.Conv1D.#ctor*"></a>
+  <h4 id="SiaNet_Layers_Conv1D__ctor_System_Int32_System_Int32_System_Int32_SiaNet_Engine_PaddingType_System_Int32_SiaNet_Engine_ActType_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_System_Boolean_SiaNet_Initializers_BaseInitializer_SiaNet_Regularizers_BaseRegularizer_SiaNet_Constraints_BaseConstraint_" data-uid="SiaNet.Layers.Conv1D.#ctor(System.Int32,System.Int32,System.Int32,SiaNet.Engine.PaddingType,System.Int32,SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)">Conv1D(Int32, Int32, Int32, PaddingType, Int32, ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Conv1D(int filters, int kernalSize, int strides = 1, PaddingType padding = PaddingType.Same, int dilationRate = 1, ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">filters</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">kernalSize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">strides</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Engine.PaddingType.html">PaddingType</a></td>
+        <td><span class="parametername">padding</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dilationRate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Engine.ActType.html">ActType</a></td>
+        <td><span class="parametername">activation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
+        <td><span class="parametername">kernalInitializer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
+        <td><span class="parametername">kernalRegularizer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
+        <td><span class="parametername">kernalConstraint</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">useBias</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
+        <td><span class="parametername">biasInitializer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
+        <td><span class="parametername">biasRegularizer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
+        <td><span class="parametername">biasConstraint</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_Act.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.Act%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L23">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_Act_" data-uid="SiaNet.Layers.Conv1D.Act*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_Act" data-uid="SiaNet.Layers.Conv1D.Act">Act</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ActType Act { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Engine.ActType.html">ActType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_BiasConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.BiasConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L33">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_BiasConstraint_" data-uid="SiaNet.Layers.Conv1D.BiasConstraint*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_BiasConstraint" data-uid="SiaNet.Layers.Conv1D.BiasConstraint">BiasConstraint</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseConstraint BiasConstraint { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_BiasInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.BiasInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L27">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_BiasInitializer_" data-uid="SiaNet.Layers.Conv1D.BiasInitializer*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_BiasInitializer" data-uid="SiaNet.Layers.Conv1D.BiasInitializer">BiasInitializer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseInitializer BiasInitializer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_BiasRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.BiasRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L37">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_BiasRegularizer_" data-uid="SiaNet.Layers.Conv1D.BiasRegularizer*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_BiasRegularizer" data-uid="SiaNet.Layers.Conv1D.BiasRegularizer">BiasRegularizer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseRegularizer BiasRegularizer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_DilationRate.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.DilationRate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L21">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_DilationRate_" data-uid="SiaNet.Layers.Conv1D.DilationRate*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_DilationRate" data-uid="SiaNet.Layers.Conv1D.DilationRate">DilationRate</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DilationRate { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_Filters.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.Filters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L13">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_Filters_" data-uid="SiaNet.Layers.Conv1D.Filters*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_Filters" data-uid="SiaNet.Layers.Conv1D.Filters">Filters</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Filters { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_KernalConstraint.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.KernalConstraint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L31">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_KernalConstraint_" data-uid="SiaNet.Layers.Conv1D.KernalConstraint*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_KernalConstraint" data-uid="SiaNet.Layers.Conv1D.KernalConstraint">KernalConstraint</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseConstraint KernalConstraint { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Constraints.BaseConstraint.html">BaseConstraint</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_KernalInitializer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.KernalInitializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L29">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_KernalInitializer_" data-uid="SiaNet.Layers.Conv1D.KernalInitializer*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_KernalInitializer" data-uid="SiaNet.Layers.Conv1D.KernalInitializer">KernalInitializer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseInitializer KernalInitializer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Initializers.BaseInitializer.html">BaseInitializer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_KernalRegularizer.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.KernalRegularizer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L35">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_KernalRegularizer_" data-uid="SiaNet.Layers.Conv1D.KernalRegularizer*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_KernalRegularizer" data-uid="SiaNet.Layers.Conv1D.KernalRegularizer">KernalRegularizer</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BaseRegularizer KernalRegularizer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Regularizers.BaseRegularizer.html">BaseRegularizer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_KernalSize.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.KernalSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L15">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_KernalSize_" data-uid="SiaNet.Layers.Conv1D.KernalSize*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_KernalSize" data-uid="SiaNet.Layers.Conv1D.KernalSize">KernalSize</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int KernalSize { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_Padding.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.Padding%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L19">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_Padding_" data-uid="SiaNet.Layers.Conv1D.Padding*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_Padding" data-uid="SiaNet.Layers.Conv1D.Padding">Padding</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PaddingType Padding { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Engine.PaddingType.html">PaddingType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_Strides.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.Strides%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L17">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_Strides_" data-uid="SiaNet.Layers.Conv1D.Strides*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_Strides" data-uid="SiaNet.Layers.Conv1D.Strides">Strides</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Strides { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_UseBias.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.UseBias%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L25">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_UseBias_" data-uid="SiaNet.Layers.Conv1D.UseBias*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_UseBias" data-uid="SiaNet.Layers.Conv1D.UseBias">UseBias</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UseBias { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_Backward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.Backward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L100">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_Backward_" data-uid="SiaNet.Layers.Conv1D.Backward*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_Backward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Conv1D.Backward(SiaNet.Engine.Tensor)">Backward(Tensor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Backward(Tensor outputgrad)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
+        <td><span class="parametername">outputgrad</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Backward_SiaNet_Engine_Tensor_">BaseLayer.Backward(Tensor)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D_Forward_SiaNet_Engine_Tensor_.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D.Forward(SiaNet.Engine.Tensor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L62">View Source</a>
+  </span>
+  <a id="SiaNet_Layers_Conv1D_Forward_" data-uid="SiaNet.Layers.Conv1D.Forward*"></a>
+  <h4 id="SiaNet_Layers_Conv1D_Forward_SiaNet_Engine_Tensor_" data-uid="SiaNet.Layers.Conv1D.Forward(SiaNet.Engine.Tensor)">Forward(Tensor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Forward(Tensor x)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SiaNet.Engine.Tensor.html">Tensor</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="SiaNet.Layers.BaseLayer.html#SiaNet_Layers_BaseLayer_Forward_SiaNet_Engine_Tensor_">BaseLayer.Forward(Tensor)</a></div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/new/master/apiSpec/new?filename=SiaNet_Layers_Conv1D.md&amp;value=---%0Auid%3A%20SiaNet.Layers.Conv1D%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/deepakkumar1984/SiaNet/blob/master/SiaNet/Layers/Convolution/Conv1D.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

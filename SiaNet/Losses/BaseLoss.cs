@@ -1,26 +1,56 @@
 ﻿using SiaNet.Engine;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SiaNet.Losses
 {
+    /// <summary>
+    /// A loss function (or objective function, or optimization score function) is one of the two parameters required to compile a model.
+    /// </summary>
     public abstract class BaseLoss
     {
+        /// <summary>
+        /// The backend instance
+        /// </summary>
         internal IBackend K = Global.CurrentBackend;
 
+        /// <summary>
+        /// Gets or sets the name of the loss function
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BaseLoss"/> class.
+        /// </summary>
+        /// <param name="name">The name of the loss function.</param>
         public BaseLoss(string name)
         {
             Name = name;
         }
 
+        /// <summary>
+        /// Forwards the inputs and calculate the loss.
+        /// </summary>
+        /// <param name="preds">The predicted result.</param>
+        /// <param name="labels">The true result.</param>
+        /// <returns></returns>
         public abstract Tensor Forward(Tensor preds, Tensor labels);
 
+        /// <summary>
+        /// Backpropagation method to calculate gradient of the loss function
+        /// </summary>
+        /// <param name="preds">The predicted result.</param>
+        /// <param name="labels">The true result.</param>
+        /// <returns></returns>
         public abstract Tensor Backward(Tensor preds, Tensor labels);
 
-        public static BaseLoss Get(LossType lossType)
+        /// <summary>
+        /// Gets the specified loss type.
+        /// </summary>
+        /// <param name="lossType">Type of the loss.</param>
+        /// <returns></returns>
+        internal static BaseLoss Get(LossType lossType)
         {
             BaseLoss loss = null;
             switch (lossType)
