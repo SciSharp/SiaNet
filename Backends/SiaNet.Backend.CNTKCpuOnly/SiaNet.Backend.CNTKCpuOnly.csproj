@@ -16,7 +16,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\SiaNet.Backend.CNTK\DeviceManager.cs" Link="DeviceManager.cs" />
     <Compile Include="..\SiaNet.Backend.CNTK\NDArrayTensor.cs" Link="NDArrayTensor.cs" />
+    <Compile Include="..\SiaNet.Backend.CNTK\SiaNetActivations.cs" Link="SiaNetActivations.cs" />
     <Compile Include="..\SiaNet.Backend.CNTK\SiaNetBackend.cs" Link="SiaNetBackend.cs" />
   </ItemGroup>
 

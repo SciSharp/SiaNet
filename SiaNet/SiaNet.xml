@@ -6,7 +6,7 @@
     <members>
         <member name="T:SiaNet.Constraints.BaseConstraint">
             <summary>
-            
+            Base class for Constraints
             </summary>
         </member>
         <member name="T:SiaNet.Constraints.MaxNorm">

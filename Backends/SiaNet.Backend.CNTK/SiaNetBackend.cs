@@ -2,6 +2,7 @@
 using SiaNet.Engine;
 using SiaNet.Engine.Layers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using C = CNTK.CNTKLib;
 
@@ -9,6 +10,15 @@ namespace SiaNet.Backend.CNTKLib
 {
     public class SiaNetBackend : IBackend
     {
+        int counter = 0;
+        public static SiaNetBackend Instance
+        {
+            get
+            {
+                return new SiaNetBackend();
+            }
+        }
+
         private Variable In(Tensor x)
         {
             return ((NDArrayTensor)x).InternalTensor;
@@ -116,7 +126,9 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
         {
-            throw new NotImplementedException();
+            var arr = new CNTK.NDArrayView(BackendUtil.CastShapeInt(shape), data, DeviceManager.Current);
+            var v = new CNTK.Variable(BackendUtil.CastShapeInt(shape), VariableKind.Input, CNTK.DataType.Float, arr, false, new AxisVector(), false, name, name);
+            return Out(v);
         }
 
         public Tensor Diag(Tensor x)
@@ -311,147 +323,192 @@ namespace SiaNet.Backend.CNTKLib
 
         public float Max(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.ReduceMax(In(x), Axis.AllAxes())).ToScalar();
         }
 
         public Tensor Max(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(C.ReduceMax(In(x), new Axis(dim)));
         }
 
         public Tensor Max(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            foreach (var item in dim)
+            {
+                x = Max(x, item);
+            }
+
+            return x;
         }
 
         public Tensor Maximum(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementMax(In(a), In(b), ""));
         }
 
         public Tensor Maximum(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementMax(In(a), In(b, a.Shape), ""));
         }
 
         public float Mean(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.ReduceMean(In(x), Axis.AllAxes())).ToScalar();
         }
 
         public Tensor Mean(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(C.ReduceMean(In(x), new Axis(dim)));
         }
 
         public Tensor Mean(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            foreach (var item in dim)
+            {
+                x = Mean(x, item);
+            }
+
+            return x;
         }
 
         public float Min(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.ReduceMin(In(x), Axis.AllAxes())).ToScalar();
         }
 
         public Tensor Min(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(C.ReduceMin(In(x), new Axis(dim)));
         }
 
         public Tensor Min(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            foreach (var item in dim)
+            {
+                x = Min(x, item);
+            }
+
+            return x;
         }
 
         public Tensor Minimum(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementMin(In(a), In(b), ""));
         }
 
         public Tensor Minimum(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementMin(In(a), In(b, a.Shape), ""));
         }
 
         public Tensor Mul(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementTimes(In(a), In(b), ""));
         }
 
         public Tensor Mul(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementTimes(In(a), In(b, a.Shape), ""));
         }
 
         public Tensor Mul(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(C.ElementTimes(In(a, b.Shape), In(b), ""));
         }
 
         public Tensor Neg(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Negate(In(x), ""));
         }
 
         public Tensor Pow(Tensor x, float value)
         {
-            throw new NotImplementedException();
+            return Out(C.Pow(In(x), In(value, x.Shape)));
         }
 
         public void Print(Tensor x, string title = "")
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
         public float Prod(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.ReduceProd(In(x), Axis.AllAxes())).ToScalar();
         }
 
         public Tensor Prod(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(C.ReduceProd(In(x), new Axis(dim)));
         }
 
         public Tensor Prod(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            foreach (var item in dim)
+            {
+                x = Prod(x, item);
+            }
+
+            return x;
         }
 
         public Tensor RandomBernoulli(long[] shape, float p)
         {
-            throw new NotImplementedException();
+            return Out(C.BernoulliRandom(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, p));
         }
 
         public Tensor RandomNormal(long[] shape, float mean, float stddev, int? seed = null)
         {
-            throw new NotImplementedException();
+            if(seed.HasValue)
+                return Out(C.NormalRandom(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, mean, stddev, (uint)seed.Value));
+            else
+                return Out(C.NormalRandom(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, mean, stddev));
         }
 
         public Tensor RandomUniform(long[] shape, float min, float max, int? seed = null)
         {
-            throw new NotImplementedException();
+            if(seed.HasValue)
+                return Out(C.UniformRandom(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, min, max, (uint)seed.Value));
+            else
+                return Out(C.UniformRandom(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, min, max));
         }
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            throw new NotImplementedException();
+            return Out(C.Reshape(In(x), BackendUtil.CastShapeInt(shape)));
         }
 
         public Tensor Round(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Round(In(x)));
         }
 
         public void SetDevice(DeviceType device)
         {
-            throw new NotImplementedException();
+            switch (device)
+            {
+                case DeviceType.Default:
+                    DeviceManager.Current = DeviceDescriptor.UseDefaultDevice();
+                    break;
+                case DeviceType.CPU:
+                    DeviceManager.Current = DeviceDescriptor.CPUDevice;
+                    break;
+                case DeviceType.CUDA:
+                    DeviceManager.Current = DeviceDescriptor.GPUDevice(0);
+                    break;
+                case DeviceType.OpenCL:
+                    throw new NotSupportedException("CNTK doesn't support OpenCL. Please use ArrayFire backend.");
+                default:
+                    break;
+            }
         }
 
         public Tensor Sigmoid(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Sigmoid(In(x)));
         }
 
         public Tensor Sign(Tensor x)
@@ -461,42 +518,44 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Sin(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Sin(In(x)));
         }
 
         public Tensor Sinh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Sinh(In(x)));
         }
 
         public Tensor SliceCols(Tensor x, long start, long end)
         {
-            throw new NotImplementedException();
+            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(1), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
         }
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
-            throw new NotImplementedException();
+            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(0), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            axis = axis < 0 ? x.DimCount + axis : axis;
+            return Out(C.Softmax(In(x), new Axis(axis)));
         }
 
         public Tensor Softplus(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            axis = axis < 0 ? x.DimCount + axis : axis;
+            return Out(C.Softplus(In(x)));
         }
 
         public Tensor Sqrt(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Sqrt(In(x)));
         }
 
         public Tensor Square(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Square(In(x)));
         }
 
         public float StdDev(Tensor x)
@@ -516,42 +575,48 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Sub(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(C.Minus(In(a), In(b)));
         }
 
         public Tensor Sub(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(C.Minus(In(a), In(b, a.Shape)));
         }
 
         public Tensor Sub(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(C.Minus(In(a, b.Shape), In(b)));
         }
 
         public float Sum(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.ReduceSum(In(x), Axis.AllAxes())).ToScalar();
         }
 
         public Tensor Sum(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(C.ReduceSum(In(x), new Axis(dim)));
         }
 
         public Tensor Sum(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            foreach (var item in dim)
+            {
+                x = Sum(x, item);
+            }
+
+            return x;
         }
 
         public Tensor Tan(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Tan(In(x)));
         }
 
         public Tensor Tanh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Tanh(In(x)));
         }
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
@@ -566,12 +631,49 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Transpose(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(C.Transpose(In(x)));
         }
 
         public Tensor Transpose(Tensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            if (dims.Length != x.DimCount)
+                throw new InvalidOperationException("The number of permutation indices must equal the number of tensor dimensions");
+
+            var result = In(x);
+            foreach (var swap in SwapsForPermutation(dims))
+            {
+                var resultOld = result;
+                result = C.TransposeAxes(result, new Axis(swap.Item1), new Axis(swap.Item2));
+                resultOld.Dispose();
+            }
+
+            return Out(result);
+        }
+
+        private static IEnumerable<Tuple<int, int>> SwapsForPermutation(int[] perm)
+        {
+            int j;
+            for (int i = 0; i < perm.Length; ++i)
+            {
+                var p = perm[i];
+                if (p != i && p != -1)
+                {
+                    j = i;
+                    do
+                    {
+                        if (perm[j] < 0 || perm[j] >= perm.Length)
+                            throw new InvalidOperationException("Invalid permutation");
+
+                        yield return Tuple.Create(j, perm[j]);
+
+
+                        var jOld = j;
+                        j = perm[j];
+                        perm[jOld] = -1;
+                    } while (perm[j] != i);
+                    perm[j] = j;
+                }
+            }
         }
 
         public Tensor Trunc(Tensor x)
@@ -581,7 +683,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public string UUID(string name)
         {
-            throw new NotImplementedException();
+            return name + "_" + counter++;
         }
 
         public float Var(Tensor x)
@@ -601,7 +703,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public ActivationFunc GetActFunc()
         {
-            throw new NotImplementedException();
+            return new SiaNetActivations(this);
         }
     }
 }

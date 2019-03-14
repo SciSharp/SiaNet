@@ -7,7 +7,7 @@ namespace SiaNet.Engine.Layers
 {
     public abstract class ActivationFunc
     {
-        IBackend K;
+        public IBackend K;
 
         public ActivationFunc(IBackend backend)
         {
