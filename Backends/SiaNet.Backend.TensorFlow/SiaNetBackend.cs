@@ -3,69 +3,109 @@ using SiaNet.Engine.Layers;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TensorFlow;
+using DeviceType = SiaNet.Engine.DeviceType;
 
 namespace SiaNet.Backend.TensorFlowLib
 {
-    public class TensorFlowBackend : IBackend
+    public class SiaNetBackend : IBackend
     {
+        int counter = 0;
+        internal TFGraph tf;
+        internal TFSession _SESSION;
+
+        public SiaNetBackend()
+        {
+            this.tf = new TFGraph();
+            this._SESSION = new TFSession(tf);
+        }
+
+        public static SiaNetBackend Instance
+        {
+            get
+            {
+                return new SiaNetBackend();
+            }
+        }
+
+        private TFOutput In(Tensor x)
+        {
+            return ((NDArrayTensor)x).InternalTensor;
+        }
+
+        private TFOutput In(float value, params long[] shape)
+        {
+            return tf.Const(new TFTensor(value));
+        }
+
+        private NDArrayTensor Out(TFOutput x)
+        {
+            NDArrayTensor tensor = new NDArrayTensor
+            {
+                InternalTensor = x
+            };
+
+            return tensor;
+        }
+
         public Tensor Abs(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Abs(In(x)));
         }
 
         public Tensor Acos(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Acos(In(x)));
         }
 
         public Tensor Add(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Add(In(a), In(b)));
         }
 
         public Tensor Add(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Add(In(a), In(b)));
         }
 
         public Tensor Add(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Add(In(a), In(b)));
         }
 
         public Tensor Argmax(Tensor x, int dim = 0)
         {
-            throw new NotImplementedException();
+            return Out(tf.ArgMax(In(x), In(dim)));
         }
 
         public Tensor Argmin(Tensor x, int dim = 0)
         {
-            throw new NotImplementedException();
+            return Out(tf.ArgMin(In(x), In(dim)));
         }
 
         public Tensor Asin(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Asin(In(x)));
         }
 
         public Tensor Atan(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Atan(In(x)));
         }
 
         public Tensor Atan2(Tensor lhs, Tensor rhs)
         {
-            throw new NotImplementedException();
+            return Out(tf.Atan2(In(lhs), In(rhs)));
         }
 
         public Tensor Ceil(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Ceil(In(x)));
         }
 
         public Tensor Clip(Tensor x, float min, float max)
         {
-            throw new NotImplementedException();
+            return Out(tf.ClipByValue(In(x), In(min), In(max)));
         }
 
         public Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
@@ -80,12 +120,12 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Cos(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Cos(In(x)));
         }
 
         public Tensor Cosh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Cosh(In(x)));
         }
 
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
@@ -95,12 +135,12 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Diag(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Diag(In(x)));
         }
 
         public void Dispose(Tensor x)
         {
-            throw new NotImplementedException();
+            x.Dispose();
         }
 
         public Tensor Div(Tensor a, Tensor b)

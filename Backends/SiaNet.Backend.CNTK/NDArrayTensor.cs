@@ -7,14 +7,14 @@ namespace SiaNet.Backend.CNTKLib
 {
     public class NDArrayTensor : Tensor
     {
-        public CNTK.Function InternalTensor;
+        public CNTK.Variable InternalTensor;
 
         public NDArrayTensor()
         {
             K = new SiaNetBackend();
         }
 
-        public NDArrayTensor(CNTK.Function arr)
+        public NDArrayTensor(CNTK.Variable arr)
         {
             InternalTensor = arr;
             K = new SiaNetBackend();

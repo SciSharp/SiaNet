@@ -4,19 +4,19 @@ using TensorFlow;
 
 namespace SiaNet.Backend.TensorFlowLib
 {
-    public class TensorFlowTensor : Tensor
+    public class NDArrayTensor : Tensor
     {
-        public TFTensor InternalTensor;
+        public TFOutput InternalTensor;
 
-        public TensorFlowTensor()
+        public NDArrayTensor()
         {
-            K = new TensorFlowBackend();
+            K = new SiaNetBackend();
         }
 
-        public TensorFlowTensor(TFTensor arr)
+        public NDArrayTensor(TFTensor arr)
         {
             InternalTensor = arr;
-            K = new TensorFlowBackend();
+            K = new SiaNetBackend();
         }
 
         public override string Name

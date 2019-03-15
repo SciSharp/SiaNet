@@ -17,7 +17,7 @@ namespace SiaNet.Backend.CNTKLib
             return ((NDArrayTensor)x).InternalTensor;
         }
 
-        private NDArrayTensor Out(Variable x)
+        private NDArrayTensor Out(Parameter x)
         {
             NDArrayTensor tensor = new NDArrayTensor
             {
@@ -31,17 +31,6 @@ namespace SiaNet.Backend.CNTKLib
             : base(backend)
         {
 
-        }
-
-        public override Tensor ReluForward(Tensor x)
-        {
-            return Out(C.ReLU(In(x)));
-        }
-
-        public override Tensor ReluBackward(Tensor x, Tensor outputgrad)
-        {
-            var g = In(x).ToFunction().Arguments[0];
-            return null;
         }
     }
 }

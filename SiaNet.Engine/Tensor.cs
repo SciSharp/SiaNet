@@ -37,7 +37,13 @@ namespace SiaNet.Engine
 
         public long ElementCount
         {
-            get { return Shape.Aggregate((a, x) => a * x); }
+            get
+            {
+                if (Shape.Length > 0)
+                    return Shape.Aggregate((a, x) => a * x);
+
+                return 0;
+            }
         }
 
         public DataType ElementType
@@ -57,7 +63,7 @@ namespace SiaNet.Engine
         {
             get
             {
-                return ElementCount == 1;
+                return ElementCount <= 1;
             }
         }
 

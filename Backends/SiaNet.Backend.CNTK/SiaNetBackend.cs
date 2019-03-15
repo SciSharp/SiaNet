@@ -26,13 +26,7 @@ namespace SiaNet.Backend.CNTKLib
 
         private Variable In(float value, params long[] shape)
         {
-            Constant c = _constant(value, BackendUtil.CastShapeInt(shape));
-            return c;
-        }
-
-        private Constant _constant(float value, int[] shape)
-        {
-            return new Constant(shape, CNTK.DataType.Float, initValue: (double)value, device: DeviceDescriptor.CPUDevice);
+            return new Parameter(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, value);
         }
 
         private NDArrayTensor Out(Variable x)
@@ -41,6 +35,7 @@ namespace SiaNet.Backend.CNTKLib
             {
                 InternalTensor = x
             };
+
             return tensor;
         }
 
@@ -61,7 +56,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Add(Tensor a, float b)
         {
-            return Out(In(a) +In(b, a.Shape));
+            return Out(C.Plus(In(a), In(b, a.Shape)));
         }
 
         public Tensor Add(float a, Tensor b)
@@ -127,7 +122,7 @@ namespace SiaNet.Backend.CNTKLib
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
         {
             var arr = new CNTK.NDArrayView(BackendUtil.CastShapeInt(shape), data, DeviceManager.Current);
-            var v = new CNTK.Variable(BackendUtil.CastShapeInt(shape), VariableKind.Input, CNTK.DataType.Float, arr, false, new AxisVector(), false, name, name);
+            var v = new CNTK.Variable(BackendUtil.CastShapeInt(shape), VariableKind.Parameter, CNTK.DataType.Float, arr, false, new AxisVector(), false, name, name);
             return Out(v);
         }
 
@@ -158,7 +153,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Dot(Tensor a, Tensor b)
         {
-            return Out(C.MatMul(In(a), In(b)));
+            return Out(C.Times(In(a), In(b)));
         }
 
         public float Epsilon()
@@ -193,7 +188,33 @@ namespace SiaNet.Backend.CNTKLib
 
         public Array GetArray(Tensor x)
         {
-            throw new NotImplementedException();
+            Variable xvar = In(x);
+            Value v = null;
+            if (xvar.IsOutput)
+            {
+                var f = xvar.ToFunction();
+                
+                var plist = f.Parameters();
+                Dictionary<Variable, Value> inputs = new Dictionary<Variable, Value>();
+                Dictionary<Variable, Value> outputs = new Dictionary<Variable, Value>()
+                {
+                    { f, null}
+                };
+
+                //foreach (var item in plist)
+                //{
+                //    inputs.Add(item, new Value(item.GetValue()));
+                //}
+
+                f.Evaluate(inputs, outputs, DeviceManager.Current);
+                v = outputs.FirstOrDefault().Value;
+            }
+            else
+            {
+                v = new Value(xvar.GetValue());
+            }
+
+            return v.GetDenseData<float>(xvar)[0].ToArray();
         }
 
         public Engine.DataType GetDataType(Tensor x)
@@ -431,7 +452,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public void Print(Tensor x, string title = "")
         {
-            throw new NotSupportedException();
+            BackendUtil.Print(x.Shape, x.ToArray());
         }
 
         public float Prod(Tensor x)
@@ -621,7 +642,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            throw new NotImplementedException();
+            return x;
         }
 
         public Tensor Tpow(float value, Tensor x)
