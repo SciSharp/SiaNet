@@ -12,12 +12,14 @@ namespace SiaNet.Backend.TensorFlowLib
     {
         int counter = 0;
         internal TFGraph tf;
-        internal TFSession _SESSION;
+        internal TFSession session;
+        private TFSession.Runner runner;
 
         public SiaNetBackend()
         {
             this.tf = new TFGraph();
-            this._SESSION = new TFSession(tf);
+            this.session = new TFSession(tf);
+            runner = session.GetRunner();
         }
 
         public static SiaNetBackend Instance
@@ -43,6 +45,16 @@ namespace SiaNet.Backend.TensorFlowLib
             NDArrayTensor tensor = new NDArrayTensor
             {
                 InternalTensor = x
+            };
+
+            return tensor;
+        }
+
+        private NDArrayTensor Out(TFTensor x)
+        {
+            NDArrayTensor tensor = new NDArrayTensor
+            {
+                InternalTensor = tf.Const(x)
             };
 
             return tensor;
@@ -115,7 +127,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Constant(float value, long[] shape)
         {
-            throw new NotImplementedException();
+            return Out(tf.Constant(value, new TFShape(shape)));
         }
 
         public Tensor Cos(Tensor x)
@@ -130,7 +142,9 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
         {
-            throw new NotImplementedException();
+            var t = tf.Const(new TFTensor(data));
+            t = tf.Reshape(t, tf.Const(new TFShape(shape).AsTensor()));
+            return Out(t);
         }
 
         public Tensor Diag(Tensor x)
@@ -145,47 +159,47 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Div(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Div(In(a), In(b)));
         }
 
         public Tensor Div(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Div(In(a), In(b)));
         }
 
         public Tensor Div(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Div(In(a), In(b)));
         }
 
         public Tensor Dot(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.MatMul(In(a), In(b)));
         }
 
         public float Epsilon()
         {
-            throw new NotImplementedException();
+            return 1e-7f;
         }
 
         public Tensor EqualTo(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Equal(In(a), In(b)));
         }
 
         public object Eval(Tensor x)
         {
-            throw new NotImplementedException();
+            return runner.Run(In(x));
         }
 
         public Tensor Exp(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Exp(In(x)));
         }
 
         public Tensor Floor(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Floor(In(x)));
         }
 
         public Array GetArray(Tensor x)
@@ -195,12 +209,39 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public DataType GetDataType(Tensor x)
         {
-            throw new NotImplementedException();
+            DataType r = DataType.Float32;
+
+            switch (In(x).OutputType)
+            {
+                case TFDataType.Unknown:
+                    break;
+                case TFDataType.Float:
+                    r = DataType.Float32;
+                    break;
+                case TFDataType.Double:
+                    r = DataType.Float64;
+                    break;
+                case TFDataType.Int32:
+                    r = DataType.Int32;
+                    break;
+                case TFDataType.UInt8:
+                    r = DataType.Int8;
+                    break;
+                case TFDataType.Int16:
+                    break;
+                case TFDataType.Int8:
+                    r = DataType.Int8;
+                    break;
+                default:
+                    throw new NotSupportedException();
+            }
+
+            return r;
         }
 
         public long[] GetShape(Tensor x)
         {
-            throw new NotImplementedException();
+            return runner.Run(In(x)).Shape;
         }
 
         public Tensor GreaterThan(Tensor a, Tensor b)

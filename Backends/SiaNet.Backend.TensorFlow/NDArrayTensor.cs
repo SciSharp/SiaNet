@@ -13,7 +13,7 @@ namespace SiaNet.Backend.TensorFlowLib
             K = new SiaNetBackend();
         }
 
-        public NDArrayTensor(TFTensor arr)
+        public NDArrayTensor(TFOutput arr)
         {
             InternalTensor = arr;
             K = new SiaNetBackend();
