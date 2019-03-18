@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Deedle" Version="2.0.0" />
-    <PackageReference Include="FSharp.Core" Version="4.6.0" />
+    <PackageReference Include="FSharp.Core" Version="4.6.2" />
   </ItemGroup>
 
   <ItemGroup>
