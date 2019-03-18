@@ -1,2 +1,4 @@
 language: csharp
 solution: SiaNet.sln
+script:
+  - msbuild /p:Configuration=Release|x64 solution-name.sln

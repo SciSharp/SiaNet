@@ -9,7 +9,7 @@ namespace BackendTester
     {
         static void Main(string[] args)
         {
-            Global.UseEngine(SiaNet.Backend.CNTKLib.SiaNetBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
             var K = Global.CurrentBackend;
             
             var a = K.CreateVariable(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, new long[] { 3,3 });
