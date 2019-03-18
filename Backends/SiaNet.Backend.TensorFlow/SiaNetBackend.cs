@@ -17,8 +17,10 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaNetBackend()
         {
+            
             this.tf = new TFGraph();
             this.session = new TFSession(tf);
+
             runner = session.GetRunner();
         }
 
@@ -36,6 +38,11 @@ namespace SiaNet.Backend.TensorFlowLib
         }
 
         private TFOutput In(float value, params long[] shape)
+        {
+            return tf.Const(new TFTensor(value));
+        }
+
+        private TFOutput In(int value)
         {
             return tf.Const(new TFTensor(value));
         }
@@ -241,37 +248,38 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public long[] GetShape(Tensor x)
         {
+            //ToDo: Check the code again
             return runner.Run(In(x)).Shape;
         }
 
         public Tensor GreaterThan(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Greater(In(a), In(b)));
         }
 
         public Tensor GreaterThan(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Greater(In(a), In(b)));
         }
 
         public Tensor GreaterThan(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Greater(In(a), In(b)));
         }
 
         public Tensor GreaterThanEqual(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.GreaterEqual(In(a), In(b)));
         }
 
         public Tensor GreaterThanEqual(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.GreaterEqual(In(a), In(b)));
         }
 
         public Tensor GreaterThanEqual(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.GreaterEqual(In(a), In(b)));
         }
 
         public Tensor Im2Col(Tensor x, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
@@ -441,52 +449,66 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor RandomBernoulli(long[] shape, float p)
         {
-            throw new NotImplementedException();
+            var result = RandomUniform(shape, 0, 1);
+            result = result > p;
+            return result;
         }
 
         public Tensor RandomNormal(long[] shape, float mean, float stddev, int? seed = null)
         {
-            throw new NotImplementedException();
+            return Out(tf.RandomNormal(new TFShape(shape), mean, stddev, seed));
         }
 
         public Tensor RandomUniform(long[] shape, float min, float max, int? seed = null)
         {
-            throw new NotImplementedException();
+            return Out(tf.RandomUniform(new TFShape(shape), min, max, seed));
         }
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            throw new NotImplementedException();
+            return Out(tf.Reshape(In(x), tf.Const(new TFTensor(shape))));
         }
 
         public Tensor Round(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Round(In(x)));
         }
 
         public void SetDevice(DeviceType device)
         {
-            throw new NotImplementedException();
+            switch (device)
+            {
+                case DeviceType.Default:
+                    break;
+                case DeviceType.CPU:
+                    break;
+                case DeviceType.CUDA:
+                    break;
+                case DeviceType.OpenCL:
+                    throw new NotSupportedException("Supported device CPU and CUDA");
+                default:
+                    break;
+            }
         }
 
         public Tensor Sigmoid(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sigmoid(In(x)));
         }
 
         public Tensor Sign(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sign(In(x)));
         }
 
         public Tensor Sin(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sin(In(x)));
         }
 
         public Tensor Sinh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sinh(In(x)));
         }
 
         public Tensor SliceCols(Tensor x, long start, long end)
@@ -496,27 +518,27 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
-            throw new NotImplementedException();
+            return Out(tf.Slice(In(x), In(start), In(end)));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            return Out(tf.Softmax(In(x)));
         }
 
         public Tensor Softplus(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            return Out(tf.Softplus(In(x)));
         }
 
         public Tensor Sqrt(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sqrt(In(x)));
         }
 
         public Tensor Square(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Square(In(x)));
         }
 
         public float StdDev(Tensor x)
@@ -536,72 +558,78 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Sub(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sub(In(a), In(b)));
         }
 
         public Tensor Sub(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sub(In(a), In(b)));
         }
 
         public Tensor Sub(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Sub(In(a), In(b)));
         }
 
         public float Sum(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.ReduceSum(In(x))).ToScalar();
         }
 
         public Tensor Sum(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(tf.ReduceSum(In(x), In(dim)));
         }
 
         public Tensor Sum(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            foreach (var item in dim)
+            {
+                x = Sum(x, item);
+            }
+
+            return x;
         }
 
         public Tensor Tan(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Tan(In(x)));
         }
 
         public Tensor Tanh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Tanh(In(x)));
         }
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            throw new NotImplementedException();
+            return Out(tf.Tile(In(x), In(n)));
         }
 
         public Tensor Tpow(float value, Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Pow(In(value), In(x)));
         }
 
         public Tensor Transpose(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Transpose(In(x)));
         }
 
         public Tensor Transpose(Tensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            return Out(tf.Transpose(In(x), tf.Const(new TFTensor(dims))));
         }
 
         public Tensor Trunc(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.TruncatedNormal(In(x), TFDataType.Float));
         }
 
         public string UUID(string name)
         {
-            throw new NotImplementedException();
+            return name + "_" + counter++;
         }
 
         public float Var(Tensor x)
