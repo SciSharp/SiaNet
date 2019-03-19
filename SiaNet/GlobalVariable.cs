@@ -36,6 +36,12 @@
         /// </summary>
         internal static ActivationFunc ActFunc = null;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [use cudnn].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [use cudnn]; otherwise, <c>false</c>.
+        /// </value>
         internal static bool UseCudnn { get; set; }
 
         /// <summary>
@@ -57,7 +63,7 @@
         /// <param name="deviceType">Type of the device.</param>
         /// <param name="cudnn">if set to <c>true</c> [cudnn].</param>
         /// <exception cref="ArgumentException">CuDnn work with CUDA device type</exception>
-        public static void UseEngine(IBackend backend, DeviceType deviceType, bool cudnn = false)
+        public static void UseEngine(IBackend backend, DeviceType deviceType = DeviceType.Default, bool cudnn = false)
         {
             _backend = backend;
             ActFunc = backend.GetActFunc();

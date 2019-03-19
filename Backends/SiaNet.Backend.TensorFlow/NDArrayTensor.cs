@@ -6,14 +6,14 @@ namespace SiaNet.Backend.TensorFlowLib
 {
     public class NDArrayTensor : Tensor
     {
-        public TFOutput InternalTensor;
+        public TFTensor InternalTensor;
 
         public NDArrayTensor()
         {
             K = new SiaNetBackend();
         }
 
-        public NDArrayTensor(TFOutput arr)
+        public NDArrayTensor(TFTensor arr)
         {
             InternalTensor = arr;
             K = new SiaNetBackend();

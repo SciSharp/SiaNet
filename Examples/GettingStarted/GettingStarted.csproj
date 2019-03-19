@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Backends\SiaNet.Backend.ArrayFire\SiaNet.Backend.ArrayFire.csproj" />
     <ProjectReference Include="..\..\Backends\SiaNet.Backend.CNTKCpuOnly\SiaNet.Backend.CNTKCpuOnly.csproj" />
+    <ProjectReference Include="..\..\Backends\SiaNet.Backend.TensorFlow\SiaNet.Backend.TensorFlow.csproj" />
     <ProjectReference Include="..\..\Backends\SiaNet.Backend.TensorSharp\SiaNet.Backend.TensorSharp.csproj" />
     <ProjectReference Include="..\..\SiaNet\SiaNet.csproj" />
   </ItemGroup>

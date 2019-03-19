@@ -84,11 +84,6 @@ namespace SiaNet.Backend.CNTKLib
             return Out(C.Atan(In(x)));
         }
 
-        public Tensor Atan2(Tensor lhs, Tensor rhs)
-        {
-            throw new NotImplementedException();
-        }
-
         public Tensor Ceil(Tensor x)
         {
             return Out(C.Ceil(In(x)));
@@ -174,11 +169,6 @@ namespace SiaNet.Backend.CNTKLib
         public Tensor Exp(Tensor x)
         {
             return Out(C.Exp(In(x)));
-        }
-
-        public Tensor Factorial(Tensor x)
-        {
-            throw new NotImplementedException();
         }
 
         public Tensor Floor(Tensor x)
@@ -455,27 +445,6 @@ namespace SiaNet.Backend.CNTKLib
             BackendUtil.Print(x.Shape, x.ToArray());
         }
 
-        public float Prod(Tensor x)
-        {
-            return Out(C.ReduceProd(In(x), Axis.AllAxes())).ToScalar();
-        }
-
-        public Tensor Prod(Tensor x, int dim)
-        {
-            dim = dim < 0 ? x.DimCount + dim : dim;
-            return Out(C.ReduceProd(In(x), new Axis(dim)));
-        }
-
-        public Tensor Prod(Tensor x, params int[] dim)
-        {
-            foreach (var item in dim)
-            {
-                x = Prod(x, item);
-            }
-
-            return x;
-        }
-
         public Tensor RandomBernoulli(long[] shape, float p)
         {
             return Out(C.BernoulliRandom(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, p));
@@ -532,11 +501,6 @@ namespace SiaNet.Backend.CNTKLib
             return Out(C.Sigmoid(In(x)));
         }
 
-        public Tensor Sign(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
         public Tensor Sin(Tensor x)
         {
             return Out(C.Sin(In(x)));
@@ -577,21 +541,6 @@ namespace SiaNet.Backend.CNTKLib
         public Tensor Square(Tensor x)
         {
             return Out(C.Square(In(x)));
-        }
-
-        public float StdDev(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor StdDev(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor StdDev(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
         }
 
         public Tensor Sub(Tensor a, Tensor b)
@@ -645,11 +594,6 @@ namespace SiaNet.Backend.CNTKLib
             return x;
         }
 
-        public Tensor Tpow(float value, Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
         public Tensor Transpose(Tensor x)
         {
             return Out(C.Transpose(In(x)));
@@ -697,29 +641,9 @@ namespace SiaNet.Backend.CNTKLib
             }
         }
 
-        public Tensor Trunc(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
         public string UUID(string name)
         {
             return name + "_" + counter++;
-        }
-
-        public float Var(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Var(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Var(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
         }
 
         public ActivationFunc GetActFunc()

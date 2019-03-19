@@ -338,13 +338,6 @@ namespace SiaNet.Engine
         Tensor Neg(Tensor x);
 
         /// <summary>
-        /// Return the sign value element-wise.
-        /// </summary>
-        /// <param name="x">The tensor.</param>
-        /// <returns></returns>
-        Tensor Sign(Tensor x);
-
-        /// <summary>
         /// Return the square root value element-wise.
         /// </summary>
         /// <param name="x">The tensor.</param>
@@ -399,13 +392,6 @@ namespace SiaNet.Engine
         /// <param name="x">The tensor.</param>
         /// <returns></returns>
         Tensor Round(Tensor x);
-
-        /// <summary>
-        /// Calculate the truncated value element-wise.
-        /// </summary>
-        /// <param name="x">The tensor.</param>
-        /// <returns></returns>
-        Tensor Trunc(Tensor x);
 
         /// <summary>
         /// Calculate the sin value element-wise.
@@ -478,14 +464,6 @@ namespace SiaNet.Engine
         Tensor Sigmoid(Tensor x);
 
         /// <summary>
-        /// Calculate the inverse tan between 2 tensor
-        /// </summary>
-        /// <param name="lhs">The LHS.</param>
-        /// <param name="rhs">The RHS.</param>
-        /// <returns></returns>
-        Tensor Atan2(Tensor lhs, Tensor rhs);
-
-        /// <summary>
         /// Power up the specified tensor.
         /// </summary>
         /// <param name="x">The tensor.</param>
@@ -499,14 +477,6 @@ namespace SiaNet.Engine
         /// <param name="x">The tensor.</param>
         /// <returns></returns>
         Tensor Square(Tensor x);
-
-        /// <summary>
-        /// Calculate Tensor power value for the float
-        /// </summary>
-        /// <param name="value">The float value.</param>
-        /// <param name="x">The tensor.</param>
-        /// <returns></returns>
-        Tensor Tpow(float value, Tensor x);
 
         /// <summary>
         /// Clips the specified tensor between min and max value, elemen-wise.
@@ -542,12 +512,6 @@ namespace SiaNet.Engine
         /// <returns></returns>
         Tensor Sum(Tensor x, params int[] dim);
 
-        float Prod(Tensor x);
-
-        Tensor Prod(Tensor x, int dim);
-
-        Tensor Prod(Tensor x, params int[] dim);
-
         float Max(Tensor x);
 
         Tensor Max(Tensor x, int dim);
@@ -565,18 +529,6 @@ namespace SiaNet.Engine
         Tensor Mean(Tensor x, int dim);
 
         Tensor Mean(Tensor x, params int[] dim);
-
-        float Var(Tensor x);
-
-        Tensor Var(Tensor x, int dim);
-
-        Tensor Var(Tensor x, params int[] dim);
-
-        float StdDev(Tensor x);
-
-        Tensor StdDev(Tensor x, int dim);
-
-        Tensor StdDev(Tensor x, params int[] dim);
 
         Tensor Argmax(Tensor x, int dim = 0);
 

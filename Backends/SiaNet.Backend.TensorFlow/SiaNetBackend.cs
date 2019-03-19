@@ -2,6 +2,7 @@
 using SiaNet.Engine.Layers;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using TensorFlow;
 using DeviceType = SiaNet.Engine.DeviceType;
@@ -17,9 +18,8 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaNetBackend()
         {
-            
-            this.tf = new TFGraph();
-            this.session = new TFSession(tf);
+            this.session = new TFSession(new TFGraph());
+            this.tf = session.Graph;
 
             runner = session.GetRunner();
         }
@@ -34,7 +34,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         private TFOutput In(Tensor x)
         {
-            return ((NDArrayTensor)x).InternalTensor;
+            return tf.Const(((NDArrayTensor)x).InternalTensor);
         }
 
         private TFOutput In(float value, params long[] shape)
@@ -42,7 +42,22 @@ namespace SiaNet.Backend.TensorFlowLib
             return tf.Const(new TFTensor(value));
         }
 
+        private TFOutput In(int[] data)
+        {
+            return tf.Const(new TFTensor(data));
+        }
+
+        private TFOutput In(long[] data)
+        {
+            return tf.Const(new TFTensor(data));
+        }
+
         private TFOutput In(int value)
+        {
+            return tf.Const(new TFTensor(value));
+        }
+
+        private TFOutput In(long value)
         {
             return tf.Const(new TFTensor(value));
         }
@@ -51,7 +66,7 @@ namespace SiaNet.Backend.TensorFlowLib
         {
             NDArrayTensor tensor = new NDArrayTensor
             {
-                InternalTensor = x
+                InternalTensor = InternalEval(x)
             };
 
             return tensor;
@@ -61,7 +76,7 @@ namespace SiaNet.Backend.TensorFlowLib
         {
             NDArrayTensor tensor = new NDArrayTensor
             {
-                InternalTensor = tf.Const(x)
+                InternalTensor = x
             };
 
             return tensor;
@@ -196,7 +211,14 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public object Eval(Tensor x)
         {
-            return runner.Run(In(x));
+            TFTensor[] result = session.Run(new TFOutput[] { }, new TFTensor[] { }, new[] { In(x) });
+            return result[0].GetValue();
+        }
+
+        public TFTensor InternalEval(TFOutput x)
+        {
+            TFTensor[] result = session.Run(new TFOutput[] { }, new TFTensor[] { }, new[] { x });
+            return result[0];
         }
 
         public Tensor Exp(Tensor x)
@@ -211,7 +233,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Array GetArray(Tensor x)
         {
-            throw new NotImplementedException();
+            return (Array)((NDArrayTensor)x).InternalTensor.GetValue();
         }
 
         public DataType GetDataType(Tensor x)
@@ -248,8 +270,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public long[] GetShape(Tensor x)
         {
-            //ToDo: Check the code again
-            return runner.Run(In(x)).Shape;
+            return tf.GetShape(In(x));
         }
 
         public Tensor GreaterThan(Tensor a, Tensor b)
@@ -289,42 +310,43 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor L2Normalize(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            var y = Max(Sum(Square(x), axis), axis);
+            return x / Sqrt(y);
         }
 
         public Tensor LessThan(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Less(In(a), In(b)));
         }
 
         public Tensor LessThan(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Less(In(a), In(b)));
         }
 
         public Tensor LessThan(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Less(In(a), In(b)));
         }
 
         public Tensor LessThanEqual(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.LessEqual(In(a), In(b)));
         }
 
         public Tensor LessThanEqual(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.LessEqual(In(a), In(b)));
         }
 
         public Tensor LessThanEqual(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.LessEqual(In(a), In(b)));
         }
 
         public Tensor Log(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Log(In(x)));
         }
 
         public Tensor Log10(Tensor x)
@@ -334,117 +356,102 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Log1p(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Log1p(In(x)));
         }
 
         public float Max(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Max(In(x), In(x.Shape))).ToScalar();
         }
 
         public Tensor Max(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.Max(In(x), In(dim)));
         }
 
         public Tensor Max(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.Max(In(x), In(dim)));
         }
 
         public Tensor Maximum(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Maximum(In(a), In(b)));
         }
 
         public Tensor Maximum(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Maximum(In(a), In(b)));
         }
 
         public float Mean(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.ReduceMean(In(x))).ToScalar();
         }
 
         public Tensor Mean(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.Mean(In(x), In(dim)));
         }
 
         public Tensor Mean(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.Mean(In(x), In(dim)));
         }
 
         public float Min(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Min(In(x), In(x.Shape))).ToScalar();
         }
 
         public Tensor Min(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.Min(In(x), In(dim)));
         }
 
         public Tensor Min(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.Min(In(x), In(dim)));
         }
 
         public Tensor Minimum(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Minimum(In(a), In(b)));
         }
 
         public Tensor Minimum(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Minimum(In(a), In(b)));
         }
 
         public Tensor Mul(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Mul(In(a), In(b)));
         }
 
         public Tensor Mul(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Mul(In(a), In(b)));
         }
 
         public Tensor Mul(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.Mul(In(a), In(b)));
         }
 
         public Tensor Neg(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.Neg(In(x)));
         }
 
         public Tensor Pow(Tensor x, float value)
         {
-            throw new NotImplementedException();
+            return Out(tf.Pow(In(x), In(value)));
         }
 
         public void Print(Tensor x, string title = "")
         {
-            throw new NotImplementedException();
-        }
-
-        public float Prod(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Prod(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Prod(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
+            string message = tf.Print(In(x), new TFOutput[] { In(x) }).ToString() ;
         }
 
         public Tensor RandomBernoulli(long[] shape, float p)
@@ -466,7 +473,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            return Out(tf.Reshape(In(x), tf.Const(new TFTensor(shape))));
+            return Out(tf.Reshape(In(x), In(shape)));
         }
 
         public Tensor Round(Tensor x)
@@ -496,11 +503,6 @@ namespace SiaNet.Backend.TensorFlowLib
             return Out(tf.Sigmoid(In(x)));
         }
 
-        public Tensor Sign(Tensor x)
-        {
-            return Out(tf.Sign(In(x)));
-        }
-
         public Tensor Sin(Tensor x)
         {
             return Out(tf.Sin(In(x)));
@@ -518,7 +520,8 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
-            return Out(tf.Slice(In(x), In(start), In(end)));
+            long size = end - start;
+            return Out(tf.Slice(In(x), In(start), In(size)));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
@@ -539,21 +542,6 @@ namespace SiaNet.Backend.TensorFlowLib
         public Tensor Square(Tensor x)
         {
             return Out(tf.Square(In(x)));
-        }
-
-        public float StdDev(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor StdDev(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor StdDev(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
         }
 
         public Tensor Sub(Tensor a, Tensor b)
@@ -632,24 +620,9 @@ namespace SiaNet.Backend.TensorFlowLib
             return name + "_" + counter++;
         }
 
-        public float Var(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Var(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Var(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
-        }
-
         public ActivationFunc GetActFunc()
         {
-            throw new NotImplementedException();
+            return new SiaNetActivations(this);
         }
     }
 }

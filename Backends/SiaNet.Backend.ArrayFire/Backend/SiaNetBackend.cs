@@ -241,11 +241,6 @@ namespace SiaNet.Backend.ArrayFire
             return Out(Arith.Sigmoid(In(x)));
         }
 
-        public Tensor Sign(Tensor x)
-        {
-            return Out(Arith.Sign(In(x)));
-        }
-
         public Tensor Sin(Tensor x)
         {
             return Out(Arith.Sin(In(x)));
@@ -289,11 +284,6 @@ namespace SiaNet.Backend.ArrayFire
         public Tensor Tanh(Tensor x)
         {
             return Out(Arith.Tanh(In(x)));
-        }
-
-        public Tensor Tpow(float value, Tensor x)
-        {
-            return Out(Arith.Pow(In(value, x.Shape), In(x)));
         }
 
         public Tensor Transpose(Tensor x)
@@ -389,30 +379,6 @@ namespace SiaNet.Backend.ArrayFire
             return x;
         }
 
-        public float Prod(Tensor x)
-        {
-            return (float)Algorithm.Prod(In(x)).Real;
-        }
-
-        public Tensor Prod(Tensor x, int dim)
-        {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
-            return Out(Algorithm.Prod(In(x), dim));
-        }
-
-        public Tensor Prod(Tensor x, params int[] dims)
-        {
-            dims = dims.Reverse().ToArray();
-            foreach (var item in dims)
-            {
-                x = Prod(x, item);
-            }
-
-            return x;
-        }
-
         public float Max(Tensor x)
         {
             return (float)Algorithm.Max(In(x)).Real;
@@ -481,54 +447,6 @@ namespace SiaNet.Backend.ArrayFire
             foreach (var item in dims)
             {
                 x = Mean(x, item);
-            }
-
-            return x;
-        }
-
-        public float Var(Tensor x)
-        {
-            return (float)Algorithm.Var(In(x)).Real;
-        }
-
-        public Tensor Var(Tensor x, int dim)
-        {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
-            return Out(Algorithm.Var(In(x), dim));
-        }
-
-        public Tensor Var(Tensor x, params int[] dims)
-        {
-            dims = dims.Reverse().ToArray();
-            foreach (var item in dims)
-            {
-                x = Var(x, item);
-            }
-
-            return x;
-        }
-
-        public float StdDev(Tensor x)
-        {
-            return (float)Algorithm.StdDev(In(x)).Real;
-        }
-
-        public Tensor StdDev(Tensor x, int dim)
-        {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
-            return Out(Algorithm.StdDev(In(x), dim));
-        }
-
-        public Tensor StdDev(Tensor x, params int[] dims)
-        {
-            dims = dims.Reverse().ToArray();
-            foreach (var item in dims)
-            {
-                x = StdDev(x, item);
             }
 
             return x;
