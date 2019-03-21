@@ -202,7 +202,7 @@ namespace SiaNet.Backend.MxNetLib
         private static NDArray DefaultMonitorFunc(NDArray x)
         {
             using (var op = new Operator("norm"))
-                return op.PushInput(x).Invoke()[0] / (float)Math.Sqrt(x.Size);
+                return op.SetInput("data", x).Invoke() / (float)Math.Sqrt(x.Size);
         }
 
         #endregion

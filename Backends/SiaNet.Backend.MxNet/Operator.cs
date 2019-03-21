@@ -124,20 +124,21 @@ namespace SiaNet.Backend.MxNetLib
             return new Symbol(symbolHandle);
         }
 
-        public List<NDArray> Invoke()
+        public NDArray Invoke()
         {
-            var outputs = new List<NDArray>();
-            this.Invoke(outputs);
-            return outputs;
+            var output = new NDArray();
+            this.Invoke(output);
+            return output;
         }
 
-        public void Invoke(NDArray output)
+        public NDArray Invoke(NDArray output)
         {
             if (output == null)
                 throw new ArgumentNullException(nameof(output));
 
             var outputs = new List<NDArray>(new[] { output });
             this.Invoke(outputs);
+            return output;
         }
 
         public void Invoke(List<NDArray> outputs)
@@ -219,6 +220,16 @@ namespace SiaNet.Backend.MxNetLib
         {
             this._InputKeys.Add(name);
             this._InputSymbols.Add(symbol.GetHandle());
+            return this;
+        }
+
+        public Operator SetInput(params NDArray[] ndarrayList)
+        {
+            foreach (var item in ndarrayList)
+            {
+                this._InputNdarrays.Add(item.NativePtr);
+            }
+            
             return this;
         }
 
