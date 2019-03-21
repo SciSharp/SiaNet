@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Linq;
 using TensorFlow;
 using DeviceType = SiaNet.Engine.DeviceType;
 
@@ -32,47 +33,52 @@ namespace SiaNet.Backend.TensorFlowLib
             }
         }
 
-        private TFOutput In(Tensor x)
+        internal TFOutput In(Tensor x)
         {
-            return tf.Const(((NDArrayTensor)x).InternalTensor);
+            return tf.Const(((NDArrayTensor)x).InternalTensor, TFDataType.Float);
         }
 
-        private TFOutput In(float value, params long[] shape)
+        internal TFOutput In(float value, long[] shape)
         {
-            return tf.Const(new TFTensor(value));
+            return tf.Constant(value, new TFShape(shape), TFDataType.Float);
         }
 
-        private TFOutput In(int[] data)
+        internal TFOutput In(params int[] data)
         {
-            return tf.Const(new TFTensor(data));
+            return tf.Const(new TFTensor(data), TFDataType.Int32);
         }
 
-        private TFOutput In(long[] data)
+        internal TFOutput In(params long[] data)
         {
-            return tf.Const(new TFTensor(data));
+            return tf.Const(new TFTensor(data), TFDataType.Int64);
         }
 
-        private TFOutput In(int value)
+        internal TFOutput In(int value)
         {
-            return tf.Const(new TFTensor(value));
+            return tf.Constant(1, new TFShape(1), TFDataType.Int32);
         }
 
-        private TFOutput In(long value)
+        internal TFOutput In(long value)
         {
-            return tf.Const(new TFTensor(value));
+            return tf.Constant(1, new TFShape(1), TFDataType.Int64);
         }
 
-        private NDArrayTensor Out(TFOutput x)
+        internal NDArrayTensor Out(TFOutput x, bool castFloat = false)
         {
-            NDArrayTensor tensor = new NDArrayTensor
+            NDArrayTensor tensor = new NDArrayTensor();
+            if(castFloat)
             {
-                InternalTensor = InternalEval(x)
-            };
+                tensor.InternalTensor = InternalEval(tf.Cast(x, TFDataType.Float));
+            }
+            else
+            {
+                tensor.InternalTensor = InternalEval(x);
+            }
 
             return tensor;
         }
 
-        private NDArrayTensor Out(TFTensor x)
+        internal NDArrayTensor Out(TFTensor x)
         {
             NDArrayTensor tensor = new NDArrayTensor
             {
@@ -99,12 +105,12 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Add(Tensor a, float b)
         {
-            return Out(tf.Add(In(a), In(b)));
+            return Out(tf.Add(In(a), In(b, a.Shape)));
         }
 
         public Tensor Add(float a, Tensor b)
         {
-            return Out(tf.Add(In(a), In(b)));
+            return Out(tf.Add(In(a, b.Shape), In(b)));
         }
 
         public Tensor Argmax(Tensor x, int dim = 0)
@@ -139,7 +145,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Clip(Tensor x, float min, float max)
         {
-            return Out(tf.ClipByValue(In(x), In(min), In(max)));
+            return Out(tf.ClipByValue(In(x), In(min, x.Shape), In(max, x.Shape)));
         }
 
         public Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
@@ -149,7 +155,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Constant(float value, long[] shape)
         {
-            return Out(tf.Constant(value, new TFShape(shape)));
+            return Out(tf.Constant(value, new TFShape(shape), TFDataType.Float));
         }
 
         public Tensor Cos(Tensor x)
@@ -176,7 +182,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public void Dispose(Tensor x)
         {
-            x.Dispose();
+            
         }
 
         public Tensor Div(Tensor a, Tensor b)
@@ -186,12 +192,12 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Div(Tensor a, float b)
         {
-            return Out(tf.Div(In(a), In(b)));
+            return Out(tf.Div(In(a), In(b, a.Shape)));
         }
 
         public Tensor Div(float a, Tensor b)
         {
-            return Out(tf.Div(In(a), In(b)));
+            return Out(tf.Div(In(a, b.Shape), In(b)));
         }
 
         public Tensor Dot(Tensor a, Tensor b)
@@ -206,7 +212,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor EqualTo(Tensor a, Tensor b)
         {
-            return Out(tf.Equal(In(a), In(b)));
+            return Out(tf.Equal(In(a), In(b)), true);
         }
 
         public object Eval(Tensor x)
@@ -270,37 +276,43 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public long[] GetShape(Tensor x)
         {
-            return tf.GetShape(In(x));
+            long[] shape = tf.GetShape(In(x));
+            if(shape == null)
+            {
+                shape = new long[] { 1 };
+            }
+
+            return shape;
         }
 
         public Tensor GreaterThan(Tensor a, Tensor b)
         {
-            return Out(tf.Greater(In(a), In(b)));
+            return Out(tf.Greater(In(a), In(b)), true);
         }
 
         public Tensor GreaterThan(float a, Tensor b)
         {
-            return Out(tf.Greater(In(a), In(b)));
+            return Out(tf.Greater(In(a, b.Shape), In(b)), true);
         }
 
         public Tensor GreaterThan(Tensor a, float b)
         {
-            return Out(tf.Greater(In(a), In(b)));
+            return Out(tf.Greater(In(a), In(b, a.Shape)), true);
         }
 
         public Tensor GreaterThanEqual(Tensor a, Tensor b)
         {
-            return Out(tf.GreaterEqual(In(a), In(b)));
+            return Out(tf.GreaterEqual(In(a), In(b)), true);
         }
 
         public Tensor GreaterThanEqual(float a, Tensor b)
         {
-            return Out(tf.GreaterEqual(In(a), In(b)));
+            return Out(tf.GreaterEqual(In(a, b.Shape), In(b)), true);
         }
 
         public Tensor GreaterThanEqual(Tensor a, float b)
         {
-            return Out(tf.GreaterEqual(In(a), In(b)));
+            return Out(tf.GreaterEqual(In(a), In(b, a.Shape)), true);
         }
 
         public Tensor Im2Col(Tensor x, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
@@ -316,32 +328,32 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor LessThan(Tensor a, Tensor b)
         {
-            return Out(tf.Less(In(a), In(b)));
+            return Out(tf.Less(In(a), In(b)), true);
         }
 
         public Tensor LessThan(float a, Tensor b)
         {
-            return Out(tf.Less(In(a), In(b)));
+            return Out(tf.Less(In(a, b.Shape), In(b)), true);
         }
 
         public Tensor LessThan(Tensor a, float b)
         {
-            return Out(tf.Less(In(a), In(b)));
+            return Out(tf.Less(In(a), In(b, a.Shape)), true);
         }
 
         public Tensor LessThanEqual(Tensor a, Tensor b)
         {
-            return Out(tf.LessEqual(In(a), In(b)));
+            return Out(tf.LessEqual(In(a), In(b)), true);
         }
 
         public Tensor LessThanEqual(float a, Tensor b)
         {
-            return Out(tf.LessEqual(In(a), In(b)));
+            return Out(tf.LessEqual(In(a, b.Shape), In(b)), true);
         }
 
         public Tensor LessThanEqual(Tensor a, float b)
         {
-            return Out(tf.LessEqual(In(a), In(b)));
+            return Out(tf.LessEqual(In(a), In(b, a.Shape)), true);
         }
 
         public Tensor Log(Tensor x)
@@ -366,12 +378,12 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Max(Tensor x, int dim)
         {
-            return Out(tf.Max(In(x), In(dim)));
+            return Out(tf.Max(In(x), In(dim), true));
         }
 
         public Tensor Max(Tensor x, params int[] dim)
         {
-            return Out(tf.Max(In(x), In(dim)));
+            return Out(tf.Max(In(x), In(dim), true));
         }
 
         public Tensor Maximum(Tensor a, Tensor b)
@@ -381,37 +393,37 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Maximum(Tensor a, float b)
         {
-            return Out(tf.Maximum(In(a), In(b)));
+            return Out(tf.Maximum(In(a), In(b, a.Shape)));
         }
 
         public float Mean(Tensor x)
         {
-            return Out(tf.ReduceMean(In(x))).ToScalar();
+            return (float)InternalEval(tf.ReduceMean(In(x))).GetValue();
         }
 
         public Tensor Mean(Tensor x, int dim)
         {
-            return Out(tf.Mean(In(x), In(dim)));
+            return Out(tf.Mean(In(x), In(dim), true));
         }
 
         public Tensor Mean(Tensor x, params int[] dim)
         {
-            return Out(tf.Mean(In(x), In(dim)));
+            return Out(tf.Mean(In(x), In(dim), true));
         }
 
         public float Min(Tensor x)
         {
-            return Out(tf.Min(In(x), In(x.Shape))).ToScalar();
+            return Out(tf.Min(In(x), In(x.Shape), true)).ToScalar();
         }
 
         public Tensor Min(Tensor x, int dim)
         {
-            return Out(tf.Min(In(x), In(dim)));
+            return Out(tf.Min(In(x), In(dim), true));
         }
 
         public Tensor Min(Tensor x, params int[] dim)
         {
-            return Out(tf.Min(In(x), In(dim)));
+            return Out(tf.Min(In(x), In(dim), true));
         }
 
         public Tensor Minimum(Tensor a, Tensor b)
@@ -421,7 +433,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Minimum(Tensor a, float b)
         {
-            return Out(tf.Minimum(In(a), In(b)));
+            return Out(tf.Minimum(In(a), In(b, a.Shape)));
         }
 
         public Tensor Mul(Tensor a, Tensor b)
@@ -431,12 +443,12 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Mul(Tensor a, float b)
         {
-            return Out(tf.Mul(In(a), In(b)));
+            return Out(tf.Mul(In(a), In(b, a.Shape)));
         }
 
         public Tensor Mul(float a, Tensor b)
         {
-            return Out(tf.Mul(In(a), In(b)));
+            return Out(tf.Mul(In(a, b.Shape), In(b)));
         }
 
         public Tensor Neg(Tensor x)
@@ -446,7 +458,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Pow(Tensor x, float value)
         {
-            return Out(tf.Pow(In(x), In(value)));
+            return Out(tf.Pow(In(x), In(value, x.Shape)));
         }
 
         public void Print(Tensor x, string title = "")
@@ -463,16 +475,27 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor RandomNormal(long[] shape, float mean, float stddev, int? seed = null)
         {
-            return Out(tf.RandomNormal(new TFShape(shape), mean, stddev, seed));
+            return Out(tf.Cast(tf.RandomNormal(new TFShape(shape), mean, stddev, seed), TFDataType.Float));
         }
 
         public Tensor RandomUniform(long[] shape, float min, float max, int? seed = null)
         {
-            return Out(tf.RandomUniform(new TFShape(shape), min, max, seed));
+            return Out(tf.Cast(tf.RandomUniform(new TFShape(shape), min, max, seed), TFDataType.Float));
         }
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
+            shape = shape.ToArray();
+            long prod = -1 * shape.Aggregate(1L, (a, b) => a * b);
+            for (int i = 0; i < shape.Length; i++)
+            {
+                if (shape[i] == -1)
+                {
+                    shape[i] = x.ElementCount / prod;
+                    break;
+                }
+            }
+
             return Out(tf.Reshape(In(x), In(shape)));
         }
 
@@ -515,13 +538,33 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor SliceCols(Tensor x, long start, long end)
         {
-            throw new NotImplementedException();
+            end = end + 1;
+            long size = end - start;
+            long[] shape = x.Shape;
+            return Out(tf.Slice(In(x), In(0, start), In(x.Shape[0], size)));
         }
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
+            end = end + 1;
             long size = end - start;
-            return Out(tf.Slice(In(x), In(start), In(size)));
+            long[] shape = x.Shape;
+            long[] startIndex = new long[shape.Length];
+            startIndex[0] = start;
+
+            long[] endIndex = new long[shape.Length];
+            for (int i = 0; i < endIndex.Length; i++)
+            {
+                if(i==0)
+                {
+                    endIndex[i] = size;
+                    continue;
+                }
+
+                endIndex[i] = shape[i];
+            }
+
+            return Out(tf.Slice(In(x), In(startIndex), In(endIndex)));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
@@ -551,23 +594,23 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Sub(Tensor a, float b)
         {
-            return Out(tf.Sub(In(a), In(b)));
+            return Out(tf.Sub(In(a), In(b, a.Shape)));
         }
 
         public Tensor Sub(float a, Tensor b)
         {
-            return Out(tf.Sub(In(a), In(b)));
+            return Out(tf.Sub(In(a, b.Shape), In(b)));
         }
 
         public float Sum(Tensor x)
         {
-            return Out(tf.ReduceSum(In(x))).ToScalar();
+            return (float)InternalEval(tf.ReduceSum(In(x))).GetValue();
         }
 
         public Tensor Sum(Tensor x, int dim)
         {
             dim = dim < 0 ? x.DimCount + dim : dim;
-            return Out(tf.ReduceSum(In(x), In(dim)));
+            return Out(tf.Sum(In(x), In(dim), true));
         }
 
         public Tensor Sum(Tensor x, params int[] dim)
@@ -592,12 +635,27 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            return Out(tf.Tile(In(x), In(n)));
+            if (axis < 0)
+                throw new ArgumentException("Axis >= 0");
+
+            int[] times = new int[x.Shape.Length];
+            for (int i = 0; i < times.Length; i++)
+            {
+                if(i == axis)
+                {
+                    times[i] = 1;
+                    continue;
+                }
+
+                times[i] = n;
+            }
+
+            return Out(tf.Tile(In(x), In(times)));
         }
 
         public Tensor Tpow(float value, Tensor x)
         {
-            return Out(tf.Pow(In(value), In(x)));
+            return Out(tf.Pow(In(value, x.Shape), In(x)));
         }
 
         public Tensor Transpose(Tensor x)

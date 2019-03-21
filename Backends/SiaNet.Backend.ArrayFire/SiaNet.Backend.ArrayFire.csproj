@@ -15,7 +15,7 @@
     <PackageTags>ArrayFire Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
     <PackageLicenseUrl>https://github.com/deepakkumar1984/SiaNet/blob/master/LICENSE</PackageLicenseUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Configurations>Debug;Release;Azure</Configurations>
   </PropertyGroup>
 

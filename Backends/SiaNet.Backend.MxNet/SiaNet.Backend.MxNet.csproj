@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>MxNet Backend, SiaNet, CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Platforms>AnyCPU;x64</Platforms>
     <Configurations>Debug;Release;Azure</Configurations>
   </PropertyGroup>

@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/deepakkumar1984/SiaNet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/deepakkumar1984/SiaNet</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion>0.4.1.1</AssemblyVersion>
     <Configurations>Debug;Release;Azure</Configurations>
   </PropertyGroup>
@@ -26,6 +26,7 @@
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Numerics.Tensors" Version="0.1.0" />
   </ItemGroup>
 
 </Project>

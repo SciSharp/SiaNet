@@ -19,7 +19,7 @@ Code well structured, easy to extend if you would like to extend with new layer,
     <RepositoryType>Git</RepositoryType>
     <PackageTags>CSharp, Deep learning, neural network, artificial intelligence</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/deepakkumar1984/SiaNet/master/icon_32.PNG</PackageIconUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion>0.4.1.1</AssemblyVersion>
     <FileVersion>0.4.1.1</FileVersion>
     <Configurations>Debug;Release;Azure</Configurations>
@@ -49,6 +49,7 @@ Code well structured, easy to extend if you would like to extend with new layer,
     <PackageReference Include="CsvHelper" Version="12.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
+    <PackageReference Include="System.Numerics.Tensors" Version="0.1.0" />
   </ItemGroup>
 
 </Project>

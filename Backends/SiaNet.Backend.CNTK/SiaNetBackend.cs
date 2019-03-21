@@ -31,11 +31,8 @@ namespace SiaNet.Backend.CNTKLib
 
         private NDArrayTensor Out(Variable x)
         {
-            NDArrayTensor tensor = new NDArrayTensor
-            {
-                InternalTensor = x
-            };
-
+            NDArrayTensor tensor = new NDArrayTensor();
+            tensor.InternalTensor = InternalEval(x);
             return tensor;
         }
 
@@ -128,7 +125,6 @@ namespace SiaNet.Backend.CNTKLib
 
         public void Dispose(Tensor x)
         {
-            In(x).Dispose();
         }
 
         public Tensor Div(Tensor a, Tensor b)
@@ -191,11 +187,6 @@ namespace SiaNet.Backend.CNTKLib
                     { f, null}
                 };
 
-                //foreach (var item in plist)
-                //{
-                //    inputs.Add(item, new Value(item.GetValue()));
-                //}
-
                 f.Evaluate(inputs, outputs, DeviceManager.Current);
                 v = outputs.FirstOrDefault().Value;
             }
@@ -205,6 +196,22 @@ namespace SiaNet.Backend.CNTKLib
             }
 
             return v.GetDenseData<float>(xvar)[0].ToArray();
+        }
+
+        private Variable InternalEval(Variable x)
+        {
+            var f = x.ToFunction();
+
+            var plist = f.Parameters();
+            Dictionary<Variable, Value> inputs = new Dictionary<Variable, Value>();
+            Dictionary<Variable, Value> outputs = new Dictionary<Variable, Value>()
+                {
+                    { f, null}
+                };
+
+            f.Evaluate(inputs, outputs, DeviceManager.Current);
+            var v = outputs.FirstOrDefault().Value;
+            return new Parameter(v.Data);
         }
 
         public Engine.DataType GetDataType(Tensor x)
