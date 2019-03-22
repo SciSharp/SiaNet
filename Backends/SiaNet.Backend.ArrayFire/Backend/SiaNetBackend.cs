@@ -634,11 +634,6 @@ namespace SiaNet.Backend.ArrayFire
             return Log((Exp(x) + 1));
         }
 
-        public Tensor L1Normalize(Tensor x, int axis = -1)
-        {
-            throw new NotImplementedException();
-        }
-
         public Tensor L2Normalize(Tensor x, int axis = -1)
         {
             var y = Max(Sum(Square(x), axis), axis);

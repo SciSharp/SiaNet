@@ -1,6 +1,7 @@
 ﻿using SiaNet.Engine;
 using SiaNet.Engine.Layers;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -37,7 +38,12 @@ namespace SiaNet.Backend.MxNetLib
             return tensor;
         }
 
-        private Shape NDShape(long[] shape)
+        private Shape NDShape(params long[] shape)
+        {
+            return new Shape(BackendUtil.CastShapeUInt(shape));
+        }
+
+        private Shape NDShape(params int[] shape)
         {
             return new Shape(BackendUtil.CastShapeUInt(shape));
         }
@@ -109,7 +115,10 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor Constant(float value, long[] shape)
         {
-            throw new NotImplementedException();
+            var array = new NDArray(NDShape(shape));
+            array.Set(value);
+
+            return Out(array);
         }
 
         public Tensor Cos(Tensor x)
@@ -213,6 +222,8 @@ namespace SiaNet.Backend.MxNetLib
                 default:
                     throw new Exception("Unsupported type.");
             }
+
+            return result;
         }
 
         public long[] GetShape(Tensor x)
@@ -221,7 +232,7 @@ namespace SiaNet.Backend.MxNetLib
             long[] result = new long[shape.Count];
             for (int i = 0; i < result.Length; i++)
             {
-                result[0] = shape[i];
+                result[i] = shape[i];
             }
 
             return result;
@@ -264,342 +275,329 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor L2Normalize(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            var y = Max(Sum(Square(x), axis), axis);
+            return x / Sqrt(y);
         }
 
         public Tensor LessThan(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Lesser(In(a), In(b)));
         }
 
         public Tensor LessThan(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Lesser(In(a, b.Shape), In(b)));
         }
 
         public Tensor LessThan(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Lesser(In(a), In(b, a.Shape)));
         }
 
         public Tensor LessThanEqual(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.LesserEqual(In(a), In(b)));
         }
 
         public Tensor LessThanEqual(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.LesserEqual(In(a, b.Shape), In(b)));
         }
 
         public Tensor LessThanEqual(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.LesserEqual(In(a), In(b, a.Shape)));
         }
 
         public Tensor Log(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Log(In(x)));
         }
 
         public Tensor Log10(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Log10(In(x)));
         }
 
         public Tensor Log1p(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Log1P(In(x)));
         }
 
         public float Max(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Max(In(x))).ToScalar();
         }
 
         public Tensor Max(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Max(In(x), NDShape(dim)));
         }
 
         public Tensor Max(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Max(In(x), NDShape(dim)));
         }
 
         public Tensor Maximum(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Maximum(In(a), In(b)));
         }
 
         public Tensor Maximum(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.MaximumScalar(In(a), b));
         }
 
         public float Mean(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Mean(In(x))).ToScalar();
         }
 
         public Tensor Mean(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Mean(In(x), NDShape(dim)));
         }
 
         public Tensor Mean(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Mean(In(x), NDShape(dim)));
         }
 
         public float Min(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Min(In(x))).ToScalar();
         }
 
         public Tensor Min(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Min(In(x), NDShape(dim)));
         }
 
         public Tensor Min(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Min(In(x), NDShape(dim)));
         }
 
         public Tensor Minimum(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Minimum(In(a), In(b)));
         }
 
         public Tensor Minimum(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.MinimumScalar(In(a), b));
         }
 
         public Tensor Mul(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.ElemwiseMul(In(a), In(b)));
         }
 
         public Tensor Mul(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.ElemwiseMul(In(a), In(b, a.Shape)));
         }
 
         public Tensor Mul(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.ElemwiseMul(In(a, b.Shape), In(b)));
         }
 
         public Tensor Neg(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Negative(In(x)));
         }
 
         public Tensor Pow(Tensor x, float value)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.PowerScalar(In(x), value));
         }
 
         public void Print(Tensor x, string title = "")
         {
-            throw new NotImplementedException();
-        }
-
-        public float Prod(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Prod(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Prod(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
+            Console.WriteLine(In(x).ToValueString());
         }
 
         public Tensor RandomBernoulli(long[] shape, float p)
         {
-            throw new NotImplementedException();
+            var result = RandomUniform(shape, 0, 1);
+            result = result > p;
+            return result;
         }
 
         public Tensor RandomNormal(long[] shape, float mean, float stddev, int? seed = null)
         {
-            throw new NotImplementedException();
+            NDArray data = new NDArray(NDShape(shape));
+            NDArray.SampleGaussian(mean, stddev, data);
+            return Out(data);
         }
 
         public Tensor RandomUniform(long[] shape, float min, float max, int? seed = null)
         {
-            throw new NotImplementedException();
+            NDArray data = new NDArray(NDShape(shape));
+            NDArray.SampleUniform(min, max, data);
+            return Out(data);
         }
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Reshape(NDShape(shape)));
         }
 
         public Tensor Round(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Round(In(x)));
         }
 
         public void SetDevice(Engine.DeviceType device)
         {
-            throw new NotImplementedException();
+            switch (device)
+            {
+                case Engine.DeviceType.Default:
+                    DeviceManager.Current = Context.Cpu();
+                    break;
+                case Engine.DeviceType.CPU:
+                    DeviceManager.Current = Context.Cpu();
+                    break;
+                case Engine.DeviceType.CUDA:
+                    DeviceManager.Current = Context.Gpu(0);
+                    break;
+                case Engine.DeviceType.OpenCL:
+                    throw new NotSupportedException("OpenCL is not supported. Please use ArrayFire backend.");
+                default:
+                    break;
+            }
         }
 
         public Tensor Sigmoid(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sigmoid(In(x)));
         }
 
         public Tensor Sign(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sign(In(x)));
         }
 
         public Tensor Sin(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sin(In(x)));
         }
 
         public Tensor Sinh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sinh(In(x)));
         }
 
         public Tensor SliceCols(Tensor x, long start, long end)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.SliceAxis(In(x), 1, (int)start, (int)end));
         }
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Slice((uint)start, (uint)end));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Softmax(In(x), axis));
         }
 
         public Tensor Softplus(Tensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            return Log((Exp(x) + 1));
         }
 
         public Tensor Sqrt(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sqrt(In(x)));
         }
 
         public Tensor Square(Tensor x)
         {
-            throw new NotImplementedException();
-        }
-
-        public float StdDev(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor StdDev(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor StdDev(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
+            return Out(NDArray.Square(In(x)));
         }
 
         public Tensor Sub(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.ElemwiseSub(In(a), In(b)));
         }
 
         public Tensor Sub(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.ElemwiseSub(In(a), In(b, a.Shape)));
         }
 
         public Tensor Sub(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.ElemwiseSub(In(a, b.Shape), In(b)));
         }
 
         public float Sum(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sum(In(x))).ToScalar();
         }
 
         public Tensor Sum(Tensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sum(In(x), NDShape(dim)));
         }
 
         public Tensor Sum(Tensor x, params int[] dim)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Sum(In(x), NDShape(dim)));
         }
 
         public Tensor Tan(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Tan(In(x)));
         }
 
         public Tensor Tanh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Tanh(In(x)));
         }
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            throw new NotImplementedException();
-        }
+            if (axis < 0)
+                throw new ArgumentException("Axis >= 0");
 
-        public Tensor Tpow(float value, Tensor x)
-        {
-            throw new NotImplementedException();
+            int[] times = new int[x.Shape.Length];
+            for (int i = 0; i < times.Length; i++)
+            {
+                if (i == axis)
+                {
+                    times[i] = 1;
+                    continue;
+                }
+
+                times[i] = n;
+            }
+
+            return Out(NDArray.Tile(In(x), NDShape(times)));
         }
 
         public Tensor Transpose(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Transpose(In(x)));
         }
 
         public Tensor Transpose(Tensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Transpose(In(x), NDShape(dims)));
         }
 
         public Tensor Trunc(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(NDArray.Trunc(In(x)));
         }
 
         public string UUID(string name)
         {
-            throw new NotImplementedException();
-        }
-
-        public float Var(Tensor x)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Var(Tensor x, int dim)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Tensor Var(Tensor x, params int[] dim)
-        {
-            throw new NotImplementedException();
+            return name + "_" + counter++;
         }
     }
 }

@@ -48,6 +48,14 @@ namespace SiaNet.Engine
             return Array.ConvertAll(shape, x => (uint)x);
         }
 
+        public static uint[] CastShapeUInt(int[] shape, bool reverse = false)
+        {
+            if (reverse)
+                shape = shape.Reverse().ToArray();
+
+            return Array.ConvertAll(shape, x => (uint)x);
+        }
+
         public static void Print(long[] shape, Array data)
         {
             var rank = data.Rank;

@@ -8451,10 +8451,19 @@ namespace SiaNet.Backend.MxNetLib
         public static NDArray Transpose(NDArray data,
         Shape axes = null)
         {
-            return new Operator("transpose")
-            .SetParam("axes", axes)
-            .SetInput("data", data)
-            .Invoke();
+            if (axes != null)
+            {
+                return new Operator("transpose")
+                .SetParam("axes", axes)
+                .SetInput("data", data)
+                .Invoke();
+            }
+            else
+            {
+                return new Operator("transpose")
+                .SetInput("data", data)
+                .Invoke();
+            }
         }
         /// <summary>
         /// Inserts a new axis of size 1 into the array shapeFor example, given ``x`` with shape ``(2,3,4)``, then ``expand_dims(x, axis=1)``will return a new array with shape ``(2,1,3,4)``.Defined in G:\deeplearn\mxnet\src\operator\tensor\matrix_op.cc:L230
