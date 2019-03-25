@@ -25,6 +25,11 @@ namespace SiaNet.Backend.MxNetLib
 
         private NDArray In(float value, params long[] shape)
         {
+            if(shape.Length == 0)
+            {
+                shape = new long[] { 1, 1 };
+            }
+
             var array = new NDArray(NDShape(shape));
             array.Set(value);
 
@@ -75,11 +80,13 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor Argmax(Tensor x, int dim = 0)
         {
+            dim = dim < 0 ? x.DimCount + dim : dim;
             return Out(NDArray.Argmax(In(x), dim, true));
         }
 
         public Tensor Argmin(Tensor x, int dim = 0)
         {
+            dim = dim < 0 ? x.DimCount + dim : dim;
             return Out(NDArray.Argmin(In(x), dim, true));
         }
 
@@ -219,8 +226,6 @@ namespace SiaNet.Backend.MxNetLib
                 case 5:
                     result = DataType.Int8;
                     break;
-                default:
-                    throw new Exception("Unsupported type.");
             }
 
             return result;
@@ -331,12 +336,18 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor Max(Tensor x, int dim)
         {
-            return Out(NDArray.Max(In(x), NDShape(dim)));
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(NDArray.Max(In(x), NDShape(dim), true));
         }
 
-        public Tensor Max(Tensor x, params int[] dim)
+        public Tensor Max(Tensor x, params int[] dims)
         {
-            return Out(NDArray.Max(In(x), NDShape(dim)));
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+            }
+
+            return Out(NDArray.Max(In(x), NDShape(dims), true));
         }
 
         public Tensor Maximum(Tensor a, Tensor b)
@@ -356,12 +367,18 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor Mean(Tensor x, int dim)
         {
-            return Out(NDArray.Mean(In(x), NDShape(dim)));
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(NDArray.Mean(In(x), NDShape(dim), true));
         }
 
-        public Tensor Mean(Tensor x, params int[] dim)
+        public Tensor Mean(Tensor x, params int[] dims)
         {
-            return Out(NDArray.Mean(In(x), NDShape(dim)));
+            for (int i = 0;  i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+            }
+
+            return Out(NDArray.Mean(In(x), NDShape(dims), true));
         }
 
         public float Min(Tensor x)
@@ -371,12 +388,18 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor Min(Tensor x, int dim)
         {
-            return Out(NDArray.Min(In(x), NDShape(dim)));
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(NDArray.Min(In(x), NDShape(dim), true));
         }
 
-        public Tensor Min(Tensor x, params int[] dim)
+        public Tensor Min(Tensor x, params int[] dims)
         {
-            return Out(NDArray.Min(In(x), NDShape(dim)));
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+            }
+
+            return Out(NDArray.Min(In(x), NDShape(dims), true));
         }
 
         public Tensor Minimum(Tensor a, Tensor b)
@@ -497,6 +520,7 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
+            end = end + 1;
             return Out(In(x).Slice((uint)start, (uint)end));
         }
 
@@ -542,12 +566,18 @@ namespace SiaNet.Backend.MxNetLib
 
         public Tensor Sum(Tensor x, int dim)
         {
-            return Out(NDArray.Sum(In(x), NDShape(dim)));
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(NDArray.Sum(In(x), NDShape(dim), true));
         }
 
-        public Tensor Sum(Tensor x, params int[] dim)
+        public Tensor Sum(Tensor x, params int[] dims)
         {
-            return Out(NDArray.Sum(In(x), NDShape(dim)));
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+            }
+
+            return Out(NDArray.Sum(In(x), NDShape(dims), true));
         }
 
         public Tensor Tan(Tensor x)
