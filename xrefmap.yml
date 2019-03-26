@@ -872,19 +872,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Atan
   nameWithType: IBackend.Atan
-- uid: SiaNet.Engine.IBackend.Atan2(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  name: Atan2(Tensor, Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Atan2_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.Atan2(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.Atan2(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
-  nameWithType: IBackend.Atan2(Tensor, Tensor)
-- uid: SiaNet.Engine.IBackend.Atan2*
-  name: Atan2
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Atan2_
-  commentId: Overload:SiaNet.Engine.IBackend.Atan2
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.Atan2
-  nameWithType: IBackend.Atan2
 - uid: SiaNet.Engine.IBackend.Ceil(SiaNet.Engine.Tensor)
   name: Ceil(Tensor)
   href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Ceil_SiaNet_Engine_Tensor_
@@ -1520,34 +1507,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Print
   nameWithType: IBackend.Print
-- uid: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor)
-  name: Prod(Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Prod_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor)
-  nameWithType: IBackend.Prod(Tensor)
-- uid: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor,System.Int32)
-  name: Prod(Tensor, Int32)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Prod_SiaNet_Engine_Tensor_System_Int32_
-  commentId: M:SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor,System.Int32)
-  fullName: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor, System.Int32)
-  nameWithType: IBackend.Prod(Tensor, Int32)
-- uid: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor,System.Int32[])
-  name: Prod(Tensor, Int32[])
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Prod_SiaNet_Engine_Tensor_System_Int32___
-  commentId: M:SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor,System.Int32[])
-  name.vb: Prod(Tensor, Int32())
-  fullName: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor, System.Int32[])
-  fullName.vb: SiaNet.Engine.IBackend.Prod(SiaNet.Engine.Tensor, System.Int32())
-  nameWithType: IBackend.Prod(Tensor, Int32[])
-  nameWithType.vb: IBackend.Prod(Tensor, Int32())
-- uid: SiaNet.Engine.IBackend.Prod*
-  name: Prod
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Prod_
-  commentId: Overload:SiaNet.Engine.IBackend.Prod
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.Prod
-  nameWithType: IBackend.Prod
 - uid: SiaNet.Engine.IBackend.RandomBernoulli(System.Int64[],System.Single)
   name: RandomBernoulli(Int64[], Single)
   href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_RandomBernoulli_System_Int64___System_Single_
@@ -1651,19 +1610,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Sigmoid
   nameWithType: IBackend.Sigmoid
-- uid: SiaNet.Engine.IBackend.Sign(SiaNet.Engine.Tensor)
-  name: Sign(Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Sign_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.Sign(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.Sign(SiaNet.Engine.Tensor)
-  nameWithType: IBackend.Sign(Tensor)
-- uid: SiaNet.Engine.IBackend.Sign*
-  name: Sign
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Sign_
-  commentId: Overload:SiaNet.Engine.IBackend.Sign
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.Sign
-  nameWithType: IBackend.Sign
 - uid: SiaNet.Engine.IBackend.Sin(SiaNet.Engine.Tensor)
   name: Sin(Tensor)
   href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Sin_SiaNet_Engine_Tensor_
@@ -1768,34 +1714,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Square
   nameWithType: IBackend.Square
-- uid: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor)
-  name: StdDev(Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_StdDev_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor)
-  nameWithType: IBackend.StdDev(Tensor)
-- uid: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor,System.Int32)
-  name: StdDev(Tensor, Int32)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_StdDev_SiaNet_Engine_Tensor_System_Int32_
-  commentId: M:SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor,System.Int32)
-  fullName: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor, System.Int32)
-  nameWithType: IBackend.StdDev(Tensor, Int32)
-- uid: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor,System.Int32[])
-  name: StdDev(Tensor, Int32[])
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_StdDev_SiaNet_Engine_Tensor_System_Int32___
-  commentId: M:SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor,System.Int32[])
-  name.vb: StdDev(Tensor, Int32())
-  fullName: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor, System.Int32[])
-  fullName.vb: SiaNet.Engine.IBackend.StdDev(SiaNet.Engine.Tensor, System.Int32())
-  nameWithType: IBackend.StdDev(Tensor, Int32[])
-  nameWithType.vb: IBackend.StdDev(Tensor, Int32())
-- uid: SiaNet.Engine.IBackend.StdDev*
-  name: StdDev
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_StdDev_
-  commentId: Overload:SiaNet.Engine.IBackend.StdDev
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.StdDev
-  nameWithType: IBackend.StdDev
 - uid: SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
   name: Sub(Tensor, Tensor)
   href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Sub_SiaNet_Engine_Tensor_SiaNet_Engine_Tensor_
@@ -1888,19 +1806,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Tile
   nameWithType: IBackend.Tile
-- uid: SiaNet.Engine.IBackend.Tpow(System.Single,SiaNet.Engine.Tensor)
-  name: Tpow(Single, Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Tpow_System_Single_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.Tpow(System.Single,SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.Tpow(System.Single, SiaNet.Engine.Tensor)
-  nameWithType: IBackend.Tpow(Single, Tensor)
-- uid: SiaNet.Engine.IBackend.Tpow*
-  name: Tpow
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Tpow_
-  commentId: Overload:SiaNet.Engine.IBackend.Tpow
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.Tpow
-  nameWithType: IBackend.Tpow
 - uid: SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor)
   name: Transpose(Tensor)
   href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Transpose_SiaNet_Engine_Tensor_
@@ -1923,19 +1828,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.Transpose
   nameWithType: IBackend.Transpose
-- uid: SiaNet.Engine.IBackend.Trunc(SiaNet.Engine.Tensor)
-  name: Trunc(Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Trunc_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.Trunc(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.Trunc(SiaNet.Engine.Tensor)
-  nameWithType: IBackend.Trunc(Tensor)
-- uid: SiaNet.Engine.IBackend.Trunc*
-  name: Trunc
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Trunc_
-  commentId: Overload:SiaNet.Engine.IBackend.Trunc
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.Trunc
-  nameWithType: IBackend.Trunc
 - uid: SiaNet.Engine.IBackend.UUID(System.String)
   name: UUID(String)
   href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_UUID_System_String_
@@ -1949,34 +1841,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.IBackend.UUID
   nameWithType: IBackend.UUID
-- uid: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor)
-  name: Var(Tensor)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Var_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor)
-  nameWithType: IBackend.Var(Tensor)
-- uid: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor,System.Int32)
-  name: Var(Tensor, Int32)
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Var_SiaNet_Engine_Tensor_System_Int32_
-  commentId: M:SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor,System.Int32)
-  fullName: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor, System.Int32)
-  nameWithType: IBackend.Var(Tensor, Int32)
-- uid: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor,System.Int32[])
-  name: Var(Tensor, Int32[])
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Var_SiaNet_Engine_Tensor_System_Int32___
-  commentId: M:SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor,System.Int32[])
-  name.vb: Var(Tensor, Int32())
-  fullName: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor, System.Int32[])
-  fullName.vb: SiaNet.Engine.IBackend.Var(SiaNet.Engine.Tensor, System.Int32())
-  nameWithType: IBackend.Var(Tensor, Int32[])
-  nameWithType.vb: IBackend.Var(Tensor, Int32())
-- uid: SiaNet.Engine.IBackend.Var*
-  name: Var
-  href: api/SiaNet.Engine.IBackend.html#SiaNet_Engine_IBackend_Var_
-  commentId: Overload:SiaNet.Engine.IBackend.Var
-  isSpec: "True"
-  fullName: SiaNet.Engine.IBackend.Var
-  nameWithType: IBackend.Var
 - uid: SiaNet.Engine.LossType
   name: LossType
   href: api/SiaNet.Engine.LossType.html
@@ -2254,19 +2118,6 @@ references:
   isSpec: "True"
   fullName: SiaNet.Engine.Tensor.Tensor
   nameWithType: Tensor.Tensor
-- uid: SiaNet.Engine.Tensor.ApplyUpdate(SiaNet.Engine.Tensor)
-  name: ApplyUpdate(Tensor)
-  href: api/SiaNet.Engine.Tensor.html#SiaNet_Engine_Tensor_ApplyUpdate_SiaNet_Engine_Tensor_
-  commentId: M:SiaNet.Engine.Tensor.ApplyUpdate(SiaNet.Engine.Tensor)
-  fullName: SiaNet.Engine.Tensor.ApplyUpdate(SiaNet.Engine.Tensor)
-  nameWithType: Tensor.ApplyUpdate(Tensor)
-- uid: SiaNet.Engine.Tensor.ApplyUpdate*
-  name: ApplyUpdate
-  href: api/SiaNet.Engine.Tensor.html#SiaNet_Engine_Tensor_ApplyUpdate_
-  commentId: Overload:SiaNet.Engine.Tensor.ApplyUpdate
-  isSpec: "True"
-  fullName: SiaNet.Engine.Tensor.ApplyUpdate
-  nameWithType: Tensor.ApplyUpdate
 - uid: SiaNet.Engine.Tensor.DataFloat
   name: DataFloat
   href: api/SiaNet.Engine.Tensor.html#SiaNet_Engine_Tensor_DataFloat
