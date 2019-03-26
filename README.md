@@ -15,7 +15,7 @@ https://trello.com/b/bLbgQLgy/sianet-development
 Developing a C# wrapper to help developer easily create and train deep neural network models.
 
 * Easy to use library, just focus on research
-* Multiple backend - ArrayFire (In Progress), TensorSharp (In Progress), CNTK (Not Started), TensorFlow (Not Started), MxNet (Not Started)
+* Multiple backend - CNTK, TensorFlow, MxNet, ArrayFire, TensorSharp
 * CUDA/ OpenCL support for some of the backends
 * Light weight libray, built with .NET standard 2.0
 * Code well structured, easy to extend if you would like to extend with new layer, loss, metrics, optimizers, constraints, regularizer
