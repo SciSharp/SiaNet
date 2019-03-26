@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SiaNet.Backend.MxNet.Util
+namespace SiaNet.Backend.MxNetLib.Util
 {
     public class NDUtil
     {

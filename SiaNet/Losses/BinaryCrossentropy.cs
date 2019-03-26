@@ -43,10 +43,8 @@
                 output = K.Log(output / (1 - output));
             }
 
-            float scale = (2f * preds.ElementCount) / 3f;
             output = K.Sigmoid(output);
-
-            return K.Mean(labels * K.Neg(K.Log(output)) + (1 - labels) * K.Neg(K.Log(1 - output)), -1);
+            return labels * K.Neg(K.Log(output)) + (1 - labels) * K.Neg(K.Log(1 - output));
         }
 
         /// <summary>
@@ -57,8 +55,14 @@
         /// <returns></returns>
         public override Tensor Backward(Tensor preds, Tensor labels)
         {
-            Tensor output = K.Clip(preds, K.Epsilon(), 1f - K.Epsilon());
-            return K.Neg((labels - 1) / (1 - output) - labels / output);
+            Tensor output = preds;
+
+            if (!FromLogit)
+            {
+                output = K.Clip(preds, K.Epsilon(), 1f - K.Epsilon());
+            }
+
+            return (output - labels) / (output * (1 - output));
         }
     }
 }

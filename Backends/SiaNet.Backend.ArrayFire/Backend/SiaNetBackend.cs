@@ -258,7 +258,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Square(Tensor x)
         {
-            return Out(Arith.Pow2(In(x)));
+            return Out(Arith.Pow(In(x), In(2, x.Shape)));
         }
 
         public Tensor Sub(Tensor a, Tensor b)

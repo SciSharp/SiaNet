@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using SiaNet.Backend.MxNet.Util;
+using SiaNet.Backend.MxNetLib.Util;
 
 namespace SiaNet.Backend.MxNetLib
 {

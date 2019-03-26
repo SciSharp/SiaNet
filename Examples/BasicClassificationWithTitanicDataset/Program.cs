@@ -28,10 +28,10 @@ namespace BasicClassificationWithTitanicDataset
             model.Add(new Dense(1, ActType.Sigmoid));
             
             //Compile with Optimizer, Loss and Metric
-            model.Compile(OptimizerType.Adam, LossType.MeanSquaredError, MetricType.BinaryAccurary);
+            model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Perform training with train and val dataset
-            model.Train(train, epochs: 1000, batchSize: 32);
+            model.Train(train, epochs: 100, batchSize: 128);
 
             //var prediction = model.Predict(test);
             //TOps.Round(prediction).Print();
