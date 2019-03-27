@@ -52,9 +52,9 @@ predictions.Print();
 
 ![Figure 1-1](https://i.ibb.co/KG87pv4/Titanic-1.png "Figure 1-1")
 
-Complete Code: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples/BasicClassificationWithTitanicDataset/Program.cs
+Complete Code: https://github.com/SciSharp/SiaNet/blob/master/Examples/BasicClassificationWithTitanicDataset/Program.cs
 
-More examples: https://github.com/deepakkumar1984/SiaNet/blob/master/Examples
+More examples: https://github.com/SciSharp/SiaNet/blob/master/Examples
 
 # API Docs
 https://scisharp.github.io/SiaNet/
