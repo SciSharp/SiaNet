@@ -1,3 +1,4 @@
+[![Join the chat at https://gitter.im/publiclab/publiclab](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/sci-sharp/community)
 [![Build status](https://dev.azure.com/deepakkumarb/SIA/_apis/build/status/SiaNet%20Beta%200.4.1)](https://dev.azure.com/deepakkumarb/SIA/_build/latest?definitionId=4)
 ![Build Status](https://travis-ci.org/deepakkumar1984/SiaNet.svg?branch=master)
 [![Backers on Open Collective](https://opencollective.com/sianet/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/sianet/sponsors/badge.svg)](#sponsors) 
@@ -61,5 +62,3 @@ https://scisharp.github.io/SiaNet/
 
 # Contribution
 Any help is welcome!!!
-
-
