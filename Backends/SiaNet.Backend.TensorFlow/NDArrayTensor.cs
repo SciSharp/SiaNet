@@ -1,19 +1,20 @@
 ﻿using SiaNet.Engine;
 using System;
-using TensorFlow;
+using Tensorflow;
+using Tensor = SiaNet.Engine.Tensor;
 
 namespace SiaNet.Backend.TensorFlowLib
 {
     public class NDArrayTensor : Tensor
     {
-        public TFTensor InternalTensor;
+        public Tensorflow.Tensor InternalTensor;
 
         public NDArrayTensor()
         {
             K = new SiaNetBackend();
         }
 
-        public NDArrayTensor(TFTensor arr)
+        public NDArrayTensor(Tensorflow.Tensor arr)
         {
             InternalTensor = arr;
             K = new SiaNetBackend();
