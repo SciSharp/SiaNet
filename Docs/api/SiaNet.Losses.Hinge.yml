@@ -1,0 +1,333 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Losses.Hinge
+  commentId: T:SiaNet.Losses.Hinge
+  id: Hinge
+  parent: SiaNet.Losses
+  children:
+  - SiaNet.Losses.Hinge.#ctor
+  - SiaNet.Losses.Hinge.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.Hinge.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: Hinge
+  nameWithType: Hinge
+  fullName: SiaNet.Losses.Hinge
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Losses/Hinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Hinge
+    path: ../SiaNet/Losses/Hinge.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nHinge Loss, also known as max-margin objective, is a loss function used for training classifiers. \nThe hinge loss is used for “maximum-margin” classification, most notably for support vector machines (SVMs).\n"
+  example: []
+  syntax:
+    content: 'public class Hinge : BaseLoss'
+    content.vb: >-
+      Public Class Hinge
+          Inherits BaseLoss
+  seealso:
+  - linkId: SiaNet.Losses.BaseLoss
+    commentId: T:SiaNet.Losses.BaseLoss
+  inheritance:
+  - System.Object
+  - SiaNet.Losses.BaseLoss
+  inheritedMembers:
+  - SiaNet.Losses.BaseLoss.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Losses.Hinge.#ctor
+  commentId: M:SiaNet.Losses.Hinge.#ctor
+  id: '#ctor'
+  parent: SiaNet.Losses.Hinge
+  langs:
+  - csharp
+  - vb
+  name: Hinge()
+  nameWithType: Hinge.Hinge()
+  fullName: SiaNet.Losses.Hinge.Hinge()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Losses/Hinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Losses/Hinge.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Losses.Hinge\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Hinge()
+    content.vb: Public Sub New
+  overload: SiaNet.Losses.Hinge.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.Hinge.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.Hinge.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.Hinge
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor, Tensor)
+  nameWithType: Hinge.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.Hinge.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/Hinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Losses/Hinge.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nForwards the inputs and calculate the loss.\n"
+  example: []
+  syntax:
+    content: public override Tensor Forward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Forward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.Hinge.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Losses.Hinge.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.Hinge.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.Hinge
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor, Tensor)
+  nameWithType: Hinge.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.Hinge.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/Hinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Losses/Hinge.cs
+    startLine: 37
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nBackpropagation method to calculate gradient of the loss function\n"
+  example: []
+  syntax:
+    content: public override Tensor Backward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Backward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.Hinge.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Losses.BaseLoss
+  commentId: T:SiaNet.Losses.BaseLoss
+  parent: SiaNet.Losses
+  name: BaseLoss
+  nameWithType: BaseLoss
+  fullName: SiaNet.Losses.BaseLoss
+- uid: SiaNet.Losses
+  commentId: N:SiaNet.Losses
+  name: SiaNet.Losses
+  nameWithType: SiaNet.Losses
+  fullName: SiaNet.Losses
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Losses.BaseLoss.Name
+  commentId: P:SiaNet.Losses.BaseLoss.Name
+  parent: SiaNet.Losses.BaseLoss
+  name: Name
+  nameWithType: BaseLoss.Name
+  fullName: SiaNet.Losses.BaseLoss.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Losses.Hinge
+  commentId: T:SiaNet.Losses.Hinge
+  name: Hinge
+  nameWithType: Hinge
+  fullName: SiaNet.Losses.Hinge
+- uid: SiaNet.Losses.Hinge.#ctor*
+  commentId: Overload:SiaNet.Losses.Hinge.#ctor
+  name: Hinge
+  nameWithType: Hinge.Hinge
+  fullName: SiaNet.Losses.Hinge.Hinge
+- uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Forward(Tensor, Tensor)
+  nameWithType: BaseLoss.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.Hinge.Forward*
+  commentId: Overload:SiaNet.Losses.Hinge.Forward
+  name: Forward
+  nameWithType: Hinge.Forward
+  fullName: SiaNet.Losses.Hinge.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Backward(Tensor, Tensor)
+  nameWithType: BaseLoss.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.Hinge.Backward*
+  commentId: Overload:SiaNet.Losses.Hinge.Backward
+  name: Backward
+  nameWithType: Hinge.Backward
+  fullName: SiaNet.Losses.Hinge.Backward

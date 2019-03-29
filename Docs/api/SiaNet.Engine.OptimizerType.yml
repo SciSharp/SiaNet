@@ -1,0 +1,258 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.OptimizerType
+  commentId: T:SiaNet.Engine.OptimizerType
+  id: OptimizerType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.OptimizerType.Adadelta
+  - SiaNet.Engine.OptimizerType.Adagrad
+  - SiaNet.Engine.OptimizerType.Adam
+  - SiaNet.Engine.OptimizerType.Adamax
+  - SiaNet.Engine.OptimizerType.RMSprop
+  - SiaNet.Engine.OptimizerType.SGD
+  langs:
+  - csharp
+  - vb
+  name: OptimizerType
+  nameWithType: OptimizerType
+  fullName: SiaNet.Engine.OptimizerType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: OptimizerType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 84
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nType of optimizer functions\n"
+  example: []
+  syntax:
+    content: public enum OptimizerType
+    content.vb: Public Enum OptimizerType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.OptimizerType.SGD
+  commentId: F:SiaNet.Engine.OptimizerType.SGD
+  id: SGD
+  parent: SiaNet.Engine.OptimizerType
+  langs:
+  - csharp
+  - vb
+  name: SGD
+  nameWithType: OptimizerType.SGD
+  fullName: SiaNet.Engine.OptimizerType.SGD
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SGD
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 89
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nStochastic gradient descent\n"
+  example: []
+  syntax:
+    content: SGD = 0
+    return:
+      type: SiaNet.Engine.OptimizerType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.OptimizerType.RMSprop
+  commentId: F:SiaNet.Engine.OptimizerType.RMSprop
+  id: RMSprop
+  parent: SiaNet.Engine.OptimizerType
+  langs:
+  - csharp
+  - vb
+  name: RMSprop
+  nameWithType: OptimizerType.RMSprop
+  fullName: SiaNet.Engine.OptimizerType.RMSprop
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RMSprop
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 93
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nRMSProp Optimizer\n"
+  example: []
+  syntax:
+    content: RMSprop = 1
+    return:
+      type: SiaNet.Engine.OptimizerType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.OptimizerType.Adagrad
+  commentId: F:SiaNet.Engine.OptimizerType.Adagrad
+  id: Adagrad
+  parent: SiaNet.Engine.OptimizerType
+  langs:
+  - csharp
+  - vb
+  name: Adagrad
+  nameWithType: OptimizerType.Adagrad
+  fullName: SiaNet.Engine.OptimizerType.Adagrad
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Adagrad
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 97
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nAdaGrad optimizer\n"
+  example: []
+  syntax:
+    content: Adagrad = 2
+    return:
+      type: SiaNet.Engine.OptimizerType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.OptimizerType.Adadelta
+  commentId: F:SiaNet.Engine.OptimizerType.Adadelta
+  id: Adadelta
+  parent: SiaNet.Engine.OptimizerType
+  langs:
+  - csharp
+  - vb
+  name: Adadelta
+  nameWithType: OptimizerType.Adadelta
+  fullName: SiaNet.Engine.OptimizerType.Adadelta
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Adadelta
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 101
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nAdaDelta Optimizer\n"
+  example: []
+  syntax:
+    content: Adadelta = 3
+    return:
+      type: SiaNet.Engine.OptimizerType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.OptimizerType.Adamax
+  commentId: F:SiaNet.Engine.OptimizerType.Adamax
+  id: Adamax
+  parent: SiaNet.Engine.OptimizerType
+  langs:
+  - csharp
+  - vb
+  name: Adamax
+  nameWithType: OptimizerType.Adamax
+  fullName: SiaNet.Engine.OptimizerType.Adamax
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Adamax
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 105
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe AdaMax optimizer\n"
+  example: []
+  syntax:
+    content: Adamax = 4
+    return:
+      type: SiaNet.Engine.OptimizerType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.OptimizerType.Adam
+  commentId: F:SiaNet.Engine.OptimizerType.Adam
+  id: Adam
+  parent: SiaNet.Engine.OptimizerType
+  langs:
+  - csharp
+  - vb
+  name: Adam
+  nameWithType: OptimizerType.Adam
+  fullName: SiaNet.Engine.OptimizerType.Adam
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Adam
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 109
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe adamAdam Optimizer\n"
+  example: []
+  syntax:
+    content: Adam = 5
+    return:
+      type: SiaNet.Engine.OptimizerType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.OptimizerType
+  commentId: T:SiaNet.Engine.OptimizerType
+  parent: SiaNet.Engine
+  name: OptimizerType
+  nameWithType: OptimizerType
+  fullName: SiaNet.Engine.OptimizerType

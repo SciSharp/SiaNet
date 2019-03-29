@@ -56,6 +56,11 @@ namespace SiaNet.Engine
             return Array.ConvertAll(shape, x => (uint)x);
         }
 
+        public static long[] Int2Long(int[] shape)
+        {
+            return Array.ConvertAll(shape, x => (long)x);
+        }
+
         public static void Print(long[] shape, Array data)
         {
             var rank = data.Rank;

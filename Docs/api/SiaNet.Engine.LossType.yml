@@ -1,0 +1,501 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.LossType
+  commentId: T:SiaNet.Engine.LossType
+  id: LossType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.LossType.BinaryCrossEntropy
+  - SiaNet.Engine.LossType.CategorialCrossEntropy
+  - SiaNet.Engine.LossType.CosineProximity
+  - SiaNet.Engine.LossType.CTC
+  - SiaNet.Engine.LossType.Hinge
+  - SiaNet.Engine.LossType.KullbackLeiblerDivergence
+  - SiaNet.Engine.LossType.Logcosh
+  - SiaNet.Engine.LossType.MeanAbsoluteError
+  - SiaNet.Engine.LossType.MeanAbsoluteLogError
+  - SiaNet.Engine.LossType.MeanAbsolutePercentageError
+  - SiaNet.Engine.LossType.MeanSquaredError
+  - SiaNet.Engine.LossType.Poisson
+  - SiaNet.Engine.LossType.SquaredHinge
+  langs:
+  - csharp
+  - vb
+  name: LossType
+  nameWithType: LossType
+  fullName: SiaNet.Engine.LossType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LossType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 112
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public enum LossType
+    content.vb: Public Enum LossType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.LossType.MeanSquaredError
+  commentId: F:SiaNet.Engine.LossType.MeanSquaredError
+  id: MeanSquaredError
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: MeanSquaredError
+  nameWithType: LossType.MeanSquaredError
+  fullName: SiaNet.Engine.LossType.MeanSquaredError
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MeanSquaredError
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 117
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean squared error loss\n"
+  example: []
+  syntax:
+    content: MeanSquaredError = 0
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.MeanAbsoluteError
+  commentId: F:SiaNet.Engine.LossType.MeanAbsoluteError
+  id: MeanAbsoluteError
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: MeanAbsoluteError
+  nameWithType: LossType.MeanAbsoluteError
+  fullName: SiaNet.Engine.LossType.MeanAbsoluteError
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MeanAbsoluteError
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 121
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean absolute error loss\n"
+  example: []
+  syntax:
+    content: MeanAbsoluteError = 1
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.MeanAbsolutePercentageError
+  commentId: F:SiaNet.Engine.LossType.MeanAbsolutePercentageError
+  id: MeanAbsolutePercentageError
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: MeanAbsolutePercentageError
+  nameWithType: LossType.MeanAbsolutePercentageError
+  fullName: SiaNet.Engine.LossType.MeanAbsolutePercentageError
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MeanAbsolutePercentageError
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 125
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean absolute percentage error\n"
+  example: []
+  syntax:
+    content: MeanAbsolutePercentageError = 2
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.MeanAbsoluteLogError
+  commentId: F:SiaNet.Engine.LossType.MeanAbsoluteLogError
+  id: MeanAbsoluteLogError
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: MeanAbsoluteLogError
+  nameWithType: LossType.MeanAbsoluteLogError
+  fullName: SiaNet.Engine.LossType.MeanAbsoluteLogError
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MeanAbsoluteLogError
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 129
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean absolute log error loss\n"
+  example: []
+  syntax:
+    content: MeanAbsoluteLogError = 3
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.SquaredHinge
+  commentId: F:SiaNet.Engine.LossType.SquaredHinge
+  id: SquaredHinge
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: SquaredHinge
+  nameWithType: LossType.SquaredHinge
+  fullName: SiaNet.Engine.LossType.SquaredHinge
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SquaredHinge
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 133
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe squared hinge loss\n"
+  example: []
+  syntax:
+    content: SquaredHinge = 4
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.Hinge
+  commentId: F:SiaNet.Engine.LossType.Hinge
+  id: Hinge
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: Hinge
+  nameWithType: LossType.Hinge
+  fullName: SiaNet.Engine.LossType.Hinge
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Hinge
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 137
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe hinge loss\n"
+  example: []
+  syntax:
+    content: Hinge = 5
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.BinaryCrossEntropy
+  commentId: F:SiaNet.Engine.LossType.BinaryCrossEntropy
+  id: BinaryCrossEntropy
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: BinaryCrossEntropy
+  nameWithType: LossType.BinaryCrossEntropy
+  fullName: SiaNet.Engine.LossType.BinaryCrossEntropy
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BinaryCrossEntropy
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 141
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe binary cross entropy loss\n"
+  example: []
+  syntax:
+    content: BinaryCrossEntropy = 6
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.CategorialCrossEntropy
+  commentId: F:SiaNet.Engine.LossType.CategorialCrossEntropy
+  id: CategorialCrossEntropy
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: CategorialCrossEntropy
+  nameWithType: LossType.CategorialCrossEntropy
+  fullName: SiaNet.Engine.LossType.CategorialCrossEntropy
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CategorialCrossEntropy
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 145
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe categorial cross entropy loss\n"
+  example: []
+  syntax:
+    content: CategorialCrossEntropy = 7
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.CTC
+  commentId: F:SiaNet.Engine.LossType.CTC
+  id: CTC
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: CTC
+  nameWithType: LossType.CTC
+  fullName: SiaNet.Engine.LossType.CTC
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CTC
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 149
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe CTC loss\n"
+  example: []
+  syntax:
+    content: CTC = 8
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.KullbackLeiblerDivergence
+  commentId: F:SiaNet.Engine.LossType.KullbackLeiblerDivergence
+  id: KullbackLeiblerDivergence
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: KullbackLeiblerDivergence
+  nameWithType: LossType.KullbackLeiblerDivergence
+  fullName: SiaNet.Engine.LossType.KullbackLeiblerDivergence
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KullbackLeiblerDivergence
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 153
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe kullback leibler divergence loss\n"
+  example: []
+  syntax:
+    content: KullbackLeiblerDivergence = 9
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.Logcosh
+  commentId: F:SiaNet.Engine.LossType.Logcosh
+  id: Logcosh
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: Logcosh
+  nameWithType: LossType.Logcosh
+  fullName: SiaNet.Engine.LossType.Logcosh
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Logcosh
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 157
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe log cosh loss\n"
+  example: []
+  syntax:
+    content: Logcosh = 10
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.Poisson
+  commentId: F:SiaNet.Engine.LossType.Poisson
+  id: Poisson
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: Poisson
+  nameWithType: LossType.Poisson
+  fullName: SiaNet.Engine.LossType.Poisson
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Poisson
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 161
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe poisson loss\n"
+  example: []
+  syntax:
+    content: Poisson = 11
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.LossType.CosineProximity
+  commentId: F:SiaNet.Engine.LossType.CosineProximity
+  id: CosineProximity
+  parent: SiaNet.Engine.LossType
+  langs:
+  - csharp
+  - vb
+  name: CosineProximity
+  nameWithType: LossType.CosineProximity
+  fullName: SiaNet.Engine.LossType.CosineProximity
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CosineProximity
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 165
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe cosine proximity loss\n"
+  example: []
+  syntax:
+    content: CosineProximity = 12
+    return:
+      type: SiaNet.Engine.LossType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.LossType
+  commentId: T:SiaNet.Engine.LossType
+  parent: SiaNet.Engine
+  name: LossType
+  nameWithType: LossType
+  fullName: SiaNet.Engine.LossType

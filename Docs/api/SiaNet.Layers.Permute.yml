@@ -1,0 +1,578 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.Permute
+  commentId: T:SiaNet.Layers.Permute
+  id: Permute
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.Permute.#ctor(System.Int32[])
+  - SiaNet.Layers.Permute.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Permute.Dims
+  - SiaNet.Layers.Permute.Forward(SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: Permute
+  nameWithType: Permute
+  fullName: SiaNet.Layers.Permute
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Permute.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Permute
+    path: ../SiaNet/Layers/Core/Permute.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nPermutes the dimensions of the input according to a given pattern. Useful for e.g.connecting RNNs and convnets together.\n"
+  example: []
+  syntax:
+    content: 'public class Permute : BaseLayer'
+    content.vb: >-
+      Public Class Permute
+          Inherits BaseLayer
+  seealso:
+  - linkId: SiaNet.Layers.BaseLayer
+    commentId: T:SiaNet.Layers.BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.Permute.Dims
+  commentId: P:SiaNet.Layers.Permute.Dims
+  id: Dims
+  parent: SiaNet.Layers.Permute
+  langs:
+  - csharp
+  - vb
+  name: Dims
+  nameWithType: Permute.Dims
+  fullName: SiaNet.Layers.Permute.Dims
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Permute.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Dims
+    path: ../SiaNet/Layers/Core/Permute.cs
+    startLine: 16
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nPermutation pattern, does not include the samples dimension. Indexing starts at 1. For instance, (2, 1) permutes the first and second dimension of the input.\n"
+  example: []
+  syntax:
+    content: public int[] Dims { get; set; }
+    parameters: []
+    return:
+      type: System.Int32[]
+      description: "\nThe dims.\n"
+    content.vb: Public Property Dims As Integer()
+  overload: SiaNet.Layers.Permute.Dims*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Permute.#ctor(System.Int32[])
+  commentId: M:SiaNet.Layers.Permute.#ctor(System.Int32[])
+  id: '#ctor(System.Int32[])'
+  parent: SiaNet.Layers.Permute
+  langs:
+  - csharp
+  - vb
+  name: Permute(Int32[])
+  nameWithType: Permute.Permute(Int32[])
+  fullName: SiaNet.Layers.Permute.Permute(System.Int32[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Permute.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Core/Permute.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Layers.Permute\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Permute(params int[] dims)
+    parameters:
+    - id: dims
+      type: System.Int32[]
+      description: The dims.
+    content.vb: Public Sub New(ParamArray dims As Integer())
+  overload: SiaNet.Layers.Permute.#ctor*
+  nameWithType.vb: Permute.Permute(Int32())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Layers.Permute.Permute(System.Int32())
+  name.vb: Permute(Int32())
+- uid: SiaNet.Layers.Permute.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Permute.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Permute
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: Permute.Forward(Tensor)
+  fullName: SiaNet.Layers.Permute.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Permute.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Core/Permute.cs
+    startLine: 32
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Permute.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.Permute.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Permute.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Permute
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: Permute.Backward(Tensor)
+  fullName: SiaNet.Layers.Permute.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Permute.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Core/Permute.cs
+    startLine: 42
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Permute.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.Permute.Dims*
+  commentId: Overload:SiaNet.Layers.Permute.Dims
+  name: Dims
+  nameWithType: Permute.Dims
+  fullName: SiaNet.Layers.Permute.Dims
+- uid: System.Int32[]
+  isExternal: true
+  name: Int32[]
+  nameWithType: Int32[]
+  fullName: System.Int32[]
+  nameWithType.vb: Int32()
+  fullName.vb: System.Int32()
+  name.vb: Int32()
+  spec.csharp:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Layers.Permute
+  commentId: T:SiaNet.Layers.Permute
+  name: Permute
+  nameWithType: Permute
+  fullName: SiaNet.Layers.Permute
+- uid: SiaNet.Layers.Permute.#ctor*
+  commentId: Overload:SiaNet.Layers.Permute.#ctor
+  name: Permute
+  nameWithType: Permute.Permute
+  fullName: SiaNet.Layers.Permute.Permute
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Permute.Forward*
+  commentId: Overload:SiaNet.Layers.Permute.Forward
+  name: Forward
+  nameWithType: Permute.Forward
+  fullName: SiaNet.Layers.Permute.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Permute.Backward*
+  commentId: Overload:SiaNet.Layers.Permute.Backward
+  name: Backward
+  nameWithType: Permute.Backward
+  fullName: SiaNet.Layers.Permute.Backward

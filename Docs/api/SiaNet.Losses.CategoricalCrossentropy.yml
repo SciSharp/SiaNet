@@ -1,0 +1,388 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Losses.CategoricalCrossentropy
+  commentId: T:SiaNet.Losses.CategoricalCrossentropy
+  id: CategoricalCrossentropy
+  parent: SiaNet.Losses
+  children:
+  - SiaNet.Losses.CategoricalCrossentropy.#ctor(System.Boolean)
+  - SiaNet.Losses.CategoricalCrossentropy.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.CategoricalCrossentropy.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.CategoricalCrossentropy.FromLogit
+  langs:
+  - csharp
+  - vb
+  name: CategoricalCrossentropy
+  nameWithType: CategoricalCrossentropy
+  fullName: SiaNet.Losses.CategoricalCrossentropy
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Losses/CategoricalCrossentropy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CategoricalCrossentropy
+    path: ../SiaNet/Losses/CategoricalCrossentropy.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nCross-entropy loss, or log loss, measures the performance of a classification model whose output is a probability value between 0 and 1. \nCross-entropy loss increases as the predicted probability diverges from the actual label.\n"
+  example: []
+  syntax:
+    content: 'public class CategoricalCrossentropy : BaseLoss'
+    content.vb: >-
+      Public Class CategoricalCrossentropy
+          Inherits BaseLoss
+  seealso:
+  - linkId: SiaNet.Losses.BaseLoss
+    commentId: T:SiaNet.Losses.BaseLoss
+  inheritance:
+  - System.Object
+  - SiaNet.Losses.BaseLoss
+  inheritedMembers:
+  - SiaNet.Losses.BaseLoss.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Losses.CategoricalCrossentropy.FromLogit
+  commentId: P:SiaNet.Losses.CategoricalCrossentropy.FromLogit
+  id: FromLogit
+  parent: SiaNet.Losses.CategoricalCrossentropy
+  langs:
+  - csharp
+  - vb
+  name: FromLogit
+  nameWithType: CategoricalCrossentropy.FromLogit
+  fullName: SiaNet.Losses.CategoricalCrossentropy.FromLogit
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Losses/CategoricalCrossentropy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: FromLogit
+    path: ../SiaNet/Losses/CategoricalCrossentropy.cs
+    startLine: 17
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nGets or sets a value indicating whether [from logit].\n"
+  example: []
+  syntax:
+    content: public bool FromLogit { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if [from logit]; otherwise, <code>false</code>.\n"
+    content.vb: Public Property FromLogit As Boolean
+  overload: SiaNet.Losses.CategoricalCrossentropy.FromLogit*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.CategoricalCrossentropy.#ctor(System.Boolean)
+  commentId: M:SiaNet.Losses.CategoricalCrossentropy.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: SiaNet.Losses.CategoricalCrossentropy
+  langs:
+  - csharp
+  - vb
+  name: CategoricalCrossentropy(Boolean)
+  nameWithType: CategoricalCrossentropy.CategoricalCrossentropy(Boolean)
+  fullName: SiaNet.Losses.CategoricalCrossentropy.CategoricalCrossentropy(System.Boolean)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Losses/CategoricalCrossentropy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Losses/CategoricalCrossentropy.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Losses.CategoricalCrossentropy\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public CategoricalCrossentropy(bool fromLogit = false)
+    parameters:
+    - id: fromLogit
+      type: System.Boolean
+      description: if set to <code>true</code> [from logit].
+    content.vb: Public Sub New(fromLogit As Boolean = False)
+  overload: SiaNet.Losses.CategoricalCrossentropy.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.CategoricalCrossentropy.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.CategoricalCrossentropy.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.CategoricalCrossentropy
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor, Tensor)
+  nameWithType: CategoricalCrossentropy.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.CategoricalCrossentropy.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/CategoricalCrossentropy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Losses/CategoricalCrossentropy.cs
+    startLine: 35
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nForwards the inputs and calculate the loss.\n"
+  example: []
+  syntax:
+    content: public override Tensor Forward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Forward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.CategoricalCrossentropy.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Losses.CategoricalCrossentropy.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.CategoricalCrossentropy.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.CategoricalCrossentropy
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor, Tensor)
+  nameWithType: CategoricalCrossentropy.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.CategoricalCrossentropy.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/CategoricalCrossentropy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Losses/CategoricalCrossentropy.cs
+    startLine: 52
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nBackpropagation method to calculate gradient of the loss function\n"
+  example: []
+  syntax:
+    content: public override Tensor Backward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Backward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.CategoricalCrossentropy.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Losses.BaseLoss
+  commentId: T:SiaNet.Losses.BaseLoss
+  parent: SiaNet.Losses
+  name: BaseLoss
+  nameWithType: BaseLoss
+  fullName: SiaNet.Losses.BaseLoss
+- uid: SiaNet.Losses
+  commentId: N:SiaNet.Losses
+  name: SiaNet.Losses
+  nameWithType: SiaNet.Losses
+  fullName: SiaNet.Losses
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Losses.BaseLoss.Name
+  commentId: P:SiaNet.Losses.BaseLoss.Name
+  parent: SiaNet.Losses.BaseLoss
+  name: Name
+  nameWithType: BaseLoss.Name
+  fullName: SiaNet.Losses.BaseLoss.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Losses.CategoricalCrossentropy.FromLogit*
+  commentId: Overload:SiaNet.Losses.CategoricalCrossentropy.FromLogit
+  name: FromLogit
+  nameWithType: CategoricalCrossentropy.FromLogit
+  fullName: SiaNet.Losses.CategoricalCrossentropy.FromLogit
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Losses.CategoricalCrossentropy
+  commentId: T:SiaNet.Losses.CategoricalCrossentropy
+  name: CategoricalCrossentropy
+  nameWithType: CategoricalCrossentropy
+  fullName: SiaNet.Losses.CategoricalCrossentropy
+- uid: SiaNet.Losses.CategoricalCrossentropy.#ctor*
+  commentId: Overload:SiaNet.Losses.CategoricalCrossentropy.#ctor
+  name: CategoricalCrossentropy
+  nameWithType: CategoricalCrossentropy.CategoricalCrossentropy
+  fullName: SiaNet.Losses.CategoricalCrossentropy.CategoricalCrossentropy
+- uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Forward(Tensor, Tensor)
+  nameWithType: BaseLoss.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.CategoricalCrossentropy.Forward*
+  commentId: Overload:SiaNet.Losses.CategoricalCrossentropy.Forward
+  name: Forward
+  nameWithType: CategoricalCrossentropy.Forward
+  fullName: SiaNet.Losses.CategoricalCrossentropy.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Backward(Tensor, Tensor)
+  nameWithType: BaseLoss.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.CategoricalCrossentropy.Backward*
+  commentId: Overload:SiaNet.Losses.CategoricalCrossentropy.Backward
+  name: Backward
+  nameWithType: CategoricalCrossentropy.Backward
+  fullName: SiaNet.Losses.CategoricalCrossentropy.Backward

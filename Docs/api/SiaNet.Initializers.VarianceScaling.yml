@@ -1,0 +1,560 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Initializers.VarianceScaling
+  commentId: T:SiaNet.Initializers.VarianceScaling
+  id: VarianceScaling
+  parent: SiaNet.Initializers
+  children:
+  - SiaNet.Initializers.VarianceScaling.#ctor(System.Single,System.String,System.String,System.Nullable{System.Int32})
+  - SiaNet.Initializers.VarianceScaling.Distribution
+  - SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  - SiaNet.Initializers.VarianceScaling.Mode
+  - SiaNet.Initializers.VarianceScaling.Scale
+  - SiaNet.Initializers.VarianceScaling.Seed
+  langs:
+  - csharp
+  - vb
+  name: VarianceScaling
+  nameWithType: VarianceScaling
+  fullName: SiaNet.Initializers.VarianceScaling
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: VarianceScaling
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializer capable of adapting its scale to the shape of weights. With distribution=&quot;normal&quot;, samples are drawn from a truncated normal distribution centered on zero, with stddev = sqrt(scale / n) where n is:\n<ul><li>number of input units in the weight tensor, if mode = &quot;fan_in&quot;</li><li>number of output units, if mode = &quot;fan_out&quot;</li><li>average of the numbers of input and output units, if mode = &quot;fan_avg&quot;</li></ul>\n<p>\nWith distribution = &quot;uniform&quot;, samples are drawn from a uniform distribution within[-limit, limit], with limit = sqrt(3 * scale / n).\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class VarianceScaling : BaseInitializer'
+    content.vb: >-
+      Public Class VarianceScaling
+          Inherits BaseInitializer
+  seealso:
+  - linkId: SiaNet.Initializers.BaseInitializer
+    commentId: T:SiaNet.Initializers.BaseInitializer
+  inheritance:
+  - System.Object
+  - SiaNet.Initializers.BaseInitializer
+  derivedClasses:
+  - SiaNet.Initializers.GlorotNormal
+  - SiaNet.Initializers.GlorotUniform
+  - SiaNet.Initializers.HeNormal
+  - SiaNet.Initializers.HeUniform
+  - SiaNet.Initializers.LecunNormal
+  - SiaNet.Initializers.LecunUniform
+  inheritedMembers:
+  - SiaNet.Initializers.BaseInitializer.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Initializers.VarianceScaling.Scale
+  commentId: P:SiaNet.Initializers.VarianceScaling.Scale
+  id: Scale
+  parent: SiaNet.Initializers.VarianceScaling
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: VarianceScaling.Scale
+  fullName: SiaNet.Initializers.VarianceScaling.Scale
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Scale
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 31
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nScaling factor (positive float).\n"
+  example: []
+  syntax:
+    content: public float Scale { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe scale.\n"
+    content.vb: Public Property Scale As Single
+  overload: SiaNet.Initializers.VarianceScaling.Scale*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.VarianceScaling.Mode
+  commentId: P:SiaNet.Initializers.VarianceScaling.Mode
+  id: Mode
+  parent: SiaNet.Initializers.VarianceScaling
+  langs:
+  - csharp
+  - vb
+  name: Mode
+  nameWithType: VarianceScaling.Mode
+  fullName: SiaNet.Initializers.VarianceScaling.Mode
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mode
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 39
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nOne of &quot;fan_in&quot;, &quot;fan_out&quot;, &quot;fan_avg&quot;.\n"
+  example: []
+  syntax:
+    content: public string Mode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe mode.\n"
+    content.vb: Public Property Mode As String
+  overload: SiaNet.Initializers.VarianceScaling.Mode*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.VarianceScaling.Distribution
+  commentId: P:SiaNet.Initializers.VarianceScaling.Distribution
+  id: Distribution
+  parent: SiaNet.Initializers.VarianceScaling
+  langs:
+  - csharp
+  - vb
+  name: Distribution
+  nameWithType: VarianceScaling.Distribution
+  fullName: SiaNet.Initializers.VarianceScaling.Distribution
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Distribution
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 47
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nRandom distribution to use. One of &quot;normal&quot;, &quot;uniform&quot;.\n"
+  example: []
+  syntax:
+    content: public string Distribution { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe distribution.\n"
+    content.vb: Public Property Distribution As String
+  overload: SiaNet.Initializers.VarianceScaling.Distribution*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.VarianceScaling.Seed
+  commentId: P:SiaNet.Initializers.VarianceScaling.Seed
+  id: Seed
+  parent: SiaNet.Initializers.VarianceScaling
+  langs:
+  - csharp
+  - vb
+  name: Seed
+  nameWithType: VarianceScaling.Seed
+  fullName: SiaNet.Initializers.VarianceScaling.Seed
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Seed
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 55
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nUsed to seed the random generator.\n"
+  example: []
+  syntax:
+    content: public int? Seed { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+      description: "\nThe seed.\n"
+    content.vb: Public Property Seed As Integer?
+  overload: SiaNet.Initializers.VarianceScaling.Seed*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.VarianceScaling.#ctor(System.Single,System.String,System.String,System.Nullable{System.Int32})
+  commentId: M:SiaNet.Initializers.VarianceScaling.#ctor(System.Single,System.String,System.String,System.Nullable{System.Int32})
+  id: '#ctor(System.Single,System.String,System.String,System.Nullable{System.Int32})'
+  parent: SiaNet.Initializers.VarianceScaling
+  langs:
+  - csharp
+  - vb
+  name: VarianceScaling(Single, String, String, Nullable<Int32>)
+  nameWithType: VarianceScaling.VarianceScaling(Single, String, String, Nullable<Int32>)
+  fullName: SiaNet.Initializers.VarianceScaling.VarianceScaling(System.Single, System.String, System.String, System.Nullable<System.Int32>)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 65
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Initializers.VarianceScaling\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public VarianceScaling(float scale = 1F, string mode = "fan_in", string distribution = "normal", int? seed = default(int? ))
+    parameters:
+    - id: scale
+      type: System.Single
+      description: Scaling factor (positive float).
+    - id: mode
+      type: System.String
+      description: One of &quot;fan_in&quot;, &quot;fan_out&quot;, &quot;fan_avg&quot;.
+    - id: distribution
+      type: System.String
+      description: Random distribution to use. One of &quot;normal&quot;, &quot;uniform&quot;.
+    - id: seed
+      type: System.Nullable{System.Int32}
+      description: Used to seed the random generator.
+    content.vb: Public Sub New(scale As Single = 1F, mode As String = "fan_in", distribution As String = "normal", seed As Integer? = Nothing)
+  overload: SiaNet.Initializers.VarianceScaling.#ctor*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Scale must be positive value
+  nameWithType.vb: VarianceScaling.VarianceScaling(Single, String, String, Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Initializers.VarianceScaling.VarianceScaling(System.Single, System.String, System.String, System.Nullable(Of System.Int32))
+  name.vb: VarianceScaling(Single, String, String, Nullable(Of Int32))
+- uid: SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  id: Generate(System.Int64[])
+  parent: SiaNet.Initializers.VarianceScaling
+  langs:
+  - csharp
+  - vb
+  name: Generate(Int64[])
+  nameWithType: VarianceScaling.Generate(Int64[])
+  fullName: SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Initializers/VarianceScaling.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Generate
+    path: ../SiaNet/Initializers/VarianceScaling.cs
+    startLine: 87
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nGenerates a tensor with specified shape.\n"
+  example: []
+  syntax:
+    content: public override Tensor Generate(params long[] shape)
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape of the tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Generate(ParamArray shape As Long()) As Tensor
+  overridden: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  overload: SiaNet.Initializers.VarianceScaling.Generate*
+  nameWithType.vb: VarianceScaling.Generate(Int64())
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+  fullName.vb: SiaNet.Initializers.VarianceScaling.Generate(System.Int64())
+  name.vb: Generate(Int64())
+references:
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Initializers.BaseInitializer.Name
+  commentId: P:SiaNet.Initializers.BaseInitializer.Name
+  parent: SiaNet.Initializers.BaseInitializer
+  name: Name
+  nameWithType: BaseInitializer.Name
+  fullName: SiaNet.Initializers.BaseInitializer.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Initializers.VarianceScaling.Scale*
+  commentId: Overload:SiaNet.Initializers.VarianceScaling.Scale
+  name: Scale
+  nameWithType: VarianceScaling.Scale
+  fullName: SiaNet.Initializers.VarianceScaling.Scale
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Initializers.VarianceScaling.Mode*
+  commentId: Overload:SiaNet.Initializers.VarianceScaling.Mode
+  name: Mode
+  nameWithType: VarianceScaling.Mode
+  fullName: SiaNet.Initializers.VarianceScaling.Mode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Initializers.VarianceScaling.Distribution*
+  commentId: Overload:SiaNet.Initializers.VarianceScaling.Distribution
+  name: Distribution
+  nameWithType: VarianceScaling.Distribution
+  fullName: SiaNet.Initializers.VarianceScaling.Distribution
+- uid: SiaNet.Initializers.VarianceScaling.Seed*
+  commentId: Overload:SiaNet.Initializers.VarianceScaling.Seed
+  name: Seed
+  nameWithType: VarianceScaling.Seed
+  fullName: SiaNet.Initializers.VarianceScaling.Seed
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Initializers.VarianceScaling
+  commentId: T:SiaNet.Initializers.VarianceScaling
+  parent: SiaNet.Initializers
+  name: VarianceScaling
+  nameWithType: VarianceScaling
+  fullName: SiaNet.Initializers.VarianceScaling
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: SiaNet.Initializers.VarianceScaling.#ctor*
+  commentId: Overload:SiaNet.Initializers.VarianceScaling.#ctor
+  name: VarianceScaling
+  nameWithType: VarianceScaling.VarianceScaling
+  fullName: SiaNet.Initializers.VarianceScaling.VarianceScaling
+- uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  parent: SiaNet.Initializers.BaseInitializer
+  isExternal: true
+  name: Generate(Int64[])
+  nameWithType: BaseInitializer.Generate(Int64[])
+  fullName: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  nameWithType.vb: BaseInitializer.Generate(Int64())
+  fullName.vb: SiaNet.Initializers.BaseInitializer.Generate(System.Int64())
+  name.vb: Generate(Int64())
+  spec.csharp:
+  - uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+    name: Generate
+    nameWithType: BaseInitializer.Generate
+    fullName: SiaNet.Initializers.BaseInitializer.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+    name: Generate
+    nameWithType: BaseInitializer.Generate
+    fullName: SiaNet.Initializers.BaseInitializer.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Initializers.VarianceScaling.Generate*
+  commentId: Overload:SiaNet.Initializers.VarianceScaling.Generate
+  name: Generate
+  nameWithType: VarianceScaling.Generate
+  fullName: SiaNet.Initializers.VarianceScaling.Generate
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

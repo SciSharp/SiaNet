@@ -1,0 +1,1167 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.BatchNormalization
+  commentId: T:SiaNet.Layers.BatchNormalization
+  id: BatchNormalization
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.BatchNormalization.#ctor(System.Int32,System.Single,System.Single,System.Boolean,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Initializers.BaseInitializer)
+  - SiaNet.Layers.BatchNormalization.Axis
+  - SiaNet.Layers.BatchNormalization.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.BatchNormalization.BetaConstraint
+  - SiaNet.Layers.BatchNormalization.BetaInitializer
+  - SiaNet.Layers.BatchNormalization.BetaRegularizer
+  - SiaNet.Layers.BatchNormalization.Center
+  - SiaNet.Layers.BatchNormalization.Epsilon
+  - SiaNet.Layers.BatchNormalization.Forward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.BatchNormalization.GammaConstraint
+  - SiaNet.Layers.BatchNormalization.GammaInitializer
+  - SiaNet.Layers.BatchNormalization.GammaRegularizer
+  - SiaNet.Layers.BatchNormalization.Momentum
+  - SiaNet.Layers.BatchNormalization.MovingMeanInitializer
+  - SiaNet.Layers.BatchNormalization.MovingVarianceInitializer
+  - SiaNet.Layers.BatchNormalization.Scale
+  langs:
+  - csharp
+  - vb
+  name: BatchNormalization
+  nameWithType: BatchNormalization
+  fullName: SiaNet.Layers.BatchNormalization
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BatchNormalization
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nBatch normalization layer (Ioffe and Szegedy, 2014).\n<p>\nNormalize the activations of the previous layer at each batch, i.e.applies a transformation that maintains the mean activation close to 0 and the activation standard deviation close to 1.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class BatchNormalization : BaseLayer'
+    content.vb: >-
+      Public Class BatchNormalization
+          Inherits BaseLayer
+  seealso:
+  - linkId: SiaNet.Layers.BaseLayer
+    commentId: T:SiaNet.Layers.BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.BatchNormalization.Axis
+  commentId: P:SiaNet.Layers.BatchNormalization.Axis
+  id: Axis
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Axis
+  nameWithType: BatchNormalization.Axis
+  fullName: SiaNet.Layers.BatchNormalization.Axis
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Axis
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInteger, the axis that should be normalized (typically the features axis). For instance, after a Conv2D layer set axis=1 in BatchNormalization.\n"
+  example: []
+  syntax:
+    content: public int Axis { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe axis.\n"
+    content.vb: Public Property Axis As Integer
+  overload: SiaNet.Layers.BatchNormalization.Axis*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.Momentum
+  commentId: P:SiaNet.Layers.BatchNormalization.Momentum
+  id: Momentum
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Momentum
+  nameWithType: BatchNormalization.Momentum
+  fullName: SiaNet.Layers.BatchNormalization.Momentum
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Momentum
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 30
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nMomentum for the moving mean and the moving variance.\n"
+  example: []
+  syntax:
+    content: public float Momentum { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe momentum.\n"
+    content.vb: Public Property Momentum As Single
+  overload: SiaNet.Layers.BatchNormalization.Momentum*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.Epsilon
+  commentId: P:SiaNet.Layers.BatchNormalization.Epsilon
+  id: Epsilon
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Epsilon
+  nameWithType: BatchNormalization.Epsilon
+  fullName: SiaNet.Layers.BatchNormalization.Epsilon
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epsilon
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 38
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nSmall float added to variance to avoid dividing by zero.\n"
+  example: []
+  syntax:
+    content: public float Epsilon { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe epsilon.\n"
+    content.vb: Public Property Epsilon As Single
+  overload: SiaNet.Layers.BatchNormalization.Epsilon*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.Center
+  commentId: P:SiaNet.Layers.BatchNormalization.Center
+  id: Center
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Center
+  nameWithType: BatchNormalization.Center
+  fullName: SiaNet.Layers.BatchNormalization.Center
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Center
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 46
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nIf True, add offset of beta to normalized tensor. If False, beta is ignored.\n"
+  example: []
+  syntax:
+    content: public bool Center { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if center; otherwise, <code>false</code>.\n"
+    content.vb: Public Property Center As Boolean
+  overload: SiaNet.Layers.BatchNormalization.Center*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.Scale
+  commentId: P:SiaNet.Layers.BatchNormalization.Scale
+  id: Scale
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: BatchNormalization.Scale
+  fullName: SiaNet.Layers.BatchNormalization.Scale
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Scale
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 54
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nIf True, multiply by gamma. If False, gamma is not used. When the next layer is linear (also e.g. relu), this can be disabled since the scaling will be done by the next layer.\n"
+  example: []
+  syntax:
+    content: public bool Scale { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if scale; otherwise, <code>false</code>.\n"
+    content.vb: Public Property Scale As Boolean
+  overload: SiaNet.Layers.BatchNormalization.Scale*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.BetaInitializer
+  commentId: P:SiaNet.Layers.BatchNormalization.BetaInitializer
+  id: BetaInitializer
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: BetaInitializer
+  nameWithType: BatchNormalization.BetaInitializer
+  fullName: SiaNet.Layers.BatchNormalization.BetaInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BetaInitializer
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 62
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for beta weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseInitializer BetaInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe beta initializer.\n"
+    content.vb: Public Property BetaInitializer As BaseInitializer
+  overload: SiaNet.Layers.BatchNormalization.BetaInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.GammaInitializer
+  commentId: P:SiaNet.Layers.BatchNormalization.GammaInitializer
+  id: GammaInitializer
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: GammaInitializer
+  nameWithType: BatchNormalization.GammaInitializer
+  fullName: SiaNet.Layers.BatchNormalization.GammaInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GammaInitializer
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 70
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for gamma weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseInitializer GammaInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe gamma initializer.\n"
+    content.vb: Public Property GammaInitializer As BaseInitializer
+  overload: SiaNet.Layers.BatchNormalization.GammaInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.MovingMeanInitializer
+  commentId: P:SiaNet.Layers.BatchNormalization.MovingMeanInitializer
+  id: MovingMeanInitializer
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: MovingMeanInitializer
+  nameWithType: BatchNormalization.MovingMeanInitializer
+  fullName: SiaNet.Layers.BatchNormalization.MovingMeanInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MovingMeanInitializer
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 78
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for moving mean weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseInitializer MovingMeanInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe moving mean initializer.\n"
+    content.vb: Public Property MovingMeanInitializer As BaseInitializer
+  overload: SiaNet.Layers.BatchNormalization.MovingMeanInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.MovingVarianceInitializer
+  commentId: P:SiaNet.Layers.BatchNormalization.MovingVarianceInitializer
+  id: MovingVarianceInitializer
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: MovingVarianceInitializer
+  nameWithType: BatchNormalization.MovingVarianceInitializer
+  fullName: SiaNet.Layers.BatchNormalization.MovingVarianceInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MovingVarianceInitializer
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 86
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for moving variance weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseInitializer MovingVarianceInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe moving variance initializer.\n"
+    content.vb: Public Property MovingVarianceInitializer As BaseInitializer
+  overload: SiaNet.Layers.BatchNormalization.MovingVarianceInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.BetaConstraint
+  commentId: P:SiaNet.Layers.BatchNormalization.BetaConstraint
+  id: BetaConstraint
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: BetaConstraint
+  nameWithType: BatchNormalization.BetaConstraint
+  fullName: SiaNet.Layers.BatchNormalization.BetaConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BetaConstraint
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 94
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nConstraint function for beta weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseConstraint BetaConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+      description: "\nThe beta constraint.\n"
+    content.vb: Public Property BetaConstraint As BaseConstraint
+  overload: SiaNet.Layers.BatchNormalization.BetaConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.GammaConstraint
+  commentId: P:SiaNet.Layers.BatchNormalization.GammaConstraint
+  id: GammaConstraint
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: GammaConstraint
+  nameWithType: BatchNormalization.GammaConstraint
+  fullName: SiaNet.Layers.BatchNormalization.GammaConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GammaConstraint
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 102
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nConstraint function for gamma weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseConstraint GammaConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+      description: "\nThe gamma constraint.\n"
+    content.vb: Public Property GammaConstraint As BaseConstraint
+  overload: SiaNet.Layers.BatchNormalization.GammaConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.BetaRegularizer
+  commentId: P:SiaNet.Layers.BatchNormalization.BetaRegularizer
+  id: BetaRegularizer
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: BetaRegularizer
+  nameWithType: BatchNormalization.BetaRegularizer
+  fullName: SiaNet.Layers.BatchNormalization.BetaRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BetaRegularizer
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 110
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nRegularizer function for beta weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer BetaRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: "\nThe beta regularizer.\n"
+    content.vb: Public Property BetaRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.BatchNormalization.BetaRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.GammaRegularizer
+  commentId: P:SiaNet.Layers.BatchNormalization.GammaRegularizer
+  id: GammaRegularizer
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: GammaRegularizer
+  nameWithType: BatchNormalization.GammaRegularizer
+  fullName: SiaNet.Layers.BatchNormalization.GammaRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GammaRegularizer
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 118
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nRegularizer function for gamma weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer GammaRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: "\nThe gamma regularizer.\n"
+    content.vb: Public Property GammaRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.BatchNormalization.GammaRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.#ctor(System.Int32,System.Single,System.Single,System.Boolean,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Initializers.BaseInitializer)
+  commentId: M:SiaNet.Layers.BatchNormalization.#ctor(System.Int32,System.Single,System.Single,System.Boolean,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Initializers.BaseInitializer)
+  id: '#ctor(System.Int32,System.Single,System.Single,System.Boolean,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,SiaNet.Initializers.BaseInitializer,SiaNet.Initializers.BaseInitializer)'
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: BatchNormalization(Int32, Single, Single, Boolean, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint, BaseInitializer, BaseRegularizer, BaseConstraint, BaseInitializer, BaseInitializer)
+  nameWithType: BatchNormalization.BatchNormalization(Int32, Single, Single, Boolean, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint, BaseInitializer, BaseRegularizer, BaseConstraint, BaseInitializer, BaseInitializer)
+  fullName: SiaNet.Layers.BatchNormalization.BatchNormalization(System.Int32, System.Single, System.Single, System.Boolean, System.Boolean, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, SiaNet.Initializers.BaseInitializer, SiaNet.Initializers.BaseInitializer)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 151
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Layers.BatchNormalization\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BatchNormalization(int axis = -1, float momentum = 0.99F, float epsilon = 0.001F, bool center = true, bool scale = true, BaseInitializer betaInitializer = null, BaseRegularizer betaRegularizer = null, BaseConstraint betaConstraint = null, BaseInitializer gammaInitializer = null, BaseRegularizer gammaRegularizer = null, BaseConstraint gammaConstraint = null, BaseInitializer movingMeanInitializer = null, BaseInitializer movingVarianceInitializer = null)
+    parameters:
+    - id: axis
+      type: System.Int32
+      description: Integer, the axis that should be normalized (typically the features axis). For instance, after a Conv2D layer set axis=1 in BatchNormalization.
+    - id: momentum
+      type: System.Single
+      description: Momentum for the moving mean and the moving variance.
+    - id: epsilon
+      type: System.Single
+      description: Small float added to variance to avoid dividing by zero.
+    - id: center
+      type: System.Boolean
+      description: If True, add offset of beta to normalized tensor. If False, beta is ignored.
+    - id: scale
+      type: System.Boolean
+      description: If True, multiply by gamma. If False, gamma is not used. When the next layer is linear (also e.g. relu), this can be disabled since the scaling will be done by the next layer.
+    - id: betaInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for beta weight matrix.
+    - id: betaRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: Regularizer function for beta weight matrix
+    - id: betaConstraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: Constraint function for beta weight matrix.
+    - id: gammaInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for gamma weight matrix
+    - id: gammaRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: Regularizer function for gamma weight matrix.
+    - id: gammaConstraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: Constraint function for gamma weight matrix.
+    - id: movingMeanInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for moving mean weight matrix.
+    - id: movingVarianceInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for moving variance weight matrix.
+    content.vb: Public Sub New(axis As Integer = -1, momentum As Single = 0.99F, epsilon As Single = 0.001F, center As Boolean = True, scale As Boolean = True, betaInitializer As BaseInitializer = Nothing, betaRegularizer As BaseRegularizer = Nothing, betaConstraint As BaseConstraint = Nothing, gammaInitializer As BaseInitializer = Nothing, gammaRegularizer As BaseRegularizer = Nothing, gammaConstraint As BaseConstraint = Nothing, movingMeanInitializer As BaseInitializer = Nothing, movingVarianceInitializer As BaseInitializer = Nothing)
+  overload: SiaNet.Layers.BatchNormalization.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BatchNormalization.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BatchNormalization.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: BatchNormalization.Forward(Tensor)
+  fullName: SiaNet.Layers.BatchNormalization.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 175
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.BatchNormalization.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.BatchNormalization.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BatchNormalization.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BatchNormalization
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: BatchNormalization.Backward(Tensor)
+  fullName: SiaNet.Layers.BatchNormalization.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/BatchNormalization.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Core/BatchNormalization.cs
+    startLine: 195
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.BatchNormalization.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.BatchNormalization.Axis*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Axis
+  name: Axis
+  nameWithType: BatchNormalization.Axis
+  fullName: SiaNet.Layers.BatchNormalization.Axis
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Layers.BatchNormalization.Momentum*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Momentum
+  name: Momentum
+  nameWithType: BatchNormalization.Momentum
+  fullName: SiaNet.Layers.BatchNormalization.Momentum
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Layers.BatchNormalization.Epsilon*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Epsilon
+  name: Epsilon
+  nameWithType: BatchNormalization.Epsilon
+  fullName: SiaNet.Layers.BatchNormalization.Epsilon
+- uid: SiaNet.Layers.BatchNormalization.Center*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Center
+  name: Center
+  nameWithType: BatchNormalization.Center
+  fullName: SiaNet.Layers.BatchNormalization.Center
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Layers.BatchNormalization.Scale*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Scale
+  name: Scale
+  nameWithType: BatchNormalization.Scale
+  fullName: SiaNet.Layers.BatchNormalization.Scale
+- uid: SiaNet.Layers.BatchNormalization.BetaInitializer*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.BetaInitializer
+  name: BetaInitializer
+  nameWithType: BatchNormalization.BetaInitializer
+  fullName: SiaNet.Layers.BatchNormalization.BetaInitializer
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: SiaNet.Layers.BatchNormalization.GammaInitializer*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.GammaInitializer
+  name: GammaInitializer
+  nameWithType: BatchNormalization.GammaInitializer
+  fullName: SiaNet.Layers.BatchNormalization.GammaInitializer
+- uid: SiaNet.Layers.BatchNormalization.MovingMeanInitializer*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.MovingMeanInitializer
+  name: MovingMeanInitializer
+  nameWithType: BatchNormalization.MovingMeanInitializer
+  fullName: SiaNet.Layers.BatchNormalization.MovingMeanInitializer
+- uid: SiaNet.Layers.BatchNormalization.MovingVarianceInitializer*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.MovingVarianceInitializer
+  name: MovingVarianceInitializer
+  nameWithType: BatchNormalization.MovingVarianceInitializer
+  fullName: SiaNet.Layers.BatchNormalization.MovingVarianceInitializer
+- uid: SiaNet.Layers.BatchNormalization.BetaConstraint*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.BetaConstraint
+  name: BetaConstraint
+  nameWithType: BatchNormalization.BetaConstraint
+  fullName: SiaNet.Layers.BatchNormalization.BetaConstraint
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Layers.BatchNormalization.GammaConstraint*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.GammaConstraint
+  name: GammaConstraint
+  nameWithType: BatchNormalization.GammaConstraint
+  fullName: SiaNet.Layers.BatchNormalization.GammaConstraint
+- uid: SiaNet.Layers.BatchNormalization.BetaRegularizer*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.BetaRegularizer
+  name: BetaRegularizer
+  nameWithType: BatchNormalization.BetaRegularizer
+  fullName: SiaNet.Layers.BatchNormalization.BetaRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: SiaNet.Layers.BatchNormalization.GammaRegularizer*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.GammaRegularizer
+  name: GammaRegularizer
+  nameWithType: BatchNormalization.GammaRegularizer
+  fullName: SiaNet.Layers.BatchNormalization.GammaRegularizer
+- uid: SiaNet.Layers.BatchNormalization
+  commentId: T:SiaNet.Layers.BatchNormalization
+  name: BatchNormalization
+  nameWithType: BatchNormalization
+  fullName: SiaNet.Layers.BatchNormalization
+- uid: SiaNet.Layers.BatchNormalization.#ctor*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.#ctor
+  name: BatchNormalization
+  nameWithType: BatchNormalization.BatchNormalization
+  fullName: SiaNet.Layers.BatchNormalization.BatchNormalization
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BatchNormalization.Forward*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Forward
+  name: Forward
+  nameWithType: BatchNormalization.Forward
+  fullName: SiaNet.Layers.BatchNormalization.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BatchNormalization.Backward*
+  commentId: Overload:SiaNet.Layers.BatchNormalization.Backward
+  name: Backward
+  nameWithType: BatchNormalization.Backward
+  fullName: SiaNet.Layers.BatchNormalization.Backward

@@ -1,0 +1,572 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.Reshape
+  commentId: T:SiaNet.Layers.Reshape
+  id: Reshape
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.Reshape.#ctor(System.Int64[])
+  - SiaNet.Layers.Reshape.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Reshape.Forward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Reshape.TargetShape
+  langs:
+  - csharp
+  - vb
+  name: Reshape
+  nameWithType: Reshape
+  fullName: SiaNet.Layers.Reshape
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Reshape.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Reshape
+    path: ../SiaNet/Layers/Core/Reshape.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nReshapes an output to a certain shape.\n"
+  example: []
+  syntax:
+    content: 'public class Reshape : BaseLayer'
+    content.vb: >-
+      Public Class Reshape
+          Inherits BaseLayer
+  seealso:
+  - linkId: SiaNet.Layers.BaseLayer
+    commentId: T:SiaNet.Layers.BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.Reshape.TargetShape
+  commentId: P:SiaNet.Layers.Reshape.TargetShape
+  id: TargetShape
+  parent: SiaNet.Layers.Reshape
+  langs:
+  - csharp
+  - vb
+  name: TargetShape
+  nameWithType: Reshape.TargetShape
+  fullName: SiaNet.Layers.Reshape.TargetShape
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Reshape.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: TargetShape
+    path: ../SiaNet/Layers/Core/Reshape.cs
+    startLine: 13
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nTarget new shape. One and only one dim can be 0, in which case it will be inferred from the rest of dims\n"
+  example: []
+  syntax:
+    content: public long[] TargetShape { get; set; }
+    parameters: []
+    return:
+      type: System.Int64[]
+    content.vb: Public Property TargetShape As Long()
+  overload: SiaNet.Layers.Reshape.TargetShape*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Reshape.#ctor(System.Int64[])
+  commentId: M:SiaNet.Layers.Reshape.#ctor(System.Int64[])
+  id: '#ctor(System.Int64[])'
+  parent: SiaNet.Layers.Reshape
+  langs:
+  - csharp
+  - vb
+  name: Reshape(Int64[])
+  nameWithType: Reshape.Reshape(Int64[])
+  fullName: SiaNet.Layers.Reshape.Reshape(System.Int64[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Reshape.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Core/Reshape.cs
+    startLine: 20
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nThe target output shape\n"
+  example: []
+  syntax:
+    content: public Reshape(long[] targetShape)
+    parameters:
+    - id: targetShape
+      type: System.Int64[]
+      description: ''
+    content.vb: Public Sub New(targetShape As Long())
+  overload: SiaNet.Layers.Reshape.#ctor*
+  nameWithType.vb: Reshape.Reshape(Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Layers.Reshape.Reshape(System.Int64())
+  name.vb: Reshape(Int64())
+- uid: SiaNet.Layers.Reshape.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Reshape.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Reshape
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: Reshape.Forward(Tensor)
+  fullName: SiaNet.Layers.Reshape.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Reshape.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Core/Reshape.cs
+    startLine: 30
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Reshape.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.Reshape.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Reshape.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Reshape
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: Reshape.Backward(Tensor)
+  fullName: SiaNet.Layers.Reshape.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Reshape.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Core/Reshape.cs
+    startLine: 41
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Reshape.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.Reshape.TargetShape*
+  commentId: Overload:SiaNet.Layers.Reshape.TargetShape
+  name: TargetShape
+  nameWithType: Reshape.TargetShape
+  fullName: SiaNet.Layers.Reshape.TargetShape
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Layers.Reshape.#ctor*
+  commentId: Overload:SiaNet.Layers.Reshape.#ctor
+  name: Reshape
+  nameWithType: Reshape.Reshape
+  fullName: SiaNet.Layers.Reshape.Reshape
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Reshape.Forward*
+  commentId: Overload:SiaNet.Layers.Reshape.Forward
+  name: Forward
+  nameWithType: Reshape.Forward
+  fullName: SiaNet.Layers.Reshape.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Reshape.Backward*
+  commentId: Overload:SiaNet.Layers.Reshape.Backward
+  name: Backward
+  nameWithType: Reshape.Backward
+  fullName: SiaNet.Layers.Reshape.Backward

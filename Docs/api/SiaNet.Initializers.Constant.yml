@@ -1,0 +1,315 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Initializers.Constant
+  commentId: T:SiaNet.Initializers.Constant
+  id: Constant
+  parent: SiaNet.Initializers
+  children:
+  - SiaNet.Initializers.Constant.#ctor(System.Single)
+  - SiaNet.Initializers.Constant.Generate(System.Int64[])
+  - SiaNet.Initializers.Constant.Value
+  langs:
+  - csharp
+  - vb
+  name: Constant
+  nameWithType: Constant
+  fullName: SiaNet.Initializers.Constant
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Initializers/Constant.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Constant
+    path: ../SiaNet/Initializers/Constant.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializer that generates tensors initialized to a constant value.\n"
+  example: []
+  syntax:
+    content: 'public class Constant : BaseInitializer'
+    content.vb: >-
+      Public Class Constant
+          Inherits BaseInitializer
+  seealso:
+  - linkId: SiaNet.Initializers.BaseInitializer
+    commentId: T:SiaNet.Initializers.BaseInitializer
+  inheritance:
+  - System.Object
+  - SiaNet.Initializers.BaseInitializer
+  derivedClasses:
+  - SiaNet.Initializers.Ones
+  - SiaNet.Initializers.Zeros
+  inheritedMembers:
+  - SiaNet.Initializers.BaseInitializer.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Initializers.Constant.Value
+  commentId: P:SiaNet.Initializers.Constant.Value
+  id: Value
+  parent: SiaNet.Initializers.Constant
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: Constant.Value
+  fullName: SiaNet.Initializers.Constant.Value
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/Constant.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Value
+    path: ../SiaNet/Initializers/Constant.cs
+    startLine: 16
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nfloat; the value of the generator tensors.\n"
+  example: []
+  syntax:
+    content: public float Value { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe value.\n"
+    content.vb: Public Property Value As Single
+  overload: SiaNet.Initializers.Constant.Value*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.Constant.#ctor(System.Single)
+  commentId: M:SiaNet.Initializers.Constant.#ctor(System.Single)
+  id: '#ctor(System.Single)'
+  parent: SiaNet.Initializers.Constant
+  langs:
+  - csharp
+  - vb
+  name: Constant(Single)
+  nameWithType: Constant.Constant(Single)
+  fullName: SiaNet.Initializers.Constant.Constant(System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Initializers/Constant.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Initializers/Constant.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Initializers.Constant\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Constant(float value)
+    parameters:
+    - id: value
+      type: System.Single
+      description: float; the value of the generator tensors.
+    content.vb: Public Sub New(value As Single)
+  overload: SiaNet.Initializers.Constant.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.Constant.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.Constant.Generate(System.Int64[])
+  id: Generate(System.Int64[])
+  parent: SiaNet.Initializers.Constant
+  langs:
+  - csharp
+  - vb
+  name: Generate(Int64[])
+  nameWithType: Constant.Generate(Int64[])
+  fullName: SiaNet.Initializers.Constant.Generate(System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Initializers/Constant.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Generate
+    path: ../SiaNet/Initializers/Constant.cs
+    startLine: 44
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nGenerates a tensor with specified shape.\n"
+  example: []
+  syntax:
+    content: public override Tensor Generate(params long[] shape)
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape of the tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Generate(ParamArray shape As Long()) As Tensor
+  overridden: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  overload: SiaNet.Initializers.Constant.Generate*
+  nameWithType.vb: Constant.Generate(Int64())
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+  fullName.vb: SiaNet.Initializers.Constant.Generate(System.Int64())
+  name.vb: Generate(Int64())
+references:
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Initializers.BaseInitializer.Name
+  commentId: P:SiaNet.Initializers.BaseInitializer.Name
+  parent: SiaNet.Initializers.BaseInitializer
+  name: Name
+  nameWithType: BaseInitializer.Name
+  fullName: SiaNet.Initializers.BaseInitializer.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Initializers.Constant.Value*
+  commentId: Overload:SiaNet.Initializers.Constant.Value
+  name: Value
+  nameWithType: Constant.Value
+  fullName: SiaNet.Initializers.Constant.Value
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Initializers.Constant
+  commentId: T:SiaNet.Initializers.Constant
+  parent: SiaNet.Initializers
+  name: Constant
+  nameWithType: Constant
+  fullName: SiaNet.Initializers.Constant
+- uid: SiaNet.Initializers.Constant.#ctor*
+  commentId: Overload:SiaNet.Initializers.Constant.#ctor
+  name: Constant
+  nameWithType: Constant.Constant
+  fullName: SiaNet.Initializers.Constant.Constant
+- uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  parent: SiaNet.Initializers.BaseInitializer
+  isExternal: true
+  name: Generate(Int64[])
+  nameWithType: BaseInitializer.Generate(Int64[])
+  fullName: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  nameWithType.vb: BaseInitializer.Generate(Int64())
+  fullName.vb: SiaNet.Initializers.BaseInitializer.Generate(System.Int64())
+  name.vb: Generate(Int64())
+  spec.csharp:
+  - uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+    name: Generate
+    nameWithType: BaseInitializer.Generate
+    fullName: SiaNet.Initializers.BaseInitializer.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+    name: Generate
+    nameWithType: BaseInitializer.Generate
+    fullName: SiaNet.Initializers.BaseInitializer.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Initializers.Constant.Generate*
+  commentId: Overload:SiaNet.Initializers.Constant.Generate
+  name: Generate
+  nameWithType: Constant.Generate
+  fullName: SiaNet.Initializers.Constant.Generate
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

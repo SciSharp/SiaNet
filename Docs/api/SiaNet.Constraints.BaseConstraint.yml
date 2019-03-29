@@ -1,0 +1,64 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  id: BaseConstraint
+  parent: SiaNet.Constraints
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Constraints/BaseConstraint.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseConstraint
+    path: ../SiaNet/Constraints/BaseConstraint.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nBase class for Constraints. Functions from the constraints module allow setting constraints (eg. non-negativity) on network parameters during optimization.\nThe penalties are applied on a per-layer basis.The exact API will depend on the layer, but the layers Dense, Conv1D, Conv2D and Conv3D have a unified API.\n"
+  example: []
+  syntax:
+    content: public abstract class BaseConstraint
+    content.vb: Public MustInherit Class BaseConstraint
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Constraints.MaxNorm
+  - SiaNet.Constraints.MinMaxNorm
+  - SiaNet.Constraints.NonNeg
+  - SiaNet.Constraints.UnitNorm
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+references:
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System

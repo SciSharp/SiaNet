@@ -1,0 +1,153 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.PaddingType
+  commentId: T:SiaNet.Engine.PaddingType
+  id: PaddingType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.PaddingType.Full
+  - SiaNet.Engine.PaddingType.Same
+  - SiaNet.Engine.PaddingType.Valid
+  langs:
+  - csharp
+  - vb
+  name: PaddingType
+  nameWithType: PaddingType
+  fullName: SiaNet.Engine.PaddingType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: PaddingType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 221
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nTypes of padding used for images to add constant values to the borders\n"
+  example: []
+  syntax:
+    content: public enum PaddingType
+    content.vb: Public Enum PaddingType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.PaddingType.Valid
+  commentId: F:SiaNet.Engine.PaddingType.Valid
+  id: Valid
+  parent: SiaNet.Engine.PaddingType
+  langs:
+  - csharp
+  - vb
+  name: Valid
+  nameWithType: PaddingType.Valid
+  fullName: SiaNet.Engine.PaddingType.Valid
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Valid
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 226
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe valid which mean padding size = 1\n"
+  example: []
+  syntax:
+    content: Valid = 0
+    return:
+      type: SiaNet.Engine.PaddingType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.PaddingType.Same
+  commentId: F:SiaNet.Engine.PaddingType.Same
+  id: Same
+  parent: SiaNet.Engine.PaddingType
+  langs:
+  - csharp
+  - vb
+  name: Same
+  nameWithType: PaddingType.Same
+  fullName: SiaNet.Engine.PaddingType.Same
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Same
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 230
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe same which means no padding\n"
+  example: []
+  syntax:
+    content: Same = 1
+    return:
+      type: SiaNet.Engine.PaddingType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.PaddingType.Full
+  commentId: F:SiaNet.Engine.PaddingType.Full
+  id: Full
+  parent: SiaNet.Engine.PaddingType
+  langs:
+  - csharp
+  - vb
+  name: Full
+  nameWithType: PaddingType.Full
+  fullName: SiaNet.Engine.PaddingType.Full
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Full
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 234
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe full which means padding size = 2\n"
+  example: []
+  syntax:
+    content: Full = 2
+    return:
+      type: SiaNet.Engine.PaddingType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.PaddingType
+  commentId: T:SiaNet.Engine.PaddingType
+  parent: SiaNet.Engine
+  name: PaddingType
+  nameWithType: PaddingType
+  fullName: SiaNet.Engine.PaddingType

@@ -1,0 +1,177 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Events.EpochStartEventArgs
+  commentId: T:SiaNet.Events.EpochStartEventArgs
+  id: EpochStartEventArgs
+  parent: SiaNet.Events
+  children:
+  - SiaNet.Events.EpochStartEventArgs.#ctor(System.Int32)
+  - SiaNet.Events.EpochStartEventArgs.Epoch
+  langs:
+  - csharp
+  - vb
+  name: EpochStartEventArgs
+  nameWithType: EpochStartEventArgs
+  fullName: SiaNet.Events.EpochStartEventArgs
+  type: Class
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: EpochStartEventArgs
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 97
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nEvent triggered when the training epoch starts\n"
+  example: []
+  syntax:
+    content: 'public class EpochStartEventArgs : EventArgs'
+    content.vb: >-
+      Public Class EpochStartEventArgs
+          Inherits EventArgs
+  seealso:
+  - linkId: System.EventArgs
+    commentId: T:System.EventArgs
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  inheritedMembers:
+  - System.EventArgs.Empty
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Events.EpochStartEventArgs.#ctor(System.Int32)
+  commentId: M:SiaNet.Events.EpochStartEventArgs.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: SiaNet.Events.EpochStartEventArgs
+  langs:
+  - csharp
+  - vb
+  name: EpochStartEventArgs(Int32)
+  nameWithType: EpochStartEventArgs.EpochStartEventArgs(Int32)
+  fullName: SiaNet.Events.EpochStartEventArgs.EpochStartEventArgs(System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 103
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Events.EpochStartEventArgs\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public EpochStartEventArgs(int epoch)
+    parameters:
+    - id: epoch
+      type: System.Int32
+      description: The current epoch number.
+    content.vb: Public Sub New(epoch As Integer)
+  overload: SiaNet.Events.EpochStartEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Events.EpochStartEventArgs.Epoch
+  commentId: P:SiaNet.Events.EpochStartEventArgs.Epoch
+  id: Epoch
+  parent: SiaNet.Events.EpochStartEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Epoch
+  nameWithType: EpochStartEventArgs.Epoch
+  fullName: SiaNet.Events.EpochStartEventArgs.Epoch
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epoch
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 114
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the current epoch.\n"
+  example: []
+  syntax:
+    content: public int Epoch { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe epoch.\n"
+    content.vb: Public ReadOnly Property Epoch As Integer
+  overload: SiaNet.Events.EpochStartEventArgs.Epoch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: System.EventArgs
+  commentId: T:System.EventArgs
+  parent: System
+  isExternal: true
+  name: EventArgs
+  nameWithType: EventArgs
+  fullName: System.EventArgs
+- uid: SiaNet.Events
+  commentId: N:SiaNet.Events
+  name: SiaNet.Events
+  nameWithType: SiaNet.Events
+  fullName: SiaNet.Events
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.EventArgs.Empty
+  commentId: F:System.EventArgs.Empty
+  parent: System.EventArgs
+  isExternal: true
+  name: Empty
+  nameWithType: EventArgs.Empty
+  fullName: System.EventArgs.Empty
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Events.EpochStartEventArgs
+  commentId: T:SiaNet.Events.EpochStartEventArgs
+  name: EpochStartEventArgs
+  nameWithType: EpochStartEventArgs
+  fullName: SiaNet.Events.EpochStartEventArgs
+- uid: SiaNet.Events.EpochStartEventArgs.#ctor*
+  commentId: Overload:SiaNet.Events.EpochStartEventArgs.#ctor
+  name: EpochStartEventArgs
+  nameWithType: EpochStartEventArgs.EpochStartEventArgs
+  fullName: SiaNet.Events.EpochStartEventArgs.EpochStartEventArgs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Events.EpochStartEventArgs.Epoch*
+  commentId: Overload:SiaNet.Events.EpochStartEventArgs.Epoch
+  name: Epoch
+  nameWithType: EpochStartEventArgs.Epoch
+  fullName: SiaNet.Events.EpochStartEventArgs.Epoch

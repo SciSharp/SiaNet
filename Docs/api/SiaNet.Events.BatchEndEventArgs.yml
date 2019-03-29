@@ -1,0 +1,310 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Events.BatchEndEventArgs
+  commentId: T:SiaNet.Events.BatchEndEventArgs
+  id: BatchEndEventArgs
+  parent: SiaNet.Events
+  children:
+  - SiaNet.Events.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
+  - SiaNet.Events.BatchEndEventArgs.Batch
+  - SiaNet.Events.BatchEndEventArgs.Epoch
+  - SiaNet.Events.BatchEndEventArgs.Loss
+  - SiaNet.Events.BatchEndEventArgs.Metric
+  langs:
+  - csharp
+  - vb
+  name: BatchEndEventArgs
+  nameWithType: BatchEndEventArgs
+  fullName: SiaNet.Events.BatchEndEventArgs
+  type: Class
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BatchEndEventArgs
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 39
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nEvent triggered during batch training ends\n"
+  example: []
+  syntax:
+    content: public class BatchEndEventArgs
+    content.vb: Public Class BatchEndEventArgs
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Events.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
+  commentId: M:SiaNet.Events.BatchEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single)
+  id: '#ctor(System.Int32,System.Int64,System.Single,System.Single)'
+  parent: SiaNet.Events.BatchEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: BatchEndEventArgs(Int32, Int64, Single, Single)
+  nameWithType: BatchEndEventArgs.BatchEndEventArgs(Int32, Int64, Single, Single)
+  fullName: SiaNet.Events.BatchEndEventArgs.BatchEndEventArgs(System.Int32, System.Int64, System.Single, System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 48
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Events.BatchEndEventArgs\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BatchEndEventArgs(int epoch, long batch, float loss, float metric)
+    parameters:
+    - id: epoch
+      type: System.Int32
+      description: The current epoch number.
+    - id: batch
+      type: System.Int64
+      description: The current batch number.
+    - id: loss
+      type: System.Single
+      description: The loss value for the batch.
+    - id: metric
+      type: System.Single
+      description: The metric value for the batch.
+    content.vb: Public Sub New(epoch As Integer, batch As Long, loss As Single, metric As Single)
+  overload: SiaNet.Events.BatchEndEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Events.BatchEndEventArgs.Batch
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Batch
+  id: Batch
+  parent: SiaNet.Events.BatchEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Batch
+  nameWithType: BatchEndEventArgs.Batch
+  fullName: SiaNet.Events.BatchEndEventArgs.Batch
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Batch
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 66
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the current batch number.\n"
+  example: []
+  syntax:
+    content: public long Batch { get; }
+    parameters: []
+    return:
+      type: System.Int64
+      description: "\nThe batch.\n"
+    content.vb: Public ReadOnly Property Batch As Long
+  overload: SiaNet.Events.BatchEndEventArgs.Batch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.BatchEndEventArgs.Epoch
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Epoch
+  id: Epoch
+  parent: SiaNet.Events.BatchEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Epoch
+  nameWithType: BatchEndEventArgs.Epoch
+  fullName: SiaNet.Events.BatchEndEventArgs.Epoch
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epoch
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 74
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the current epoch number.\n"
+  example: []
+  syntax:
+    content: public int Epoch { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe epoch.\n"
+    content.vb: Public ReadOnly Property Epoch As Integer
+  overload: SiaNet.Events.BatchEndEventArgs.Epoch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.BatchEndEventArgs.Loss
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Loss
+  id: Loss
+  parent: SiaNet.Events.BatchEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Loss
+  nameWithType: BatchEndEventArgs.Loss
+  fullName: SiaNet.Events.BatchEndEventArgs.Loss
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Loss
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 82
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the loss value for this batch.\n"
+  example: []
+  syntax:
+    content: public float Loss { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe loss.\n"
+    content.vb: Public ReadOnly Property Loss As Single
+  overload: SiaNet.Events.BatchEndEventArgs.Loss*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.BatchEndEventArgs.Metric
+  commentId: P:SiaNet.Events.BatchEndEventArgs.Metric
+  id: Metric
+  parent: SiaNet.Events.BatchEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Metric
+  nameWithType: BatchEndEventArgs.Metric
+  fullName: SiaNet.Events.BatchEndEventArgs.Metric
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Metric
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 90
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the metric value for this batch.\n"
+  example: []
+  syntax:
+    content: public float Metric { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe metric.\n"
+    content.vb: Public ReadOnly Property Metric As Single
+  overload: SiaNet.Events.BatchEndEventArgs.Metric*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: SiaNet.Events
+  commentId: N:SiaNet.Events
+  name: SiaNet.Events
+  nameWithType: SiaNet.Events
+  fullName: SiaNet.Events
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Events.BatchEndEventArgs
+  commentId: T:SiaNet.Events.BatchEndEventArgs
+  name: BatchEndEventArgs
+  nameWithType: BatchEndEventArgs
+  fullName: SiaNet.Events.BatchEndEventArgs
+- uid: SiaNet.Events.BatchEndEventArgs.#ctor*
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.#ctor
+  name: BatchEndEventArgs
+  nameWithType: BatchEndEventArgs.BatchEndEventArgs
+  fullName: SiaNet.Events.BatchEndEventArgs.BatchEndEventArgs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Events.BatchEndEventArgs.Batch*
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Batch
+  name: Batch
+  nameWithType: BatchEndEventArgs.Batch
+  fullName: SiaNet.Events.BatchEndEventArgs.Batch
+- uid: SiaNet.Events.BatchEndEventArgs.Epoch*
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Epoch
+  name: Epoch
+  nameWithType: BatchEndEventArgs.Epoch
+  fullName: SiaNet.Events.BatchEndEventArgs.Epoch
+- uid: SiaNet.Events.BatchEndEventArgs.Loss*
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Loss
+  name: Loss
+  nameWithType: BatchEndEventArgs.Loss
+  fullName: SiaNet.Events.BatchEndEventArgs.Loss
+- uid: SiaNet.Events.BatchEndEventArgs.Metric*
+  commentId: Overload:SiaNet.Events.BatchEndEventArgs.Metric
+  name: Metric
+  nameWithType: BatchEndEventArgs.Metric
+  fullName: SiaNet.Events.BatchEndEventArgs.Metric

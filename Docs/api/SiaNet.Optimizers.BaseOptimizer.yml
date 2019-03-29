@@ -1,0 +1,307 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  id: BaseOptimizer
+  parent: SiaNet.Optimizers
+  children:
+  - SiaNet.Optimizers.BaseOptimizer.#ctor(System.Single,System.String)
+  - SiaNet.Optimizers.BaseOptimizer.DecayRate
+  - SiaNet.Optimizers.BaseOptimizer.LearningRate
+  - SiaNet.Optimizers.BaseOptimizer.Momentum
+  - SiaNet.Optimizers.BaseOptimizer.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Optimizers/BaseOptimizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseOptimizer
+    path: ../SiaNet/Optimizers/BaseOptimizer.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public abstract class BaseOptimizer
+    content.vb: Public MustInherit Class BaseOptimizer
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Optimizers.Adadelta
+  - SiaNet.Optimizers.Adagrad
+  - SiaNet.Optimizers.Adam
+  - SiaNet.Optimizers.Adamax
+  - SiaNet.Optimizers.RMSProp
+  - SiaNet.Optimizers.SGD
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Optimizers.BaseOptimizer.Name
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Name
+  id: Name
+  parent: SiaNet.Optimizers.BaseOptimizer
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseOptimizer.Name
+  fullName: SiaNet.Optimizers.BaseOptimizer.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/BaseOptimizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet/Optimizers/BaseOptimizer.cs
+    startLine: 18
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nGets or sets the name of the optimizer function\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe name.\n"
+    content.vb: Public Property Name As String
+  overload: SiaNet.Optimizers.BaseOptimizer.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.BaseOptimizer.LearningRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.LearningRate
+  id: LearningRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  langs:
+  - csharp
+  - vb
+  name: LearningRate
+  nameWithType: BaseOptimizer.LearningRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.LearningRate
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/BaseOptimizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LearningRate
+    path: ../SiaNet/Optimizers/BaseOptimizer.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nGets or sets the learning rate for the optimizer.\n"
+  example: []
+  syntax:
+    content: public float LearningRate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe learning rate.\n"
+    content.vb: Public Property LearningRate As Single
+  overload: SiaNet.Optimizers.BaseOptimizer.LearningRate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.BaseOptimizer.Momentum
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Momentum
+  id: Momentum
+  parent: SiaNet.Optimizers.BaseOptimizer
+  langs:
+  - csharp
+  - vb
+  name: Momentum
+  nameWithType: BaseOptimizer.Momentum
+  fullName: SiaNet.Optimizers.BaseOptimizer.Momentum
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/BaseOptimizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Momentum
+    path: ../SiaNet/Optimizers/BaseOptimizer.cs
+    startLine: 34
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nParameter that accelerates SGD in the relevant direction and dampens oscillations.\n"
+  example: []
+  syntax:
+    content: public float Momentum { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe momentum.\n"
+    content.vb: Public Property Momentum As Single
+  overload: SiaNet.Optimizers.BaseOptimizer.Momentum*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.BaseOptimizer.DecayRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.DecayRate
+  id: DecayRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  langs:
+  - csharp
+  - vb
+  name: DecayRate
+  nameWithType: BaseOptimizer.DecayRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.DecayRate
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/BaseOptimizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DecayRate
+    path: ../SiaNet/Optimizers/BaseOptimizer.cs
+    startLine: 42
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nLearning rate decay over each update.\n"
+  example: []
+  syntax:
+    content: public float DecayRate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe decay rate.\n"
+    content.vb: Public Property DecayRate As Single
+  overload: SiaNet.Optimizers.BaseOptimizer.DecayRate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.BaseOptimizer.#ctor(System.Single,System.String)
+  commentId: M:SiaNet.Optimizers.BaseOptimizer.#ctor(System.Single,System.String)
+  id: '#ctor(System.Single,System.String)'
+  parent: SiaNet.Optimizers.BaseOptimizer
+  langs:
+  - csharp
+  - vb
+  name: BaseOptimizer(Single, String)
+  nameWithType: BaseOptimizer.BaseOptimizer(Single, String)
+  fullName: SiaNet.Optimizers.BaseOptimizer.BaseOptimizer(System.Single, System.String)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Optimizers/BaseOptimizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Optimizers/BaseOptimizer.cs
+    startLine: 49
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Optimizers.BaseOptimizer\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BaseOptimizer(float lr, string name)
+    parameters:
+    - id: lr
+      type: System.Single
+      description: The lr.
+    - id: name
+      type: System.String
+      description: The name.
+    content.vb: Public Sub New(lr As Single, name As String)
+  overload: SiaNet.Optimizers.BaseOptimizer.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Optimizers.BaseOptimizer.Name*
+  commentId: Overload:SiaNet.Optimizers.BaseOptimizer.Name
+  name: Name
+  nameWithType: BaseOptimizer.Name
+  fullName: SiaNet.Optimizers.BaseOptimizer.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Optimizers.BaseOptimizer.LearningRate*
+  commentId: Overload:SiaNet.Optimizers.BaseOptimizer.LearningRate
+  name: LearningRate
+  nameWithType: BaseOptimizer.LearningRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.LearningRate
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Optimizers.BaseOptimizer.Momentum*
+  commentId: Overload:SiaNet.Optimizers.BaseOptimizer.Momentum
+  name: Momentum
+  nameWithType: BaseOptimizer.Momentum
+  fullName: SiaNet.Optimizers.BaseOptimizer.Momentum
+- uid: SiaNet.Optimizers.BaseOptimizer.DecayRate*
+  commentId: Overload:SiaNet.Optimizers.BaseOptimizer.DecayRate
+  name: DecayRate
+  nameWithType: BaseOptimizer.DecayRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.DecayRate
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  parent: SiaNet.Optimizers
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+- uid: SiaNet.Optimizers.BaseOptimizer.#ctor*
+  commentId: Overload:SiaNet.Optimizers.BaseOptimizer.#ctor
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer.BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer.BaseOptimizer

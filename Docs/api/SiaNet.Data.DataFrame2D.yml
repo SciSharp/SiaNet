@@ -1,0 +1,674 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Data.DataFrame2D
+  commentId: T:SiaNet.Data.DataFrame2D
+  id: DataFrame2D
+  parent: SiaNet.Data
+  children:
+  - SiaNet.Data.DataFrame2D.#ctor(System.Int64)
+  - SiaNet.Data.DataFrame2D.Load(System.Single[])
+  - SiaNet.Data.DataFrame2D.ReadCsv(System.String,System.Boolean)
+  - SiaNet.Data.DataFrame2D.ToFrame(SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: DataFrame2D
+  nameWithType: DataFrame2D
+  fullName: SiaNet.Data.DataFrame2D
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame2D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DataFrame2D
+    path: ../SiaNet/Data/DataFrame2D.cs
+    startLine: 13
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: 'public class DataFrame2D : DataFrame'
+    content.vb: >-
+      Public Class DataFrame2D
+          Inherits DataFrame
+  seealso:
+  - linkId: SiaNet.Data.DataFrame
+    commentId: T:SiaNet.Data.DataFrame
+  inheritance:
+  - System.Object
+  - SiaNet.Data.DataFrame
+  inheritedMembers:
+  - SiaNet.Data.DataFrame.Shape
+  - SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  - SiaNet.Data.DataFrame.GetTensor
+  - SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  - SiaNet.Data.DataFrame.Item(System.UInt32)
+  - SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  - SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Data.DataFrame2D.#ctor(System.Int64)
+  commentId: M:SiaNet.Data.DataFrame2D.#ctor(System.Int64)
+  id: '#ctor(System.Int64)'
+  parent: SiaNet.Data.DataFrame2D
+  langs:
+  - csharp
+  - vb
+  name: DataFrame2D(Int64)
+  nameWithType: DataFrame2D.DataFrame2D(Int64)
+  fullName: SiaNet.Data.DataFrame2D.DataFrame2D(System.Int64)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame2D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Data/DataFrame2D.cs
+    startLine: 21
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Data.DataFrame2D\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public DataFrame2D(long num_features)
+    parameters:
+    - id: num_features
+      type: System.Int64
+      description: The number features this 2D frame have.
+    content.vb: Public Sub New(num_features As Long)
+  overload: SiaNet.Data.DataFrame2D.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrame2D.Load(System.Single[])
+  commentId: M:SiaNet.Data.DataFrame2D.Load(System.Single[])
+  id: Load(System.Single[])
+  parent: SiaNet.Data.DataFrame2D
+  langs:
+  - csharp
+  - vb
+  name: Load(Single[])
+  nameWithType: DataFrame2D.Load(Single[])
+  fullName: SiaNet.Data.DataFrame2D.Load(System.Single[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame2D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Load
+    path: ../SiaNet/Data/DataFrame2D.cs
+    startLine: 31
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nLoads the specified array into the data frame.\n"
+  example: []
+  syntax:
+    content: public void Load(params float[] array)
+    parameters:
+    - id: array
+      type: System.Single[]
+      description: The array data.
+    content.vb: Public Sub Load(ParamArray array As Single())
+  overload: SiaNet.Data.DataFrame2D.Load*
+  nameWithType.vb: DataFrame2D.Load(Single())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Data.DataFrame2D.Load(System.Single())
+  name.vb: Load(Single())
+- uid: SiaNet.Data.DataFrame2D.ToFrame(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Data.DataFrame2D.ToFrame(SiaNet.Engine.Tensor)
+  id: ToFrame(SiaNet.Engine.Tensor)
+  parent: SiaNet.Data.DataFrame2D
+  langs:
+  - csharp
+  - vb
+  name: ToFrame(Tensor)
+  nameWithType: DataFrame2D.ToFrame(Tensor)
+  fullName: SiaNet.Data.DataFrame2D.ToFrame(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame2D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ToFrame
+    path: ../SiaNet/Data/DataFrame2D.cs
+    startLine: 42
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nConverts to tensor to data frame.\n"
+  example: []
+  syntax:
+    content: public override void ToFrame(Tensor t)
+    parameters:
+    - id: t
+      type: SiaNet.Engine.Tensor
+      description: The t.
+    content.vb: Public Overrides Sub ToFrame(t As Tensor)
+  overridden: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  overload: SiaNet.Data.DataFrame2D.ToFrame*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: 2D tensor expected
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Data.DataFrame2D.ReadCsv(System.String,System.Boolean)
+  commentId: M:SiaNet.Data.DataFrame2D.ReadCsv(System.String,System.Boolean)
+  id: ReadCsv(System.String,System.Boolean)
+  parent: SiaNet.Data.DataFrame2D
+  langs:
+  - csharp
+  - vb
+  name: ReadCsv(String, Boolean)
+  nameWithType: DataFrame2D.ReadCsv(String, Boolean)
+  fullName: SiaNet.Data.DataFrame2D.ReadCsv(System.String, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame2D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ReadCsv
+    path: ../SiaNet/Data/DataFrame2D.cs
+    startLine: 58
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nReads the CSV file and load into the data frame.\n"
+  example: []
+  syntax:
+    content: public static DataFrame2D ReadCsv(string filepath, bool hasHeader = false)
+    parameters:
+    - id: filepath
+      type: System.String
+      description: The filepath of the csv.
+    - id: hasHeader
+      type: System.Boolean
+      description: if set to <code>true</code> [will consider first row as column names].
+    return:
+      type: SiaNet.Data.DataFrame2D
+      description: ''
+    content.vb: Public Shared Function ReadCsv(filepath As String, hasHeader As Boolean = False) As DataFrame2D
+  overload: SiaNet.Data.DataFrame2D.ReadCsv*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: SiaNet.Data.DataFrame
+  commentId: T:SiaNet.Data.DataFrame
+  parent: SiaNet.Data
+  name: DataFrame
+  nameWithType: DataFrame
+  fullName: SiaNet.Data.DataFrame
+- uid: SiaNet.Data
+  commentId: N:SiaNet.Data
+  name: SiaNet.Data
+  nameWithType: SiaNet.Data
+  fullName: SiaNet.Data
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Data.DataFrame.Shape
+  commentId: P:SiaNet.Data.DataFrame.Shape
+  parent: SiaNet.Data.DataFrame
+  name: Shape
+  nameWithType: DataFrame.Shape
+  fullName: SiaNet.Data.DataFrame.Shape
+- uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  commentId: M:SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Reshape(Int64[])
+  nameWithType: DataFrame.Reshape(Int64[])
+  fullName: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  nameWithType.vb: DataFrame.Reshape(Int64())
+  fullName.vb: SiaNet.Data.DataFrame.Reshape(System.Int64())
+  name.vb: Reshape(Int64())
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+    name: Reshape
+    nameWithType: DataFrame.Reshape
+    fullName: SiaNet.Data.DataFrame.Reshape
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+    name: Reshape
+    nameWithType: DataFrame.Reshape
+    fullName: SiaNet.Data.DataFrame.Reshape
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.GetTensor
+  commentId: M:SiaNet.Data.DataFrame.GetTensor
+  parent: SiaNet.Data.DataFrame
+  name: GetTensor()
+  nameWithType: DataFrame.GetTensor()
+  fullName: SiaNet.Data.DataFrame.GetTensor()
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.GetTensor
+    name: GetTensor
+    nameWithType: DataFrame.GetTensor
+    fullName: SiaNet.Data.DataFrame.GetTensor
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.GetTensor
+    name: GetTensor
+    nameWithType: DataFrame.GetTensor
+    fullName: SiaNet.Data.DataFrame.GetTensor
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  commentId: P:SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Item[UInt32, UInt32]
+  nameWithType: DataFrame.Item[UInt32, UInt32]
+  fullName: SiaNet.Data.DataFrame.Item[System.UInt32, System.UInt32]
+  nameWithType.vb: DataFrame.Item(UInt32, UInt32)
+  fullName.vb: SiaNet.Data.DataFrame.Item(System.UInt32, System.UInt32)
+  name.vb: Item(UInt32, UInt32)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+  commentId: P:SiaNet.Data.DataFrame.Item(System.UInt32)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Item[UInt32]
+  nameWithType: DataFrame.Item[UInt32]
+  fullName: SiaNet.Data.DataFrame.Item[System.UInt32]
+  nameWithType.vb: DataFrame.Item(UInt32)
+  fullName.vb: SiaNet.Data.DataFrame.Item(System.UInt32)
+  name.vb: Item(UInt32)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  commentId: M:SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: GetBatch(Int32, Int32, Int32)
+  nameWithType: DataFrame.GetBatch(Int32, Int32, Int32)
+  fullName: SiaNet.Data.DataFrame.GetBatch(System.Int32, System.Int32, System.Int32)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+    name: GetBatch
+    nameWithType: DataFrame.GetBatch
+    fullName: SiaNet.Data.DataFrame.GetBatch
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+    name: GetBatch
+    nameWithType: DataFrame.GetBatch
+    fullName: SiaNet.Data.DataFrame.GetBatch
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  commentId: M:SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Head(UInt32, String)
+  nameWithType: DataFrame.Head(UInt32, String)
+  fullName: SiaNet.Data.DataFrame.Head(System.UInt32, System.String)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+    name: Head
+    nameWithType: DataFrame.Head
+    fullName: SiaNet.Data.DataFrame.Head
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+    name: Head
+    nameWithType: DataFrame.Head
+    fullName: SiaNet.Data.DataFrame.Head
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Data.DataFrame2D
+  commentId: T:SiaNet.Data.DataFrame2D
+  parent: SiaNet.Data
+  name: DataFrame2D
+  nameWithType: DataFrame2D
+  fullName: SiaNet.Data.DataFrame2D
+- uid: SiaNet.Data.DataFrame2D.#ctor*
+  commentId: Overload:SiaNet.Data.DataFrame2D.#ctor
+  name: DataFrame2D
+  nameWithType: DataFrame2D.DataFrame2D
+  fullName: SiaNet.Data.DataFrame2D.DataFrame2D
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: SiaNet.Data.DataFrame2D.Load*
+  commentId: Overload:SiaNet.Data.DataFrame2D.Load
+  name: Load
+  nameWithType: DataFrame2D.Load
+  fullName: SiaNet.Data.DataFrame2D.Load
+- uid: System.Single[]
+  isExternal: true
+  name: Single[]
+  nameWithType: Single[]
+  fullName: System.Single[]
+  nameWithType.vb: Single()
+  fullName.vb: System.Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  parent: SiaNet.Data.DataFrame
+  name: ToFrame(Tensor)
+  nameWithType: DataFrame.ToFrame(Tensor)
+  fullName: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+    name: ToFrame
+    nameWithType: DataFrame.ToFrame
+    fullName: SiaNet.Data.DataFrame.ToFrame
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+    name: ToFrame
+    nameWithType: DataFrame.ToFrame
+    fullName: SiaNet.Data.DataFrame.ToFrame
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame2D.ToFrame*
+  commentId: Overload:SiaNet.Data.DataFrame2D.ToFrame
+  name: ToFrame
+  nameWithType: DataFrame2D.ToFrame
+  fullName: SiaNet.Data.DataFrame2D.ToFrame
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Data.DataFrame2D.ReadCsv*
+  commentId: Overload:SiaNet.Data.DataFrame2D.ReadCsv
+  name: ReadCsv
+  nameWithType: DataFrame2D.ReadCsv
+  fullName: SiaNet.Data.DataFrame2D.ReadCsv
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

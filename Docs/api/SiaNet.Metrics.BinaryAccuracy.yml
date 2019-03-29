@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Metrics.BinaryAccuracy
+  commentId: T:SiaNet.Metrics.BinaryAccuracy
+  id: BinaryAccuracy
+  parent: SiaNet.Metrics
+  children:
+  - SiaNet.Metrics.BinaryAccuracy.#ctor
+  - SiaNet.Metrics.BinaryAccuracy.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: BinaryAccuracy
+  nameWithType: BinaryAccuracy
+  fullName: SiaNet.Metrics.BinaryAccuracy
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Metrics/BinaryAccuracy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BinaryAccuracy
+    path: ../SiaNet/Metrics/BinaryAccuracy.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nPositive and negative predictive values. \nIn addition to sensitivity and specificity, the performance of a binary classification test can be measured with positive predictive value (PPV), also known as precision, and negative predictive value (NPV)\n"
+  example: []
+  syntax:
+    content: 'public class BinaryAccuracy : BaseMetric'
+    content.vb: >-
+      Public Class BinaryAccuracy
+          Inherits BaseMetric
+  seealso:
+  - linkId: SiaNet.Metrics.BaseMetric
+    commentId: T:SiaNet.Metrics.BaseMetric
+  inheritance:
+  - System.Object
+  - SiaNet.Metrics.BaseMetric
+  inheritedMembers:
+  - SiaNet.Metrics.BaseMetric.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Metrics.BinaryAccuracy.#ctor
+  commentId: M:SiaNet.Metrics.BinaryAccuracy.#ctor
+  id: '#ctor'
+  parent: SiaNet.Metrics.BinaryAccuracy
+  langs:
+  - csharp
+  - vb
+  name: BinaryAccuracy()
+  nameWithType: BinaryAccuracy.BinaryAccuracy()
+  fullName: SiaNet.Metrics.BinaryAccuracy.BinaryAccuracy()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Metrics/BinaryAccuracy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Metrics/BinaryAccuracy.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Metrics.BinaryAccuracy\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BinaryAccuracy()
+    content.vb: Public Sub New
+  overload: SiaNet.Metrics.BinaryAccuracy.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Metrics.BinaryAccuracy.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.BinaryAccuracy.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.BinaryAccuracy
+  langs:
+  - csharp
+  - vb
+  name: Calc(Tensor, Tensor)
+  nameWithType: BinaryAccuracy.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.BinaryAccuracy.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Metrics/BinaryAccuracy.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Calc
+    path: ../SiaNet/Metrics/BinaryAccuracy.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nCalculates the metric with predicted and true values.\n"
+  example: []
+  syntax:
+    content: public override Tensor Calc(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted value.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Calc(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Metrics.BinaryAccuracy.Calc*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  parent: SiaNet.Metrics
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Metrics.BaseMetric.Name
+  commentId: P:SiaNet.Metrics.BaseMetric.Name
+  parent: SiaNet.Metrics.BaseMetric
+  name: Name
+  nameWithType: BaseMetric.Name
+  fullName: SiaNet.Metrics.BaseMetric.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Metrics.BinaryAccuracy
+  commentId: T:SiaNet.Metrics.BinaryAccuracy
+  name: BinaryAccuracy
+  nameWithType: BinaryAccuracy
+  fullName: SiaNet.Metrics.BinaryAccuracy
+- uid: SiaNet.Metrics.BinaryAccuracy.#ctor*
+  commentId: Overload:SiaNet.Metrics.BinaryAccuracy.#ctor
+  name: BinaryAccuracy
+  nameWithType: BinaryAccuracy.BinaryAccuracy
+  fullName: SiaNet.Metrics.BinaryAccuracy.BinaryAccuracy
+- uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.BaseMetric
+  name: Calc(Tensor, Tensor)
+  nameWithType: BaseMetric.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Metrics.BinaryAccuracy.Calc*
+  commentId: Overload:SiaNet.Metrics.BinaryAccuracy.Calc
+  name: Calc
+  nameWithType: BinaryAccuracy.Calc
+  fullName: SiaNet.Metrics.BinaryAccuracy.Calc
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

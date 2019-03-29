@@ -1,0 +1,158 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Constraints.UnitNorm
+  commentId: T:SiaNet.Constraints.UnitNorm
+  id: UnitNorm
+  parent: SiaNet.Constraints
+  children:
+  - SiaNet.Constraints.UnitNorm.#ctor(System.Int32)
+  - SiaNet.Constraints.UnitNorm.Axis
+  langs:
+  - csharp
+  - vb
+  name: UnitNorm
+  nameWithType: UnitNorm
+  fullName: SiaNet.Constraints.UnitNorm
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Constraints/UnitNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: UnitNorm
+    path: ../SiaNet/Constraints/UnitNorm.cs
+    startLine: 11
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nConstrains the weights incident to each hidden unit to have unit norm.\n"
+  example: []
+  syntax:
+    content: 'public class UnitNorm : BaseConstraint'
+    content.vb: >-
+      Public Class UnitNorm
+          Inherits BaseConstraint
+  seealso:
+  - linkId: SiaNet.Constraints.BaseConstraint
+    commentId: T:SiaNet.Constraints.BaseConstraint
+  inheritance:
+  - System.Object
+  - SiaNet.Constraints.BaseConstraint
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Constraints.UnitNorm.Axis
+  commentId: F:SiaNet.Constraints.UnitNorm.Axis
+  id: Axis
+  parent: SiaNet.Constraints.UnitNorm
+  langs:
+  - csharp
+  - vb
+  name: Axis
+  nameWithType: UnitNorm.Axis
+  fullName: SiaNet.Constraints.UnitNorm.Axis
+  type: Field
+  source:
+    remote:
+      path: SiaNet/Constraints/UnitNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Axis
+    path: ../SiaNet/Constraints/UnitNorm.cs
+    startLine: 21
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nInteger, axis along which to calculate weight norms. For instance, in a Dense layer the weight matrix has shape (input_dim, output_dim), set axis to 0 to constrain each weight vector of length (input_dim,). \nIn a Conv2D layer, the weight tensor has shape  (output_depth, input_depth, rows, cols), \nset axis to [1, 2, 3] to constrain the weights of each filter tensor of size  (input_depth, rows, cols).\n"
+  example: []
+  syntax:
+    content: public int Axis
+    return:
+      type: System.Int32
+      description: "\nThe axis.\n"
+    content.vb: Public Axis As Integer
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.UnitNorm.#ctor(System.Int32)
+  commentId: M:SiaNet.Constraints.UnitNorm.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: SiaNet.Constraints.UnitNorm
+  langs:
+  - csharp
+  - vb
+  name: UnitNorm(Int32)
+  nameWithType: UnitNorm.UnitNorm(Int32)
+  fullName: SiaNet.Constraints.UnitNorm.UnitNorm(System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Constraints/UnitNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Constraints/UnitNorm.cs
+    startLine: 27
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Constraints.UnitNorm\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public UnitNorm(int axis = 0)
+    parameters:
+    - id: axis
+      type: System.Int32
+      description: Integer, axis along which to calculate weight norms
+    content.vb: Public Sub New(axis As Integer = 0)
+  overload: SiaNet.Constraints.UnitNorm.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Constraints.UnitNorm
+  commentId: T:SiaNet.Constraints.UnitNorm
+  name: UnitNorm
+  nameWithType: UnitNorm
+  fullName: SiaNet.Constraints.UnitNorm
+- uid: SiaNet.Constraints.UnitNorm.#ctor*
+  commentId: Overload:SiaNet.Constraints.UnitNorm.#ctor
+  name: UnitNorm
+  nameWithType: UnitNorm.UnitNorm
+  fullName: SiaNet.Constraints.UnitNorm.UnitNorm

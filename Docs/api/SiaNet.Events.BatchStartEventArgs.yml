@@ -1,0 +1,224 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Events.BatchStartEventArgs
+  commentId: T:SiaNet.Events.BatchStartEventArgs
+  id: BatchStartEventArgs
+  parent: SiaNet.Events
+  children:
+  - SiaNet.Events.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
+  - SiaNet.Events.BatchStartEventArgs.Batch
+  - SiaNet.Events.BatchStartEventArgs.Epoch
+  langs:
+  - csharp
+  - vb
+  name: BatchStartEventArgs
+  nameWithType: BatchStartEventArgs
+  fullName: SiaNet.Events.BatchStartEventArgs
+  type: Class
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BatchStartEventArgs
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 6
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nEvent triggered when batch training starts\n"
+  example: []
+  syntax:
+    content: 'public class BatchStartEventArgs : EventArgs'
+    content.vb: >-
+      Public Class BatchStartEventArgs
+          Inherits EventArgs
+  seealso:
+  - linkId: System.EventArgs
+    commentId: T:System.EventArgs
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  inheritedMembers:
+  - System.EventArgs.Empty
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Events.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
+  commentId: M:SiaNet.Events.BatchStartEventArgs.#ctor(System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32)'
+  parent: SiaNet.Events.BatchStartEventArgs
+  langs:
+  - csharp
+  - vb
+  name: BatchStartEventArgs(Int32, Int32)
+  nameWithType: BatchStartEventArgs.BatchStartEventArgs(Int32, Int32)
+  fullName: SiaNet.Events.BatchStartEventArgs.BatchStartEventArgs(System.Int32, System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 13
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Events.BatchStartEventArgs\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BatchStartEventArgs(int epoch, int batch)
+    parameters:
+    - id: epoch
+      type: System.Int32
+      description: The current epoch number.
+    - id: batch
+      type: System.Int32
+      description: The current batch number.
+    content.vb: Public Sub New(epoch As Integer, batch As Integer)
+  overload: SiaNet.Events.BatchStartEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Events.BatchStartEventArgs.Batch
+  commentId: P:SiaNet.Events.BatchStartEventArgs.Batch
+  id: Batch
+  parent: SiaNet.Events.BatchStartEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Batch
+  nameWithType: BatchStartEventArgs.Batch
+  fullName: SiaNet.Events.BatchStartEventArgs.Batch
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Batch
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 25
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the current batch number.\n"
+  example: []
+  syntax:
+    content: public int Batch { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe batch.\n"
+    content.vb: Public ReadOnly Property Batch As Integer
+  overload: SiaNet.Events.BatchStartEventArgs.Batch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.BatchStartEventArgs.Epoch
+  commentId: P:SiaNet.Events.BatchStartEventArgs.Epoch
+  id: Epoch
+  parent: SiaNet.Events.BatchStartEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Epoch
+  nameWithType: BatchStartEventArgs.Epoch
+  fullName: SiaNet.Events.BatchStartEventArgs.Epoch
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epoch
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 33
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the current epoch number.\n"
+  example: []
+  syntax:
+    content: public int Epoch { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe epoch.\n"
+    content.vb: Public ReadOnly Property Epoch As Integer
+  overload: SiaNet.Events.BatchStartEventArgs.Epoch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: System.EventArgs
+  commentId: T:System.EventArgs
+  parent: System
+  isExternal: true
+  name: EventArgs
+  nameWithType: EventArgs
+  fullName: System.EventArgs
+- uid: SiaNet.Events
+  commentId: N:SiaNet.Events
+  name: SiaNet.Events
+  nameWithType: SiaNet.Events
+  fullName: SiaNet.Events
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.EventArgs.Empty
+  commentId: F:System.EventArgs.Empty
+  parent: System.EventArgs
+  isExternal: true
+  name: Empty
+  nameWithType: EventArgs.Empty
+  fullName: System.EventArgs.Empty
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Events.BatchStartEventArgs
+  commentId: T:SiaNet.Events.BatchStartEventArgs
+  name: BatchStartEventArgs
+  nameWithType: BatchStartEventArgs
+  fullName: SiaNet.Events.BatchStartEventArgs
+- uid: SiaNet.Events.BatchStartEventArgs.#ctor*
+  commentId: Overload:SiaNet.Events.BatchStartEventArgs.#ctor
+  name: BatchStartEventArgs
+  nameWithType: BatchStartEventArgs.BatchStartEventArgs
+  fullName: SiaNet.Events.BatchStartEventArgs.BatchStartEventArgs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Events.BatchStartEventArgs.Batch*
+  commentId: Overload:SiaNet.Events.BatchStartEventArgs.Batch
+  name: Batch
+  nameWithType: BatchStartEventArgs.Batch
+  fullName: SiaNet.Events.BatchStartEventArgs.Batch
+- uid: SiaNet.Events.BatchStartEventArgs.Epoch*
+  commentId: Overload:SiaNet.Events.BatchStartEventArgs.Epoch
+  name: Epoch
+  nameWithType: BatchStartEventArgs.Epoch
+  fullName: SiaNet.Events.BatchStartEventArgs.Epoch

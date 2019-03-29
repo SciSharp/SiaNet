@@ -1,0 +1,212 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Optimizers.SGD
+  commentId: T:SiaNet.Optimizers.SGD
+  id: SGD
+  parent: SiaNet.Optimizers
+  children:
+  - SiaNet.Optimizers.SGD.#ctor(System.Single,System.Single,System.Single,System.Boolean)
+  - SiaNet.Optimizers.SGD.Nesterov
+  langs:
+  - csharp
+  - vb
+  name: SGD
+  nameWithType: SGD
+  fullName: SiaNet.Optimizers.SGD
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Optimizers/SGD.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SGD
+    path: ../SiaNet/Optimizers/SGD.cs
+    startLine: 12
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nStochastic gradient descent (often shortened to SGD), also known as incremental gradient descent, is an iterative method for optimizing a differentiable objective function, \na stochastic approximation of gradient descent optimization. A 2018 article[1] implicitly credits Herbert Robbins and Sutton Monro for developing SGD in their 1951 article titled &quot;A Stochastic Approximation Method&quot;; see Stochastic approximation for more information. \nIt is called stochastic because samples are selected randomly (or shuffled) instead of as a single group (as in standard gradient descent) or in the order they appear in the training set.\n"
+  example: []
+  syntax:
+    content: 'public class SGD : BaseOptimizer'
+    content.vb: >-
+      Public Class SGD
+          Inherits BaseOptimizer
+  seealso:
+  - linkId: SiaNet.Optimizers.BaseOptimizer
+    commentId: T:SiaNet.Optimizers.BaseOptimizer
+  inheritance:
+  - System.Object
+  - SiaNet.Optimizers.BaseOptimizer
+  inheritedMembers:
+  - SiaNet.Optimizers.BaseOptimizer.Name
+  - SiaNet.Optimizers.BaseOptimizer.LearningRate
+  - SiaNet.Optimizers.BaseOptimizer.Momentum
+  - SiaNet.Optimizers.BaseOptimizer.DecayRate
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Optimizers.SGD.Nesterov
+  commentId: P:SiaNet.Optimizers.SGD.Nesterov
+  id: Nesterov
+  parent: SiaNet.Optimizers.SGD
+  langs:
+  - csharp
+  - vb
+  name: Nesterov
+  nameWithType: SGD.Nesterov
+  fullName: SiaNet.Optimizers.SGD.Nesterov
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/SGD.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Nesterov
+    path: ../SiaNet/Optimizers/SGD.cs
+    startLine: 20
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nWhether to apply Nesterov momentum.\n"
+  example: []
+  syntax:
+    content: public bool Nesterov { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if nesterov; otherwise, <code>false</code>.\n"
+    content.vb: Public Property Nesterov As Boolean
+  overload: SiaNet.Optimizers.SGD.Nesterov*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.SGD.#ctor(System.Single,System.Single,System.Single,System.Boolean)
+  commentId: M:SiaNet.Optimizers.SGD.#ctor(System.Single,System.Single,System.Single,System.Boolean)
+  id: '#ctor(System.Single,System.Single,System.Single,System.Boolean)'
+  parent: SiaNet.Optimizers.SGD
+  langs:
+  - csharp
+  - vb
+  name: SGD(Single, Single, Single, Boolean)
+  nameWithType: SGD.SGD(Single, Single, Single, Boolean)
+  fullName: SiaNet.Optimizers.SGD.SGD(System.Single, System.Single, System.Single, System.Boolean)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Optimizers/SGD.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Optimizers/SGD.cs
+    startLine: 31
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Optimizers.SGD\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public SGD(float lr = 0.01F, float momentum = 0F, float decayRate = 0F, bool nesterov = false)
+    parameters:
+    - id: lr
+      type: System.Single
+      description: The initial learning rate.
+    - id: momentum
+      type: System.Single
+      description: Parameter that accelerates SGD in the relevant direction and dampens oscillations.
+    - id: decayRate
+      type: System.Single
+      description: Learning rate decay over each update..
+    - id: nesterov
+      type: System.Boolean
+      description: Whether to apply Nesterov momentum.
+    content.vb: Public Sub New(lr As Single = 0.01F, momentum As Single = 0F, decayRate As Single = 0F, nesterov As Boolean = False)
+  overload: SiaNet.Optimizers.SGD.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  parent: SiaNet.Optimizers
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Optimizers.BaseOptimizer.Name
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Name
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Name
+  nameWithType: BaseOptimizer.Name
+  fullName: SiaNet.Optimizers.BaseOptimizer.Name
+- uid: SiaNet.Optimizers.BaseOptimizer.LearningRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.LearningRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: LearningRate
+  nameWithType: BaseOptimizer.LearningRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.LearningRate
+- uid: SiaNet.Optimizers.BaseOptimizer.Momentum
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Momentum
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Momentum
+  nameWithType: BaseOptimizer.Momentum
+  fullName: SiaNet.Optimizers.BaseOptimizer.Momentum
+- uid: SiaNet.Optimizers.BaseOptimizer.DecayRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.DecayRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: DecayRate
+  nameWithType: BaseOptimizer.DecayRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.DecayRate
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Optimizers.SGD.Nesterov*
+  commentId: Overload:SiaNet.Optimizers.SGD.Nesterov
+  name: Nesterov
+  nameWithType: SGD.Nesterov
+  fullName: SiaNet.Optimizers.SGD.Nesterov
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Optimizers.SGD
+  commentId: T:SiaNet.Optimizers.SGD
+  name: SGD
+  nameWithType: SGD
+  fullName: SiaNet.Optimizers.SGD
+- uid: SiaNet.Optimizers.SGD.#ctor*
+  commentId: Overload:SiaNet.Optimizers.SGD.#ctor
+  name: SGD
+  nameWithType: SGD.SGD
+  fullName: SiaNet.Optimizers.SGD.SGD
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single

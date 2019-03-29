@@ -1,0 +1,538 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.ActType
+  commentId: T:SiaNet.Engine.ActType
+  id: ActType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.ActType.Elu
+  - SiaNet.Engine.ActType.Exp
+  - SiaNet.Engine.ActType.HardSigmoid
+  - SiaNet.Engine.ActType.LeakyReLU
+  - SiaNet.Engine.ActType.Linear
+  - SiaNet.Engine.ActType.PReLU
+  - SiaNet.Engine.ActType.ReLU
+  - SiaNet.Engine.ActType.RReLU
+  - SiaNet.Engine.ActType.SeLU
+  - SiaNet.Engine.ActType.Sigmoid
+  - SiaNet.Engine.ActType.Softmax
+  - SiaNet.Engine.ActType.Softplus
+  - SiaNet.Engine.ActType.SoftSign
+  - SiaNet.Engine.ActType.Tanh
+  langs:
+  - csharp
+  - vb
+  name: ActType
+  nameWithType: ActType
+  fullName: SiaNet.Engine.ActType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ActType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 20
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nType of activation functions\n"
+  example: []
+  syntax:
+    content: public enum ActType
+    content.vb: Public Enum ActType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.ActType.Linear
+  commentId: F:SiaNet.Engine.ActType.Linear
+  id: Linear
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Linear
+  nameWithType: ActType.Linear
+  fullName: SiaNet.Engine.ActType.Linear
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Linear
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 25
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe linear activation\n"
+  example: []
+  syntax:
+    content: Linear = 0
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.ReLU
+  commentId: F:SiaNet.Engine.ActType.ReLU
+  id: ReLU
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: ReLU
+  nameWithType: ActType.ReLU
+  fullName: SiaNet.Engine.ActType.ReLU
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ReLU
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 29
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe Rectilinear activation\n"
+  example: []
+  syntax:
+    content: ReLU = 1
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.Sigmoid
+  commentId: F:SiaNet.Engine.ActType.Sigmoid
+  id: Sigmoid
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Sigmoid
+  nameWithType: ActType.Sigmoid
+  fullName: SiaNet.Engine.ActType.Sigmoid
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sigmoid
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 33
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe sigmoid activation\n"
+  example: []
+  syntax:
+    content: Sigmoid = 2
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.Tanh
+  commentId: F:SiaNet.Engine.ActType.Tanh
+  id: Tanh
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Tanh
+  nameWithType: ActType.Tanh
+  fullName: SiaNet.Engine.ActType.Tanh
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Tanh
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 37
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe tanh activation\n"
+  example: []
+  syntax:
+    content: Tanh = 3
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.Elu
+  commentId: F:SiaNet.Engine.ActType.Elu
+  id: Elu
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Elu
+  nameWithType: ActType.Elu
+  fullName: SiaNet.Engine.ActType.Elu
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Elu
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 41
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe elu activation\n"
+  example: []
+  syntax:
+    content: Elu = 4
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.Exp
+  commentId: F:SiaNet.Engine.ActType.Exp
+  id: Exp
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Exp
+  nameWithType: ActType.Exp
+  fullName: SiaNet.Engine.ActType.Exp
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Exp
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 45
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe exponential activation\n"
+  example: []
+  syntax:
+    content: Exp = 5
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.HardSigmoid
+  commentId: F:SiaNet.Engine.ActType.HardSigmoid
+  id: HardSigmoid
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: HardSigmoid
+  nameWithType: ActType.HardSigmoid
+  fullName: SiaNet.Engine.ActType.HardSigmoid
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: HardSigmoid
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 49
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe hard sigmoid activation\n"
+  example: []
+  syntax:
+    content: HardSigmoid = 6
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.LeakyReLU
+  commentId: F:SiaNet.Engine.ActType.LeakyReLU
+  id: LeakyReLU
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: LeakyReLU
+  nameWithType: ActType.LeakyReLU
+  fullName: SiaNet.Engine.ActType.LeakyReLU
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LeakyReLU
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 53
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe leaky ReLU activation\n"
+  example: []
+  syntax:
+    content: LeakyReLU = 7
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.PReLU
+  commentId: F:SiaNet.Engine.ActType.PReLU
+  id: PReLU
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: PReLU
+  nameWithType: ActType.PReLU
+  fullName: SiaNet.Engine.ActType.PReLU
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: PReLU
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 57
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe parameterized ReLU activation\n"
+  example: []
+  syntax:
+    content: PReLU = 8
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.RReLU
+  commentId: F:SiaNet.Engine.ActType.RReLU
+  id: RReLU
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: RReLU
+  nameWithType: ActType.RReLU
+  fullName: SiaNet.Engine.ActType.RReLU
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RReLU
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 61
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe RReLU activation\n"
+  example: []
+  syntax:
+    content: RReLU = 9
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.SeLU
+  commentId: F:SiaNet.Engine.ActType.SeLU
+  id: SeLU
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: SeLU
+  nameWithType: ActType.SeLU
+  fullName: SiaNet.Engine.ActType.SeLU
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SeLU
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 66
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe scaled elu activation\n"
+  example: []
+  syntax:
+    content: SeLU = 10
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.Softmax
+  commentId: F:SiaNet.Engine.ActType.Softmax
+  id: Softmax
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Softmax
+  nameWithType: ActType.Softmax
+  fullName: SiaNet.Engine.ActType.Softmax
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Softmax
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 70
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe softmax activation\n"
+  example: []
+  syntax:
+    content: Softmax = 11
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.Softplus
+  commentId: F:SiaNet.Engine.ActType.Softplus
+  id: Softplus
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: Softplus
+  nameWithType: ActType.Softplus
+  fullName: SiaNet.Engine.ActType.Softplus
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Softplus
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 74
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe softplus activation\n"
+  example: []
+  syntax:
+    content: Softplus = 12
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.ActType.SoftSign
+  commentId: F:SiaNet.Engine.ActType.SoftSign
+  id: SoftSign
+  parent: SiaNet.Engine.ActType
+  langs:
+  - csharp
+  - vb
+  name: SoftSign
+  nameWithType: ActType.SoftSign
+  fullName: SiaNet.Engine.ActType.SoftSign
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SoftSign
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 78
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe soft sign activation\n"
+  example: []
+  syntax:
+    content: SoftSign = 13
+    return:
+      type: SiaNet.Engine.ActType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.ActType
+  commentId: T:SiaNet.Engine.ActType
+  parent: SiaNet.Engine
+  name: ActType
+  nameWithType: ActType
+  fullName: SiaNet.Engine.ActType

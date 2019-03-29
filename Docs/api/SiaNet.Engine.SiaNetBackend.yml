@@ -1,0 +1,223 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.SiaNetBackend
+  commentId: T:SiaNet.Engine.SiaNetBackend
+  id: SiaNetBackend
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.SiaNetBackend.ArrayFire
+  - SiaNet.Engine.SiaNetBackend.CNTK
+  - SiaNet.Engine.SiaNetBackend.MxNet
+  - SiaNet.Engine.SiaNetBackend.Tensorflow
+  - SiaNet.Engine.SiaNetBackend.TensorSharp
+  langs:
+  - csharp
+  - vb
+  name: SiaNetBackend
+  nameWithType: SiaNetBackend
+  fullName: SiaNet.Engine.SiaNetBackend
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SiaNetBackend
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 266
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nTypes of backends for SiaNet\n"
+  example: []
+  syntax:
+    content: public enum SiaNetBackend
+    content.vb: Public Enum SiaNetBackend
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.SiaNetBackend.TensorSharp
+  commentId: F:SiaNet.Engine.SiaNetBackend.TensorSharp
+  id: TensorSharp
+  parent: SiaNet.Engine.SiaNetBackend
+  langs:
+  - csharp
+  - vb
+  name: TensorSharp
+  nameWithType: SiaNetBackend.TensorSharp
+  fullName: SiaNet.Engine.SiaNetBackend.TensorSharp
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: TensorSharp
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 271
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe tensor sharp backend. It doesn&apos;t need any specific installation\n"
+  example: []
+  syntax:
+    content: TensorSharp = 0
+    return:
+      type: SiaNet.Engine.SiaNetBackend
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.SiaNetBackend.ArrayFire
+  commentId: F:SiaNet.Engine.SiaNetBackend.ArrayFire
+  id: ArrayFire
+  parent: SiaNet.Engine.SiaNetBackend
+  langs:
+  - csharp
+  - vb
+  name: ArrayFire
+  nameWithType: SiaNetBackend.ArrayFire
+  fullName: SiaNet.Engine.SiaNetBackend.ArrayFire
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ArrayFire
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 275
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe array fire backend\n"
+  example: []
+  syntax:
+    content: ArrayFire = 1
+    return:
+      type: SiaNet.Engine.SiaNetBackend
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.SiaNetBackend.CNTK
+  commentId: F:SiaNet.Engine.SiaNetBackend.CNTK
+  id: CNTK
+  parent: SiaNet.Engine.SiaNetBackend
+  langs:
+  - csharp
+  - vb
+  name: CNTK
+  nameWithType: SiaNetBackend.CNTK
+  fullName: SiaNet.Engine.SiaNetBackend.CNTK
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CNTK
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 279
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe Microsoft CNTK\n"
+  example: []
+  syntax:
+    content: CNTK = 2
+    return:
+      type: SiaNet.Engine.SiaNetBackend
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.SiaNetBackend.Tensorflow
+  commentId: F:SiaNet.Engine.SiaNetBackend.Tensorflow
+  id: Tensorflow
+  parent: SiaNet.Engine.SiaNetBackend
+  langs:
+  - csharp
+  - vb
+  name: Tensorflow
+  nameWithType: SiaNetBackend.Tensorflow
+  fullName: SiaNet.Engine.SiaNetBackend.Tensorflow
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Tensorflow
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 283
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe Google Tensorflow\n"
+  example: []
+  syntax:
+    content: Tensorflow = 3
+    return:
+      type: SiaNet.Engine.SiaNetBackend
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.SiaNetBackend.MxNet
+  commentId: F:SiaNet.Engine.SiaNetBackend.MxNet
+  id: MxNet
+  parent: SiaNet.Engine.SiaNetBackend
+  langs:
+  - csharp
+  - vb
+  name: MxNet
+  nameWithType: SiaNetBackend.MxNet
+  fullName: SiaNet.Engine.SiaNetBackend.MxNet
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MxNet
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 287
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe Apache MxNet\n"
+  example: []
+  syntax:
+    content: MxNet = 4
+    return:
+      type: SiaNet.Engine.SiaNetBackend
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.SiaNetBackend
+  commentId: T:SiaNet.Engine.SiaNetBackend
+  parent: SiaNet.Engine
+  name: SiaNetBackend
+  nameWithType: SiaNetBackend
+  fullName: SiaNet.Engine.SiaNetBackend

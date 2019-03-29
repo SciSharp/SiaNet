@@ -1,0 +1,316 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Losses.SquaredHinge
+  commentId: T:SiaNet.Losses.SquaredHinge
+  id: SquaredHinge
+  parent: SiaNet.Losses
+  children:
+  - SiaNet.Losses.SquaredHinge.#ctor
+  - SiaNet.Losses.SquaredHinge.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.SquaredHinge.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: SquaredHinge
+  nameWithType: SquaredHinge
+  fullName: SiaNet.Losses.SquaredHinge
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Losses/SquaredHinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SquaredHinge
+    path: ../SiaNet/Losses/SquaredHinge.cs
+    startLine: 11
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nSquared Hinge Loss function is a variant of Hinge Loss, it solves the problem in hinge loss that the derivative of hinge loss has a discontinuity at Pred * True = 1\n"
+  example: []
+  syntax:
+    content: 'public class SquaredHinge : BaseLoss'
+    content.vb: >-
+      Public Class SquaredHinge
+          Inherits BaseLoss
+  seealso:
+  - linkId: SiaNet.Losses.BaseLoss
+    commentId: T:SiaNet.Losses.BaseLoss
+  inheritance:
+  - System.Object
+  - SiaNet.Losses.BaseLoss
+  inheritedMembers:
+  - SiaNet.Losses.BaseLoss.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Losses.SquaredHinge.#ctor
+  commentId: M:SiaNet.Losses.SquaredHinge.#ctor
+  id: '#ctor'
+  parent: SiaNet.Losses.SquaredHinge
+  langs:
+  - csharp
+  - vb
+  name: SquaredHinge()
+  nameWithType: SquaredHinge.SquaredHinge()
+  fullName: SiaNet.Losses.SquaredHinge.SquaredHinge()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Losses/SquaredHinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Losses/SquaredHinge.cs
+    startLine: 13
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  syntax:
+    content: public SquaredHinge()
+    content.vb: Public Sub New
+  overload: SiaNet.Losses.SquaredHinge.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.SquaredHinge.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.SquaredHinge.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.SquaredHinge
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor, Tensor)
+  nameWithType: SquaredHinge.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.SquaredHinge.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/SquaredHinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Losses/SquaredHinge.cs
+    startLine: 19
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  syntax:
+    content: public override Tensor Forward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+    - id: labels
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Overrides Function Forward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.SquaredHinge.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Losses.SquaredHinge.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.SquaredHinge.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.SquaredHinge
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor, Tensor)
+  nameWithType: SquaredHinge.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.SquaredHinge.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/SquaredHinge.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Losses/SquaredHinge.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  syntax:
+    content: public override Tensor Backward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+    - id: labels
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Overrides Function Backward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.SquaredHinge.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Losses.BaseLoss
+  commentId: T:SiaNet.Losses.BaseLoss
+  parent: SiaNet.Losses
+  name: BaseLoss
+  nameWithType: BaseLoss
+  fullName: SiaNet.Losses.BaseLoss
+- uid: SiaNet.Losses
+  commentId: N:SiaNet.Losses
+  name: SiaNet.Losses
+  nameWithType: SiaNet.Losses
+  fullName: SiaNet.Losses
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Losses.BaseLoss.Name
+  commentId: P:SiaNet.Losses.BaseLoss.Name
+  parent: SiaNet.Losses.BaseLoss
+  name: Name
+  nameWithType: BaseLoss.Name
+  fullName: SiaNet.Losses.BaseLoss.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Losses.SquaredHinge.#ctor*
+  commentId: Overload:SiaNet.Losses.SquaredHinge.#ctor
+  name: SquaredHinge
+  nameWithType: SquaredHinge.SquaredHinge
+  fullName: SiaNet.Losses.SquaredHinge.SquaredHinge
+- uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Forward(Tensor, Tensor)
+  nameWithType: BaseLoss.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.SquaredHinge.Forward*
+  commentId: Overload:SiaNet.Losses.SquaredHinge.Forward
+  name: Forward
+  nameWithType: SquaredHinge.Forward
+  fullName: SiaNet.Losses.SquaredHinge.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Backward(Tensor, Tensor)
+  nameWithType: BaseLoss.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.SquaredHinge.Backward*
+  commentId: Overload:SiaNet.Losses.SquaredHinge.Backward
+  name: Backward
+  nameWithType: SquaredHinge.Backward
+  fullName: SiaNet.Losses.SquaredHinge.Backward

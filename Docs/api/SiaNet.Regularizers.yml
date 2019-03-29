@@ -1,0 +1,47 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  id: SiaNet.Regularizers
+  children:
+  - SiaNet.Regularizers.BaseRegularizer
+  - SiaNet.Regularizers.L1
+  - SiaNet.Regularizers.L1L2
+  - SiaNet.Regularizers.L2
+  langs:
+  - csharp
+  - vb
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers.L1
+  commentId: T:SiaNet.Regularizers.L1
+  name: L1
+  nameWithType: L1
+  fullName: SiaNet.Regularizers.L1
+- uid: SiaNet.Regularizers.L2
+  commentId: T:SiaNet.Regularizers.L2
+  name: L2
+  nameWithType: L2
+  fullName: SiaNet.Regularizers.L2
+- uid: SiaNet.Regularizers.L1L2
+  commentId: T:SiaNet.Regularizers.L1L2
+  parent: SiaNet.Regularizers
+  name: L1L2
+  nameWithType: L1L2
+  fullName: SiaNet.Regularizers.L1L2
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers

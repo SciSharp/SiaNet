@@ -520,11 +520,14 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor SliceCols(Tensor x, long start, long end)
         {
-            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(1), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
+            end = end + 1;
+            var t = C.Transpose(In(x));
+            return Out(C.Transpose(C.Slice(t, AxisVector.Repeat(new Axis(1), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1))));
         }
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
+            end = end + 1;
             return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(0), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
         }
 

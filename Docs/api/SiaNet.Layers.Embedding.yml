@@ -1,0 +1,777 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.Embedding
+  commentId: T:SiaNet.Layers.Embedding
+  id: Embedding
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.Embedding.#ctor(System.Int32,System.Int32,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  - SiaNet.Layers.Embedding.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Embedding.EmbeddingsConstraint
+  - SiaNet.Layers.Embedding.EmbeddingsInitializer
+  - SiaNet.Layers.Embedding.EmbeddingsRegularizer
+  - SiaNet.Layers.Embedding.Forward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Embedding.InputDim
+  - SiaNet.Layers.Embedding.OutputDim
+  langs:
+  - csharp
+  - vb
+  name: Embedding
+  nameWithType: Embedding
+  fullName: SiaNet.Layers.Embedding
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Embedding
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nTurns positive integers (indexes) into dense vectors of fixed size. eg. [[4], [20]] -> [[0.25, 0.1], [0.6, -0.2]]\n<p>\nThis layer can only be used as the first layer in a model.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class Embedding : BaseLayer'
+    content.vb: >-
+      Public Class Embedding
+          Inherits BaseLayer
+  seealso:
+  - linkId: SiaNet.Layers.BaseLayer
+    commentId: T:SiaNet.Layers.BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.Embedding.InputDim
+  commentId: P:SiaNet.Layers.Embedding.InputDim
+  id: InputDim
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: InputDim
+  nameWithType: Embedding.InputDim
+  fullName: SiaNet.Layers.Embedding.InputDim
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: InputDim
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nint > 0, Size of the vocabulary, i.e. maximum integer index + 1.\n"
+  example: []
+  syntax:
+    content: public int InputDim { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe input dim.\n"
+    content.vb: Public Property InputDim As Integer
+  overload: SiaNet.Layers.Embedding.InputDim*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Embedding.OutputDim
+  commentId: P:SiaNet.Layers.Embedding.OutputDim
+  id: OutputDim
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: OutputDim
+  nameWithType: Embedding.OutputDim
+  fullName: SiaNet.Layers.Embedding.OutputDim
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: OutputDim
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 30
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nint >= 0, Dimension of the dense embedding.\n"
+  example: []
+  syntax:
+    content: public int OutputDim { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe output dim.\n"
+    content.vb: Public Property OutputDim As Integer
+  overload: SiaNet.Layers.Embedding.OutputDim*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Embedding.EmbeddingsInitializer
+  commentId: P:SiaNet.Layers.Embedding.EmbeddingsInitializer
+  id: EmbeddingsInitializer
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: EmbeddingsInitializer
+  nameWithType: Embedding.EmbeddingsInitializer
+  fullName: SiaNet.Layers.Embedding.EmbeddingsInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: EmbeddingsInitializer
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 38
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for the embedding weight matrix.\n"
+  example: []
+  syntax:
+    content: public BaseInitializer EmbeddingsInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe embeddings initializer.\n"
+    content.vb: Public Property EmbeddingsInitializer As BaseInitializer
+  overload: SiaNet.Layers.Embedding.EmbeddingsInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Embedding.EmbeddingsConstraint
+  commentId: P:SiaNet.Layers.Embedding.EmbeddingsConstraint
+  id: EmbeddingsConstraint
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: EmbeddingsConstraint
+  nameWithType: Embedding.EmbeddingsConstraint
+  fullName: SiaNet.Layers.Embedding.EmbeddingsConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: EmbeddingsConstraint
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 46
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nConstraint function for the embedding weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseConstraint EmbeddingsConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+      description: "\nThe embeddings constraint.\n"
+    content.vb: Public Property EmbeddingsConstraint As BaseConstraint
+  overload: SiaNet.Layers.Embedding.EmbeddingsConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Embedding.EmbeddingsRegularizer
+  commentId: P:SiaNet.Layers.Embedding.EmbeddingsRegularizer
+  id: EmbeddingsRegularizer
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: EmbeddingsRegularizer
+  nameWithType: Embedding.EmbeddingsRegularizer
+  fullName: SiaNet.Layers.Embedding.EmbeddingsRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: EmbeddingsRegularizer
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 54
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nRegularizer function for the embedding weight matrix.\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer EmbeddingsRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: "\nThe embeddings regularizer.\n"
+    content.vb: Public Property EmbeddingsRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.Embedding.EmbeddingsRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Embedding.#ctor(System.Int32,System.Int32,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  commentId: M:SiaNet.Layers.Embedding.#ctor(System.Int32,System.Int32,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  id: '#ctor(System.Int32,System.Int32,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)'
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: Embedding(Int32, Int32, BaseInitializer, BaseRegularizer, BaseConstraint)
+  nameWithType: Embedding.Embedding(Int32, Int32, BaseInitializer, BaseRegularizer, BaseConstraint)
+  fullName: SiaNet.Layers.Embedding.Embedding(System.Int32, System.Int32, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 64
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Layers.Embedding\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Embedding(int inputDim, int outputDim, BaseInitializer embeddingsInitializer = null, BaseRegularizer embeddingsRegularizer = null, BaseConstraint embeddingsConstraint = null)
+    parameters:
+    - id: inputDim
+      type: System.Int32
+      description: Size of the vocabulary, i.e. maximum integer index + 1.
+    - id: outputDim
+      type: System.Int32
+      description: int >= 0, Dimension of the dense embedding.
+    - id: embeddingsInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for the embedding weight matrix.
+    - id: embeddingsRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: Regularizer function for the embedding weight matrix.
+    - id: embeddingsConstraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: Constraint function for the embedding weight matrix.
+    content.vb: Public Sub New(inputDim As Integer, outputDim As Integer, embeddingsInitializer As BaseInitializer = Nothing, embeddingsRegularizer As BaseRegularizer = Nothing, embeddingsConstraint As BaseConstraint = Nothing)
+  overload: SiaNet.Layers.Embedding.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Embedding.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Embedding.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: Embedding.Forward(Tensor)
+  fullName: SiaNet.Layers.Embedding.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 78
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Embedding.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.Embedding.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Embedding.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Embedding
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: Embedding.Backward(Tensor)
+  fullName: SiaNet.Layers.Embedding.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Embedding.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Core/Embedding.cs
+    startLine: 87
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Embedding.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.Embedding.InputDim*
+  commentId: Overload:SiaNet.Layers.Embedding.InputDim
+  name: InputDim
+  nameWithType: Embedding.InputDim
+  fullName: SiaNet.Layers.Embedding.InputDim
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Layers.Embedding.OutputDim*
+  commentId: Overload:SiaNet.Layers.Embedding.OutputDim
+  name: OutputDim
+  nameWithType: Embedding.OutputDim
+  fullName: SiaNet.Layers.Embedding.OutputDim
+- uid: SiaNet.Layers.Embedding.EmbeddingsInitializer*
+  commentId: Overload:SiaNet.Layers.Embedding.EmbeddingsInitializer
+  name: EmbeddingsInitializer
+  nameWithType: Embedding.EmbeddingsInitializer
+  fullName: SiaNet.Layers.Embedding.EmbeddingsInitializer
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: SiaNet.Layers.Embedding.EmbeddingsConstraint*
+  commentId: Overload:SiaNet.Layers.Embedding.EmbeddingsConstraint
+  name: EmbeddingsConstraint
+  nameWithType: Embedding.EmbeddingsConstraint
+  fullName: SiaNet.Layers.Embedding.EmbeddingsConstraint
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Layers.Embedding.EmbeddingsRegularizer*
+  commentId: Overload:SiaNet.Layers.Embedding.EmbeddingsRegularizer
+  name: EmbeddingsRegularizer
+  nameWithType: Embedding.EmbeddingsRegularizer
+  fullName: SiaNet.Layers.Embedding.EmbeddingsRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: SiaNet.Layers.Embedding
+  commentId: T:SiaNet.Layers.Embedding
+  name: Embedding
+  nameWithType: Embedding
+  fullName: SiaNet.Layers.Embedding
+- uid: SiaNet.Layers.Embedding.#ctor*
+  commentId: Overload:SiaNet.Layers.Embedding.#ctor
+  name: Embedding
+  nameWithType: Embedding.Embedding
+  fullName: SiaNet.Layers.Embedding.Embedding
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Embedding.Forward*
+  commentId: Overload:SiaNet.Layers.Embedding.Forward
+  name: Forward
+  nameWithType: Embedding.Forward
+  fullName: SiaNet.Layers.Embedding.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Embedding.Backward*
+  commentId: Overload:SiaNet.Layers.Embedding.Backward
+  name: Backward
+  nameWithType: Embedding.Backward
+  fullName: SiaNet.Layers.Embedding.Backward

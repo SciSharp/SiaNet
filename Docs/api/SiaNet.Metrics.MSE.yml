@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Metrics.MSE
+  commentId: T:SiaNet.Metrics.MSE
+  id: MSE
+  parent: SiaNet.Metrics
+  children:
+  - SiaNet.Metrics.MSE.#ctor
+  - SiaNet.Metrics.MSE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: MSE
+  nameWithType: MSE
+  fullName: SiaNet.Metrics.MSE
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Metrics/MSE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MSE
+    path: ../SiaNet/Metrics/MSE.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nThe mean squared error (MSE) or mean squared deviation (MSD) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors—that is, the average squared difference between the estimated values and what is estimated.\n"
+  example: []
+  syntax:
+    content: 'public class MSE : BaseMetric'
+    content.vb: >-
+      Public Class MSE
+          Inherits BaseMetric
+  seealso:
+  - linkId: SiaNet.Metrics.BaseMetric
+    commentId: T:SiaNet.Metrics.BaseMetric
+  inheritance:
+  - System.Object
+  - SiaNet.Metrics.BaseMetric
+  inheritedMembers:
+  - SiaNet.Metrics.BaseMetric.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Metrics.MSE.#ctor
+  commentId: M:SiaNet.Metrics.MSE.#ctor
+  id: '#ctor'
+  parent: SiaNet.Metrics.MSE
+  langs:
+  - csharp
+  - vb
+  name: MSE()
+  nameWithType: MSE.MSE()
+  fullName: SiaNet.Metrics.MSE.MSE()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Metrics/MSE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Metrics/MSE.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Metrics.MSE\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public MSE()
+    content.vb: Public Sub New
+  overload: SiaNet.Metrics.MSE.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Metrics.MSE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.MSE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.MSE
+  langs:
+  - csharp
+  - vb
+  name: Calc(Tensor, Tensor)
+  nameWithType: MSE.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.MSE.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Metrics/MSE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Calc
+    path: ../SiaNet/Metrics/MSE.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nCalculates the metric with predicted and true values.\n"
+  example: []
+  syntax:
+    content: public override Tensor Calc(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted value.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Calc(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Metrics.MSE.Calc*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  parent: SiaNet.Metrics
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Metrics.BaseMetric.Name
+  commentId: P:SiaNet.Metrics.BaseMetric.Name
+  parent: SiaNet.Metrics.BaseMetric
+  name: Name
+  nameWithType: BaseMetric.Name
+  fullName: SiaNet.Metrics.BaseMetric.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Metrics.MSE
+  commentId: T:SiaNet.Metrics.MSE
+  name: MSE
+  nameWithType: MSE
+  fullName: SiaNet.Metrics.MSE
+- uid: SiaNet.Metrics.MSE.#ctor*
+  commentId: Overload:SiaNet.Metrics.MSE.#ctor
+  name: MSE
+  nameWithType: MSE.MSE
+  fullName: SiaNet.Metrics.MSE.MSE
+- uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.BaseMetric
+  name: Calc(Tensor, Tensor)
+  nameWithType: BaseMetric.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Metrics.MSE.Calc*
+  commentId: Overload:SiaNet.Metrics.MSE.Calc
+  name: Calc
+  nameWithType: MSE.Calc
+  fullName: SiaNet.Metrics.MSE.Calc
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

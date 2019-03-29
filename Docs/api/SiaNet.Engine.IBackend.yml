@@ -1,0 +1,4204 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.IBackend
+  commentId: T:SiaNet.Engine.IBackend
+  id: IBackend
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.IBackend.Abs(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Acos(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Add(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Argmax(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Argmin(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Asin(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Atan(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Ceil(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Clip(SiaNet.Engine.Tensor,System.Single,System.Single)
+  - SiaNet.Engine.IBackend.Col2Im(SiaNet.Engine.Tensor,System.Int64[],System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  - SiaNet.Engine.IBackend.Constant(System.Single,System.Int64[])
+  - SiaNet.Engine.IBackend.Cos(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Cosh(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.CreateVariable(System.Single[],System.Int64[],System.String)
+  - SiaNet.Engine.IBackend.Diag(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Dispose(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Div(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Dot(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Epsilon
+  - SiaNet.Engine.IBackend.EqualTo(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Eval(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Exp(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Floor(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GetActFunc
+  - SiaNet.Engine.IBackend.GetArray(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GetDataType(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GetShape(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.GreaterThanEqual(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Im2Col(SiaNet.Engine.Tensor,System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  - SiaNet.Engine.IBackend.L2Normalize(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.LessThan(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.LessThanEqual(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Log(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Log10(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Log1p(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor,System.Int32[])
+  - SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor,System.Int32[])
+  - SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor,System.Int32[])
+  - SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Mul(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Neg(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Pow(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Print(SiaNet.Engine.Tensor,System.String)
+  - SiaNet.Engine.IBackend.RandomBernoulli(System.Int64[],System.Single)
+  - SiaNet.Engine.IBackend.RandomNormal(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  - SiaNet.Engine.IBackend.RandomUniform(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  - SiaNet.Engine.IBackend.Reshape(SiaNet.Engine.Tensor,System.Int64[])
+  - SiaNet.Engine.IBackend.Round(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.SetDevice(SiaNet.Engine.DeviceType)
+  - SiaNet.Engine.IBackend.Sigmoid(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Sin(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Sinh(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.SliceCols(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  - SiaNet.Engine.IBackend.SliceRows(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  - SiaNet.Engine.IBackend.Softmax(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Softplus(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Sqrt(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Square(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.IBackend.Sub(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor,System.Int32)
+  - SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor,System.Int32[])
+  - SiaNet.Engine.IBackend.Tan(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Tanh(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Tile(SiaNet.Engine.Tensor,System.Int32,System.Int32)
+  - SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor)
+  - SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor,System.Int32[])
+  - SiaNet.Engine.IBackend.UUID(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IBackend
+  nameWithType: IBackend
+  fullName: SiaNet.Engine.IBackend
+  type: Interface
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: IBackend
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 9
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public interface IBackend
+    content.vb: Public Interface IBackend
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: SiaNet.Engine.IBackend.Epsilon
+  commentId: M:SiaNet.Engine.IBackend.Epsilon
+  id: Epsilon
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Epsilon()
+  nameWithType: IBackend.Epsilon()
+  fullName: SiaNet.Engine.IBackend.Epsilon()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epsilon
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 15
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nEpsilon which is the smallest float value and > 0\n"
+  example: []
+  syntax:
+    content: float Epsilon()
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Function Epsilon As Single
+  overload: SiaNet.Engine.IBackend.Epsilon*
+- uid: SiaNet.Engine.IBackend.GetShape(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GetShape(SiaNet.Engine.Tensor)
+  id: GetShape(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GetShape(Tensor)
+  nameWithType: IBackend.GetShape(Tensor)
+  fullName: SiaNet.Engine.IBackend.GetShape(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetShape
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 22
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nGets the shape of the tensor.\n"
+  example: []
+  syntax:
+    content: long[] GetShape(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The x.
+    return:
+      type: System.Int64[]
+      description: ''
+    content.vb: Function GetShape(x As Tensor) As Long()
+  overload: SiaNet.Engine.IBackend.GetShape*
+- uid: SiaNet.Engine.IBackend.Eval(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Eval(SiaNet.Engine.Tensor)
+  id: Eval(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Eval(Tensor)
+  nameWithType: IBackend.Eval(Tensor)
+  fullName: SiaNet.Engine.IBackend.Eval(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Eval
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 29
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nEvals the specified tensor.\n"
+  example: []
+  syntax:
+    content: object Eval(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The x.
+    return:
+      type: System.Object
+      description: ''
+    content.vb: Function Eval(x As Tensor) As Object
+  overload: SiaNet.Engine.IBackend.Eval*
+- uid: SiaNet.Engine.IBackend.Print(SiaNet.Engine.Tensor,System.String)
+  commentId: M:SiaNet.Engine.IBackend.Print(SiaNet.Engine.Tensor,System.String)
+  id: Print(SiaNet.Engine.Tensor,System.String)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Print(Tensor, String)
+  nameWithType: IBackend.Print(Tensor, String)
+  fullName: SiaNet.Engine.IBackend.Print(SiaNet.Engine.Tensor, System.String)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Print
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 36
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPrints the specified tensor for observation.\n"
+  example: []
+  syntax:
+    content: void Print(Tensor x, string title = "")
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The x.
+    - id: title
+      type: System.String
+      description: The title.
+    content.vb: Sub Print(x As Tensor, title As String = "")
+  overload: SiaNet.Engine.IBackend.Print*
+- uid: SiaNet.Engine.IBackend.UUID(System.String)
+  commentId: M:SiaNet.Engine.IBackend.UUID(System.String)
+  id: UUID(System.String)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: UUID(String)
+  nameWithType: IBackend.UUID(String)
+  fullName: SiaNet.Engine.IBackend.UUID(System.String)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: UUID
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 43
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nGenerate the unique identifier for layers and parameters\n"
+  example: []
+  syntax:
+    content: string UUID(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name.
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function UUID(name As String) As String
+  overload: SiaNet.Engine.IBackend.UUID*
+- uid: SiaNet.Engine.IBackend.SetDevice(SiaNet.Engine.DeviceType)
+  commentId: M:SiaNet.Engine.IBackend.SetDevice(SiaNet.Engine.DeviceType)
+  id: SetDevice(SiaNet.Engine.DeviceType)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: SetDevice(DeviceType)
+  nameWithType: IBackend.SetDevice(DeviceType)
+  fullName: SiaNet.Engine.IBackend.SetDevice(SiaNet.Engine.DeviceType)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SetDevice
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 49
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSets the device CPU, GPU or OpenCL.\n"
+  example: []
+  syntax:
+    content: void SetDevice(DeviceType device)
+    parameters:
+    - id: device
+      type: SiaNet.Engine.DeviceType
+      description: The device.
+    content.vb: Sub SetDevice(device As DeviceType)
+  overload: SiaNet.Engine.IBackend.SetDevice*
+- uid: SiaNet.Engine.IBackend.GetDataType(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GetDataType(SiaNet.Engine.Tensor)
+  id: GetDataType(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GetDataType(Tensor)
+  nameWithType: IBackend.GetDataType(Tensor)
+  fullName: SiaNet.Engine.IBackend.GetDataType(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetDataType
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 56
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nGets the type of the data.\n"
+  example: []
+  syntax:
+    content: DataType GetDataType(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The x.
+    return:
+      type: SiaNet.Engine.DataType
+      description: ''
+    content.vb: Function GetDataType(x As Tensor) As DataType
+  overload: SiaNet.Engine.IBackend.GetDataType*
+- uid: SiaNet.Engine.IBackend.CreateVariable(System.Single[],System.Int64[],System.String)
+  commentId: M:SiaNet.Engine.IBackend.CreateVariable(System.Single[],System.Int64[],System.String)
+  id: CreateVariable(System.Single[],System.Int64[],System.String)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: CreateVariable(Single[], Int64[], String)
+  nameWithType: IBackend.CreateVariable(Single[], Int64[], String)
+  fullName: SiaNet.Engine.IBackend.CreateVariable(System.Single[], System.Int64[], System.String)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CreateVariable
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 66
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCreates the variable.\n"
+  example: []
+  syntax:
+    content: Tensor CreateVariable(float[] data, long[] shape, string name = "")
+    parameters:
+    - id: data
+      type: System.Single[]
+      description: The data.
+    - id: shape
+      type: System.Int64[]
+      description: The shape.
+    - id: name
+      type: System.String
+      description: The name.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function CreateVariable(data As Single(), shape As Long(), name As String = "") As Tensor
+  overload: SiaNet.Engine.IBackend.CreateVariable*
+  nameWithType.vb: IBackend.CreateVariable(Single(), Int64(), String)
+  fullName.vb: SiaNet.Engine.IBackend.CreateVariable(System.Single(), System.Int64(), System.String)
+  name.vb: CreateVariable(Single(), Int64(), String)
+- uid: SiaNet.Engine.IBackend.Reshape(SiaNet.Engine.Tensor,System.Int64[])
+  commentId: M:SiaNet.Engine.IBackend.Reshape(SiaNet.Engine.Tensor,System.Int64[])
+  id: Reshape(SiaNet.Engine.Tensor,System.Int64[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Reshape(Tensor, Int64[])
+  nameWithType: IBackend.Reshape(Tensor, Int64[])
+  fullName: SiaNet.Engine.IBackend.Reshape(SiaNet.Engine.Tensor, System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Reshape
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 74
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nReshapes the specified x.\n"
+  example: []
+  syntax:
+    content: Tensor Reshape(Tensor x, params long[] shape)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The x.
+    - id: shape
+      type: System.Int64[]
+      description: The shape.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Reshape(x As Tensor, ParamArray shape As Long()) As Tensor
+  overload: SiaNet.Engine.IBackend.Reshape*
+  nameWithType.vb: IBackend.Reshape(Tensor, Int64())
+  fullName.vb: SiaNet.Engine.IBackend.Reshape(SiaNet.Engine.Tensor, System.Int64())
+  name.vb: Reshape(Tensor, Int64())
+- uid: SiaNet.Engine.IBackend.Constant(System.Single,System.Int64[])
+  commentId: M:SiaNet.Engine.IBackend.Constant(System.Single,System.Int64[])
+  id: Constant(System.Single,System.Int64[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Constant(Single, Int64[])
+  nameWithType: IBackend.Constant(Single, Int64[])
+  fullName: SiaNet.Engine.IBackend.Constant(System.Single, System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Constant
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 82
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCreate a constant variable with specified value and target tensor shape\n"
+  example: []
+  syntax:
+    content: Tensor Constant(float value, long[] shape)
+    parameters:
+    - id: value
+      type: System.Single
+      description: The value.
+    - id: shape
+      type: System.Int64[]
+      description: The shape.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Constant(value As Single, shape As Long()) As Tensor
+  overload: SiaNet.Engine.IBackend.Constant*
+  nameWithType.vb: IBackend.Constant(Single, Int64())
+  fullName.vb: SiaNet.Engine.IBackend.Constant(System.Single, System.Int64())
+  name.vb: Constant(Single, Int64())
+- uid: SiaNet.Engine.IBackend.RandomUniform(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  commentId: M:SiaNet.Engine.IBackend.RandomUniform(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  id: RandomUniform(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: RandomUniform(Int64[], Single, Single, Nullable<Int32>)
+  nameWithType: IBackend.RandomUniform(Int64[], Single, Single, Nullable<Int32>)
+  fullName: SiaNet.Engine.IBackend.RandomUniform(System.Int64[], System.Single, System.Single, System.Nullable<System.Int32>)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RandomUniform
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 92
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nGenerate variable with Randon Uniform distribution data\n"
+  example: []
+  syntax:
+    content: Tensor RandomUniform(long[] shape, float min, float max, int? seed = default(int? ))
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape.
+    - id: min
+      type: System.Single
+      description: The minimum.
+    - id: max
+      type: System.Single
+      description: The maximum.
+    - id: seed
+      type: System.Nullable{System.Int32}
+      description: The seed.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function RandomUniform(shape As Long(), min As Single, max As Single, seed As Integer? = Nothing) As Tensor
+  overload: SiaNet.Engine.IBackend.RandomUniform*
+  nameWithType.vb: IBackend.RandomUniform(Int64(), Single, Single, Nullable(Of Int32))
+  fullName.vb: SiaNet.Engine.IBackend.RandomUniform(System.Int64(), System.Single, System.Single, System.Nullable(Of System.Int32))
+  name.vb: RandomUniform(Int64(), Single, Single, Nullable(Of Int32))
+- uid: SiaNet.Engine.IBackend.RandomNormal(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  commentId: M:SiaNet.Engine.IBackend.RandomNormal(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  id: RandomNormal(System.Int64[],System.Single,System.Single,System.Nullable{System.Int32})
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: RandomNormal(Int64[], Single, Single, Nullable<Int32>)
+  nameWithType: IBackend.RandomNormal(Int64[], Single, Single, Nullable<Int32>)
+  fullName: SiaNet.Engine.IBackend.RandomNormal(System.Int64[], System.Single, System.Single, System.Nullable<System.Int32>)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RandomNormal
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 102
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nGenerate variable with Randon Normal distribution data\n"
+  example: []
+  syntax:
+    content: Tensor RandomNormal(long[] shape, float mean, float stddev, int? seed = default(int? ))
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape.
+    - id: mean
+      type: System.Single
+      description: The mean.
+    - id: stddev
+      type: System.Single
+      description: The stddev.
+    - id: seed
+      type: System.Nullable{System.Int32}
+      description: The seed.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function RandomNormal(shape As Long(), mean As Single, stddev As Single, seed As Integer? = Nothing) As Tensor
+  overload: SiaNet.Engine.IBackend.RandomNormal*
+  nameWithType.vb: IBackend.RandomNormal(Int64(), Single, Single, Nullable(Of Int32))
+  fullName.vb: SiaNet.Engine.IBackend.RandomNormal(System.Int64(), System.Single, System.Single, System.Nullable(Of System.Int32))
+  name.vb: RandomNormal(Int64(), Single, Single, Nullable(Of Int32))
+- uid: SiaNet.Engine.IBackend.RandomBernoulli(System.Int64[],System.Single)
+  commentId: M:SiaNet.Engine.IBackend.RandomBernoulli(System.Int64[],System.Single)
+  id: RandomBernoulli(System.Int64[],System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: RandomBernoulli(Int64[], Single)
+  nameWithType: IBackend.RandomBernoulli(Int64[], Single)
+  fullName: SiaNet.Engine.IBackend.RandomBernoulli(System.Int64[], System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RandomBernoulli
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 110
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nGenerate variable with Randon Bernoulli distribution \n"
+  example: []
+  syntax:
+    content: Tensor RandomBernoulli(long[] shape, float p)
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape.
+    - id: p
+      type: System.Single
+      description: The probability value
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function RandomBernoulli(shape As Long(), p As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.RandomBernoulli*
+  nameWithType.vb: IBackend.RandomBernoulli(Int64(), Single)
+  fullName.vb: SiaNet.Engine.IBackend.RandomBernoulli(System.Int64(), System.Single)
+  name.vb: RandomBernoulli(Int64(), Single)
+- uid: SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Add(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Add(Tensor, Tensor)
+  nameWithType: IBackend.Add(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Add
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 120
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nAdds two tensor\n"
+  example: []
+  syntax:
+    content: Tensor Add(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor A
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor B
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Add(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Add*
+- uid: SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor,System.Single)
+  id: Add(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Add(Tensor, Single)
+  nameWithType: IBackend.Add(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Add(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Add
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 128
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nAdds Tensor and float value\n"
+  example: []
+  syntax:
+    content: Tensor Add(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    - id: b
+      type: System.Single
+      description: Float Value
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Add(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Add*
+- uid: SiaNet.Engine.IBackend.Add(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Add(System.Single,SiaNet.Engine.Tensor)
+  id: Add(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Add(Single, Tensor)
+  nameWithType: IBackend.Add(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.Add(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Add
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 136
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nAdds float and Tensor\n"
+  example: []
+  syntax:
+    content: Tensor Add(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Float value
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Add(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Add*
+- uid: SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Sub(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sub(Tensor, Tensor)
+  nameWithType: IBackend.Sub(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sub
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 144
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSubtract two tensor\n"
+  example: []
+  syntax:
+    content: Tensor Sub(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sub(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Sub*
+- uid: SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor,System.Single)
+  id: Sub(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sub(Tensor, Single)
+  nameWithType: IBackend.Sub(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Sub(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sub
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 152
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSubtract tensor and float\n"
+  example: []
+  syntax:
+    content: Tensor Sub(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    - id: b
+      type: System.Single
+      description: Float value
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sub(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Sub*
+- uid: SiaNet.Engine.IBackend.Sub(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sub(System.Single,SiaNet.Engine.Tensor)
+  id: Sub(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sub(Single, Tensor)
+  nameWithType: IBackend.Sub(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.Sub(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sub
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 160
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSubtract float and tensor\n"
+  example: []
+  syntax:
+    content: Tensor Sub(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Float value
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sub(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Sub*
+- uid: SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Mul(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Mul(Tensor, Tensor)
+  nameWithType: IBackend.Mul(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mul
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 168
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nMultiply two tensor\n"
+  example: []
+  syntax:
+    content: Tensor Mul(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second tensor
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Mul(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Mul*
+- uid: SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor,System.Single)
+  id: Mul(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Mul(Tensor, Single)
+  nameWithType: IBackend.Mul(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Mul(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mul
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 176
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nMultiply tensor and float\n"
+  example: []
+  syntax:
+    content: Tensor Mul(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    - id: b
+      type: System.Single
+      description: Float value
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Mul(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Mul*
+- uid: SiaNet.Engine.IBackend.Mul(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Mul(System.Single,SiaNet.Engine.Tensor)
+  id: Mul(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Mul(Single, Tensor)
+  nameWithType: IBackend.Mul(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.Mul(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mul
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 184
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nMultiply float and tensor\n"
+  example: []
+  syntax:
+    content: Tensor Mul(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Float value.
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Mul(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Mul*
+- uid: SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Div(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Div(Tensor, Tensor)
+  nameWithType: IBackend.Div(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Div
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 192
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nDivide two tensor\n"
+  example: []
+  syntax:
+    content: Tensor Div(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor.
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Div(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Div*
+- uid: SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor,System.Single)
+  id: Div(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Div(Tensor, Single)
+  nameWithType: IBackend.Div(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Div(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Div
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 200
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nDivide tensor with float\n"
+  example: []
+  syntax:
+    content: Tensor Div(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    - id: b
+      type: System.Single
+      description: Float value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Div(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Div*
+- uid: SiaNet.Engine.IBackend.Div(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Div(System.Single,SiaNet.Engine.Tensor)
+  id: Div(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Div(Single, Tensor)
+  nameWithType: IBackend.Div(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.Div(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Div
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 208
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nDivide float with tensor\n"
+  example: []
+  syntax:
+    content: Tensor Div(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Float value.
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Div(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Div*
+- uid: SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(Tensor, Tensor)
+  nameWithType: IBackend.GreaterThan(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GreaterThan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 216
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a > b between two tensor\n"
+  example: []
+  syntax:
+    content: Tensor GreaterThan(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function GreaterThan(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.GreaterThan*
+- uid: SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: GreaterThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanEqual(Tensor, Tensor)
+  nameWithType: IBackend.GreaterThanEqual(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GreaterThanEqual
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 224
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a >= b between two tensor\n"
+  example: []
+  syntax:
+    content: Tensor GreaterThanEqual(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function GreaterThanEqual(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.GreaterThanEqual*
+- uid: SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: LessThan(Tensor, Tensor)
+  nameWithType: IBackend.LessThan(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LessThan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 232
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a &lt; b between two tensor\n"
+  example: []
+  syntax:
+    content: Tensor LessThan(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function LessThan(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.LessThan*
+- uid: SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: LessThanEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: LessThanEqual(Tensor, Tensor)
+  nameWithType: IBackend.LessThanEqual(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LessThanEqual
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 240
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a &lt;= b between two tensor\n"
+  example: []
+  syntax:
+    content: Tensor LessThanEqual(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function LessThanEqual(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.LessThanEqual*
+- uid: SiaNet.Engine.IBackend.GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  id: GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(Single, Tensor)
+  nameWithType: IBackend.GreaterThan(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.GreaterThan(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GreaterThan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 248
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a > b between float and tensor\n"
+  example: []
+  syntax:
+    content: Tensor GreaterThan(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Float value
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function GreaterThan(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.GreaterThan*
+- uid: SiaNet.Engine.IBackend.GreaterThanEqual(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GreaterThanEqual(System.Single,SiaNet.Engine.Tensor)
+  id: GreaterThanEqual(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanEqual(Single, Tensor)
+  nameWithType: IBackend.GreaterThanEqual(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.GreaterThanEqual(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GreaterThanEqual
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 256
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a >= b between float and tensor\n"
+  example: []
+  syntax:
+    content: Tensor GreaterThanEqual(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Float value
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function GreaterThanEqual(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.GreaterThanEqual*
+- uid: SiaNet.Engine.IBackend.LessThan(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.LessThan(System.Single,SiaNet.Engine.Tensor)
+  id: LessThan(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: LessThan(Single, Tensor)
+  nameWithType: IBackend.LessThan(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.LessThan(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LessThan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 264
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a &lt; b between float and Tensor\n"
+  example: []
+  syntax:
+    content: Tensor LessThan(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Floaty value
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Tensor data.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function LessThan(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.LessThan*
+- uid: SiaNet.Engine.IBackend.LessThanEqual(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.LessThanEqual(System.Single,SiaNet.Engine.Tensor)
+  id: LessThanEqual(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: LessThanEqual(Single, Tensor)
+  nameWithType: IBackend.LessThanEqual(Single, Tensor)
+  fullName: SiaNet.Engine.IBackend.LessThanEqual(System.Single, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LessThanEqual
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 272
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a &lt;= b between float and Tensor\n"
+  example: []
+  syntax:
+    content: Tensor LessThanEqual(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+      description: Tensor data
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Float value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function LessThanEqual(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.LessThanEqual*
+- uid: SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  id: GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(Tensor, Single)
+  nameWithType: IBackend.GreaterThan(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.GreaterThan(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GreaterThan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 280
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a > b between tensor and float\n"
+  example: []
+  syntax:
+    content: Tensor GreaterThan(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    - id: b
+      type: System.Single
+      description: Float value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function GreaterThan(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.GreaterThan*
+- uid: SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor,System.Single)
+  id: GreaterThanEqual(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanEqual(Tensor, Single)
+  nameWithType: IBackend.GreaterThanEqual(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.GreaterThanEqual(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GreaterThanEqual
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 288
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a >= b between tensor and float\n"
+  example: []
+  syntax:
+    content: Tensor GreaterThanEqual(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    - id: b
+      type: System.Single
+      description: Float value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function GreaterThanEqual(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.GreaterThanEqual*
+- uid: SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor,System.Single)
+  id: LessThan(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: LessThan(Tensor, Single)
+  nameWithType: IBackend.LessThan(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.LessThan(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LessThan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 296
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a &lt; b between tensor and float\n"
+  example: []
+  syntax:
+    content: Tensor LessThan(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    - id: b
+      type: System.Single
+      description: Float value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function LessThan(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.LessThan*
+- uid: SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor,System.Single)
+  id: LessThanEqual(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: LessThanEqual(Tensor, Single)
+  nameWithType: IBackend.LessThanEqual(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.LessThanEqual(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: LessThanEqual
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 304
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPerform a &lt;= b between tensor and float\n"
+  example: []
+  syntax:
+    content: Tensor LessThanEqual(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: Tensor data
+    - id: b
+      type: System.Single
+      description: Float value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function LessThanEqual(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.LessThanEqual*
+- uid: SiaNet.Engine.IBackend.EqualTo(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.EqualTo(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: EqualTo(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: EqualTo(Tensor, Tensor)
+  nameWithType: IBackend.EqualTo(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.EqualTo(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: EqualTo
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 312
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCheck if two tensor are equal\n"
+  example: []
+  syntax:
+    content: Tensor EqualTo(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+      description: First tensor.
+    - id: b
+      type: SiaNet.Engine.Tensor
+      description: Second Tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function EqualTo(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.EqualTo*
+- uid: SiaNet.Engine.IBackend.Tile(SiaNet.Engine.Tensor,System.Int32,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Tile(SiaNet.Engine.Tensor,System.Int32,System.Int32)
+  id: Tile(SiaNet.Engine.Tensor,System.Int32,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Tile(Tensor, Int32, Int32)
+  nameWithType: IBackend.Tile(Tensor, Int32, Int32)
+  fullName: SiaNet.Engine.IBackend.Tile(SiaNet.Engine.Tensor, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Tile
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 321
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nConstruct an array by repeating A the number of times given by reps.\n"
+  example: []
+  syntax:
+    content: Tensor Tile(Tensor x, int n, int axis = 0)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: Tensor to be repeated.
+    - id: n
+      type: System.Int32
+      description: Number of time.
+    - id: axis
+      type: System.Int32
+      description: The axis to be repeated.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Tile(x As Tensor, n As Integer, axis As Integer = 0) As Tensor
+  overload: SiaNet.Engine.IBackend.Tile*
+- uid: SiaNet.Engine.IBackend.Abs(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Abs(SiaNet.Engine.Tensor)
+  id: Abs(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Abs(Tensor)
+  nameWithType: IBackend.Abs(Tensor)
+  fullName: SiaNet.Engine.IBackend.Abs(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Abs
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 330
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nReturn the absolute value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Abs(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Abs(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Abs*
+- uid: SiaNet.Engine.IBackend.Neg(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Neg(SiaNet.Engine.Tensor)
+  id: Neg(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Neg(Tensor)
+  nameWithType: IBackend.Neg(Tensor)
+  fullName: SiaNet.Engine.IBackend.Neg(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Neg
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 337
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nNegate the value element-wise\n"
+  example: []
+  syntax:
+    content: Tensor Neg(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Neg(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Neg*
+- uid: SiaNet.Engine.IBackend.Sqrt(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sqrt(SiaNet.Engine.Tensor)
+  id: Sqrt(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sqrt(Tensor)
+  nameWithType: IBackend.Sqrt(Tensor)
+  fullName: SiaNet.Engine.IBackend.Sqrt(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sqrt
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 344
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nReturn the square root value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Sqrt(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sqrt(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Sqrt*
+- uid: SiaNet.Engine.IBackend.Exp(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Exp(SiaNet.Engine.Tensor)
+  id: Exp(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Exp(Tensor)
+  nameWithType: IBackend.Exp(Tensor)
+  fullName: SiaNet.Engine.IBackend.Exp(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Exp
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 351
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nReturn the exponential value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Exp(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Exp(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Exp*
+- uid: SiaNet.Engine.IBackend.Log(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Log(SiaNet.Engine.Tensor)
+  id: Log(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Log(Tensor)
+  nameWithType: IBackend.Log(Tensor)
+  fullName: SiaNet.Engine.IBackend.Log(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Log
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 358
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the logrithmic value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Log(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Log(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Log*
+- uid: SiaNet.Engine.IBackend.Log10(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Log10(SiaNet.Engine.Tensor)
+  id: Log10(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Log10(Tensor)
+  nameWithType: IBackend.Log10(Tensor)
+  fullName: SiaNet.Engine.IBackend.Log10(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Log10
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 365
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nReturn the base 10 logarithm of the input array, element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Log10(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Log10(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Log10*
+- uid: SiaNet.Engine.IBackend.Log1p(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Log1p(SiaNet.Engine.Tensor)
+  id: Log1p(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Log1p(Tensor)
+  nameWithType: IBackend.Log1p(Tensor)
+  fullName: SiaNet.Engine.IBackend.Log1p(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Log1p
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 372
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nReturn the natural logarithm of one plus the input array, element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Log1p(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Log1p(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Log1p*
+- uid: SiaNet.Engine.IBackend.Floor(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Floor(SiaNet.Engine.Tensor)
+  id: Floor(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Floor(Tensor)
+  nameWithType: IBackend.Floor(Tensor)
+  fullName: SiaNet.Engine.IBackend.Floor(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Floor
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 379
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the floor value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Floor(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Floor(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Floor*
+- uid: SiaNet.Engine.IBackend.Ceil(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Ceil(SiaNet.Engine.Tensor)
+  id: Ceil(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Ceil(Tensor)
+  nameWithType: IBackend.Ceil(Tensor)
+  fullName: SiaNet.Engine.IBackend.Ceil(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Ceil
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 386
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the ceil value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Ceil(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Ceil(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Ceil*
+- uid: SiaNet.Engine.IBackend.Round(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Round(SiaNet.Engine.Tensor)
+  id: Round(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Round(Tensor)
+  nameWithType: IBackend.Round(Tensor)
+  fullName: SiaNet.Engine.IBackend.Round(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Round
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 393
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the rounded to nearest integer value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Round(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Round(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Round*
+- uid: SiaNet.Engine.IBackend.Sin(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sin(SiaNet.Engine.Tensor)
+  id: Sin(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sin(Tensor)
+  nameWithType: IBackend.Sin(Tensor)
+  fullName: SiaNet.Engine.IBackend.Sin(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sin
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 400
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the sin value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Sin(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sin(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Sin*
+- uid: SiaNet.Engine.IBackend.Cos(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Cos(SiaNet.Engine.Tensor)
+  id: Cos(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Cos(Tensor)
+  nameWithType: IBackend.Cos(Tensor)
+  fullName: SiaNet.Engine.IBackend.Cos(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Cos
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 407
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the cos value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Cos(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Cos(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Cos*
+- uid: SiaNet.Engine.IBackend.Tan(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Tan(SiaNet.Engine.Tensor)
+  id: Tan(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Tan(Tensor)
+  nameWithType: IBackend.Tan(Tensor)
+  fullName: SiaNet.Engine.IBackend.Tan(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Tan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 414
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the tan value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Tan(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Tan(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Tan*
+- uid: SiaNet.Engine.IBackend.Asin(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Asin(SiaNet.Engine.Tensor)
+  id: Asin(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Asin(Tensor)
+  nameWithType: IBackend.Asin(Tensor)
+  fullName: SiaNet.Engine.IBackend.Asin(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Asin
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 421
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the invert sign value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Asin(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Asin(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Asin*
+- uid: SiaNet.Engine.IBackend.Acos(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Acos(SiaNet.Engine.Tensor)
+  id: Acos(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Acos(Tensor)
+  nameWithType: IBackend.Acos(Tensor)
+  fullName: SiaNet.Engine.IBackend.Acos(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Acos
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 428
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the invert cos value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Acos(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Acos(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Acos*
+- uid: SiaNet.Engine.IBackend.Atan(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Atan(SiaNet.Engine.Tensor)
+  id: Atan(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Atan(Tensor)
+  nameWithType: IBackend.Atan(Tensor)
+  fullName: SiaNet.Engine.IBackend.Atan(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Atan
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 435
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the invert tan value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Atan(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Atan(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Atan*
+- uid: SiaNet.Engine.IBackend.Sinh(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sinh(SiaNet.Engine.Tensor)
+  id: Sinh(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sinh(Tensor)
+  nameWithType: IBackend.Sinh(Tensor)
+  fullName: SiaNet.Engine.IBackend.Sinh(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sinh
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 442
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the hyperbolic sin value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Sinh(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sinh(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Sinh*
+- uid: SiaNet.Engine.IBackend.Cosh(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Cosh(SiaNet.Engine.Tensor)
+  id: Cosh(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Cosh(Tensor)
+  nameWithType: IBackend.Cosh(Tensor)
+  fullName: SiaNet.Engine.IBackend.Cosh(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Cosh
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 449
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the hyperbolic cos value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Cosh(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Cosh(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Cosh*
+- uid: SiaNet.Engine.IBackend.Tanh(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Tanh(SiaNet.Engine.Tensor)
+  id: Tanh(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Tanh(Tensor)
+  nameWithType: IBackend.Tanh(Tensor)
+  fullName: SiaNet.Engine.IBackend.Tanh(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Tanh
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 456
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the hyperbolic tan value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Tanh(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Tanh(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Tanh*
+- uid: SiaNet.Engine.IBackend.Sigmoid(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sigmoid(SiaNet.Engine.Tensor)
+  id: Sigmoid(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sigmoid(Tensor)
+  nameWithType: IBackend.Sigmoid(Tensor)
+  fullName: SiaNet.Engine.IBackend.Sigmoid(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sigmoid
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 463
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the sigmoid value element-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Sigmoid(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sigmoid(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Sigmoid*
+- uid: SiaNet.Engine.IBackend.Pow(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Pow(SiaNet.Engine.Tensor,System.Single)
+  id: Pow(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Pow(Tensor, Single)
+  nameWithType: IBackend.Pow(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Pow(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Pow
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 471
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nPower up the specified tensor.\n"
+  example: []
+  syntax:
+    content: Tensor Pow(Tensor x, float value)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    - id: value
+      type: System.Single
+      description: The power up value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Pow(x As Tensor, value As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Pow*
+- uid: SiaNet.Engine.IBackend.Square(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Square(SiaNet.Engine.Tensor)
+  id: Square(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Square(Tensor)
+  nameWithType: IBackend.Square(Tensor)
+  fullName: SiaNet.Engine.IBackend.Square(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Square
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 478
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nCalculate the square of tensor element-wise\n"
+  example: []
+  syntax:
+    content: Tensor Square(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Square(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Square*
+- uid: SiaNet.Engine.IBackend.Clip(SiaNet.Engine.Tensor,System.Single,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Clip(SiaNet.Engine.Tensor,System.Single,System.Single)
+  id: Clip(SiaNet.Engine.Tensor,System.Single,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Clip(Tensor, Single, Single)
+  nameWithType: IBackend.Clip(Tensor, Single, Single)
+  fullName: SiaNet.Engine.IBackend.Clip(SiaNet.Engine.Tensor, System.Single, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Clip
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 487
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nClips the specified tensor between min and max value, elemen-wise.\n"
+  example: []
+  syntax:
+    content: Tensor Clip(Tensor x, float min, float max)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor data.
+    - id: min
+      type: System.Single
+      description: The minimum value.
+    - id: max
+      type: System.Single
+      description: The maximum value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Clip(x As Tensor, min As Single, max As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Clip*
+- uid: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor)
+  id: Sum(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sum(Tensor)
+  nameWithType: IBackend.Sum(Tensor)
+  fullName: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 496
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSum of array elements overall axis\n"
+  example: []
+  syntax:
+    content: float Sum(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Function Sum(x As Tensor) As Single
+  overload: SiaNet.Engine.IBackend.Sum*
+- uid: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor,System.Int32)
+  id: Sum(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sum(Tensor, Int32)
+  nameWithType: IBackend.Sum(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 504
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSum of array elements over a given axis.\n"
+  example: []
+  syntax:
+    content: Tensor Sum(Tensor x, int dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    - id: dim
+      type: System.Int32
+      description: The dim to reduce.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sum(x As Tensor, dim As Integer) As Tensor
+  overload: SiaNet.Engine.IBackend.Sum*
+- uid: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor,System.Int32[])
+  commentId: M:SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor,System.Int32[])
+  id: Sum(SiaNet.Engine.Tensor,System.Int32[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Sum(Tensor, Int32[])
+  nameWithType: IBackend.Sum(Tensor, Int32[])
+  fullName: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor, System.Int32[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Sum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 512
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nSum of array elements over multiple axis.\n"
+  example: []
+  syntax:
+    content: Tensor Sum(Tensor x, params int[] dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The tensor.
+    - id: dim
+      type: System.Int32[]
+      description: The dimensions list.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Function Sum(x As Tensor, ParamArray dim As Integer()) As Tensor
+  overload: SiaNet.Engine.IBackend.Sum*
+  nameWithType.vb: IBackend.Sum(Tensor, Int32())
+  fullName.vb: SiaNet.Engine.IBackend.Sum(SiaNet.Engine.Tensor, System.Int32())
+  name.vb: Sum(Tensor, Int32())
+- uid: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor)
+  id: Max(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Max(Tensor)
+  nameWithType: IBackend.Max(Tensor)
+  fullName: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Max
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 514
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: float Max(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    return:
+      type: System.Single
+    content.vb: Function Max(x As Tensor) As Single
+  overload: SiaNet.Engine.IBackend.Max*
+- uid: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor,System.Int32)
+  id: Max(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Max(Tensor, Int32)
+  nameWithType: IBackend.Max(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Max
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 516
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Max(Tensor x, int dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Max(x As Tensor, dim As Integer) As Tensor
+  overload: SiaNet.Engine.IBackend.Max*
+- uid: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor,System.Int32[])
+  commentId: M:SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor,System.Int32[])
+  id: Max(SiaNet.Engine.Tensor,System.Int32[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Max(Tensor, Int32[])
+  nameWithType: IBackend.Max(Tensor, Int32[])
+  fullName: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor, System.Int32[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Max
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 518
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Max(Tensor x, params int[] dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32[]
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Max(x As Tensor, ParamArray dim As Integer()) As Tensor
+  overload: SiaNet.Engine.IBackend.Max*
+  nameWithType.vb: IBackend.Max(Tensor, Int32())
+  fullName.vb: SiaNet.Engine.IBackend.Max(SiaNet.Engine.Tensor, System.Int32())
+  name.vb: Max(Tensor, Int32())
+- uid: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor)
+  id: Min(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Min(Tensor)
+  nameWithType: IBackend.Min(Tensor)
+  fullName: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Min
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 520
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: float Min(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    return:
+      type: System.Single
+    content.vb: Function Min(x As Tensor) As Single
+  overload: SiaNet.Engine.IBackend.Min*
+- uid: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor,System.Int32)
+  id: Min(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Min(Tensor, Int32)
+  nameWithType: IBackend.Min(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Min
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 522
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Min(Tensor x, int dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Min(x As Tensor, dim As Integer) As Tensor
+  overload: SiaNet.Engine.IBackend.Min*
+- uid: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor,System.Int32[])
+  commentId: M:SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor,System.Int32[])
+  id: Min(SiaNet.Engine.Tensor,System.Int32[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Min(Tensor, Int32[])
+  nameWithType: IBackend.Min(Tensor, Int32[])
+  fullName: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor, System.Int32[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Min
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 524
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Min(Tensor x, params int[] dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32[]
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Min(x As Tensor, ParamArray dim As Integer()) As Tensor
+  overload: SiaNet.Engine.IBackend.Min*
+  nameWithType.vb: IBackend.Min(Tensor, Int32())
+  fullName.vb: SiaNet.Engine.IBackend.Min(SiaNet.Engine.Tensor, System.Int32())
+  name.vb: Min(Tensor, Int32())
+- uid: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor)
+  id: Mean(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Mean(Tensor)
+  nameWithType: IBackend.Mean(Tensor)
+  fullName: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mean
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 526
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: float Mean(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    return:
+      type: System.Single
+    content.vb: Function Mean(x As Tensor) As Single
+  overload: SiaNet.Engine.IBackend.Mean*
+- uid: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor,System.Int32)
+  id: Mean(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Mean(Tensor, Int32)
+  nameWithType: IBackend.Mean(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mean
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 528
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Mean(Tensor x, int dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Mean(x As Tensor, dim As Integer) As Tensor
+  overload: SiaNet.Engine.IBackend.Mean*
+- uid: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor,System.Int32[])
+  commentId: M:SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor,System.Int32[])
+  id: Mean(SiaNet.Engine.Tensor,System.Int32[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Mean(Tensor, Int32[])
+  nameWithType: IBackend.Mean(Tensor, Int32[])
+  fullName: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor, System.Int32[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Mean
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 530
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Mean(Tensor x, params int[] dim)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32[]
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Mean(x As Tensor, ParamArray dim As Integer()) As Tensor
+  overload: SiaNet.Engine.IBackend.Mean*
+  nameWithType.vb: IBackend.Mean(Tensor, Int32())
+  fullName.vb: SiaNet.Engine.IBackend.Mean(SiaNet.Engine.Tensor, System.Int32())
+  name.vb: Mean(Tensor, Int32())
+- uid: SiaNet.Engine.IBackend.Argmax(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Argmax(SiaNet.Engine.Tensor,System.Int32)
+  id: Argmax(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Argmax(Tensor, Int32)
+  nameWithType: IBackend.Argmax(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Argmax(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Argmax
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 532
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Argmax(Tensor x, int dim = 0)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Argmax(x As Tensor, dim As Integer = 0) As Tensor
+  overload: SiaNet.Engine.IBackend.Argmax*
+- uid: SiaNet.Engine.IBackend.Argmin(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Argmin(SiaNet.Engine.Tensor,System.Int32)
+  id: Argmin(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Argmin(Tensor, Int32)
+  nameWithType: IBackend.Argmin(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Argmin(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Argmin
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 534
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Argmin(Tensor x, int dim = 0)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dim
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Argmin(x As Tensor, dim As Integer = 0) As Tensor
+  overload: SiaNet.Engine.IBackend.Argmin*
+- uid: SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Maximum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Maximum(Tensor, Tensor)
+  nameWithType: IBackend.Maximum(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Maximum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 536
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Maximum(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Maximum(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Maximum*
+- uid: SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor,System.Single)
+  id: Maximum(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Maximum(Tensor, Single)
+  nameWithType: IBackend.Maximum(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Maximum(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Maximum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 538
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Maximum(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Maximum(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Maximum*
+- uid: SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Minimum(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Minimum(Tensor, Tensor)
+  nameWithType: IBackend.Minimum(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Minimum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 540
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Minimum(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Minimum(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Minimum*
+- uid: SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor,System.Single)
+  id: Minimum(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Minimum(Tensor, Single)
+  nameWithType: IBackend.Minimum(Tensor, Single)
+  fullName: SiaNet.Engine.IBackend.Minimum(SiaNet.Engine.Tensor, System.Single)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Minimum
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 542
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Minimum(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Minimum(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.IBackend.Minimum*
+- uid: SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor)
+  id: Transpose(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Transpose(Tensor)
+  nameWithType: IBackend.Transpose(Tensor)
+  fullName: SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Transpose
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 546
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Transpose(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Transpose(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Transpose*
+- uid: SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor,System.Int32[])
+  commentId: M:SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor,System.Int32[])
+  id: Transpose(SiaNet.Engine.Tensor,System.Int32[])
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Transpose(Tensor, Int32[])
+  nameWithType: IBackend.Transpose(Tensor, Int32[])
+  fullName: SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor, System.Int32[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Transpose
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 548
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Transpose(Tensor x, params int[] dims)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: dims
+      type: System.Int32[]
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Transpose(x As Tensor, ParamArray dims As Integer()) As Tensor
+  overload: SiaNet.Engine.IBackend.Transpose*
+  nameWithType.vb: IBackend.Transpose(Tensor, Int32())
+  fullName.vb: SiaNet.Engine.IBackend.Transpose(SiaNet.Engine.Tensor, System.Int32())
+  name.vb: Transpose(Tensor, Int32())
+- uid: SiaNet.Engine.IBackend.Dot(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Dot(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Dot(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Dot(Tensor, Tensor)
+  nameWithType: IBackend.Dot(Tensor, Tensor)
+  fullName: SiaNet.Engine.IBackend.Dot(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Dot
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 550
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Dot(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Dot(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Dot*
+- uid: SiaNet.Engine.IBackend.Diag(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Diag(SiaNet.Engine.Tensor)
+  id: Diag(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Diag(Tensor)
+  nameWithType: IBackend.Diag(Tensor)
+  fullName: SiaNet.Engine.IBackend.Diag(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Diag
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 552
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Diag(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Diag(x As Tensor) As Tensor
+  overload: SiaNet.Engine.IBackend.Diag*
+- uid: SiaNet.Engine.IBackend.Softmax(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Softmax(SiaNet.Engine.Tensor,System.Int32)
+  id: Softmax(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Softmax(Tensor, Int32)
+  nameWithType: IBackend.Softmax(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Softmax(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Softmax
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 556
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Softmax(Tensor x, int axis = -1)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: axis
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Softmax(x As Tensor, axis As Integer = -1) As Tensor
+  overload: SiaNet.Engine.IBackend.Softmax*
+- uid: SiaNet.Engine.IBackend.Softplus(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Softplus(SiaNet.Engine.Tensor,System.Int32)
+  id: Softplus(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Softplus(Tensor, Int32)
+  nameWithType: IBackend.Softplus(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.Softplus(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Softplus
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 558
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Softplus(Tensor x, int axis = -1)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: axis
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Softplus(x As Tensor, axis As Integer = -1) As Tensor
+  overload: SiaNet.Engine.IBackend.Softplus*
+- uid: SiaNet.Engine.IBackend.L2Normalize(SiaNet.Engine.Tensor,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.L2Normalize(SiaNet.Engine.Tensor,System.Int32)
+  id: L2Normalize(SiaNet.Engine.Tensor,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: L2Normalize(Tensor, Int32)
+  nameWithType: IBackend.L2Normalize(Tensor, Int32)
+  fullName: SiaNet.Engine.IBackend.L2Normalize(SiaNet.Engine.Tensor, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: L2Normalize
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 560
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor L2Normalize(Tensor x, int axis = -1)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: axis
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function L2Normalize(x As Tensor, axis As Integer = -1) As Tensor
+  overload: SiaNet.Engine.IBackend.L2Normalize*
+- uid: SiaNet.Engine.IBackend.Im2Col(SiaNet.Engine.Tensor,System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Im2Col(SiaNet.Engine.Tensor,System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  id: Im2Col(SiaNet.Engine.Tensor,System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Im2Col(Tensor, Tuple<Int32, Int32>, Int32, Int32)
+  nameWithType: IBackend.Im2Col(Tensor, Tuple<Int32, Int32>, Int32, Int32)
+  fullName: SiaNet.Engine.IBackend.Im2Col(SiaNet.Engine.Tensor, System.Tuple<System.Int32, System.Int32>, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Im2Col
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 562
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Im2Col(Tensor x, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: kernalSize
+      type: System.Tuple{System.Int32,System.Int32}
+    - id: padding
+      type: System.Int32
+    - id: stride
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Im2Col(x As Tensor, kernalSize As Tuple(Of Integer, Integer), padding As Integer = 1, stride As Integer = 1) As Tensor
+  overload: SiaNet.Engine.IBackend.Im2Col*
+  nameWithType.vb: IBackend.Im2Col(Tensor, Tuple(Of Int32, Int32), Int32, Int32)
+  fullName.vb: SiaNet.Engine.IBackend.Im2Col(SiaNet.Engine.Tensor, System.Tuple(Of System.Int32, System.Int32), System.Int32, System.Int32)
+  name.vb: Im2Col(Tensor, Tuple(Of Int32, Int32), Int32, Int32)
+- uid: SiaNet.Engine.IBackend.Col2Im(SiaNet.Engine.Tensor,System.Int64[],System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  commentId: M:SiaNet.Engine.IBackend.Col2Im(SiaNet.Engine.Tensor,System.Int64[],System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  id: Col2Im(SiaNet.Engine.Tensor,System.Int64[],System.Tuple{System.Int32,System.Int32},System.Int32,System.Int32)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Col2Im(Tensor, Int64[], Tuple<Int32, Int32>, Int32, Int32)
+  nameWithType: IBackend.Col2Im(Tensor, Int64[], Tuple<Int32, Int32>, Int32, Int32)
+  fullName: SiaNet.Engine.IBackend.Col2Im(SiaNet.Engine.Tensor, System.Int64[], System.Tuple<System.Int32, System.Int32>, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Col2Im
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 564
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
+    parameters:
+    - id: cols
+      type: SiaNet.Engine.Tensor
+    - id: x_shape
+      type: System.Int64[]
+    - id: kernalSize
+      type: System.Tuple{System.Int32,System.Int32}
+    - id: padding
+      type: System.Int32
+    - id: stride
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function Col2Im(cols As Tensor, x_shape As Long(), kernalSize As Tuple(Of Integer, Integer), padding As Integer = 1, stride As Integer = 1) As Tensor
+  overload: SiaNet.Engine.IBackend.Col2Im*
+  nameWithType.vb: IBackend.Col2Im(Tensor, Int64(), Tuple(Of Int32, Int32), Int32, Int32)
+  fullName.vb: SiaNet.Engine.IBackend.Col2Im(SiaNet.Engine.Tensor, System.Int64(), System.Tuple(Of System.Int32, System.Int32), System.Int32, System.Int32)
+  name.vb: Col2Im(Tensor, Int64(), Tuple(Of Int32, Int32), Int32, Int32)
+- uid: SiaNet.Engine.IBackend.SliceRows(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  commentId: M:SiaNet.Engine.IBackend.SliceRows(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  id: SliceRows(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: SliceRows(Tensor, Int64, Int64)
+  nameWithType: IBackend.SliceRows(Tensor, Int64, Int64)
+  fullName: SiaNet.Engine.IBackend.SliceRows(SiaNet.Engine.Tensor, System.Int64, System.Int64)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SliceRows
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 568
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor SliceRows(Tensor x, long start, long end)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: start
+      type: System.Int64
+    - id: end
+      type: System.Int64
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function SliceRows(x As Tensor, start As Long, end As Long) As Tensor
+  overload: SiaNet.Engine.IBackend.SliceRows*
+- uid: SiaNet.Engine.IBackend.SliceCols(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  commentId: M:SiaNet.Engine.IBackend.SliceCols(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  id: SliceCols(SiaNet.Engine.Tensor,System.Int64,System.Int64)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: SliceCols(Tensor, Int64, Int64)
+  nameWithType: IBackend.SliceCols(Tensor, Int64, Int64)
+  fullName: SiaNet.Engine.IBackend.SliceCols(SiaNet.Engine.Tensor, System.Int64, System.Int64)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SliceCols
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 570
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Tensor SliceCols(Tensor x, long start, long end)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    - id: start
+      type: System.Int64
+    - id: end
+      type: System.Int64
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Function SliceCols(x As Tensor, start As Long, end As Long) As Tensor
+  overload: SiaNet.Engine.IBackend.SliceCols*
+- uid: SiaNet.Engine.IBackend.GetArray(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.GetArray(SiaNet.Engine.Tensor)
+  id: GetArray(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GetArray(Tensor)
+  nameWithType: IBackend.GetArray(Tensor)
+  fullName: SiaNet.Engine.IBackend.GetArray(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetArray
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 572
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Array GetArray(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    return:
+      type: System.Array
+    content.vb: Function GetArray(x As Tensor) As Array
+  overload: SiaNet.Engine.IBackend.GetArray*
+- uid: SiaNet.Engine.IBackend.Dispose(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.IBackend.Dispose(SiaNet.Engine.Tensor)
+  id: Dispose(SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: Dispose(Tensor)
+  nameWithType: IBackend.Dispose(Tensor)
+  fullName: SiaNet.Engine.IBackend.Dispose(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Dispose
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 574
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: void Dispose(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    content.vb: Sub Dispose(x As Tensor)
+  overload: SiaNet.Engine.IBackend.Dispose*
+- uid: SiaNet.Engine.IBackend.GetActFunc
+  commentId: M:SiaNet.Engine.IBackend.GetActFunc
+  id: GetActFunc
+  parent: SiaNet.Engine.IBackend
+  langs:
+  - csharp
+  - vb
+  name: GetActFunc()
+  nameWithType: IBackend.GetActFunc()
+  fullName: SiaNet.Engine.IBackend.GetActFunc()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Backend/IBackend.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetActFunc
+    path: ../SiaNet.Engine/Backend/IBackend.cs
+    startLine: 576
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: ActivationFunc GetActFunc()
+    return:
+      type: SiaNet.Engine.Layers.ActivationFunc
+    content.vb: Function GetActFunc As ActivationFunc
+  overload: SiaNet.Engine.IBackend.GetActFunc*
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.IBackend.Epsilon*
+  commentId: Overload:SiaNet.Engine.IBackend.Epsilon
+  name: Epsilon
+  nameWithType: IBackend.Epsilon
+  fullName: SiaNet.Engine.IBackend.Epsilon
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Engine.IBackend.GetShape*
+  commentId: Overload:SiaNet.Engine.IBackend.GetShape
+  name: GetShape
+  nameWithType: IBackend.GetShape
+  fullName: SiaNet.Engine.IBackend.GetShape
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.IBackend.Eval*
+  commentId: Overload:SiaNet.Engine.IBackend.Eval
+  name: Eval
+  nameWithType: IBackend.Eval
+  fullName: SiaNet.Engine.IBackend.Eval
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Engine.IBackend.Print*
+  commentId: Overload:SiaNet.Engine.IBackend.Print
+  name: Print
+  nameWithType: IBackend.Print
+  fullName: SiaNet.Engine.IBackend.Print
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Engine.IBackend.UUID*
+  commentId: Overload:SiaNet.Engine.IBackend.UUID
+  name: UUID
+  nameWithType: IBackend.UUID
+  fullName: SiaNet.Engine.IBackend.UUID
+- uid: SiaNet.Engine.IBackend.SetDevice*
+  commentId: Overload:SiaNet.Engine.IBackend.SetDevice
+  name: SetDevice
+  nameWithType: IBackend.SetDevice
+  fullName: SiaNet.Engine.IBackend.SetDevice
+- uid: SiaNet.Engine.DeviceType
+  commentId: T:SiaNet.Engine.DeviceType
+  parent: SiaNet.Engine
+  name: DeviceType
+  nameWithType: DeviceType
+  fullName: SiaNet.Engine.DeviceType
+- uid: SiaNet.Engine.IBackend.GetDataType*
+  commentId: Overload:SiaNet.Engine.IBackend.GetDataType
+  name: GetDataType
+  nameWithType: IBackend.GetDataType
+  fullName: SiaNet.Engine.IBackend.GetDataType
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  parent: SiaNet.Engine
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType
+- uid: SiaNet.Engine.IBackend.CreateVariable*
+  commentId: Overload:SiaNet.Engine.IBackend.CreateVariable
+  name: CreateVariable
+  nameWithType: IBackend.CreateVariable
+  fullName: SiaNet.Engine.IBackend.CreateVariable
+- uid: System.Single[]
+  isExternal: true
+  name: Single[]
+  nameWithType: Single[]
+  fullName: System.Single[]
+  nameWithType.vb: Single()
+  fullName.vb: System.Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.IBackend.Reshape*
+  commentId: Overload:SiaNet.Engine.IBackend.Reshape
+  name: Reshape
+  nameWithType: IBackend.Reshape
+  fullName: SiaNet.Engine.IBackend.Reshape
+- uid: SiaNet.Engine.IBackend.Constant*
+  commentId: Overload:SiaNet.Engine.IBackend.Constant
+  name: Constant
+  nameWithType: IBackend.Constant
+  fullName: SiaNet.Engine.IBackend.Constant
+- uid: SiaNet.Engine.IBackend.RandomUniform*
+  commentId: Overload:SiaNet.Engine.IBackend.RandomUniform
+  name: RandomUniform
+  nameWithType: IBackend.RandomUniform
+  fullName: SiaNet.Engine.IBackend.RandomUniform
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Engine.IBackend.RandomNormal*
+  commentId: Overload:SiaNet.Engine.IBackend.RandomNormal
+  name: RandomNormal
+  nameWithType: IBackend.RandomNormal
+  fullName: SiaNet.Engine.IBackend.RandomNormal
+- uid: SiaNet.Engine.IBackend.RandomBernoulli*
+  commentId: Overload:SiaNet.Engine.IBackend.RandomBernoulli
+  name: RandomBernoulli
+  nameWithType: IBackend.RandomBernoulli
+  fullName: SiaNet.Engine.IBackend.RandomBernoulli
+- uid: SiaNet.Engine.IBackend.Add*
+  commentId: Overload:SiaNet.Engine.IBackend.Add
+  name: Add
+  nameWithType: IBackend.Add
+  fullName: SiaNet.Engine.IBackend.Add
+- uid: SiaNet.Engine.IBackend.Sub*
+  commentId: Overload:SiaNet.Engine.IBackend.Sub
+  name: Sub
+  nameWithType: IBackend.Sub
+  fullName: SiaNet.Engine.IBackend.Sub
+- uid: SiaNet.Engine.IBackend.Mul*
+  commentId: Overload:SiaNet.Engine.IBackend.Mul
+  name: Mul
+  nameWithType: IBackend.Mul
+  fullName: SiaNet.Engine.IBackend.Mul
+- uid: SiaNet.Engine.IBackend.Div*
+  commentId: Overload:SiaNet.Engine.IBackend.Div
+  name: Div
+  nameWithType: IBackend.Div
+  fullName: SiaNet.Engine.IBackend.Div
+- uid: SiaNet.Engine.IBackend.GreaterThan*
+  commentId: Overload:SiaNet.Engine.IBackend.GreaterThan
+  name: GreaterThan
+  nameWithType: IBackend.GreaterThan
+  fullName: SiaNet.Engine.IBackend.GreaterThan
+- uid: SiaNet.Engine.IBackend.GreaterThanEqual*
+  commentId: Overload:SiaNet.Engine.IBackend.GreaterThanEqual
+  name: GreaterThanEqual
+  nameWithType: IBackend.GreaterThanEqual
+  fullName: SiaNet.Engine.IBackend.GreaterThanEqual
+- uid: SiaNet.Engine.IBackend.LessThan*
+  commentId: Overload:SiaNet.Engine.IBackend.LessThan
+  name: LessThan
+  nameWithType: IBackend.LessThan
+  fullName: SiaNet.Engine.IBackend.LessThan
+- uid: SiaNet.Engine.IBackend.LessThanEqual*
+  commentId: Overload:SiaNet.Engine.IBackend.LessThanEqual
+  name: LessThanEqual
+  nameWithType: IBackend.LessThanEqual
+  fullName: SiaNet.Engine.IBackend.LessThanEqual
+- uid: SiaNet.Engine.IBackend.EqualTo*
+  commentId: Overload:SiaNet.Engine.IBackend.EqualTo
+  name: EqualTo
+  nameWithType: IBackend.EqualTo
+  fullName: SiaNet.Engine.IBackend.EqualTo
+- uid: SiaNet.Engine.IBackend.Tile*
+  commentId: Overload:SiaNet.Engine.IBackend.Tile
+  name: Tile
+  nameWithType: IBackend.Tile
+  fullName: SiaNet.Engine.IBackend.Tile
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Engine.IBackend.Abs*
+  commentId: Overload:SiaNet.Engine.IBackend.Abs
+  name: Abs
+  nameWithType: IBackend.Abs
+  fullName: SiaNet.Engine.IBackend.Abs
+- uid: SiaNet.Engine.IBackend.Neg*
+  commentId: Overload:SiaNet.Engine.IBackend.Neg
+  name: Neg
+  nameWithType: IBackend.Neg
+  fullName: SiaNet.Engine.IBackend.Neg
+- uid: SiaNet.Engine.IBackend.Sqrt*
+  commentId: Overload:SiaNet.Engine.IBackend.Sqrt
+  name: Sqrt
+  nameWithType: IBackend.Sqrt
+  fullName: SiaNet.Engine.IBackend.Sqrt
+- uid: SiaNet.Engine.IBackend.Exp*
+  commentId: Overload:SiaNet.Engine.IBackend.Exp
+  name: Exp
+  nameWithType: IBackend.Exp
+  fullName: SiaNet.Engine.IBackend.Exp
+- uid: SiaNet.Engine.IBackend.Log*
+  commentId: Overload:SiaNet.Engine.IBackend.Log
+  name: Log
+  nameWithType: IBackend.Log
+  fullName: SiaNet.Engine.IBackend.Log
+- uid: SiaNet.Engine.IBackend.Log10*
+  commentId: Overload:SiaNet.Engine.IBackend.Log10
+  name: Log10
+  nameWithType: IBackend.Log10
+  fullName: SiaNet.Engine.IBackend.Log10
+- uid: SiaNet.Engine.IBackend.Log1p*
+  commentId: Overload:SiaNet.Engine.IBackend.Log1p
+  name: Log1p
+  nameWithType: IBackend.Log1p
+  fullName: SiaNet.Engine.IBackend.Log1p
+- uid: SiaNet.Engine.IBackend.Floor*
+  commentId: Overload:SiaNet.Engine.IBackend.Floor
+  name: Floor
+  nameWithType: IBackend.Floor
+  fullName: SiaNet.Engine.IBackend.Floor
+- uid: SiaNet.Engine.IBackend.Ceil*
+  commentId: Overload:SiaNet.Engine.IBackend.Ceil
+  name: Ceil
+  nameWithType: IBackend.Ceil
+  fullName: SiaNet.Engine.IBackend.Ceil
+- uid: SiaNet.Engine.IBackend.Round*
+  commentId: Overload:SiaNet.Engine.IBackend.Round
+  name: Round
+  nameWithType: IBackend.Round
+  fullName: SiaNet.Engine.IBackend.Round
+- uid: SiaNet.Engine.IBackend.Sin*
+  commentId: Overload:SiaNet.Engine.IBackend.Sin
+  name: Sin
+  nameWithType: IBackend.Sin
+  fullName: SiaNet.Engine.IBackend.Sin
+- uid: SiaNet.Engine.IBackend.Cos*
+  commentId: Overload:SiaNet.Engine.IBackend.Cos
+  name: Cos
+  nameWithType: IBackend.Cos
+  fullName: SiaNet.Engine.IBackend.Cos
+- uid: SiaNet.Engine.IBackend.Tan*
+  commentId: Overload:SiaNet.Engine.IBackend.Tan
+  name: Tan
+  nameWithType: IBackend.Tan
+  fullName: SiaNet.Engine.IBackend.Tan
+- uid: SiaNet.Engine.IBackend.Asin*
+  commentId: Overload:SiaNet.Engine.IBackend.Asin
+  name: Asin
+  nameWithType: IBackend.Asin
+  fullName: SiaNet.Engine.IBackend.Asin
+- uid: SiaNet.Engine.IBackend.Acos*
+  commentId: Overload:SiaNet.Engine.IBackend.Acos
+  name: Acos
+  nameWithType: IBackend.Acos
+  fullName: SiaNet.Engine.IBackend.Acos
+- uid: SiaNet.Engine.IBackend.Atan*
+  commentId: Overload:SiaNet.Engine.IBackend.Atan
+  name: Atan
+  nameWithType: IBackend.Atan
+  fullName: SiaNet.Engine.IBackend.Atan
+- uid: SiaNet.Engine.IBackend.Sinh*
+  commentId: Overload:SiaNet.Engine.IBackend.Sinh
+  name: Sinh
+  nameWithType: IBackend.Sinh
+  fullName: SiaNet.Engine.IBackend.Sinh
+- uid: SiaNet.Engine.IBackend.Cosh*
+  commentId: Overload:SiaNet.Engine.IBackend.Cosh
+  name: Cosh
+  nameWithType: IBackend.Cosh
+  fullName: SiaNet.Engine.IBackend.Cosh
+- uid: SiaNet.Engine.IBackend.Tanh*
+  commentId: Overload:SiaNet.Engine.IBackend.Tanh
+  name: Tanh
+  nameWithType: IBackend.Tanh
+  fullName: SiaNet.Engine.IBackend.Tanh
+- uid: SiaNet.Engine.IBackend.Sigmoid*
+  commentId: Overload:SiaNet.Engine.IBackend.Sigmoid
+  name: Sigmoid
+  nameWithType: IBackend.Sigmoid
+  fullName: SiaNet.Engine.IBackend.Sigmoid
+- uid: SiaNet.Engine.IBackend.Pow*
+  commentId: Overload:SiaNet.Engine.IBackend.Pow
+  name: Pow
+  nameWithType: IBackend.Pow
+  fullName: SiaNet.Engine.IBackend.Pow
+- uid: SiaNet.Engine.IBackend.Square*
+  commentId: Overload:SiaNet.Engine.IBackend.Square
+  name: Square
+  nameWithType: IBackend.Square
+  fullName: SiaNet.Engine.IBackend.Square
+- uid: SiaNet.Engine.IBackend.Clip*
+  commentId: Overload:SiaNet.Engine.IBackend.Clip
+  name: Clip
+  nameWithType: IBackend.Clip
+  fullName: SiaNet.Engine.IBackend.Clip
+- uid: SiaNet.Engine.IBackend.Sum*
+  commentId: Overload:SiaNet.Engine.IBackend.Sum
+  name: Sum
+  nameWithType: IBackend.Sum
+  fullName: SiaNet.Engine.IBackend.Sum
+- uid: System.Int32[]
+  isExternal: true
+  name: Int32[]
+  nameWithType: Int32[]
+  fullName: System.Int32[]
+  nameWithType.vb: Int32()
+  fullName.vb: System.Int32()
+  name.vb: Int32()
+  spec.csharp:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.IBackend.Max*
+  commentId: Overload:SiaNet.Engine.IBackend.Max
+  name: Max
+  nameWithType: IBackend.Max
+  fullName: SiaNet.Engine.IBackend.Max
+- uid: SiaNet.Engine.IBackend.Min*
+  commentId: Overload:SiaNet.Engine.IBackend.Min
+  name: Min
+  nameWithType: IBackend.Min
+  fullName: SiaNet.Engine.IBackend.Min
+- uid: SiaNet.Engine.IBackend.Mean*
+  commentId: Overload:SiaNet.Engine.IBackend.Mean
+  name: Mean
+  nameWithType: IBackend.Mean
+  fullName: SiaNet.Engine.IBackend.Mean
+- uid: SiaNet.Engine.IBackend.Argmax*
+  commentId: Overload:SiaNet.Engine.IBackend.Argmax
+  name: Argmax
+  nameWithType: IBackend.Argmax
+  fullName: SiaNet.Engine.IBackend.Argmax
+- uid: SiaNet.Engine.IBackend.Argmin*
+  commentId: Overload:SiaNet.Engine.IBackend.Argmin
+  name: Argmin
+  nameWithType: IBackend.Argmin
+  fullName: SiaNet.Engine.IBackend.Argmin
+- uid: SiaNet.Engine.IBackend.Maximum*
+  commentId: Overload:SiaNet.Engine.IBackend.Maximum
+  name: Maximum
+  nameWithType: IBackend.Maximum
+  fullName: SiaNet.Engine.IBackend.Maximum
+- uid: SiaNet.Engine.IBackend.Minimum*
+  commentId: Overload:SiaNet.Engine.IBackend.Minimum
+  name: Minimum
+  nameWithType: IBackend.Minimum
+  fullName: SiaNet.Engine.IBackend.Minimum
+- uid: SiaNet.Engine.IBackend.Transpose*
+  commentId: Overload:SiaNet.Engine.IBackend.Transpose
+  name: Transpose
+  nameWithType: IBackend.Transpose
+  fullName: SiaNet.Engine.IBackend.Transpose
+- uid: SiaNet.Engine.IBackend.Dot*
+  commentId: Overload:SiaNet.Engine.IBackend.Dot
+  name: Dot
+  nameWithType: IBackend.Dot
+  fullName: SiaNet.Engine.IBackend.Dot
+- uid: SiaNet.Engine.IBackend.Diag*
+  commentId: Overload:SiaNet.Engine.IBackend.Diag
+  name: Diag
+  nameWithType: IBackend.Diag
+  fullName: SiaNet.Engine.IBackend.Diag
+- uid: SiaNet.Engine.IBackend.Softmax*
+  commentId: Overload:SiaNet.Engine.IBackend.Softmax
+  name: Softmax
+  nameWithType: IBackend.Softmax
+  fullName: SiaNet.Engine.IBackend.Softmax
+- uid: SiaNet.Engine.IBackend.Softplus*
+  commentId: Overload:SiaNet.Engine.IBackend.Softplus
+  name: Softplus
+  nameWithType: IBackend.Softplus
+  fullName: SiaNet.Engine.IBackend.Softplus
+- uid: SiaNet.Engine.IBackend.L2Normalize*
+  commentId: Overload:SiaNet.Engine.IBackend.L2Normalize
+  name: L2Normalize
+  nameWithType: IBackend.L2Normalize
+  fullName: SiaNet.Engine.IBackend.L2Normalize
+- uid: SiaNet.Engine.IBackend.Im2Col*
+  commentId: Overload:SiaNet.Engine.IBackend.Im2Col
+  name: Im2Col
+  nameWithType: IBackend.Im2Col
+  fullName: SiaNet.Engine.IBackend.Im2Col
+- uid: System.Tuple{System.Int32,System.Int32}
+  commentId: T:System.Tuple{System.Int32,System.Int32}
+  parent: System
+  definition: System.Tuple`2
+  name: Tuple<Int32, Int32>
+  nameWithType: Tuple<Int32, Int32>
+  fullName: System.Tuple<System.Int32, System.Int32>
+  nameWithType.vb: Tuple(Of Int32, Int32)
+  fullName.vb: System.Tuple(Of System.Int32, System.Int32)
+  name.vb: Tuple(Of Int32, Int32)
+  spec.csharp:
+  - uid: System.Tuple`2
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Tuple`2
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Tuple`2
+  commentId: T:System.Tuple`2
+  isExternal: true
+  name: Tuple<T1, T2>
+  nameWithType: Tuple<T1, T2>
+  fullName: System.Tuple<T1, T2>
+  nameWithType.vb: Tuple(Of T1, T2)
+  fullName.vb: System.Tuple(Of T1, T2)
+  name.vb: Tuple(Of T1, T2)
+  spec.csharp:
+  - uid: System.Tuple`2
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Tuple`2
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Engine.IBackend.Col2Im*
+  commentId: Overload:SiaNet.Engine.IBackend.Col2Im
+  name: Col2Im
+  nameWithType: IBackend.Col2Im
+  fullName: SiaNet.Engine.IBackend.Col2Im
+- uid: SiaNet.Engine.IBackend.SliceRows*
+  commentId: Overload:SiaNet.Engine.IBackend.SliceRows
+  name: SliceRows
+  nameWithType: IBackend.SliceRows
+  fullName: SiaNet.Engine.IBackend.SliceRows
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: SiaNet.Engine.IBackend.SliceCols*
+  commentId: Overload:SiaNet.Engine.IBackend.SliceCols
+  name: SliceCols
+  nameWithType: IBackend.SliceCols
+  fullName: SiaNet.Engine.IBackend.SliceCols
+- uid: SiaNet.Engine.IBackend.GetArray*
+  commentId: Overload:SiaNet.Engine.IBackend.GetArray
+  name: GetArray
+  nameWithType: IBackend.GetArray
+  fullName: SiaNet.Engine.IBackend.GetArray
+- uid: System.Array
+  commentId: T:System.Array
+  parent: System
+  isExternal: true
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: SiaNet.Engine.IBackend.Dispose*
+  commentId: Overload:SiaNet.Engine.IBackend.Dispose
+  name: Dispose
+  nameWithType: IBackend.Dispose
+  fullName: SiaNet.Engine.IBackend.Dispose
+- uid: SiaNet.Engine.IBackend.GetActFunc*
+  commentId: Overload:SiaNet.Engine.IBackend.GetActFunc
+  name: GetActFunc
+  nameWithType: IBackend.GetActFunc
+  fullName: SiaNet.Engine.IBackend.GetActFunc
+- uid: SiaNet.Engine.Layers.ActivationFunc
+  commentId: T:SiaNet.Engine.Layers.ActivationFunc
+  parent: SiaNet.Engine.Layers
+  name: ActivationFunc
+  nameWithType: ActivationFunc
+  fullName: SiaNet.Engine.Layers.ActivationFunc
+- uid: SiaNet.Engine.Layers
+  commentId: N:SiaNet.Engine.Layers
+  name: SiaNet.Engine.Layers
+  nameWithType: SiaNet.Engine.Layers
+  fullName: SiaNet.Engine.Layers

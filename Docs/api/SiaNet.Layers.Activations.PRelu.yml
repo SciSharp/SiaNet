@@ -1,0 +1,713 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.Activations.PRelu
+  commentId: T:SiaNet.Layers.Activations.PRelu
+  id: PRelu
+  parent: SiaNet.Layers.Activations
+  children:
+  - SiaNet.Layers.Activations.PRelu.#ctor(SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Int64[])
+  - SiaNet.Layers.Activations.PRelu.AlphaConstraint
+  - SiaNet.Layers.Activations.PRelu.AlphaInitializer
+  - SiaNet.Layers.Activations.PRelu.AlphaRegularizer
+  - SiaNet.Layers.Activations.PRelu.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Activations.PRelu.Forward(SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: PRelu
+  nameWithType: PRelu
+  fullName: SiaNet.Layers.Activations.PRelu
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: PRelu
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 15
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nParametric Rectified Linear Unit.\n<p>\nIt follows: f(x) = alpha* x for x&lt; 0, f(x) = x for x >= 0, where alpha is a learned array with the same shape as x.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class PRelu : BaseLayer'
+    content.vb: >-
+      Public Class PRelu
+          Inherits BaseLayer
+  seealso:
+  - linkId: SiaNet.Layers.BaseLayer
+    commentId: T:SiaNet.Layers.BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.Activations.PRelu.AlphaInitializer
+  commentId: P:SiaNet.Layers.Activations.PRelu.AlphaInitializer
+  id: AlphaInitializer
+  parent: SiaNet.Layers.Activations.PRelu
+  langs:
+  - csharp
+  - vb
+  name: AlphaInitializer
+  nameWithType: PRelu.AlphaInitializer
+  fullName: SiaNet.Layers.Activations.PRelu.AlphaInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: AlphaInitializer
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nGets or sets the initializer for the alpha parameter.\n"
+  example: []
+  syntax:
+    content: public BaseInitializer AlphaInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe alpha initializer.\n"
+    content.vb: Public Property AlphaInitializer As BaseInitializer
+  overload: SiaNet.Layers.Activations.PRelu.AlphaInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Activations.PRelu.AlphaRegularizer
+  commentId: P:SiaNet.Layers.Activations.PRelu.AlphaRegularizer
+  id: AlphaRegularizer
+  parent: SiaNet.Layers.Activations.PRelu
+  langs:
+  - csharp
+  - vb
+  name: AlphaRegularizer
+  nameWithType: PRelu.AlphaRegularizer
+  fullName: SiaNet.Layers.Activations.PRelu.AlphaRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: AlphaRegularizer
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 31
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nGets or sets the regularizer function for alpha parameter.\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer AlphaRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: "\nThe alpha regularizer.\n"
+    content.vb: Public Property AlphaRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.Activations.PRelu.AlphaRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Activations.PRelu.AlphaConstraint
+  commentId: P:SiaNet.Layers.Activations.PRelu.AlphaConstraint
+  id: AlphaConstraint
+  parent: SiaNet.Layers.Activations.PRelu
+  langs:
+  - csharp
+  - vb
+  name: AlphaConstraint
+  nameWithType: PRelu.AlphaConstraint
+  fullName: SiaNet.Layers.Activations.PRelu.AlphaConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: AlphaConstraint
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 39
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nGets or sets the constraint function for the alpha parameter.\n"
+  example: []
+  syntax:
+    content: public BaseConstraint AlphaConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+      description: "\nThe alpha constraint.\n"
+    content.vb: Public Property AlphaConstraint As BaseConstraint
+  overload: SiaNet.Layers.Activations.PRelu.AlphaConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Activations.PRelu.#ctor(SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Int64[])
+  commentId: M:SiaNet.Layers.Activations.PRelu.#ctor(SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Int64[])
+  id: '#ctor(SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Int64[])'
+  parent: SiaNet.Layers.Activations.PRelu
+  langs:
+  - csharp
+  - vb
+  name: PRelu(BaseInitializer, BaseRegularizer, BaseConstraint, Int64[])
+  nameWithType: PRelu.PRelu(BaseInitializer, BaseRegularizer, BaseConstraint, Int64[])
+  fullName: SiaNet.Layers.Activations.PRelu.PRelu(SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, System.Int64[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 58
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Layers.Activations.PRelu\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public PRelu(BaseInitializer alphaInitializer = null, BaseRegularizer alphaRegularizer = null, BaseConstraint alphaConstraint = null, params long[] sharedAxes)
+    parameters:
+    - id: alphaInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: The alpha initializer.
+    - id: alphaRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: The alpha regularizer.
+    - id: alphaConstraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: The alpha constraint.
+    - id: sharedAxes
+      type: System.Int64[]
+      description: The shared axes.
+    content.vb: Public Sub New(alphaInitializer As BaseInitializer = Nothing, alphaRegularizer As BaseRegularizer = Nothing, alphaConstraint As BaseConstraint = Nothing, ParamArray sharedAxes As Long())
+  overload: SiaNet.Layers.Activations.PRelu.#ctor*
+  nameWithType.vb: PRelu.PRelu(BaseInitializer, BaseRegularizer, BaseConstraint, Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Layers.Activations.PRelu.PRelu(SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, System.Int64())
+  name.vb: PRelu(BaseInitializer, BaseRegularizer, BaseConstraint, Int64())
+- uid: SiaNet.Layers.Activations.PRelu.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Activations.PRelu.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Activations.PRelu
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: PRelu.Forward(Tensor)
+  fullName: SiaNet.Layers.Activations.PRelu.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 72
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Activations.PRelu.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.Activations.PRelu.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Activations.PRelu.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Activations.PRelu
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: PRelu.Backward(Tensor)
+  fullName: SiaNet.Layers.Activations.PRelu.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Activations/PRelu.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Activations/PRelu.cs
+    startLine: 91
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers.Activations
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Activations.PRelu.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers.Activations
+  commentId: N:SiaNet.Layers.Activations
+  name: SiaNet.Layers.Activations
+  nameWithType: SiaNet.Layers.Activations
+  fullName: SiaNet.Layers.Activations
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.Activations.PRelu.AlphaInitializer*
+  commentId: Overload:SiaNet.Layers.Activations.PRelu.AlphaInitializer
+  name: AlphaInitializer
+  nameWithType: PRelu.AlphaInitializer
+  fullName: SiaNet.Layers.Activations.PRelu.AlphaInitializer
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: SiaNet.Layers.Activations.PRelu.AlphaRegularizer*
+  commentId: Overload:SiaNet.Layers.Activations.PRelu.AlphaRegularizer
+  name: AlphaRegularizer
+  nameWithType: PRelu.AlphaRegularizer
+  fullName: SiaNet.Layers.Activations.PRelu.AlphaRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: SiaNet.Layers.Activations.PRelu.AlphaConstraint*
+  commentId: Overload:SiaNet.Layers.Activations.PRelu.AlphaConstraint
+  name: AlphaConstraint
+  nameWithType: PRelu.AlphaConstraint
+  fullName: SiaNet.Layers.Activations.PRelu.AlphaConstraint
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Layers.Activations.PRelu
+  commentId: T:SiaNet.Layers.Activations.PRelu
+  name: PRelu
+  nameWithType: PRelu
+  fullName: SiaNet.Layers.Activations.PRelu
+- uid: SiaNet.Layers.Activations.PRelu.#ctor*
+  commentId: Overload:SiaNet.Layers.Activations.PRelu.#ctor
+  name: PRelu
+  nameWithType: PRelu.PRelu
+  fullName: SiaNet.Layers.Activations.PRelu.PRelu
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Activations.PRelu.Forward*
+  commentId: Overload:SiaNet.Layers.Activations.PRelu.Forward
+  name: Forward
+  nameWithType: PRelu.Forward
+  fullName: SiaNet.Layers.Activations.PRelu.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Activations.PRelu.Backward*
+  commentId: Overload:SiaNet.Layers.Activations.PRelu.Backward
+  name: Backward
+  nameWithType: PRelu.Backward
+  fullName: SiaNet.Layers.Activations.PRelu.Backward

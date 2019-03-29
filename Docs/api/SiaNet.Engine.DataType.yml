@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  id: DataType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.DataType.Float32
+  - SiaNet.Engine.DataType.Float64
+  - SiaNet.Engine.DataType.Int32
+  - SiaNet.Engine.DataType.Int8
+  langs:
+  - csharp
+  - vb
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DataType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 9
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nData type for the tensor\n"
+  example: []
+  syntax:
+    content: public enum DataType
+    content.vb: Public Enum DataType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.DataType.Float32
+  commentId: F:SiaNet.Engine.DataType.Float32
+  id: Float32
+  parent: SiaNet.Engine.DataType
+  langs:
+  - csharp
+  - vb
+  name: Float32
+  nameWithType: DataType.Float32
+  fullName: SiaNet.Engine.DataType.Float32
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Float32
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 11
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Float32 = 0
+    return:
+      type: SiaNet.Engine.DataType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.DataType.Float64
+  commentId: F:SiaNet.Engine.DataType.Float64
+  id: Float64
+  parent: SiaNet.Engine.DataType
+  langs:
+  - csharp
+  - vb
+  name: Float64
+  nameWithType: DataType.Float64
+  fullName: SiaNet.Engine.DataType.Float64
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Float64
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 12
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Float64 = 1
+    return:
+      type: SiaNet.Engine.DataType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.DataType.Int8
+  commentId: F:SiaNet.Engine.DataType.Int8
+  id: Int8
+  parent: SiaNet.Engine.DataType
+  langs:
+  - csharp
+  - vb
+  name: Int8
+  nameWithType: DataType.Int8
+  fullName: SiaNet.Engine.DataType.Int8
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Int8
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 13
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Int8 = 2
+    return:
+      type: SiaNet.Engine.DataType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.DataType.Int32
+  commentId: F:SiaNet.Engine.DataType.Int32
+  id: Int32
+  parent: SiaNet.Engine.DataType
+  langs:
+  - csharp
+  - vb
+  name: Int32
+  nameWithType: DataType.Int32
+  fullName: SiaNet.Engine.DataType.Int32
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Int32
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 14
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: Int32 = 3
+    return:
+      type: SiaNet.Engine.DataType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  parent: SiaNet.Engine
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType

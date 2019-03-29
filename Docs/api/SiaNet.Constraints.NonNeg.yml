@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Constraints.NonNeg
+  commentId: T:SiaNet.Constraints.NonNeg
+  id: NonNeg
+  parent: SiaNet.Constraints
+  children:
+  - SiaNet.Constraints.NonNeg.#ctor
+  langs:
+  - csharp
+  - vb
+  name: NonNeg
+  nameWithType: NonNeg
+  fullName: SiaNet.Constraints.NonNeg
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Constraints/NonNeg.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: NonNeg
+    path: ../SiaNet/Constraints/NonNeg.cs
+    startLine: 11
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nConstrains the weights to be non-negative.\n"
+  example: []
+  syntax:
+    content: 'public class NonNeg : BaseConstraint'
+    content.vb: >-
+      Public Class NonNeg
+          Inherits BaseConstraint
+  seealso:
+  - linkId: SiaNet.Constraints.BaseConstraint
+    commentId: T:SiaNet.Constraints.BaseConstraint
+  inheritance:
+  - System.Object
+  - SiaNet.Constraints.BaseConstraint
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Constraints.NonNeg.#ctor
+  commentId: M:SiaNet.Constraints.NonNeg.#ctor
+  id: '#ctor'
+  parent: SiaNet.Constraints.NonNeg
+  langs:
+  - csharp
+  - vb
+  name: NonNeg()
+  nameWithType: NonNeg.NonNeg()
+  fullName: SiaNet.Constraints.NonNeg.NonNeg()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Constraints/NonNeg.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Constraints/NonNeg.cs
+    startLine: 16
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Constraints.NonNeg\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public NonNeg()
+    content.vb: Public Sub New
+  overload: SiaNet.Constraints.NonNeg.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Constraints.NonNeg
+  commentId: T:SiaNet.Constraints.NonNeg
+  name: NonNeg
+  nameWithType: NonNeg
+  fullName: SiaNet.Constraints.NonNeg
+- uid: SiaNet.Constraints.NonNeg.#ctor*
+  commentId: Overload:SiaNet.Constraints.NonNeg.#ctor
+  name: NonNeg
+  nameWithType: NonNeg.NonNeg
+  fullName: SiaNet.Constraints.NonNeg.NonNeg

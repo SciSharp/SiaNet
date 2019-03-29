@@ -1,0 +1,294 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Initializers.GlorotNormal
+  commentId: T:SiaNet.Initializers.GlorotNormal
+  id: GlorotNormal
+  parent: SiaNet.Initializers
+  children:
+  - SiaNet.Initializers.GlorotNormal.#ctor(System.Nullable{System.Int32})
+  langs:
+  - csharp
+  - vb
+  name: GlorotNormal
+  nameWithType: GlorotNormal
+  fullName: SiaNet.Initializers.GlorotNormal
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Initializers/GlorotNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GlorotNormal
+    path: ../SiaNet/Initializers/GlorotNormal.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nGlorot normal initializer, also called Xavier normal initializer.\n<p>\nIt draws samples from a truncated normal distribution centered on 0 with stddev = sqrt(2 / (fan_in + fan_out)) where fan_in is the number of input units in the weight tensor and fan_out is the number of output units in the weight tensor.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class GlorotNormal : VarianceScaling'
+    content.vb: >-
+      Public Class GlorotNormal
+          Inherits VarianceScaling
+  seealso:
+  - linkId: SiaNet.Initializers.VarianceScaling
+    commentId: T:SiaNet.Initializers.VarianceScaling
+  inheritance:
+  - System.Object
+  - SiaNet.Initializers.BaseInitializer
+  - SiaNet.Initializers.VarianceScaling
+  inheritedMembers:
+  - SiaNet.Initializers.VarianceScaling.Scale
+  - SiaNet.Initializers.VarianceScaling.Mode
+  - SiaNet.Initializers.VarianceScaling.Distribution
+  - SiaNet.Initializers.VarianceScaling.Seed
+  - SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  - SiaNet.Initializers.BaseInitializer.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Initializers.GlorotNormal.#ctor(System.Nullable{System.Int32})
+  commentId: M:SiaNet.Initializers.GlorotNormal.#ctor(System.Nullable{System.Int32})
+  id: '#ctor(System.Nullable{System.Int32})'
+  parent: SiaNet.Initializers.GlorotNormal
+  langs:
+  - csharp
+  - vb
+  name: GlorotNormal(Nullable<Int32>)
+  nameWithType: GlorotNormal.GlorotNormal(Nullable<Int32>)
+  fullName: SiaNet.Initializers.GlorotNormal.GlorotNormal(System.Nullable<System.Int32>)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Initializers/GlorotNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Initializers/GlorotNormal.cs
+    startLine: 15
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Initializers.GlorotNormal\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public GlorotNormal(int? seed = default(int? ))
+    parameters:
+    - id: seed
+      type: System.Nullable{System.Int32}
+      description: Used to seed the random generator.
+    content.vb: Public Sub New(seed As Integer? = Nothing)
+  overload: SiaNet.Initializers.GlorotNormal.#ctor*
+  nameWithType.vb: GlorotNormal.GlorotNormal(Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Initializers.GlorotNormal.GlorotNormal(System.Nullable(Of System.Int32))
+  name.vb: GlorotNormal(Nullable(Of Int32))
+references:
+- uid: SiaNet.Initializers.VarianceScaling
+  commentId: T:SiaNet.Initializers.VarianceScaling
+  parent: SiaNet.Initializers
+  name: VarianceScaling
+  nameWithType: VarianceScaling
+  fullName: SiaNet.Initializers.VarianceScaling
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers.VarianceScaling.Scale
+  commentId: P:SiaNet.Initializers.VarianceScaling.Scale
+  parent: SiaNet.Initializers.VarianceScaling
+  name: Scale
+  nameWithType: VarianceScaling.Scale
+  fullName: SiaNet.Initializers.VarianceScaling.Scale
+- uid: SiaNet.Initializers.VarianceScaling.Mode
+  commentId: P:SiaNet.Initializers.VarianceScaling.Mode
+  parent: SiaNet.Initializers.VarianceScaling
+  name: Mode
+  nameWithType: VarianceScaling.Mode
+  fullName: SiaNet.Initializers.VarianceScaling.Mode
+- uid: SiaNet.Initializers.VarianceScaling.Distribution
+  commentId: P:SiaNet.Initializers.VarianceScaling.Distribution
+  parent: SiaNet.Initializers.VarianceScaling
+  name: Distribution
+  nameWithType: VarianceScaling.Distribution
+  fullName: SiaNet.Initializers.VarianceScaling.Distribution
+- uid: SiaNet.Initializers.VarianceScaling.Seed
+  commentId: P:SiaNet.Initializers.VarianceScaling.Seed
+  parent: SiaNet.Initializers.VarianceScaling
+  name: Seed
+  nameWithType: VarianceScaling.Seed
+  fullName: SiaNet.Initializers.VarianceScaling.Seed
+- uid: SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  parent: SiaNet.Initializers.VarianceScaling
+  isExternal: true
+  name: Generate(Int64[])
+  nameWithType: VarianceScaling.Generate(Int64[])
+  fullName: SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+  nameWithType.vb: VarianceScaling.Generate(Int64())
+  fullName.vb: SiaNet.Initializers.VarianceScaling.Generate(System.Int64())
+  name.vb: Generate(Int64())
+  spec.csharp:
+  - uid: SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+    name: Generate
+    nameWithType: VarianceScaling.Generate
+    fullName: SiaNet.Initializers.VarianceScaling.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Initializers.VarianceScaling.Generate(System.Int64[])
+    name: Generate
+    nameWithType: VarianceScaling.Generate
+    fullName: SiaNet.Initializers.VarianceScaling.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Initializers.BaseInitializer.Name
+  commentId: P:SiaNet.Initializers.BaseInitializer.Name
+  parent: SiaNet.Initializers.BaseInitializer
+  name: Name
+  nameWithType: BaseInitializer.Name
+  fullName: SiaNet.Initializers.BaseInitializer.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Initializers.GlorotNormal
+  commentId: T:SiaNet.Initializers.GlorotNormal
+  name: GlorotNormal
+  nameWithType: GlorotNormal
+  fullName: SiaNet.Initializers.GlorotNormal
+- uid: SiaNet.Initializers.GlorotNormal.#ctor*
+  commentId: Overload:SiaNet.Initializers.GlorotNormal.#ctor
+  name: GlorotNormal
+  nameWithType: GlorotNormal.GlorotNormal
+  fullName: SiaNet.Initializers.GlorotNormal.GlorotNormal
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )

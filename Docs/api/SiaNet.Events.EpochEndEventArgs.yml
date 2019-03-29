@@ -1,0 +1,473 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Events.EpochEndEventArgs
+  commentId: T:SiaNet.Events.EpochEndEventArgs
+  id: EpochEndEventArgs
+  parent: SiaNet.Events
+  children:
+  - SiaNet.Events.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
+  - SiaNet.Events.EpochEndEventArgs.Duration
+  - SiaNet.Events.EpochEndEventArgs.Epoch
+  - SiaNet.Events.EpochEndEventArgs.Loss
+  - SiaNet.Events.EpochEndEventArgs.Metric
+  - SiaNet.Events.EpochEndEventArgs.SamplesSeen
+  - SiaNet.Events.EpochEndEventArgs.ValidationLoss
+  - SiaNet.Events.EpochEndEventArgs.ValidationMetric
+  langs:
+  - csharp
+  - vb
+  name: EpochEndEventArgs
+  nameWithType: EpochEndEventArgs
+  fullName: SiaNet.Events.EpochEndEventArgs
+  type: Class
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: EpochEndEventArgs
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 121
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nEvent triggered when the training epoch ends\n"
+  example: []
+  syntax:
+    content: 'public class EpochEndEventArgs : EventArgs'
+    content.vb: >-
+      Public Class EpochEndEventArgs
+          Inherits EventArgs
+  seealso:
+  - linkId: System.EventArgs
+    commentId: T:System.EventArgs
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  inheritedMembers:
+  - System.EventArgs.Empty
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Events.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
+  commentId: M:SiaNet.Events.EpochEndEventArgs.#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)
+  id: '#ctor(System.Int32,System.Int64,System.Single,System.Single,System.Single,System.Single,System.Int64)'
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: EpochEndEventArgs(Int32, Int64, Single, Single, Single, Single, Int64)
+  nameWithType: EpochEndEventArgs.EpochEndEventArgs(Int32, Int64, Single, Single, Single, Single, Int64)
+  fullName: SiaNet.Events.EpochEndEventArgs.EpochEndEventArgs(System.Int32, System.Int64, System.Single, System.Single, System.Single, System.Single, System.Int64)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 133
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Events.EpochEndEventArgs\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public EpochEndEventArgs(int epoch, long samplesSeen, float loss, float validationLoss, float metric, float validationMetric, long duration)
+    parameters:
+    - id: epoch
+      type: System.Int32
+      description: The current epoch number.
+    - id: samplesSeen
+      type: System.Int64
+      description: The number of samples seen during this training for the current epoch.
+    - id: loss
+      type: System.Single
+      description: The loss value for the current epoch.
+    - id: validationLoss
+      type: System.Single
+      description: The validation loss for the epoch.
+    - id: metric
+      type: System.Single
+      description: The metric value for the epoch.
+    - id: validationMetric
+      type: System.Single
+      description: The validation metric value for the epoch.
+    - id: duration
+      type: System.Int64
+      description: The time took to complete the epoch. In milliseconds
+    content.vb: Public Sub New(epoch As Integer, samplesSeen As Long, loss As Single, validationLoss As Single, metric As Single, validationMetric As Single, duration As Long)
+  overload: SiaNet.Events.EpochEndEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Events.EpochEndEventArgs.Epoch
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Epoch
+  id: Epoch
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Epoch
+  nameWithType: EpochEndEventArgs.Epoch
+  fullName: SiaNet.Events.EpochEndEventArgs.Epoch
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epoch
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 157
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the current epoch.\n"
+  example: []
+  syntax:
+    content: public int Epoch { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe epoch.\n"
+    content.vb: Public ReadOnly Property Epoch As Integer
+  overload: SiaNet.Events.EpochEndEventArgs.Epoch*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.EpochEndEventArgs.Loss
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Loss
+  id: Loss
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Loss
+  nameWithType: EpochEndEventArgs.Loss
+  fullName: SiaNet.Events.EpochEndEventArgs.Loss
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Loss
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 165
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the loss value for the current epoch.\n"
+  example: []
+  syntax:
+    content: public float Loss { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe loss.\n"
+    content.vb: Public ReadOnly Property Loss As Single
+  overload: SiaNet.Events.EpochEndEventArgs.Loss*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.EpochEndEventArgs.Metric
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Metric
+  id: Metric
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Metric
+  nameWithType: EpochEndEventArgs.Metric
+  fullName: SiaNet.Events.EpochEndEventArgs.Metric
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Metric
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 173
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the metric value for the current epoch.\n"
+  example: []
+  syntax:
+    content: public float Metric { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe metric.\n"
+    content.vb: Public ReadOnly Property Metric As Single
+  overload: SiaNet.Events.EpochEndEventArgs.Metric*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.EpochEndEventArgs.SamplesSeen
+  commentId: P:SiaNet.Events.EpochEndEventArgs.SamplesSeen
+  id: SamplesSeen
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: SamplesSeen
+  nameWithType: EpochEndEventArgs.SamplesSeen
+  fullName: SiaNet.Events.EpochEndEventArgs.SamplesSeen
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SamplesSeen
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 181
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the nymber of samples seen during epoch training.\n"
+  example: []
+  syntax:
+    content: public long SamplesSeen { get; }
+    parameters: []
+    return:
+      type: System.Int64
+      description: "\nThe samples seen.\n"
+    content.vb: Public ReadOnly Property SamplesSeen As Long
+  overload: SiaNet.Events.EpochEndEventArgs.SamplesSeen*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationLoss
+  commentId: P:SiaNet.Events.EpochEndEventArgs.ValidationLoss
+  id: ValidationLoss
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: ValidationLoss
+  nameWithType: EpochEndEventArgs.ValidationLoss
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationLoss
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ValidationLoss
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 189
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the validation loss value for the current epoch.\n"
+  example: []
+  syntax:
+    content: public float ValidationLoss { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe validation loss.\n"
+    content.vb: Public ReadOnly Property ValidationLoss As Single
+  overload: SiaNet.Events.EpochEndEventArgs.ValidationLoss*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationMetric
+  commentId: P:SiaNet.Events.EpochEndEventArgs.ValidationMetric
+  id: ValidationMetric
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: ValidationMetric
+  nameWithType: EpochEndEventArgs.ValidationMetric
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationMetric
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ValidationMetric
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 197
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the validation metric value for the current epoch.\n"
+  example: []
+  syntax:
+    content: public float ValidationMetric { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe validation metric.\n"
+    content.vb: Public ReadOnly Property ValidationMetric As Single
+  overload: SiaNet.Events.EpochEndEventArgs.ValidationMetric*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.EpochEndEventArgs.Duration
+  commentId: P:SiaNet.Events.EpochEndEventArgs.Duration
+  id: Duration
+  parent: SiaNet.Events.EpochEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Duration
+  nameWithType: EpochEndEventArgs.Duration
+  fullName: SiaNet.Events.EpochEndEventArgs.Duration
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Duration
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 205
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the time taken to complete the epoch. In milliseconds.\n"
+  example: []
+  syntax:
+    content: public long Duration { get; }
+    parameters: []
+    return:
+      type: System.Int64
+      description: "\nThe duration.\n"
+    content.vb: Public ReadOnly Property Duration As Long
+  overload: SiaNet.Events.EpochEndEventArgs.Duration*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: System.EventArgs
+  commentId: T:System.EventArgs
+  parent: System
+  isExternal: true
+  name: EventArgs
+  nameWithType: EventArgs
+  fullName: System.EventArgs
+- uid: SiaNet.Events
+  commentId: N:SiaNet.Events
+  name: SiaNet.Events
+  nameWithType: SiaNet.Events
+  fullName: SiaNet.Events
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.EventArgs.Empty
+  commentId: F:System.EventArgs.Empty
+  parent: System.EventArgs
+  isExternal: true
+  name: Empty
+  nameWithType: EventArgs.Empty
+  fullName: System.EventArgs.Empty
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Events.EpochEndEventArgs
+  commentId: T:SiaNet.Events.EpochEndEventArgs
+  name: EpochEndEventArgs
+  nameWithType: EpochEndEventArgs
+  fullName: SiaNet.Events.EpochEndEventArgs
+- uid: SiaNet.Events.EpochEndEventArgs.#ctor*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.#ctor
+  name: EpochEndEventArgs
+  nameWithType: EpochEndEventArgs.EpochEndEventArgs
+  fullName: SiaNet.Events.EpochEndEventArgs.EpochEndEventArgs
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Events.EpochEndEventArgs.Epoch*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Epoch
+  name: Epoch
+  nameWithType: EpochEndEventArgs.Epoch
+  fullName: SiaNet.Events.EpochEndEventArgs.Epoch
+- uid: SiaNet.Events.EpochEndEventArgs.Loss*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Loss
+  name: Loss
+  nameWithType: EpochEndEventArgs.Loss
+  fullName: SiaNet.Events.EpochEndEventArgs.Loss
+- uid: SiaNet.Events.EpochEndEventArgs.Metric*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Metric
+  name: Metric
+  nameWithType: EpochEndEventArgs.Metric
+  fullName: SiaNet.Events.EpochEndEventArgs.Metric
+- uid: SiaNet.Events.EpochEndEventArgs.SamplesSeen*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.SamplesSeen
+  name: SamplesSeen
+  nameWithType: EpochEndEventArgs.SamplesSeen
+  fullName: SiaNet.Events.EpochEndEventArgs.SamplesSeen
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationLoss*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.ValidationLoss
+  name: ValidationLoss
+  nameWithType: EpochEndEventArgs.ValidationLoss
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationLoss
+- uid: SiaNet.Events.EpochEndEventArgs.ValidationMetric*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.ValidationMetric
+  name: ValidationMetric
+  nameWithType: EpochEndEventArgs.ValidationMetric
+  fullName: SiaNet.Events.EpochEndEventArgs.ValidationMetric
+- uid: SiaNet.Events.EpochEndEventArgs.Duration*
+  commentId: Overload:SiaNet.Events.EpochEndEventArgs.Duration
+  name: Duration
+  nameWithType: EpochEndEventArgs.Duration
+  fullName: SiaNet.Events.EpochEndEventArgs.Duration

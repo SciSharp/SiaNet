@@ -1,0 +1,293 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.MetricType
+  commentId: T:SiaNet.Engine.MetricType
+  id: MetricType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.MetricType.Accuracy
+  - SiaNet.Engine.MetricType.BinaryAccurary
+  - SiaNet.Engine.MetricType.MAE
+  - SiaNet.Engine.MetricType.MAPE
+  - SiaNet.Engine.MetricType.MSE
+  - SiaNet.Engine.MetricType.MSLE
+  - SiaNet.Engine.MetricType.None
+  langs:
+  - csharp
+  - vb
+  name: MetricType
+  nameWithType: MetricType
+  fullName: SiaNet.Engine.MetricType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MetricType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 171
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nTypes of metric functions\n"
+  example: []
+  syntax:
+    content: public enum MetricType
+    content.vb: Public Enum MetricType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.MetricType.None
+  commentId: F:SiaNet.Engine.MetricType.None
+  id: None
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: MetricType.None
+  fullName: SiaNet.Engine.MetricType.None
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: None
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 176
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nNone\n"
+  example: []
+  syntax:
+    content: None = 0
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.MetricType.Accuracy
+  commentId: F:SiaNet.Engine.MetricType.Accuracy
+  id: Accuracy
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: Accuracy
+  nameWithType: MetricType.Accuracy
+  fullName: SiaNet.Engine.MetricType.Accuracy
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Accuracy
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 180
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe accuracy metric\n"
+  example: []
+  syntax:
+    content: Accuracy = 1
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.MetricType.BinaryAccurary
+  commentId: F:SiaNet.Engine.MetricType.BinaryAccurary
+  id: BinaryAccurary
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: BinaryAccurary
+  nameWithType: MetricType.BinaryAccurary
+  fullName: SiaNet.Engine.MetricType.BinaryAccurary
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BinaryAccurary
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 184
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe binary accurary metric\n"
+  example: []
+  syntax:
+    content: BinaryAccurary = 2
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.MetricType.MSE
+  commentId: F:SiaNet.Engine.MetricType.MSE
+  id: MSE
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: MSE
+  nameWithType: MetricType.MSE
+  fullName: SiaNet.Engine.MetricType.MSE
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MSE
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 188
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean squared error metric\n"
+  example: []
+  syntax:
+    content: MSE = 3
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.MetricType.MAE
+  commentId: F:SiaNet.Engine.MetricType.MAE
+  id: MAE
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: MAE
+  nameWithType: MetricType.MAE
+  fullName: SiaNet.Engine.MetricType.MAE
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MAE
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 192
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean absolute  metric\n"
+  example: []
+  syntax:
+    content: MAE = 4
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.MetricType.MAPE
+  commentId: F:SiaNet.Engine.MetricType.MAPE
+  id: MAPE
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: MAPE
+  nameWithType: MetricType.MAPE
+  fullName: SiaNet.Engine.MetricType.MAPE
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MAPE
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 196
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean absolute percentage metric\n"
+  example: []
+  syntax:
+    content: MAPE = 5
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.MetricType.MSLE
+  commentId: F:SiaNet.Engine.MetricType.MSLE
+  id: MSLE
+  parent: SiaNet.Engine.MetricType
+  langs:
+  - csharp
+  - vb
+  name: MSLE
+  nameWithType: MetricType.MSLE
+  fullName: SiaNet.Engine.MetricType.MSLE
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MSLE
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 200
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe mean square log metric\n"
+  example: []
+  syntax:
+    content: MSLE = 6
+    return:
+      type: SiaNet.Engine.MetricType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.MetricType
+  commentId: T:SiaNet.Engine.MetricType
+  parent: SiaNet.Engine
+  name: MetricType
+  nameWithType: MetricType
+  fullName: SiaNet.Engine.MetricType

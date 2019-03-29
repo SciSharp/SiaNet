@@ -1,0 +1,333 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Losses.MeanSquaredError
+  commentId: T:SiaNet.Losses.MeanSquaredError
+  id: MeanSquaredError
+  parent: SiaNet.Losses
+  children:
+  - SiaNet.Losses.MeanSquaredError.#ctor
+  - SiaNet.Losses.MeanSquaredError.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.MeanSquaredError.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: MeanSquaredError
+  nameWithType: MeanSquaredError
+  fullName: SiaNet.Losses.MeanSquaredError
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Losses/MeanSquaredError.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MeanSquaredError
+    path: ../SiaNet/Losses/MeanSquaredError.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nThe mean squared error (MSE) or mean squared deviation (MSD) of an estimator (of a procedure for estimating an unobserved quantity) measures the average of the squares of the errors—that is, the average squared difference between the estimated values and what is estimated.\n"
+  example: []
+  syntax:
+    content: 'public class MeanSquaredError : BaseLoss'
+    content.vb: >-
+      Public Class MeanSquaredError
+          Inherits BaseLoss
+  seealso:
+  - linkId: SiaNet.Losses.BaseLoss
+    commentId: T:SiaNet.Losses.BaseLoss
+  inheritance:
+  - System.Object
+  - SiaNet.Losses.BaseLoss
+  inheritedMembers:
+  - SiaNet.Losses.BaseLoss.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Losses.MeanSquaredError.#ctor
+  commentId: M:SiaNet.Losses.MeanSquaredError.#ctor
+  id: '#ctor'
+  parent: SiaNet.Losses.MeanSquaredError
+  langs:
+  - csharp
+  - vb
+  name: MeanSquaredError()
+  nameWithType: MeanSquaredError.MeanSquaredError()
+  fullName: SiaNet.Losses.MeanSquaredError.MeanSquaredError()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Losses/MeanSquaredError.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Losses/MeanSquaredError.cs
+    startLine: 13
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Losses.MeanSquaredError\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public MeanSquaredError()
+    content.vb: Public Sub New
+  overload: SiaNet.Losses.MeanSquaredError.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.MeanSquaredError.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.MeanSquaredError.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.MeanSquaredError
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor, Tensor)
+  nameWithType: MeanSquaredError.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.MeanSquaredError.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/MeanSquaredError.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Losses/MeanSquaredError.cs
+    startLine: 25
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nForwards the inputs and calculate the loss.\n"
+  example: []
+  syntax:
+    content: public override Tensor Forward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Forward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.MeanSquaredError.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Losses.MeanSquaredError.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.MeanSquaredError.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.MeanSquaredError
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor, Tensor)
+  nameWithType: MeanSquaredError.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.MeanSquaredError.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/MeanSquaredError.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Losses/MeanSquaredError.cs
+    startLine: 36
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nBackpropagation method to calculate gradient of the loss function\n"
+  example: []
+  syntax:
+    content: public override Tensor Backward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Backward(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Losses.MeanSquaredError.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Losses.BaseLoss
+  commentId: T:SiaNet.Losses.BaseLoss
+  parent: SiaNet.Losses
+  name: BaseLoss
+  nameWithType: BaseLoss
+  fullName: SiaNet.Losses.BaseLoss
+- uid: SiaNet.Losses
+  commentId: N:SiaNet.Losses
+  name: SiaNet.Losses
+  nameWithType: SiaNet.Losses
+  fullName: SiaNet.Losses
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Losses.BaseLoss.Name
+  commentId: P:SiaNet.Losses.BaseLoss.Name
+  parent: SiaNet.Losses.BaseLoss
+  name: Name
+  nameWithType: BaseLoss.Name
+  fullName: SiaNet.Losses.BaseLoss.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Losses.MeanSquaredError
+  commentId: T:SiaNet.Losses.MeanSquaredError
+  name: MeanSquaredError
+  nameWithType: MeanSquaredError
+  fullName: SiaNet.Losses.MeanSquaredError
+- uid: SiaNet.Losses.MeanSquaredError.#ctor*
+  commentId: Overload:SiaNet.Losses.MeanSquaredError.#ctor
+  name: MeanSquaredError
+  nameWithType: MeanSquaredError.MeanSquaredError
+  fullName: SiaNet.Losses.MeanSquaredError.MeanSquaredError
+- uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Forward(Tensor, Tensor)
+  nameWithType: BaseLoss.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLoss.Forward
+    fullName: SiaNet.Losses.BaseLoss.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.MeanSquaredError.Forward*
+  commentId: Overload:SiaNet.Losses.MeanSquaredError.Forward
+  name: Forward
+  nameWithType: MeanSquaredError.Forward
+  fullName: SiaNet.Losses.MeanSquaredError.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  name: Backward(Tensor, Tensor)
+  nameWithType: BaseLoss.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLoss.Backward
+    fullName: SiaNet.Losses.BaseLoss.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Losses.MeanSquaredError.Backward*
+  commentId: Overload:SiaNet.Losses.MeanSquaredError.Backward
+  name: Backward
+  nameWithType: MeanSquaredError.Backward
+  fullName: SiaNet.Losses.MeanSquaredError.Backward

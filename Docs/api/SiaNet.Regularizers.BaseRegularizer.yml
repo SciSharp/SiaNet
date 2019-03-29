@@ -1,0 +1,170 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  id: BaseRegularizer
+  parent: SiaNet.Regularizers
+  children:
+  - SiaNet.Regularizers.BaseRegularizer.#ctor(System.Single,System.Single)
+  - SiaNet.Regularizers.BaseRegularizer.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Regularizers/BaseRegularizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseRegularizer
+    path: ../SiaNet/Regularizers/BaseRegularizer.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Regularizers
+  summary: "\nRegularizers allow to apply penalties on layer parameters or layer activity during optimization. These penalties are incorporated in the loss function that the network optimizes.\n<p>The penalties are applied on a per-layer basis.The exact API will depend on the layer, but the layers Dense, Conv1D, Conv2D and Conv3D have a unified API.</p>\n"
+  example: []
+  syntax:
+    content: public abstract class BaseRegularizer
+    content.vb: Public MustInherit Class BaseRegularizer
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Regularizers.L1L2
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Regularizers.BaseRegularizer.Name
+  commentId: P:SiaNet.Regularizers.BaseRegularizer.Name
+  id: Name
+  parent: SiaNet.Regularizers.BaseRegularizer
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseRegularizer.Name
+  fullName: SiaNet.Regularizers.BaseRegularizer.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Regularizers/BaseRegularizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet/Regularizers/BaseRegularizer.cs
+    startLine: 18
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Regularizers
+  summary: "\nGets or sets the name of the regularizer function\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe name.\n"
+    content.vb: Public Property Name As String
+  overload: SiaNet.Regularizers.BaseRegularizer.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Regularizers.BaseRegularizer.#ctor(System.Single,System.Single)
+  commentId: M:SiaNet.Regularizers.BaseRegularizer.#ctor(System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single)'
+  parent: SiaNet.Regularizers.BaseRegularizer
+  langs:
+  - csharp
+  - vb
+  name: BaseRegularizer(Single, Single)
+  nameWithType: BaseRegularizer.BaseRegularizer(Single, Single)
+  fullName: SiaNet.Regularizers.BaseRegularizer.BaseRegularizer(System.Single, System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Regularizers/BaseRegularizer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Regularizers/BaseRegularizer.cs
+    startLine: 41
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Regularizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Regularizers.BaseRegularizer\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer(float l1 = 0.01F, float l2 = 0.01F)
+    parameters:
+    - id: l1
+      type: System.Single
+      description: The l1 value. Default to 0.01
+    - id: l2
+      type: System.Single
+      description: The l2 value. Default to 0.01
+    content.vb: Public Sub New(l1 As Single = 0.01F, l2 As Single = 0.01F)
+  overload: SiaNet.Regularizers.BaseRegularizer.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Regularizers.BaseRegularizer.Name*
+  commentId: Overload:SiaNet.Regularizers.BaseRegularizer.Name
+  name: Name
+  nameWithType: BaseRegularizer.Name
+  fullName: SiaNet.Regularizers.BaseRegularizer.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer.#ctor*
+  commentId: Overload:SiaNet.Regularizers.BaseRegularizer.#ctor
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer.BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer.BaseRegularizer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single

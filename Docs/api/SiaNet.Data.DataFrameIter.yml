@@ -1,0 +1,676 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Data.DataFrameIter
+  commentId: T:SiaNet.Data.DataFrameIter
+  id: DataFrameIter
+  parent: SiaNet.Data
+  children:
+  - SiaNet.Data.DataFrameIter.#ctor(SiaNet.Data.DataFrame,SiaNet.Data.DataFrame)
+  - SiaNet.Data.DataFrameIter.#ctor(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Data.DataFrameIter.DataSize
+  - SiaNet.Data.DataFrameIter.GetBatch
+  - SiaNet.Data.DataFrameIter.GetBatchX
+  - SiaNet.Data.DataFrameIter.GetBatchY
+  - SiaNet.Data.DataFrameIter.Next
+  - SiaNet.Data.DataFrameIter.Reset
+  - SiaNet.Data.DataFrameIter.SetBatchSize(System.Int32)
+  - SiaNet.Data.DataFrameIter.Shuffle
+  - SiaNet.Data.DataFrameIter.Split(System.Double)
+  langs:
+  - csharp
+  - vb
+  name: DataFrameIter
+  nameWithType: DataFrameIter
+  fullName: SiaNet.Data.DataFrameIter
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DataFrameIter
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\n\n"
+  example: []
+  syntax:
+    content: public class DataFrameIter
+    content.vb: Public Class DataFrameIter
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Data.DataFrameIter.DataSize
+  commentId: P:SiaNet.Data.DataFrameIter.DataSize
+  id: DataSize
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: DataSize
+  nameWithType: DataFrameIter.DataSize
+  fullName: SiaNet.Data.DataFrameIter.DataSize
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DataSize
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 21
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the size of the data which is typically the number of records or images to be processed.\n"
+  example: []
+  syntax:
+    content: public long DataSize { get; }
+    parameters: []
+    return:
+      type: System.Int64
+      description: "\nThe size of the data.\n"
+    content.vb: Public ReadOnly Property DataSize As Long
+  overload: SiaNet.Data.DataFrameIter.DataSize*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Data.DataFrameIter.#ctor(SiaNet.Data.DataFrame,SiaNet.Data.DataFrame)
+  commentId: M:SiaNet.Data.DataFrameIter.#ctor(SiaNet.Data.DataFrame,SiaNet.Data.DataFrame)
+  id: '#ctor(SiaNet.Data.DataFrame,SiaNet.Data.DataFrame)'
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: DataFrameIter(DataFrame, DataFrame)
+  nameWithType: DataFrameIter.DataFrameIter(DataFrame, DataFrame)
+  fullName: SiaNet.Data.DataFrameIter.DataFrameIter(SiaNet.Data.DataFrame, SiaNet.Data.DataFrame)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 34
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Data.DataFrameIter\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public DataFrameIter(DataFrame X, DataFrame Y = null)
+    parameters:
+    - id: X
+      type: SiaNet.Data.DataFrame
+      description: The X data frame.
+    - id: Y
+      type: SiaNet.Data.DataFrame
+      description: The Y data frame.
+    content.vb: Public Sub New(X As DataFrame, Y As DataFrame = Nothing)
+  overload: SiaNet.Data.DataFrameIter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.#ctor(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Data.DataFrameIter.#ctor(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: '#ctor(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)'
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: DataFrameIter(Tensor, Tensor)
+  nameWithType: DataFrameIter.DataFrameIter(Tensor, Tensor)
+  fullName: SiaNet.Data.DataFrameIter.DataFrameIter(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 47
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Data.DataFrameIter\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public DataFrameIter(Tensor X, Tensor Y = null)
+    parameters:
+    - id: X
+      type: SiaNet.Engine.Tensor
+      description: The X Tensor.
+    - id: Y
+      type: SiaNet.Engine.Tensor
+      description: The Y Tensor.
+    content.vb: Public Sub New(X As Tensor, Y As Tensor = Nothing)
+  overload: SiaNet.Data.DataFrameIter.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.SetBatchSize(System.Int32)
+  commentId: M:SiaNet.Data.DataFrameIter.SetBatchSize(System.Int32)
+  id: SetBatchSize(System.Int32)
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: SetBatchSize(Int32)
+  nameWithType: DataFrameIter.SetBatchSize(Int32)
+  fullName: SiaNet.Data.DataFrameIter.SetBatchSize(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SetBatchSize
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 61
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nSets the size of the batch.\n"
+  example: []
+  syntax:
+    content: public void SetBatchSize(int _batchSize)
+    parameters:
+    - id: _batchSize
+      type: System.Int32
+      description: Size of the batch.
+    content.vb: Public Sub SetBatchSize(_batchSize As Integer)
+  overload: SiaNet.Data.DataFrameIter.SetBatchSize*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.GetBatch
+  commentId: M:SiaNet.Data.DataFrameIter.GetBatch
+  id: GetBatch
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: GetBatch()
+  nameWithType: DataFrameIter.GetBatch()
+  fullName: SiaNet.Data.DataFrameIter.GetBatch()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetBatch
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 71
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the next batch of data to process.\n"
+  example: []
+  syntax:
+    content: public (Tensor, Tensor)GetBatch()
+    return:
+      type: System.ValueTuple{SiaNet.Engine.Tensor,SiaNet.Engine.Tensor}
+      description: ''
+    content.vb: Public Function GetBatch As(Tensor, Tensor)
+  overload: SiaNet.Data.DataFrameIter.GetBatch*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.GetBatchX
+  commentId: M:SiaNet.Data.DataFrameIter.GetBatchX
+  id: GetBatchX
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: GetBatchX()
+  nameWithType: DataFrameIter.GetBatchX()
+  fullName: SiaNet.Data.DataFrameIter.GetBatchX()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetBatchX
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 83
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the batch for X data frame.\n"
+  example: []
+  syntax:
+    content: public Tensor GetBatchX()
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Function GetBatchX As Tensor
+  overload: SiaNet.Data.DataFrameIter.GetBatchX*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.GetBatchY
+  commentId: M:SiaNet.Data.DataFrameIter.GetBatchY
+  id: GetBatchY
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: GetBatchY()
+  nameWithType: DataFrameIter.GetBatchY()
+  fullName: SiaNet.Data.DataFrameIter.GetBatchY()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetBatchY
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 93
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the batch Y data frame.\n"
+  example: []
+  syntax:
+    content: public Tensor GetBatchY()
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Function GetBatchY As Tensor
+  overload: SiaNet.Data.DataFrameIter.GetBatchY*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.Next
+  commentId: M:SiaNet.Data.DataFrameIter.Next
+  id: Next
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: Next()
+  nameWithType: DataFrameIter.Next()
+  fullName: SiaNet.Data.DataFrameIter.Next()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Next
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 103
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nNavigates to next batch.\n"
+  example: []
+  syntax:
+    content: public bool Next()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Next As Boolean
+  overload: SiaNet.Data.DataFrameIter.Next*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.Reset
+  commentId: M:SiaNet.Data.DataFrameIter.Reset
+  id: Reset
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: DataFrameIter.Reset()
+  fullName: SiaNet.Data.DataFrameIter.Reset()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Reset
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 112
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nResets this batch size.\n"
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset
+  overload: SiaNet.Data.DataFrameIter.Reset*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.Split(System.Double)
+  commentId: M:SiaNet.Data.DataFrameIter.Split(System.Double)
+  id: Split(System.Double)
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: Split(Double)
+  nameWithType: DataFrameIter.Split(Double)
+  fullName: SiaNet.Data.DataFrameIter.Split(System.Double)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Split
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 122
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nSplits the current dataset to train and test.\n"
+  example: []
+  syntax:
+    content: public (DataFrameIter, DataFrameIter)Split(double testDataSize = 0.33000001311302185)
+    parameters:
+    - id: testDataSize
+      type: System.Double
+      description: Size of the test data.
+    return:
+      type: System.ValueTuple{SiaNet.Data.DataFrameIter,SiaNet.Data.DataFrameIter}
+      description: ''
+    content.vb: Public Function Split(testDataSize As Double = 0.33000001311302185) As(DataFrameIter, DataFrameIter)
+  overload: SiaNet.Data.DataFrameIter.Split*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrameIter.Shuffle
+  commentId: M:SiaNet.Data.DataFrameIter.Shuffle
+  id: Shuffle
+  parent: SiaNet.Data.DataFrameIter
+  langs:
+  - csharp
+  - vb
+  name: Shuffle()
+  nameWithType: DataFrameIter.Shuffle()
+  fullName: SiaNet.Data.DataFrameIter.Shuffle()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrameIter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Shuffle
+    path: ../SiaNet/Data/DataFrameIter.cs
+    startLine: 137
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nShuffles this data set randomly.\n"
+  example: []
+  syntax:
+    content: public void Shuffle()
+    content.vb: Public Sub Shuffle
+  overload: SiaNet.Data.DataFrameIter.Shuffle*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Data
+  commentId: N:SiaNet.Data
+  name: SiaNet.Data
+  nameWithType: SiaNet.Data
+  fullName: SiaNet.Data
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Data.DataFrameIter.DataSize*
+  commentId: Overload:SiaNet.Data.DataFrameIter.DataSize
+  name: DataSize
+  nameWithType: DataFrameIter.DataSize
+  fullName: SiaNet.Data.DataFrameIter.DataSize
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: SiaNet.Data.DataFrameIter
+  commentId: T:SiaNet.Data.DataFrameIter
+  parent: SiaNet.Data
+  name: DataFrameIter
+  nameWithType: DataFrameIter
+  fullName: SiaNet.Data.DataFrameIter
+- uid: SiaNet.Data.DataFrameIter.#ctor*
+  commentId: Overload:SiaNet.Data.DataFrameIter.#ctor
+  name: DataFrameIter
+  nameWithType: DataFrameIter.DataFrameIter
+  fullName: SiaNet.Data.DataFrameIter.DataFrameIter
+- uid: SiaNet.Data.DataFrame
+  commentId: T:SiaNet.Data.DataFrame
+  parent: SiaNet.Data
+  name: DataFrame
+  nameWithType: DataFrame
+  fullName: SiaNet.Data.DataFrame
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Data.DataFrameIter.SetBatchSize*
+  commentId: Overload:SiaNet.Data.DataFrameIter.SetBatchSize
+  name: SetBatchSize
+  nameWithType: DataFrameIter.SetBatchSize
+  fullName: SiaNet.Data.DataFrameIter.SetBatchSize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Data.DataFrameIter.GetBatch*
+  commentId: Overload:SiaNet.Data.DataFrameIter.GetBatch
+  name: GetBatch
+  nameWithType: DataFrameIter.GetBatch
+  fullName: SiaNet.Data.DataFrameIter.GetBatch
+- uid: System.ValueTuple{SiaNet.Engine.Tensor,SiaNet.Engine.Tensor}
+  commentId: T:System.ValueTuple{SiaNet.Engine.Tensor,SiaNet.Engine.Tensor}
+  parent: System
+  isExternal: true
+  name: ValueTuple<Tensor, Tensor>
+  nameWithType: ValueTuple<Tensor, Tensor>
+  fullName: System.ValueTuple<SiaNet.Engine.Tensor, SiaNet.Engine.Tensor>
+  nameWithType.vb: ValueTuple(Of Tensor, Tensor)
+  fullName.vb: System.ValueTuple(Of SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  name.vb: ValueTuple(Of Tensor, Tensor)
+  spec.csharp:
+  - uid: System.ValueTuple`2
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.ValueTuple`2
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrameIter.GetBatchX*
+  commentId: Overload:SiaNet.Data.DataFrameIter.GetBatchX
+  name: GetBatchX
+  nameWithType: DataFrameIter.GetBatchX
+  fullName: SiaNet.Data.DataFrameIter.GetBatchX
+- uid: SiaNet.Data.DataFrameIter.GetBatchY*
+  commentId: Overload:SiaNet.Data.DataFrameIter.GetBatchY
+  name: GetBatchY
+  nameWithType: DataFrameIter.GetBatchY
+  fullName: SiaNet.Data.DataFrameIter.GetBatchY
+- uid: SiaNet.Data.DataFrameIter.Next*
+  commentId: Overload:SiaNet.Data.DataFrameIter.Next
+  name: Next
+  nameWithType: DataFrameIter.Next
+  fullName: SiaNet.Data.DataFrameIter.Next
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Data.DataFrameIter.Reset*
+  commentId: Overload:SiaNet.Data.DataFrameIter.Reset
+  name: Reset
+  nameWithType: DataFrameIter.Reset
+  fullName: SiaNet.Data.DataFrameIter.Reset
+- uid: SiaNet.Data.DataFrameIter.Split*
+  commentId: Overload:SiaNet.Data.DataFrameIter.Split
+  name: Split
+  nameWithType: DataFrameIter.Split
+  fullName: SiaNet.Data.DataFrameIter.Split
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  name: Double
+  nameWithType: Double
+  fullName: System.Double
+- uid: System.ValueTuple{SiaNet.Data.DataFrameIter,SiaNet.Data.DataFrameIter}
+  commentId: T:System.ValueTuple{SiaNet.Data.DataFrameIter,SiaNet.Data.DataFrameIter}
+  parent: System
+  isExternal: true
+  name: ValueTuple<DataFrameIter, DataFrameIter>
+  nameWithType: ValueTuple<DataFrameIter, DataFrameIter>
+  fullName: System.ValueTuple<SiaNet.Data.DataFrameIter, SiaNet.Data.DataFrameIter>
+  nameWithType.vb: ValueTuple(Of DataFrameIter, DataFrameIter)
+  fullName.vb: System.ValueTuple(Of SiaNet.Data.DataFrameIter, SiaNet.Data.DataFrameIter)
+  name.vb: ValueTuple(Of DataFrameIter, DataFrameIter)
+  spec.csharp:
+  - uid: System.ValueTuple`2
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: SiaNet.Data.DataFrameIter
+    name: DataFrameIter
+    nameWithType: DataFrameIter
+    fullName: SiaNet.Data.DataFrameIter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Data.DataFrameIter
+    name: DataFrameIter
+    nameWithType: DataFrameIter
+    fullName: SiaNet.Data.DataFrameIter
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.ValueTuple`2
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: SiaNet.Data.DataFrameIter
+    name: DataFrameIter
+    nameWithType: DataFrameIter
+    fullName: SiaNet.Data.DataFrameIter
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Data.DataFrameIter
+    name: DataFrameIter
+    nameWithType: DataFrameIter
+    fullName: SiaNet.Data.DataFrameIter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrameIter.Shuffle*
+  commentId: Overload:SiaNet.Data.DataFrameIter.Shuffle
+  name: Shuffle
+  nameWithType: DataFrameIter.Shuffle
+  fullName: SiaNet.Data.DataFrameIter.Shuffle

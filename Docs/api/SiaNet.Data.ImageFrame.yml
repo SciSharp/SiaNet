@@ -1,0 +1,675 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Data.ImageFrame
+  commentId: T:SiaNet.Data.ImageFrame
+  id: ImageFrame
+  parent: SiaNet.Data
+  children:
+  - SiaNet.Data.ImageFrame.#ctor(SiaNet.Engine.Tensor)
+  - SiaNet.Data.ImageFrame.#ctor(System.Drawing.Bitmap,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  - SiaNet.Data.ImageFrame.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  langs:
+  - csharp
+  - vb
+  name: ImageFrame
+  nameWithType: ImageFrame
+  fullName: SiaNet.Data.ImageFrame
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Data/ImageFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ImageFrame
+    path: ../SiaNet/Data/ImageFrame.cs
+    startLine: 11
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nImage dataframe to hold images\n"
+  example: []
+  syntax:
+    content: 'public class ImageFrame : DataFrame'
+    content.vb: >-
+      Public Class ImageFrame
+          Inherits DataFrame
+  seealso:
+  - linkId: SiaNet.Data.DataFrame
+    commentId: T:SiaNet.Data.DataFrame
+  inheritance:
+  - System.Object
+  - SiaNet.Data.DataFrame
+  inheritedMembers:
+  - SiaNet.Data.DataFrame.Shape
+  - SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  - SiaNet.Data.DataFrame.GetTensor
+  - SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  - SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  - SiaNet.Data.DataFrame.Item(System.UInt32)
+  - SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  - SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Data.ImageFrame.#ctor(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Data.ImageFrame.#ctor(SiaNet.Engine.Tensor)
+  id: '#ctor(SiaNet.Engine.Tensor)'
+  parent: SiaNet.Data.ImageFrame
+  langs:
+  - csharp
+  - vb
+  name: ImageFrame(Tensor)
+  nameWithType: ImageFrame.ImageFrame(Tensor)
+  fullName: SiaNet.Data.ImageFrame.ImageFrame(SiaNet.Engine.Tensor)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Data/ImageFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Data/ImageFrame.cs
+    startLine: 17
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Data.ImageFrame\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public ImageFrame(Tensor imageTensor)
+    parameters:
+    - id: imageTensor
+      type: SiaNet.Engine.Tensor
+      description: The image tensor.
+    content.vb: Public Sub New(imageTensor As Tensor)
+  overload: SiaNet.Data.ImageFrame.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.ImageFrame.#ctor(System.Drawing.Bitmap,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  commentId: M:SiaNet.Data.ImageFrame.#ctor(System.Drawing.Bitmap,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  id: '#ctor(System.Drawing.Bitmap,System.Nullable{System.Int32},System.Nullable{System.Int32})'
+  parent: SiaNet.Data.ImageFrame
+  langs:
+  - csharp
+  - vb
+  name: ImageFrame(Bitmap, Nullable<Int32>, Nullable<Int32>)
+  nameWithType: ImageFrame.ImageFrame(Bitmap, Nullable<Int32>, Nullable<Int32>)
+  fullName: SiaNet.Data.ImageFrame.ImageFrame(System.Drawing.Bitmap, System.Nullable<System.Int32>, System.Nullable<System.Int32>)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Data/ImageFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Data/ImageFrame.cs
+    startLine: 28
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Data.ImageFrame\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public ImageFrame(Bitmap img, int? width = default(int? ), int? height = default(int? ))
+    parameters:
+    - id: img
+      type: System.Drawing.Bitmap
+      description: The img in bitmap format.
+    - id: width
+      type: System.Nullable{System.Int32}
+      description: The width to resize the image.
+    - id: height
+      type: System.Nullable{System.Int32}
+      description: The height to resize the image.
+    content.vb: Public Sub New(img As Bitmap, width As Integer? = Nothing, height As Integer? = Nothing)
+  overload: SiaNet.Data.ImageFrame.#ctor*
+  nameWithType.vb: ImageFrame.ImageFrame(Bitmap, Nullable(Of Int32), Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Data.ImageFrame.ImageFrame(System.Drawing.Bitmap, System.Nullable(Of System.Int32), System.Nullable(Of System.Int32))
+  name.vb: ImageFrame(Bitmap, Nullable(Of Int32), Nullable(Of Int32))
+- uid: SiaNet.Data.ImageFrame.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  commentId: M:SiaNet.Data.ImageFrame.#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})
+  id: '#ctor(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})'
+  parent: SiaNet.Data.ImageFrame
+  langs:
+  - csharp
+  - vb
+  name: ImageFrame(String, Nullable<Int32>, Nullable<Int32>)
+  nameWithType: ImageFrame.ImageFrame(String, Nullable<Int32>, Nullable<Int32>)
+  fullName: SiaNet.Data.ImageFrame.ImageFrame(System.String, System.Nullable<System.Int32>, System.Nullable<System.Int32>)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Data/ImageFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Data/ImageFrame.cs
+    startLine: 44
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Data.ImageFrame\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public ImageFrame(string imagePath, int? width = default(int? ), int? height = default(int? ))
+    parameters:
+    - id: imagePath
+      type: System.String
+      description: The image path.
+    - id: width
+      type: System.Nullable{System.Int32}
+      description: The width to resize the image.
+    - id: height
+      type: System.Nullable{System.Int32}
+      description: The height to resize the image.
+    content.vb: Public Sub New(imagePath As String, width As Integer? = Nothing, height As Integer? = Nothing)
+  overload: SiaNet.Data.ImageFrame.#ctor*
+  nameWithType.vb: ImageFrame.ImageFrame(String, Nullable(Of Int32), Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Data.ImageFrame.ImageFrame(System.String, System.Nullable(Of System.Int32), System.Nullable(Of System.Int32))
+  name.vb: ImageFrame(String, Nullable(Of Int32), Nullable(Of Int32))
+references:
+- uid: SiaNet.Data.DataFrame
+  commentId: T:SiaNet.Data.DataFrame
+  parent: SiaNet.Data
+  name: DataFrame
+  nameWithType: DataFrame
+  fullName: SiaNet.Data.DataFrame
+- uid: SiaNet.Data
+  commentId: N:SiaNet.Data
+  name: SiaNet.Data
+  nameWithType: SiaNet.Data
+  fullName: SiaNet.Data
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Data.DataFrame.Shape
+  commentId: P:SiaNet.Data.DataFrame.Shape
+  parent: SiaNet.Data.DataFrame
+  name: Shape
+  nameWithType: DataFrame.Shape
+  fullName: SiaNet.Data.DataFrame.Shape
+- uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  commentId: M:SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Reshape(Int64[])
+  nameWithType: DataFrame.Reshape(Int64[])
+  fullName: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  nameWithType.vb: DataFrame.Reshape(Int64())
+  fullName.vb: SiaNet.Data.DataFrame.Reshape(System.Int64())
+  name.vb: Reshape(Int64())
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+    name: Reshape
+    nameWithType: DataFrame.Reshape
+    fullName: SiaNet.Data.DataFrame.Reshape
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+    name: Reshape
+    nameWithType: DataFrame.Reshape
+    fullName: SiaNet.Data.DataFrame.Reshape
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.GetTensor
+  commentId: M:SiaNet.Data.DataFrame.GetTensor
+  parent: SiaNet.Data.DataFrame
+  name: GetTensor()
+  nameWithType: DataFrame.GetTensor()
+  fullName: SiaNet.Data.DataFrame.GetTensor()
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.GetTensor
+    name: GetTensor
+    nameWithType: DataFrame.GetTensor
+    fullName: SiaNet.Data.DataFrame.GetTensor
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.GetTensor
+    name: GetTensor
+    nameWithType: DataFrame.GetTensor
+    fullName: SiaNet.Data.DataFrame.GetTensor
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  parent: SiaNet.Data.DataFrame
+  name: ToFrame(Tensor)
+  nameWithType: DataFrame.ToFrame(Tensor)
+  fullName: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+    name: ToFrame
+    nameWithType: DataFrame.ToFrame
+    fullName: SiaNet.Data.DataFrame.ToFrame
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+    name: ToFrame
+    nameWithType: DataFrame.ToFrame
+    fullName: SiaNet.Data.DataFrame.ToFrame
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  commentId: P:SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Item[UInt32, UInt32]
+  nameWithType: DataFrame.Item[UInt32, UInt32]
+  fullName: SiaNet.Data.DataFrame.Item[System.UInt32, System.UInt32]
+  nameWithType.vb: DataFrame.Item(UInt32, UInt32)
+  fullName.vb: SiaNet.Data.DataFrame.Item(System.UInt32, System.UInt32)
+  name.vb: Item(UInt32, UInt32)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+  commentId: P:SiaNet.Data.DataFrame.Item(System.UInt32)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Item[UInt32]
+  nameWithType: DataFrame.Item[UInt32]
+  fullName: SiaNet.Data.DataFrame.Item[System.UInt32]
+  nameWithType.vb: DataFrame.Item(UInt32)
+  fullName.vb: SiaNet.Data.DataFrame.Item(System.UInt32)
+  name.vb: Item(UInt32)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+    name: Item
+    nameWithType: DataFrame.Item
+    fullName: SiaNet.Data.DataFrame.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  commentId: M:SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: GetBatch(Int32, Int32, Int32)
+  nameWithType: DataFrame.GetBatch(Int32, Int32, Int32)
+  fullName: SiaNet.Data.DataFrame.GetBatch(System.Int32, System.Int32, System.Int32)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+    name: GetBatch
+    nameWithType: DataFrame.GetBatch
+    fullName: SiaNet.Data.DataFrame.GetBatch
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+    name: GetBatch
+    nameWithType: DataFrame.GetBatch
+    fullName: SiaNet.Data.DataFrame.GetBatch
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  commentId: M:SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  parent: SiaNet.Data.DataFrame
+  isExternal: true
+  name: Head(UInt32, String)
+  nameWithType: DataFrame.Head(UInt32, String)
+  fullName: SiaNet.Data.DataFrame.Head(System.UInt32, System.String)
+  spec.csharp:
+  - uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+    name: Head
+    nameWithType: DataFrame.Head
+    fullName: SiaNet.Data.DataFrame.Head
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+    name: Head
+    nameWithType: DataFrame.Head
+    fullName: SiaNet.Data.DataFrame.Head
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.UInt32
+    name: UInt32
+    nameWithType: UInt32
+    fullName: System.UInt32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Data.ImageFrame
+  commentId: T:SiaNet.Data.ImageFrame
+  name: ImageFrame
+  nameWithType: ImageFrame
+  fullName: SiaNet.Data.ImageFrame
+- uid: SiaNet.Data.ImageFrame.#ctor*
+  commentId: Overload:SiaNet.Data.ImageFrame.#ctor
+  name: ImageFrame
+  nameWithType: ImageFrame.ImageFrame
+  fullName: SiaNet.Data.ImageFrame.ImageFrame
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: System.Drawing.Bitmap
+  commentId: T:System.Drawing.Bitmap
+  parent: System.Drawing
+  isExternal: true
+  name: Bitmap
+  nameWithType: Bitmap
+  fullName: System.Drawing.Bitmap
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Drawing
+  commentId: N:System.Drawing
+  isExternal: true
+  name: System.Drawing
+  nameWithType: System.Drawing
+  fullName: System.Drawing
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

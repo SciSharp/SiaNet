@@ -1,0 +1,191 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Global
+  commentId: T:SiaNet.Global
+  id: Global
+  parent: SiaNet
+  children:
+  - SiaNet.Global.CurrentBackend
+  - SiaNet.Global.UseEngine(SiaNet.Engine.IBackend,SiaNet.Engine.DeviceType,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: Global
+  nameWithType: Global
+  fullName: SiaNet.Global
+  type: Class
+  source:
+    remote:
+      path: SiaNet/GlobalVariable.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Global
+    path: ../SiaNet/GlobalVariable.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGlobal settings for SiaNet library\n"
+  example: []
+  syntax:
+    content: public class Global
+    content.vb: Public Class Global
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Global.CurrentBackend
+  commentId: P:SiaNet.Global.CurrentBackend
+  id: CurrentBackend
+  parent: SiaNet.Global
+  langs:
+  - csharp
+  - vb
+  name: CurrentBackend
+  nameWithType: Global.CurrentBackend
+  fullName: SiaNet.Global.CurrentBackend
+  type: Property
+  source:
+    remote:
+      path: SiaNet/GlobalVariable.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CurrentBackend
+    path: ../SiaNet/GlobalVariable.cs
+    startLine: 20
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGet the current backend of the SiaNet. Plaese invoke Global.UseEngine method to set the backend.\n"
+  example: []
+  syntax:
+    content: public static IBackend CurrentBackend { get; }
+    parameters: []
+    return:
+      type: SiaNet.Engine.IBackend
+      description: "\nThe current backend.\n"
+    content.vb: Public Shared ReadOnly Property CurrentBackend As IBackend
+  overload: SiaNet.Global.CurrentBackend*
+  exceptions:
+  - type: System.NullReferenceException
+    commentId: T:System.NullReferenceException
+    description: Invoke Global.UseEngine() function first to setup the backend and device.
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: SiaNet.Global.UseEngine(SiaNet.Engine.IBackend,SiaNet.Engine.DeviceType,System.Boolean)
+  commentId: M:SiaNet.Global.UseEngine(SiaNet.Engine.IBackend,SiaNet.Engine.DeviceType,System.Boolean)
+  id: UseEngine(SiaNet.Engine.IBackend,SiaNet.Engine.DeviceType,System.Boolean)
+  parent: SiaNet.Global
+  langs:
+  - csharp
+  - vb
+  name: UseEngine(IBackend, DeviceType, Boolean)
+  nameWithType: Global.UseEngine(IBackend, DeviceType, Boolean)
+  fullName: SiaNet.Global.UseEngine(SiaNet.Engine.IBackend, SiaNet.Engine.DeviceType, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/GlobalVariable.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: UseEngine
+    path: ../SiaNet/GlobalVariable.cs
+    startLine: 65
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nMethod to set the backend and device type.\n<p>\nSupported Engine: ArrayFire, TensorSharp, CNTK, TensorFlow, MXNet\n</p>\n<p>\nSupported Device: CPU, CUDA, OpenCL\n</p>\n<p>\nExample use:\n<pre><code>Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);</code></pre>\n</p>\n"
+  example: []
+  syntax:
+    content: public static void UseEngine(IBackend backend, DeviceType deviceType = DeviceType.Default, bool cudnn = false)
+    parameters:
+    - id: backend
+      type: SiaNet.Engine.IBackend
+      description: The backend.
+    - id: deviceType
+      type: SiaNet.Engine.DeviceType
+      description: Type of the device.
+    - id: cudnn
+      type: System.Boolean
+      description: if set to <code>true</code> [cudnn].
+    content.vb: Public Shared Sub UseEngine(backend As IBackend, deviceType As DeviceType = DeviceType.Default, cudnn As Boolean = False)
+  overload: SiaNet.Global.UseEngine*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: CuDnn work with CUDA device type
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: SiaNet
+  commentId: N:SiaNet
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.NullReferenceException
+  commentId: T:System.NullReferenceException
+  isExternal: true
+- uid: SiaNet.Global.CurrentBackend*
+  commentId: Overload:SiaNet.Global.CurrentBackend
+  name: CurrentBackend
+  nameWithType: Global.CurrentBackend
+  fullName: SiaNet.Global.CurrentBackend
+- uid: SiaNet.Engine.IBackend
+  commentId: T:SiaNet.Engine.IBackend
+  parent: SiaNet.Engine
+  name: IBackend
+  nameWithType: IBackend
+  fullName: SiaNet.Engine.IBackend
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: SiaNet.Global.UseEngine*
+  commentId: Overload:SiaNet.Global.UseEngine
+  name: UseEngine
+  nameWithType: Global.UseEngine
+  fullName: SiaNet.Global.UseEngine
+- uid: SiaNet.Engine.DeviceType
+  commentId: T:SiaNet.Engine.DeviceType
+  parent: SiaNet.Engine
+  name: DeviceType
+  nameWithType: DeviceType
+  fullName: SiaNet.Engine.DeviceType
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean

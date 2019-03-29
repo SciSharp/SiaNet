@@ -1,0 +1,235 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Events.TrainingEndEventArgs
+  commentId: T:SiaNet.Events.TrainingEndEventArgs
+  id: TrainingEndEventArgs
+  parent: SiaNet.Events
+  children:
+  - SiaNet.Events.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
+  - SiaNet.Events.TrainingEndEventArgs.Duration
+  - SiaNet.Events.TrainingEndEventArgs.History
+  langs:
+  - csharp
+  - vb
+  name: TrainingEndEventArgs
+  nameWithType: TrainingEndEventArgs
+  fullName: SiaNet.Events.TrainingEndEventArgs
+  type: Class
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: TrainingEndEventArgs
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 213
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nEvent triggered when the completed model training ends\n"
+  example: []
+  syntax:
+    content: 'public class TrainingEndEventArgs : EventArgs'
+    content.vb: >-
+      Public Class TrainingEndEventArgs
+          Inherits EventArgs
+  seealso:
+  - linkId: System.EventArgs
+    commentId: T:System.EventArgs
+  inheritance:
+  - System.Object
+  - System.EventArgs
+  inheritedMembers:
+  - System.EventArgs.Empty
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Events.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
+  commentId: M:SiaNet.Events.TrainingEndEventArgs.#ctor(SiaNet.History,System.Int64)
+  id: '#ctor(SiaNet.History,System.Int64)'
+  parent: SiaNet.Events.TrainingEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: TrainingEndEventArgs(History, Int64)
+  nameWithType: TrainingEndEventArgs.TrainingEndEventArgs(History, Int64)
+  fullName: SiaNet.Events.TrainingEndEventArgs.TrainingEndEventArgs(SiaNet.History, System.Int64)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 220
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Events.TrainingEndEventArgs\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public TrainingEndEventArgs(History history, long duration)
+    parameters:
+    - id: history
+      type: SiaNet.History
+      description: The training history with all epoch losses and metrics for both train and validation dataset.
+    - id: duration
+      type: System.Int64
+      description: The total time taken (in millisecond) to finish the model training.
+    content.vb: Public Sub New(history As History, duration As Long)
+  overload: SiaNet.Events.TrainingEndEventArgs.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Events.TrainingEndEventArgs.History
+  commentId: P:SiaNet.Events.TrainingEndEventArgs.History
+  id: History
+  parent: SiaNet.Events.TrainingEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: History
+  nameWithType: TrainingEndEventArgs.History
+  fullName: SiaNet.Events.TrainingEndEventArgs.History
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: History
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 234
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the training history with all epoch losses and metrics for both train and validation dataset.\n"
+  example: []
+  syntax:
+    content: public History History { get; }
+    parameters: []
+    return:
+      type: SiaNet.History
+      description: "\nThe history.\n"
+    content.vb: Public ReadOnly Property History As History
+  overload: SiaNet.Events.TrainingEndEventArgs.History*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Events.TrainingEndEventArgs.Duration
+  commentId: P:SiaNet.Events.TrainingEndEventArgs.Duration
+  id: Duration
+  parent: SiaNet.Events.TrainingEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: Duration
+  nameWithType: TrainingEndEventArgs.Duration
+  fullName: SiaNet.Events.TrainingEndEventArgs.Duration
+  type: Property
+  source:
+    remote:
+      path: SiaNet/TrainingEvents.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Duration
+    path: ../SiaNet/TrainingEvents.cs
+    startLine: 242
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Events
+  summary: "\nGets the total time taken (in millisecond) to finish the model training.\n"
+  example: []
+  syntax:
+    content: public long Duration { get; }
+    parameters: []
+    return:
+      type: System.Int64
+      description: "\nThe duration.\n"
+    content.vb: Public ReadOnly Property Duration As Long
+  overload: SiaNet.Events.TrainingEndEventArgs.Duration*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+references:
+- uid: System.EventArgs
+  commentId: T:System.EventArgs
+  parent: System
+  isExternal: true
+  name: EventArgs
+  nameWithType: EventArgs
+  fullName: System.EventArgs
+- uid: SiaNet.Events
+  commentId: N:SiaNet.Events
+  name: SiaNet.Events
+  nameWithType: SiaNet.Events
+  fullName: SiaNet.Events
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.EventArgs.Empty
+  commentId: F:System.EventArgs.Empty
+  parent: System.EventArgs
+  isExternal: true
+  name: Empty
+  nameWithType: EventArgs.Empty
+  fullName: System.EventArgs.Empty
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Events.TrainingEndEventArgs
+  commentId: T:SiaNet.Events.TrainingEndEventArgs
+  name: TrainingEndEventArgs
+  nameWithType: TrainingEndEventArgs
+  fullName: SiaNet.Events.TrainingEndEventArgs
+- uid: SiaNet.Events.TrainingEndEventArgs.#ctor*
+  commentId: Overload:SiaNet.Events.TrainingEndEventArgs.#ctor
+  name: TrainingEndEventArgs
+  nameWithType: TrainingEndEventArgs.TrainingEndEventArgs
+  fullName: SiaNet.Events.TrainingEndEventArgs.TrainingEndEventArgs
+- uid: SiaNet.History
+  commentId: T:SiaNet.History
+  parent: SiaNet
+  name: History
+  nameWithType: History
+  fullName: SiaNet.History
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: SiaNet
+  commentId: N:SiaNet
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet
+- uid: SiaNet.Events.TrainingEndEventArgs.History*
+  commentId: Overload:SiaNet.Events.TrainingEndEventArgs.History
+  name: History
+  nameWithType: TrainingEndEventArgs.History
+  fullName: SiaNet.Events.TrainingEndEventArgs.History
+- uid: SiaNet.Events.TrainingEndEventArgs.Duration*
+  commentId: Overload:SiaNet.Events.TrainingEndEventArgs.Duration
+  name: Duration
+  nameWithType: TrainingEndEventArgs.Duration
+  fullName: SiaNet.Events.TrainingEndEventArgs.Duration

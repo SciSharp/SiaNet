@@ -1,0 +1,2556 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  id: Tensor
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.Tensor.#ctor
+  - SiaNet.Engine.Tensor.#ctor(SiaNet.Engine.IBackend)
+  - SiaNet.Engine.Tensor.DataFloat
+  - SiaNet.Engine.Tensor.DimCount
+  - SiaNet.Engine.Tensor.Dispose
+  - SiaNet.Engine.Tensor.ElementCount
+  - SiaNet.Engine.Tensor.ElementType
+  - SiaNet.Engine.Tensor.Eval
+  - SiaNet.Engine.Tensor.GetConv1DShape
+  - SiaNet.Engine.Tensor.GetConv2DShape
+  - SiaNet.Engine.Tensor.GetConv3DShape
+  - SiaNet.Engine.Tensor.GetTypeCode
+  - SiaNet.Engine.Tensor.IsScalar
+  - SiaNet.Engine.Tensor.IsVector
+  - SiaNet.Engine.Tensor.K
+  - SiaNet.Engine.Tensor.Name
+  - SiaNet.Engine.Tensor.op_Addition(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Addition(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_Addition(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Division(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Division(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_Division(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_GreaterThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_GreaterThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_GreaterThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_LessThan(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_LessThan(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_LessThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_LessThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_LessThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Multiply(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Multiply(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_Multiply(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Subtraction(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.op_Subtraction(SiaNet.Engine.Tensor,System.Single)
+  - SiaNet.Engine.Tensor.op_Subtraction(System.Single,SiaNet.Engine.Tensor)
+  - SiaNet.Engine.Tensor.Print(System.String)
+  - SiaNet.Engine.Tensor.RepeatTensor(System.Int64,System.Int32)
+  - SiaNet.Engine.Tensor.Reshape(System.Int64[])
+  - SiaNet.Engine.Tensor.Shape
+  - SiaNet.Engine.Tensor.SliceCols(System.Int64,System.Int64)
+  - SiaNet.Engine.Tensor.SliceRows(System.Int64,System.Int64)
+  - SiaNet.Engine.Tensor.ToArray
+  - SiaNet.Engine.Tensor.ToScalar
+  - SiaNet.Engine.Tensor.Transpose
+  - SiaNet.Engine.Tensor.Transpose(System.Int32[])
+  langs:
+  - csharp
+  - vb
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+  type: Class
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Tensor
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 9
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: >-
+      [DataContract]
+
+      public abstract class Tensor : IDisposable
+    content.vb: >-
+      <DataContract>
+
+      Public MustInherit Class Tensor
+          Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  attributes:
+  - type: System.Runtime.Serialization.DataContractAttribute
+    ctor: System.Runtime.Serialization.DataContractAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Engine.Tensor.K
+  commentId: F:SiaNet.Engine.Tensor.K
+  id: K
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: K
+  nameWithType: Tensor.K
+  fullName: SiaNet.Engine.Tensor.K
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: K
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 13
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static IBackend K
+    return:
+      type: SiaNet.Engine.IBackend
+    content.vb: Public Shared K As IBackend
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.Name
+  commentId: P:SiaNet.Engine.Tensor.Name
+  id: Name
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: Tensor.Name
+  fullName: SiaNet.Engine.Tensor.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 15
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public abstract string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public MustOverride Property Name As String
+  overload: SiaNet.Engine.Tensor.Name*
+  modifiers.csharp:
+  - public
+  - abstract
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  - MustOverride
+- uid: SiaNet.Engine.Tensor.#ctor
+  commentId: M:SiaNet.Engine.Tensor.#ctor
+  id: '#ctor'
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Tensor()
+  nameWithType: Tensor.Tensor()
+  fullName: SiaNet.Engine.Tensor.Tensor()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 17
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor()
+    content.vb: Public Sub New
+  overload: SiaNet.Engine.Tensor.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.#ctor(SiaNet.Engine.IBackend)
+  commentId: M:SiaNet.Engine.Tensor.#ctor(SiaNet.Engine.IBackend)
+  id: '#ctor(SiaNet.Engine.IBackend)'
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Tensor(IBackend)
+  nameWithType: Tensor.Tensor(IBackend)
+  fullName: SiaNet.Engine.Tensor.Tensor(SiaNet.Engine.IBackend)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 22
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor(IBackend backend)
+    parameters:
+    - id: backend
+      type: SiaNet.Engine.IBackend
+    content.vb: Public Sub New(backend As IBackend)
+  overload: SiaNet.Engine.Tensor.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.Shape
+  commentId: P:SiaNet.Engine.Tensor.Shape
+  id: Shape
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Shape
+  nameWithType: Tensor.Shape
+  fullName: SiaNet.Engine.Tensor.Shape
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Shape
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 27
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public long[] Shape { get; }
+    parameters: []
+    return:
+      type: System.Int64[]
+    content.vb: Public ReadOnly Property Shape As Long()
+  overload: SiaNet.Engine.Tensor.Shape*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.DimCount
+  commentId: P:SiaNet.Engine.Tensor.DimCount
+  id: DimCount
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: DimCount
+  nameWithType: Tensor.DimCount
+  fullName: SiaNet.Engine.Tensor.DimCount
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DimCount
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 32
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public int DimCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property DimCount As Integer
+  overload: SiaNet.Engine.Tensor.DimCount*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.ElementCount
+  commentId: P:SiaNet.Engine.Tensor.ElementCount
+  id: ElementCount
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: ElementCount
+  nameWithType: Tensor.ElementCount
+  fullName: SiaNet.Engine.Tensor.ElementCount
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ElementCount
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 37
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public long ElementCount { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: Public ReadOnly Property ElementCount As Long
+  overload: SiaNet.Engine.Tensor.ElementCount*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.ElementType
+  commentId: P:SiaNet.Engine.Tensor.ElementType
+  id: ElementType
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: ElementType
+  nameWithType: Tensor.ElementType
+  fullName: SiaNet.Engine.Tensor.ElementType
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ElementType
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 48
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public DataType ElementType { get; }
+    parameters: []
+    return:
+      type: SiaNet.Engine.DataType
+    content.vb: Public ReadOnly Property ElementType As DataType
+  overload: SiaNet.Engine.Tensor.ElementType*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.IsVector
+  commentId: P:SiaNet.Engine.Tensor.IsVector
+  id: IsVector
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: IsVector
+  nameWithType: Tensor.IsVector
+  fullName: SiaNet.Engine.Tensor.IsVector
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: IsVector
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 53
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public bool IsVector { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsVector As Boolean
+  overload: SiaNet.Engine.Tensor.IsVector*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.IsScalar
+  commentId: P:SiaNet.Engine.Tensor.IsScalar
+  id: IsScalar
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: IsScalar
+  nameWithType: Tensor.IsScalar
+  fullName: SiaNet.Engine.Tensor.IsScalar
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: IsScalar
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 61
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public bool IsScalar { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsScalar As Boolean
+  overload: SiaNet.Engine.Tensor.IsScalar*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.ToScalar
+  commentId: M:SiaNet.Engine.Tensor.ToScalar
+  id: ToScalar
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: ToScalar()
+  nameWithType: Tensor.ToScalar()
+  fullName: SiaNet.Engine.Tensor.ToScalar()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ToScalar
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 69
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public float ToScalar()
+    return:
+      type: System.Single
+    content.vb: Public Function ToScalar As Single
+  overload: SiaNet.Engine.Tensor.ToScalar*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.Eval
+  commentId: M:SiaNet.Engine.Tensor.Eval
+  id: Eval
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Eval()
+  nameWithType: Tensor.Eval()
+  fullName: SiaNet.Engine.Tensor.Eval()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Eval
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 79
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public object Eval()
+    return:
+      type: System.Object
+    content.vb: Public Function Eval As Object
+  overload: SiaNet.Engine.Tensor.Eval*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.DataFloat
+  commentId: P:SiaNet.Engine.Tensor.DataFloat
+  id: DataFloat
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: DataFloat
+  nameWithType: Tensor.DataFloat
+  fullName: SiaNet.Engine.Tensor.DataFloat
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DataFloat
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 84
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public float[] DataFloat { get; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: Public ReadOnly Property DataFloat As Single()
+  overload: SiaNet.Engine.Tensor.DataFloat*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Engine.Tensor.GetTypeCode
+  commentId: M:SiaNet.Engine.Tensor.GetTypeCode
+  id: GetTypeCode
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GetTypeCode()
+  nameWithType: Tensor.GetTypeCode()
+  fullName: SiaNet.Engine.Tensor.GetTypeCode()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetTypeCode
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 92
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public TypeCode GetTypeCode()
+    return:
+      type: System.TypeCode
+    content.vb: Public Function GetTypeCode As TypeCode
+  overload: SiaNet.Engine.Tensor.GetTypeCode*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.Transpose
+  commentId: M:SiaNet.Engine.Tensor.Transpose
+  id: Transpose
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Transpose()
+  nameWithType: Tensor.Transpose()
+  fullName: SiaNet.Engine.Tensor.Transpose()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Transpose
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 97
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor Transpose()
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Function Transpose As Tensor
+  overload: SiaNet.Engine.Tensor.Transpose*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.Transpose(System.Int32[])
+  commentId: M:SiaNet.Engine.Tensor.Transpose(System.Int32[])
+  id: Transpose(System.Int32[])
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Transpose(Int32[])
+  nameWithType: Tensor.Transpose(Int32[])
+  fullName: SiaNet.Engine.Tensor.Transpose(System.Int32[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Transpose
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 102
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor Transpose(params int[] dims)
+    parameters:
+    - id: dims
+      type: System.Int32[]
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Function Transpose(ParamArray dims As Integer()) As Tensor
+  overload: SiaNet.Engine.Tensor.Transpose*
+  nameWithType.vb: Tensor.Transpose(Int32())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Engine.Tensor.Transpose(System.Int32())
+  name.vb: Transpose(Int32())
+- uid: SiaNet.Engine.Tensor.Reshape(System.Int64[])
+  commentId: M:SiaNet.Engine.Tensor.Reshape(System.Int64[])
+  id: Reshape(System.Int64[])
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Reshape(Int64[])
+  nameWithType: Tensor.Reshape(Int64[])
+  fullName: SiaNet.Engine.Tensor.Reshape(System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Reshape
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 107
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor Reshape(params long[] dims)
+    parameters:
+    - id: dims
+      type: System.Int64[]
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Function Reshape(ParamArray dims As Long()) As Tensor
+  overload: SiaNet.Engine.Tensor.Reshape*
+  nameWithType.vb: Tensor.Reshape(Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Engine.Tensor.Reshape(System.Int64())
+  name.vb: Reshape(Int64())
+- uid: SiaNet.Engine.Tensor.SliceRows(System.Int64,System.Int64)
+  commentId: M:SiaNet.Engine.Tensor.SliceRows(System.Int64,System.Int64)
+  id: SliceRows(System.Int64,System.Int64)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: SliceRows(Int64, Int64)
+  nameWithType: Tensor.SliceRows(Int64, Int64)
+  fullName: SiaNet.Engine.Tensor.SliceRows(System.Int64, System.Int64)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SliceRows
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 112
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor SliceRows(long start, long end)
+    parameters:
+    - id: start
+      type: System.Int64
+    - id: end
+      type: System.Int64
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Function SliceRows(start As Long, end As Long) As Tensor
+  overload: SiaNet.Engine.Tensor.SliceRows*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.SliceCols(System.Int64,System.Int64)
+  commentId: M:SiaNet.Engine.Tensor.SliceCols(System.Int64,System.Int64)
+  id: SliceCols(System.Int64,System.Int64)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: SliceCols(Int64, Int64)
+  nameWithType: Tensor.SliceCols(Int64, Int64)
+  fullName: SiaNet.Engine.Tensor.SliceCols(System.Int64, System.Int64)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SliceCols
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 117
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor SliceCols(long start, long end)
+    parameters:
+    - id: start
+      type: System.Int64
+    - id: end
+      type: System.Int64
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Function SliceCols(start As Long, end As Long) As Tensor
+  overload: SiaNet.Engine.Tensor.SliceCols*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.RepeatTensor(System.Int64,System.Int32)
+  commentId: M:SiaNet.Engine.Tensor.RepeatTensor(System.Int64,System.Int32)
+  id: RepeatTensor(System.Int64,System.Int32)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: RepeatTensor(Int64, Int32)
+  nameWithType: Tensor.RepeatTensor(Int64, Int32)
+  fullName: SiaNet.Engine.Tensor.RepeatTensor(System.Int64, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RepeatTensor
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 122
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor RepeatTensor(long n, int dim)
+    parameters:
+    - id: n
+      type: System.Int64
+    - id: dim
+      type: System.Int32
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Function RepeatTensor(n As Long, dim As Integer) As Tensor
+  overload: SiaNet.Engine.Tensor.RepeatTensor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.op_Multiply(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Multiply(System.Single,SiaNet.Engine.Tensor)
+  id: op_Multiply(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Multiply(Single, Tensor)
+  nameWithType: Tensor.Multiply(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.Multiply(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Multiply
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 127
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator *(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator *(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Multiply*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Multiply(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_Multiply(SiaNet.Engine.Tensor,System.Single)
+  id: op_Multiply(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Multiply(Tensor, Single)
+  nameWithType: Tensor.Multiply(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.Multiply(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Multiply
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 132
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator *(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator *(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Multiply*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Multiply(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Multiply(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_Multiply(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Multiply(Tensor, Tensor)
+  nameWithType: Tensor.Multiply(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.Multiply(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Multiply
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 137
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator *(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator *(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Multiply*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Division(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Division(System.Single,SiaNet.Engine.Tensor)
+  id: op_Division(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Division(Single, Tensor)
+  nameWithType: Tensor.Division(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.Division(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Division
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 153
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator /(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator /(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Division*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Division(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_Division(SiaNet.Engine.Tensor,System.Single)
+  id: op_Division(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Division(Tensor, Single)
+  nameWithType: Tensor.Division(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.Division(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Division
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 158
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator /(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator /(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Division*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Division(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Division(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_Division(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Division(Tensor, Tensor)
+  nameWithType: Tensor.Division(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.Division(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Division
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 163
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator /(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator /(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Division*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Addition(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Addition(System.Single,SiaNet.Engine.Tensor)
+  id: op_Addition(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Addition(Single, Tensor)
+  nameWithType: Tensor.Addition(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.Addition(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Addition
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 179
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator +(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator +(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Addition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Addition(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Addition(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_Addition(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Addition(Tensor, Tensor)
+  nameWithType: Tensor.Addition(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.Addition(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Addition
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 184
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator +(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator +(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Addition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Addition(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_Addition(SiaNet.Engine.Tensor,System.Single)
+  id: op_Addition(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Addition(Tensor, Single)
+  nameWithType: Tensor.Addition(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.Addition(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Addition
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 200
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator +(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator +(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Addition*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Subtraction(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Subtraction(System.Single,SiaNet.Engine.Tensor)
+  id: op_Subtraction(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Subtraction(Single, Tensor)
+  nameWithType: Tensor.Subtraction(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.Subtraction(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Subtraction
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 205
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator -(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator -(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Subtraction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Subtraction(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_Subtraction(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_Subtraction(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Subtraction(Tensor, Tensor)
+  nameWithType: Tensor.Subtraction(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.Subtraction(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Subtraction
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 210
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator -(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator -(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Subtraction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_Subtraction(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_Subtraction(SiaNet.Engine.Tensor,System.Single)
+  id: op_Subtraction(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Subtraction(Tensor, Single)
+  nameWithType: Tensor.Subtraction(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.Subtraction(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_Subtraction
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 226
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator -(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator -(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_Subtraction*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_GreaterThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(Tensor, Tensor)
+  nameWithType: Tensor.GreaterThan(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.GreaterThan(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_GreaterThan
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 299
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator>(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator>(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_GreaterThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_GreaterThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_GreaterThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_GreaterThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanOrEqual(Tensor, Tensor)
+  nameWithType: Tensor.GreaterThanOrEqual(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.GreaterThanOrEqual(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_GreaterThanOrEqual
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 304
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator >=(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator >=(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_GreaterThanOrEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_LessThan(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: LessThan(Tensor, Tensor)
+  nameWithType: Tensor.LessThan(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.LessThan(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_LessThan
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 309
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator <(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator <(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_LessThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_LessThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_LessThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: op_LessThanOrEqual(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: LessThanOrEqual(Tensor, Tensor)
+  nameWithType: Tensor.LessThanOrEqual(Tensor, Tensor)
+  fullName: SiaNet.Engine.Tensor.LessThanOrEqual(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_LessThanOrEqual
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 314
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator <=(Tensor a, Tensor b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator <=(a As Tensor, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_LessThanOrEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  id: op_GreaterThan(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(Single, Tensor)
+  nameWithType: Tensor.GreaterThan(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.GreaterThan(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_GreaterThan
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 319
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator>(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator>(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_GreaterThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_GreaterThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_GreaterThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  id: op_GreaterThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanOrEqual(Single, Tensor)
+  nameWithType: Tensor.GreaterThanOrEqual(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.GreaterThanOrEqual(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_GreaterThanOrEqual
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 324
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator >=(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator >=(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_GreaterThanOrEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_LessThan(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_LessThan(System.Single,SiaNet.Engine.Tensor)
+  id: op_LessThan(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: LessThan(Single, Tensor)
+  nameWithType: Tensor.LessThan(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.LessThan(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_LessThan
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 329
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator <(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator <(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_LessThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_LessThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Engine.Tensor.op_LessThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  id: op_LessThanOrEqual(System.Single,SiaNet.Engine.Tensor)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: LessThanOrEqual(Single, Tensor)
+  nameWithType: Tensor.LessThanOrEqual(Single, Tensor)
+  fullName: SiaNet.Engine.Tensor.LessThanOrEqual(System.Single, SiaNet.Engine.Tensor)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_LessThanOrEqual
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 334
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator <=(float a, Tensor b)
+    parameters:
+    - id: a
+      type: System.Single
+    - id: b
+      type: SiaNet.Engine.Tensor
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator <=(a As Single, b As Tensor) As Tensor
+  overload: SiaNet.Engine.Tensor.op_LessThanOrEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  id: op_GreaterThan(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GreaterThan(Tensor, Single)
+  nameWithType: Tensor.GreaterThan(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.GreaterThan(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_GreaterThan
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 339
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator>(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator>(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_GreaterThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_GreaterThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_GreaterThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  id: op_GreaterThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GreaterThanOrEqual(Tensor, Single)
+  nameWithType: Tensor.GreaterThanOrEqual(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.GreaterThanOrEqual(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_GreaterThanOrEqual
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 344
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator >=(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator >=(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_GreaterThanOrEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_LessThan(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_LessThan(SiaNet.Engine.Tensor,System.Single)
+  id: op_LessThan(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: LessThan(Tensor, Single)
+  nameWithType: Tensor.LessThan(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.LessThan(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_LessThan
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 349
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator <(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator <(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_LessThan*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.op_LessThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  commentId: M:SiaNet.Engine.Tensor.op_LessThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  id: op_LessThanOrEqual(SiaNet.Engine.Tensor,System.Single)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: LessThanOrEqual(Tensor, Single)
+  nameWithType: Tensor.LessThanOrEqual(Tensor, Single)
+  fullName: SiaNet.Engine.Tensor.LessThanOrEqual(SiaNet.Engine.Tensor, System.Single)
+  type: Operator
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: op_LessThanOrEqual
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 354
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public static Tensor operator <=(Tensor a, float b)
+    parameters:
+    - id: a
+      type: SiaNet.Engine.Tensor
+    - id: b
+      type: System.Single
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Shared Operator <=(a As Tensor, b As Single) As Tensor
+  overload: SiaNet.Engine.Tensor.op_LessThanOrEqual*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Engine.Tensor.GetConv3DShape
+  commentId: M:SiaNet.Engine.Tensor.GetConv3DShape
+  id: GetConv3DShape
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GetConv3DShape()
+  nameWithType: Tensor.GetConv3DShape()
+  fullName: SiaNet.Engine.Tensor.GetConv3DShape()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetConv3DShape
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 359
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public (long, long, long, long, long)GetConv3DShape()
+    return:
+      type: System.ValueTuple{System.Int64,System.Int64,System.Int64,System.Int64,System.Int64}
+    content.vb: Public Function GetConv3DShape As(Long, Long, Long, Long, Long)
+  overload: SiaNet.Engine.Tensor.GetConv3DShape*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.GetConv2DShape
+  commentId: M:SiaNet.Engine.Tensor.GetConv2DShape
+  id: GetConv2DShape
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GetConv2DShape()
+  nameWithType: Tensor.GetConv2DShape()
+  fullName: SiaNet.Engine.Tensor.GetConv2DShape()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetConv2DShape
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 364
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public (long, long, long, long)GetConv2DShape()
+    return:
+      type: System.ValueTuple{System.Int64,System.Int64,System.Int64,System.Int64}
+    content.vb: Public Function GetConv2DShape As(Long, Long, Long, Long)
+  overload: SiaNet.Engine.Tensor.GetConv2DShape*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.GetConv1DShape
+  commentId: M:SiaNet.Engine.Tensor.GetConv1DShape
+  id: GetConv1DShape
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: GetConv1DShape()
+  nameWithType: Tensor.GetConv1DShape()
+  fullName: SiaNet.Engine.Tensor.GetConv1DShape()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetConv1DShape
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 369
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public (long, long, long)GetConv1DShape()
+    return:
+      type: System.ValueTuple{System.Int64,System.Int64,System.Int64}
+    content.vb: Public Function GetConv1DShape As(Long, Long, Long)
+  overload: SiaNet.Engine.Tensor.GetConv1DShape*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.ToArray
+  commentId: M:SiaNet.Engine.Tensor.ToArray
+  id: ToArray
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: ToArray()
+  nameWithType: Tensor.ToArray()
+  fullName: SiaNet.Engine.Tensor.ToArray()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ToArray
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 374
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Array ToArray()
+    return:
+      type: System.Array
+    content.vb: Public Function ToArray As Array
+  overload: SiaNet.Engine.Tensor.ToArray*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.Print(System.String)
+  commentId: M:SiaNet.Engine.Tensor.Print(System.String)
+  id: Print(System.String)
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Print(String)
+  nameWithType: Tensor.Print(String)
+  fullName: SiaNet.Engine.Tensor.Print(System.String)
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Print
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 379
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public void Print(string title = "")
+    parameters:
+    - id: title
+      type: System.String
+    content.vb: Public Sub Print(title As String = "")
+  overload: SiaNet.Engine.Tensor.Print*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.Tensor.Dispose
+  commentId: M:SiaNet.Engine.Tensor.Dispose
+  id: Dispose
+  parent: SiaNet.Engine.Tensor
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: Tensor.Dispose()
+  fullName: SiaNet.Engine.Tensor.Dispose()
+  type: Method
+  source:
+    remote:
+      path: SiaNet.Engine/Tensor.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Dispose
+    path: ../SiaNet.Engine/Tensor.cs
+    startLine: 384
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose
+  overload: SiaNet.Engine.Tensor.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Engine.IBackend
+  commentId: T:SiaNet.Engine.IBackend
+  parent: SiaNet.Engine
+  name: IBackend
+  nameWithType: IBackend
+  fullName: SiaNet.Engine.IBackend
+- uid: SiaNet.Engine.Tensor.Name*
+  commentId: Overload:SiaNet.Engine.Tensor.Name
+  name: Name
+  nameWithType: Tensor.Name
+  fullName: SiaNet.Engine.Tensor.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Engine.Tensor.#ctor*
+  commentId: Overload:SiaNet.Engine.Tensor.#ctor
+  name: Tensor
+  nameWithType: Tensor.Tensor
+  fullName: SiaNet.Engine.Tensor.Tensor
+- uid: SiaNet.Engine.Tensor.Shape*
+  commentId: Overload:SiaNet.Engine.Tensor.Shape
+  name: Shape
+  nameWithType: Tensor.Shape
+  fullName: SiaNet.Engine.Tensor.Shape
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor.DimCount*
+  commentId: Overload:SiaNet.Engine.Tensor.DimCount
+  name: DimCount
+  nameWithType: Tensor.DimCount
+  fullName: SiaNet.Engine.Tensor.DimCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Engine.Tensor.ElementCount*
+  commentId: Overload:SiaNet.Engine.Tensor.ElementCount
+  name: ElementCount
+  nameWithType: Tensor.ElementCount
+  fullName: SiaNet.Engine.Tensor.ElementCount
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  name: Int64
+  nameWithType: Int64
+  fullName: System.Int64
+- uid: SiaNet.Engine.Tensor.ElementType*
+  commentId: Overload:SiaNet.Engine.Tensor.ElementType
+  name: ElementType
+  nameWithType: Tensor.ElementType
+  fullName: SiaNet.Engine.Tensor.ElementType
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  parent: SiaNet.Engine
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType
+- uid: SiaNet.Engine.Tensor.IsVector*
+  commentId: Overload:SiaNet.Engine.Tensor.IsVector
+  name: IsVector
+  nameWithType: Tensor.IsVector
+  fullName: SiaNet.Engine.Tensor.IsVector
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Engine.Tensor.IsScalar*
+  commentId: Overload:SiaNet.Engine.Tensor.IsScalar
+  name: IsScalar
+  nameWithType: Tensor.IsScalar
+  fullName: SiaNet.Engine.Tensor.IsScalar
+- uid: SiaNet.Engine.Tensor.ToScalar*
+  commentId: Overload:SiaNet.Engine.Tensor.ToScalar
+  name: ToScalar
+  nameWithType: Tensor.ToScalar
+  fullName: SiaNet.Engine.Tensor.ToScalar
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Engine.Tensor.Eval*
+  commentId: Overload:SiaNet.Engine.Tensor.Eval
+  name: Eval
+  nameWithType: Tensor.Eval
+  fullName: SiaNet.Engine.Tensor.Eval
+- uid: SiaNet.Engine.Tensor.DataFloat*
+  commentId: Overload:SiaNet.Engine.Tensor.DataFloat
+  name: DataFloat
+  nameWithType: Tensor.DataFloat
+  fullName: SiaNet.Engine.Tensor.DataFloat
+- uid: System.Single[]
+  isExternal: true
+  name: Single[]
+  nameWithType: Single[]
+  fullName: System.Single[]
+  nameWithType.vb: Single()
+  fullName.vb: System.Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor.GetTypeCode*
+  commentId: Overload:SiaNet.Engine.Tensor.GetTypeCode
+  name: GetTypeCode
+  nameWithType: Tensor.GetTypeCode
+  fullName: SiaNet.Engine.Tensor.GetTypeCode
+- uid: System.TypeCode
+  commentId: T:System.TypeCode
+  parent: System
+  isExternal: true
+  name: TypeCode
+  nameWithType: TypeCode
+  fullName: System.TypeCode
+- uid: SiaNet.Engine.Tensor.Transpose*
+  commentId: Overload:SiaNet.Engine.Tensor.Transpose
+  name: Transpose
+  nameWithType: Tensor.Transpose
+  fullName: SiaNet.Engine.Tensor.Transpose
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: System.Int32[]
+  isExternal: true
+  name: Int32[]
+  nameWithType: Int32[]
+  fullName: System.Int32[]
+  nameWithType.vb: Int32()
+  fullName.vb: System.Int32()
+  name.vb: Int32()
+  spec.csharp:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor.Reshape*
+  commentId: Overload:SiaNet.Engine.Tensor.Reshape
+  name: Reshape
+  nameWithType: Tensor.Reshape
+  fullName: SiaNet.Engine.Tensor.Reshape
+- uid: SiaNet.Engine.Tensor.SliceRows*
+  commentId: Overload:SiaNet.Engine.Tensor.SliceRows
+  name: SliceRows
+  nameWithType: Tensor.SliceRows
+  fullName: SiaNet.Engine.Tensor.SliceRows
+- uid: SiaNet.Engine.Tensor.SliceCols*
+  commentId: Overload:SiaNet.Engine.Tensor.SliceCols
+  name: SliceCols
+  nameWithType: Tensor.SliceCols
+  fullName: SiaNet.Engine.Tensor.SliceCols
+- uid: SiaNet.Engine.Tensor.RepeatTensor*
+  commentId: Overload:SiaNet.Engine.Tensor.RepeatTensor
+  name: RepeatTensor
+  nameWithType: Tensor.RepeatTensor
+  fullName: SiaNet.Engine.Tensor.RepeatTensor
+- uid: SiaNet.Engine.Tensor.op_Multiply*
+  commentId: Overload:SiaNet.Engine.Tensor.op_Multiply
+  name: Multiply
+  nameWithType: Tensor.Multiply
+  fullName: SiaNet.Engine.Tensor.Multiply
+- uid: SiaNet.Engine.Tensor.op_Division*
+  commentId: Overload:SiaNet.Engine.Tensor.op_Division
+  name: Division
+  nameWithType: Tensor.Division
+  fullName: SiaNet.Engine.Tensor.Division
+- uid: SiaNet.Engine.Tensor.op_Addition*
+  commentId: Overload:SiaNet.Engine.Tensor.op_Addition
+  name: Addition
+  nameWithType: Tensor.Addition
+  fullName: SiaNet.Engine.Tensor.Addition
+- uid: SiaNet.Engine.Tensor.op_Subtraction*
+  commentId: Overload:SiaNet.Engine.Tensor.op_Subtraction
+  name: Subtraction
+  nameWithType: Tensor.Subtraction
+  fullName: SiaNet.Engine.Tensor.Subtraction
+- uid: SiaNet.Engine.Tensor.op_GreaterThan*
+  commentId: Overload:SiaNet.Engine.Tensor.op_GreaterThan
+  name: GreaterThan
+  nameWithType: Tensor.GreaterThan
+  fullName: SiaNet.Engine.Tensor.GreaterThan
+- uid: SiaNet.Engine.Tensor.op_GreaterThanOrEqual*
+  commentId: Overload:SiaNet.Engine.Tensor.op_GreaterThanOrEqual
+  name: GreaterThanOrEqual
+  nameWithType: Tensor.GreaterThanOrEqual
+  fullName: SiaNet.Engine.Tensor.GreaterThanOrEqual
+- uid: SiaNet.Engine.Tensor.op_LessThan*
+  commentId: Overload:SiaNet.Engine.Tensor.op_LessThan
+  name: LessThan
+  nameWithType: Tensor.LessThan
+  fullName: SiaNet.Engine.Tensor.LessThan
+- uid: SiaNet.Engine.Tensor.op_LessThanOrEqual*
+  commentId: Overload:SiaNet.Engine.Tensor.op_LessThanOrEqual
+  name: LessThanOrEqual
+  nameWithType: Tensor.LessThanOrEqual
+  fullName: SiaNet.Engine.Tensor.LessThanOrEqual
+- uid: SiaNet.Engine.Tensor.GetConv3DShape*
+  commentId: Overload:SiaNet.Engine.Tensor.GetConv3DShape
+  name: GetConv3DShape
+  nameWithType: Tensor.GetConv3DShape
+  fullName: SiaNet.Engine.Tensor.GetConv3DShape
+- uid: System.ValueTuple{System.Int64,System.Int64,System.Int64,System.Int64,System.Int64}
+  commentId: T:System.ValueTuple{System.Int64,System.Int64,System.Int64,System.Int64,System.Int64}
+  parent: System
+  isExternal: true
+  name: ValueTuple<Int64, Int64, Int64, Int64, Int64>
+  nameWithType: ValueTuple<Int64, Int64, Int64, Int64, Int64>
+  fullName: System.ValueTuple<System.Int64, System.Int64, System.Int64, System.Int64, System.Int64>
+  nameWithType.vb: ValueTuple(Of Int64, Int64, Int64, Int64, Int64)
+  fullName.vb: System.ValueTuple(Of System.Int64, System.Int64, System.Int64, System.Int64, System.Int64)
+  name.vb: ValueTuple(Of Int64, Int64, Int64, Int64, Int64)
+  spec.csharp:
+  - uid: System.ValueTuple`5
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.ValueTuple`5
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Engine.Tensor.GetConv2DShape*
+  commentId: Overload:SiaNet.Engine.Tensor.GetConv2DShape
+  name: GetConv2DShape
+  nameWithType: Tensor.GetConv2DShape
+  fullName: SiaNet.Engine.Tensor.GetConv2DShape
+- uid: System.ValueTuple{System.Int64,System.Int64,System.Int64,System.Int64}
+  commentId: T:System.ValueTuple{System.Int64,System.Int64,System.Int64,System.Int64}
+  parent: System
+  isExternal: true
+  name: ValueTuple<Int64, Int64, Int64, Int64>
+  nameWithType: ValueTuple<Int64, Int64, Int64, Int64>
+  fullName: System.ValueTuple<System.Int64, System.Int64, System.Int64, System.Int64>
+  nameWithType.vb: ValueTuple(Of Int64, Int64, Int64, Int64)
+  fullName.vb: System.ValueTuple(Of System.Int64, System.Int64, System.Int64, System.Int64)
+  name.vb: ValueTuple(Of Int64, Int64, Int64, Int64)
+  spec.csharp:
+  - uid: System.ValueTuple`4
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.ValueTuple`4
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Engine.Tensor.GetConv1DShape*
+  commentId: Overload:SiaNet.Engine.Tensor.GetConv1DShape
+  name: GetConv1DShape
+  nameWithType: Tensor.GetConv1DShape
+  fullName: SiaNet.Engine.Tensor.GetConv1DShape
+- uid: System.ValueTuple{System.Int64,System.Int64,System.Int64}
+  commentId: T:System.ValueTuple{System.Int64,System.Int64,System.Int64}
+  parent: System
+  isExternal: true
+  name: ValueTuple<Int64, Int64, Int64>
+  nameWithType: ValueTuple<Int64, Int64, Int64>
+  fullName: System.ValueTuple<System.Int64, System.Int64, System.Int64>
+  nameWithType.vb: ValueTuple(Of Int64, Int64, Int64)
+  fullName.vb: System.ValueTuple(Of System.Int64, System.Int64, System.Int64)
+  name.vb: ValueTuple(Of Int64, Int64, Int64)
+  spec.csharp:
+  - uid: System.ValueTuple`3
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.ValueTuple`3
+    name: ValueTuple
+    nameWithType: ValueTuple
+    fullName: System.ValueTuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Engine.Tensor.ToArray*
+  commentId: Overload:SiaNet.Engine.Tensor.ToArray
+  name: ToArray
+  nameWithType: Tensor.ToArray
+  fullName: SiaNet.Engine.Tensor.ToArray
+- uid: System.Array
+  commentId: T:System.Array
+  parent: System
+  isExternal: true
+  name: Array
+  nameWithType: Array
+  fullName: System.Array
+- uid: SiaNet.Engine.Tensor.Print*
+  commentId: Overload:SiaNet.Engine.Tensor.Print
+  name: Print
+  nameWithType: Tensor.Print
+  fullName: SiaNet.Engine.Tensor.Print
+- uid: SiaNet.Engine.Tensor.Dispose*
+  commentId: Overload:SiaNet.Engine.Tensor.Dispose
+  name: Dispose
+  nameWithType: Tensor.Dispose
+  fullName: SiaNet.Engine.Tensor.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    nameWithType: IDisposable.Dispose
+    fullName: System.IDisposable.Dispose
+    isExternal: true
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )

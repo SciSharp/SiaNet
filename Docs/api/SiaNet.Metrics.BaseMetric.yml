@@ -1,0 +1,226 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  id: BaseMetric
+  parent: SiaNet.Metrics
+  children:
+  - SiaNet.Metrics.BaseMetric.#ctor(System.String)
+  - SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Metrics.BaseMetric.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Metrics/BaseMetric.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseMetric
+    path: ../SiaNet/Metrics/BaseMetric.cs
+    startLine: 7
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nA metric is a function that is used to judge the performance of your model. Metric functions are to be supplied in the metrics parameter when a model is compiled.\n"
+  example: []
+  syntax:
+    content: public abstract class BaseMetric
+    content.vb: Public MustInherit Class BaseMetric
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Metrics.Accuracy
+  - SiaNet.Metrics.BinaryAccuracy
+  - SiaNet.Metrics.MAE
+  - SiaNet.Metrics.MAPE
+  - SiaNet.Metrics.MSE
+  - SiaNet.Metrics.MSLE
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Metrics.BaseMetric.Name
+  commentId: P:SiaNet.Metrics.BaseMetric.Name
+  id: Name
+  parent: SiaNet.Metrics.BaseMetric
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseMetric.Name
+  fullName: SiaNet.Metrics.BaseMetric.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Metrics/BaseMetric.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet/Metrics/BaseMetric.cs
+    startLine: 17
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nGets or sets the name of the metrics.\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe name.\n"
+    content.vb: Public Property Name As String
+  overload: SiaNet.Metrics.BaseMetric.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Metrics.BaseMetric.#ctor(System.String)
+  commentId: M:SiaNet.Metrics.BaseMetric.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SiaNet.Metrics.BaseMetric
+  langs:
+  - csharp
+  - vb
+  name: BaseMetric(String)
+  nameWithType: BaseMetric.BaseMetric(String)
+  fullName: SiaNet.Metrics.BaseMetric.BaseMetric(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Metrics/BaseMetric.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Metrics/BaseMetric.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Metrics.BaseMetric\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BaseMetric(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name.
+    content.vb: Public Sub New(name As String)
+  overload: SiaNet.Metrics.BaseMetric.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.BaseMetric
+  langs:
+  - csharp
+  - vb
+  name: Calc(Tensor, Tensor)
+  nameWithType: BaseMetric.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Metrics/BaseMetric.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Calc
+    path: ../SiaNet/Metrics/BaseMetric.cs
+    startLine: 34
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nCalculates the metric with predicted and true values.\n"
+  example: []
+  syntax:
+    content: public abstract Tensor Calc(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted value.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public MustOverride Function Calc(preds As Tensor, labels As Tensor) As Tensor
+  overload: SiaNet.Metrics.BaseMetric.Calc*
+  modifiers.csharp:
+  - public
+  - abstract
+  modifiers.vb:
+  - Public
+  - MustOverride
+references:
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Metrics.BaseMetric.Name*
+  commentId: Overload:SiaNet.Metrics.BaseMetric.Name
+  name: Name
+  nameWithType: BaseMetric.Name
+  fullName: SiaNet.Metrics.BaseMetric.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  parent: SiaNet.Metrics
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+- uid: SiaNet.Metrics.BaseMetric.#ctor*
+  commentId: Overload:SiaNet.Metrics.BaseMetric.#ctor
+  name: BaseMetric
+  nameWithType: BaseMetric.BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric.BaseMetric
+- uid: SiaNet.Metrics.BaseMetric.Calc*
+  commentId: Overload:SiaNet.Metrics.BaseMetric.Calc
+  name: Calc
+  nameWithType: BaseMetric.Calc
+  fullName: SiaNet.Metrics.BaseMetric.Calc
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

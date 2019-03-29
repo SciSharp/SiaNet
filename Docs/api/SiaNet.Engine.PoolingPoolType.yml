@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.PoolingPoolType
+  commentId: T:SiaNet.Engine.PoolingPoolType
+  id: PoolingPoolType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.PoolingPoolType.Avg
+  - SiaNet.Engine.PoolingPoolType.Max
+  langs:
+  - csharp
+  - vb
+  name: PoolingPoolType
+  nameWithType: PoolingPoolType
+  fullName: SiaNet.Engine.PoolingPoolType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: PoolingPoolType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 206
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nType of pooling in layers\n"
+  example: []
+  syntax:
+    content: public enum PoolingPoolType
+    content.vb: Public Enum PoolingPoolType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.PoolingPoolType.Max
+  commentId: F:SiaNet.Engine.PoolingPoolType.Max
+  id: Max
+  parent: SiaNet.Engine.PoolingPoolType
+  langs:
+  - csharp
+  - vb
+  name: Max
+  nameWithType: PoolingPoolType.Max
+  fullName: SiaNet.Engine.PoolingPoolType.Max
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Max
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 211
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nMax Pooling\n"
+  example: []
+  syntax:
+    content: Max = 0
+    return:
+      type: SiaNet.Engine.PoolingPoolType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.PoolingPoolType.Avg
+  commentId: F:SiaNet.Engine.PoolingPoolType.Avg
+  id: Avg
+  parent: SiaNet.Engine.PoolingPoolType
+  langs:
+  - csharp
+  - vb
+  name: Avg
+  nameWithType: PoolingPoolType.Avg
+  fullName: SiaNet.Engine.PoolingPoolType.Avg
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Avg
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 215
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nAverage Pooling\n"
+  example: []
+  syntax:
+    content: Avg = 1
+    return:
+      type: SiaNet.Engine.PoolingPoolType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.PoolingPoolType
+  commentId: T:SiaNet.Engine.PoolingPoolType
+  parent: SiaNet.Engine
+  name: PoolingPoolType
+  nameWithType: PoolingPoolType
+  fullName: SiaNet.Engine.PoolingPoolType

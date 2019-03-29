@@ -1,0 +1,249 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Optimizers.RMSProp
+  commentId: T:SiaNet.Optimizers.RMSProp
+  id: RMSProp
+  parent: SiaNet.Optimizers
+  children:
+  - SiaNet.Optimizers.RMSProp.#ctor(System.Single,System.Single,System.Single,System.Single)
+  - SiaNet.Optimizers.RMSProp.Epsilon
+  - SiaNet.Optimizers.RMSProp.Rho
+  langs:
+  - csharp
+  - vb
+  name: RMSProp
+  nameWithType: RMSProp
+  fullName: SiaNet.Optimizers.RMSProp
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Optimizers/RMSProp.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: RMSProp
+    path: ../SiaNet/Optimizers/RMSProp.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nNesterov Adam optimizer.\n<p>\nMuch like Adam is essentially RMSprop with momentum, Nadam is Adam RMSprop with Nesterov momentum. \nDefault parameters follow those provided in the paper.It is recommended to leave the parameters of this optimizer at their default values.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class RMSProp : BaseOptimizer'
+    content.vb: >-
+      Public Class RMSProp
+          Inherits BaseOptimizer
+  seealso:
+  - linkId: SiaNet.Optimizers.BaseOptimizer
+    commentId: T:SiaNet.Optimizers.BaseOptimizer
+  inheritance:
+  - System.Object
+  - SiaNet.Optimizers.BaseOptimizer
+  inheritedMembers:
+  - SiaNet.Optimizers.BaseOptimizer.Name
+  - SiaNet.Optimizers.BaseOptimizer.LearningRate
+  - SiaNet.Optimizers.BaseOptimizer.Momentum
+  - SiaNet.Optimizers.BaseOptimizer.DecayRate
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Optimizers.RMSProp.Rho
+  commentId: P:SiaNet.Optimizers.RMSProp.Rho
+  id: Rho
+  parent: SiaNet.Optimizers.RMSProp
+  langs:
+  - csharp
+  - vb
+  name: Rho
+  nameWithType: RMSProp.Rho
+  fullName: SiaNet.Optimizers.RMSProp.Rho
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/RMSProp.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Rho
+    path: ../SiaNet/Optimizers/RMSProp.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nRMSProp decay factor, corresponding to fraction of gradient to keep at each time step.\n"
+  example: []
+  syntax:
+    content: public float Rho { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe rho.\n"
+    content.vb: Public Property Rho As Single
+  overload: SiaNet.Optimizers.RMSProp.Rho*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.RMSProp.Epsilon
+  commentId: P:SiaNet.Optimizers.RMSProp.Epsilon
+  id: Epsilon
+  parent: SiaNet.Optimizers.RMSProp
+  langs:
+  - csharp
+  - vb
+  name: Epsilon
+  nameWithType: RMSProp.Epsilon
+  fullName: SiaNet.Optimizers.RMSProp.Epsilon
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/RMSProp.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epsilon
+    path: ../SiaNet/Optimizers/RMSProp.cs
+    startLine: 30
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nFuzz factor. Lowest float value but > 0\n"
+  example: []
+  syntax:
+    content: public float Epsilon { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe epsilon.\n"
+    content.vb: Public Property Epsilon As Single
+  overload: SiaNet.Optimizers.RMSProp.Epsilon*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.RMSProp.#ctor(System.Single,System.Single,System.Single,System.Single)
+  commentId: M:SiaNet.Optimizers.RMSProp.#ctor(System.Single,System.Single,System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single,System.Single,System.Single)'
+  parent: SiaNet.Optimizers.RMSProp
+  langs:
+  - csharp
+  - vb
+  name: RMSProp(Single, Single, Single, Single)
+  nameWithType: RMSProp.RMSProp(Single, Single, Single, Single)
+  fullName: SiaNet.Optimizers.RMSProp.RMSProp(System.Single, System.Single, System.Single, System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Optimizers/RMSProp.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Optimizers/RMSProp.cs
+    startLine: 41
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Optimizers.RMSProp\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public RMSProp(float lr = 0.001F, float rho = 0.9F, float decayRate = 0F, float epsilon = 1E-07F)
+    parameters:
+    - id: lr
+      type: System.Single
+      description: The initial learning rate for the optimizer.
+    - id: rho
+      type: System.Single
+      description: RMSProp decay factor, corresponding to fraction of gradient to keep at each time step.
+    - id: decayRate
+      type: System.Single
+      description: Learning rate decay over each update.
+    - id: epsilon
+      type: System.Single
+      description: Fuzz factor. Lowest float value but > 0
+    content.vb: Public Sub New(lr As Single = 0.001F, rho As Single = 0.9F, decayRate As Single = 0F, epsilon As Single = 1E-07F)
+  overload: SiaNet.Optimizers.RMSProp.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  parent: SiaNet.Optimizers
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Optimizers.BaseOptimizer.Name
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Name
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Name
+  nameWithType: BaseOptimizer.Name
+  fullName: SiaNet.Optimizers.BaseOptimizer.Name
+- uid: SiaNet.Optimizers.BaseOptimizer.LearningRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.LearningRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: LearningRate
+  nameWithType: BaseOptimizer.LearningRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.LearningRate
+- uid: SiaNet.Optimizers.BaseOptimizer.Momentum
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Momentum
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Momentum
+  nameWithType: BaseOptimizer.Momentum
+  fullName: SiaNet.Optimizers.BaseOptimizer.Momentum
+- uid: SiaNet.Optimizers.BaseOptimizer.DecayRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.DecayRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: DecayRate
+  nameWithType: BaseOptimizer.DecayRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.DecayRate
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Optimizers.RMSProp.Rho*
+  commentId: Overload:SiaNet.Optimizers.RMSProp.Rho
+  name: Rho
+  nameWithType: RMSProp.Rho
+  fullName: SiaNet.Optimizers.RMSProp.Rho
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Optimizers.RMSProp.Epsilon*
+  commentId: Overload:SiaNet.Optimizers.RMSProp.Epsilon
+  name: Epsilon
+  nameWithType: RMSProp.Epsilon
+  fullName: SiaNet.Optimizers.RMSProp.Epsilon
+- uid: SiaNet.Optimizers.RMSProp
+  commentId: T:SiaNet.Optimizers.RMSProp
+  name: RMSProp
+  nameWithType: RMSProp
+  fullName: SiaNet.Optimizers.RMSProp
+- uid: SiaNet.Optimizers.RMSProp.#ctor*
+  commentId: Overload:SiaNet.Optimizers.RMSProp.#ctor
+  name: RMSProp
+  nameWithType: RMSProp.RMSProp
+  fullName: SiaNet.Optimizers.RMSProp.RMSProp

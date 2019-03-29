@@ -1,0 +1,48 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet
+  commentId: N:SiaNet
+  id: SiaNet
+  children:
+  - SiaNet.Global
+  - SiaNet.History
+  - SiaNet.Parameter
+  - SiaNet.Sequential
+  langs:
+  - csharp
+  - vb
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Global
+  commentId: T:SiaNet.Global
+  name: Global
+  nameWithType: Global
+  fullName: SiaNet.Global
+- uid: SiaNet.History
+  commentId: T:SiaNet.History
+  parent: SiaNet
+  name: History
+  nameWithType: History
+  fullName: SiaNet.History
+- uid: SiaNet.Parameter
+  commentId: T:SiaNet.Parameter
+  parent: SiaNet
+  name: Parameter
+  nameWithType: Parameter
+  fullName: SiaNet.Parameter
+- uid: SiaNet.Sequential
+  commentId: T:SiaNet.Sequential
+  parent: SiaNet
+  name: Sequential
+  nameWithType: Sequential
+  fullName: SiaNet.Sequential
+- uid: SiaNet
+  commentId: N:SiaNet
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet

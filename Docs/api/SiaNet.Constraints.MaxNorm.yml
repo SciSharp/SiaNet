@@ -1,0 +1,216 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Constraints.MaxNorm
+  commentId: T:SiaNet.Constraints.MaxNorm
+  id: MaxNorm
+  parent: SiaNet.Constraints
+  children:
+  - SiaNet.Constraints.MaxNorm.#ctor(System.Single,System.Int32)
+  - SiaNet.Constraints.MaxNorm.Axis
+  - SiaNet.Constraints.MaxNorm.MaxValue
+  langs:
+  - csharp
+  - vb
+  name: MaxNorm
+  nameWithType: MaxNorm
+  fullName: SiaNet.Constraints.MaxNorm
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Constraints/MaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MaxNorm
+    path: ../SiaNet/Constraints/MaxNorm.cs
+    startLine: 10
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nMaxNorm weight constraint. Constrains the weights incident to each hidden unit to have a norm less than or equal to a desired value.\n"
+  example: []
+  syntax:
+    content: 'public class MaxNorm : BaseConstraint'
+    content.vb: >-
+      Public Class MaxNorm
+          Inherits BaseConstraint
+  inheritance:
+  - System.Object
+  - SiaNet.Constraints.BaseConstraint
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Constraints.MaxNorm.MaxValue
+  commentId: P:SiaNet.Constraints.MaxNorm.MaxValue
+  id: MaxValue
+  parent: SiaNet.Constraints.MaxNorm
+  langs:
+  - csharp
+  - vb
+  name: MaxValue
+  nameWithType: MaxNorm.MaxValue
+  fullName: SiaNet.Constraints.MaxNorm.MaxValue
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Constraints/MaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MaxValue
+    path: ../SiaNet/Constraints/MaxNorm.cs
+    startLine: 15
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nThe maximum norm for the incoming weights.\n"
+  example: []
+  syntax:
+    content: public float MaxValue { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property MaxValue As Single
+  overload: SiaNet.Constraints.MaxNorm.MaxValue*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.MaxNorm.Axis
+  commentId: P:SiaNet.Constraints.MaxNorm.Axis
+  id: Axis
+  parent: SiaNet.Constraints.MaxNorm
+  langs:
+  - csharp
+  - vb
+  name: Axis
+  nameWithType: MaxNorm.Axis
+  fullName: SiaNet.Constraints.MaxNorm.Axis
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Constraints/MaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Axis
+    path: ../SiaNet/Constraints/MaxNorm.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nInteger, axis along which to calculate weight norms. \nFor instance, in a Dense layer the weight matrix has shape (input_dim, output_dim), set axis to 0 to constrain each weight vector of length (input_dim,). \nIn a Conv2D layer, the weight tensor has shape  (input_depth, output_depth, rows, cols), set axis to [1, 2, 3] to constrain the weights of each filter tensor of size  (input_depth, rows, cols).\n"
+  example: []
+  syntax:
+    content: public int Axis { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Axis As Integer
+  overload: SiaNet.Constraints.MaxNorm.Axis*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.MaxNorm.#ctor(System.Single,System.Int32)
+  commentId: M:SiaNet.Constraints.MaxNorm.#ctor(System.Single,System.Int32)
+  id: '#ctor(System.Single,System.Int32)'
+  parent: SiaNet.Constraints.MaxNorm
+  langs:
+  - csharp
+  - vb
+  name: MaxNorm(Single, Int32)
+  nameWithType: MaxNorm.MaxNorm(Single, Int32)
+  fullName: SiaNet.Constraints.MaxNorm.MaxNorm(System.Single, System.Int32)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Constraints/MaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Constraints/MaxNorm.cs
+    startLine: 27
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: Initializes a new instance of the <xref href="SiaNet.Constraints.MaxNorm" data-throw-if-not-resolved="false"></xref> class.
+  example: []
+  syntax:
+    content: public MaxNorm(float maxValue = 2F, int axis = 0)
+    parameters:
+    - id: maxValue
+      type: System.Single
+      description: The maximum norm for the incoming weights.
+    - id: axis
+      type: System.Int32
+      description: 'Integer, axis along which to calculate weight norms. '
+    content.vb: Public Sub New(maxValue As Single = 2F, axis As Integer = 0)
+  overload: SiaNet.Constraints.MaxNorm.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Constraints.MaxNorm.MaxValue*
+  commentId: Overload:SiaNet.Constraints.MaxNorm.MaxValue
+  name: MaxValue
+  nameWithType: MaxNorm.MaxValue
+  fullName: SiaNet.Constraints.MaxNorm.MaxValue
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Constraints.MaxNorm.Axis*
+  commentId: Overload:SiaNet.Constraints.MaxNorm.Axis
+  name: Axis
+  nameWithType: MaxNorm.Axis
+  fullName: SiaNet.Constraints.MaxNorm.Axis
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Constraints.MaxNorm
+  commentId: T:SiaNet.Constraints.MaxNorm
+  name: MaxNorm
+  nameWithType: MaxNorm
+  fullName: SiaNet.Constraints.MaxNorm
+- uid: SiaNet.Constraints.MaxNorm.#ctor*
+  commentId: Overload:SiaNet.Constraints.MaxNorm.#ctor
+  name: MaxNorm
+  nameWithType: MaxNorm.MaxNorm
+  fullName: SiaNet.Constraints.MaxNorm.MaxNorm

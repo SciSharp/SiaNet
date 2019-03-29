@@ -1,0 +1,350 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Optimizers.Adam
+  commentId: T:SiaNet.Optimizers.Adam
+  id: Adam
+  parent: SiaNet.Optimizers
+  children:
+  - SiaNet.Optimizers.Adam.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)
+  - SiaNet.Optimizers.Adam.AmsGrad
+  - SiaNet.Optimizers.Adam.Beta1
+  - SiaNet.Optimizers.Adam.Beta2
+  - SiaNet.Optimizers.Adam.Epsilon
+  langs:
+  - csharp
+  - vb
+  name: Adam
+  nameWithType: Adam
+  fullName: SiaNet.Optimizers.Adam
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adam.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Adam
+    path: ../SiaNet/Optimizers/Adam.cs
+    startLine: 15
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nAdam is an optimization algorithm that can used instead of the classical stochastic gradient descent procedure to update network weights iterative based in training data.\n<p>\nAdam was presented by Diederik Kingma from OpenAI and Jimmy Ba from the University of Toronto in their 2015 ICLR paper(poster) titled “Adam: A Method for Stochastic Optimization“. \nI will quote liberally from their paper in this post, unless stated otherwise.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class Adam : BaseOptimizer'
+    content.vb: >-
+      Public Class Adam
+          Inherits BaseOptimizer
+  seealso:
+  - linkId: SiaNet.Optimizers.BaseOptimizer
+    commentId: T:SiaNet.Optimizers.BaseOptimizer
+  inheritance:
+  - System.Object
+  - SiaNet.Optimizers.BaseOptimizer
+  inheritedMembers:
+  - SiaNet.Optimizers.BaseOptimizer.Name
+  - SiaNet.Optimizers.BaseOptimizer.LearningRate
+  - SiaNet.Optimizers.BaseOptimizer.Momentum
+  - SiaNet.Optimizers.BaseOptimizer.DecayRate
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Optimizers.Adam.AmsGrad
+  commentId: P:SiaNet.Optimizers.Adam.AmsGrad
+  id: AmsGrad
+  parent: SiaNet.Optimizers.Adam
+  langs:
+  - csharp
+  - vb
+  name: AmsGrad
+  nameWithType: Adam.AmsGrad
+  fullName: SiaNet.Optimizers.Adam.AmsGrad
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adam.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: AmsGrad
+    path: ../SiaNet/Optimizers/Adam.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nWhether to apply the AMSGrad variant of this algorithm from the paper &quot;On the Convergence of Adam and Beyond&quot;.\n"
+  example: []
+  syntax:
+    content: public bool AmsGrad { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if [ams grad]; otherwise, <code>false</code>.\n"
+    content.vb: Public Property AmsGrad As Boolean
+  overload: SiaNet.Optimizers.Adam.AmsGrad*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.Adam.Beta1
+  commentId: P:SiaNet.Optimizers.Adam.Beta1
+  id: Beta1
+  parent: SiaNet.Optimizers.Adam
+  langs:
+  - csharp
+  - vb
+  name: Beta1
+  nameWithType: Adam.Beta1
+  fullName: SiaNet.Optimizers.Adam.Beta1
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adam.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Beta1
+    path: ../SiaNet/Optimizers/Adam.cs
+    startLine: 31
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nGets or sets the beta 1 value.\n"
+  example: []
+  syntax:
+    content: public float Beta1 { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe beta1.\n"
+    content.vb: Public Property Beta1 As Single
+  overload: SiaNet.Optimizers.Adam.Beta1*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.Adam.Beta2
+  commentId: P:SiaNet.Optimizers.Adam.Beta2
+  id: Beta2
+  parent: SiaNet.Optimizers.Adam
+  langs:
+  - csharp
+  - vb
+  name: Beta2
+  nameWithType: Adam.Beta2
+  fullName: SiaNet.Optimizers.Adam.Beta2
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adam.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Beta2
+    path: ../SiaNet/Optimizers/Adam.cs
+    startLine: 39
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nGets or sets the beta 2 value.\n"
+  example: []
+  syntax:
+    content: public float Beta2 { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe beta2.\n"
+    content.vb: Public Property Beta2 As Single
+  overload: SiaNet.Optimizers.Adam.Beta2*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.Adam.Epsilon
+  commentId: P:SiaNet.Optimizers.Adam.Epsilon
+  id: Epsilon
+  parent: SiaNet.Optimizers.Adam
+  langs:
+  - csharp
+  - vb
+  name: Epsilon
+  nameWithType: Adam.Epsilon
+  fullName: SiaNet.Optimizers.Adam.Epsilon
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adam.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Epsilon
+    path: ../SiaNet/Optimizers/Adam.cs
+    startLine: 47
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nFuzz factor. Lowest float value but > 0\n"
+  example: []
+  syntax:
+    content: public float Epsilon { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe epsilon.\n"
+    content.vb: Public Property Epsilon As Single
+  overload: SiaNet.Optimizers.Adam.Epsilon*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.Adam.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)
+  commentId: M:SiaNet.Optimizers.Adam.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)
+  id: '#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)'
+  parent: SiaNet.Optimizers.Adam
+  langs:
+  - csharp
+  - vb
+  name: Adam(Single, Single, Single, Single, Single, Boolean)
+  nameWithType: Adam.Adam(Single, Single, Single, Single, Single, Boolean)
+  fullName: SiaNet.Optimizers.Adam.Adam(System.Single, System.Single, System.Single, System.Single, System.Single, System.Boolean)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adam.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Optimizers/Adam.cs
+    startLine: 62
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Optimizers.Adam\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Adam(float lr = 0.01F, float beta_1 = 0.9F, float beta_2 = 0.999F, float decayRate = 0F, float epsilon = 1E-08F, bool amsgrad = false)
+    parameters:
+    - id: lr
+      type: System.Single
+      description: Initial learning rate for the optimizer
+    - id: beta_1
+      type: System.Single
+      description: The beta 1 value.
+    - id: beta_2
+      type: System.Single
+      description: The beta 2 value.
+    - id: decayRate
+      type: System.Single
+      description: Learning rate decay over each update.
+    - id: epsilon
+      type: System.Single
+      description: Fuzz factor. Lowest float value but > 0.
+    - id: amsgrad
+      type: System.Boolean
+      description: Whether to apply the AMSGrad variant of this algorithm from the paper &quot;On the Convergence of Adam and Beyond&quot;.
+    content.vb: Public Sub New(lr As Single = 0.01F, beta_1 As Single = 0.9F, beta_2 As Single = 0.999F, decayRate As Single = 0F, epsilon As Single = 1E-08F, amsgrad As Boolean = False)
+  overload: SiaNet.Optimizers.Adam.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  parent: SiaNet.Optimizers
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Optimizers.BaseOptimizer.Name
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Name
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Name
+  nameWithType: BaseOptimizer.Name
+  fullName: SiaNet.Optimizers.BaseOptimizer.Name
+- uid: SiaNet.Optimizers.BaseOptimizer.LearningRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.LearningRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: LearningRate
+  nameWithType: BaseOptimizer.LearningRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.LearningRate
+- uid: SiaNet.Optimizers.BaseOptimizer.Momentum
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Momentum
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Momentum
+  nameWithType: BaseOptimizer.Momentum
+  fullName: SiaNet.Optimizers.BaseOptimizer.Momentum
+- uid: SiaNet.Optimizers.BaseOptimizer.DecayRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.DecayRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: DecayRate
+  nameWithType: BaseOptimizer.DecayRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.DecayRate
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Optimizers.Adam.AmsGrad*
+  commentId: Overload:SiaNet.Optimizers.Adam.AmsGrad
+  name: AmsGrad
+  nameWithType: Adam.AmsGrad
+  fullName: SiaNet.Optimizers.Adam.AmsGrad
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Optimizers.Adam.Beta1*
+  commentId: Overload:SiaNet.Optimizers.Adam.Beta1
+  name: Beta1
+  nameWithType: Adam.Beta1
+  fullName: SiaNet.Optimizers.Adam.Beta1
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Optimizers.Adam.Beta2*
+  commentId: Overload:SiaNet.Optimizers.Adam.Beta2
+  name: Beta2
+  nameWithType: Adam.Beta2
+  fullName: SiaNet.Optimizers.Adam.Beta2
+- uid: SiaNet.Optimizers.Adam.Epsilon*
+  commentId: Overload:SiaNet.Optimizers.Adam.Epsilon
+  name: Epsilon
+  nameWithType: Adam.Epsilon
+  fullName: SiaNet.Optimizers.Adam.Epsilon
+- uid: SiaNet.Optimizers.Adam
+  commentId: T:SiaNet.Optimizers.Adam
+  name: Adam
+  nameWithType: Adam
+  fullName: SiaNet.Optimizers.Adam
+- uid: SiaNet.Optimizers.Adam.#ctor*
+  commentId: Overload:SiaNet.Optimizers.Adam.#ctor
+  name: Adam
+  nameWithType: Adam.Adam
+  fullName: SiaNet.Optimizers.Adam.Adam

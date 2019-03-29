@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Metrics.MAPE
+  commentId: T:SiaNet.Metrics.MAPE
+  id: MAPE
+  parent: SiaNet.Metrics
+  children:
+  - SiaNet.Metrics.MAPE.#ctor
+  - SiaNet.Metrics.MAPE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: MAPE
+  nameWithType: MAPE
+  fullName: SiaNet.Metrics.MAPE
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Metrics/MAPE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MAPE
+    path: ../SiaNet/Metrics/MAPE.cs
+    startLine: 10
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nThe mean absolute percentage error (MAPE), also known as mean absolute percentage deviation (MAPD), \nis a measure of prediction accuracy of a forecasting method in statistics, for example in trend estimation, also used as a Loss function for regression problems in Machine Learning.\n"
+  example: []
+  syntax:
+    content: 'public class MAPE : BaseMetric'
+    content.vb: >-
+      Public Class MAPE
+          Inherits BaseMetric
+  seealso:
+  - linkId: SiaNet.Metrics.BaseMetric
+    commentId: T:SiaNet.Metrics.BaseMetric
+  inheritance:
+  - System.Object
+  - SiaNet.Metrics.BaseMetric
+  inheritedMembers:
+  - SiaNet.Metrics.BaseMetric.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Metrics.MAPE.#ctor
+  commentId: M:SiaNet.Metrics.MAPE.#ctor
+  id: '#ctor'
+  parent: SiaNet.Metrics.MAPE
+  langs:
+  - csharp
+  - vb
+  name: MAPE()
+  nameWithType: MAPE.MAPE()
+  fullName: SiaNet.Metrics.MAPE.MAPE()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Metrics/MAPE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Metrics/MAPE.cs
+    startLine: 15
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Metrics.MAPE\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public MAPE()
+    content.vb: Public Sub New
+  overload: SiaNet.Metrics.MAPE.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Metrics.MAPE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.MAPE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.MAPE
+  langs:
+  - csharp
+  - vb
+  name: Calc(Tensor, Tensor)
+  nameWithType: MAPE.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.MAPE.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Metrics/MAPE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Calc
+    path: ../SiaNet/Metrics/MAPE.cs
+    startLine: 27
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nCalculates the metric with predicted and true values.\n"
+  example: []
+  syntax:
+    content: public override Tensor Calc(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted value.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Calc(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Metrics.MAPE.Calc*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  parent: SiaNet.Metrics
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Metrics.BaseMetric.Name
+  commentId: P:SiaNet.Metrics.BaseMetric.Name
+  parent: SiaNet.Metrics.BaseMetric
+  name: Name
+  nameWithType: BaseMetric.Name
+  fullName: SiaNet.Metrics.BaseMetric.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Metrics.MAPE
+  commentId: T:SiaNet.Metrics.MAPE
+  name: MAPE
+  nameWithType: MAPE
+  fullName: SiaNet.Metrics.MAPE
+- uid: SiaNet.Metrics.MAPE.#ctor*
+  commentId: Overload:SiaNet.Metrics.MAPE.#ctor
+  name: MAPE
+  nameWithType: MAPE.MAPE
+  fullName: SiaNet.Metrics.MAPE.MAPE
+- uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.BaseMetric
+  name: Calc(Tensor, Tensor)
+  nameWithType: BaseMetric.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Metrics.MAPE.Calc*
+  commentId: Overload:SiaNet.Metrics.MAPE.Calc
+  name: Calc
+  nameWithType: MAPE.Calc
+  fullName: SiaNet.Metrics.MAPE.Calc
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

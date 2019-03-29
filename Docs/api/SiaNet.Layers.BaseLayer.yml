@@ -1,0 +1,782 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  id: BaseLayer
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.BaseLayer.#ctor(System.String)
+  - SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  - SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.SkipPred
+  langs:
+  - csharp
+  - vb
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseLayer
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 12
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nBase class for the layers\n"
+  example: []
+  syntax:
+    content: public abstract class BaseLayer
+    content.vb: Public MustInherit Class BaseLayer
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Layers.Activations.Elu
+  - SiaNet.Layers.Activations.Exp
+  - SiaNet.Layers.Activations.HardSigmoid
+  - SiaNet.Layers.Activations.LeakyRelu
+  - SiaNet.Layers.Activations.Linear
+  - SiaNet.Layers.Activations.PRelu
+  - SiaNet.Layers.Activations.Relu
+  - SiaNet.Layers.Activations.Sigmoid
+  - SiaNet.Layers.Activations.Softmax
+  - SiaNet.Layers.Activations.Softplus
+  - SiaNet.Layers.Activations.Softsign
+  - SiaNet.Layers.Activations.Tanh
+  - SiaNet.Layers.AvgPooling1D
+  - SiaNet.Layers.AvgPooling2D
+  - SiaNet.Layers.AvgPooling3D
+  - SiaNet.Layers.BatchNormalization
+  - SiaNet.Layers.Conv1D
+  - SiaNet.Layers.Conv2D
+  - SiaNet.Layers.Conv2DTranspose
+  - SiaNet.Layers.Conv3D
+  - SiaNet.Layers.Conv3DTranspose
+  - SiaNet.Layers.Dense
+  - SiaNet.Layers.Dropout
+  - SiaNet.Layers.Embedding
+  - SiaNet.Layers.Flatten
+  - SiaNet.Layers.GlobalPooling1D
+  - SiaNet.Layers.GlobalPooling2D
+  - SiaNet.Layers.GlobalPooling3D
+  - SiaNet.Layers.MaxPooling1D
+  - SiaNet.Layers.MaxPooling2D
+  - SiaNet.Layers.MaxPooling3D
+  - SiaNet.Layers.Permute
+  - SiaNet.Layers.Repeat
+  - SiaNet.Layers.Reshape
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  id: Params
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+  type: Field
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Params
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nThe parameters list used by the layer\n"
+  example: []
+  syntax:
+    content: >-
+      [NonSerialized]
+
+      public Dictionary<string, Parameter> Params
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,SiaNet.Parameter}
+    content.vb: >-
+      <NonSerialized>
+
+      Public Params As Dictionary(Of String, Parameter)
+  attributes:
+  - type: System.NonSerializedAttribute
+    ctor: System.NonSerializedAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  id: Input
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+  type: Field
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Input
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 29
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nThe input tensor parameter\n"
+  example: []
+  syntax:
+    content: >-
+      [NonSerialized]
+
+      public Parameter Input
+    return:
+      type: SiaNet.Parameter
+    content.vb: >-
+      <NonSerialized>
+
+      Public Input As Parameter
+  attributes:
+  - type: System.NonSerializedAttribute
+    ctor: System.NonSerializedAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  id: Output
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+  type: Field
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Output
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 35
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nThe output tensor parameter\n"
+  example: []
+  syntax:
+    content: >-
+      [NonSerialized]
+
+      public Tensor Output
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: >-
+      <NonSerialized>
+
+      Public Output As Tensor
+  attributes:
+  - type: System.NonSerializedAttribute
+    ctor: System.NonSerializedAttribute.#ctor
+    arguments: []
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  id: Name
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 43
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nGets or sets the name of the layer\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe name.\n"
+    content.vb: Public Property Name As String
+  overload: SiaNet.Layers.BaseLayer.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  id: SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SkipPred
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 51
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nGets or sets a value indicating whether the layer is train only\n"
+  example: []
+  syntax:
+    content: public bool SkipPred { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if [skip pred]; otherwise, <code>false</code>.\n"
+    content.vb: Public Property SkipPred As Boolean
+  overload: SiaNet.Layers.BaseLayer.SkipPred*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BaseLayer.#ctor(System.String)
+  commentId: M:SiaNet.Layers.BaseLayer.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: BaseLayer(String)
+  nameWithType: BaseLayer.BaseLayer(String)
+  fullName: SiaNet.Layers.BaseLayer.BaseLayer(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 57
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Layers.BaseLayer\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BaseLayer(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name.
+    content.vb: Public Sub New(name As String)
+  overload: SiaNet.Layers.BaseLayer.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 67
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public virtual void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overridable Sub Forward(x As Tensor)
+  overload: SiaNet.Layers.BaseLayer.Forward*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 76
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public virtual void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overridable Sub Backward(outputgrad As Tensor)
+  overload: SiaNet.Layers.BaseLayer.Backward*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  id: Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: this[]
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 89
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nGets or sets the <xref href=\"SiaNet.Parameter\" data-throw-if-not-resolved=\"false\"></xref> with the specified name.\n"
+  example: []
+  syntax:
+    content: public Parameter this[string name] { get; set; }
+    parameters:
+    - id: name
+      type: System.String
+      description: The name.
+    return:
+      type: SiaNet.Parameter
+      description: "\nThe <xref href=\"SiaNet.Parameter\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+    content.vb: Public Property Item(name As String) As Parameter
+  overload: SiaNet.Layers.BaseLayer.Item*
+  nameWithType.vb: BaseLayer.Item(String)
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  id: BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  langs:
+  - csharp
+  - vb
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/BaseLayer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BuildParam
+    path: ../SiaNet/Layers/BaseLayer.cs
+    startLine: 112
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nBuilds the parameter with specified parameter. Used to create weight or bias parameter for the layer.\n"
+  example: []
+  syntax:
+    content: public Parameter BuildParam(string name, long[] shape, DataType elementType, BaseInitializer initializer, BaseConstraint constraint = null, BaseRegularizer regularizer = null, bool trainable = true)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the parameter.
+    - id: shape
+      type: System.Int64[]
+      description: The shape of the tensor.
+    - id: elementType
+      type: SiaNet.Engine.DataType
+      description: Datatype of the tensor.
+    - id: initializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: The initializer used to create the parameter.
+    - id: constraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: The constraint function applied for this parameter.
+    - id: regularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: The regularizer function for this parameter.
+    - id: trainable
+      type: System.Boolean
+      description: if set to <code>true</code> [trainable].
+    return:
+      type: SiaNet.Parameter
+      description: ''
+    content.vb: Public Function BuildParam(name As String, shape As Long(), elementType As DataType, initializer As BaseInitializer, constraint As BaseConstraint = Nothing, regularizer As BaseRegularizer = Nothing, trainable As Boolean = True) As Parameter
+  overload: SiaNet.Layers.BaseLayer.BuildParam*
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+references:
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.Dictionary{System.String,SiaNet.Parameter}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,SiaNet.Parameter}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  name: Dictionary<String, Parameter>
+  nameWithType: Dictionary<String, Parameter>
+  fullName: System.Collections.Generic.Dictionary<System.String, SiaNet.Parameter>
+  nameWithType.vb: Dictionary(Of String, Parameter)
+  fullName.vb: System.Collections.Generic.Dictionary(Of System.String, SiaNet.Parameter)
+  name.vb: Dictionary(Of String, Parameter)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Parameter
+    name: Parameter
+    nameWithType: Parameter
+    fullName: SiaNet.Parameter
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Parameter
+    name: Parameter
+    nameWithType: Parameter
+    fullName: SiaNet.Parameter
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    nameWithType: Dictionary
+    fullName: System.Collections.Generic.Dictionary
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TKey
+    nameWithType: TKey
+    fullName: TKey
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: TValue
+    nameWithType: TValue
+    fullName: TValue
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: SiaNet.Parameter
+  commentId: T:SiaNet.Parameter
+  parent: SiaNet
+  name: Parameter
+  nameWithType: Parameter
+  fullName: SiaNet.Parameter
+- uid: SiaNet
+  commentId: N:SiaNet
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Name*
+  commentId: Overload:SiaNet.Layers.BaseLayer.Name
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Layers.BaseLayer.SkipPred*
+  commentId: Overload:SiaNet.Layers.BaseLayer.SkipPred
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers.BaseLayer.#ctor*
+  commentId: Overload:SiaNet.Layers.BaseLayer.#ctor
+  name: BaseLayer
+  nameWithType: BaseLayer.BaseLayer
+  fullName: SiaNet.Layers.BaseLayer.BaseLayer
+- uid: SiaNet.Layers.BaseLayer.Forward*
+  commentId: Overload:SiaNet.Layers.BaseLayer.Forward
+  name: Forward
+  nameWithType: BaseLayer.Forward
+  fullName: SiaNet.Layers.BaseLayer.Forward
+- uid: SiaNet.Layers.BaseLayer.Backward*
+  commentId: Overload:SiaNet.Layers.BaseLayer.Backward
+  name: Backward
+  nameWithType: BaseLayer.Backward
+  fullName: SiaNet.Layers.BaseLayer.Backward
+- uid: SiaNet.Layers.BaseLayer.Item*
+  commentId: Overload:SiaNet.Layers.BaseLayer.Item
+  name: Item
+  nameWithType: BaseLayer.Item
+  fullName: SiaNet.Layers.BaseLayer.Item
+- uid: SiaNet.Layers.BaseLayer.BuildParam*
+  commentId: Overload:SiaNet.Layers.BaseLayer.BuildParam
+  name: BuildParam
+  nameWithType: BaseLayer.BuildParam
+  fullName: SiaNet.Layers.BaseLayer.BuildParam
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  parent: SiaNet.Engine
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers

@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Events
+  commentId: N:SiaNet.Events
+  id: SiaNet.Events
+  children:
+  - SiaNet.Events.BatchEndEventArgs
+  - SiaNet.Events.BatchStartEventArgs
+  - SiaNet.Events.EpochEndEventArgs
+  - SiaNet.Events.EpochStartEventArgs
+  - SiaNet.Events.TrainingEndEventArgs
+  langs:
+  - csharp
+  - vb
+  name: SiaNet.Events
+  nameWithType: SiaNet.Events
+  fullName: SiaNet.Events
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Events.BatchStartEventArgs
+  commentId: T:SiaNet.Events.BatchStartEventArgs
+  name: BatchStartEventArgs
+  nameWithType: BatchStartEventArgs
+  fullName: SiaNet.Events.BatchStartEventArgs
+- uid: SiaNet.Events.BatchEndEventArgs
+  commentId: T:SiaNet.Events.BatchEndEventArgs
+  name: BatchEndEventArgs
+  nameWithType: BatchEndEventArgs
+  fullName: SiaNet.Events.BatchEndEventArgs
+- uid: SiaNet.Events.EpochStartEventArgs
+  commentId: T:SiaNet.Events.EpochStartEventArgs
+  name: EpochStartEventArgs
+  nameWithType: EpochStartEventArgs
+  fullName: SiaNet.Events.EpochStartEventArgs
+- uid: SiaNet.Events.EpochEndEventArgs
+  commentId: T:SiaNet.Events.EpochEndEventArgs
+  name: EpochEndEventArgs
+  nameWithType: EpochEndEventArgs
+  fullName: SiaNet.Events.EpochEndEventArgs
+- uid: SiaNet.Events.TrainingEndEventArgs
+  commentId: T:SiaNet.Events.TrainingEndEventArgs
+  name: TrainingEndEventArgs
+  nameWithType: TrainingEndEventArgs
+  fullName: SiaNet.Events.TrainingEndEventArgs

@@ -1,0 +1,48 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Data
+  commentId: N:SiaNet.Data
+  id: SiaNet.Data
+  children:
+  - SiaNet.Data.DataFrame
+  - SiaNet.Data.DataFrame2D
+  - SiaNet.Data.DataFrameIter
+  - SiaNet.Data.ImageFrame
+  langs:
+  - csharp
+  - vb
+  name: SiaNet.Data
+  nameWithType: SiaNet.Data
+  fullName: SiaNet.Data
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Data.DataFrame
+  commentId: T:SiaNet.Data.DataFrame
+  parent: SiaNet.Data
+  name: DataFrame
+  nameWithType: DataFrame
+  fullName: SiaNet.Data.DataFrame
+- uid: SiaNet.Data.DataFrame2D
+  commentId: T:SiaNet.Data.DataFrame2D
+  parent: SiaNet.Data
+  name: DataFrame2D
+  nameWithType: DataFrame2D
+  fullName: SiaNet.Data.DataFrame2D
+- uid: SiaNet.Data.DataFrameIter
+  commentId: T:SiaNet.Data.DataFrameIter
+  parent: SiaNet.Data
+  name: DataFrameIter
+  nameWithType: DataFrameIter
+  fullName: SiaNet.Data.DataFrameIter
+- uid: SiaNet.Data.ImageFrame
+  commentId: T:SiaNet.Data.ImageFrame
+  name: ImageFrame
+  nameWithType: ImageFrame
+  fullName: SiaNet.Data.ImageFrame
+- uid: SiaNet.Data
+  commentId: N:SiaNet.Data
+  name: SiaNet.Data
+  nameWithType: SiaNet.Data
+  fullName: SiaNet.Data

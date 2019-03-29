@@ -1,0 +1,249 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Optimizers.Adamax
+  commentId: T:SiaNet.Optimizers.Adamax
+  id: Adamax
+  parent: SiaNet.Optimizers
+  children:
+  - SiaNet.Optimizers.Adamax.#ctor(System.Single,System.Single,System.Single,System.Single)
+  - SiaNet.Optimizers.Adamax.Beta1
+  - SiaNet.Optimizers.Adamax.Beta2
+  langs:
+  - csharp
+  - vb
+  name: Adamax
+  nameWithType: Adamax
+  fullName: SiaNet.Optimizers.Adamax
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adamax.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Adamax
+    path: ../SiaNet/Optimizers/Adamax.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nAdamax optimizer from Adam paper&apos;s Section 7.\n<p>\nIt is a variant of Adam based on the infinity norm.Default parameters follow those provided in the paper.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class Adamax : BaseOptimizer'
+    content.vb: >-
+      Public Class Adamax
+          Inherits BaseOptimizer
+  seealso:
+  - linkId: SiaNet.Optimizers.BaseOptimizer
+    commentId: T:SiaNet.Optimizers.BaseOptimizer
+  inheritance:
+  - System.Object
+  - SiaNet.Optimizers.BaseOptimizer
+  inheritedMembers:
+  - SiaNet.Optimizers.BaseOptimizer.Name
+  - SiaNet.Optimizers.BaseOptimizer.LearningRate
+  - SiaNet.Optimizers.BaseOptimizer.Momentum
+  - SiaNet.Optimizers.BaseOptimizer.DecayRate
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Optimizers.Adamax.Beta1
+  commentId: P:SiaNet.Optimizers.Adamax.Beta1
+  id: Beta1
+  parent: SiaNet.Optimizers.Adamax
+  langs:
+  - csharp
+  - vb
+  name: Beta1
+  nameWithType: Adamax.Beta1
+  fullName: SiaNet.Optimizers.Adamax.Beta1
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adamax.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Beta1
+    path: ../SiaNet/Optimizers/Adamax.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nGets or sets the beta 1 value.\n"
+  example: []
+  syntax:
+    content: public float Beta1 { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe beta1.\n"
+    content.vb: Public Property Beta1 As Single
+  overload: SiaNet.Optimizers.Adamax.Beta1*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.Adamax.Beta2
+  commentId: P:SiaNet.Optimizers.Adamax.Beta2
+  id: Beta2
+  parent: SiaNet.Optimizers.Adamax
+  langs:
+  - csharp
+  - vb
+  name: Beta2
+  nameWithType: Adamax.Beta2
+  fullName: SiaNet.Optimizers.Adamax.Beta2
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adamax.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Beta2
+    path: ../SiaNet/Optimizers/Adamax.cs
+    startLine: 30
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nGets or sets the beta 2 value.\n"
+  example: []
+  syntax:
+    content: public float Beta2 { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe beta2.\n"
+    content.vb: Public Property Beta2 As Single
+  overload: SiaNet.Optimizers.Adamax.Beta2*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Optimizers.Adamax.#ctor(System.Single,System.Single,System.Single,System.Single)
+  commentId: M:SiaNet.Optimizers.Adamax.#ctor(System.Single,System.Single,System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single,System.Single,System.Single)'
+  parent: SiaNet.Optimizers.Adamax
+  langs:
+  - csharp
+  - vb
+  name: Adamax(Single, Single, Single, Single)
+  nameWithType: Adamax.Adamax(Single, Single, Single, Single)
+  fullName: SiaNet.Optimizers.Adamax.Adamax(System.Single, System.Single, System.Single, System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Optimizers/Adamax.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Optimizers/Adamax.cs
+    startLine: 42
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Optimizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Optimizers.Adamax\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Adamax(float lr = 0.002F, float beta_1 = 0.9F, float beta_2 = 0.999F, float decayRate = 0F)
+    parameters:
+    - id: lr
+      type: System.Single
+      description: The initial learning rate for the optimizer.
+    - id: beta_1
+      type: System.Single
+      description: The beta 1 value.
+    - id: beta_2
+      type: System.Single
+      description: The beta 2 value.
+    - id: decayRate
+      type: System.Single
+      description: Learning rate decay over each update.
+    content.vb: Public Sub New(lr As Single = 0.002F, beta_1 As Single = 0.9F, beta_2 As Single = 0.999F, decayRate As Single = 0F)
+  overload: SiaNet.Optimizers.Adamax.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  parent: SiaNet.Optimizers
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Optimizers.BaseOptimizer.Name
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Name
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Name
+  nameWithType: BaseOptimizer.Name
+  fullName: SiaNet.Optimizers.BaseOptimizer.Name
+- uid: SiaNet.Optimizers.BaseOptimizer.LearningRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.LearningRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: LearningRate
+  nameWithType: BaseOptimizer.LearningRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.LearningRate
+- uid: SiaNet.Optimizers.BaseOptimizer.Momentum
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.Momentum
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: Momentum
+  nameWithType: BaseOptimizer.Momentum
+  fullName: SiaNet.Optimizers.BaseOptimizer.Momentum
+- uid: SiaNet.Optimizers.BaseOptimizer.DecayRate
+  commentId: P:SiaNet.Optimizers.BaseOptimizer.DecayRate
+  parent: SiaNet.Optimizers.BaseOptimizer
+  name: DecayRate
+  nameWithType: BaseOptimizer.DecayRate
+  fullName: SiaNet.Optimizers.BaseOptimizer.DecayRate
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Optimizers.Adamax.Beta1*
+  commentId: Overload:SiaNet.Optimizers.Adamax.Beta1
+  name: Beta1
+  nameWithType: Adamax.Beta1
+  fullName: SiaNet.Optimizers.Adamax.Beta1
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Optimizers.Adamax.Beta2*
+  commentId: Overload:SiaNet.Optimizers.Adamax.Beta2
+  name: Beta2
+  nameWithType: Adamax.Beta2
+  fullName: SiaNet.Optimizers.Adamax.Beta2
+- uid: SiaNet.Optimizers.Adamax
+  commentId: T:SiaNet.Optimizers.Adamax
+  name: Adamax
+  nameWithType: Adamax
+  fullName: SiaNet.Optimizers.Adamax
+- uid: SiaNet.Optimizers.Adamax.#ctor*
+  commentId: Overload:SiaNet.Optimizers.Adamax.#ctor
+  name: Adamax
+  nameWithType: Adamax.Adamax
+  fullName: SiaNet.Optimizers.Adamax.Adamax

@@ -1,0 +1,420 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.History
+  commentId: T:SiaNet.History
+  id: History
+  parent: SiaNet
+  children:
+  - SiaNet.History.#ctor
+  - SiaNet.History.Add(System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single})
+  - SiaNet.History.TrainLosses
+  - SiaNet.History.TrainMetrics
+  - SiaNet.History.ValLosses
+  - SiaNet.History.ValMetrics
+  langs:
+  - csharp
+  - vb
+  name: History
+  nameWithType: History
+  fullName: SiaNet.History
+  type: Class
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: History
+    path: ../SiaNet/History.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nClass to hold the neural network training information history. Useful for plotting graphs for loss and metrics. Evaluate training performance\n"
+  example: []
+  syntax:
+    content: public class History
+    content.vb: Public Class History
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.History.TrainLosses
+  commentId: P:SiaNet.History.TrainLosses
+  id: TrainLosses
+  parent: SiaNet.History
+  langs:
+  - csharp
+  - vb
+  name: TrainLosses
+  nameWithType: History.TrainLosses
+  fullName: SiaNet.History.TrainLosses
+  type: Property
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: TrainLosses
+    path: ../SiaNet/History.cs
+    startLine: 16
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGets or sets the train loss history.\n"
+  example: []
+  syntax:
+    content: public List<float> TrainLosses { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Single}
+      description: "\nThe train loss.\n"
+    content.vb: Public Property TrainLosses As List(Of Single)
+  overload: SiaNet.History.TrainLosses*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.History.TrainMetrics
+  commentId: P:SiaNet.History.TrainMetrics
+  id: TrainMetrics
+  parent: SiaNet.History
+  langs:
+  - csharp
+  - vb
+  name: TrainMetrics
+  nameWithType: History.TrainMetrics
+  fullName: SiaNet.History.TrainMetrics
+  type: Property
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: TrainMetrics
+    path: ../SiaNet/History.cs
+    startLine: 24
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGets or sets the train metric history.\n"
+  example: []
+  syntax:
+    content: public List<float> TrainMetrics { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Single}
+      description: "\nThe train metric.\n"
+    content.vb: Public Property TrainMetrics As List(Of Single)
+  overload: SiaNet.History.TrainMetrics*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.History.ValLosses
+  commentId: P:SiaNet.History.ValLosses
+  id: ValLosses
+  parent: SiaNet.History
+  langs:
+  - csharp
+  - vb
+  name: ValLosses
+  nameWithType: History.ValLosses
+  fullName: SiaNet.History.ValLosses
+  type: Property
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ValLosses
+    path: ../SiaNet/History.cs
+    startLine: 32
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGets or sets the value losess.\n"
+  example: []
+  syntax:
+    content: public List<float> ValLosses { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Single}
+      description: "\nThe value losess.\n"
+    content.vb: Public Property ValLosses As List(Of Single)
+  overload: SiaNet.History.ValLosses*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.History.ValMetrics
+  commentId: P:SiaNet.History.ValMetrics
+  id: ValMetrics
+  parent: SiaNet.History
+  langs:
+  - csharp
+  - vb
+  name: ValMetrics
+  nameWithType: History.ValMetrics
+  fullName: SiaNet.History.ValMetrics
+  type: Property
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ValMetrics
+    path: ../SiaNet/History.cs
+    startLine: 40
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGets or sets the value metrics.\n"
+  example: []
+  syntax:
+    content: public List<float> ValMetrics { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.Single}
+      description: "\nThe value metrics.\n"
+    content.vb: Public Property ValMetrics As List(Of Single)
+  overload: SiaNet.History.ValMetrics*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.History.#ctor
+  commentId: M:SiaNet.History.#ctor
+  id: '#ctor'
+  parent: SiaNet.History
+  langs:
+  - csharp
+  - vb
+  name: History()
+  nameWithType: History.History()
+  fullName: SiaNet.History.History()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/History.cs
+    startLine: 45
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.History\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public History()
+    content.vb: Public Sub New
+  overload: SiaNet.History.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.History.Add(System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single})
+  commentId: M:SiaNet.History.Add(System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single})
+  id: Add(System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single})
+  parent: SiaNet.History
+  langs:
+  - csharp
+  - vb
+  name: Add(List<Single>, List<Single>, List<Single>, List<Single>)
+  nameWithType: History.Add(List<Single>, List<Single>, List<Single>, List<Single>)
+  fullName: SiaNet.History.Add(System.Collections.Generic.List<System.Single>, System.Collections.Generic.List<System.Single>, System.Collections.Generic.List<System.Single>, System.Collections.Generic.List<System.Single>)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/History.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Add
+    path: ../SiaNet/History.cs
+    startLine: 60
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nAdds the specified train loss.\n"
+  example: []
+  syntax:
+    content: public void Add(List<float> trainLoss, List<float> trainMetric, List<float> valLoss, List<float> valMetric)
+    parameters:
+    - id: trainLoss
+      type: System.Collections.Generic.List{System.Single}
+      description: The train loss.
+    - id: trainMetric
+      type: System.Collections.Generic.List{System.Single}
+      description: The train metric.
+    - id: valLoss
+      type: System.Collections.Generic.List{System.Single}
+      description: The value loss.
+    - id: valMetric
+      type: System.Collections.Generic.List{System.Single}
+      description: The value metric.
+    content.vb: Public Sub Add(trainLoss As List(Of Single), trainMetric As List(Of Single), valLoss As List(Of Single), valMetric As List(Of Single))
+  overload: SiaNet.History.Add*
+  nameWithType.vb: History.Add(List(Of Single), List(Of Single), List(Of Single), List(Of Single))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.History.Add(System.Collections.Generic.List(Of System.Single), System.Collections.Generic.List(Of System.Single), System.Collections.Generic.List(Of System.Single), System.Collections.Generic.List(Of System.Single))
+  name.vb: Add(List(Of Single), List(Of Single), List(Of Single), List(Of Single))
+references:
+- uid: SiaNet
+  commentId: N:SiaNet
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.History.TrainLosses*
+  commentId: Overload:SiaNet.History.TrainLosses
+  name: TrainLosses
+  nameWithType: History.TrainLosses
+  fullName: SiaNet.History.TrainLosses
+- uid: System.Collections.Generic.List{System.Single}
+  commentId: T:System.Collections.Generic.List{System.Single}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  name: List<Single>
+  nameWithType: List<Single>
+  fullName: System.Collections.Generic.List<System.Single>
+  nameWithType.vb: List(Of Single)
+  fullName.vb: System.Collections.Generic.List(Of System.Single)
+  name.vb: List(Of Single)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Single
+    name: Single
+    nameWithType: Single
+    fullName: System.Single
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    nameWithType: List
+    fullName: System.Collections.Generic.List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+- uid: SiaNet.History.TrainMetrics*
+  commentId: Overload:SiaNet.History.TrainMetrics
+  name: TrainMetrics
+  nameWithType: History.TrainMetrics
+  fullName: SiaNet.History.TrainMetrics
+- uid: SiaNet.History.ValLosses*
+  commentId: Overload:SiaNet.History.ValLosses
+  name: ValLosses
+  nameWithType: History.ValLosses
+  fullName: SiaNet.History.ValLosses
+- uid: SiaNet.History.ValMetrics*
+  commentId: Overload:SiaNet.History.ValMetrics
+  name: ValMetrics
+  nameWithType: History.ValMetrics
+  fullName: SiaNet.History.ValMetrics
+- uid: SiaNet.History
+  commentId: T:SiaNet.History
+  parent: SiaNet
+  name: History
+  nameWithType: History
+  fullName: SiaNet.History
+- uid: SiaNet.History.#ctor*
+  commentId: Overload:SiaNet.History.#ctor
+  name: History
+  nameWithType: History.History
+  fullName: SiaNet.History.History
+- uid: SiaNet.History.Add*
+  commentId: Overload:SiaNet.History.Add
+  name: Add
+  nameWithType: History.Add
+  fullName: SiaNet.History.Add

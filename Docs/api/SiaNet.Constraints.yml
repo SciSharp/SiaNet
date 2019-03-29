@@ -1,0 +1,52 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  id: SiaNet.Constraints
+  children:
+  - SiaNet.Constraints.BaseConstraint
+  - SiaNet.Constraints.MaxNorm
+  - SiaNet.Constraints.MinMaxNorm
+  - SiaNet.Constraints.NonNeg
+  - SiaNet.Constraints.UnitNorm
+  langs:
+  - csharp
+  - vb
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints.MaxNorm
+  commentId: T:SiaNet.Constraints.MaxNorm
+  name: MaxNorm
+  nameWithType: MaxNorm
+  fullName: SiaNet.Constraints.MaxNorm
+- uid: SiaNet.Constraints.MinMaxNorm
+  commentId: T:SiaNet.Constraints.MinMaxNorm
+  name: MinMaxNorm
+  nameWithType: MinMaxNorm
+  fullName: SiaNet.Constraints.MinMaxNorm
+- uid: SiaNet.Constraints.NonNeg
+  commentId: T:SiaNet.Constraints.NonNeg
+  name: NonNeg
+  nameWithType: NonNeg
+  fullName: SiaNet.Constraints.NonNeg
+- uid: SiaNet.Constraints.UnitNorm
+  commentId: T:SiaNet.Constraints.UnitNorm
+  name: UnitNorm
+  nameWithType: UnitNorm
+  fullName: SiaNet.Constraints.UnitNorm
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints

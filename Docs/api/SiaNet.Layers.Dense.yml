@@ -1,0 +1,978 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.Dense
+  commentId: T:SiaNet.Layers.Dense
+  id: Dense
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.Dense.#ctor(System.Int32,SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  - SiaNet.Layers.Dense.Act
+  - SiaNet.Layers.Dense.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Dense.BiasConstraint
+  - SiaNet.Layers.Dense.BiasInitializer
+  - SiaNet.Layers.Dense.BiasRegularizer
+  - SiaNet.Layers.Dense.Dim
+  - SiaNet.Layers.Dense.Forward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Dense.KernelConstraint
+  - SiaNet.Layers.Dense.KernelInitializer
+  - SiaNet.Layers.Dense.KernelRegularizer
+  - SiaNet.Layers.Dense.UseBias
+  langs:
+  - csharp
+  - vb
+  name: Dense
+  nameWithType: Dense
+  fullName: SiaNet.Layers.Dense
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Dense
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 13
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nDense implements the operation: output = activation(dot(input, kernel) + bias) where activation is the element-wise activation function passed as the activation argument, \nkernel is a weights matrix created by the layer, and bias is a bias vector created by the layer (only applicable if use_bias is True).\n"
+  example: []
+  syntax:
+    content: 'public class Dense : BaseLayer'
+    content.vb: >-
+      Public Class Dense
+          Inherits BaseLayer
+  seealso:
+  - linkId: SiaNet.Layers.BaseLayer
+    commentId: T:SiaNet.Layers.BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.Dense.Dim
+  commentId: P:SiaNet.Layers.Dense.Dim
+  id: Dim
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: Dim
+  nameWithType: Dense.Dim
+  fullName: SiaNet.Layers.Dense.Dim
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Dim
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 21
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nDimensions of the output space\n"
+  example: []
+  syntax:
+    content: public int Dim { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: "\nThe dim.\n"
+    content.vb: Public Property Dim As Integer
+  overload: SiaNet.Layers.Dense.Dim*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.Act
+  commentId: P:SiaNet.Layers.Dense.Act
+  id: Act
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: Act
+  nameWithType: Dense.Act
+  fullName: SiaNet.Layers.Dense.Act
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Act
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 29
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nActivation function to use. If none specified linear activation will be used\n"
+  example: []
+  syntax:
+    content: public BaseLayer Act { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Layers.BaseLayer
+      description: "\nThe act.\n"
+    content.vb: Public Property Act As BaseLayer
+  overload: SiaNet.Layers.Dense.Act*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.UseBias
+  commentId: P:SiaNet.Layers.Dense.UseBias
+  id: UseBias
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: UseBias
+  nameWithType: Dense.UseBias
+  fullName: SiaNet.Layers.Dense.UseBias
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: UseBias
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 37
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nGets or sets a value indicating whether to use bias parameter.\n"
+  example: []
+  syntax:
+    content: public bool UseBias { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if [use bias]; otherwise, <code>false</code>.\n"
+    content.vb: Public Property UseBias As Boolean
+  overload: SiaNet.Layers.Dense.UseBias*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.KernelInitializer
+  commentId: P:SiaNet.Layers.Dense.KernelInitializer
+  id: KernelInitializer
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: KernelInitializer
+  nameWithType: Dense.KernelInitializer
+  fullName: SiaNet.Layers.Dense.KernelInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernelInitializer
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 45
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for kernel weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseInitializer KernelInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe kernel initializer.\n"
+    content.vb: Public Property KernelInitializer As BaseInitializer
+  overload: SiaNet.Layers.Dense.KernelInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.BiasInitializer
+  commentId: P:SiaNet.Layers.Dense.BiasInitializer
+  id: BiasInitializer
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: BiasInitializer
+  nameWithType: Dense.BiasInitializer
+  fullName: SiaNet.Layers.Dense.BiasInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BiasInitializer
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 53
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializer for bias weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseInitializer BiasInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+      description: "\nThe bias initializer.\n"
+    content.vb: Public Property BiasInitializer As BaseInitializer
+  overload: SiaNet.Layers.Dense.BiasInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.KernelConstraint
+  commentId: P:SiaNet.Layers.Dense.KernelConstraint
+  id: KernelConstraint
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: KernelConstraint
+  nameWithType: Dense.KernelConstraint
+  fullName: SiaNet.Layers.Dense.KernelConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernelConstraint
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 61
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nConstraint function applied to kernel weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseConstraint KernelConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+      description: "\nThe kernel constraint.\n"
+    content.vb: Public Property KernelConstraint As BaseConstraint
+  overload: SiaNet.Layers.Dense.KernelConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.BiasConstraint
+  commentId: P:SiaNet.Layers.Dense.BiasConstraint
+  id: BiasConstraint
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: BiasConstraint
+  nameWithType: Dense.BiasConstraint
+  fullName: SiaNet.Layers.Dense.BiasConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BiasConstraint
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 69
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nConstraint function applied to bias weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseConstraint BiasConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+      description: "\nThe bias constraint.\n"
+    content.vb: Public Property BiasConstraint As BaseConstraint
+  overload: SiaNet.Layers.Dense.BiasConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.KernelRegularizer
+  commentId: P:SiaNet.Layers.Dense.KernelRegularizer
+  id: KernelRegularizer
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: KernelRegularizer
+  nameWithType: Dense.KernelRegularizer
+  fullName: SiaNet.Layers.Dense.KernelRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernelRegularizer
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 77
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nRegularizer function applied to kernel weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer KernelRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: "\nThe kernel regularizer.\n"
+    content.vb: Public Property KernelRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.Dense.KernelRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.BiasRegularizer
+  commentId: P:SiaNet.Layers.Dense.BiasRegularizer
+  id: BiasRegularizer
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: BiasRegularizer
+  nameWithType: Dense.BiasRegularizer
+  fullName: SiaNet.Layers.Dense.BiasRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BiasRegularizer
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 85
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nConstraint function applied to bias weight matrix\n"
+  example: []
+  syntax:
+    content: public BaseRegularizer BiasRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: "\nThe bias regularizer.\n"
+    content.vb: Public Property BiasRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.Dense.BiasRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.#ctor(System.Int32,SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  commentId: M:SiaNet.Layers.Dense.#ctor(System.Int32,SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  id: '#ctor(System.Int32,SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)'
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: Dense(Int32, ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)
+  nameWithType: Dense.Dense(Int32, ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)
+  fullName: SiaNet.Layers.Dense.Dense(System.Int32, SiaNet.Engine.ActType, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, System.Boolean, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 99
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Layers.Dense\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Dense(int dim, ActType activation = ActType.Linear, BaseInitializer kernelInitializer = null, BaseRegularizer kernelRegularizer = null, BaseConstraint kernelConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
+    parameters:
+    - id: dim
+      type: System.Int32
+      description: Dimensions of the output space
+    - id: activation
+      type: SiaNet.Engine.ActType
+      description: Activation function to use. If none specified linear activation will be used
+    - id: kernelInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for kernel weight matrix.
+    - id: kernelRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: Regularizer function applied to bias weight matrix
+    - id: kernelConstraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: Constraint function applied to kernel weight matrix.
+    - id: useBias
+      type: System.Boolean
+      description: if set to <code>true</code> will use bias parameter.
+    - id: biasInitializer
+      type: SiaNet.Initializers.BaseInitializer
+      description: Initializer for bias weight matrix
+    - id: biasRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: Regularizer function applied to bias weight matrix
+    - id: biasConstraint
+      type: SiaNet.Constraints.BaseConstraint
+      description: Constraint function applied to bias weight matrix
+    content.vb: Public Sub New(dim As Integer, activation As ActType = ActType.Linear, kernelInitializer As BaseInitializer = Nothing, kernelRegularizer As BaseRegularizer = Nothing, kernelConstraint As BaseConstraint = Nothing, useBias As Boolean = True, biasInitializer As BaseInitializer = Nothing, biasRegularizer As BaseRegularizer = Nothing, biasConstraint As BaseConstraint = Nothing)
+  overload: SiaNet.Layers.Dense.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Dense.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Dense.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: Dense.Forward(Tensor)
+  fullName: SiaNet.Layers.Dense.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 119
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nForwards the inputs and compute the output\n"
+  example: []
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+      description: The input tensor for this layer.
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Dense.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.Dense.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Dense.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Dense
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: Dense.Backward(Tensor)
+  fullName: SiaNet.Layers.Dense.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Core/Dense.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Core/Dense.cs
+    startLine: 144
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  summary: "\nCalculate the gradient of this layer function\n"
+  example: []
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+      description: The calculated output grad from previous layer.
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Dense.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.Dense.Dim*
+  commentId: Overload:SiaNet.Layers.Dense.Dim
+  name: Dim
+  nameWithType: Dense.Dim
+  fullName: SiaNet.Layers.Dense.Dim
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Layers.Dense.Act*
+  commentId: Overload:SiaNet.Layers.Dense.Act
+  name: Act
+  nameWithType: Dense.Act
+  fullName: SiaNet.Layers.Dense.Act
+- uid: SiaNet.Layers.Dense.UseBias*
+  commentId: Overload:SiaNet.Layers.Dense.UseBias
+  name: UseBias
+  nameWithType: Dense.UseBias
+  fullName: SiaNet.Layers.Dense.UseBias
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Layers.Dense.KernelInitializer*
+  commentId: Overload:SiaNet.Layers.Dense.KernelInitializer
+  name: KernelInitializer
+  nameWithType: Dense.KernelInitializer
+  fullName: SiaNet.Layers.Dense.KernelInitializer
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: SiaNet.Layers.Dense.BiasInitializer*
+  commentId: Overload:SiaNet.Layers.Dense.BiasInitializer
+  name: BiasInitializer
+  nameWithType: Dense.BiasInitializer
+  fullName: SiaNet.Layers.Dense.BiasInitializer
+- uid: SiaNet.Layers.Dense.KernelConstraint*
+  commentId: Overload:SiaNet.Layers.Dense.KernelConstraint
+  name: KernelConstraint
+  nameWithType: Dense.KernelConstraint
+  fullName: SiaNet.Layers.Dense.KernelConstraint
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Layers.Dense.BiasConstraint*
+  commentId: Overload:SiaNet.Layers.Dense.BiasConstraint
+  name: BiasConstraint
+  nameWithType: Dense.BiasConstraint
+  fullName: SiaNet.Layers.Dense.BiasConstraint
+- uid: SiaNet.Layers.Dense.KernelRegularizer*
+  commentId: Overload:SiaNet.Layers.Dense.KernelRegularizer
+  name: KernelRegularizer
+  nameWithType: Dense.KernelRegularizer
+  fullName: SiaNet.Layers.Dense.KernelRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: SiaNet.Layers.Dense.BiasRegularizer*
+  commentId: Overload:SiaNet.Layers.Dense.BiasRegularizer
+  name: BiasRegularizer
+  nameWithType: Dense.BiasRegularizer
+  fullName: SiaNet.Layers.Dense.BiasRegularizer
+- uid: SiaNet.Layers.Dense
+  commentId: T:SiaNet.Layers.Dense
+  name: Dense
+  nameWithType: Dense
+  fullName: SiaNet.Layers.Dense
+- uid: SiaNet.Layers.Dense.#ctor*
+  commentId: Overload:SiaNet.Layers.Dense.#ctor
+  name: Dense
+  nameWithType: Dense.Dense
+  fullName: SiaNet.Layers.Dense.Dense
+- uid: SiaNet.Engine.ActType
+  commentId: T:SiaNet.Engine.ActType
+  parent: SiaNet.Engine
+  name: ActType
+  nameWithType: ActType
+  fullName: SiaNet.Engine.ActType
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Dense.Forward*
+  commentId: Overload:SiaNet.Layers.Dense.Forward
+  name: Forward
+  nameWithType: Dense.Forward
+  fullName: SiaNet.Layers.Dense.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Dense.Backward*
+  commentId: Overload:SiaNet.Layers.Dense.Backward
+  name: Backward
+  nameWithType: Dense.Backward
+  fullName: SiaNet.Layers.Dense.Backward

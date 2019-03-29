@@ -1,0 +1,312 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.BaseParameter
+  commentId: T:SiaNet.Engine.BaseParameter
+  id: BaseParameter
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.BaseParameter.#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])
+  - SiaNet.Engine.BaseParameter.#ctor(System.String,System.Int64[])
+  - SiaNet.Engine.BaseParameter.Data
+  - SiaNet.Engine.BaseParameter.Grad
+  - SiaNet.Engine.BaseParameter.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseParameter
+  nameWithType: BaseParameter
+  fullName: SiaNet.Engine.BaseParameter
+  type: Class
+  source:
+    remote:
+      path: SiaNet.Engine/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseParameter
+    path: ../SiaNet.Engine/Parameter.cs
+    startLine: 8
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public abstract class BaseParameter
+    content.vb: Public MustInherit Class BaseParameter
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Parameter
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Engine.BaseParameter.Data
+  commentId: P:SiaNet.Engine.BaseParameter.Data
+  id: Data
+  parent: SiaNet.Engine.BaseParameter
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: BaseParameter.Data
+  fullName: SiaNet.Engine.BaseParameter.Data
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Data
+    path: ../SiaNet.Engine/Parameter.cs
+    startLine: 10
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor Data { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Property Data As Tensor
+  overload: SiaNet.Engine.BaseParameter.Data*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.BaseParameter.Grad
+  commentId: P:SiaNet.Engine.BaseParameter.Grad
+  id: Grad
+  parent: SiaNet.Engine.BaseParameter
+  langs:
+  - csharp
+  - vb
+  name: Grad
+  nameWithType: BaseParameter.Grad
+  fullName: SiaNet.Engine.BaseParameter.Grad
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Grad
+    path: ../SiaNet.Engine/Parameter.cs
+    startLine: 12
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public Tensor Grad { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Property Grad As Tensor
+  overload: SiaNet.Engine.BaseParameter.Grad*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.BaseParameter.Name
+  commentId: P:SiaNet.Engine.BaseParameter.Name
+  id: Name
+  parent: SiaNet.Engine.BaseParameter
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseParameter.Name
+  fullName: SiaNet.Engine.BaseParameter.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet.Engine/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet.Engine/Parameter.cs
+    startLine: 14
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: SiaNet.Engine.BaseParameter.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Engine.BaseParameter.#ctor(System.String,System.Int64[])
+  commentId: M:SiaNet.Engine.BaseParameter.#ctor(System.String,System.Int64[])
+  id: '#ctor(System.String,System.Int64[])'
+  parent: SiaNet.Engine.BaseParameter
+  langs:
+  - csharp
+  - vb
+  name: BaseParameter(String, Int64[])
+  nameWithType: BaseParameter.BaseParameter(String, Int64[])
+  fullName: SiaNet.Engine.BaseParameter.BaseParameter(System.String, System.Int64[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet.Engine/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet.Engine/Parameter.cs
+    startLine: 16
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public BaseParameter(string name, params long[] shape)
+    parameters:
+    - id: name
+      type: System.String
+    - id: shape
+      type: System.Int64[]
+    content.vb: Public Sub New(name As String, ParamArray shape As Long())
+  overload: SiaNet.Engine.BaseParameter.#ctor*
+  nameWithType.vb: BaseParameter.BaseParameter(String, Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Engine.BaseParameter.BaseParameter(System.String, System.Int64())
+  name.vb: BaseParameter(String, Int64())
+- uid: SiaNet.Engine.BaseParameter.#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])
+  commentId: M:SiaNet.Engine.BaseParameter.#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])
+  id: '#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])'
+  parent: SiaNet.Engine.BaseParameter
+  langs:
+  - csharp
+  - vb
+  name: BaseParameter(String, DataType, Int64[])
+  nameWithType: BaseParameter.BaseParameter(String, DataType, Int64[])
+  fullName: SiaNet.Engine.BaseParameter.BaseParameter(System.String, SiaNet.Engine.DataType, System.Int64[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet.Engine/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet.Engine/Parameter.cs
+    startLine: 22
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  syntax:
+    content: public BaseParameter(string name, DataType dataType, params long[] shape)
+    parameters:
+    - id: name
+      type: System.String
+    - id: dataType
+      type: SiaNet.Engine.DataType
+    - id: shape
+      type: System.Int64[]
+    content.vb: Public Sub New(name As String, dataType As DataType, ParamArray shape As Long())
+  overload: SiaNet.Engine.BaseParameter.#ctor*
+  nameWithType.vb: BaseParameter.BaseParameter(String, DataType, Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Engine.BaseParameter.BaseParameter(System.String, SiaNet.Engine.DataType, System.Int64())
+  name.vb: BaseParameter(String, DataType, Int64())
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Engine.BaseParameter.Data*
+  commentId: Overload:SiaNet.Engine.BaseParameter.Data
+  name: Data
+  nameWithType: BaseParameter.Data
+  fullName: SiaNet.Engine.BaseParameter.Data
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine.BaseParameter.Grad*
+  commentId: Overload:SiaNet.Engine.BaseParameter.Grad
+  name: Grad
+  nameWithType: BaseParameter.Grad
+  fullName: SiaNet.Engine.BaseParameter.Grad
+- uid: SiaNet.Engine.BaseParameter.Name*
+  commentId: Overload:SiaNet.Engine.BaseParameter.Name
+  name: Name
+  nameWithType: BaseParameter.Name
+  fullName: SiaNet.Engine.BaseParameter.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Engine.BaseParameter.#ctor*
+  commentId: Overload:SiaNet.Engine.BaseParameter.#ctor
+  name: BaseParameter
+  nameWithType: BaseParameter.BaseParameter
+  fullName: SiaNet.Engine.BaseParameter.BaseParameter
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  parent: SiaNet.Engine
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType

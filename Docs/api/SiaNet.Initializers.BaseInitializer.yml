@@ -1,0 +1,251 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  id: BaseInitializer
+  parent: SiaNet.Initializers
+  children:
+  - SiaNet.Initializers.BaseInitializer.#ctor(System.String)
+  - SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  - SiaNet.Initializers.BaseInitializer.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Initializers/BaseInitializer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseInitializer
+    path: ../SiaNet/Initializers/BaseInitializer.cs
+    startLine: 7
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nBase class for the initializer. Initializes the tensor weights or bias with values based on the type of the initializer selected.\n"
+  example: []
+  syntax:
+    content: public abstract class BaseInitializer
+    content.vb: Public MustInherit Class BaseInitializer
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Initializers.Constant
+  - SiaNet.Initializers.RandomNormal
+  - SiaNet.Initializers.RandomUniform
+  - SiaNet.Initializers.TruncatedNormal
+  - SiaNet.Initializers.VarianceScaling
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Initializers.BaseInitializer.Name
+  commentId: P:SiaNet.Initializers.BaseInitializer.Name
+  id: Name
+  parent: SiaNet.Initializers.BaseInitializer
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseInitializer.Name
+  fullName: SiaNet.Initializers.BaseInitializer.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/BaseInitializer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet/Initializers/BaseInitializer.cs
+    startLine: 17
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nGets or sets the name of the initializer.\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe name.\n"
+    content.vb: Public Property Name As String
+  overload: SiaNet.Initializers.BaseInitializer.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.BaseInitializer.#ctor(System.String)
+  commentId: M:SiaNet.Initializers.BaseInitializer.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SiaNet.Initializers.BaseInitializer
+  langs:
+  - csharp
+  - vb
+  name: BaseInitializer(String)
+  nameWithType: BaseInitializer.BaseInitializer(String)
+  fullName: SiaNet.Initializers.BaseInitializer.BaseInitializer(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Initializers/BaseInitializer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Initializers/BaseInitializer.cs
+    startLine: 23
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Initializers.BaseInitializer\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BaseInitializer(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the initializer.
+    content.vb: Public Sub New(name As String)
+  overload: SiaNet.Initializers.BaseInitializer.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  id: Generate(System.Int64[])
+  parent: SiaNet.Initializers.BaseInitializer
+  langs:
+  - csharp
+  - vb
+  name: Generate(Int64[])
+  nameWithType: BaseInitializer.Generate(Int64[])
+  fullName: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Initializers/BaseInitializer.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Generate
+    path: ../SiaNet/Initializers/BaseInitializer.cs
+    startLine: 33
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nGenerates a tensor with specified shape.\n"
+  example: []
+  syntax:
+    content: public abstract Tensor Generate(params long[] shape)
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape of the tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public MustOverride Function Generate(ParamArray shape As Long()) As Tensor
+  overload: SiaNet.Initializers.BaseInitializer.Generate*
+  nameWithType.vb: BaseInitializer.Generate(Int64())
+  modifiers.csharp:
+  - public
+  - abstract
+  modifiers.vb:
+  - Public
+  - MustOverride
+  fullName.vb: SiaNet.Initializers.BaseInitializer.Generate(System.Int64())
+  name.vb: Generate(Int64())
+references:
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Initializers.BaseInitializer.Name*
+  commentId: Overload:SiaNet.Initializers.BaseInitializer.Name
+  name: Name
+  nameWithType: BaseInitializer.Name
+  fullName: SiaNet.Initializers.BaseInitializer.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers.BaseInitializer.#ctor*
+  commentId: Overload:SiaNet.Initializers.BaseInitializer.#ctor
+  name: BaseInitializer
+  nameWithType: BaseInitializer.BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer.BaseInitializer
+- uid: SiaNet.Initializers.BaseInitializer.Generate*
+  commentId: Overload:SiaNet.Initializers.BaseInitializer.Generate
+  name: Generate
+  nameWithType: BaseInitializer.Generate
+  fullName: SiaNet.Initializers.BaseInitializer.Generate
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

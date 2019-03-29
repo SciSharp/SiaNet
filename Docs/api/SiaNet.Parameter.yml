@@ -1,0 +1,569 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Parameter
+  commentId: T:SiaNet.Parameter
+  id: Parameter
+  parent: SiaNet
+  children:
+  - SiaNet.Parameter.#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])
+  - SiaNet.Parameter.#ctor(System.String,System.Int64[])
+  - SiaNet.Parameter.ApplyConstraint
+  - SiaNet.Parameter.ApplyDeltaRegularizer
+  - SiaNet.Parameter.ApplyRegularizer
+  - SiaNet.Parameter.Create(SiaNet.Engine.Tensor,System.String)
+  - SiaNet.Parameter.HaveRegularizer
+  - SiaNet.Parameter.SetConstraint(SiaNet.Constraints.BaseConstraint)
+  - SiaNet.Parameter.SetRegularizer(SiaNet.Regularizers.BaseRegularizer)
+  langs:
+  - csharp
+  - vb
+  name: Parameter
+  nameWithType: Parameter
+  fullName: SiaNet.Parameter
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Parameter
+    path: ../SiaNet/Parameter.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nPlaceholder variable for holding weight and bias for the neural network. Attached with constraints and regularizer to easy apply them during optimizer update operations\n"
+  example: []
+  syntax:
+    content: 'public class Parameter : BaseParameter'
+    content.vb: >-
+      Public Class Parameter
+          Inherits BaseParameter
+  inheritance:
+  - System.Object
+  - SiaNet.Engine.BaseParameter
+  inheritedMembers:
+  - SiaNet.Engine.BaseParameter.Data
+  - SiaNet.Engine.BaseParameter.Grad
+  - SiaNet.Engine.BaseParameter.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Parameter.#ctor(System.String,System.Int64[])
+  commentId: M:SiaNet.Parameter.#ctor(System.String,System.Int64[])
+  id: '#ctor(System.String,System.Int64[])'
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: Parameter(String, Int64[])
+  nameWithType: Parameter.Parameter(String, Int64[])
+  fullName: SiaNet.Parameter.Parameter(System.String, System.Int64[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Parameter.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Parameter\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Parameter(string name, params long[] shape)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the parameter.
+    - id: shape
+      type: System.Int64[]
+      description: The shape of the weight/bias parameter.
+    content.vb: Public Sub New(name As String, ParamArray shape As Long())
+  overload: SiaNet.Parameter.#ctor*
+  nameWithType.vb: Parameter.Parameter(String, Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Parameter.Parameter(System.String, System.Int64())
+  name.vb: Parameter(String, Int64())
+- uid: SiaNet.Parameter.#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])
+  commentId: M:SiaNet.Parameter.#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])
+  id: '#ctor(System.String,SiaNet.Engine.DataType,System.Int64[])'
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: Parameter(String, DataType, Int64[])
+  nameWithType: Parameter.Parameter(String, DataType, Int64[])
+  fullName: SiaNet.Parameter.Parameter(System.String, SiaNet.Engine.DataType, System.Int64[])
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Parameter.cs
+    startLine: 37
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Parameter\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public Parameter(string name, DataType dataType, params long[] shape)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the parameter.
+    - id: dataType
+      type: SiaNet.Engine.DataType
+      description: Data type
+    - id: shape
+      type: System.Int64[]
+      description: The shape of weight/bias parameter.
+    content.vb: Public Sub New(name As String, dataType As DataType, ParamArray shape As Long())
+  overload: SiaNet.Parameter.#ctor*
+  nameWithType.vb: Parameter.Parameter(String, DataType, Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Parameter.Parameter(System.String, SiaNet.Engine.DataType, System.Int64())
+  name.vb: Parameter(String, DataType, Int64())
+- uid: SiaNet.Parameter.Create(SiaNet.Engine.Tensor,System.String)
+  commentId: M:SiaNet.Parameter.Create(SiaNet.Engine.Tensor,System.String)
+  id: Create(SiaNet.Engine.Tensor,System.String)
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: Create(Tensor, String)
+  nameWithType: Parameter.Create(Tensor, String)
+  fullName: SiaNet.Parameter.Create(SiaNet.Engine.Tensor, System.String)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Create
+    path: ../SiaNet/Parameter.cs
+    startLine: 48
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nCreate an instance of parameter with tensor data.\n"
+  example: []
+  syntax:
+    content: public static Parameter Create(Tensor data, string name = "")
+    parameters:
+    - id: data
+      type: SiaNet.Engine.Tensor
+      description: The tensor data to build the parameter.
+    - id: name
+      type: System.String
+      description: The name of the parameter.
+    return:
+      type: SiaNet.Parameter
+      description: ''
+    content.vb: Public Shared Function Create(data As Tensor, name As String = "") As Parameter
+  overload: SiaNet.Parameter.Create*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: SiaNet.Parameter.HaveRegularizer
+  commentId: P:SiaNet.Parameter.HaveRegularizer
+  id: HaveRegularizer
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: HaveRegularizer
+  nameWithType: Parameter.HaveRegularizer
+  fullName: SiaNet.Parameter.HaveRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: HaveRegularizer
+    path: ../SiaNet/Parameter.cs
+    startLine: 65
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nGets a value indicating whether the parameter have regularizer function attached.\n"
+  example: []
+  syntax:
+    content: public bool HaveRegularizer { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "\n<code>true</code> if [have regularizer]; otherwise, <code>false</code>.\n"
+    content.vb: Public ReadOnly Property HaveRegularizer As Boolean
+  overload: SiaNet.Parameter.HaveRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Parameter.SetConstraint(SiaNet.Constraints.BaseConstraint)
+  commentId: M:SiaNet.Parameter.SetConstraint(SiaNet.Constraints.BaseConstraint)
+  id: SetConstraint(SiaNet.Constraints.BaseConstraint)
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: SetConstraint(BaseConstraint)
+  nameWithType: Parameter.SetConstraint(BaseConstraint)
+  fullName: SiaNet.Parameter.SetConstraint(SiaNet.Constraints.BaseConstraint)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SetConstraint
+    path: ../SiaNet/Parameter.cs
+    startLine: 77
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nSets the constraint function.\n"
+  example: []
+  syntax:
+    content: public void SetConstraint(BaseConstraint fn)
+    parameters:
+    - id: fn
+      type: SiaNet.Constraints.BaseConstraint
+      description: The function.
+    content.vb: Public Sub SetConstraint(fn As BaseConstraint)
+  overload: SiaNet.Parameter.SetConstraint*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Parameter.SetRegularizer(SiaNet.Regularizers.BaseRegularizer)
+  commentId: M:SiaNet.Parameter.SetRegularizer(SiaNet.Regularizers.BaseRegularizer)
+  id: SetRegularizer(SiaNet.Regularizers.BaseRegularizer)
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: SetRegularizer(BaseRegularizer)
+  nameWithType: Parameter.SetRegularizer(BaseRegularizer)
+  fullName: SiaNet.Parameter.SetRegularizer(SiaNet.Regularizers.BaseRegularizer)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: SetRegularizer
+    path: ../SiaNet/Parameter.cs
+    startLine: 86
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nSets the regularizer function.\n"
+  example: []
+  syntax:
+    content: public void SetRegularizer(BaseRegularizer fn)
+    parameters:
+    - id: fn
+      type: SiaNet.Regularizers.BaseRegularizer
+      description: The function.
+    content.vb: Public Sub SetRegularizer(fn As BaseRegularizer)
+  overload: SiaNet.Parameter.SetRegularizer*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Parameter.ApplyConstraint
+  commentId: M:SiaNet.Parameter.ApplyConstraint
+  id: ApplyConstraint
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: ApplyConstraint()
+  nameWithType: Parameter.ApplyConstraint()
+  fullName: SiaNet.Parameter.ApplyConstraint()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ApplyConstraint
+    path: ../SiaNet/Parameter.cs
+    startLine: 94
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nApplies the constraint function to weight/bias during training.\n"
+  example: []
+  syntax:
+    content: public void ApplyConstraint()
+    content.vb: Public Sub ApplyConstraint
+  overload: SiaNet.Parameter.ApplyConstraint*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Parameter.ApplyRegularizer
+  commentId: M:SiaNet.Parameter.ApplyRegularizer
+  id: ApplyRegularizer
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: ApplyRegularizer()
+  nameWithType: Parameter.ApplyRegularizer()
+  fullName: SiaNet.Parameter.ApplyRegularizer()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ApplyRegularizer
+    path: ../SiaNet/Parameter.cs
+    startLine: 106
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nApplies the regularizer function to weight/bias during training.\n"
+  example: []
+  syntax:
+    content: public float ApplyRegularizer()
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Function ApplyRegularizer As Single
+  overload: SiaNet.Parameter.ApplyRegularizer*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Parameter.ApplyDeltaRegularizer
+  commentId: M:SiaNet.Parameter.ApplyDeltaRegularizer
+  id: ApplyDeltaRegularizer
+  parent: SiaNet.Parameter
+  langs:
+  - csharp
+  - vb
+  name: ApplyDeltaRegularizer()
+  nameWithType: Parameter.ApplyDeltaRegularizer()
+  fullName: SiaNet.Parameter.ApplyDeltaRegularizer()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Parameter.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ApplyDeltaRegularizer
+    path: ../SiaNet/Parameter.cs
+    startLine: 120
+  assemblies:
+  - SiaNet
+  namespace: SiaNet
+  summary: "\nApplies the gradient of regularizer function during back propagation.\n"
+  example: []
+  syntax:
+    content: public void ApplyDeltaRegularizer()
+    content.vb: Public Sub ApplyDeltaRegularizer
+  overload: SiaNet.Parameter.ApplyDeltaRegularizer*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet
+  commentId: N:SiaNet
+  name: SiaNet
+  nameWithType: SiaNet
+  fullName: SiaNet
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Engine.BaseParameter
+  commentId: T:SiaNet.Engine.BaseParameter
+  parent: SiaNet.Engine
+  name: BaseParameter
+  nameWithType: BaseParameter
+  fullName: SiaNet.Engine.BaseParameter
+- uid: SiaNet.Engine.BaseParameter.Data
+  commentId: P:SiaNet.Engine.BaseParameter.Data
+  parent: SiaNet.Engine.BaseParameter
+  name: Data
+  nameWithType: BaseParameter.Data
+  fullName: SiaNet.Engine.BaseParameter.Data
+- uid: SiaNet.Engine.BaseParameter.Grad
+  commentId: P:SiaNet.Engine.BaseParameter.Grad
+  parent: SiaNet.Engine.BaseParameter
+  name: Grad
+  nameWithType: BaseParameter.Grad
+  fullName: SiaNet.Engine.BaseParameter.Grad
+- uid: SiaNet.Engine.BaseParameter.Name
+  commentId: P:SiaNet.Engine.BaseParameter.Name
+  parent: SiaNet.Engine.BaseParameter
+  name: Name
+  nameWithType: BaseParameter.Name
+  fullName: SiaNet.Engine.BaseParameter.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Parameter
+  commentId: T:SiaNet.Parameter
+  parent: SiaNet
+  name: Parameter
+  nameWithType: Parameter
+  fullName: SiaNet.Parameter
+- uid: SiaNet.Parameter.#ctor*
+  commentId: Overload:SiaNet.Parameter.#ctor
+  name: Parameter
+  nameWithType: Parameter.Parameter
+  fullName: SiaNet.Parameter.Parameter
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.DataType
+  commentId: T:SiaNet.Engine.DataType
+  parent: SiaNet.Engine
+  name: DataType
+  nameWithType: DataType
+  fullName: SiaNet.Engine.DataType
+- uid: SiaNet.Parameter.Create*
+  commentId: Overload:SiaNet.Parameter.Create
+  name: Create
+  nameWithType: Parameter.Create
+  fullName: SiaNet.Parameter.Create
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Parameter.HaveRegularizer*
+  commentId: Overload:SiaNet.Parameter.HaveRegularizer
+  name: HaveRegularizer
+  nameWithType: Parameter.HaveRegularizer
+  fullName: SiaNet.Parameter.HaveRegularizer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Parameter.SetConstraint*
+  commentId: Overload:SiaNet.Parameter.SetConstraint
+  name: SetConstraint
+  nameWithType: Parameter.SetConstraint
+  fullName: SiaNet.Parameter.SetConstraint
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Parameter.SetRegularizer*
+  commentId: Overload:SiaNet.Parameter.SetRegularizer
+  name: SetRegularizer
+  nameWithType: Parameter.SetRegularizer
+  fullName: SiaNet.Parameter.SetRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: SiaNet.Parameter.ApplyConstraint*
+  commentId: Overload:SiaNet.Parameter.ApplyConstraint
+  name: ApplyConstraint
+  nameWithType: Parameter.ApplyConstraint
+  fullName: SiaNet.Parameter.ApplyConstraint
+- uid: SiaNet.Parameter.ApplyRegularizer*
+  commentId: Overload:SiaNet.Parameter.ApplyRegularizer
+  name: ApplyRegularizer
+  nameWithType: Parameter.ApplyRegularizer
+  fullName: SiaNet.Parameter.ApplyRegularizer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Parameter.ApplyDeltaRegularizer*
+  commentId: Overload:SiaNet.Parameter.ApplyDeltaRegularizer
+  name: ApplyDeltaRegularizer
+  nameWithType: Parameter.ApplyDeltaRegularizer
+  fullName: SiaNet.Parameter.ApplyDeltaRegularizer

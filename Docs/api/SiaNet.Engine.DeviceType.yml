@@ -1,0 +1,188 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Engine.DeviceType
+  commentId: T:SiaNet.Engine.DeviceType
+  id: DeviceType
+  parent: SiaNet.Engine
+  children:
+  - SiaNet.Engine.DeviceType.CPU
+  - SiaNet.Engine.DeviceType.CUDA
+  - SiaNet.Engine.DeviceType.Default
+  - SiaNet.Engine.DeviceType.OpenCL
+  langs:
+  - csharp
+  - vb
+  name: DeviceType
+  nameWithType: DeviceType
+  fullName: SiaNet.Engine.DeviceType
+  type: Enum
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DeviceType
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 240
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nTypes of devices for the engine\n"
+  example: []
+  syntax:
+    content: public enum DeviceType
+    content.vb: Public Enum DeviceType
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: SiaNet.Engine.DeviceType.Default
+  commentId: F:SiaNet.Engine.DeviceType.Default
+  id: Default
+  parent: SiaNet.Engine.DeviceType
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: DeviceType.Default
+  fullName: SiaNet.Engine.DeviceType.Default
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Default
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 245
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe default engine which the backend will support\n"
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: SiaNet.Engine.DeviceType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.DeviceType.CPU
+  commentId: F:SiaNet.Engine.DeviceType.CPU
+  id: CPU
+  parent: SiaNet.Engine.DeviceType
+  langs:
+  - csharp
+  - vb
+  name: CPU
+  nameWithType: DeviceType.CPU
+  fullName: SiaNet.Engine.DeviceType.CPU
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CPU
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 250
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe CPU device\n"
+  example: []
+  syntax:
+    content: CPU = 1
+    return:
+      type: SiaNet.Engine.DeviceType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.DeviceType.CUDA
+  commentId: F:SiaNet.Engine.DeviceType.CUDA
+  id: CUDA
+  parent: SiaNet.Engine.DeviceType
+  langs:
+  - csharp
+  - vb
+  name: CUDA
+  nameWithType: DeviceType.CUDA
+  fullName: SiaNet.Engine.DeviceType.CUDA
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: CUDA
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 255
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe CUDA device which is NVIDIA GPU\n"
+  example: []
+  syntax:
+    content: CUDA = 2
+    return:
+      type: SiaNet.Engine.DeviceType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: SiaNet.Engine.DeviceType.OpenCL
+  commentId: F:SiaNet.Engine.DeviceType.OpenCL
+  id: OpenCL
+  parent: SiaNet.Engine.DeviceType
+  langs:
+  - csharp
+  - vb
+  name: OpenCL
+  nameWithType: DeviceType.OpenCL
+  fullName: SiaNet.Engine.DeviceType.OpenCL
+  type: Field
+  source:
+    remote:
+      path: SiaNet.Engine/Enumerations.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: OpenCL
+    path: ../SiaNet.Engine/Enumerations.cs
+    startLine: 260
+  assemblies:
+  - SiaNet.Engine
+  namespace: SiaNet.Engine
+  summary: "\nThe OpenCLfor heterogeneous platforms consisting of central processing units (CPUs), graphics processing units (GPUs), digital signal processors (DSPs), field-programmable gate arrays (FPGAs) and other processors or hardware accelerators.\n"
+  example: []
+  syntax:
+    content: OpenCL = 3
+    return:
+      type: SiaNet.Engine.DeviceType
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Engine.DeviceType
+  commentId: T:SiaNet.Engine.DeviceType
+  parent: SiaNet.Engine
+  name: DeviceType
+  nameWithType: DeviceType
+  fullName: SiaNet.Engine.DeviceType

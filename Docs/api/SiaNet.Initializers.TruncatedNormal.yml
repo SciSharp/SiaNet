@@ -1,0 +1,491 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Initializers.TruncatedNormal
+  commentId: T:SiaNet.Initializers.TruncatedNormal
+  id: TruncatedNormal
+  parent: SiaNet.Initializers
+  children:
+  - SiaNet.Initializers.TruncatedNormal.#ctor(System.Single,System.Single,System.Nullable{System.Int32})
+  - SiaNet.Initializers.TruncatedNormal.Generate(System.Int64[])
+  - SiaNet.Initializers.TruncatedNormal.MeanVal
+  - SiaNet.Initializers.TruncatedNormal.Seed
+  - SiaNet.Initializers.TruncatedNormal.StdDev
+  langs:
+  - csharp
+  - vb
+  name: TruncatedNormal
+  nameWithType: TruncatedNormal
+  fullName: SiaNet.Initializers.TruncatedNormal
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Initializers/TruncatedNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: TruncatedNormal
+    path: ../SiaNet/Initializers/TruncatedNormal.cs
+    startLine: 11
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializer that generates a truncated normal distribution. \nThese values are similar to values from a RandomNormal except that values more than two standard deviations from the mean are discarded and redrawn.\nThis is the recommended initializer for neural network weights and filters.\n"
+  example: []
+  syntax:
+    content: 'public class TruncatedNormal : BaseInitializer'
+    content.vb: >-
+      Public Class TruncatedNormal
+          Inherits BaseInitializer
+  seealso:
+  - linkId: SiaNet.Initializers.BaseInitializer
+    commentId: T:SiaNet.Initializers.BaseInitializer
+  inheritance:
+  - System.Object
+  - SiaNet.Initializers.BaseInitializer
+  inheritedMembers:
+  - SiaNet.Initializers.BaseInitializer.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Initializers.TruncatedNormal.MeanVal
+  commentId: P:SiaNet.Initializers.TruncatedNormal.MeanVal
+  id: MeanVal
+  parent: SiaNet.Initializers.TruncatedNormal
+  langs:
+  - csharp
+  - vb
+  name: MeanVal
+  nameWithType: TruncatedNormal.MeanVal
+  fullName: SiaNet.Initializers.TruncatedNormal.MeanVal
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/TruncatedNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MeanVal
+    path: ../SiaNet/Initializers/TruncatedNormal.cs
+    startLine: 19
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nMean of the random values to generate.\n"
+  example: []
+  syntax:
+    content: public float MeanVal { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe mean value.\n"
+    content.vb: Public Property MeanVal As Single
+  overload: SiaNet.Initializers.TruncatedNormal.MeanVal*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.TruncatedNormal.StdDev
+  commentId: P:SiaNet.Initializers.TruncatedNormal.StdDev
+  id: StdDev
+  parent: SiaNet.Initializers.TruncatedNormal
+  langs:
+  - csharp
+  - vb
+  name: StdDev
+  nameWithType: TruncatedNormal.StdDev
+  fullName: SiaNet.Initializers.TruncatedNormal.StdDev
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/TruncatedNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: StdDev
+    path: ../SiaNet/Initializers/TruncatedNormal.cs
+    startLine: 27
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nStandard deviation of the random values to generate.\n"
+  example: []
+  syntax:
+    content: public float StdDev { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe standard dev.\n"
+    content.vb: Public Property StdDev As Single
+  overload: SiaNet.Initializers.TruncatedNormal.StdDev*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.TruncatedNormal.Seed
+  commentId: P:SiaNet.Initializers.TruncatedNormal.Seed
+  id: Seed
+  parent: SiaNet.Initializers.TruncatedNormal
+  langs:
+  - csharp
+  - vb
+  name: Seed
+  nameWithType: TruncatedNormal.Seed
+  fullName: SiaNet.Initializers.TruncatedNormal.Seed
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Initializers/TruncatedNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Seed
+    path: ../SiaNet/Initializers/TruncatedNormal.cs
+    startLine: 35
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nUsed to seed the random generator.\n"
+  example: []
+  syntax:
+    content: public int? Seed { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Int32}
+      description: "\nThe seed.\n"
+    content.vb: Public Property Seed As Integer?
+  overload: SiaNet.Initializers.TruncatedNormal.Seed*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Initializers.TruncatedNormal.#ctor(System.Single,System.Single,System.Nullable{System.Int32})
+  commentId: M:SiaNet.Initializers.TruncatedNormal.#ctor(System.Single,System.Single,System.Nullable{System.Int32})
+  id: '#ctor(System.Single,System.Single,System.Nullable{System.Int32})'
+  parent: SiaNet.Initializers.TruncatedNormal
+  langs:
+  - csharp
+  - vb
+  name: TruncatedNormal(Single, Single, Nullable<Int32>)
+  nameWithType: TruncatedNormal.TruncatedNormal(Single, Single, Nullable<Int32>)
+  fullName: SiaNet.Initializers.TruncatedNormal.TruncatedNormal(System.Single, System.Single, System.Nullable<System.Int32>)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Initializers/TruncatedNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Initializers/TruncatedNormal.cs
+    startLine: 43
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Initializers.TruncatedNormal\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public TruncatedNormal(float mean = 0F, float stddev = 0.05F, int? seed = default(int? ))
+    parameters:
+    - id: mean
+      type: System.Single
+      description: Mean of the random values to generate.
+    - id: stddev
+      type: System.Single
+      description: Standard deviation of the random values to generate.
+    - id: seed
+      type: System.Nullable{System.Int32}
+      description: Used to seed the random generator.
+    content.vb: Public Sub New(mean As Single = 0F, stddev As Single = 0.05F, seed As Integer? = Nothing)
+  overload: SiaNet.Initializers.TruncatedNormal.#ctor*
+  nameWithType.vb: TruncatedNormal.TruncatedNormal(Single, Single, Nullable(Of Int32))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Initializers.TruncatedNormal.TruncatedNormal(System.Single, System.Single, System.Nullable(Of System.Int32))
+  name.vb: TruncatedNormal(Single, Single, Nullable(Of Int32))
+- uid: SiaNet.Initializers.TruncatedNormal.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.TruncatedNormal.Generate(System.Int64[])
+  id: Generate(System.Int64[])
+  parent: SiaNet.Initializers.TruncatedNormal
+  langs:
+  - csharp
+  - vb
+  name: Generate(Int64[])
+  nameWithType: TruncatedNormal.Generate(Int64[])
+  fullName: SiaNet.Initializers.TruncatedNormal.Generate(System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Initializers/TruncatedNormal.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Generate
+    path: ../SiaNet/Initializers/TruncatedNormal.cs
+    startLine: 56
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Initializers
+  summary: "\nGenerates a tensor with specified shape.\n"
+  example: []
+  syntax:
+    content: public override Tensor Generate(params long[] shape)
+    parameters:
+    - id: shape
+      type: System.Int64[]
+      description: The shape of the tensor.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Generate(ParamArray shape As Long()) As Tensor
+  overridden: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  overload: SiaNet.Initializers.TruncatedNormal.Generate*
+  nameWithType.vb: TruncatedNormal.Generate(Int64())
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+  fullName.vb: SiaNet.Initializers.TruncatedNormal.Generate(System.Int64())
+  name.vb: Generate(Int64())
+references:
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Initializers.BaseInitializer.Name
+  commentId: P:SiaNet.Initializers.BaseInitializer.Name
+  parent: SiaNet.Initializers.BaseInitializer
+  name: Name
+  nameWithType: BaseInitializer.Name
+  fullName: SiaNet.Initializers.BaseInitializer.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Initializers.TruncatedNormal.MeanVal*
+  commentId: Overload:SiaNet.Initializers.TruncatedNormal.MeanVal
+  name: MeanVal
+  nameWithType: TruncatedNormal.MeanVal
+  fullName: SiaNet.Initializers.TruncatedNormal.MeanVal
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Initializers.TruncatedNormal.StdDev*
+  commentId: Overload:SiaNet.Initializers.TruncatedNormal.StdDev
+  name: StdDev
+  nameWithType: TruncatedNormal.StdDev
+  fullName: SiaNet.Initializers.TruncatedNormal.StdDev
+- uid: SiaNet.Initializers.TruncatedNormal.Seed*
+  commentId: Overload:SiaNet.Initializers.TruncatedNormal.Seed
+  name: Seed
+  nameWithType: TruncatedNormal.Seed
+  fullName: SiaNet.Initializers.TruncatedNormal.Seed
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  name: Nullable<Int32>
+  nameWithType: Nullable<Int32>
+  fullName: System.Nullable<System.Int32>
+  nameWithType.vb: Nullable(Of Int32)
+  fullName.vb: System.Nullable(Of System.Int32)
+  name.vb: Nullable(Of Int32)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    nameWithType: Nullable
+    fullName: System.Nullable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Initializers.TruncatedNormal
+  commentId: T:SiaNet.Initializers.TruncatedNormal
+  name: TruncatedNormal
+  nameWithType: TruncatedNormal
+  fullName: SiaNet.Initializers.TruncatedNormal
+- uid: SiaNet.Initializers.TruncatedNormal.#ctor*
+  commentId: Overload:SiaNet.Initializers.TruncatedNormal.#ctor
+  name: TruncatedNormal
+  nameWithType: TruncatedNormal.TruncatedNormal
+  fullName: SiaNet.Initializers.TruncatedNormal.TruncatedNormal
+- uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  commentId: M:SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  parent: SiaNet.Initializers.BaseInitializer
+  isExternal: true
+  name: Generate(Int64[])
+  nameWithType: BaseInitializer.Generate(Int64[])
+  fullName: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+  nameWithType.vb: BaseInitializer.Generate(Int64())
+  fullName.vb: SiaNet.Initializers.BaseInitializer.Generate(System.Int64())
+  name.vb: Generate(Int64())
+  spec.csharp:
+  - uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+    name: Generate
+    nameWithType: BaseInitializer.Generate
+    fullName: SiaNet.Initializers.BaseInitializer.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Initializers.BaseInitializer.Generate(System.Int64[])
+    name: Generate
+    nameWithType: BaseInitializer.Generate
+    fullName: SiaNet.Initializers.BaseInitializer.Generate
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Initializers.TruncatedNormal.Generate*
+  commentId: Overload:SiaNet.Initializers.TruncatedNormal.Generate
+  name: Generate
+  nameWithType: TruncatedNormal.Generate
+  fullName: SiaNet.Initializers.TruncatedNormal.Generate
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

@@ -1,0 +1,1244 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Layers.Conv3D
+  commentId: T:SiaNet.Layers.Conv3D
+  id: Conv3D
+  parent: SiaNet.Layers
+  children:
+  - SiaNet.Layers.Conv3D.#ctor(System.Int32,System.Tuple{System.Int32,System.Int32,System.Int32},System.Int32,SiaNet.Engine.PaddingType,System.Tuple{System.Int32,System.Int32,System.Int32},SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  - SiaNet.Layers.Conv3D.Act
+  - SiaNet.Layers.Conv3D.Backward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Conv3D.BiasConstraint
+  - SiaNet.Layers.Conv3D.BiasInitializer
+  - SiaNet.Layers.Conv3D.BiasRegularizer
+  - SiaNet.Layers.Conv3D.DialationRate
+  - SiaNet.Layers.Conv3D.Filters
+  - SiaNet.Layers.Conv3D.Forward(SiaNet.Engine.Tensor)
+  - SiaNet.Layers.Conv3D.KernalConstraint
+  - SiaNet.Layers.Conv3D.KernalInitializer
+  - SiaNet.Layers.Conv3D.KernalRegularizer
+  - SiaNet.Layers.Conv3D.KernalSize
+  - SiaNet.Layers.Conv3D.Padding
+  - SiaNet.Layers.Conv3D.Strides
+  - SiaNet.Layers.Conv3D.UseBias
+  langs:
+  - csharp
+  - vb
+  name: Conv3D
+  nameWithType: Conv3D
+  fullName: SiaNet.Layers.Conv3D
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Conv3D
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 10
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: 'public class Conv3D : BaseLayer'
+    content.vb: >-
+      Public Class Conv3D
+          Inherits BaseLayer
+  inheritance:
+  - System.Object
+  - SiaNet.Layers.BaseLayer
+  inheritedMembers:
+  - SiaNet.Layers.BaseLayer.Params
+  - SiaNet.Layers.BaseLayer.Input
+  - SiaNet.Layers.BaseLayer.Output
+  - SiaNet.Layers.BaseLayer.Name
+  - SiaNet.Layers.BaseLayer.SkipPred
+  - SiaNet.Layers.BaseLayer.Item(System.String)
+  - SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Layers.Conv3D.Filters
+  commentId: P:SiaNet.Layers.Conv3D.Filters
+  id: Filters
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Filters
+  nameWithType: Conv3D.Filters
+  fullName: SiaNet.Layers.Conv3D.Filters
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Filters
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 12
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public int Filters { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Filters As Integer
+  overload: SiaNet.Layers.Conv3D.Filters*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.KernalSize
+  commentId: P:SiaNet.Layers.Conv3D.KernalSize
+  id: KernalSize
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: KernalSize
+  nameWithType: Conv3D.KernalSize
+  fullName: SiaNet.Layers.Conv3D.KernalSize
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernalSize
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public Tuple<int, int, int> KernalSize { get; set; }
+    parameters: []
+    return:
+      type: System.Tuple{System.Int32,System.Int32,System.Int32}
+    content.vb: Public Property KernalSize As Tuple(Of Integer, Integer, Integer)
+  overload: SiaNet.Layers.Conv3D.KernalSize*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.Strides
+  commentId: P:SiaNet.Layers.Conv3D.Strides
+  id: Strides
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Strides
+  nameWithType: Conv3D.Strides
+  fullName: SiaNet.Layers.Conv3D.Strides
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Strides
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 16
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public int Strides { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Strides As Integer
+  overload: SiaNet.Layers.Conv3D.Strides*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.Padding
+  commentId: P:SiaNet.Layers.Conv3D.Padding
+  id: Padding
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Padding
+  nameWithType: Conv3D.Padding
+  fullName: SiaNet.Layers.Conv3D.Padding
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Padding
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 18
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public PaddingType Padding { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Engine.PaddingType
+    content.vb: Public Property Padding As PaddingType
+  overload: SiaNet.Layers.Conv3D.Padding*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.DialationRate
+  commentId: P:SiaNet.Layers.Conv3D.DialationRate
+  id: DialationRate
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: DialationRate
+  nameWithType: Conv3D.DialationRate
+  fullName: SiaNet.Layers.Conv3D.DialationRate
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DialationRate
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 20
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public Tuple<int, int, int> DialationRate { get; set; }
+    parameters: []
+    return:
+      type: System.Tuple{System.Int32,System.Int32,System.Int32}
+    content.vb: Public Property DialationRate As Tuple(Of Integer, Integer, Integer)
+  overload: SiaNet.Layers.Conv3D.DialationRate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.Act
+  commentId: P:SiaNet.Layers.Conv3D.Act
+  id: Act
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Act
+  nameWithType: Conv3D.Act
+  fullName: SiaNet.Layers.Conv3D.Act
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Act
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 22
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public ActType Act { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Engine.ActType
+    content.vb: Public Property Act As ActType
+  overload: SiaNet.Layers.Conv3D.Act*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.UseBias
+  commentId: P:SiaNet.Layers.Conv3D.UseBias
+  id: UseBias
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: UseBias
+  nameWithType: Conv3D.UseBias
+  fullName: SiaNet.Layers.Conv3D.UseBias
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: UseBias
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 24
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public bool UseBias { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseBias As Boolean
+  overload: SiaNet.Layers.Conv3D.UseBias*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.BiasInitializer
+  commentId: P:SiaNet.Layers.Conv3D.BiasInitializer
+  id: BiasInitializer
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: BiasInitializer
+  nameWithType: Conv3D.BiasInitializer
+  fullName: SiaNet.Layers.Conv3D.BiasInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BiasInitializer
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public BaseInitializer BiasInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+    content.vb: Public Property BiasInitializer As BaseInitializer
+  overload: SiaNet.Layers.Conv3D.BiasInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.KernalInitializer
+  commentId: P:SiaNet.Layers.Conv3D.KernalInitializer
+  id: KernalInitializer
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: KernalInitializer
+  nameWithType: Conv3D.KernalInitializer
+  fullName: SiaNet.Layers.Conv3D.KernalInitializer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernalInitializer
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 28
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public BaseInitializer KernalInitializer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Initializers.BaseInitializer
+    content.vb: Public Property KernalInitializer As BaseInitializer
+  overload: SiaNet.Layers.Conv3D.KernalInitializer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.KernalConstraint
+  commentId: P:SiaNet.Layers.Conv3D.KernalConstraint
+  id: KernalConstraint
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: KernalConstraint
+  nameWithType: Conv3D.KernalConstraint
+  fullName: SiaNet.Layers.Conv3D.KernalConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernalConstraint
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 30
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public BaseConstraint KernalConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+    content.vb: Public Property KernalConstraint As BaseConstraint
+  overload: SiaNet.Layers.Conv3D.KernalConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.BiasConstraint
+  commentId: P:SiaNet.Layers.Conv3D.BiasConstraint
+  id: BiasConstraint
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: BiasConstraint
+  nameWithType: Conv3D.BiasConstraint
+  fullName: SiaNet.Layers.Conv3D.BiasConstraint
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BiasConstraint
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 32
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public BaseConstraint BiasConstraint { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Constraints.BaseConstraint
+    content.vb: Public Property BiasConstraint As BaseConstraint
+  overload: SiaNet.Layers.Conv3D.BiasConstraint*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.KernalRegularizer
+  commentId: P:SiaNet.Layers.Conv3D.KernalRegularizer
+  id: KernalRegularizer
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: KernalRegularizer
+  nameWithType: Conv3D.KernalRegularizer
+  fullName: SiaNet.Layers.Conv3D.KernalRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: KernalRegularizer
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 34
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public BaseRegularizer KernalRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+    content.vb: Public Property KernalRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.Conv3D.KernalRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.BiasRegularizer
+  commentId: P:SiaNet.Layers.Conv3D.BiasRegularizer
+  id: BiasRegularizer
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: BiasRegularizer
+  nameWithType: Conv3D.BiasRegularizer
+  fullName: SiaNet.Layers.Conv3D.BiasRegularizer
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BiasRegularizer
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 36
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public BaseRegularizer BiasRegularizer { get; set; }
+    parameters: []
+    return:
+      type: SiaNet.Regularizers.BaseRegularizer
+    content.vb: Public Property BiasRegularizer As BaseRegularizer
+  overload: SiaNet.Layers.Conv3D.BiasRegularizer*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Layers.Conv3D.#ctor(System.Int32,System.Tuple{System.Int32,System.Int32,System.Int32},System.Int32,SiaNet.Engine.PaddingType,System.Tuple{System.Int32,System.Int32,System.Int32},SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  commentId: M:SiaNet.Layers.Conv3D.#ctor(System.Int32,System.Tuple{System.Int32,System.Int32,System.Int32},System.Int32,SiaNet.Engine.PaddingType,System.Tuple{System.Int32,System.Int32,System.Int32},SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)
+  id: '#ctor(System.Int32,System.Tuple{System.Int32,System.Int32,System.Int32},System.Int32,SiaNet.Engine.PaddingType,System.Tuple{System.Int32,System.Int32,System.Int32},SiaNet.Engine.ActType,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint,System.Boolean,SiaNet.Initializers.BaseInitializer,SiaNet.Regularizers.BaseRegularizer,SiaNet.Constraints.BaseConstraint)'
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Conv3D(Int32, Tuple<Int32, Int32, Int32>, Int32, PaddingType, Tuple<Int32, Int32, Int32>, ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)
+  nameWithType: Conv3D.Conv3D(Int32, Tuple<Int32, Int32, Int32>, Int32, PaddingType, Tuple<Int32, Int32, Int32>, ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)
+  fullName: SiaNet.Layers.Conv3D.Conv3D(System.Int32, System.Tuple<System.Int32, System.Int32, System.Int32>, System.Int32, SiaNet.Engine.PaddingType, System.Tuple<System.Int32, System.Int32, System.Int32>, SiaNet.Engine.ActType, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, System.Boolean, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 40
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public Conv3D(int filters, Tuple<int, int, int> kernalSize, int strides = 1, PaddingType padding = PaddingType.Same, Tuple<int, int, int> dialationRate = null, ActType activation = ActType.Linear, BaseInitializer kernalInitializer = null, BaseRegularizer kernalRegularizer = null, BaseConstraint kernalConstraint = null, bool useBias = true, BaseInitializer biasInitializer = null, BaseRegularizer biasRegularizer = null, BaseConstraint biasConstraint = null)
+    parameters:
+    - id: filters
+      type: System.Int32
+    - id: kernalSize
+      type: System.Tuple{System.Int32,System.Int32,System.Int32}
+    - id: strides
+      type: System.Int32
+    - id: padding
+      type: SiaNet.Engine.PaddingType
+    - id: dialationRate
+      type: System.Tuple{System.Int32,System.Int32,System.Int32}
+    - id: activation
+      type: SiaNet.Engine.ActType
+    - id: kernalInitializer
+      type: SiaNet.Initializers.BaseInitializer
+    - id: kernalRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+    - id: kernalConstraint
+      type: SiaNet.Constraints.BaseConstraint
+    - id: useBias
+      type: System.Boolean
+    - id: biasInitializer
+      type: SiaNet.Initializers.BaseInitializer
+    - id: biasRegularizer
+      type: SiaNet.Regularizers.BaseRegularizer
+    - id: biasConstraint
+      type: SiaNet.Constraints.BaseConstraint
+    content.vb: Public Sub New(filters As Integer, kernalSize As Tuple(Of Integer, Integer, Integer), strides As Integer = 1, padding As PaddingType = PaddingType.Same, dialationRate As Tuple(Of Integer, Integer, Integer) = Nothing, activation As ActType = ActType.Linear, kernalInitializer As BaseInitializer = Nothing, kernalRegularizer As BaseRegularizer = Nothing, kernalConstraint As BaseConstraint = Nothing, useBias As Boolean = True, biasInitializer As BaseInitializer = Nothing, biasRegularizer As BaseRegularizer = Nothing, biasConstraint As BaseConstraint = Nothing)
+  overload: SiaNet.Layers.Conv3D.#ctor*
+  nameWithType.vb: Conv3D.Conv3D(Int32, Tuple(Of Int32, Int32, Int32), Int32, PaddingType, Tuple(Of Int32, Int32, Int32), ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Layers.Conv3D.Conv3D(System.Int32, System.Tuple(Of System.Int32, System.Int32, System.Int32), System.Int32, SiaNet.Engine.PaddingType, System.Tuple(Of System.Int32, System.Int32, System.Int32), SiaNet.Engine.ActType, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint, System.Boolean, SiaNet.Initializers.BaseInitializer, SiaNet.Regularizers.BaseRegularizer, SiaNet.Constraints.BaseConstraint)
+  name.vb: Conv3D(Int32, Tuple(Of Int32, Int32, Int32), Int32, PaddingType, Tuple(Of Int32, Int32, Int32), ActType, BaseInitializer, BaseRegularizer, BaseConstraint, Boolean, BaseInitializer, BaseRegularizer, BaseConstraint)
+- uid: SiaNet.Layers.Conv3D.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Conv3D.Forward(SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor)
+  nameWithType: Conv3D.Forward(Tensor)
+  fullName: SiaNet.Layers.Conv3D.Forward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 60
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public override void Forward(Tensor x)
+    parameters:
+    - id: x
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Overrides Sub Forward(x As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Conv3D.Forward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: SiaNet.Layers.Conv3D.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.Conv3D.Backward(SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.Conv3D
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor)
+  nameWithType: Conv3D.Backward(Tensor)
+  fullName: SiaNet.Layers.Conv3D.Backward(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Layers/Convolution/Conv3D.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Layers/Convolution/Conv3D.cs
+    startLine: 98
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Layers
+  syntax:
+    content: public override void Backward(Tensor outputgrad)
+    parameters:
+    - id: outputgrad
+      type: SiaNet.Engine.Tensor
+    content.vb: Public Overrides Sub Backward(outputgrad As Tensor)
+  overridden: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  overload: SiaNet.Layers.Conv3D.Backward*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Layers
+  commentId: N:SiaNet.Layers
+  name: SiaNet.Layers
+  nameWithType: SiaNet.Layers
+  fullName: SiaNet.Layers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Layers.BaseLayer
+  commentId: T:SiaNet.Layers.BaseLayer
+  parent: SiaNet.Layers
+  name: BaseLayer
+  nameWithType: BaseLayer
+  fullName: SiaNet.Layers.BaseLayer
+- uid: SiaNet.Layers.BaseLayer.Params
+  commentId: F:SiaNet.Layers.BaseLayer.Params
+  parent: SiaNet.Layers.BaseLayer
+  name: Params
+  nameWithType: BaseLayer.Params
+  fullName: SiaNet.Layers.BaseLayer.Params
+- uid: SiaNet.Layers.BaseLayer.Input
+  commentId: F:SiaNet.Layers.BaseLayer.Input
+  parent: SiaNet.Layers.BaseLayer
+  name: Input
+  nameWithType: BaseLayer.Input
+  fullName: SiaNet.Layers.BaseLayer.Input
+- uid: SiaNet.Layers.BaseLayer.Output
+  commentId: F:SiaNet.Layers.BaseLayer.Output
+  parent: SiaNet.Layers.BaseLayer
+  name: Output
+  nameWithType: BaseLayer.Output
+  fullName: SiaNet.Layers.BaseLayer.Output
+- uid: SiaNet.Layers.BaseLayer.Name
+  commentId: P:SiaNet.Layers.BaseLayer.Name
+  parent: SiaNet.Layers.BaseLayer
+  name: Name
+  nameWithType: BaseLayer.Name
+  fullName: SiaNet.Layers.BaseLayer.Name
+- uid: SiaNet.Layers.BaseLayer.SkipPred
+  commentId: P:SiaNet.Layers.BaseLayer.SkipPred
+  parent: SiaNet.Layers.BaseLayer
+  name: SkipPred
+  nameWithType: BaseLayer.SkipPred
+  fullName: SiaNet.Layers.BaseLayer.SkipPred
+- uid: SiaNet.Layers.BaseLayer.Item(System.String)
+  commentId: P:SiaNet.Layers.BaseLayer.Item(System.String)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: Item[String]
+  nameWithType: BaseLayer.Item[String]
+  fullName: SiaNet.Layers.BaseLayer.Item[System.String]
+  nameWithType.vb: BaseLayer.Item(String)
+  fullName.vb: SiaNet.Layers.BaseLayer.Item(System.String)
+  name.vb: Item(String)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: '['
+    nameWithType: '['
+    fullName: '['
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ']'
+    nameWithType: ']'
+    fullName: ']'
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Item(System.String)
+    name: Item
+    nameWithType: BaseLayer.Item
+    fullName: SiaNet.Layers.BaseLayer.Item
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  commentId: M:SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+  parent: SiaNet.Layers.BaseLayer
+  isExternal: true
+  name: BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  nameWithType: BaseLayer.BuildParam(String, Int64[], DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64[], SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  nameWithType.vb: BaseLayer.BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  fullName.vb: SiaNet.Layers.BaseLayer.BuildParam(System.String, System.Int64(), SiaNet.Engine.DataType, SiaNet.Initializers.BaseInitializer, SiaNet.Constraints.BaseConstraint, SiaNet.Regularizers.BaseRegularizer, System.Boolean)
+  name.vb: BuildParam(String, Int64(), DataType, BaseInitializer, BaseConstraint, BaseRegularizer, Boolean)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.BuildParam(System.String,System.Int64[],SiaNet.Engine.DataType,SiaNet.Initializers.BaseInitializer,SiaNet.Constraints.BaseConstraint,SiaNet.Regularizers.BaseRegularizer,System.Boolean)
+    name: BuildParam
+    nameWithType: BaseLayer.BuildParam
+    fullName: SiaNet.Layers.BaseLayer.BuildParam
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+    nameWithType: DataType
+    fullName: SiaNet.Engine.DataType
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+    nameWithType: BaseInitializer
+    fullName: SiaNet.Initializers.BaseInitializer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+    nameWithType: BaseConstraint
+    fullName: SiaNet.Constraints.BaseConstraint
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+    nameWithType: BaseRegularizer
+    fullName: SiaNet.Regularizers.BaseRegularizer
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Boolean
+    name: Boolean
+    nameWithType: Boolean
+    fullName: System.Boolean
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Layers.Conv3D.Filters*
+  commentId: Overload:SiaNet.Layers.Conv3D.Filters
+  name: Filters
+  nameWithType: Conv3D.Filters
+  fullName: SiaNet.Layers.Conv3D.Filters
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Layers.Conv3D.KernalSize*
+  commentId: Overload:SiaNet.Layers.Conv3D.KernalSize
+  name: KernalSize
+  nameWithType: Conv3D.KernalSize
+  fullName: SiaNet.Layers.Conv3D.KernalSize
+- uid: System.Tuple{System.Int32,System.Int32,System.Int32}
+  commentId: T:System.Tuple{System.Int32,System.Int32,System.Int32}
+  parent: System
+  definition: System.Tuple`3
+  name: Tuple<Int32, Int32, Int32>
+  nameWithType: Tuple<Int32, Int32, Int32>
+  fullName: System.Tuple<System.Int32, System.Int32, System.Int32>
+  nameWithType.vb: Tuple(Of Int32, Int32, Int32)
+  fullName.vb: System.Tuple(Of System.Int32, System.Int32, System.Int32)
+  name.vb: Tuple(Of Int32, Int32, Int32)
+  spec.csharp:
+  - uid: System.Tuple`3
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Tuple`3
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.Int32
+    name: Int32
+    nameWithType: Int32
+    fullName: System.Int32
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.Tuple`3
+  commentId: T:System.Tuple`3
+  isExternal: true
+  name: Tuple<T1, T2, T3>
+  nameWithType: Tuple<T1, T2, T3>
+  fullName: System.Tuple<T1, T2, T3>
+  nameWithType.vb: Tuple(Of T1, T2, T3)
+  fullName.vb: System.Tuple(Of T1, T2, T3)
+  name.vb: Tuple(Of T1, T2, T3)
+  spec.csharp:
+  - uid: System.Tuple`3
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T3
+    nameWithType: T3
+    fullName: T3
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: System.Tuple`3
+    name: Tuple
+    nameWithType: Tuple
+    fullName: System.Tuple
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T1
+    nameWithType: T1
+    fullName: T1
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T2
+    nameWithType: T2
+    fullName: T2
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: T3
+    nameWithType: T3
+    fullName: T3
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Conv3D.Strides*
+  commentId: Overload:SiaNet.Layers.Conv3D.Strides
+  name: Strides
+  nameWithType: Conv3D.Strides
+  fullName: SiaNet.Layers.Conv3D.Strides
+- uid: SiaNet.Layers.Conv3D.Padding*
+  commentId: Overload:SiaNet.Layers.Conv3D.Padding
+  name: Padding
+  nameWithType: Conv3D.Padding
+  fullName: SiaNet.Layers.Conv3D.Padding
+- uid: SiaNet.Engine.PaddingType
+  commentId: T:SiaNet.Engine.PaddingType
+  parent: SiaNet.Engine
+  name: PaddingType
+  nameWithType: PaddingType
+  fullName: SiaNet.Engine.PaddingType
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Layers.Conv3D.DialationRate*
+  commentId: Overload:SiaNet.Layers.Conv3D.DialationRate
+  name: DialationRate
+  nameWithType: Conv3D.DialationRate
+  fullName: SiaNet.Layers.Conv3D.DialationRate
+- uid: SiaNet.Layers.Conv3D.Act*
+  commentId: Overload:SiaNet.Layers.Conv3D.Act
+  name: Act
+  nameWithType: Conv3D.Act
+  fullName: SiaNet.Layers.Conv3D.Act
+- uid: SiaNet.Engine.ActType
+  commentId: T:SiaNet.Engine.ActType
+  parent: SiaNet.Engine
+  name: ActType
+  nameWithType: ActType
+  fullName: SiaNet.Engine.ActType
+- uid: SiaNet.Layers.Conv3D.UseBias*
+  commentId: Overload:SiaNet.Layers.Conv3D.UseBias
+  name: UseBias
+  nameWithType: Conv3D.UseBias
+  fullName: SiaNet.Layers.Conv3D.UseBias
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: SiaNet.Layers.Conv3D.BiasInitializer*
+  commentId: Overload:SiaNet.Layers.Conv3D.BiasInitializer
+  name: BiasInitializer
+  nameWithType: Conv3D.BiasInitializer
+  fullName: SiaNet.Layers.Conv3D.BiasInitializer
+- uid: SiaNet.Initializers.BaseInitializer
+  commentId: T:SiaNet.Initializers.BaseInitializer
+  parent: SiaNet.Initializers
+  name: BaseInitializer
+  nameWithType: BaseInitializer
+  fullName: SiaNet.Initializers.BaseInitializer
+- uid: SiaNet.Initializers
+  commentId: N:SiaNet.Initializers
+  name: SiaNet.Initializers
+  nameWithType: SiaNet.Initializers
+  fullName: SiaNet.Initializers
+- uid: SiaNet.Layers.Conv3D.KernalInitializer*
+  commentId: Overload:SiaNet.Layers.Conv3D.KernalInitializer
+  name: KernalInitializer
+  nameWithType: Conv3D.KernalInitializer
+  fullName: SiaNet.Layers.Conv3D.KernalInitializer
+- uid: SiaNet.Layers.Conv3D.KernalConstraint*
+  commentId: Overload:SiaNet.Layers.Conv3D.KernalConstraint
+  name: KernalConstraint
+  nameWithType: Conv3D.KernalConstraint
+  fullName: SiaNet.Layers.Conv3D.KernalConstraint
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: SiaNet.Layers.Conv3D.BiasConstraint*
+  commentId: Overload:SiaNet.Layers.Conv3D.BiasConstraint
+  name: BiasConstraint
+  nameWithType: Conv3D.BiasConstraint
+  fullName: SiaNet.Layers.Conv3D.BiasConstraint
+- uid: SiaNet.Layers.Conv3D.KernalRegularizer*
+  commentId: Overload:SiaNet.Layers.Conv3D.KernalRegularizer
+  name: KernalRegularizer
+  nameWithType: Conv3D.KernalRegularizer
+  fullName: SiaNet.Layers.Conv3D.KernalRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: SiaNet.Layers.Conv3D.BiasRegularizer*
+  commentId: Overload:SiaNet.Layers.Conv3D.BiasRegularizer
+  name: BiasRegularizer
+  nameWithType: Conv3D.BiasRegularizer
+  fullName: SiaNet.Layers.Conv3D.BiasRegularizer
+- uid: SiaNet.Layers.Conv3D.#ctor*
+  commentId: Overload:SiaNet.Layers.Conv3D.#ctor
+  name: Conv3D
+  nameWithType: Conv3D.Conv3D
+  fullName: SiaNet.Layers.Conv3D.Conv3D
+- uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Forward(Tensor)
+  nameWithType: BaseLayer.Forward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Forward(SiaNet.Engine.Tensor)
+    name: Forward
+    nameWithType: BaseLayer.Forward
+    fullName: SiaNet.Layers.BaseLayer.Forward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Conv3D.Forward*
+  commentId: Overload:SiaNet.Layers.Conv3D.Forward
+  name: Forward
+  nameWithType: Conv3D.Forward
+  fullName: SiaNet.Layers.Conv3D.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  parent: SiaNet.Layers.BaseLayer
+  name: Backward(Tensor)
+  nameWithType: BaseLayer.Backward(Tensor)
+  fullName: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Layers.BaseLayer.Backward(SiaNet.Engine.Tensor)
+    name: Backward
+    nameWithType: BaseLayer.Backward
+    fullName: SiaNet.Layers.BaseLayer.Backward
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Layers.Conv3D.Backward*
+  commentId: Overload:SiaNet.Layers.Conv3D.Backward
+  name: Backward
+  nameWithType: Conv3D.Backward
+  fullName: SiaNet.Layers.Conv3D.Backward

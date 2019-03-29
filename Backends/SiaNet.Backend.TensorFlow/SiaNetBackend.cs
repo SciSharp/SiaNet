@@ -7,7 +7,7 @@ using System.Text;
 using System.Linq;
 using Tensorflow;
 using DeviceType = SiaNet.Engine.DeviceType;
-using DataType = SiaNet.Engine.Tensor;
+using SiaTensor = SiaNet.Engine.Tensor;
 
 namespace SiaNet.Backend.TensorFlowLib
 {
@@ -40,20 +40,20 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public float Epsilon()
         {
-            throw new NotImplementedException();
+            return 1e-7f;
         }
 
-        public long[] GetShape(DataType x)
+        public long[] GetShape(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return BackendUtil.Int2Long(In(x).getShape().Dimensions);
         }
 
-        public object Eval(DataType x)
+        public object Eval(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return In(x).eval();
         }
 
-        public void Print(DataType x, string title = "")
+        public void Print(SiaTensor x, string title = "")
         {
             throw new NotImplementedException();
         }
@@ -68,437 +68,437 @@ namespace SiaNet.Backend.TensorFlowLib
             throw new NotImplementedException();
         }
 
-        public Engine.DataType GetDataType(DataType x)
+        public Engine.DataType GetDataType(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType CreateVariable(float[] data, long[] shape, string name = "")
+        public SiaTensor CreateVariable(float[] data, long[] shape, string name = "")
         {
             throw new NotImplementedException();
         }
 
-        public DataType Reshape(DataType x, params long[] shape)
+        public SiaTensor Reshape(SiaTensor x, params long[] shape)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Constant(float value, long[] shape)
+        public SiaTensor Constant(float value, long[] shape)
         {
             throw new NotImplementedException();
         }
 
-        public DataType RandomUniform(long[] shape, float min, float max, int? seed = null)
+        public SiaTensor RandomUniform(long[] shape, float min, float max, int? seed = null)
         {
             throw new NotImplementedException();
         }
 
-        public DataType RandomNormal(long[] shape, float mean, float stddev, int? seed = null)
+        public SiaTensor RandomNormal(long[] shape, float mean, float stddev, int? seed = null)
         {
             throw new NotImplementedException();
         }
 
-        public DataType RandomBernoulli(long[] shape, float p)
+        public SiaTensor RandomBernoulli(long[] shape, float p)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Add(DataType a, DataType b)
+        public SiaTensor Add(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Add(DataType a, float b)
+        public SiaTensor Add(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Add(float a, DataType b)
+        public SiaTensor Add(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sub(DataType a, DataType b)
+        public SiaTensor Sub(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sub(DataType a, float b)
+        public SiaTensor Sub(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sub(float a, DataType b)
+        public SiaTensor Sub(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Mul(DataType a, DataType b)
+        public SiaTensor Mul(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Mul(DataType a, float b)
+        public SiaTensor Mul(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Mul(float a, DataType b)
+        public SiaTensor Mul(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Div(DataType a, DataType b)
+        public SiaTensor Div(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Div(DataType a, float b)
+        public SiaTensor Div(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Div(float a, DataType b)
+        public SiaTensor Div(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType GreaterThan(DataType a, DataType b)
+        public SiaTensor GreaterThan(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType GreaterThanEqual(DataType a, DataType b)
+        public SiaTensor GreaterThanEqual(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType LessThan(DataType a, DataType b)
+        public SiaTensor LessThan(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType LessThanEqual(DataType a, DataType b)
+        public SiaTensor LessThanEqual(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType GreaterThan(float a, DataType b)
+        public SiaTensor GreaterThan(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType GreaterThanEqual(float a, DataType b)
+        public SiaTensor GreaterThanEqual(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType LessThan(float a, DataType b)
+        public SiaTensor LessThan(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType LessThanEqual(float a, DataType b)
+        public SiaTensor LessThanEqual(float a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType GreaterThan(DataType a, float b)
+        public SiaTensor GreaterThan(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType GreaterThanEqual(DataType a, float b)
+        public SiaTensor GreaterThanEqual(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType LessThan(DataType a, float b)
+        public SiaTensor LessThan(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType LessThanEqual(DataType a, float b)
+        public SiaTensor LessThanEqual(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType EqualTo(DataType a, DataType b)
+        public SiaTensor EqualTo(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Tile(DataType x, int n, int axis = 0)
+        public SiaTensor Tile(SiaTensor x, int n, int axis = 0)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Abs(DataType x)
+        public SiaTensor Abs(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Neg(DataType x)
+        public SiaTensor Neg(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sqrt(DataType x)
+        public SiaTensor Sqrt(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Exp(DataType x)
+        public SiaTensor Exp(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Log(DataType x)
+        public SiaTensor Log(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Log10(DataType x)
+        public SiaTensor Log10(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Log1p(DataType x)
+        public SiaTensor Log1p(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Floor(DataType x)
+        public SiaTensor Floor(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Ceil(DataType x)
+        public SiaTensor Ceil(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Round(DataType x)
+        public SiaTensor Round(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sin(DataType x)
+        public SiaTensor Sin(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Cos(DataType x)
+        public SiaTensor Cos(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Tan(DataType x)
+        public SiaTensor Tan(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Asin(DataType x)
+        public SiaTensor Asin(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Acos(DataType x)
+        public SiaTensor Acos(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Atan(DataType x)
+        public SiaTensor Atan(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sinh(DataType x)
+        public SiaTensor Sinh(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Cosh(DataType x)
+        public SiaTensor Cosh(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Tanh(DataType x)
+        public SiaTensor Tanh(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sigmoid(DataType x)
+        public SiaTensor Sigmoid(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Pow(DataType x, float value)
+        public SiaTensor Pow(SiaTensor x, float value)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Square(DataType x)
+        public SiaTensor Square(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Clip(DataType x, float min, float max)
+        public SiaTensor Clip(SiaTensor x, float min, float max)
         {
             throw new NotImplementedException();
         }
 
-        public float Sum(DataType x)
+        public float Sum(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sum(DataType x, int dim)
+        public SiaTensor Sum(SiaTensor x, int dim)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Sum(DataType x, params int[] dim)
+        public SiaTensor Sum(SiaTensor x, params int[] dim)
         {
             throw new NotImplementedException();
         }
 
-        public float Max(DataType x)
+        public float Max(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Max(DataType x, int dim)
+        public SiaTensor Max(SiaTensor x, int dim)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Max(DataType x, params int[] dim)
+        public SiaTensor Max(SiaTensor x, params int[] dim)
         {
             throw new NotImplementedException();
         }
 
-        public float Min(DataType x)
+        public float Min(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Min(DataType x, int dim)
+        public SiaTensor Min(SiaTensor x, int dim)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Min(DataType x, params int[] dim)
+        public SiaTensor Min(SiaTensor x, params int[] dim)
         {
             throw new NotImplementedException();
         }
 
-        public float Mean(DataType x)
+        public float Mean(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Mean(DataType x, int dim)
+        public SiaTensor Mean(SiaTensor x, int dim)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Mean(DataType x, params int[] dim)
+        public SiaTensor Mean(SiaTensor x, params int[] dim)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Argmax(DataType x, int dim = 0)
+        public SiaTensor Argmax(SiaTensor x, int dim = 0)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Argmin(DataType x, int dim = 0)
+        public SiaTensor Argmin(SiaTensor x, int dim = 0)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Maximum(DataType a, DataType b)
+        public SiaTensor Maximum(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Maximum(DataType a, float b)
+        public SiaTensor Maximum(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Minimum(DataType a, DataType b)
+        public SiaTensor Minimum(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Minimum(DataType a, float b)
+        public SiaTensor Minimum(SiaTensor a, float b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Transpose(DataType x)
+        public SiaTensor Transpose(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Transpose(DataType x, params int[] dims)
+        public SiaTensor Transpose(SiaTensor x, params int[] dims)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Dot(DataType a, DataType b)
+        public SiaTensor Dot(SiaTensor a, SiaTensor b)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Diag(DataType x)
+        public SiaTensor Diag(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Softmax(DataType x, int axis = -1)
+        public SiaTensor Softmax(SiaTensor x, int axis = -1)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Softplus(DataType x, int axis = -1)
+        public SiaTensor Softplus(SiaTensor x, int axis = -1)
         {
             throw new NotImplementedException();
         }
 
-        public DataType L2Normalize(DataType x, int axis = -1)
+        public SiaTensor L2Normalize(SiaTensor x, int axis = -1)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Im2Col(DataType x, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
+        public SiaTensor Im2Col(SiaTensor x, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
         {
             throw new NotImplementedException();
         }
 
-        public DataType Col2Im(DataType cols, long[] x_shape, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
+        public SiaTensor Col2Im(SiaTensor cols, long[] x_shape, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
         {
             throw new NotImplementedException();
         }
 
-        public DataType SliceRows(DataType x, long start, long end)
+        public SiaTensor SliceRows(SiaTensor x, long start, long end)
         {
             throw new NotImplementedException();
         }
 
-        public DataType SliceCols(DataType x, long start, long end)
+        public SiaTensor SliceCols(SiaTensor x, long start, long end)
         {
             throw new NotImplementedException();
         }
 
-        public Array GetArray(DataType x)
+        public Array GetArray(SiaTensor x)
         {
             throw new NotImplementedException();
         }
 
-        public void Dispose(DataType x)
+        public void Dispose(SiaTensor x)
         {
             throw new NotImplementedException();
         }

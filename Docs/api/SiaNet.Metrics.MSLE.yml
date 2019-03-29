@@ -1,0 +1,232 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Metrics.MSLE
+  commentId: T:SiaNet.Metrics.MSLE
+  id: MSLE
+  parent: SiaNet.Metrics
+  children:
+  - SiaNet.Metrics.MSLE.#ctor
+  - SiaNet.Metrics.MSLE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: MSLE
+  nameWithType: MSLE
+  fullName: SiaNet.Metrics.MSLE
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Metrics/MSLE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MSLE
+    path: ../SiaNet/Metrics/MSLE.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nMean squared logarithmic error (MSLE) is, as the name suggests, a variation of the Mean Squared Error. \n"
+  example: []
+  syntax:
+    content: 'public class MSLE : BaseMetric'
+    content.vb: >-
+      Public Class MSLE
+          Inherits BaseMetric
+  seealso:
+  - linkId: SiaNet.Metrics.BaseMetric
+    commentId: T:SiaNet.Metrics.BaseMetric
+  inheritance:
+  - System.Object
+  - SiaNet.Metrics.BaseMetric
+  inheritedMembers:
+  - SiaNet.Metrics.BaseMetric.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Metrics.MSLE.#ctor
+  commentId: M:SiaNet.Metrics.MSLE.#ctor
+  id: '#ctor'
+  parent: SiaNet.Metrics.MSLE
+  langs:
+  - csharp
+  - vb
+  name: MSLE()
+  nameWithType: MSLE.MSLE()
+  fullName: SiaNet.Metrics.MSLE.MSLE()
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Metrics/MSLE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Metrics/MSLE.cs
+    startLine: 14
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Metrics.MSLE\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public MSLE()
+    content.vb: Public Sub New
+  overload: SiaNet.Metrics.MSLE.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Metrics.MSLE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.MSLE.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.MSLE
+  langs:
+  - csharp
+  - vb
+  name: Calc(Tensor, Tensor)
+  nameWithType: MSLE.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.MSLE.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Metrics/MSLE.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Calc
+    path: ../SiaNet/Metrics/MSLE.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Metrics
+  summary: "\nCalculates the metric with predicted and true values.\n"
+  example: []
+  syntax:
+    content: public override Tensor Calc(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted value.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true value.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Overrides Function Calc(preds As Tensor, labels As Tensor) As Tensor
+  overridden: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  overload: SiaNet.Metrics.MSLE.Calc*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  parent: SiaNet.Metrics
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Metrics.BaseMetric.Name
+  commentId: P:SiaNet.Metrics.BaseMetric.Name
+  parent: SiaNet.Metrics.BaseMetric
+  name: Name
+  nameWithType: BaseMetric.Name
+  fullName: SiaNet.Metrics.BaseMetric.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Metrics.MSLE
+  commentId: T:SiaNet.Metrics.MSLE
+  name: MSLE
+  nameWithType: MSLE
+  fullName: SiaNet.Metrics.MSLE
+- uid: SiaNet.Metrics.MSLE.#ctor*
+  commentId: Overload:SiaNet.Metrics.MSLE.#ctor
+  name: MSLE
+  nameWithType: MSLE.MSLE
+  fullName: SiaNet.Metrics.MSLE.MSLE
+- uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Metrics.BaseMetric
+  name: Calc(Tensor, Tensor)
+  nameWithType: BaseMetric.Calc(Tensor, Tensor)
+  fullName: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  spec.csharp:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: SiaNet.Metrics.BaseMetric.Calc(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+    name: Calc
+    nameWithType: BaseMetric.Calc
+    fullName: SiaNet.Metrics.BaseMetric.Calc
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+    nameWithType: Tensor
+    fullName: SiaNet.Engine.Tensor
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: SiaNet.Metrics.MSLE.Calc*
+  commentId: Overload:SiaNet.Metrics.MSLE.Calc
+  name: Calc
+  nameWithType: MSLE.Calc
+  fullName: SiaNet.Metrics.MSLE.Calc
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine

@@ -1,0 +1,283 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Losses.BaseLoss
+  commentId: T:SiaNet.Losses.BaseLoss
+  id: BaseLoss
+  parent: SiaNet.Losses
+  children:
+  - SiaNet.Losses.BaseLoss.#ctor(System.String)
+  - SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  - SiaNet.Losses.BaseLoss.Name
+  langs:
+  - csharp
+  - vb
+  name: BaseLoss
+  nameWithType: BaseLoss
+  fullName: SiaNet.Losses.BaseLoss
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Losses/BaseLoss.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: BaseLoss
+    path: ../SiaNet/Losses/BaseLoss.cs
+    startLine: 7
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nA loss function (or objective function, or optimization score function) is one of the two parameters required to compile a model.\n"
+  example: []
+  syntax:
+    content: public abstract class BaseLoss
+    content.vb: Public MustInherit Class BaseLoss
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Losses.BinaryCrossentropy
+  - SiaNet.Losses.CategorialHinge
+  - SiaNet.Losses.CategoricalCrossentropy
+  - SiaNet.Losses.CosineProximity
+  - SiaNet.Losses.Hinge
+  - SiaNet.Losses.KullbackLeiblerDivergence
+  - SiaNet.Losses.LogCosh
+  - SiaNet.Losses.MeanAbsoluteError
+  - SiaNet.Losses.MeanAbsolutePercentageError
+  - SiaNet.Losses.MeanSquaredError
+  - SiaNet.Losses.MeanSquaredLogError
+  - SiaNet.Losses.Poisson
+  - SiaNet.Losses.SquaredHinge
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: SiaNet.Losses.BaseLoss.Name
+  commentId: P:SiaNet.Losses.BaseLoss.Name
+  id: Name
+  parent: SiaNet.Losses.BaseLoss
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: BaseLoss.Name
+  fullName: SiaNet.Losses.BaseLoss.Name
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Losses/BaseLoss.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Name
+    path: ../SiaNet/Losses/BaseLoss.cs
+    startLine: 20
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nGets or sets the name of the loss function\n"
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe name.\n"
+    content.vb: Public Property Name As String
+  overload: SiaNet.Losses.BaseLoss.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.BaseLoss.#ctor(System.String)
+  commentId: M:SiaNet.Losses.BaseLoss.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: SiaNet.Losses.BaseLoss
+  langs:
+  - csharp
+  - vb
+  name: BaseLoss(String)
+  nameWithType: BaseLoss.BaseLoss(String)
+  fullName: SiaNet.Losses.BaseLoss.BaseLoss(System.String)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Losses/BaseLoss.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Losses/BaseLoss.cs
+    startLine: 26
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Losses.BaseLoss\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public BaseLoss(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the loss function.
+    content.vb: Public Sub New(name As String)
+  overload: SiaNet.Losses.BaseLoss.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Forward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  langs:
+  - csharp
+  - vb
+  name: Forward(Tensor, Tensor)
+  nameWithType: BaseLoss.Forward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Forward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/BaseLoss.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Forward
+    path: ../SiaNet/Losses/BaseLoss.cs
+    startLine: 37
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nForwards the inputs and calculate the loss.\n"
+  example: []
+  syntax:
+    content: public abstract Tensor Forward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public MustOverride Function Forward(preds As Tensor, labels As Tensor) As Tensor
+  overload: SiaNet.Losses.BaseLoss.Forward*
+  modifiers.csharp:
+  - public
+  - abstract
+  modifiers.vb:
+  - Public
+  - MustOverride
+- uid: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  id: Backward(SiaNet.Engine.Tensor,SiaNet.Engine.Tensor)
+  parent: SiaNet.Losses.BaseLoss
+  langs:
+  - csharp
+  - vb
+  name: Backward(Tensor, Tensor)
+  nameWithType: BaseLoss.Backward(Tensor, Tensor)
+  fullName: SiaNet.Losses.BaseLoss.Backward(SiaNet.Engine.Tensor, SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Losses/BaseLoss.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Backward
+    path: ../SiaNet/Losses/BaseLoss.cs
+    startLine: 45
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Losses
+  summary: "\nBackpropagation method to calculate gradient of the loss function\n"
+  example: []
+  syntax:
+    content: public abstract Tensor Backward(Tensor preds, Tensor labels)
+    parameters:
+    - id: preds
+      type: SiaNet.Engine.Tensor
+      description: The predicted result.
+    - id: labels
+      type: SiaNet.Engine.Tensor
+      description: The true result.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public MustOverride Function Backward(preds As Tensor, labels As Tensor) As Tensor
+  overload: SiaNet.Losses.BaseLoss.Backward*
+  modifiers.csharp:
+  - public
+  - abstract
+  modifiers.vb:
+  - Public
+  - MustOverride
+references:
+- uid: SiaNet.Losses
+  commentId: N:SiaNet.Losses
+  name: SiaNet.Losses
+  nameWithType: SiaNet.Losses
+  fullName: SiaNet.Losses
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Losses.BaseLoss.Name*
+  commentId: Overload:SiaNet.Losses.BaseLoss.Name
+  name: Name
+  nameWithType: BaseLoss.Name
+  fullName: SiaNet.Losses.BaseLoss.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: SiaNet.Losses.BaseLoss
+  commentId: T:SiaNet.Losses.BaseLoss
+  parent: SiaNet.Losses
+  name: BaseLoss
+  nameWithType: BaseLoss
+  fullName: SiaNet.Losses.BaseLoss
+- uid: SiaNet.Losses.BaseLoss.#ctor*
+  commentId: Overload:SiaNet.Losses.BaseLoss.#ctor
+  name: BaseLoss
+  nameWithType: BaseLoss.BaseLoss
+  fullName: SiaNet.Losses.BaseLoss.BaseLoss
+- uid: SiaNet.Losses.BaseLoss.Forward*
+  commentId: Overload:SiaNet.Losses.BaseLoss.Forward
+  name: Forward
+  nameWithType: BaseLoss.Forward
+  fullName: SiaNet.Losses.BaseLoss.Forward
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Losses.BaseLoss.Backward*
+  commentId: Overload:SiaNet.Losses.BaseLoss.Backward
+  name: Backward
+  nameWithType: BaseLoss.Backward
+  fullName: SiaNet.Losses.BaseLoss.Backward

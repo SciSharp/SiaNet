@@ -1,0 +1,315 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Constraints.MinMaxNorm
+  commentId: T:SiaNet.Constraints.MinMaxNorm
+  id: MinMaxNorm
+  parent: SiaNet.Constraints
+  children:
+  - SiaNet.Constraints.MinMaxNorm.#ctor(System.Single,System.Single,System.Single,System.UInt32)
+  - SiaNet.Constraints.MinMaxNorm.Axis
+  - SiaNet.Constraints.MinMaxNorm.MaxValue
+  - SiaNet.Constraints.MinMaxNorm.MinValue
+  - SiaNet.Constraints.MinMaxNorm.Rate
+  langs:
+  - csharp
+  - vb
+  name: MinMaxNorm
+  nameWithType: MinMaxNorm
+  fullName: SiaNet.Constraints.MinMaxNorm
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Constraints/MinMaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MinMaxNorm
+    path: ../SiaNet/Constraints/MinMaxNorm.cs
+    startLine: 11
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nMinMaxNorm weight constraint. Constrains the weights incident to each hidden unit to have the norm between a lower bound and an upper bound.\n"
+  example: []
+  syntax:
+    content: 'public class MinMaxNorm : BaseConstraint'
+    content.vb: >-
+      Public Class MinMaxNorm
+          Inherits BaseConstraint
+  seealso:
+  - linkId: SiaNet.Constraints.BaseConstraint
+    commentId: T:SiaNet.Constraints.BaseConstraint
+  inheritance:
+  - System.Object
+  - SiaNet.Constraints.BaseConstraint
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Constraints.MinMaxNorm.MinValue
+  commentId: P:SiaNet.Constraints.MinMaxNorm.MinValue
+  id: MinValue
+  parent: SiaNet.Constraints.MinMaxNorm
+  langs:
+  - csharp
+  - vb
+  name: MinValue
+  nameWithType: MinMaxNorm.MinValue
+  fullName: SiaNet.Constraints.MinMaxNorm.MinValue
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Constraints/MinMaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MinValue
+    path: ../SiaNet/Constraints/MinMaxNorm.cs
+    startLine: 19
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nThe minimum norm for the incoming weights.\n"
+  example: []
+  syntax:
+    content: public float MinValue { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe minimum value.\n"
+    content.vb: Public Property MinValue As Single
+  overload: SiaNet.Constraints.MinMaxNorm.MinValue*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.MinMaxNorm.MaxValue
+  commentId: P:SiaNet.Constraints.MinMaxNorm.MaxValue
+  id: MaxValue
+  parent: SiaNet.Constraints.MinMaxNorm
+  langs:
+  - csharp
+  - vb
+  name: MaxValue
+  nameWithType: MinMaxNorm.MaxValue
+  fullName: SiaNet.Constraints.MinMaxNorm.MaxValue
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Constraints/MinMaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: MaxValue
+    path: ../SiaNet/Constraints/MinMaxNorm.cs
+    startLine: 27
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nThe maximum norm for the incoming weights.\n"
+  example: []
+  syntax:
+    content: public float MaxValue { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe maximum value.\n"
+    content.vb: Public Property MaxValue As Single
+  overload: SiaNet.Constraints.MinMaxNorm.MaxValue*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.MinMaxNorm.Rate
+  commentId: P:SiaNet.Constraints.MinMaxNorm.Rate
+  id: Rate
+  parent: SiaNet.Constraints.MinMaxNorm
+  langs:
+  - csharp
+  - vb
+  name: Rate
+  nameWithType: MinMaxNorm.Rate
+  fullName: SiaNet.Constraints.MinMaxNorm.Rate
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Constraints/MinMaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Rate
+    path: ../SiaNet/Constraints/MinMaxNorm.cs
+    startLine: 36
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nRate for enforcing the constraint: weights will be rescaled to yield  (1 - rate) * norm + rate * norm.clip(min_value, max_value). \nEffectively, this means that rate=1.0 stands for strict enforcement of the constraint, while rate&lt;1.0 means that weights will be rescaled at each step to slowly move towards a value inside the desired interval.\n"
+  example: []
+  syntax:
+    content: public float Rate { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+      description: "\nThe rate.\n"
+    content.vb: Public Property Rate As Single
+  overload: SiaNet.Constraints.MinMaxNorm.Rate*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.MinMaxNorm.Axis
+  commentId: P:SiaNet.Constraints.MinMaxNorm.Axis
+  id: Axis
+  parent: SiaNet.Constraints.MinMaxNorm
+  langs:
+  - csharp
+  - vb
+  name: Axis
+  nameWithType: MinMaxNorm.Axis
+  fullName: SiaNet.Constraints.MinMaxNorm.Axis
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Constraints/MinMaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Axis
+    path: ../SiaNet/Constraints/MinMaxNorm.cs
+    startLine: 46
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nInteger, axis along which to calculate weight norms. For instance, in a Dense layer the weight matrix has shape (input_dim, output_dim), set axis to 0 to constrain each weight vector of length (input_dim,). \nIn a Conv2D layer, the weight tensor has shape  (output_depth, input_depth, rows, cols), \nset axis to [1, 2, 3] to constrain the weights of each filter tensor of size  (input_depth, rows, cols).\n"
+  example: []
+  syntax:
+    content: public uint Axis { get; set; }
+    parameters: []
+    return:
+      type: System.UInt32
+      description: "\nThe axis.\n"
+    content.vb: Public Property Axis As UInteger
+  overload: SiaNet.Constraints.MinMaxNorm.Axis*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Constraints.MinMaxNorm.#ctor(System.Single,System.Single,System.Single,System.UInt32)
+  commentId: M:SiaNet.Constraints.MinMaxNorm.#ctor(System.Single,System.Single,System.Single,System.UInt32)
+  id: '#ctor(System.Single,System.Single,System.Single,System.UInt32)'
+  parent: SiaNet.Constraints.MinMaxNorm
+  langs:
+  - csharp
+  - vb
+  name: MinMaxNorm(Single, Single, Single, UInt32)
+  nameWithType: MinMaxNorm.MinMaxNorm(Single, Single, Single, UInt32)
+  fullName: SiaNet.Constraints.MinMaxNorm.MinMaxNorm(System.Single, System.Single, System.Single, System.UInt32)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Constraints/MinMaxNorm.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Constraints/MinMaxNorm.cs
+    startLine: 55
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Constraints
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Constraints.MinMaxNorm\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public MinMaxNorm(float minVale = 0F, float maxValue = 1F, float rate = 1F, uint axis = 0U)
+    parameters:
+    - id: minVale
+      type: System.Single
+      description: The minimum norm for the incoming weights.
+    - id: maxValue
+      type: System.Single
+      description: The maximum norm for the incoming weights.
+    - id: rate
+      type: System.Single
+      description: 'Rate for enforcing the constraint: weights will be rescaled to yield  (1 - rate) * norm + rate * norm.clip(min_value, max_value).'
+    - id: axis
+      type: System.UInt32
+      description: 'Integer, axis along which to calculate weight norms. '
+    content.vb: Public Sub New(minVale As Single = 0F, maxValue As Single = 1F, rate As Single = 1F, axis As UInteger = 0UI)
+  overload: SiaNet.Constraints.MinMaxNorm.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Constraints.BaseConstraint
+  commentId: T:SiaNet.Constraints.BaseConstraint
+  parent: SiaNet.Constraints
+  name: BaseConstraint
+  nameWithType: BaseConstraint
+  fullName: SiaNet.Constraints.BaseConstraint
+- uid: SiaNet.Constraints
+  commentId: N:SiaNet.Constraints
+  name: SiaNet.Constraints
+  nameWithType: SiaNet.Constraints
+  fullName: SiaNet.Constraints
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Constraints.MinMaxNorm.MinValue*
+  commentId: Overload:SiaNet.Constraints.MinMaxNorm.MinValue
+  name: MinValue
+  nameWithType: MinMaxNorm.MinValue
+  fullName: SiaNet.Constraints.MinMaxNorm.MinValue
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
+- uid: SiaNet.Constraints.MinMaxNorm.MaxValue*
+  commentId: Overload:SiaNet.Constraints.MinMaxNorm.MaxValue
+  name: MaxValue
+  nameWithType: MinMaxNorm.MaxValue
+  fullName: SiaNet.Constraints.MinMaxNorm.MaxValue
+- uid: SiaNet.Constraints.MinMaxNorm.Rate*
+  commentId: Overload:SiaNet.Constraints.MinMaxNorm.Rate
+  name: Rate
+  nameWithType: MinMaxNorm.Rate
+  fullName: SiaNet.Constraints.MinMaxNorm.Rate
+- uid: SiaNet.Constraints.MinMaxNorm.Axis*
+  commentId: Overload:SiaNet.Constraints.MinMaxNorm.Axis
+  name: Axis
+  nameWithType: MinMaxNorm.Axis
+  fullName: SiaNet.Constraints.MinMaxNorm.Axis
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  name: UInt32
+  nameWithType: UInt32
+  fullName: System.UInt32
+- uid: SiaNet.Constraints.MinMaxNorm
+  commentId: T:SiaNet.Constraints.MinMaxNorm
+  name: MinMaxNorm
+  nameWithType: MinMaxNorm
+  fullName: SiaNet.Constraints.MinMaxNorm
+- uid: SiaNet.Constraints.MinMaxNorm.#ctor*
+  commentId: Overload:SiaNet.Constraints.MinMaxNorm.#ctor
+  name: MinMaxNorm
+  nameWithType: MinMaxNorm.MinMaxNorm
+  fullName: SiaNet.Constraints.MinMaxNorm.MinMaxNorm

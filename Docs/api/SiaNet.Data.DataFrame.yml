@@ -1,0 +1,499 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Data.DataFrame
+  commentId: T:SiaNet.Data.DataFrame
+  id: DataFrame
+  parent: SiaNet.Data
+  children:
+  - SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  - SiaNet.Data.DataFrame.GetTensor
+  - SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  - SiaNet.Data.DataFrame.Item(System.UInt32)
+  - SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  - SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  - SiaNet.Data.DataFrame.Shape
+  - SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  langs:
+  - csharp
+  - vb
+  name: DataFrame
+  nameWithType: DataFrame
+  fullName: SiaNet.Data.DataFrame
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: DataFrame
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 8
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nData frame to load data like CSV, images and text in binary format. The instance is then send to Train or Predict method\n"
+  example: []
+  syntax:
+    content: public class DataFrame
+    content.vb: Public Class DataFrame
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - SiaNet.Data.DataFrame2D
+  - SiaNet.Data.ImageFrame
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Data.DataFrame.Shape
+  commentId: P:SiaNet.Data.DataFrame.Shape
+  id: Shape
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: Shape
+  nameWithType: DataFrame.Shape
+  fullName: SiaNet.Data.DataFrame.Shape
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Shape
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 20
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the shape of the data frame.\n"
+  example: []
+  syntax:
+    content: public long[] Shape { get; }
+    parameters: []
+    return:
+      type: System.Int64[]
+      description: "\nThe shape.\n"
+    content.vb: Public ReadOnly Property Shape As Long()
+  overload: SiaNet.Data.DataFrame.Shape*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  commentId: M:SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  id: Reshape(System.Int64[])
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: Reshape(Int64[])
+  nameWithType: DataFrame.Reshape(Int64[])
+  fullName: SiaNet.Data.DataFrame.Reshape(System.Int64[])
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Reshape
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 32
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nReshapes the data frame to specified new shape.\n"
+  example: []
+  syntax:
+    content: public void Reshape(params long[] newShape)
+    parameters:
+    - id: newShape
+      type: System.Int64[]
+      description: The new shape.
+    content.vb: Public Sub Reshape(ParamArray newShape As Long())
+  overload: SiaNet.Data.DataFrame.Reshape*
+  nameWithType.vb: DataFrame.Reshape(Int64())
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: SiaNet.Data.DataFrame.Reshape(System.Int64())
+  name.vb: Reshape(Int64())
+- uid: SiaNet.Data.DataFrame.GetTensor
+  commentId: M:SiaNet.Data.DataFrame.GetTensor
+  id: GetTensor
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: GetTensor()
+  nameWithType: DataFrame.GetTensor()
+  fullName: SiaNet.Data.DataFrame.GetTensor()
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetTensor
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 41
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the underlaying tensor instance.\n"
+  example: []
+  syntax:
+    content: public Tensor GetTensor()
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Function GetTensor As Tensor
+  overload: SiaNet.Data.DataFrame.GetTensor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  commentId: M:SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  id: ToFrame(SiaNet.Engine.Tensor)
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: ToFrame(Tensor)
+  nameWithType: DataFrame.ToFrame(Tensor)
+  fullName: SiaNet.Data.DataFrame.ToFrame(SiaNet.Engine.Tensor)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: ToFrame
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 50
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nConverts to tensor to a data frame.\n"
+  example: []
+  syntax:
+    content: public virtual void ToFrame(Tensor t)
+    parameters:
+    - id: t
+      type: SiaNet.Engine.Tensor
+      description: The t.
+    content.vb: Public Overridable Sub ToFrame(t As Tensor)
+  overload: SiaNet.Data.DataFrame.ToFrame*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  commentId: P:SiaNet.Data.DataFrame.Item(System.UInt32,System.UInt32)
+  id: Item(System.UInt32,System.UInt32)
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: Item[UInt32, UInt32]
+  nameWithType: DataFrame.Item[UInt32, UInt32]
+  fullName: SiaNet.Data.DataFrame.Item[System.UInt32, System.UInt32]
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: this[]
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 65
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the <xref href=\"SiaNet.Data.DataFrame\" data-throw-if-not-resolved=\"false\"></xref> with the specified start and end index.\n"
+  example: []
+  syntax:
+    content: public DataFrame this[uint start, uint end] { get; }
+    parameters:
+    - id: start
+      type: System.UInt32
+      description: The start index.
+    - id: end
+      type: System.UInt32
+      description: The end index.
+    return:
+      type: SiaNet.Data.DataFrame
+      description: "\nThe <xref href=\"SiaNet.Data.DataFrame\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+    content.vb: Public ReadOnly Property Item(start As UInteger, end As UInteger) As DataFrame
+  overload: SiaNet.Data.DataFrame.Item*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: End must be greater than start
+  nameWithType.vb: DataFrame.Item(UInt32, UInt32)
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+  fullName.vb: SiaNet.Data.DataFrame.Item(System.UInt32, System.UInt32)
+  name.vb: Item(UInt32, UInt32)
+- uid: SiaNet.Data.DataFrame.Item(System.UInt32)
+  commentId: P:SiaNet.Data.DataFrame.Item(System.UInt32)
+  id: Item(System.UInt32)
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: Item[UInt32]
+  nameWithType: DataFrame.Item[UInt32]
+  fullName: SiaNet.Data.DataFrame.Item[System.UInt32]
+  type: Property
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: this[]
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 92
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGets the <xref href=\"SiaNet.Data.DataFrame\" data-throw-if-not-resolved=\"false\"></xref> at the specified index.\n"
+  example: []
+  syntax:
+    content: public DataFrame this[uint index] { get; }
+    parameters:
+    - id: index
+      type: System.UInt32
+      description: The index.
+    return:
+      type: SiaNet.Data.DataFrame
+      description: "\nThe <xref href=\"SiaNet.Data.DataFrame\" data-throw-if-not-resolved=\"false\"></xref>.\n"
+    content.vb: Public ReadOnly Property Item(index As UInteger) As DataFrame
+  overload: SiaNet.Data.DataFrame.Item*
+  nameWithType.vb: DataFrame.Item(UInt32)
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+  fullName.vb: SiaNet.Data.DataFrame.Item(System.UInt32)
+  name.vb: Item(UInt32)
+- uid: SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  commentId: M:SiaNet.Data.DataFrame.GetBatch(System.Int32,System.Int32,System.Int32)
+  id: GetBatch(System.Int32,System.Int32,System.Int32)
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: GetBatch(Int32, Int32, Int32)
+  nameWithType: DataFrame.GetBatch(Int32, Int32, Int32)
+  fullName: SiaNet.Data.DataFrame.GetBatch(System.Int32, System.Int32, System.Int32)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: GetBatch
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 110
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nGet batch data with specified start index and size\n"
+  example: []
+  syntax:
+    content: public Tensor GetBatch(int start, int size, int axis = 0)
+    parameters:
+    - id: start
+      type: System.Int32
+      description: The start.
+    - id: size
+      type: System.Int32
+      description: The size.
+    - id: axis
+      type: System.Int32
+      description: The axis.
+    return:
+      type: SiaNet.Engine.Tensor
+      description: ''
+    content.vb: Public Function GetBatch(start As Integer, size As Integer, axis As Integer = 0) As Tensor
+  overload: SiaNet.Data.DataFrame.GetBatch*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  commentId: M:SiaNet.Data.DataFrame.Head(System.UInt32,System.String)
+  id: Head(System.UInt32,System.String)
+  parent: SiaNet.Data.DataFrame
+  langs:
+  - csharp
+  - vb
+  name: Head(UInt32, String)
+  nameWithType: DataFrame.Head(UInt32, String)
+  fullName: SiaNet.Data.DataFrame.Head(System.UInt32, System.String)
+  type: Method
+  source:
+    remote:
+      path: SiaNet/Data/DataFrame.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: Head
+    path: ../SiaNet/Data/DataFrame.cs
+    startLine: 127
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Data
+  summary: "\nPrints the dataframe, by default first 5 records are printed. Helpful to understand the data structure.\n"
+  example: []
+  syntax:
+    content: public void Head(uint count = 5U, string title = "")
+    parameters:
+    - id: count
+      type: System.UInt32
+      description: The count of records to print.
+    - id: title
+      type: System.String
+      description: The title to display.
+    content.vb: Public Sub Head(count As UInteger = 5UI, title As String = "")
+  overload: SiaNet.Data.DataFrame.Head*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Data
+  commentId: N:SiaNet.Data
+  name: SiaNet.Data
+  nameWithType: SiaNet.Data
+  fullName: SiaNet.Data
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Data.DataFrame.Shape*
+  commentId: Overload:SiaNet.Data.DataFrame.Shape
+  name: Shape
+  nameWithType: DataFrame.Shape
+  fullName: SiaNet.Data.DataFrame.Shape
+- uid: System.Int64[]
+  isExternal: true
+  name: Int64[]
+  nameWithType: Int64[]
+  fullName: System.Int64[]
+  nameWithType.vb: Int64()
+  fullName.vb: System.Int64()
+  name.vb: Int64()
+  spec.csharp:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+  spec.vb:
+  - uid: System.Int64
+    name: Int64
+    nameWithType: Int64
+    fullName: System.Int64
+    isExternal: true
+  - name: ()
+    nameWithType: ()
+    fullName: ()
+- uid: SiaNet.Data.DataFrame.Reshape*
+  commentId: Overload:SiaNet.Data.DataFrame.Reshape
+  name: Reshape
+  nameWithType: DataFrame.Reshape
+  fullName: SiaNet.Data.DataFrame.Reshape
+- uid: SiaNet.Data.DataFrame.GetTensor*
+  commentId: Overload:SiaNet.Data.DataFrame.GetTensor
+  name: GetTensor
+  nameWithType: DataFrame.GetTensor
+  fullName: SiaNet.Data.DataFrame.GetTensor
+- uid: SiaNet.Engine.Tensor
+  commentId: T:SiaNet.Engine.Tensor
+  parent: SiaNet.Engine
+  name: Tensor
+  nameWithType: Tensor
+  fullName: SiaNet.Engine.Tensor
+- uid: SiaNet.Engine
+  commentId: N:SiaNet.Engine
+  name: SiaNet.Engine
+  nameWithType: SiaNet.Engine
+  fullName: SiaNet.Engine
+- uid: SiaNet.Data.DataFrame.ToFrame*
+  commentId: Overload:SiaNet.Data.DataFrame.ToFrame
+  name: ToFrame
+  nameWithType: DataFrame.ToFrame
+  fullName: SiaNet.Data.DataFrame.ToFrame
+- uid: SiaNet.Data.DataFrame
+  commentId: T:SiaNet.Data.DataFrame
+  parent: SiaNet.Data
+  name: DataFrame
+  nameWithType: DataFrame
+  fullName: SiaNet.Data.DataFrame
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+- uid: SiaNet.Data.DataFrame.Item*
+  commentId: Overload:SiaNet.Data.DataFrame.Item
+  name: Item
+  nameWithType: DataFrame.Item
+  fullName: SiaNet.Data.DataFrame.Item
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  name: UInt32
+  nameWithType: UInt32
+  fullName: System.UInt32
+- uid: SiaNet.Data.DataFrame.GetBatch*
+  commentId: Overload:SiaNet.Data.DataFrame.GetBatch
+  name: GetBatch
+  nameWithType: DataFrame.GetBatch
+  fullName: SiaNet.Data.DataFrame.GetBatch
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: SiaNet.Data.DataFrame.Head*
+  commentId: Overload:SiaNet.Data.DataFrame.Head
+  name: Head
+  nameWithType: DataFrame.Head
+  fullName: SiaNet.Data.DataFrame.Head
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

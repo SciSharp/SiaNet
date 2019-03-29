@@ -1,0 +1,64 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  id: SiaNet.Optimizers
+  children:
+  - SiaNet.Optimizers.Adadelta
+  - SiaNet.Optimizers.Adagrad
+  - SiaNet.Optimizers.Adam
+  - SiaNet.Optimizers.Adamax
+  - SiaNet.Optimizers.BaseOptimizer
+  - SiaNet.Optimizers.RMSProp
+  - SiaNet.Optimizers.SGD
+  langs:
+  - csharp
+  - vb
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Optimizers.Adadelta
+  commentId: T:SiaNet.Optimizers.Adadelta
+  name: Adadelta
+  nameWithType: Adadelta
+  fullName: SiaNet.Optimizers.Adadelta
+- uid: SiaNet.Optimizers.Adagrad
+  commentId: T:SiaNet.Optimizers.Adagrad
+  name: Adagrad
+  nameWithType: Adagrad
+  fullName: SiaNet.Optimizers.Adagrad
+- uid: SiaNet.Optimizers.Adam
+  commentId: T:SiaNet.Optimizers.Adam
+  name: Adam
+  nameWithType: Adam
+  fullName: SiaNet.Optimizers.Adam
+- uid: SiaNet.Optimizers.Adamax
+  commentId: T:SiaNet.Optimizers.Adamax
+  name: Adamax
+  nameWithType: Adamax
+  fullName: SiaNet.Optimizers.Adamax
+- uid: SiaNet.Optimizers.BaseOptimizer
+  commentId: T:SiaNet.Optimizers.BaseOptimizer
+  parent: SiaNet.Optimizers
+  name: BaseOptimizer
+  nameWithType: BaseOptimizer
+  fullName: SiaNet.Optimizers.BaseOptimizer
+- uid: SiaNet.Optimizers.RMSProp
+  commentId: T:SiaNet.Optimizers.RMSProp
+  name: RMSProp
+  nameWithType: RMSProp
+  fullName: SiaNet.Optimizers.RMSProp
+- uid: SiaNet.Optimizers.SGD
+  commentId: T:SiaNet.Optimizers.SGD
+  name: SGD
+  nameWithType: SGD
+  fullName: SiaNet.Optimizers.SGD
+- uid: SiaNet.Optimizers
+  commentId: N:SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  nameWithType: SiaNet.Optimizers
+  fullName: SiaNet.Optimizers

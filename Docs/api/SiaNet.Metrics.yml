@@ -1,0 +1,64 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  id: SiaNet.Metrics
+  children:
+  - SiaNet.Metrics.Accuracy
+  - SiaNet.Metrics.BaseMetric
+  - SiaNet.Metrics.BinaryAccuracy
+  - SiaNet.Metrics.MAE
+  - SiaNet.Metrics.MAPE
+  - SiaNet.Metrics.MSE
+  - SiaNet.Metrics.MSLE
+  langs:
+  - csharp
+  - vb
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics
+  type: Namespace
+  assemblies:
+  - SiaNet
+references:
+- uid: SiaNet.Metrics.Accuracy
+  commentId: T:SiaNet.Metrics.Accuracy
+  name: Accuracy
+  nameWithType: Accuracy
+  fullName: SiaNet.Metrics.Accuracy
+- uid: SiaNet.Metrics.BaseMetric
+  commentId: T:SiaNet.Metrics.BaseMetric
+  parent: SiaNet.Metrics
+  name: BaseMetric
+  nameWithType: BaseMetric
+  fullName: SiaNet.Metrics.BaseMetric
+- uid: SiaNet.Metrics.BinaryAccuracy
+  commentId: T:SiaNet.Metrics.BinaryAccuracy
+  name: BinaryAccuracy
+  nameWithType: BinaryAccuracy
+  fullName: SiaNet.Metrics.BinaryAccuracy
+- uid: SiaNet.Metrics.MAE
+  commentId: T:SiaNet.Metrics.MAE
+  name: MAE
+  nameWithType: MAE
+  fullName: SiaNet.Metrics.MAE
+- uid: SiaNet.Metrics.MAPE
+  commentId: T:SiaNet.Metrics.MAPE
+  name: MAPE
+  nameWithType: MAPE
+  fullName: SiaNet.Metrics.MAPE
+- uid: SiaNet.Metrics.MSE
+  commentId: T:SiaNet.Metrics.MSE
+  name: MSE
+  nameWithType: MSE
+  fullName: SiaNet.Metrics.MSE
+- uid: SiaNet.Metrics.MSLE
+  commentId: T:SiaNet.Metrics.MSLE
+  name: MSLE
+  nameWithType: MSLE
+  fullName: SiaNet.Metrics.MSLE
+- uid: SiaNet.Metrics
+  commentId: N:SiaNet.Metrics
+  name: SiaNet.Metrics
+  nameWithType: SiaNet.Metrics
+  fullName: SiaNet.Metrics

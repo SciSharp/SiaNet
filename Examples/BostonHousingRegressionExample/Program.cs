@@ -13,7 +13,7 @@ namespace BostonHousingRegressionExample
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.CNTKLib.SiaNetBackend.Instance, DeviceType.CPU);
 
             //Load Train and Test CSV data
             var ds = LoadTrain("./train.csv");

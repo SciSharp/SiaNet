@@ -1,0 +1,261 @@
+### YamlMime:TableOfContent
+- uid: SiaNet
+  name: SiaNet
+  items:
+  - uid: SiaNet.Global
+    name: Global
+  - uid: SiaNet.History
+    name: History
+  - uid: SiaNet.Parameter
+    name: Parameter
+  - uid: SiaNet.Sequential
+    name: Sequential
+- uid: SiaNet.Constraints
+  name: SiaNet.Constraints
+  items:
+  - uid: SiaNet.Constraints.BaseConstraint
+    name: BaseConstraint
+  - uid: SiaNet.Constraints.MaxNorm
+    name: MaxNorm
+  - uid: SiaNet.Constraints.MinMaxNorm
+    name: MinMaxNorm
+  - uid: SiaNet.Constraints.NonNeg
+    name: NonNeg
+  - uid: SiaNet.Constraints.UnitNorm
+    name: UnitNorm
+- uid: SiaNet.Data
+  name: SiaNet.Data
+  items:
+  - uid: SiaNet.Data.DataFrame
+    name: DataFrame
+  - uid: SiaNet.Data.DataFrame2D
+    name: DataFrame2D
+  - uid: SiaNet.Data.DataFrameIter
+    name: DataFrameIter
+  - uid: SiaNet.Data.ImageFrame
+    name: ImageFrame
+- uid: SiaNet.Engine
+  name: SiaNet.Engine
+  items:
+  - uid: SiaNet.Engine.ActType
+    name: ActType
+  - uid: SiaNet.Engine.BaseParameter
+    name: BaseParameter
+  - uid: SiaNet.Engine.DataType
+    name: DataType
+  - uid: SiaNet.Engine.DeviceType
+    name: DeviceType
+  - uid: SiaNet.Engine.IBackend
+    name: IBackend
+  - uid: SiaNet.Engine.LossType
+    name: LossType
+  - uid: SiaNet.Engine.MetricType
+    name: MetricType
+  - uid: SiaNet.Engine.OptimizerType
+    name: OptimizerType
+  - uid: SiaNet.Engine.PaddingType
+    name: PaddingType
+  - uid: SiaNet.Engine.PoolingPoolType
+    name: PoolingPoolType
+  - uid: SiaNet.Engine.SiaNetBackend
+    name: SiaNetBackend
+  - uid: SiaNet.Engine.Tensor
+    name: Tensor
+- uid: SiaNet.Events
+  name: SiaNet.Events
+  items:
+  - uid: SiaNet.Events.BatchEndEventArgs
+    name: BatchEndEventArgs
+  - uid: SiaNet.Events.BatchStartEventArgs
+    name: BatchStartEventArgs
+  - uid: SiaNet.Events.EpochEndEventArgs
+    name: EpochEndEventArgs
+  - uid: SiaNet.Events.EpochStartEventArgs
+    name: EpochStartEventArgs
+  - uid: SiaNet.Events.TrainingEndEventArgs
+    name: TrainingEndEventArgs
+- uid: SiaNet.Initializers
+  name: SiaNet.Initializers
+  items:
+  - uid: SiaNet.Initializers.BaseInitializer
+    name: BaseInitializer
+  - uid: SiaNet.Initializers.Constant
+    name: Constant
+  - uid: SiaNet.Initializers.GlorotNormal
+    name: GlorotNormal
+  - uid: SiaNet.Initializers.GlorotUniform
+    name: GlorotUniform
+  - uid: SiaNet.Initializers.HeNormal
+    name: HeNormal
+  - uid: SiaNet.Initializers.HeUniform
+    name: HeUniform
+  - uid: SiaNet.Initializers.LecunNormal
+    name: LecunNormal
+  - uid: SiaNet.Initializers.LecunUniform
+    name: LecunUniform
+  - uid: SiaNet.Initializers.Ones
+    name: Ones
+  - uid: SiaNet.Initializers.RandomNormal
+    name: RandomNormal
+  - uid: SiaNet.Initializers.RandomUniform
+    name: RandomUniform
+  - uid: SiaNet.Initializers.TruncatedNormal
+    name: TruncatedNormal
+  - uid: SiaNet.Initializers.VarianceScaling
+    name: VarianceScaling
+  - uid: SiaNet.Initializers.Zeros
+    name: Zeros
+- uid: SiaNet.Layers
+  name: SiaNet.Layers
+  items:
+  - uid: SiaNet.Layers.AvgPooling1D
+    name: AvgPooling1D
+  - uid: SiaNet.Layers.AvgPooling2D
+    name: AvgPooling2D
+  - uid: SiaNet.Layers.AvgPooling3D
+    name: AvgPooling3D
+  - uid: SiaNet.Layers.BaseLayer
+    name: BaseLayer
+  - uid: SiaNet.Layers.BatchNormalization
+    name: BatchNormalization
+  - uid: SiaNet.Layers.Conv1D
+    name: Conv1D
+  - uid: SiaNet.Layers.Conv2D
+    name: Conv2D
+  - uid: SiaNet.Layers.Conv2DTranspose
+    name: Conv2DTranspose
+  - uid: SiaNet.Layers.Conv3D
+    name: Conv3D
+  - uid: SiaNet.Layers.Conv3DTranspose
+    name: Conv3DTranspose
+  - uid: SiaNet.Layers.Dense
+    name: Dense
+  - uid: SiaNet.Layers.Dropout
+    name: Dropout
+  - uid: SiaNet.Layers.Embedding
+    name: Embedding
+  - uid: SiaNet.Layers.Flatten
+    name: Flatten
+  - uid: SiaNet.Layers.GlobalPooling1D
+    name: GlobalPooling1D
+  - uid: SiaNet.Layers.GlobalPooling2D
+    name: GlobalPooling2D
+  - uid: SiaNet.Layers.GlobalPooling3D
+    name: GlobalPooling3D
+  - uid: SiaNet.Layers.MaxPooling1D
+    name: MaxPooling1D
+  - uid: SiaNet.Layers.MaxPooling2D
+    name: MaxPooling2D
+  - uid: SiaNet.Layers.MaxPooling3D
+    name: MaxPooling3D
+  - uid: SiaNet.Layers.Permute
+    name: Permute
+  - uid: SiaNet.Layers.Repeat
+    name: Repeat
+  - uid: SiaNet.Layers.Reshape
+    name: Reshape
+- uid: SiaNet.Layers.Activations
+  name: SiaNet.Layers.Activations
+  items:
+  - uid: SiaNet.Layers.Activations.Elu
+    name: Elu
+  - uid: SiaNet.Layers.Activations.Exp
+    name: Exp
+  - uid: SiaNet.Layers.Activations.HardSigmoid
+    name: HardSigmoid
+  - uid: SiaNet.Layers.Activations.LeakyRelu
+    name: LeakyRelu
+  - uid: SiaNet.Layers.Activations.Linear
+    name: Linear
+  - uid: SiaNet.Layers.Activations.PRelu
+    name: PRelu
+  - uid: SiaNet.Layers.Activations.Relu
+    name: Relu
+  - uid: SiaNet.Layers.Activations.Selu
+    name: Selu
+  - uid: SiaNet.Layers.Activations.Sigmoid
+    name: Sigmoid
+  - uid: SiaNet.Layers.Activations.Softmax
+    name: Softmax
+  - uid: SiaNet.Layers.Activations.Softplus
+    name: Softplus
+  - uid: SiaNet.Layers.Activations.Softsign
+    name: Softsign
+  - uid: SiaNet.Layers.Activations.Tanh
+    name: Tanh
+- uid: SiaNet.Losses
+  name: SiaNet.Losses
+  items:
+  - uid: SiaNet.Losses.BaseLoss
+    name: BaseLoss
+  - uid: SiaNet.Losses.BinaryCrossentropy
+    name: BinaryCrossentropy
+  - uid: SiaNet.Losses.CategorialHinge
+    name: CategorialHinge
+  - uid: SiaNet.Losses.CategoricalCrossentropy
+    name: CategoricalCrossentropy
+  - uid: SiaNet.Losses.CosineProximity
+    name: CosineProximity
+  - uid: SiaNet.Losses.Hinge
+    name: Hinge
+  - uid: SiaNet.Losses.KullbackLeiblerDivergence
+    name: KullbackLeiblerDivergence
+  - uid: SiaNet.Losses.LogCosh
+    name: LogCosh
+  - uid: SiaNet.Losses.MeanAbsoluteError
+    name: MeanAbsoluteError
+  - uid: SiaNet.Losses.MeanAbsolutePercentageError
+    name: MeanAbsolutePercentageError
+  - uid: SiaNet.Losses.MeanSquaredError
+    name: MeanSquaredError
+  - uid: SiaNet.Losses.MeanSquaredLogError
+    name: MeanSquaredLogError
+  - uid: SiaNet.Losses.Poisson
+    name: Poisson
+  - uid: SiaNet.Losses.SquaredHinge
+    name: SquaredHinge
+- uid: SiaNet.Metrics
+  name: SiaNet.Metrics
+  items:
+  - uid: SiaNet.Metrics.Accuracy
+    name: Accuracy
+  - uid: SiaNet.Metrics.BaseMetric
+    name: BaseMetric
+  - uid: SiaNet.Metrics.BinaryAccuracy
+    name: BinaryAccuracy
+  - uid: SiaNet.Metrics.MAE
+    name: MAE
+  - uid: SiaNet.Metrics.MAPE
+    name: MAPE
+  - uid: SiaNet.Metrics.MSE
+    name: MSE
+  - uid: SiaNet.Metrics.MSLE
+    name: MSLE
+- uid: SiaNet.Optimizers
+  name: SiaNet.Optimizers
+  items:
+  - uid: SiaNet.Optimizers.Adadelta
+    name: Adadelta
+  - uid: SiaNet.Optimizers.Adagrad
+    name: Adagrad
+  - uid: SiaNet.Optimizers.Adam
+    name: Adam
+  - uid: SiaNet.Optimizers.Adamax
+    name: Adamax
+  - uid: SiaNet.Optimizers.BaseOptimizer
+    name: BaseOptimizer
+  - uid: SiaNet.Optimizers.RMSProp
+    name: RMSProp
+  - uid: SiaNet.Optimizers.SGD
+    name: SGD
+- uid: SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  items:
+  - uid: SiaNet.Regularizers.BaseRegularizer
+    name: BaseRegularizer
+  - uid: SiaNet.Regularizers.L1
+    name: L1
+  - uid: SiaNet.Regularizers.L1L2
+    name: L1L2
+  - uid: SiaNet.Regularizers.L2
+    name: L2

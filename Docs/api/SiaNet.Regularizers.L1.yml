@@ -1,0 +1,138 @@
+### YamlMime:ManagedReference
+items:
+- uid: SiaNet.Regularizers.L1
+  commentId: T:SiaNet.Regularizers.L1
+  id: L1
+  parent: SiaNet.Regularizers
+  children:
+  - SiaNet.Regularizers.L1.#ctor(System.Single)
+  langs:
+  - csharp
+  - vb
+  name: L1
+  nameWithType: L1
+  fullName: SiaNet.Regularizers.L1
+  type: Class
+  source:
+    remote:
+      path: SiaNet/Regularizers/L1.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: L1
+    path: ../SiaNet/Regularizers/L1.cs
+    startLine: 9
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Regularizers
+  summary: "\nL1 regularization technique also called Lasso Regression\n<p>\nLasso Regression (Least Absolute Shrinkage and Selection Operator) adds “absolute value of magnitude” of coefficient as penalty term to the loss function.\n</p>\n"
+  example: []
+  syntax:
+    content: 'public class L1 : L1L2'
+    content.vb: >-
+      Public Class L1
+          Inherits L1L2
+  seealso:
+  - linkId: SiaNet.Regularizers.L1L2
+    commentId: T:SiaNet.Regularizers.L1L2
+  inheritance:
+  - System.Object
+  - SiaNet.Regularizers.BaseRegularizer
+  - SiaNet.Regularizers.L1L2
+  inheritedMembers:
+  - SiaNet.Regularizers.BaseRegularizer.Name
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: SiaNet.Regularizers.L1.#ctor(System.Single)
+  commentId: M:SiaNet.Regularizers.L1.#ctor(System.Single)
+  id: '#ctor(System.Single)'
+  parent: SiaNet.Regularizers.L1
+  langs:
+  - csharp
+  - vb
+  name: L1(Single)
+  nameWithType: L1.L1(Single)
+  fullName: SiaNet.Regularizers.L1.L1(System.Single)
+  type: Constructor
+  source:
+    remote:
+      path: SiaNet/Regularizers/L1.cs
+      branch: master
+      repo: https://github.com/deepakkumar1984/SiaNet
+    id: .ctor
+    path: ../SiaNet/Regularizers/L1.cs
+    startLine: 15
+  assemblies:
+  - SiaNet
+  namespace: SiaNet.Regularizers
+  summary: "\nInitializes a new instance of the <xref href=\"SiaNet.Regularizers.L1\" data-throw-if-not-resolved=\"false\"></xref> class.\n"
+  example: []
+  syntax:
+    content: public L1(float l = 0.01F)
+    parameters:
+    - id: l
+      type: System.Single
+      description: The value for the regularizer.
+    content.vb: Public Sub New(l As Single = 0.01F)
+  overload: SiaNet.Regularizers.L1.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: SiaNet.Regularizers.L1L2
+  commentId: T:SiaNet.Regularizers.L1L2
+  parent: SiaNet.Regularizers
+  name: L1L2
+  nameWithType: L1L2
+  fullName: SiaNet.Regularizers.L1L2
+- uid: SiaNet.Regularizers
+  commentId: N:SiaNet.Regularizers
+  name: SiaNet.Regularizers
+  nameWithType: SiaNet.Regularizers
+  fullName: SiaNet.Regularizers
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: SiaNet.Regularizers.BaseRegularizer
+  commentId: T:SiaNet.Regularizers.BaseRegularizer
+  parent: SiaNet.Regularizers
+  name: BaseRegularizer
+  nameWithType: BaseRegularizer
+  fullName: SiaNet.Regularizers.BaseRegularizer
+- uid: SiaNet.Regularizers.BaseRegularizer.Name
+  commentId: P:SiaNet.Regularizers.BaseRegularizer.Name
+  parent: SiaNet.Regularizers.BaseRegularizer
+  name: Name
+  nameWithType: BaseRegularizer.Name
+  fullName: SiaNet.Regularizers.BaseRegularizer.Name
+- uid: System
+  commentId: N:System
+  isExternal: true
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: SiaNet.Regularizers.L1
+  commentId: T:SiaNet.Regularizers.L1
+  name: L1
+  nameWithType: L1
+  fullName: SiaNet.Regularizers.L1
+- uid: SiaNet.Regularizers.L1.#ctor*
+  commentId: Overload:SiaNet.Regularizers.L1.#ctor
+  name: L1
+  nameWithType: L1.L1
+  fullName: SiaNet.Regularizers.L1.L1
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  name: Single
+  nameWithType: Single
+  fullName: System.Single
