@@ -23,7 +23,7 @@ Developing a C# wrapper to help developer easily create and train deep neural ne
 
 # A Basic example
 The below is a classification example with Titanic dataset. Able to reach 75% accuracy within 10 epoch. 
-```
+```c#
 //Setup Engine. If using TensorSharp then pass SiaNet.Backend.TensorSharp.SiaNetBackend.Instance. 
 //Once other backend is ready you will be able to use CNTK, TensorFlow and MxNet as well.
 Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.CPU);
