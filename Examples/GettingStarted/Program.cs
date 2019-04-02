@@ -13,7 +13,7 @@ namespace GettingStarted
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(SiaNet.Backend.MxNetLib.SiaNetBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.CNTKLib.SiaNetBackend.Instance, DeviceType.CPU);
 
             //Prep Data
             var (x, y) = PrepDataset();

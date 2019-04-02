@@ -26,7 +26,9 @@ namespace SiaNet.Backend.CNTKLib
 
         private Variable In(float value, params long[] shape)
         {
-            return new Parameter(BackendUtil.CastShapeInt(shape), CNTK.DataType.Float, value);
+            shape = ShiftShapeN(shape);
+
+            return new Parameter(BackendUtil.CastShapeInt(shape.ToArray()), CNTK.DataType.Float, value);
         }
 
         private NDArrayTensor Out(Variable x)
@@ -63,11 +65,17 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Argmax(Tensor x, int dim = -1)
         {
+            if (dim < 0)
+                dim = CorrDim(x.DimCount, dim);
+
             return Out(C.Argmax(In(x), new Axis(dim)));
         }
 
         public Tensor Argmin(Tensor x, int dim = -1)
         {
+            if (dim < 0)
+                dim = CorrDim(x.DimCount, dim);
+
             return Out(C.Argmin(In(x), new Axis(dim)));
         }
 
@@ -115,7 +123,18 @@ namespace SiaNet.Backend.CNTKLib
         {
             var arr = new CNTK.NDArrayView(BackendUtil.CastShapeInt(shape), data, DeviceManager.Current);
             var v = new CNTK.Variable(BackendUtil.CastShapeInt(shape), VariableKind.Parameter, CNTK.DataType.Float, arr, false, new AxisVector(), false, name, name);
-            return Out(v);
+            Tensor result = null;
+
+            if (shape.Length == 2)
+                result = Transpose(Out(v), 1, 0);
+            else if (shape.Length == 3)
+                result = Transpose(Out(v), 1, 2, 0);
+            else if (shape.Length == 4)
+                result = Transpose(Out(v), 1, 2, 3, 0);
+            else
+                result = Out(v);
+
+            return result;
         }
 
         public Tensor Diag(Tensor x)
@@ -250,7 +269,8 @@ namespace SiaNet.Backend.CNTKLib
 
         public long[] GetShape(Tensor x)
         {
-            return Array.ConvertAll(In(x).Shape.Dimensions.ToArray(), i => (long)i);
+            var shape = ShiftShapeN(In(x).Shape.Dimensions.ToArray());
+            return Array.ConvertAll(shape.ToArray(), i => (long)i);
         }
 
         public Tensor GreaterThan(Tensor a, Tensor b)
@@ -346,13 +366,17 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Max(Tensor x, int dim)
         {
-            dim = dim < 0 ? x.DimCount + dim : dim;
+            if (dim < 0)
+                dim = CorrDim(x.DimCount, dim);
+
             return Out(C.ReduceMax(In(x), new Axis(dim)));
         }
 
-        public Tensor Max(Tensor x, params int[] dim)
+        public Tensor Max(Tensor x, params int[] dims)
         {
-            foreach (var item in dim)
+            dims = dims.Reverse().ToArray();
+
+            foreach (var item in dims)
             {
                 x = Max(x, item);
             }
@@ -377,13 +401,15 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Mean(Tensor x, int dim)
         {
-            dim = dim < 0 ? x.DimCount + dim : dim;
+            if (dim < 0)
+                dim = CorrDim(x.DimCount, dim);
             return Out(C.ReduceMean(In(x), new Axis(dim)));
         }
 
-        public Tensor Mean(Tensor x, params int[] dim)
+        public Tensor Mean(Tensor x, params int[] dims)
         {
-            foreach (var item in dim)
+            dims = dims.Reverse().ToArray();
+            foreach (var item in dims)
             {
                 x = Mean(x, item);
             }
@@ -398,16 +424,20 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Min(Tensor x, int dim)
         {
-            dim = dim < 0 ? x.DimCount + dim : dim;
+            if (dim < 0)
+                dim = CorrDim(x.DimCount, dim);
+
             return Out(C.ReduceMin(In(x), new Axis(dim)));
         }
 
-        public Tensor Min(Tensor x, params int[] dim)
+        public Tensor Min(Tensor x, params int[] dims)
         {
-            foreach (var item in dim)
+            dims = dims.Reverse().ToArray();
+            foreach (var item in dims)
             {
                 x = Min(x, item);
             }
+
 
             return x;
         }
@@ -475,6 +505,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
+            shape = shape.Reverse().ToArray();
             return Out(C.Reshape(In(x), BackendUtil.CastShapeInt(shape)));
         }
 
@@ -522,13 +553,13 @@ namespace SiaNet.Backend.CNTKLib
         {
             end = end + 1;
             var t = C.Transpose(In(x));
-            return Out(C.Transpose(C.Slice(t, AxisVector.Repeat(new Axis(1), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1))));
+            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(0), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
         }
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
             end = end + 1;
-            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(0), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
+            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(x.DimCount - 1), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
@@ -575,13 +606,16 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Sum(Tensor x, int dim)
         {
-            dim = dim < 0 ? x.DimCount + dim : dim;
+            if (dim < 0)
+                dim = CorrDim(x.DimCount, dim);
+
             return Out(C.ReduceSum(In(x), new Axis(dim)));
         }
 
-        public Tensor Sum(Tensor x, params int[] dim)
+        public Tensor Sum(Tensor x, params int[] dims)
         {
-            foreach (var item in dim)
+            dims = dims.Reverse().ToArray();
+            foreach (var item in dims)
             {
                 x = Sum(x, item);
             }
@@ -601,7 +635,21 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            return x;
+            if (axis < 0)
+                axis = x.DimCount + axis;
+
+            uint[] dims = new uint[x.DimCount];
+            for (int i = 0; i < dims.Length; i++)
+            {
+                if (i == axis)
+                    dims[i] = (uint)n;
+                else
+                    dims[i] = 1;
+            }
+
+            dims = dims.Reverse().ToArray();
+
+            return Out(C.Splice(VariableVector.Repeat(In(x), n), new Axis(axis)));
         }
 
         public Tensor Transpose(Tensor x)
@@ -613,6 +661,8 @@ namespace SiaNet.Backend.CNTKLib
         {
             if (dims.Length != x.DimCount)
                 throw new InvalidOperationException("The number of permutation indices must equal the number of tensor dimensions");
+
+            dims = dims.Select(i => (dims.Length - i - 1)).Reverse().ToArray();
 
             var result = In(x);
             foreach (var swap in SwapsForPermutation(dims))
@@ -659,6 +709,52 @@ namespace SiaNet.Backend.CNTKLib
         public ActivationFunc GetActFunc()
         {
             return new SiaNetActivations(this);
+        }
+
+        private int CorrDim(int dimCount, int dim)
+        {
+            if (dim < 0)
+            {
+                switch (dim)
+                {
+                    case 0:
+                        dim = dimCount - 1;
+                        break;
+                    default:
+                        dim = dim - 1;
+                        break;
+                }
+            }
+            else
+            {
+                dim = dimCount - dim - 1;
+            }
+
+            return dim;
+        }
+
+        private long[] ShiftShapeN(params long[] shape)
+        {
+            if (shape.Length == 1)
+                return shape;
+
+            var n = shape.Last();
+            var list = shape.ToList();
+            list.RemoveAt(shape.Length - 1);
+            list.Insert(0, n);
+            return list.ToArray();
+        }
+
+        private int[] ShiftShapeN(params int[] shape)
+        {
+            if (shape.Length == 1)
+                return shape;
+
+            var n = shape.Last();
+            var list = shape.ToList();
+            list.RemoveAt(shape.Length - 1);
+            list.Insert(0, n);
+            return list.ToArray();
         }
     }
 }

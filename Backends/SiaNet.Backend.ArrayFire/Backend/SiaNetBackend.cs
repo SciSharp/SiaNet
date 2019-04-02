@@ -642,7 +642,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor RandomBernoulli(long[] shape, float p)
         {
-            //shape = shape.Reverse().ToArray();
+            shape = shape.Reverse().ToArray();
             var result = RandomUniform(shape, 0, 1);
             result = result > p;
             return result;
@@ -706,6 +706,10 @@ namespace SiaNet.Backend.ArrayFire
                     default:
                         break;
                 }
+            }
+            else
+            {
+                dim = dimCount - dim - 1;
             }
 
             return dim;
