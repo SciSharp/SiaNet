@@ -1,5 +1,6 @@
 ﻿namespace SiaNet.Data
 {
+    using NumSharp.Core;
     using SiaNet.Engine;
     using System;
 
@@ -23,7 +24,7 @@
         {
             get
             {
-                return frameX.UnderlayingTensor.Shape[0];
+                return frameX.Shape[0];
             }
         }
 
@@ -36,21 +37,6 @@
         {
             frameX = X;
             frameY = Y;
-            batchSize = 32;
-            current = -batchSize;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DataFrameIter"/> class.
-        /// </summary>
-        /// <param name="X">The X Tensor.</param>
-        /// <param name="Y">The Y Tensor.</param>
-        public DataFrameIter(Tensor X, Tensor Y = null)
-        {
-            frameX = new DataFrame();
-            frameY = new DataFrame();
-            frameX.ToFrame(X);
-            frameY.ToFrame(Y);
             batchSize = 32;
             current = -batchSize;
         }
@@ -123,11 +109,11 @@
         public (DataFrameIter, DataFrameIter) Split(double testDataSize = 0.33f)
         {
             long trainSize = Convert.ToInt64(frameX.Shape[0] * (1 - testDataSize));
-            var trainX = frameX.UnderlayingTensor.SliceRows(0, trainSize);
-            var valX = frameX.UnderlayingTensor.SliceRows(trainSize + 1, frameX.Shape[0] - 1);
+            var trainX = frameX[new NDArray(new int[] { 0, (int)trainSize })];
+            var valX = frameX[new NDArray(new int[] { (int)trainSize + 1, (int)frameX.Shape[0] - 1 })];
 
-            var trainY = frameY.UnderlayingTensor.SliceRows(0, trainSize);
-            var valY = frameY.UnderlayingTensor.SliceRows(trainSize + 1, frameX.Shape[0] - 1);
+            var trainY = frameY[new NDArray(new int[] { 0, (int)trainSize })];
+            var valY = frameY[new NDArray(new int[] { (int)trainSize + 1, (int)frameX.Shape[0] - 1 })];
 
             return (new DataFrameIter(trainX, trainY), new DataFrameIter(valX, valY));
         }

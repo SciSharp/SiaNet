@@ -64,8 +64,64 @@ namespace SiaNet.Engine
         public static void Print(long[] shape, Array data)
         {
             var rank = data.Rank;
+        }
 
+        public static long[] Row2ColMajor(long[] shape)
+        {
+            long[] result = null;
 
+            if(shape.Length == 4)
+            {
+                result = new long[4];
+                result[0] = shape[0];
+                result[1] = shape[2];
+                result[2] = shape[3];
+                result[3] = shape[1];
+            }
+            else if (shape.Length == 5)
+            {
+                result = new long[4];
+                result[0] = shape[0];
+                result[1] = shape[3];
+                result[2] = shape[4];
+                result[3] = shape[1];
+                result[3] = shape[2];
+            }
+            else
+            {
+                result = shape;
+            }
+
+            return result;
+        }
+
+        public static long[] Col2RowMajor(long[] shape)
+        {
+            long[] result = null;
+
+            if (shape.Length == 4)
+            {
+                result = new long[4];
+                result[0] = shape[0];
+                result[1] = shape[3];
+                result[2] = shape[1];
+                result[3] = shape[2];
+            }
+            else if (shape.Length == 5)
+            {
+                result = new long[4];
+                result[0] = shape[0];
+                result[1] = shape[3];
+                result[2] = shape[4];
+                result[3] = shape[1];
+                result[3] = shape[2];
+            }
+            else
+            {
+                result = shape;
+            }
+
+            return result;
         }
     }
 }

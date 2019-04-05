@@ -106,17 +106,18 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
         {
+            shape = BackendUtil.Row2ColMajor(shape);
             var result = Out(Data.CreateArray(data));
 
             result.Name = name != "" ? UUID(name) : UUID("V");
             if (shape.Length == 2)
-                result = (NDArrayTensor)result.Reshape(shape).Transpose();
+                result = (NDArrayTensor)result.Reshape(shape);
 
             if (shape.Length == 3)
-                result = (NDArrayTensor)result.Reshape(shape).Transpose(0, 2, 1);
+                result = (NDArrayTensor)result.Reshape(shape);
 
             if (shape.Length == 4)
-                result = (NDArrayTensor)result.Reshape(shape).Transpose(0, 1, 3, 2);
+                result = (NDArrayTensor)result.Reshape(shape);
 
             return result;
         }
@@ -294,8 +295,8 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Transpose(Tensor x, params int[] dims)
         {
-            dims = dims.Select(i => (dims.Length - i - 1)).Reverse().ToArray();
-            return Out(Data.Reorder(In(x), dims.Select(i => ((uint)i)).ToArray()));
+            var shape = BackendUtil.Row2ColMajor(BackendUtil.Int2Long(dims));
+            return Out(Data.Reorder(In(x), BackendUtil.CastShapeUInt(shape)));
         }
 
         public Tensor Trunc(Tensor x)
@@ -336,7 +337,8 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            shape = shape.Reverse().ToArray();
+            shape = BackendUtil.Row2ColMajor(shape);
+
             long prod = -1 * shape.Aggregate(1L, (a, b) => a * b);
             for (int i = 0; i < shape.Length; i++)
             {
@@ -362,18 +364,16 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Sum(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
 
             return Out(Algorithm.Sum(In(x), dim));
         }
 
         public Tensor Sum(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
             foreach (var item in dims)
             {
-                x = Sum(x, item);
+                x = Sum(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -386,19 +386,15 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Max(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
+            dim = CorrDim(x.DimCount, dim);
             return Out(Algorithm.Max(In(x), dim));
         }
 
         public Tensor Max(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
-
             foreach (var item in dims)
             {
-                x = Max(x, item);
+                x = Max(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -411,18 +407,16 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Min(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
 
             return Out(Algorithm.Min(In(x), dim));
         }
 
         public Tensor Min(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
             foreach (var item in dims)
             {
-                x = Min(x, item);
+                x = Min(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -435,18 +429,15 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Mean(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
+            dim = CorrDim(x.DimCount, dim);
             return Out(Algorithm.Mean(In(x), dim));
         }
 
         public Tensor Mean(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
             foreach (var item in dims)
             {
-                x = Mean(x, item);
+                x = Mean(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -454,59 +445,17 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Argmax(Tensor x, int dim = 0)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
-            if (dim == 1)
-            {
-                if (x.DimCount == 2)
-                    x = x.Transpose();
-                else if (x.DimCount == 3)
-                    x = x.Transpose(0, 2, 1);
-                else if (x.DimCount == 4)
-                    x = x.Transpose(0, 1, 3, 2);
-            }
-
+            dim = CorrDim(x.DimCount, dim);
             Tensor result = Out(Algorithm.TopK(In(x), 1, 0, 2));
-            if(dim == 1)
-            {
-                if (result.DimCount == 2)
-                    result = result.Transpose();
-                else if (result.DimCount == 3)
-                    result = result.Transpose(0, 2, 1);
-                else if (result.DimCount == 4)
-                    result = result.Transpose(0, 1, 3, 2);
-            }
 
             return result;
         }
 
         public Tensor Argmin(Tensor x, int dim = 0)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
-            if (dim == 1)
-            {
-                if (x.DimCount == 2)
-                    x = x.Transpose();
-                else if (x.DimCount == 3)
-                    x = x.Transpose(0, 2, 1);
-                else if (x.DimCount == 4)
-                    x = x.Transpose(0, 1, 3, 2);
-            }
-
+            dim = CorrDim(x.DimCount, dim);
             Tensor result = Out(Algorithm.TopK(In(x), 1, 0, 1));
-            if (dim == 1)
-            {
-                if (result.DimCount == 2)
-                    result = result.Transpose();
-                else if (result.DimCount == 3)
-                    result = result.Transpose(0, 2, 1);
-                else if (result.DimCount == 4)
-                    result = result.Transpose(0, 1, 3, 2);
-            }
-
+            
             return result;
         }
 
@@ -597,6 +546,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Constant(float value, long[] shape)
         {
+            shape = BackendUtil.Row2ColMajor(shape);
             return Out(Data.Constant<float>(value, BackendUtil.CastShapeInt(shape)));
         }
 
@@ -642,7 +592,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor RandomBernoulli(long[] shape, float p)
         {
-            shape = shape.Reverse().ToArray();
+            //shape = shape.Reverse().ToArray();
             var result = RandomUniform(shape, 0, 1);
             result = result > p;
             return result;
@@ -650,8 +600,7 @@ namespace SiaNet.Backend.ArrayFire
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            if (axis < 0)
-                axis = x.DimCount + axis;
+            axis = CorrDim(x.DimCount, axis);
 
             uint[] dims = new uint[x.DimCount];
             for (int i = 0; i < dims.Length; i++)
@@ -661,8 +610,6 @@ namespace SiaNet.Backend.ArrayFire
                 else
                     dims[i] = 1;
             }
-
-            dims = dims.Reverse().ToArray();
 
             return Out(Data.Tile(In(x), dims));
         }
@@ -689,27 +636,91 @@ namespace SiaNet.Backend.ArrayFire
         {
             if (dim < 0)
             {
-                switch (dim)
+                if (dimCount == 4)
                 {
-                    case -1:
-                        dim = 1;
-                        break;
-                    case -2:
-                        dim = 0;
-                        break;
-                    case -3:
-                        dim = 2;
-                        break;
-                    case -4:
-                        dim = 3;
-                        break;
-                    default:
-                        break;
+                    switch (dim)
+                    {
+                        case -4:
+                            dim = 0;
+                            break;
+                        case -3:
+                            dim = 3;
+                            break;
+                        case -2:
+                            dim = 1;
+                            break;
+                        case -1:
+                            dim = 2;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if(dimCount == 3)
+                {
+                    switch (dim)
+                    {
+                        case -3:
+                            dim = 0;
+                            break;
+                        case -2:
+                            dim = 1;
+                            break;
+                        case -1:
+                            dim = 2;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (dimCount == 2)
+                {
+                    switch (dim)
+                    {
+                        case -2:
+                            dim = 0;
+                            break;
+                        case -1:
+                            dim = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (dimCount == 1)
+                {
+                    switch (dim)
+                    {
+                        case -1:
+                            dim = 0;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             else
             {
-                dim = dimCount - dim - 1;
+                if(dimCount == 4)
+                {
+                    switch (dim)
+                    {
+                        case 0:
+                            dim = 0;
+                            break;
+                        case 1:
+                            dim = 3;
+                            break;
+                        case 2:
+                            dim = 1;
+                            break;
+                        case 3:
+                            dim = 2;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
 
             return dim;

@@ -2,6 +2,8 @@
 {
     using System;
     using SiaNet.Engine;
+    using System.Linq;
+    using NumSharp.Core;
 
     /// <summary>
     /// Data frame to load data like CSV, images and text in binary format. The instance is then send to Train or Predict method
@@ -10,7 +12,17 @@
     {
         internal IBackend K = Global.CurrentBackend;
 
-        internal Tensor UnderlayingTensor;
+        internal NDArray UnderlayingVariable;
+
+        public DataFrame()
+        {
+
+        }
+
+        internal DataFrame(NDArray t)
+        {
+            UnderlayingVariable = t;
+        }
 
         /// <summary>
         /// Gets the shape of the data frame.
@@ -22,7 +34,7 @@
         {
             get
             {
-                return UnderlayingTensor.Shape;
+                return BackendUtil.Int2Long(UnderlayingVariable.shape);
             }
         }
 
@@ -32,7 +44,12 @@
         /// <param name="newShape">The new shape.</param>
         public void Reshape(params long[] newShape)
         {
-            UnderlayingTensor = UnderlayingTensor.Reshape(Shape);
+            UnderlayingVariable = UnderlayingVariable.reshape(new Shape(BackendUtil.CastShapeInt(newShape)));
+        }
+
+        public virtual void Load(params float[] data)
+        {
+            UnderlayingVariable = np.array<float>(data);
         }
 
         /// <summary>
@@ -41,16 +58,15 @@
         /// <returns></returns>
         public Tensor GetTensor()
         {
-            return UnderlayingTensor;
+            return K.CreateVariable(UnderlayingVariable.Data<float>(), Shape);
         }
 
-        /// <summary>
-        /// Converts to tensor to a data frame.
-        /// </summary>
-        /// <param name="t">The t.</param>
-        public virtual void ToFrame(Tensor t)
+        public Array DataArray
         {
-            UnderlayingTensor = t;
+            get
+            {
+                return UnderlayingVariable.Data();
+            }
         }
 
         /// <summary>
@@ -63,7 +79,7 @@
         /// <param name="end">The end index.</param>
         /// <returns></returns>
         /// <exception cref="ArgumentException">End must be greater than start</exception>
-        public DataFrame this[uint start, uint end]
+        public DataFrame this[int start, int end]
         {
             get
             {
@@ -72,13 +88,12 @@
                     throw new ArgumentException("End must be greater than start");
                 }
 
-                DataFrame frame = new DataFrame();
-                
                 var count = end - start + 1;
+                var u = UnderlayingVariable.transpose();
                 if (count > 0)
-                    frame.ToFrame(UnderlayingTensor.SliceCols(start, end));
+                    return new DataFrame(u[new NDArray(Enumerable.Range(start, count).ToArray())].transpose());
 
-                return frame;
+                return null;
             }
         }
 
@@ -90,14 +105,13 @@
         /// </value>
         /// <param name="index">The index.</param>
         /// <returns></returns>
-        public DataFrame this[uint index]
+        public DataFrame this[int index]
         {
             get
             {
-                DataFrame frame = new DataFrame();
-                frame.ToFrame(UnderlayingTensor.SliceCols(index, index));
-
-                return frame;
+                var u = UnderlayingVariable.transpose();
+                var result = new DataFrame(u[new NDArray(new int[] { index })].transpose());
+                return result;
             }
         }
 
@@ -110,14 +124,19 @@
         /// <returns></returns>
         public Tensor GetBatch(int start, int size, int axis = 0)
         {
+            NDArray data = null;
+            
             if (start + size <= Shape[0])
             {
-                return UnderlayingTensor.SliceRows(start, start + size - 1);
+                data = UnderlayingVariable[new NDArray(Enumerable.Range(start, size).ToArray())];
             }
             else
             {
-                return UnderlayingTensor.SliceRows(start, Shape[0] - 1);
+                int count = (int)Shape[0] - start;
+                data = UnderlayingVariable[new NDArray(Enumerable.Range(start, count).ToArray())];
             }
+
+            return K.CreateVariable(data.Data<float>(), BackendUtil.Int2Long(data.shape));
         }
 
         /// <summary>
@@ -125,9 +144,14 @@
         /// </summary>
         /// <param name="count">The count of records to print.</param>
         /// <param name="title">The title to display.</param>
-        public void Head(uint count = 5, string title = "")
+        public void Head(int count = 5, string title = "")
         {
-            K.Print(UnderlayingTensor.SliceRows(0, count), title);
+            if (count > UnderlayingVariable.shape[0])
+            {
+                count = UnderlayingVariable.shape[0];
+            }
+
+            Console.WriteLine(UnderlayingVariable[new NDArray(new int[] { 0, count })].ToString());
         }
     }
 }

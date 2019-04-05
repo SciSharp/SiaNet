@@ -26,8 +26,6 @@ namespace SiaNet.Backend.CNTKLib
 
         private Variable In(float value, params long[] shape)
         {
-            shape = ShiftShapeN(shape);
-
             return new Parameter(BackendUtil.CastShapeInt(shape.ToArray()), CNTK.DataType.Float, value);
         }
 
@@ -65,16 +63,13 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Argmax(Tensor x, int dim = -1)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
-
+            dim = CorrDim(x.DimCount, dim);
             return Out(C.Argmax(In(x), new Axis(dim)));
         }
 
         public Tensor Argmin(Tensor x, int dim = -1)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
 
             return Out(C.Argmin(In(x), new Axis(dim)));
         }
@@ -106,6 +101,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Constant(float value, long[] shape)
         {
+            shape = BackendUtil.Row2ColMajor(shape);
             return Out(In(value, shape));
         }
 
@@ -121,20 +117,11 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
         {
+            shape = BackendUtil.Row2ColMajor(shape);
             var arr = new CNTK.NDArrayView(BackendUtil.CastShapeInt(shape), data, DeviceManager.Current);
             var v = new CNTK.Variable(BackendUtil.CastShapeInt(shape), VariableKind.Parameter, CNTK.DataType.Float, arr, false, new AxisVector(), false, name, name);
-            Tensor result = null;
 
-            if (shape.Length == 2)
-                result = Transpose(Out(v), 1, 0);
-            else if (shape.Length == 3)
-                result = Transpose(Out(v), 1, 2, 0);
-            else if (shape.Length == 4)
-                result = Transpose(Out(v), 1, 2, 3, 0);
-            else
-                result = Out(v);
-
-            return result;
+            return Out(v);
         }
 
         public Tensor Diag(Tensor x)
@@ -269,8 +256,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public long[] GetShape(Tensor x)
         {
-            var shape = ShiftShapeN(In(x).Shape.Dimensions.ToArray());
-            return Array.ConvertAll(shape.ToArray(), i => (long)i);
+            return Array.ConvertAll(In(x).Shape.Dimensions.ToArray(), i => (long)i);
         }
 
         public Tensor GreaterThan(Tensor a, Tensor b)
@@ -366,19 +352,16 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Max(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
 
             return Out(C.ReduceMax(In(x), new Axis(dim)));
         }
 
         public Tensor Max(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
-
             foreach (var item in dims)
             {
-                x = Max(x, item);
+                x = Max(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -401,17 +384,15 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Mean(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
             return Out(C.ReduceMean(In(x), new Axis(dim)));
         }
 
         public Tensor Mean(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
             foreach (var item in dims)
             {
-                x = Mean(x, item);
+                x = Mean(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -424,8 +405,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Min(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
 
             return Out(C.ReduceMin(In(x), new Axis(dim)));
         }
@@ -435,7 +415,7 @@ namespace SiaNet.Backend.CNTKLib
             dims = dims.Reverse().ToArray();
             foreach (var item in dims)
             {
-                x = Min(x, item);
+                x = Min(x, CorrDim(x.DimCount, item));
             }
 
 
@@ -505,7 +485,6 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            shape = shape.Reverse().ToArray();
             return Out(C.Reshape(In(x), BackendUtil.CastShapeInt(shape)));
         }
 
@@ -564,13 +543,13 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Softmax(Tensor x, int axis = -1)
         {
-            axis = axis < 0 ? x.DimCount + axis : axis;
+            axis = CorrDim(x.DimCount, axis);
             return Out(C.Softmax(In(x), new Axis(axis)));
         }
 
         public Tensor Softplus(Tensor x, int axis = -1)
         {
-            axis = axis < 0 ? x.DimCount + axis : axis;
+            axis = CorrDim(x.DimCount, axis);
             return Out(C.Softplus(In(x)));
         }
 
@@ -606,18 +585,16 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Sum(Tensor x, int dim)
         {
-            if (dim < 0)
-                dim = CorrDim(x.DimCount, dim);
+            dim = CorrDim(x.DimCount, dim);
 
             return Out(C.ReduceSum(In(x), new Axis(dim)));
         }
 
         public Tensor Sum(Tensor x, params int[] dims)
         {
-            dims = dims.Reverse().ToArray();
             foreach (var item in dims)
             {
-                x = Sum(x, item);
+                x = Sum(x, CorrDim(x.DimCount, item));
             }
 
             return x;
@@ -635,8 +612,7 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
-            if (axis < 0)
-                axis = x.DimCount + axis;
+            axis = CorrDim(x.DimCount, axis);
 
             uint[] dims = new uint[x.DimCount];
             for (int i = 0; i < dims.Length; i++)
@@ -646,8 +622,6 @@ namespace SiaNet.Backend.CNTKLib
                 else
                     dims[i] = 1;
             }
-
-            dims = dims.Reverse().ToArray();
 
             return Out(C.Splice(VariableVector.Repeat(In(x), n), new Axis(axis)));
         }
@@ -662,7 +636,7 @@ namespace SiaNet.Backend.CNTKLib
             if (dims.Length != x.DimCount)
                 throw new InvalidOperationException("The number of permutation indices must equal the number of tensor dimensions");
 
-            dims = dims.Select(i => (dims.Length - i - 1)).Reverse().ToArray();
+            dims = dims.Select(i => (dims.Length - i - 1)).ToArray();
 
             var result = In(x);
             foreach (var swap in SwapsForPermutation(dims))
@@ -715,46 +689,94 @@ namespace SiaNet.Backend.CNTKLib
         {
             if (dim < 0)
             {
-                switch (dim)
+                if (dimCount == 4)
                 {
-                    case 0:
-                        dim = dimCount - 1;
-                        break;
-                    default:
-                        dim = dim - 1;
-                        break;
+                    switch (dim)
+                    {
+                        case -4:
+                            dim = 0;
+                            break;
+                        case -3:
+                            dim = 3;
+                            break;
+                        case -2:
+                            dim = 1;
+                            break;
+                        case -1:
+                            dim = 2;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (dimCount == 3)
+                {
+                    switch (dim)
+                    {
+                        case -3:
+                            dim = 0;
+                            break;
+                        case -2:
+                            dim = 1;
+                            break;
+                        case -1:
+                            dim = 2;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (dimCount == 2)
+                {
+                    switch (dim)
+                    {
+                        case -2:
+                            dim = 0;
+                            break;
+                        case -1:
+                            dim = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (dimCount == 1)
+                {
+                    switch (dim)
+                    {
+                        case -1:
+                            dim = 0;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             else
             {
-                dim = dimCount - dim - 1;
+                if (dimCount == 4)
+                {
+                    switch (dim)
+                    {
+                        case 0:
+                            dim = 0;
+                            break;
+                        case 1:
+                            dim = 3;
+                            break;
+                        case 2:
+                            dim = 1;
+                            break;
+                        case 3:
+                            dim = 2;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
 
             return dim;
-        }
-
-        private long[] ShiftShapeN(params long[] shape)
-        {
-            if (shape.Length == 1)
-                return shape;
-
-            var n = shape.Last();
-            var list = shape.ToList();
-            list.RemoveAt(shape.Length - 1);
-            list.Insert(0, n);
-            return list.ToArray();
-        }
-
-        private int[] ShiftShapeN(params int[] shape)
-        {
-            if (shape.Length == 1)
-                return shape;
-
-            var n = shape.Last();
-            var list = shape.ToList();
-            list.RemoveAt(shape.Length - 1);
-            list.Insert(0, n);
-            return list.ToArray();
         }
     }
 }

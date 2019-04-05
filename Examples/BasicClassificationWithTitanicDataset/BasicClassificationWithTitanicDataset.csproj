@@ -8,13 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Deedle" Version="2.0.0" />
-    <PackageReference Include="FSharp.Core" Version="4.6.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Backends\SiaNet.Backend.ArrayFire\SiaNet.Backend.ArrayFire.csproj" />
     <ProjectReference Include="..\..\Backends\SiaNet.Backend.CNTK\SiaNet.Backend.CNTK.csproj" />
+    <ProjectReference Include="..\..\Backends\SiaNet.Backend.MxNet\SiaNet.Backend.MxNet.csproj" />
     <ProjectReference Include="..\..\Backends\SiaNet.Backend.TensorSharp\SiaNet.Backend.TensorSharp.csproj" />
     <ProjectReference Include="..\..\SiaNet\SiaNet.csproj" />
   </ItemGroup>

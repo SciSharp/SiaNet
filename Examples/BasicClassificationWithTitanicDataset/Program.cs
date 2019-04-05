@@ -16,7 +16,7 @@ namespace BasicClassificationWithTitanicDataset
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(SiaNet.Backend.CNTKLib.SiaNetBackend.Instance, DeviceType.Default);
+            Global.UseEngine(SiaNet.Backend.MxNetLib.SiaNetBackend.Instance, DeviceType.Default);
 
             var train = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
@@ -49,7 +49,7 @@ namespace BasicClassificationWithTitanicDataset
 
             //Preprocess the data by handling missing values, converting string to numbers
             frame = PreProcesData(frame);
-
+            
             //Load Deedle frame to Tensor frame
             var data = frame.ToArray2D<float>().Cast<float>().ToArray();
             DataFrame2D df = new DataFrame2D(frame.ColumnCount);
@@ -69,7 +69,7 @@ namespace BasicClassificationWithTitanicDataset
 
             //Preprocess the data by handling missing values, converting string to numbers
             frame = PreProcesData(frame, true);
-
+            
             //Load Deedle frame to Tensor frame
             var data = frame.ToArray2D<float>().Cast<float>().ToArray();
             DataFrame2D df = new DataFrame2D(frame.ColumnCount);

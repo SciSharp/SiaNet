@@ -6,6 +6,7 @@
     using CsvHelper;
     using System.Data;
     using SiaNet.Engine;
+    using NumSharp.Core;
 
     /// <summary>
     /// 
@@ -25,30 +26,12 @@
             features = num_features;
         }
 
-        /// <summary>
-        /// Loads the specified array into the data frame.
-        /// </summary>
-        /// <param name="array">The array data.</param>
-        public void Load(params float[] array)
+        public override void Load(params float[] data)
         {
-            long rows = array.LongLength / features;
-            UnderlayingTensor = K.CreateVariable(array, new long[] { rows, features });
+            base.Load(data);
+            Reshape(data.Length / features, features);
         }
 
-        /// <summary>
-        /// Converts to tensor to data frame.
-        /// </summary>
-        /// <param name="t">The t.</param>
-        /// <exception cref="ArgumentException">2D tensor expected</exception>
-        public override void ToFrame(Tensor t)
-        {
-            if(t.DimCount != 2)
-            {
-                throw new ArgumentException("2D tensor expected");
-            }
-
-            base.ToFrame(t);
-        }
 
         /// <summary>
         /// Reads the CSV file and load into the data frame.

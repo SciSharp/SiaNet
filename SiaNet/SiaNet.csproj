@@ -38,6 +38,7 @@ Code well structured, easy to extend if you would like to extend with new layer,
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Backends\SiaNet.Backend.TensorSharp\SiaNet.Backend.TensorSharp.csproj" />
     <ProjectReference Include="..\SiaNet.Engine\SiaNet.Engine.csproj" />
   </ItemGroup>
 
@@ -47,9 +48,12 @@ Code well structured, easy to extend if you would like to extend with new layer,
 
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="12.1.2" />
+    <PackageReference Include="Deedle" Version="2.0.1" />
+    <PackageReference Include="FSharp.Core" Version="4.6.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="NumSharp" Version="0.8.3" />
     <PackageReference Include="OpenCvSharp3-AnyCPU" Version="4.0.0.20181129" />
-    <PackageReference Include="System.Numerics.Tensors" Version="0.1.0" />
+    <PackageReference Include="System.Numerics.Tensors" Version="0.2.0-preview3.19128.7" />
   </ItemGroup>
 
 </Project>

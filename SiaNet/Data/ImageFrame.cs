@@ -2,6 +2,7 @@
 {
     using System;
     using System.Drawing;
+    using NumSharp.Core;
     using OpenCvSharp.Extensions;
     using SiaNet.Engine;
 
@@ -11,15 +12,6 @@
     /// <seealso cref="SiaNet.Data.DataFrame" />
     public class ImageFrame : DataFrame
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImageFrame"/> class.
-        /// </summary>
-        /// <param name="imageTensor">The image tensor.</param>
-        public ImageFrame(Tensor imageTensor)
-        {
-            UnderlayingTensor = imageTensor;
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageFrame"/> class.
         /// </summary>
@@ -61,7 +53,7 @@
         {
             var mat = img.ToMat();
             var data = Array.ConvertAll(mat.ToBytes(), x => ((float)x));
-            UnderlayingTensor = K.CreateVariable(data, new long[] { 1, mat.Channels(), mat.Height, mat.Width });
+            Load(data);
         }
     }
 }
