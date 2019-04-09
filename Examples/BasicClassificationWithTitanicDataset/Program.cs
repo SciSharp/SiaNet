@@ -16,7 +16,7 @@ namespace BasicClassificationWithTitanicDataset
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(SiaNet.Backend.TensorSharp.SiaNetBackend.Instance, DeviceType.Default);
+            Global.UseEngine(SiaNet.Backend.MxNetLib.SiaNetBackend.Instance, DeviceType.Default);
 
             var train = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data

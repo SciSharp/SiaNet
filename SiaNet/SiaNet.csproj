@@ -38,7 +38,6 @@ Code well structured, easy to extend if you would like to extend with new layer,
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Backends\SiaNet.Backend.TensorSharp\SiaNet.Backend.TensorSharp.csproj" />
     <ProjectReference Include="..\SiaNet.Engine\SiaNet.Engine.csproj" />
   </ItemGroup>
 

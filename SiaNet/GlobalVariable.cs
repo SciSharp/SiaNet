@@ -1,7 +1,5 @@
 ﻿namespace SiaNet
 {
-    using SiaNet.Backend.TensorSharp;
-    using SiaNet.Backend.TensorSharp.Cpu;
     using SiaNet.Engine;
     using SiaNet.Engine.Layers;
     using System;
@@ -11,8 +9,6 @@
     /// </summary>
     public class Global
     {
-        internal static IAllocator CPU = new CpuAllocator();
-
         private static IBackend _backend;
 
         /// <summary>
