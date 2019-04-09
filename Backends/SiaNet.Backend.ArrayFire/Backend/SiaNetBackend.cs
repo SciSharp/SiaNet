@@ -606,9 +606,9 @@ namespace SiaNet.Backend.ArrayFire
             for (int i = 0; i < dims.Length; i++)
             {
                 if (i == axis)
-                    dims[i] = (uint)n;
-                else
                     dims[i] = 1;
+                else
+                    dims[i] = (uint)n;
             }
 
             return Out(Data.Tile(In(x), dims));

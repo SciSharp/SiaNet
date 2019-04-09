@@ -124,6 +124,16 @@ namespace SiaNet.Backend.CNTKLib
             return Out(v);
         }
 
+        private Tensor CreateVariable(int[] data, long[] shape, string name = "")
+        {
+            shape = BackendUtil.Row2ColMajor(shape);
+            
+            var arr = new CNTK.NDArrayView(BackendUtil.CastShapeInt(shape), Array.ConvertAll(data, x => (float)x), DeviceManager.Current);
+            var v = new CNTK.Variable(BackendUtil.CastShapeInt(shape), VariableKind.Input, CNTK.DataType.Float, arr, false, new AxisVector(), false, name, name);
+
+            return Out(v);
+        }
+
         public Tensor Diag(Tensor x)
         {
             throw new NotImplementedException();
@@ -418,7 +428,6 @@ namespace SiaNet.Backend.CNTKLib
                 x = Min(x, CorrDim(x.DimCount, item));
             }
 
-
             return x;
         }
 
@@ -459,7 +468,8 @@ namespace SiaNet.Backend.CNTKLib
 
         public void Print(Tensor x, string title = "")
         {
-            BackendUtil.Print(x.Shape, x.ToArray());
+            Console.WriteLine(In(x).GetValue().ToString());
+            //BackendUtil.Print(x.Shape, x.ToArray());
         }
 
         public Tensor RandomBernoulli(long[] shape, float p)
@@ -530,15 +540,12 @@ namespace SiaNet.Backend.CNTKLib
 
         public Tensor SliceCols(Tensor x, long start, long end)
         {
-            end = end + 1;
-            var t = C.Transpose(In(x));
             return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(0), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
         }
 
         public Tensor SliceRows(Tensor x, long start, long end)
         {
-            end = end + 1;
-            return Out(C.Slice(In(x), AxisVector.Repeat(new Axis(x.DimCount - 1), 1), IntVector.Repeat((int)start, 1), IntVector.Repeat((int)end, 1)));
+            return Out(C.Slice(In(x), new AxisVector(new Axis[] {new Axis(0)}), new IntVector(new int[] { 1, 1, 1, 1, 1, 1 }), new IntVector(new int[] { 3, 3, 3, 3, 3, 3 })));
         }
 
         public Tensor Softmax(Tensor x, int axis = -1)
@@ -613,15 +620,10 @@ namespace SiaNet.Backend.CNTKLib
         public Tensor Tile(Tensor x, int n, int axis = 0)
         {
             axis = CorrDim(x.DimCount, axis);
-
-            uint[] dims = new uint[x.DimCount];
-            for (int i = 0; i < dims.Length; i++)
-            {
-                if (i == axis)
-                    dims[i] = (uint)n;
-                else
-                    dims[i] = 1;
-            }
+            if (axis == 0)
+                axis = 1;
+            else
+                axis = 1;
 
             return Out(C.Splice(VariableVector.Repeat(In(x), n), new Axis(axis)));
         }

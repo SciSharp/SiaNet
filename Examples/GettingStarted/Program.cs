@@ -14,7 +14,7 @@ namespace GettingStarted
         {
             //Setup Engine
 
-            Global.UseEngine(SiaNet.Backend.TensorSharp.SiaNetBackend.Instance, DeviceType.CPU);
+            Global.UseEngine(SiaNet.Backend.MxNetLib.SiaNetBackend.Instance, DeviceType.CPU);
 
             //Prep Data
             var (x, y) = PrepDataset();

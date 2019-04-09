@@ -250,12 +250,12 @@ namespace SiaNet.Engine
                 {
                     if (lhs.Shape[0] == 1)
                     {
-                        lhs = lhs.RepeatTensor(rhs.Shape[0], 0);
+                        lhs = lhs.RepeatTensor(rhs.Shape[0], 1);
                     }
 
                     if (rhs.Shape[0] == 1)
                     {
-                        rhs = rhs.RepeatTensor(lhs.Shape[0], 0);
+                        rhs = rhs.RepeatTensor(lhs.Shape[0], 1);
                     }
                 }
 

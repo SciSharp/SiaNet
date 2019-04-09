@@ -14,6 +14,8 @@
 
         internal NDArray UnderlayingVariable;
 
+        private Tensor UnderlayingTensor;
+
         public DataFrame()
         {
 
@@ -58,7 +60,12 @@
         /// <returns></returns>
         public Tensor GetTensor()
         {
-            return K.CreateVariable(UnderlayingVariable.Data<float>(), Shape);
+            if (UnderlayingTensor == null)
+            {
+                UnderlayingTensor = K.CreateVariable(UnderlayingVariable.Data<float>(), Shape);
+            }
+
+            return UnderlayingTensor;
         }
 
         public Array DataArray
@@ -128,15 +135,18 @@
             
             if (start + size <= Shape[0])
             {
-                data = UnderlayingVariable[new NDArray(Enumerable.Range(start, size).ToArray())];
+                return K.SliceRows(GetTensor(), start, start + size - 1);
+                //data = UnderlayingVariable[new NDArray(Enumerable.Range(start, size).ToArray())];
             }
             else
             {
-                int count = (int)Shape[0] - start;
-                data = UnderlayingVariable[new NDArray(Enumerable.Range(start, count).ToArray())];
+                //int count = (int)Shape[0] - start;
+                //data = UnderlayingVariable[new NDArray(Enumerable.Range(start, count).ToArray())];
+
+                return K.SliceRows(GetTensor(), start, Shape[0] - 1);
             }
 
-            return K.CreateVariable(data.Data<float>(), BackendUtil.Int2Long(data.shape));
+            //return K.CreateVariable(data.Data<float>(), BackendUtil.Int2Long(data.shape));
         }
 
         /// <summary>
@@ -151,7 +161,7 @@
                 count = UnderlayingVariable.shape[0];
             }
 
-            Console.WriteLine(UnderlayingVariable[new NDArray(new int[] { 0, count })].ToString());
+            Console.WriteLine(UnderlayingVariable[new NDArray(Enumerable.Range(0, count - 1).ToArray())].ToString());
         }
     }
 }
