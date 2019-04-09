@@ -4,8 +4,71 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="TorchSharp.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\SiaNet.Engine\SiaNet.Engine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="FileOperations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FileOperations.cs</LastGenOutput>
+    </None>
+    <None Update="Raw\Blas.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Blas.generated.cs</LastGenOutput>
+    </None>
+    <None Update="Raw\Lapack.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Lapack.generated.cs</LastGenOutput>
+    </None>
+    <None Update="Raw\Vector.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Vector.generated.cs</LastGenOutput>
+    </None>
+    <None Update="TypeGeneration.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypeGeneration.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="FileOperations.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FileOperations.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Raw\Blas.generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Blas.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Raw\Lapack.generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Lapack.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Raw\Vector.generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Vector.tt</DependentUpon>
+    </Compile>
+    <Compile Update="TypeGeneration.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypeGeneration.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

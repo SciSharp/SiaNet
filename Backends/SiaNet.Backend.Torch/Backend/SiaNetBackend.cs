@@ -10,29 +10,48 @@ namespace SiaNet.Backend.Torch
 {
     public class SiaNetBackend : IBackend
     {
+        int counter = 0;
+
+        internal NDArrayTensor Out(FloatTensor x)
+        {
+            return new NDArrayTensor(x);
+        }
+
+        internal FloatTensor In(Tensor x)
+        {
+            return ((NDArrayTensor)x).InternalTensor;
+        }
+
+        internal FloatTensor In(float value, long[] shape)
+        {
+            FloatTensor floatTensor = new FloatTensor(shape);
+            floatTensor.Fill(value);
+            return floatTensor;
+        }
+
         public Tensor Abs(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Abs());
         }
 
         public Tensor Acos(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Acos());
         }
 
         public Tensor Add(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(In(a).CAdd(1, In(b)));
         }
 
         public Tensor Add(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(In(a).Add(b));
         }
 
         public Tensor Add(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(In(b).Add(a));
         }
 
         public Tensor Argmax(Tensor x, int dim = 0)
@@ -47,22 +66,22 @@ namespace SiaNet.Backend.Torch
 
         public Tensor Asin(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Asin());
         }
 
         public Tensor Atan(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Atan());
         }
 
         public Tensor Ceil(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Ceil());
         }
 
         public Tensor Clip(Tensor x, float min, float max)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Clamp(min, max));
         }
 
         public Tensor Col2Im(Tensor cols, long[] x_shape, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
@@ -72,22 +91,27 @@ namespace SiaNet.Backend.Torch
 
         public Tensor Constant(float value, long[] shape)
         {
-            throw new NotImplementedException();
+            FloatTensor floatTensor = new FloatTensor(shape);
+            floatTensor.Fill(value);
+            return Out(floatTensor);
         }
 
         public Tensor Cos(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Cos());
         }
 
         public Tensor Cosh(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Cosh());
         }
 
         public Tensor CreateVariable(float[] data, long[] shape, string name = "")
         {
-            throw new NotImplementedException();
+            FloatTensor floatTensor = new FloatTensor(shape);
+            var ptr = Marshal.UnsafeAddrOfPinnedArrayElement(data, 0);
+            var tensor = FloatTensor.NewWithStorage1d(new FloatTensor.FloatStorage(new FloatTensor.FloatStorage.HType(ptr, false)), UIntPtr.Zero, data.Length, 1);
+            return Reshape(Out(tensor), shape);
         }
 
         public Tensor Diag(Tensor x)
@@ -97,22 +121,22 @@ namespace SiaNet.Backend.Torch
 
         public void Dispose(Tensor x)
         {
-            throw new NotImplementedException();
+            In(x).Dispose();
         }
 
         public Tensor Div(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(In(a).CDiv(In(b)));
         }
 
         public Tensor Div(Tensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(In(a).Div(b));
         }
 
         public Tensor Div(float a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(In(a, b.Shape).CDiv(In(b)));
         }
 
         public Tensor Dot(Tensor a, Tensor b)
@@ -122,37 +146,42 @@ namespace SiaNet.Backend.Torch
 
         public float Epsilon()
         {
-            throw new NotImplementedException();
+            return 1e-7f;
         }
 
         public Tensor EqualTo(Tensor a, Tensor b)
         {
-            throw new NotImplementedException();
+            return Out(In(a).EqTensorT(In(b)));
         }
 
         public object Eval(Tensor x)
         {
-            throw new NotImplementedException();
+            return In(x);
         }
 
         public Tensor Exp(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Exp());
         }
 
         public Tensor Floor(Tensor x)
         {
-            throw new NotImplementedException();
+            return Out(In(x).Floor());
         }
 
         public ActivationFunc GetActFunc()
         {
-            throw new NotImplementedException();
+            return new SiaNetActivations(this);
         }
 
         public Array GetArray(Tensor x)
         {
-            throw new NotImplementedException();
+            Array result = Array.CreateInstance(typeof(float), x.ElementCount);
+
+            var datagch = GCHandle.Alloc(result, GCHandleType.Pinned);
+            var tensor = In(x);
+
+            return result;
         }
 
         public DataType GetDataType(Tensor x)
@@ -362,7 +391,25 @@ namespace SiaNet.Backend.Torch
 
         public Tensor Reshape(Tensor x, params long[] shape)
         {
-            throw new NotImplementedException();
+            var tensor = In(x);
+            if(shape.Length == 2)
+            {
+                tensor.Resize2d(shape[0], shape[1]);
+            }
+            else if (shape.Length == 3)
+            {
+                tensor.Resize3d(shape[0], shape[1], shape[2]);
+            }
+            else if (shape.Length == 4)
+            {
+                tensor.Resize4d(shape[0], shape[1], shape[2], shape[3]);
+            }
+            else if (shape.Length == 5)
+            {
+                tensor.Resize5d(shape[0], shape[1], shape[2], shape[3], shape[4]);
+            }
+
+            return Out(tensor);
         }
 
         public Tensor Round(Tensor x)
