@@ -38,7 +38,7 @@ namespace GettingStarted
             predX.Load(0, 0, 0, 1); //Result should be 0 and 1
 
             var rawPred = model.Predict(predX);
-            Global.CurrentBackend.Round(rawPred).Print();
+            
             Console.ReadLine();
         }
 

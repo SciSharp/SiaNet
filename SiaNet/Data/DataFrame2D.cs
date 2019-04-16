@@ -6,7 +6,7 @@
     using CsvHelper;
     using System.Data;
     using SiaNet.Engine;
-    using NumSharp.Core;
+    using NumSharp;
 
     /// <summary>
     /// 

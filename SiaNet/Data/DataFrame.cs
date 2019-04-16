@@ -3,7 +3,7 @@
     using System;
     using SiaNet.Engine;
     using System.Linq;
-    using NumSharp.Core;
+    using NumSharp;
 
     /// <summary>
     /// Data frame to load data like CSV, images and text in binary format. The instance is then send to Train or Predict method
@@ -54,6 +54,12 @@
             UnderlayingVariable = np.array<float>(data);
         }
 
+        public void Load(float[] data, long[] shape)
+        {
+            UnderlayingVariable = np.array<float>(data);
+            UnderlayingVariable.reshape(BackendUtil.CastShapeInt(shape));
+        }
+
         /// <summary>
         /// Gets the underlaying tensor instance.
         /// </summary>
@@ -72,7 +78,7 @@
         {
             get
             {
-                return UnderlayingVariable.Data();
+                return UnderlayingVariable.Data<float>();
             }
         }
 
@@ -161,7 +167,37 @@
                 count = UnderlayingVariable.shape[0];
             }
 
+            if(!string.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine("-----------------{0}----------------", title);
+            }
+
             Console.WriteLine(UnderlayingVariable[new NDArray(Enumerable.Range(0, count - 1).ToArray())].ToString());
+        }
+
+        /// <summary>
+        /// Round to nearest integer number
+        /// </summary>
+        public void Round()
+        {
+        }
+
+        public void Max(int? dim = null)
+        {
+            if (dim.HasValue)
+                UnderlayingVariable = UnderlayingVariable.max(dim.Value);
+            else
+                UnderlayingVariable = UnderlayingVariable.max<float>();
+        }
+
+        public void Min(int? dim = null)
+        {
+            UnderlayingVariable = UnderlayingVariable.min(dim);
+        }
+
+        public void Argmax()
+        {
+            UnderlayingVariable = UnderlayingVariable.argmax();
         }
     }
 }

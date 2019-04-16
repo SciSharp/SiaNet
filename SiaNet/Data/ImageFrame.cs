@@ -2,7 +2,7 @@
 {
     using System;
     using System.Drawing;
-    using NumSharp.Core;
+    using NumSharp;
     using OpenCvSharp.Extensions;
     using SiaNet.Engine;
 

@@ -1,6 +1,6 @@
 ﻿namespace SiaNet.Data
 {
-    using NumSharp.Core;
+    using NumSharp;
     using SiaNet.Engine;
     using System;
 

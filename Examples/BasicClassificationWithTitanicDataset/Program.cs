@@ -16,11 +16,11 @@ namespace BasicClassificationWithTitanicDataset
         static void Main(string[] args)
         {
             //Setup Engine
-            Global.UseEngine(SiaNet.Backend.MxNetLib.SiaNetBackend.Instance, DeviceType.Default);
+            Global.UseEngine(SiaNet.Backend.ArrayFire.SiaNetBackend.Instance, DeviceType.Default);
 
             var train = LoadTrain(); //Load train data
             var test = LoadTest(); //Load test data
-
+            
             var model = new Sequential();
             model.EpochEnd += Model_EpochEnd;
             model.Add(new Dense(128, ActType.ReLU));
@@ -31,10 +31,9 @@ namespace BasicClassificationWithTitanicDataset
             model.Compile(OptimizerType.Adam, LossType.BinaryCrossEntropy, MetricType.BinaryAccurary);
 
             // Perform training with train and val dataset
-            model.Train(train, epochs: 100, batchSize: 32);
+            model.Train(train, epochs: 100, batchSize: 200);
 
-            //var prediction = model.Predict(test);
-            //TOps.Round(prediction).Print();
+            var prediction = model.Predict(test);
         }
 
         private static void Model_EpochEnd(object sender, EpochEndEventArgs e)

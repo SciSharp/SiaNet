@@ -197,7 +197,7 @@
         /// </summary>
         /// <param name="x">The input data frame to run prediction.</param>
         /// <returns></returns>
-        public Tensor Predict(DataFrame x)
+        public DataFrame Predict(DataFrame x)
         {
             List<float> predictions = new List<float>();
 
@@ -212,8 +212,10 @@
             }
 
             predictions.AddRange(output.ToArray().Cast<float>());
+            DataFrame result = new DataFrame();
+            result.Load(predictions.ToArray());
 
-            return K.CreateVariable(predictions.ToArray(), output.Shape);
+            return result;
         }
 
         /// <summary>
@@ -222,13 +224,12 @@
         /// <param name="x">The input data frame to run prediction.</param>
         /// <param name="batch_size">Size of the batch.</param>
         /// <returns></returns>
-        public Tensor Predict(DataFrame x, int batch_size)
+        public DataFrame Predict(DataFrame x, int batch_size)
         {
             DataFrameIter dataFrameIter = new DataFrameIter(x);
             List<float> predictions = new List<float>();
             dataFrameIter.SetBatchSize(batch_size);
-            long[] outshape = null;
-
+            
             while (dataFrameIter.Next())
             {
                 var data = dataFrameIter.GetBatchX();
@@ -245,7 +246,10 @@
                 predictions.AddRange(output.ToArray().Cast<float>());
             }
 
-            return K.CreateVariable(predictions.ToArray(), outshape);
+            DataFrame result = new DataFrame();
+            result.Load(predictions.ToArray());
+
+            return result;
         }
 
         /// <summary>

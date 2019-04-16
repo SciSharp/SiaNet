@@ -123,7 +123,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor CreateVariable(float[] data, long[] shape, string name = "")
         {
-            return null;
+            return Out(tf.Variable<Array>(data).value());
         }
 
         public SiaTensor Reshape(SiaTensor x, params long[] shape)
@@ -348,7 +348,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Sin(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.sin(In(x)));
         }
 
         public SiaTensor Cos(SiaTensor x)
@@ -358,37 +358,37 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Tan(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.tan(In(x)));
         }
 
         public SiaTensor Asin(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.asin(In(x)));
         }
 
         public SiaTensor Acos(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.acos(In(x)));
         }
 
         public SiaTensor Atan(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.atan(In(x)));
         }
 
         public SiaTensor Sinh(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.sinh(In(x)));
         }
 
         public SiaTensor Cosh(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.cosh(In(x)));
         }
 
         public SiaTensor Tanh(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.tanh(In(x)));
         }
 
         public SiaTensor Sigmoid(SiaTensor x)
@@ -398,47 +398,60 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Pow(SiaTensor x, float value)
         {
-            throw new NotImplementedException();
+            return Out(tf.pow(In(x), In(value, x.Shape)));
         }
 
         public SiaTensor Square(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.pow(In(x), 2));
         }
 
         public SiaTensor Clip(SiaTensor x, float min, float max)
         {
-            throw new NotImplementedException();
+            return Out(tf._clip_by_value(In(x), In(min, x.Shape), In(max, x.Shape)));
         }
 
         public float Sum(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return tf.reduce_sum(In(x));
         }
 
         public SiaTensor Sum(SiaTensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(tf.sum(In(x), dim, true));
         }
 
-        public SiaTensor Sum(SiaTensor x, params int[] dim)
+        public SiaTensor Sum(SiaTensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            foreach (var item in dims)
+            {
+                int dim = item < 0 ? x.DimCount + item : item;
+                x = Sum(x, item);
+            }
+
+            return x;
         }
 
         public float Max(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return math_ops.reduce_max(In(x));
         }
 
         public SiaTensor Max(SiaTensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(math_ops.reduce_max(In(x), new int[] { dim }, true));
         }
 
-        public SiaTensor Max(SiaTensor x, params int[] dim)
+        public SiaTensor Max(SiaTensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+            }
+
+            return Out(math_ops.reduce_max(In(x), dims, true));
         }
 
         public float Min(SiaTensor x)
@@ -458,62 +471,70 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public float Mean(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return math_ops.reduce_mean(In(x));
         }
 
         public SiaTensor Mean(SiaTensor x, int dim)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(math_ops.reduce_mean(In(x), new int[] { dim }, true));
         }
 
-        public SiaTensor Mean(SiaTensor x, params int[] dim)
+        public SiaTensor Mean(SiaTensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+            }
+
+            return Out(math_ops.reduce_mean(In(x), dims, true));
         }
 
         public SiaTensor Argmax(SiaTensor x, int dim = 0)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(tf.arg_max(In(x), dim));
         }
 
         public SiaTensor Argmin(SiaTensor x, int dim = 0)
         {
-            throw new NotImplementedException();
+            dim = dim < 0 ? x.DimCount + dim : dim;
+            return Out(tf.arg_min(In(x), dim));
         }
 
         public SiaTensor Maximum(SiaTensor a, SiaTensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.maximum(In(a), In(b)));
         }
 
         public SiaTensor Maximum(SiaTensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.maximum(In(a), In(b, a.Shape)));
         }
 
         public SiaTensor Minimum(SiaTensor a, SiaTensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.minimum(In(a), In(b)));
         }
 
         public SiaTensor Minimum(SiaTensor a, float b)
         {
-            throw new NotImplementedException();
+            return Out(tf.minimum(In(a), In(b, a.Shape)));
         }
 
         public SiaTensor Transpose(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.transpose(In(x), new int[] { 1, 0 }));
         }
 
         public SiaTensor Transpose(SiaTensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            return Out(tf.transpose(In(x), dims));
         }
 
         public SiaTensor Dot(SiaTensor a, SiaTensor b)
         {
-            throw new NotImplementedException();
+            return Out(tf.matmul(In(a), In(b)));
         }
 
         public SiaTensor Diag(SiaTensor x)
@@ -523,17 +544,18 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Softmax(SiaTensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            return Out(tf.nn.softmax(In(x), axis));
         }
 
         public SiaTensor Softplus(SiaTensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            return Log((Exp(x) + 1));
         }
 
         public SiaTensor L2Normalize(SiaTensor x, int axis = -1)
         {
-            throw new NotImplementedException();
+            var y = Max(Sum(Square(x), axis), axis);
+            return x / Sqrt(y);
         }
 
         public SiaTensor Im2Col(SiaTensor x, Tuple<int, int> kernalSize, int padding = 1, int stride = 1)
@@ -558,17 +580,17 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public Array GetArray(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return In(x).Data<float>();
         }
 
         public void Dispose(SiaTensor x)
         {
-            throw new NotImplementedException();
+            In(x).Dispose();
         }
 
         public ActivationFunc GetActFunc()
         {
-            throw new NotImplementedException();
+            return new SiaNetActivations(this);
         }
     }
 }
