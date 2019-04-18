@@ -343,7 +343,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Round(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.round(In(x)));
         }
 
         public SiaTensor Sin(SiaTensor x)
@@ -393,7 +393,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Sigmoid(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.sigmoid(In(x)));
         }
 
         public SiaTensor Pow(SiaTensor x, float value)
@@ -461,12 +461,18 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Min(SiaTensor x, int dim)
         {
-            throw new NotImplementedException();
+            return Out(tf.min(In(x), dim)));
         }
 
-        public SiaTensor Min(SiaTensor x, params int[] dim)
+        public SiaTensor Min(SiaTensor x, params int[] dims)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < dims.Length; i++)
+            {
+                dims[i] = dims[i] < 0 ? x.DimCount + dims[i] : dims[i];
+                x = Min(x, dims[i]);
+            }
+
+            return x;
         }
 
         public float Mean(SiaTensor x)
@@ -539,7 +545,7 @@ namespace SiaNet.Backend.TensorFlowLib
 
         public SiaTensor Diag(SiaTensor x)
         {
-            throw new NotImplementedException();
+            return Out(tf.diag(In(x)));
         }
 
         public SiaTensor Softmax(SiaTensor x, int axis = -1)

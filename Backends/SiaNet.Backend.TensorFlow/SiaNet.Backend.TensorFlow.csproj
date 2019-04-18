@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TensorFlow.NET" Version="0.6.0" />
+    <PackageReference Include="TensorFlow.NET" Version="0.6.1-alpha" />
   </ItemGroup>
 
   <ItemGroup>
